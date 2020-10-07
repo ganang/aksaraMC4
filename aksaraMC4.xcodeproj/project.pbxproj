@@ -9,23 +9,47 @@
 /* Begin PBXBuildFile section */
 		A41A77E8252D9586001C4FAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41A77E7252D9586001C4FAD /* AppDelegate.swift */; };
 		A41A77EA252D9586001C4FAD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41A77E9252D9586001C4FAD /* SceneDelegate.swift */; };
-		A41A77EC252D9586001C4FAD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41A77EB252D9586001C4FAD /* ViewController.swift */; };
+		A41A77EC252D9586001C4FAD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41A77EB252D9586001C4FAD /* MainViewController.swift */; };
 		A41A77EF252D9586001C4FAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A41A77ED252D9586001C4FAD /* Main.storyboard */; };
 		A41A77F2252D9586001C4FAD /* aksaraMC4.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A41A77F0252D9586001C4FAD /* aksaraMC4.xcdatamodeld */; };
 		A41A77F4252D9588001C4FAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A41A77F3252D9588001C4FAD /* Assets.xcassets */; };
 		A41A77F7252D9588001C4FAD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A41A77F5252D9588001C4FAD /* LaunchScreen.storyboard */; };
+		A41A780B252D9A43001C4FAD /* Now-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = A41A77FF252D9A42001C4FAD /* Now-Regular.otf */; };
+		A41A780C252D9A43001C4FAD /* Now-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = A41A7800252D9A42001C4FAD /* Now-Light.otf */; };
+		A41A780D252D9A43001C4FAD /* Now-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = A41A7801252D9A42001C4FAD /* Now-Medium.otf */; };
+		A41A780E252D9A43001C4FAD /* Now-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A41A7802252D9A42001C4FAD /* Now-Bold.otf */; };
+		A41A780F252D9A43001C4FAD /* Now-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = A41A7803252D9A42001C4FAD /* Now-Thin.otf */; };
+		A41A7810252D9A43001C4FAD /* NowAlt-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = A41A7804252D9A43001C4FAD /* NowAlt-Black.otf */; };
+		A41A7811252D9A43001C4FAD /* NowAlt-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = A41A7805252D9A43001C4FAD /* NowAlt-Light.otf */; };
+		A41A7812252D9A43001C4FAD /* NowAlt-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = A41A7806252D9A43001C4FAD /* NowAlt-Regular.otf */; };
+		A41A7813252D9A43001C4FAD /* Now-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = A41A7807252D9A43001C4FAD /* Now-Black.otf */; };
+		A41A7814252D9A43001C4FAD /* NowAlt-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A41A7808252D9A43001C4FAD /* NowAlt-Bold.otf */; };
+		A41A7815252D9A43001C4FAD /* NowAlt-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = A41A7809252D9A43001C4FAD /* NowAlt-Medium.otf */; };
+		A41A7816252D9A43001C4FAD /* NowAlt-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = A41A780A252D9A43001C4FAD /* NowAlt-Thin.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A41A77E4252D9586001C4FAD /* aksaraMC4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = aksaraMC4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A41A77E7252D9586001C4FAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A41A77E9252D9586001C4FAD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A41A77EB252D9586001C4FAD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A41A77EB252D9586001C4FAD /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		A41A77EE252D9586001C4FAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A41A77F1252D9586001C4FAD /* aksaraMC4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = aksaraMC4.xcdatamodel; sourceTree = "<group>"; };
 		A41A77F3252D9588001C4FAD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A41A77F6252D9588001C4FAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A41A77F8252D9588001C4FAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A41A77FF252D9A42001C4FAD /* Now-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Now-Regular.otf"; sourceTree = "<group>"; };
+		A41A7800252D9A42001C4FAD /* Now-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Now-Light.otf"; sourceTree = "<group>"; };
+		A41A7801252D9A42001C4FAD /* Now-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Now-Medium.otf"; sourceTree = "<group>"; };
+		A41A7802252D9A42001C4FAD /* Now-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Now-Bold.otf"; sourceTree = "<group>"; };
+		A41A7803252D9A42001C4FAD /* Now-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Now-Thin.otf"; sourceTree = "<group>"; };
+		A41A7804252D9A43001C4FAD /* NowAlt-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NowAlt-Black.otf"; sourceTree = "<group>"; };
+		A41A7805252D9A43001C4FAD /* NowAlt-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NowAlt-Light.otf"; sourceTree = "<group>"; };
+		A41A7806252D9A43001C4FAD /* NowAlt-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NowAlt-Regular.otf"; sourceTree = "<group>"; };
+		A41A7807252D9A43001C4FAD /* Now-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Now-Black.otf"; sourceTree = "<group>"; };
+		A41A7808252D9A43001C4FAD /* NowAlt-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NowAlt-Bold.otf"; sourceTree = "<group>"; };
+		A41A7809252D9A43001C4FAD /* NowAlt-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NowAlt-Medium.otf"; sourceTree = "<group>"; };
+		A41A780A252D9A43001C4FAD /* NowAlt-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NowAlt-Thin.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,9 +82,10 @@
 		A41A77E6252D9586001C4FAD /* aksaraMC4 */ = {
 			isa = PBXGroup;
 			children = (
+				A41A77FE252D9A2C001C4FAD /* Fonts */,
 				A41A77E7252D9586001C4FAD /* AppDelegate.swift */,
 				A41A77E9252D9586001C4FAD /* SceneDelegate.swift */,
-				A41A77EB252D9586001C4FAD /* ViewController.swift */,
+				A41A77EB252D9586001C4FAD /* MainViewController.swift */,
 				A41A77ED252D9586001C4FAD /* Main.storyboard */,
 				A41A77F3252D9588001C4FAD /* Assets.xcassets */,
 				A41A77F5252D9588001C4FAD /* LaunchScreen.storyboard */,
@@ -68,6 +93,25 @@
 				A41A77F0252D9586001C4FAD /* aksaraMC4.xcdatamodeld */,
 			);
 			path = aksaraMC4;
+			sourceTree = "<group>";
+		};
+		A41A77FE252D9A2C001C4FAD /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				A41A7807252D9A43001C4FAD /* Now-Black.otf */,
+				A41A7802252D9A42001C4FAD /* Now-Bold.otf */,
+				A41A7800252D9A42001C4FAD /* Now-Light.otf */,
+				A41A7801252D9A42001C4FAD /* Now-Medium.otf */,
+				A41A77FF252D9A42001C4FAD /* Now-Regular.otf */,
+				A41A7803252D9A42001C4FAD /* Now-Thin.otf */,
+				A41A7804252D9A43001C4FAD /* NowAlt-Black.otf */,
+				A41A7808252D9A43001C4FAD /* NowAlt-Bold.otf */,
+				A41A7805252D9A43001C4FAD /* NowAlt-Light.otf */,
+				A41A7809252D9A43001C4FAD /* NowAlt-Medium.otf */,
+				A41A7806252D9A43001C4FAD /* NowAlt-Regular.otf */,
+				A41A780A252D9A43001C4FAD /* NowAlt-Thin.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,9 +172,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A41A780E252D9A43001C4FAD /* Now-Bold.otf in Resources */,
+				A41A7815252D9A43001C4FAD /* NowAlt-Medium.otf in Resources */,
 				A41A77F7252D9588001C4FAD /* LaunchScreen.storyboard in Resources */,
+				A41A780C252D9A43001C4FAD /* Now-Light.otf in Resources */,
+				A41A7811252D9A43001C4FAD /* NowAlt-Light.otf in Resources */,
+				A41A7812252D9A43001C4FAD /* NowAlt-Regular.otf in Resources */,
+				A41A780B252D9A43001C4FAD /* Now-Regular.otf in Resources */,
+				A41A7813252D9A43001C4FAD /* Now-Black.otf in Resources */,
+				A41A780D252D9A43001C4FAD /* Now-Medium.otf in Resources */,
 				A41A77F4252D9588001C4FAD /* Assets.xcassets in Resources */,
+				A41A7814252D9A43001C4FAD /* NowAlt-Bold.otf in Resources */,
 				A41A77EF252D9586001C4FAD /* Main.storyboard in Resources */,
+				A41A780F252D9A43001C4FAD /* Now-Thin.otf in Resources */,
+				A41A7816252D9A43001C4FAD /* NowAlt-Thin.otf in Resources */,
+				A41A7810252D9A43001C4FAD /* NowAlt-Black.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,7 +197,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A41A77EC252D9586001C4FAD /* ViewController.swift in Sources */,
+				A41A77EC252D9586001C4FAD /* MainViewController.swift in Sources */,
 				A41A77F2252D9586001C4FAD /* aksaraMC4.xcdatamodeld in Sources */,
 				A41A77E8252D9586001C4FAD /* AppDelegate.swift in Sources */,
 				A41A77EA252D9586001C4FAD /* SceneDelegate.swift in Sources */,
