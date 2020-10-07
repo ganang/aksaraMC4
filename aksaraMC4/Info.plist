@@ -2,20 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Now-Black.otf</string>
-		<string>Now-Bold.otf</string>
-		<string>Now-Light.otf</string>
-		<string>Now-Medium.otf</string>
-		<string>Now-Thin.otf</string>
-		<string>NowAlt-Black.otf</string>
-		<string>NowAlt-Bold.otf</string>
-		<string>NowAlt-Light.otf</string>
-		<string>NowAlt-Medium.otf</string>
-		<string>NowAlt-Regular.otf</string>
-		<string>NowAlt-Thin.otf</string>
-	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -34,6 +20,20 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Now-Black.otf</string>
+		<string>Now-Bold.otf</string>
+		<string>Now-Light.otf</string>
+		<string>Now-Medium.otf</string>
+		<string>Now-Thin.otf</string>
+		<string>NowAlt-Black.otf</string>
+		<string>NowAlt-Bold.otf</string>
+		<string>NowAlt-Light.otf</string>
+		<string>NowAlt-Medium.otf</string>
+		<string>NowAlt-Regular.otf</string>
+		<string>NowAlt-Thin.otf</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -63,7 +63,6 @@
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
-		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
