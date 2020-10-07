@@ -15,7 +15,7 @@ class MainViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.init(name: "Now-Black", size: 18)
         label.textColor = .blue
-        label.text = ""
+        label.text = "Nopal"
         
         return label
     }()
@@ -23,11 +23,14 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+        view.setBackgroundColor()
+        view.backgroundColor = .white
         view.addSubview(textLabel)
         textLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         textLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
+    
+    
 
 
 }
