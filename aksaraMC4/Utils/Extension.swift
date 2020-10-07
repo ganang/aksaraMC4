@@ -258,5 +258,41 @@ extension UIView {
                 
         self.layer.insertSublayer(gradientLayer, at:0)
     }
+    
+    func setTextGradientColor() {
+        let colorTop =  UIColor(red: 36/255.0, green: 194/255.0, blue: 255/255.0, alpha: 1.0).cgColor
+        let colorBottom = UIColor(red: 54/255.0, green: 159/255.0, blue: 255/255.0, alpha: 1.0).cgColor
+                    
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorTop, colorBottom]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame = self.bounds
+                
+        self.layer.insertSublayer(gradientLayer, at:0)
+    }
+    
+    public func addInnerShadow(topColor: UIColor = UIColor.white.withAlphaComponent(0.6)) {
+        let shadowLayer = CAGradientLayer()
+        shadowLayer.cornerRadius = layer.cornerRadius
+        shadowLayer.frame = bounds
+        shadowLayer.frame.size.height = 10.0
+        shadowLayer.colors = [
+            topColor.cgColor,
+            UIColor.white.withAlphaComponent(0).cgColor
+        ]
+        layer.addSublayer(shadowLayer)
+    }
 }
+
+extension UILabel {
+    func setTextColorToGradient(image: UIImage) {
+        UIGraphicsBeginImageContext(frame.size)
+        image.draw(in: bounds)
+        let myGradient = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        self.textColor = UIColor(patternImage: UIImage(named: "gradientText")!)
+    }
+}
+
 

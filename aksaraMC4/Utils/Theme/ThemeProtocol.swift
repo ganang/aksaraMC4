@@ -9,7 +9,7 @@ import UIKit
 
 protocol ThemeProtocol {
     var backgroundColor: UIColor { get }
-    var blueColor: UIColor { get }
+    var cardColor1: UIColor { get }
     var textColor1: UIColor { get }
     var textColor2: UIColor { get }
     var accentColor: UIColor { get }
