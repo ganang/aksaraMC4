@@ -11,6 +11,8 @@
 		914344E6252DBADE002E867B /* ThemeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914344E5252DBADE002E867B /* ThemeProtocol.swift */; };
 		914344E9252DBAFC002E867B /* LightTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914344E8252DBAFC002E867B /* LightTheme.swift */; };
 		914344F0252DBFB9002E867B /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914344EF252DBFB9002E867B /* Extension.swift */; };
+		914344F6252DC366002E867B /* RegionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914344F5252DC366002E867B /* RegionController.swift */; };
+		914344FF252DC436002E867B /* RegionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914344FE252DC436002E867B /* RegionView.swift */; };
 		A41A77E8252D9586001C4FAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41A77E7252D9586001C4FAD /* AppDelegate.swift */; };
 		A41A77EA252D9586001C4FAD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41A77E9252D9586001C4FAD /* SceneDelegate.swift */; };
 		A41A77EC252D9586001C4FAD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41A77EB252D9586001C4FAD /* MainViewController.swift */; };
@@ -37,6 +39,8 @@
 		914344E5252DBADE002E867B /* ThemeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeProtocol.swift; sourceTree = "<group>"; };
 		914344E8252DBAFC002E867B /* LightTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightTheme.swift; sourceTree = "<group>"; };
 		914344EF252DBFB9002E867B /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		914344F5252DC366002E867B /* RegionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionController.swift; sourceTree = "<group>"; };
+		914344FE252DC436002E867B /* RegionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionView.swift; sourceTree = "<group>"; };
 		A41A77E4252D9586001C4FAD /* aksaraMC4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = aksaraMC4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A41A77E7252D9586001C4FAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A41A77E9252D9586001C4FAD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +94,31 @@
 			path = Theme;
 			sourceTree = "<group>";
 		};
+		914344F3252DC347002E867B /* RegionScreen */ = {
+			isa = PBXGroup;
+			children = (
+				914344F4252DC353002E867B /* Controller */,
+				914344F8252DC36C002E867B /* View */,
+			);
+			path = RegionScreen;
+			sourceTree = "<group>";
+		};
+		914344F4252DC353002E867B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				914344F5252DC366002E867B /* RegionController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		914344F8252DC36C002E867B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				914344FE252DC436002E867B /* RegionView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		A41A77DB252D9586001C4FAD = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +138,7 @@
 		A41A77E6252D9586001C4FAD /* aksaraMC4 */ = {
 			isa = PBXGroup;
 			children = (
+				914344F3252DC347002E867B /* RegionScreen */,
 				913FCA5D252DB8F400438A23 /* Utils */,
 				A41A77FE252D9A2C001C4FAD /* Fonts */,
 				A41A77E7252D9586001C4FAD /* AppDelegate.swift */,
@@ -227,8 +257,10 @@
 			files = (
 				A41A77EC252D9586001C4FAD /* MainViewController.swift in Sources */,
 				A41A77F2252D9586001C4FAD /* aksaraMC4.xcdatamodeld in Sources */,
+				914344FF252DC436002E867B /* RegionView.swift in Sources */,
 				914344E3252DBAD0002E867B /* Theme.swift in Sources */,
 				914344E6252DBADE002E867B /* ThemeProtocol.swift in Sources */,
+				914344F6252DC366002E867B /* RegionController.swift in Sources */,
 				A41A77E8252D9586001C4FAD /* AppDelegate.swift in Sources */,
 				914344E9252DBAFC002E867B /* LightTheme.swift in Sources */,
 				A41A77EA252D9586001C4FAD /* SceneDelegate.swift in Sources */,
