@@ -17,12 +17,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let scene = (scene as? UIWindowScene) else { return }
-        
-        let controller = RegionController()
-        window = UIWindow(windowScene: scene)
-        window?.rootViewController = controller
-        window?.makeKeyAndVisible()
+        if let windowScene = scene as? UIWindowScene {
+            let navController: UINavigationController = UINavigationController()
+            let window = UIWindow(windowScene: windowScene)
+            navController.viewControllers = [MainViewController()]
+            window.rootViewController = navController
+            self.window = window
+            window.makeKeyAndVisible()
+        }
+
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -53,7 +56,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
 
         // Save changes in the application's managed object context when the application transitions to the background.
-        (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
+        PersistenceService.saveContext()
     }
 
 
