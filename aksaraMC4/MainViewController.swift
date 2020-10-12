@@ -17,28 +17,65 @@ class MainViewController: UIViewController {
     
     var stages: [Stage]?
     
-    let textLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.init(name: "Now-Black", size: 18)
-        label.textColor = .blue
-        label.text = "Nopal"
+    let textButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("BUTTON", for: .normal)
+        button.addTarget(self, action: #selector(showModal), for: .touchUpInside)
+        button.backgroundColor = .red
         
-        return label
+        return button
+    }()
+    
+    let containerView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .red
+        
+        return view
+    }()
+    
+    let modalView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0).withAlphaComponent(0.4)
+        
+        return view
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         view.setBackgroundColor()
-        view.backgroundColor = .white
-        view.addSubview(textLabel)
-        textLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        textLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        navigationController?.navigationBar.isHidden = true
+        
+        
+        
         
 //        deleteRecord()
 //        setupRecord()
-        getRecord()
+//        getRecord()
+        
+        view.addSubview(containerView)
+        
+        containerView.addSubview(textButton)
+        textButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        textButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        textButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        textButton.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        
+        containerView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+    }
+    
+    @objc func showModal() {
+        view.addSubview(modalView)
+        modalView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        modalView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        modalView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        modalView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
     }
     
     func deleteRecord() {
@@ -70,12 +107,7 @@ class MainViewController: UIViewController {
             let user: User = users[0]
             let regions: [Region] = user.regions?.sortedArray(using: [.init(key: "id", ascending: true)]) as! [Region]
             self.stages = regions[0].stages?.sortedArray(using: [.init(key: "id", ascending: true)]) as? [Stage]
-            
-            let testingVC = TestingViewController()
-            testingVC.stages = stages
-            testingVC.delegate = self
-            
-            self.navigationController?.pushViewController(testingVC, animated: false)
+        
             
         } catch {
             print("ERROR")
@@ -251,14 +283,82 @@ class MainViewController: UIViewController {
         quiz1_level2_stage1_Jawa.choices = []
         quiz1_level2_stage1_Jawa.images = []
         
+        //MARK: Choice
+        let choice1_Quiz2_Level2_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level2_Stage1_Jawa.id = 1
+        choice1_Quiz2_Level2_Stage1_Jawa.name = "Ha"
+        
+        let choice2_Quiz2_Leve21_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Leve21_Stage1_Jawa.id = 2
+        choice2_Quiz2_Leve21_Stage1_Jawa.name = "Na"
+        
+        let choice3_Quiz2_Level2_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level2_Stage1_Jawa.id = 3
+        choice3_Quiz2_Level2_Stage1_Jawa.name = "Ca"
+        
+        let choice4_Quiz2_Level2_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level2_Stage1_Jawa.id = 4
+        choice4_Quiz2_Level2_Stage1_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz2_Level2_Stage1_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz2_Level2_Stage1_Jawa.id = 1
+        image1_Quiz2_Level2_Stage1_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz2_Level2_Stage1_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz2_Level2_Stage1_Jawa.id = 2
+        image2_Quiz2_Level2_Stage1_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz2_Level2_Stage1_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz2_Level2_Stage1_Jawa.id = 3
+        image3_Quiz2_Level2_Stage1_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz2_Level2_Stage1_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz2_Level2_Stage1_Jawa.id = 4
+        image4_Quiz2_Level2_Stage1_Jawa.name = "Ra_Aksara_Jawa"
+        
         let quiz2_level2_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz2_level2_stage1_Jawa.id = 2
         quiz2_level2_stage1_Jawa.name = "Kuis 1"
         quiz2_level2_stage1_Jawa.type = "A"
         quiz2_level2_stage1_Jawa.isCorrect = false
         quiz2_level2_stage1_Jawa.question = "Na"
-        quiz2_level2_stage1_Jawa.choices = []
-        quiz2_level2_stage1_Jawa.images = []
+        quiz2_level2_stage1_Jawa.choices = [choice1_Quiz2_Level2_Stage1_Jawa, choice2_Quiz2_Leve21_Stage1_Jawa, choice3_Quiz2_Level2_Stage1_Jawa, choice4_Quiz2_Level2_Stage1_Jawa]
+        quiz2_level2_stage1_Jawa.images = [image1_Quiz2_Level2_Stage1_Jawa, image2_Quiz2_Level2_Stage1_Jawa, image3_Quiz2_Level2_Stage1_Jawa, image4_Quiz2_Level2_Stage1_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level2_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level2_Stage1_Jawa.id = 1
+        choice1_Quiz3_Level2_Stage1_Jawa.name = "Ha"
+        
+        let choice2_Quiz3_Leve21_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Leve21_Stage1_Jawa.id = 2
+        choice2_Quiz3_Leve21_Stage1_Jawa.name = "Na"
+        
+        let choice3_Quiz3_Level2_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level2_Stage1_Jawa.id = 3
+        choice3_Quiz3_Level2_Stage1_Jawa.name = "Ca"
+        
+        let choice4_Quiz3_Level2_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level2_Stage1_Jawa.id = 4
+        choice4_Quiz3_Level2_Stage1_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz3_Level2_Stage1_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz3_Level2_Stage1_Jawa.id = 1
+        image1_Quiz3_Level2_Stage1_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz3_Level2_Stage1_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz3_Level2_Stage1_Jawa.id = 2
+        image2_Quiz3_Level2_Stage1_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz3_Level2_Stage1_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz3_Level2_Stage1_Jawa.id = 3
+        image3_Quiz3_Level2_Stage1_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz3_Level2_Stage1_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz3_Level2_Stage1_Jawa.id = 4
+        image4_Quiz3_Level2_Stage1_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz3_level2_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level2_stage1_Jawa.id = 3
@@ -266,8 +366,42 @@ class MainViewController: UIViewController {
         quiz3_level2_stage1_Jawa.type = "B"
         quiz3_level2_stage1_Jawa.isCorrect = false
         quiz3_level2_stage1_Jawa.question = "Na"
-        quiz3_level2_stage1_Jawa.choices = []
-        quiz3_level2_stage1_Jawa.images = []
+        quiz3_level2_stage1_Jawa.choices = [choice1_Quiz3_Level2_Stage1_Jawa, choice2_Quiz3_Leve21_Stage1_Jawa, choice3_Quiz3_Level2_Stage1_Jawa, choice4_Quiz3_Level2_Stage1_Jawa]
+        quiz3_level2_stage1_Jawa.images = [image1_Quiz3_Level2_Stage1_Jawa, image2_Quiz3_Level2_Stage1_Jawa, image3_Quiz3_Level2_Stage1_Jawa, image4_Quiz3_Level2_Stage1_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level2_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level2_Stage1_Jawa.id = 1
+        choice1_Quiz4_Level2_Stage1_Jawa.name = "Ha"
+        
+        let choice2_Quiz4_Level2_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level2_Stage1_Jawa.id = 2
+        choice2_Quiz4_Level2_Stage1_Jawa.name = "Na"
+        
+        let choice3_Quiz4_Level2_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level2_Stage1_Jawa.id = 3
+        choice3_Quiz4_Level2_Stage1_Jawa.name = "Ca"
+        
+        let choice4_Quiz4_Level2_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level2_Stage1_Jawa.id = 4
+        choice4_Quiz4_Level2_Stage1_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz4_Level2_Stage1_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz4_Level2_Stage1_Jawa.id = 1
+        image1_Quiz4_Level2_Stage1_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz4_Level2_Stage1_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz4_Level2_Stage1_Jawa.id = 2
+        image2_Quiz4_Level2_Stage1_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz4_Level2_Stage1_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz4_Level2_Stage1_Jawa.id = 3
+        image3_Quiz4_Level2_Stage1_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz4_Level2_Stage1_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz4_Level2_Stage1_Jawa.id = 4
+        image4_Quiz4_Level2_Stage1_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz4_level2_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level2_stage1_Jawa.id = 4
@@ -275,8 +409,8 @@ class MainViewController: UIViewController {
         quiz4_level2_stage1_Jawa.type = "C"
         quiz4_level2_stage1_Jawa.isCorrect = false
         quiz4_level2_stage1_Jawa.question = "Na"
-        quiz4_level2_stage1_Jawa.choices = []
-        quiz4_level2_stage1_Jawa.images = []
+        quiz4_level2_stage1_Jawa.choices = [choice1_Quiz4_Level2_Stage1_Jawa, choice2_Quiz4_Level2_Stage1_Jawa, choice3_Quiz4_Level2_Stage1_Jawa, choice4_Quiz4_Level2_Stage1_Jawa]
+        quiz4_level2_stage1_Jawa.images = [image1_Quiz4_Level2_Stage1_Jawa, image2_Quiz4_Level2_Stage1_Jawa, image3_Quiz4_Level2_Stage1_Jawa, image4_Quiz4_Level2_Stage1_Jawa]
         
         let quiz5_level2_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz5_level2_stage1_Jawa.id = 5
@@ -306,14 +440,82 @@ class MainViewController: UIViewController {
         quiz1_level3_stage1_Jawa.choices = []
         quiz1_level3_stage1_Jawa.images = []
         
+        //MARK: Choice
+        let choice1_Quiz2_Level3_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level3_Stage1_Jawa.id = 1
+        choice1_Quiz2_Level3_Stage1_Jawa.name = "Ha"
+        
+        let choice2_Quiz2_Level3_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level3_Stage1_Jawa.id = 2
+        choice2_Quiz2_Level3_Stage1_Jawa.name = "Na"
+        
+        let choice3_Quiz2_Level3_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level3_Stage1_Jawa.id = 3
+        choice3_Quiz2_Level3_Stage1_Jawa.name = "Ca"
+        
+        let choice4_Quiz2_Level3_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level3_Stage1_Jawa.id = 4
+        choice4_Quiz2_Level3_Stage1_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz2_Level3_Stage1_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz2_Level3_Stage1_Jawa.id = 1
+        image1_Quiz2_Level3_Stage1_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz2_Level3_Stage1_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz2_Level3_Stage1_Jawa.id = 2
+        image2_Quiz2_Level3_Stage1_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz2_Level3_Stage1_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz2_Level3_Stage1_Jawa.id = 3
+        image3_Quiz2_Level3_Stage1_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz2_Level3_Stage1_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz2_Level3_Stage1_Jawa.id = 4
+        image4_Quiz2_Level3_Stage1_Jawa.name = "Ra_Aksara_Jawa"
+        
         let quiz2_level3_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz2_level3_stage1_Jawa.id = 2
         quiz2_level3_stage1_Jawa.name = "Kuis 1"
         quiz2_level3_stage1_Jawa.type = "A"
         quiz2_level3_stage1_Jawa.isCorrect = false
         quiz2_level3_stage1_Jawa.question = "Ca"
-        quiz2_level3_stage1_Jawa.choices = []
-        quiz2_level3_stage1_Jawa.images = []
+        quiz2_level3_stage1_Jawa.choices = [choice1_Quiz2_Level3_Stage1_Jawa, choice2_Quiz2_Level3_Stage1_Jawa, choice3_Quiz2_Level3_Stage1_Jawa, choice4_Quiz2_Level3_Stage1_Jawa]
+        quiz2_level3_stage1_Jawa.images = [image1_Quiz2_Level3_Stage1_Jawa, image2_Quiz2_Level3_Stage1_Jawa, image3_Quiz2_Level3_Stage1_Jawa, image4_Quiz2_Level3_Stage1_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level3_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level3_Stage1_Jawa.id = 1
+        choice1_Quiz3_Level3_Stage1_Jawa.name = "Ha"
+        
+        let choice2_Quiz3_Level3_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level3_Stage1_Jawa.id = 2
+        choice2_Quiz3_Level3_Stage1_Jawa.name = "Na"
+        
+        let choice3_Quiz3_Level3_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level3_Stage1_Jawa.id = 3
+        choice3_Quiz3_Level3_Stage1_Jawa.name = "Ca"
+        
+        let choice4_Quiz3_Level3_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level3_Stage1_Jawa.id = 4
+        choice4_Quiz3_Level3_Stage1_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz3_Level3_Stage1_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz3_Level3_Stage1_Jawa.id = 1
+        image1_Quiz3_Level3_Stage1_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz3_Level3_Stage1_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz3_Level3_Stage1_Jawa.id = 2
+        image2_Quiz3_Level3_Stage1_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz3_Level3_Stage1_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz3_Level3_Stage1_Jawa.id = 3
+        image3_Quiz3_Level3_Stage1_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz3_Level3_Stage1_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz3_Level3_Stage1_Jawa.id = 4
+        image4_Quiz3_Level3_Stage1_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz3_level3_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level3_stage1_Jawa.id = 3
@@ -321,8 +523,42 @@ class MainViewController: UIViewController {
         quiz3_level3_stage1_Jawa.type = "B"
         quiz3_level3_stage1_Jawa.isCorrect = false
         quiz3_level3_stage1_Jawa.question = "Ca"
-        quiz3_level3_stage1_Jawa.choices = []
-        quiz3_level3_stage1_Jawa.images = []
+        quiz3_level3_stage1_Jawa.choices = [choice1_Quiz3_Level3_Stage1_Jawa, choice2_Quiz3_Level3_Stage1_Jawa, choice3_Quiz3_Level3_Stage1_Jawa, choice4_Quiz3_Level3_Stage1_Jawa]
+        quiz3_level3_stage1_Jawa.images = [image1_Quiz3_Level3_Stage1_Jawa, image2_Quiz3_Level3_Stage1_Jawa, image3_Quiz3_Level3_Stage1_Jawa, image4_Quiz3_Level3_Stage1_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level3_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level3_Stage1_Jawa.id = 1
+        choice1_Quiz4_Level3_Stage1_Jawa.name = "Ha"
+        
+        let choice2_Quiz4_Level3_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level3_Stage1_Jawa.id = 2
+        choice2_Quiz4_Level3_Stage1_Jawa.name = "Na"
+        
+        let choice3_Quiz4_Level3_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level3_Stage1_Jawa.id = 3
+        choice3_Quiz4_Level3_Stage1_Jawa.name = "Ca"
+        
+        let choice4_Quiz4_Level3_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level3_Stage1_Jawa.id = 4
+        choice4_Quiz4_Level3_Stage1_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz4_Level3_Stage1_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz4_Level3_Stage1_Jawa.id = 1
+        image1_Quiz4_Level3_Stage1_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz4_Level3_Stage1_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz4_Level3_Stage1_Jawa.id = 2
+        image2_Quiz4_Level3_Stage1_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz4_Level3_Stage1_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz4_Level3_Stage1_Jawa.id = 3
+        image3_Quiz4_Level3_Stage1_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz4_Level3_Stage1_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz4_Level3_Stage1_Jawa.id = 4
+        image4_Quiz4_Level3_Stage1_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz4_level3_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level3_stage1_Jawa.id = 4
@@ -330,8 +566,8 @@ class MainViewController: UIViewController {
         quiz4_level3_stage1_Jawa.type = "C"
         quiz4_level3_stage1_Jawa.isCorrect = false
         quiz4_level3_stage1_Jawa.question = "Ca"
-        quiz4_level3_stage1_Jawa.choices = []
-        quiz4_level3_stage1_Jawa.images = []
+        quiz4_level3_stage1_Jawa.choices = [choice1_Quiz4_Level3_Stage1_Jawa, choice2_Quiz4_Level3_Stage1_Jawa, choice3_Quiz4_Level3_Stage1_Jawa, choice4_Quiz4_Level3_Stage1_Jawa]
+        quiz4_level3_stage1_Jawa.images = [image1_Quiz4_Level3_Stage1_Jawa, image2_Quiz4_Level3_Stage1_Jawa, image3_Quiz4_Level3_Stage1_Jawa, image4_Quiz4_Level3_Stage1_Jawa]
         
         let quiz5_level3_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz5_level3_stage1_Jawa.id = 5
@@ -361,14 +597,82 @@ class MainViewController: UIViewController {
         quiz1_level4_stage1_Jawa.choices = []
         quiz1_level4_stage1_Jawa.images = []
         
+        //MARK: Choice
+        let choice1_Quiz2_Level4_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level4_Stage1_Jawa.id = 1
+        choice1_Quiz2_Level4_Stage1_Jawa.name = "Ha"
+        
+        let choice2_Quiz2_Level4_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level4_Stage1_Jawa.id = 2
+        choice2_Quiz2_Level4_Stage1_Jawa.name = "Na"
+        
+        let choice3_Quiz2_Level4_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level4_Stage1_Jawa.id = 3
+        choice3_Quiz2_Level4_Stage1_Jawa.name = "Ca"
+        
+        let choice4_Quiz2_Level4_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level4_Stage1_Jawa.id = 4
+        choice4_Quiz2_Level4_Stage1_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz2_Level4_Stage1_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz2_Level4_Stage1_Jawa.id = 1
+        image1_Quiz2_Level4_Stage1_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz2_Level4_Stage1_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz2_Level4_Stage1_Jawa.id = 2
+        image2_Quiz2_Level4_Stage1_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz2_Level4_Stage1_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz2_Level4_Stage1_Jawa.id = 3
+        image3_Quiz2_Level4_Stage1_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz2_Level4_Stage1_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz2_Level4_Stage1_Jawa.id = 4
+        image4_Quiz2_Level4_Stage1_Jawa.name = "Ra_Aksara_Jawa"
+        
         let quiz2_level4_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz2_level4_stage1_Jawa.id = 2
         quiz2_level4_stage1_Jawa.name = "Kuis 1"
         quiz2_level4_stage1_Jawa.type = "A"
         quiz2_level4_stage1_Jawa.isCorrect = false
         quiz2_level4_stage1_Jawa.question = "Ca"
-        quiz2_level4_stage1_Jawa.choices = []
-        quiz2_level4_stage1_Jawa.images = []
+        quiz2_level4_stage1_Jawa.choices = [choice1_Quiz2_Level4_Stage1_Jawa, choice2_Quiz2_Level4_Stage1_Jawa, choice3_Quiz2_Level4_Stage1_Jawa, choice4_Quiz2_Level4_Stage1_Jawa]
+        quiz2_level4_stage1_Jawa.images = [image1_Quiz2_Level4_Stage1_Jawa, image2_Quiz2_Level4_Stage1_Jawa, image3_Quiz2_Level4_Stage1_Jawa, image4_Quiz2_Level4_Stage1_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level4_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level4_Stage1_Jawa.id = 1
+        choice1_Quiz3_Level4_Stage1_Jawa.name = "Ha"
+        
+        let choice2_Quiz3_Level4_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level4_Stage1_Jawa.id = 2
+        choice2_Quiz3_Level4_Stage1_Jawa.name = "Na"
+        
+        let choice3_Quiz3_Level4_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level4_Stage1_Jawa.id = 3
+        choice3_Quiz3_Level4_Stage1_Jawa.name = "Ca"
+        
+        let choice4_Quiz3_Level4_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level4_Stage1_Jawa.id = 4
+        choice4_Quiz3_Level4_Stage1_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz3_Level4_Stage1_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz3_Level4_Stage1_Jawa.id = 1
+        image1_Quiz3_Level4_Stage1_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz3_Level4_Stage1_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz3_Level4_Stage1_Jawa.id = 2
+        image2_Quiz3_Level4_Stage1_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz3_Level4_Stage1_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz3_Level4_Stage1_Jawa.id = 3
+        image3_Quiz3_Level4_Stage1_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz3_Level4_Stage1_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz3_Level4_Stage1_Jawa.id = 4
+        image4_Quiz3_Level4_Stage1_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz3_level4_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level4_stage1_Jawa.id = 3
@@ -376,8 +680,42 @@ class MainViewController: UIViewController {
         quiz3_level4_stage1_Jawa.type = "B"
         quiz3_level4_stage1_Jawa.isCorrect = false
         quiz3_level4_stage1_Jawa.question = "Ca"
-        quiz3_level4_stage1_Jawa.choices = []
-        quiz3_level4_stage1_Jawa.images = []
+        quiz3_level4_stage1_Jawa.choices = [choice1_Quiz3_Level4_Stage1_Jawa, choice2_Quiz3_Level4_Stage1_Jawa, choice3_Quiz3_Level4_Stage1_Jawa, choice4_Quiz3_Level4_Stage1_Jawa]
+        quiz3_level4_stage1_Jawa.images = [image1_Quiz3_Level4_Stage1_Jawa, image2_Quiz3_Level4_Stage1_Jawa, image3_Quiz3_Level4_Stage1_Jawa, image4_Quiz3_Level4_Stage1_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level4_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level4_Stage1_Jawa.id = 1
+        choice1_Quiz4_Level4_Stage1_Jawa.name = "Ha"
+        
+        let choice2_Quiz4_Level4_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level4_Stage1_Jawa.id = 2
+        choice2_Quiz4_Level4_Stage1_Jawa.name = "Na"
+        
+        let choice3_Quiz4_Level4_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level4_Stage1_Jawa.id = 3
+        choice3_Quiz4_Level4_Stage1_Jawa.name = "Ca"
+        
+        let choice4_Quiz4_Level4_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level4_Stage1_Jawa.id = 4
+        choice4_Quiz4_Level4_Stage1_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz4_Level4_Stage1_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz4_Level4_Stage1_Jawa.id = 1
+        image1_Quiz4_Level4_Stage1_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz4_Level4_Stage1_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz4_Level4_Stage1_Jawa.id = 2
+        image2_Quiz4_Level4_Stage1_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz4_Level4_Stage1_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz4_Level4_Stage1_Jawa.id = 3
+        image3_Quiz4_Level4_Stage1_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz4_Level4_Stage1_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz4_Level4_Stage1_Jawa.id = 4
+        image4_Quiz4_Level4_Stage1_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz4_level4_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level4_stage1_Jawa.id = 4
@@ -385,8 +723,8 @@ class MainViewController: UIViewController {
         quiz4_level4_stage1_Jawa.type = "C"
         quiz4_level4_stage1_Jawa.isCorrect = false
         quiz4_level4_stage1_Jawa.question = "Ca"
-        quiz4_level4_stage1_Jawa.choices = []
-        quiz4_level4_stage1_Jawa.images = []
+        quiz4_level4_stage1_Jawa.choices = [choice1_Quiz4_Level4_Stage1_Jawa, choice2_Quiz4_Level4_Stage1_Jawa, choice3_Quiz4_Level4_Stage1_Jawa, choice4_Quiz4_Level4_Stage1_Jawa]
+        quiz4_level4_stage1_Jawa.images = [image1_Quiz4_Level4_Stage1_Jawa, image2_Quiz4_Level4_Stage1_Jawa, image3_Quiz4_Level4_Stage1_Jawa, image4_Quiz4_Level4_Stage1_Jawa]
         
         let quiz5_level4_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz5_level4_stage1_Jawa.id = 5
@@ -416,14 +754,82 @@ class MainViewController: UIViewController {
         quiz1_level5_stage1_Jawa.choices = []
         quiz1_level5_stage1_Jawa.images = []
         
+        //MARK: Choice
+        let choice1_Quiz2_Level5_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level5_Stage1_Jawa.id = 1
+        choice1_Quiz2_Level5_Stage1_Jawa.name = "Ha"
+        
+        let choice2_Quiz2_Level5_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level5_Stage1_Jawa.id = 2
+        choice2_Quiz2_Level5_Stage1_Jawa.name = "Na"
+        
+        let choice3_Quiz2_Level5_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level5_Stage1_Jawa.id = 3
+        choice3_Quiz2_Level5_Stage1_Jawa.name = "Ca"
+        
+        let choice4_Quiz2_Level5_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level5_Stage1_Jawa.id = 4
+        choice4_Quiz2_Level5_Stage1_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz2_Level5_Stage1_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz2_Level5_Stage1_Jawa.id = 1
+        image1_Quiz2_Level5_Stage1_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz2_Level5_Stage1_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz2_Level5_Stage1_Jawa.id = 2
+        image2_Quiz2_Level5_Stage1_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz2_Level5_Stage1_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz2_Level5_Stage1_Jawa.id = 3
+        image3_Quiz2_Level5_Stage1_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz2_Level5_Stage1_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz2_Level5_Stage1_Jawa.id = 4
+        image4_Quiz2_Level5_Stage1_Jawa.name = "Ra_Aksara_Jawa"
+        
         let quiz2_level5_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz2_level5_stage1_Jawa.id = 2
         quiz2_level5_stage1_Jawa.name = "Kuis 1"
         quiz2_level5_stage1_Jawa.type = "A"
         quiz2_level5_stage1_Jawa.isCorrect = false
         quiz2_level5_stage1_Jawa.question = "Ca"
-        quiz2_level5_stage1_Jawa.choices = []
-        quiz2_level5_stage1_Jawa.images = []
+        quiz2_level5_stage1_Jawa.choices = [choice1_Quiz2_Level5_Stage1_Jawa, choice2_Quiz2_Level5_Stage1_Jawa, choice3_Quiz2_Level5_Stage1_Jawa, choice4_Quiz2_Level5_Stage1_Jawa]
+        quiz2_level5_stage1_Jawa.images = [image1_Quiz2_Level5_Stage1_Jawa, image2_Quiz2_Level5_Stage1_Jawa, image3_Quiz2_Level5_Stage1_Jawa, image4_Quiz2_Level5_Stage1_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level5_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level5_Stage1_Jawa.id = 1
+        choice1_Quiz3_Level5_Stage1_Jawa.name = "Ha"
+        
+        let choice2_Quiz3_Level5_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level5_Stage1_Jawa.id = 2
+        choice2_Quiz3_Level5_Stage1_Jawa.name = "Na"
+        
+        let choice3_Quiz3_Level5_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level5_Stage1_Jawa.id = 3
+        choice3_Quiz3_Level5_Stage1_Jawa.name = "Ca"
+        
+        let choice4_Quiz3_Level5_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level5_Stage1_Jawa.id = 4
+        choice4_Quiz3_Level5_Stage1_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz3_Level5_Stage1_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz3_Level5_Stage1_Jawa.id = 1
+        image1_Quiz3_Level5_Stage1_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz3_Level5_Stage1_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz3_Level5_Stage1_Jawa.id = 2
+        image2_Quiz3_Level5_Stage1_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz3_Level5_Stage1_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz3_Level5_Stage1_Jawa.id = 3
+        image3_Quiz3_Level5_Stage1_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz3_Level5_Stage1_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz3_Level5_Stage1_Jawa.id = 4
+        image4_Quiz3_Level5_Stage1_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz3_level5_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level5_stage1_Jawa.id = 3
@@ -431,8 +837,42 @@ class MainViewController: UIViewController {
         quiz3_level5_stage1_Jawa.type = "B"
         quiz3_level5_stage1_Jawa.isCorrect = false
         quiz3_level5_stage1_Jawa.question = "Ca"
-        quiz3_level5_stage1_Jawa.choices = []
-        quiz3_level5_stage1_Jawa.images = []
+        quiz3_level5_stage1_Jawa.choices = [choice1_Quiz3_Level5_Stage1_Jawa, choice2_Quiz3_Level5_Stage1_Jawa, choice3_Quiz3_Level5_Stage1_Jawa, choice4_Quiz3_Level5_Stage1_Jawa]
+        quiz3_level5_stage1_Jawa.images = [image1_Quiz3_Level5_Stage1_Jawa, image2_Quiz3_Level5_Stage1_Jawa, image3_Quiz3_Level5_Stage1_Jawa, image4_Quiz3_Level5_Stage1_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level5_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level5_Stage1_Jawa.id = 1
+        choice1_Quiz4_Level5_Stage1_Jawa.name = "Ha"
+        
+        let choice2_Quiz4_Level5_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level5_Stage1_Jawa.id = 2
+        choice2_Quiz4_Level5_Stage1_Jawa.name = "Na"
+        
+        let choice3_Quiz4_Level5_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level5_Stage1_Jawa.id = 3
+        choice3_Quiz4_Level5_Stage1_Jawa.name = "Ca"
+        
+        let choice4_Quiz4_Level5_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level5_Stage1_Jawa.id = 4
+        choice4_Quiz4_Level5_Stage1_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz4_Level5_Stage1_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz4_Level5_Stage1_Jawa.id = 1
+        image1_Quiz4_Level5_Stage1_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz4_Level5_Stage1_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz4_Level5_Stage1_Jawa.id = 2
+        image2_Quiz4_Level5_Stage1_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz4_Level5_Stage1_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz4_Level5_Stage1_Jawa.id = 3
+        image3_Quiz4_Level5_Stage1_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz4_Level5_Stage1_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz4_Level5_Stage1_Jawa.id = 4
+        image4_Quiz4_Level5_Stage1_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz4_level5_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level5_stage1_Jawa.id = 4
@@ -440,8 +880,8 @@ class MainViewController: UIViewController {
         quiz4_level5_stage1_Jawa.type = "C"
         quiz4_level5_stage1_Jawa.isCorrect = false
         quiz4_level5_stage1_Jawa.question = "Ca"
-        quiz4_level5_stage1_Jawa.choices = []
-        quiz4_level5_stage1_Jawa.images = []
+        quiz4_level5_stage1_Jawa.choices = [choice1_Quiz4_Level5_Stage1_Jawa, choice2_Quiz4_Level5_Stage1_Jawa, choice3_Quiz4_Level5_Stage1_Jawa, choice4_Quiz4_Level5_Stage1_Jawa]
+        quiz4_level5_stage1_Jawa.images = [image1_Quiz4_Level5_Stage1_Jawa, image2_Quiz4_Level5_Stage1_Jawa, image3_Quiz4_Level5_Stage1_Jawa, image4_Quiz4_Level5_Stage1_Jawa]
         
         let quiz5_level5_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz5_level5_stage1_Jawa.id = 5
@@ -471,14 +911,82 @@ class MainViewController: UIViewController {
         quiz1_level6_stage1_Jawa.choices = []
         quiz1_level6_stage1_Jawa.images = []
         
+        //MARK: Choice
+        let choice1_Quiz2_Level6_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level6_Stage1_Jawa.id = 1
+        choice1_Quiz2_Level6_Stage1_Jawa.name = "Ha"
+        
+        let choice2_Quiz2_Level6_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level6_Stage1_Jawa.id = 2
+        choice2_Quiz2_Level6_Stage1_Jawa.name = "Na"
+        
+        let choice3_Quiz2_Level6_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level6_Stage1_Jawa.id = 3
+        choice3_Quiz2_Level6_Stage1_Jawa.name = "Ca"
+        
+        let choice4_Quiz2_Level6_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level6_Stage1_Jawa.id = 4
+        choice4_Quiz2_Level6_Stage1_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz2_Level6_Stage1_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz2_Level6_Stage1_Jawa.id = 1
+        image1_Quiz2_Level6_Stage1_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz2_Level6_Stage1_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz2_Level6_Stage1_Jawa.id = 2
+        image2_Quiz2_Level6_Stage1_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz2_Level6_Stage1_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz2_Level6_Stage1_Jawa.id = 3
+        image3_Quiz2_Level6_Stage1_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz2_Level6_Stage1_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz2_Level6_Stage1_Jawa.id = 4
+        image4_Quiz2_Level6_Stage1_Jawa.name = "Ra_Aksara_Jawa"
+        
         let quiz2_level6_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz2_level6_stage1_Jawa.id = 2
         quiz2_level6_stage1_Jawa.name = "Kuis 1"
         quiz2_level6_stage1_Jawa.type = "A"
         quiz2_level6_stage1_Jawa.isCorrect = false
         quiz2_level6_stage1_Jawa.question = "Ca"
-        quiz2_level6_stage1_Jawa.choices = []
-        quiz2_level6_stage1_Jawa.images = []
+        quiz2_level6_stage1_Jawa.choices = [choice1_Quiz2_Level6_Stage1_Jawa, choice2_Quiz2_Level6_Stage1_Jawa, choice3_Quiz2_Level6_Stage1_Jawa, choice4_Quiz2_Level6_Stage1_Jawa]
+        quiz2_level6_stage1_Jawa.images = [image1_Quiz2_Level6_Stage1_Jawa, image2_Quiz2_Level6_Stage1_Jawa, image3_Quiz2_Level6_Stage1_Jawa, image4_Quiz2_Level6_Stage1_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level6_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level6_Stage1_Jawa.id = 1
+        choice1_Quiz3_Level6_Stage1_Jawa.name = "Ha"
+        
+        let choice2_Quiz3_Level6_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level6_Stage1_Jawa.id = 2
+        choice2_Quiz3_Level6_Stage1_Jawa.name = "Na"
+        
+        let choice3_Quiz3_Level6_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level6_Stage1_Jawa.id = 3
+        choice3_Quiz3_Level6_Stage1_Jawa.name = "Ca"
+        
+        let choice4_Quiz3_Level6_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level6_Stage1_Jawa.id = 4
+        choice4_Quiz3_Level6_Stage1_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz3_Level6_Stage1_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz3_Level6_Stage1_Jawa.id = 1
+        image1_Quiz3_Level6_Stage1_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz3_Level6_Stage1_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz3_Level6_Stage1_Jawa.id = 2
+        image2_Quiz3_Level6_Stage1_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz3_Level6_Stage1_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz3_Level6_Stage1_Jawa.id = 3
+        image3_Quiz3_Level6_Stage1_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz3_Level6_Stage1_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz3_Level6_Stage1_Jawa.id = 4
+        image4_Quiz3_Level6_Stage1_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz3_level6_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level6_stage1_Jawa.id = 3
@@ -486,17 +994,51 @@ class MainViewController: UIViewController {
         quiz3_level6_stage1_Jawa.type = "B"
         quiz3_level6_stage1_Jawa.isCorrect = false
         quiz3_level6_stage1_Jawa.question = "Ca"
-        quiz3_level6_stage1_Jawa.choices = []
-        quiz3_level6_stage1_Jawa.images = []
+        quiz3_level6_stage1_Jawa.choices = [choice1_Quiz3_Level6_Stage1_Jawa, choice2_Quiz3_Level6_Stage1_Jawa, choice3_Quiz3_Level6_Stage1_Jawa, choice4_Quiz3_Level6_Stage1_Jawa]
+        quiz3_level6_stage1_Jawa.images = [image1_Quiz3_Level6_Stage1_Jawa, image2_Quiz3_Level6_Stage1_Jawa, image3_Quiz3_Level6_Stage1_Jawa, image4_Quiz3_Level6_Stage1_Jawa]
         
+        //MARK: Choice
+        let choice1_Quiz4_Level6_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level6_Stage1_Jawa.id = 1
+        choice1_Quiz4_Level6_Stage1_Jawa.name = "Ha"
+        
+        let choice2_Quiz4_Level6_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level6_Stage1_Jawa.id = 2
+        choice2_Quiz4_Level6_Stage1_Jawa.name = "Na"
+        
+        let choice3_Quiz4_Level6_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level6_Stage1_Jawa.id = 3
+        choice3_Quiz4_Level6_Stage1_Jawa.name = "Ca"
+        
+        let choice4_Quiz4_Level6_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level6_Stage1_Jawa.id = 4
+        choice4_Quiz4_Level6_Stage1_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz4_Level6_Stage1_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz4_Level6_Stage1_Jawa.id = 1
+        image1_Quiz4_Level6_Stage1_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz4_Level6_Stage1_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz4_Level6_Stage1_Jawa.id = 2
+        image2_Quiz4_Level6_Stage1_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz4_Level6_Stage1_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz4_Level6_Stage1_Jawa.id = 3
+        image3_Quiz4_Level6_Stage1_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz4_Level6_Stage1_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz4_Level6_Stage1_Jawa.id = 4
+        image4_Quiz4_Level6_Stage1_Jawa.name = "Ra_Aksara_Jawa"
+               
         let quiz4_level6_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level6_stage1_Jawa.id = 4
         quiz4_level6_stage1_Jawa.name = "Kuis 3"
         quiz4_level6_stage1_Jawa.type = "C"
         quiz4_level6_stage1_Jawa.isCorrect = false
         quiz4_level6_stage1_Jawa.question = "Ca"
-        quiz4_level6_stage1_Jawa.choices = []
-        quiz4_level6_stage1_Jawa.images = []
+        quiz4_level6_stage1_Jawa.choices = [choice1_Quiz4_Level6_Stage1_Jawa, choice2_Quiz4_Level6_Stage1_Jawa, choice3_Quiz4_Level6_Stage1_Jawa, choice4_Quiz4_Level6_Stage1_Jawa]
+        quiz4_level6_stage1_Jawa.images = [image1_Quiz4_Level6_Stage1_Jawa, image2_Quiz4_Level6_Stage1_Jawa, image3_Quiz4_Level6_Stage1_Jawa, image4_Quiz4_Level6_Stage1_Jawa]
         
         let quiz5_level6_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz5_level6_stage1_Jawa.id = 5
@@ -526,14 +1068,82 @@ class MainViewController: UIViewController {
         quiz1_level7_stage1_Jawa.choices = []
         quiz1_level7_stage1_Jawa.images = []
         
+        //MARK: Choice
+        let choice1_Quiz2_Level7_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level7_Stage1_Jawa.id = 1
+        choice1_Quiz2_Level7_Stage1_Jawa.name = "Ha"
+        
+        let choice2_Quiz2_Level7_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level7_Stage1_Jawa.id = 2
+        choice2_Quiz2_Level7_Stage1_Jawa.name = "Na"
+        
+        let choice3_Quiz2_Level7_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level7_Stage1_Jawa.id = 3
+        choice3_Quiz2_Level7_Stage1_Jawa.name = "Ca"
+        
+        let choice4_Quiz2_Level7_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level7_Stage1_Jawa.id = 4
+        choice4_Quiz2_Level7_Stage1_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz2_Level7_Stage1_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz2_Level7_Stage1_Jawa.id = 1
+        image1_Quiz2_Level7_Stage1_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz2_Level7_Stage1_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz2_Level7_Stage1_Jawa.id = 2
+        image2_Quiz2_Level7_Stage1_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz2_Level7_Stage1_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz2_Level7_Stage1_Jawa.id = 3
+        image3_Quiz2_Level7_Stage1_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz2_Level7_Stage1_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz2_Level7_Stage1_Jawa.id = 4
+        image4_Quiz2_Level7_Stage1_Jawa.name = "Ra_Aksara_Jawa"
+        
         let quiz2_level7_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz2_level7_stage1_Jawa.id = 2
         quiz2_level7_stage1_Jawa.name = "Kuis 1"
         quiz2_level7_stage1_Jawa.type = "A"
         quiz2_level7_stage1_Jawa.isCorrect = false
         quiz2_level7_stage1_Jawa.question = "Ca"
-        quiz2_level7_stage1_Jawa.choices = []
-        quiz2_level7_stage1_Jawa.images = []
+        quiz2_level7_stage1_Jawa.choices = [choice1_Quiz2_Level7_Stage1_Jawa, choice2_Quiz2_Level7_Stage1_Jawa, choice3_Quiz2_Level7_Stage1_Jawa, choice4_Quiz2_Level7_Stage1_Jawa]
+        quiz2_level7_stage1_Jawa.images = [image1_Quiz2_Level7_Stage1_Jawa, image2_Quiz2_Level7_Stage1_Jawa, image3_Quiz2_Level7_Stage1_Jawa, image4_Quiz2_Level7_Stage1_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level7_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level7_Stage1_Jawa.id = 1
+        choice1_Quiz3_Level7_Stage1_Jawa.name = "Ha"
+        
+        let choice2_Quiz3_Level7_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level7_Stage1_Jawa.id = 2
+        choice2_Quiz3_Level7_Stage1_Jawa.name = "Na"
+        
+        let choice3_Quiz3_Level7_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level7_Stage1_Jawa.id = 3
+        choice3_Quiz3_Level7_Stage1_Jawa.name = "Ca"
+        
+        let choice4_Quiz3_Level7_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level7_Stage1_Jawa.id = 4
+        choice4_Quiz3_Level7_Stage1_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz3_Level7_Stage1_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz3_Level7_Stage1_Jawa.id = 1
+        image1_Quiz3_Level7_Stage1_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz3_Level7_Stage1_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz3_Level7_Stage1_Jawa.id = 2
+        image2_Quiz3_Level7_Stage1_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz3_Level7_Stage1_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz3_Level7_Stage1_Jawa.id = 3
+        image3_Quiz3_Level7_Stage1_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz3_Level7_Stage1_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz3_Level7_Stage1_Jawa.id = 4
+        image4_Quiz3_Level7_Stage1_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz3_level7_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level7_stage1_Jawa.id = 3
@@ -541,8 +1151,42 @@ class MainViewController: UIViewController {
         quiz3_level7_stage1_Jawa.type = "B"
         quiz3_level7_stage1_Jawa.isCorrect = false
         quiz3_level7_stage1_Jawa.question = "Ca"
-        quiz3_level7_stage1_Jawa.choices = []
-        quiz3_level7_stage1_Jawa.images = []
+        quiz3_level7_stage1_Jawa.choices = [choice1_Quiz3_Level7_Stage1_Jawa, choice2_Quiz3_Level7_Stage1_Jawa, choice3_Quiz3_Level7_Stage1_Jawa, choice4_Quiz3_Level7_Stage1_Jawa]
+        quiz3_level7_stage1_Jawa.images = [image1_Quiz3_Level7_Stage1_Jawa, image2_Quiz3_Level7_Stage1_Jawa, image3_Quiz3_Level7_Stage1_Jawa, image4_Quiz3_Level7_Stage1_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level7_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level7_Stage1_Jawa.id = 1
+        choice1_Quiz4_Level7_Stage1_Jawa.name = "Ha"
+        
+        let choice2_Quiz4_Level7_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level7_Stage1_Jawa.id = 2
+        choice2_Quiz4_Level7_Stage1_Jawa.name = "Na"
+        
+        let choice3_Quiz4_Level7_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level7_Stage1_Jawa.id = 3
+        choice3_Quiz4_Level7_Stage1_Jawa.name = "Ca"
+        
+        let choice4_Quiz4_Level7_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level7_Stage1_Jawa.id = 4
+        choice4_Quiz4_Level7_Stage1_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz4_Level7_Stage1_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz4_Level7_Stage1_Jawa.id = 1
+        image1_Quiz4_Level7_Stage1_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz4_Level7_Stage1_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz4_Level7_Stage1_Jawa.id = 2
+        image2_Quiz4_Level7_Stage1_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz4_Level7_Stage1_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz4_Level7_Stage1_Jawa.id = 3
+        image3_Quiz4_Level7_Stage1_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz4_Level7_Stage1_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz4_Level7_Stage1_Jawa.id = 4
+        image4_Quiz4_Level7_Stage1_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz4_level7_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level7_stage1_Jawa.id = 4
@@ -550,8 +1194,8 @@ class MainViewController: UIViewController {
         quiz4_level7_stage1_Jawa.type = "C"
         quiz4_level7_stage1_Jawa.isCorrect = false
         quiz4_level7_stage1_Jawa.question = "Ca"
-        quiz4_level7_stage1_Jawa.choices = []
-        quiz4_level7_stage1_Jawa.images = []
+        quiz4_level7_stage1_Jawa.choices = [choice1_Quiz4_Level7_Stage1_Jawa, choice2_Quiz4_Level7_Stage1_Jawa, choice3_Quiz4_Level7_Stage1_Jawa, choice4_Quiz4_Level7_Stage1_Jawa]
+        quiz4_level7_stage1_Jawa.images = [image1_Quiz4_Level7_Stage1_Jawa, image2_Quiz4_Level7_Stage1_Jawa, image3_Quiz4_Level7_Stage1_Jawa, image4_Quiz4_Level7_Stage1_Jawa]
         
         let quiz5_level7_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz5_level7_stage1_Jawa.id = 5
@@ -581,14 +1225,82 @@ class MainViewController: UIViewController {
         quiz1_level8_stage1_Jawa.choices = []
         quiz1_level8_stage1_Jawa.images = []
         
+        //MARK: Choice
+        let choice1_Quiz2_Level8_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level8_Stage1_Jawa.id = 1
+        choice1_Quiz2_Level8_Stage1_Jawa.name = "Ha"
+        
+        let choice2_Quiz2_Level8_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level8_Stage1_Jawa.id = 2
+        choice2_Quiz2_Level8_Stage1_Jawa.name = "Na"
+        
+        let choice3_Quiz2_Level8_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level8_Stage1_Jawa.id = 3
+        choice3_Quiz2_Level8_Stage1_Jawa.name = "Ca"
+        
+        let choice4_Quiz2_Level8_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level8_Stage1_Jawa.id = 4
+        choice4_Quiz2_Level8_Stage1_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz2_Level8_Stage1_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz2_Level8_Stage1_Jawa.id = 1
+        image1_Quiz2_Level8_Stage1_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz2_Level8_Stage1_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz2_Level8_Stage1_Jawa.id = 2
+        image2_Quiz2_Level8_Stage1_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz2_Level8_Stage1_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz2_Level8_Stage1_Jawa.id = 3
+        image3_Quiz2_Level8_Stage1_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz2_Level8_Stage1_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz2_Level8_Stage1_Jawa.id = 4
+        image4_Quiz2_Level8_Stage1_Jawa.name = "Ra_Aksara_Jawa"
+        
         let quiz2_level8_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz2_level8_stage1_Jawa.id = 2
         quiz2_level8_stage1_Jawa.name = "Kuis 1"
         quiz2_level8_stage1_Jawa.type = "A"
         quiz2_level8_stage1_Jawa.isCorrect = false
         quiz2_level8_stage1_Jawa.question = "Ca"
-        quiz2_level8_stage1_Jawa.choices = []
-        quiz2_level8_stage1_Jawa.images = []
+        quiz2_level8_stage1_Jawa.choices = [choice1_Quiz2_Level8_Stage1_Jawa, choice2_Quiz2_Level8_Stage1_Jawa, choice3_Quiz2_Level8_Stage1_Jawa, choice4_Quiz2_Level8_Stage1_Jawa]
+        quiz2_level8_stage1_Jawa.images = [image1_Quiz2_Level8_Stage1_Jawa, image2_Quiz2_Level8_Stage1_Jawa, image3_Quiz2_Level8_Stage1_Jawa, image4_Quiz2_Level8_Stage1_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level8_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level8_Stage1_Jawa.id = 1
+        choice1_Quiz3_Level8_Stage1_Jawa.name = "Ha"
+        
+        let choice2_Quiz3_Level8_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level8_Stage1_Jawa.id = 2
+        choice2_Quiz3_Level8_Stage1_Jawa.name = "Na"
+        
+        let choice3_Quiz3_Level8_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level8_Stage1_Jawa.id = 3
+        choice3_Quiz3_Level8_Stage1_Jawa.name = "Ca"
+        
+        let choice4_Quiz3_Level8_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level8_Stage1_Jawa.id = 4
+        choice4_Quiz3_Level8_Stage1_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz3_Level8_Stage1_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz3_Level8_Stage1_Jawa.id = 1
+        image1_Quiz3_Level8_Stage1_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz3_Level8_Stage1_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz3_Level8_Stage1_Jawa.id = 2
+        image2_Quiz3_Level8_Stage1_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz3_Level8_Stage1_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz3_Level8_Stage1_Jawa.id = 3
+        image3_Quiz3_Level8_Stage1_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz3_Level8_Stage1_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz3_Level8_Stage1_Jawa.id = 4
+        image4_Quiz3_Level8_Stage1_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz3_level8_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level8_stage1_Jawa.id = 3
@@ -596,8 +1308,42 @@ class MainViewController: UIViewController {
         quiz3_level8_stage1_Jawa.type = "B"
         quiz3_level8_stage1_Jawa.isCorrect = false
         quiz3_level8_stage1_Jawa.question = "Ca"
-        quiz3_level8_stage1_Jawa.choices = []
-        quiz3_level8_stage1_Jawa.images = []
+        quiz3_level8_stage1_Jawa.choices = [choice1_Quiz3_Level8_Stage1_Jawa, choice2_Quiz3_Level8_Stage1_Jawa, choice3_Quiz3_Level8_Stage1_Jawa, choice4_Quiz3_Level8_Stage1_Jawa]
+        quiz3_level8_stage1_Jawa.images = [image1_Quiz3_Level8_Stage1_Jawa, image2_Quiz3_Level8_Stage1_Jawa, image3_Quiz3_Level8_Stage1_Jawa, image4_Quiz3_Level8_Stage1_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level8_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level8_Stage1_Jawa.id = 1
+        choice1_Quiz4_Level8_Stage1_Jawa.name = "Ha"
+        
+        let choice2_Quiz4_Level8_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level8_Stage1_Jawa.id = 2
+        choice2_Quiz4_Level8_Stage1_Jawa.name = "Na"
+        
+        let choice3_Quiz4_Level8_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level8_Stage1_Jawa.id = 3
+        choice3_Quiz4_Level8_Stage1_Jawa.name = "Ca"
+        
+        let choice4_Quiz4_Level8_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level8_Stage1_Jawa.id = 4
+        choice4_Quiz4_Level8_Stage1_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz4_Level8_Stage1_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz4_Level8_Stage1_Jawa.id = 1
+        image1_Quiz4_Level8_Stage1_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz4_Level8_Stage1_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz4_Level8_Stage1_Jawa.id = 2
+        image2_Quiz4_Level8_Stage1_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz4_Level8_Stage1_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz4_Level8_Stage1_Jawa.id = 3
+        image3_Quiz4_Level8_Stage1_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz4_Level8_Stage1_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz4_Level8_Stage1_Jawa.id = 4
+        image4_Quiz4_Level8_Stage1_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz4_level8_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level8_stage1_Jawa.id = 4
@@ -605,8 +1351,8 @@ class MainViewController: UIViewController {
         quiz4_level8_stage1_Jawa.type = "C"
         quiz4_level8_stage1_Jawa.isCorrect = false
         quiz4_level8_stage1_Jawa.question = "Ca"
-        quiz4_level8_stage1_Jawa.choices = []
-        quiz4_level8_stage1_Jawa.images = []
+        quiz4_level8_stage1_Jawa.choices = [choice1_Quiz4_Level8_Stage1_Jawa, choice2_Quiz4_Level8_Stage1_Jawa, choice3_Quiz4_Level8_Stage1_Jawa, choice4_Quiz4_Level8_Stage1_Jawa]
+        quiz4_level8_stage1_Jawa.images = [image1_Quiz4_Level8_Stage1_Jawa, image2_Quiz4_Level8_Stage1_Jawa, image3_Quiz4_Level8_Stage1_Jawa, image4_Quiz4_Level8_Stage1_Jawa]
         
         let quiz5_level8_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz5_level8_stage1_Jawa.id = 5
@@ -636,14 +1382,82 @@ class MainViewController: UIViewController {
         quiz1_level9_stage1_Jawa.choices = []
         quiz1_level9_stage1_Jawa.images = []
         
+        //MARK: Choice
+        let choice1_Quiz2_Level9_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level9_Stage1_Jawa.id = 1
+        choice1_Quiz2_Level9_Stage1_Jawa.name = "Ha"
+        
+        let choice2_Quiz2_Level9_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level9_Stage1_Jawa.id = 2
+        choice2_Quiz2_Level9_Stage1_Jawa.name = "Na"
+        
+        let choice3_Quiz2_Level9_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level9_Stage1_Jawa.id = 3
+        choice3_Quiz2_Level9_Stage1_Jawa.name = "Ca"
+        
+        let choice4_Quiz2_Level9_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level9_Stage1_Jawa.id = 4
+        choice4_Quiz2_Level9_Stage1_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz2_Level9_Stage1_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz2_Level9_Stage1_Jawa.id = 1
+        image1_Quiz2_Level9_Stage1_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz2_Level9_Stage1_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz2_Level9_Stage1_Jawa.id = 2
+        image2_Quiz2_Level9_Stage1_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz2_Level9_Stage1_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz2_Level9_Stage1_Jawa.id = 3
+        image3_Quiz2_Level9_Stage1_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz2_Level9_Stage1_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz2_Level9_Stage1_Jawa.id = 4
+        image4_Quiz2_Level9_Stage1_Jawa.name = "Ra_Aksara_Jawa"
+        
         let quiz2_level9_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz2_level9_stage1_Jawa.id = 2
         quiz2_level9_stage1_Jawa.name = "Kuis 1"
         quiz2_level9_stage1_Jawa.type = "A"
         quiz2_level9_stage1_Jawa.isCorrect = false
         quiz2_level9_stage1_Jawa.question = "Ca"
-        quiz2_level9_stage1_Jawa.choices = []
-        quiz2_level9_stage1_Jawa.images = []
+        quiz2_level9_stage1_Jawa.choices = [choice1_Quiz2_Level9_Stage1_Jawa, choice2_Quiz2_Level9_Stage1_Jawa, choice3_Quiz2_Level9_Stage1_Jawa, choice4_Quiz2_Level9_Stage1_Jawa]
+        quiz2_level9_stage1_Jawa.images = [image1_Quiz2_Level9_Stage1_Jawa, image2_Quiz2_Level9_Stage1_Jawa, image3_Quiz2_Level9_Stage1_Jawa, image4_Quiz2_Level9_Stage1_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level9_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level9_Stage1_Jawa.id = 1
+        choice1_Quiz3_Level9_Stage1_Jawa.name = "Ha"
+        
+        let choice2_Quiz3_Level9_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level9_Stage1_Jawa.id = 2
+        choice2_Quiz3_Level9_Stage1_Jawa.name = "Na"
+        
+        let choice3_Quiz3_Level9_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level9_Stage1_Jawa.id = 3
+        choice3_Quiz3_Level9_Stage1_Jawa.name = "Ca"
+        
+        let choice4_Quiz3_Level9_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level9_Stage1_Jawa.id = 4
+        choice4_Quiz3_Level9_Stage1_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz3_Level9_Stage1_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz3_Level9_Stage1_Jawa.id = 1
+        image1_Quiz3_Level9_Stage1_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz3_Level9_Stage1_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz3_Level9_Stage1_Jawa.id = 2
+        image2_Quiz3_Level9_Stage1_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz3_Level9_Stage1_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz3_Level9_Stage1_Jawa.id = 3
+        image3_Quiz3_Level9_Stage1_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz3_Level9_Stage1_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz3_Level9_Stage1_Jawa.id = 4
+        image4_Quiz3_Level9_Stage1_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz3_level9_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level9_stage1_Jawa.id = 3
@@ -651,8 +1465,42 @@ class MainViewController: UIViewController {
         quiz3_level9_stage1_Jawa.type = "B"
         quiz3_level9_stage1_Jawa.isCorrect = false
         quiz3_level9_stage1_Jawa.question = "Ca"
-        quiz3_level9_stage1_Jawa.choices = []
-        quiz3_level9_stage1_Jawa.images = []
+        quiz3_level9_stage1_Jawa.choices = [choice1_Quiz3_Level9_Stage1_Jawa, choice2_Quiz3_Level9_Stage1_Jawa, choice3_Quiz3_Level9_Stage1_Jawa, choice4_Quiz3_Level9_Stage1_Jawa]
+        quiz3_level9_stage1_Jawa.images = [image1_Quiz3_Level9_Stage1_Jawa, image2_Quiz3_Level9_Stage1_Jawa, image3_Quiz3_Level9_Stage1_Jawa, image4_Quiz3_Level9_Stage1_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level9_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level9_Stage1_Jawa.id = 1
+        choice1_Quiz4_Level9_Stage1_Jawa.name = "Ha"
+        
+        let choice2_Quiz4_Level9_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level9_Stage1_Jawa.id = 2
+        choice2_Quiz4_Level9_Stage1_Jawa.name = "Na"
+        
+        let choice3_Quiz4_Level9_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level9_Stage1_Jawa.id = 3
+        choice3_Quiz4_Level9_Stage1_Jawa.name = "Ca"
+        
+        let choice4_Quiz4_Level9_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level9_Stage1_Jawa.id = 4
+        choice4_Quiz4_Level9_Stage1_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz4_Level9_Stage1_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz4_Level9_Stage1_Jawa.id = 1
+        image1_Quiz4_Level9_Stage1_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz4_Level9_Stage1_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz4_Level9_Stage1_Jawa.id = 2
+        image2_Quiz4_Level9_Stage1_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz4_Level9_Stage1_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz4_Level9_Stage1_Jawa.id = 3
+        image3_Quiz4_Level9_Stage1_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz4_Level9_Stage1_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz4_Level9_Stage1_Jawa.id = 4
+        image4_Quiz4_Level9_Stage1_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz4_level9_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level9_stage1_Jawa.id = 4
@@ -660,8 +1508,8 @@ class MainViewController: UIViewController {
         quiz4_level9_stage1_Jawa.type = "C"
         quiz4_level9_stage1_Jawa.isCorrect = false
         quiz4_level9_stage1_Jawa.question = "Ca"
-        quiz4_level9_stage1_Jawa.choices = []
-        quiz4_level9_stage1_Jawa.images = []
+        quiz4_level9_stage1_Jawa.choices = [choice1_Quiz4_Level9_Stage1_Jawa, choice2_Quiz4_Level9_Stage1_Jawa, choice3_Quiz4_Level9_Stage1_Jawa, choice4_Quiz4_Level9_Stage1_Jawa]
+        quiz4_level9_stage1_Jawa.images = [image1_Quiz4_Level9_Stage1_Jawa, image2_Quiz4_Level9_Stage1_Jawa, image3_Quiz4_Level9_Stage1_Jawa, image4_Quiz4_Level9_Stage1_Jawa]
         
         let quiz5_level9_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz5_level9_stage1_Jawa.id = 5
@@ -691,14 +1539,82 @@ class MainViewController: UIViewController {
         quiz1_level10_stage1_Jawa.choices = []
         quiz1_level10_stage1_Jawa.images = []
         
+        //MARK: Choice
+        let choice1_Quiz2_Level10_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level10_Stage1_Jawa.id = 1
+        choice1_Quiz2_Level10_Stage1_Jawa.name = "Ha"
+        
+        let choice2_Quiz2_Level10_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level10_Stage1_Jawa.id = 2
+        choice2_Quiz2_Level10_Stage1_Jawa.name = "Na"
+        
+        let choice3_Quiz2_Level10_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level10_Stage1_Jawa.id = 3
+        choice3_Quiz2_Level10_Stage1_Jawa.name = "Ca"
+        
+        let choice4_Quiz2_Level10_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level10_Stage1_Jawa.id = 4
+        choice4_Quiz2_Level10_Stage1_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz2_Level10_Stage1_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz2_Level10_Stage1_Jawa.id = 1
+        image1_Quiz2_Level10_Stage1_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz2_Level10_Stage1_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz2_Level10_Stage1_Jawa.id = 2
+        image2_Quiz2_Level10_Stage1_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz2_Level10_Stage1_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz2_Level10_Stage1_Jawa.id = 3
+        image3_Quiz2_Level10_Stage1_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz2_Level10_Stage1_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz2_Level10_Stage1_Jawa.id = 4
+        image4_Quiz2_Level10_Stage1_Jawa.name = "Ra_Aksara_Jawa"
+        
         let quiz2_level10_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz2_level10_stage1_Jawa.id = 2
         quiz2_level10_stage1_Jawa.name = "Kuis 1"
         quiz2_level10_stage1_Jawa.type = "A"
         quiz2_level10_stage1_Jawa.isCorrect = false
         quiz2_level10_stage1_Jawa.question = "Ca"
-        quiz2_level10_stage1_Jawa.choices = []
-        quiz2_level10_stage1_Jawa.images = []
+        quiz2_level10_stage1_Jawa.choices = [choice1_Quiz2_Level10_Stage1_Jawa, choice2_Quiz2_Level10_Stage1_Jawa, choice3_Quiz2_Level10_Stage1_Jawa, choice3_Quiz2_Level10_Stage1_Jawa]
+        quiz2_level10_stage1_Jawa.images = [image1_Quiz2_Level10_Stage1_Jawa, image2_Quiz2_Level10_Stage1_Jawa, image3_Quiz2_Level10_Stage1_Jawa, image4_Quiz2_Level10_Stage1_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level10_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level10_Stage1_Jawa.id = 1
+        choice1_Quiz3_Level10_Stage1_Jawa.name = "Ha"
+        
+        let choice2_Quiz3_Level10_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level10_Stage1_Jawa.id = 2
+        choice2_Quiz3_Level10_Stage1_Jawa.name = "Na"
+        
+        let choice3_Quiz3_Level10_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level10_Stage1_Jawa.id = 3
+        choice3_Quiz3_Level10_Stage1_Jawa.name = "Ca"
+        
+        let choice4_Quiz3_Level10_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level10_Stage1_Jawa.id = 4
+        choice4_Quiz3_Level10_Stage1_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz3_Level10_Stage1_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz3_Level10_Stage1_Jawa.id = 1
+        image1_Quiz3_Level10_Stage1_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz3_Level10_Stage1_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz3_Level10_Stage1_Jawa.id = 2
+        image2_Quiz3_Level10_Stage1_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz3_Level10_Stage1_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz3_Level10_Stage1_Jawa.id = 3
+        image3_Quiz3_Level10_Stage1_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz3_Level10_Stage1_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz3_Level10_Stage1_Jawa.id = 4
+        image4_Quiz3_Level10_Stage1_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz3_level10_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level10_stage1_Jawa.id = 3
@@ -706,8 +1622,42 @@ class MainViewController: UIViewController {
         quiz3_level10_stage1_Jawa.type = "B"
         quiz3_level10_stage1_Jawa.isCorrect = false
         quiz3_level10_stage1_Jawa.question = "Ca"
-        quiz3_level10_stage1_Jawa.choices = []
-        quiz3_level10_stage1_Jawa.images = []
+        quiz3_level10_stage1_Jawa.choices = [choice1_Quiz3_Level10_Stage1_Jawa, choice2_Quiz3_Level10_Stage1_Jawa, choice3_Quiz3_Level10_Stage1_Jawa, choice4_Quiz3_Level10_Stage1_Jawa]
+        quiz3_level10_stage1_Jawa.images = [image1_Quiz3_Level10_Stage1_Jawa, image2_Quiz3_Level10_Stage1_Jawa, image3_Quiz3_Level10_Stage1_Jawa, image4_Quiz3_Level10_Stage1_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level10_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level10_Stage1_Jawa.id = 1
+        choice1_Quiz4_Level10_Stage1_Jawa.name = "Ha"
+        
+        let choice2_Quiz4_Level10_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level10_Stage1_Jawa.id = 2
+        choice2_Quiz4_Level10_Stage1_Jawa.name = "Na"
+        
+        let choice3_Quiz4_Level10_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level10_Stage1_Jawa.id = 3
+        choice3_Quiz4_Level10_Stage1_Jawa.name = "Ca"
+        
+        let choice4_Quiz4_Level10_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level10_Stage1_Jawa.id = 4
+        choice4_Quiz4_Level10_Stage1_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz4_Level10_Stage1_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz4_Level10_Stage1_Jawa.id = 1
+        image1_Quiz4_Level10_Stage1_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz4_Level10_Stage1_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz4_Level10_Stage1_Jawa.id = 2
+        image2_Quiz4_Level10_Stage1_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz4_Level10_Stage1_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz4_Level10_Stage1_Jawa.id = 3
+        image3_Quiz4_Level10_Stage1_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz4_Level10_Stage1_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz4_Level10_Stage1_Jawa.id = 4
+        image4_Quiz4_Level10_Stage1_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz4_level10_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level10_stage1_Jawa.id = 4
@@ -715,8 +1665,8 @@ class MainViewController: UIViewController {
         quiz4_level10_stage1_Jawa.type = "C"
         quiz4_level10_stage1_Jawa.isCorrect = false
         quiz4_level10_stage1_Jawa.question = "Ca"
-        quiz4_level10_stage1_Jawa.choices = []
-        quiz4_level10_stage1_Jawa.images = []
+        quiz4_level10_stage1_Jawa.choices = [choice1_Quiz4_Level10_Stage1_Jawa, choice2_Quiz4_Level10_Stage1_Jawa, choice3_Quiz4_Level10_Stage1_Jawa, choice4_Quiz4_Level10_Stage1_Jawa]
+        quiz4_level10_stage1_Jawa.images = [image1_Quiz4_Level10_Stage1_Jawa, image2_Quiz4_Level10_Stage1_Jawa, image3_Quiz4_Level10_Stage1_Jawa, image4_Quiz4_Level10_Stage1_Jawa]
         
         let quiz5_level10_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz5_level10_stage1_Jawa.id = 5
@@ -746,14 +1696,82 @@ class MainViewController: UIViewController {
         quiz1_level11_stage1_Jawa.choices = []
         quiz1_level11_stage1_Jawa.images = []
         
+        //MARK: Choice
+        let choice1_Quiz2_Level11_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level11_Stage1_Jawa.id = 1
+        choice1_Quiz2_Level11_Stage1_Jawa.name = "Ha"
+        
+        let choice2_Quiz2_Level11_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level11_Stage1_Jawa.id = 2
+        choice2_Quiz2_Level11_Stage1_Jawa.name = "Na"
+        
+        let choice3_Quiz2_Level11_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level11_Stage1_Jawa.id = 3
+        choice3_Quiz2_Level11_Stage1_Jawa.name = "Ca"
+        
+        let choice4_Quiz2_Level11_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level11_Stage1_Jawa.id = 4
+        choice4_Quiz2_Level11_Stage1_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz2_Level11_Stage1_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz2_Level11_Stage1_Jawa.id = 1
+        image1_Quiz2_Level11_Stage1_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz2_Level11_Stage1_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz2_Level11_Stage1_Jawa.id = 2
+        image2_Quiz2_Level11_Stage1_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz2_Level11_Stage1_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz2_Level11_Stage1_Jawa.id = 3
+        image3_Quiz2_Level11_Stage1_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz2_Level11_Stage1_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz2_Level11_Stage1_Jawa.id = 4
+        image4_Quiz2_Level11_Stage1_Jawa.name = "Ra_Aksara_Jawa"
+        
         let quiz2_level11_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz2_level11_stage1_Jawa.id = 2
         quiz2_level11_stage1_Jawa.name = "Kuis 1"
         quiz2_level11_stage1_Jawa.type = "A"
         quiz2_level11_stage1_Jawa.isCorrect = false
         quiz2_level11_stage1_Jawa.question = "Ca"
-        quiz2_level11_stage1_Jawa.choices = []
-        quiz2_level11_stage1_Jawa.images = []
+        quiz2_level11_stage1_Jawa.choices = [choice1_Quiz2_Level11_Stage1_Jawa, choice2_Quiz2_Level11_Stage1_Jawa, choice3_Quiz2_Level11_Stage1_Jawa, choice4_Quiz2_Level11_Stage1_Jawa]
+        quiz2_level11_stage1_Jawa.images = [image1_Quiz2_Level11_Stage1_Jawa, image2_Quiz2_Level11_Stage1_Jawa, image3_Quiz2_Level11_Stage1_Jawa, image4_Quiz2_Level11_Stage1_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level11_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level11_Stage1_Jawa.id = 1
+        choice1_Quiz3_Level11_Stage1_Jawa.name = "Ha"
+        
+        let choice2_Quiz3_Level11_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level11_Stage1_Jawa.id = 2
+        choice2_Quiz3_Level11_Stage1_Jawa.name = "Na"
+        
+        let choice3_Quiz3_Level11_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level11_Stage1_Jawa.id = 3
+        choice3_Quiz3_Level11_Stage1_Jawa.name = "Ca"
+        
+        let choice4_Quiz3_Level11_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level11_Stage1_Jawa.id = 4
+        choice4_Quiz3_Level11_Stage1_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz3_Level11_Stage1_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz3_Level11_Stage1_Jawa.id = 1
+        image1_Quiz3_Level11_Stage1_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz3_Level11_Stage1_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz3_Level11_Stage1_Jawa.id = 2
+        image2_Quiz3_Level11_Stage1_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz3_Level11_Stage1_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz3_Level11_Stage1_Jawa.id = 3
+        image3_Quiz3_Level11_Stage1_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz3_Level11_Stage1_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz3_Level11_Stage1_Jawa.id = 4
+        image4_Quiz3_Level11_Stage1_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz3_level11_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level11_stage1_Jawa.id = 3
@@ -761,8 +1779,42 @@ class MainViewController: UIViewController {
         quiz3_level11_stage1_Jawa.type = "B"
         quiz3_level11_stage1_Jawa.isCorrect = false
         quiz3_level11_stage1_Jawa.question = "Ca"
-        quiz3_level11_stage1_Jawa.choices = []
-        quiz3_level11_stage1_Jawa.images = []
+        quiz3_level11_stage1_Jawa.choices = [choice1_Quiz3_Level11_Stage1_Jawa, choice2_Quiz3_Level11_Stage1_Jawa, choice3_Quiz3_Level11_Stage1_Jawa, choice4_Quiz3_Level11_Stage1_Jawa]
+        quiz3_level11_stage1_Jawa.images = [image1_Quiz3_Level11_Stage1_Jawa, image2_Quiz3_Level11_Stage1_Jawa, image3_Quiz3_Level11_Stage1_Jawa, image4_Quiz3_Level11_Stage1_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level11_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level11_Stage1_Jawa.id = 1
+        choice1_Quiz4_Level11_Stage1_Jawa.name = "Ha"
+        
+        let choice2_Quiz4_Level11_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level11_Stage1_Jawa.id = 2
+        choice2_Quiz4_Level11_Stage1_Jawa.name = "Na"
+        
+        let choice3_Quiz4_Level11_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level11_Stage1_Jawa.id = 3
+        choice3_Quiz4_Level11_Stage1_Jawa.name = "Ca"
+        
+        let choice4_Quiz4_Level11_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level11_Stage1_Jawa.id = 4
+        choice4_Quiz4_Level11_Stage1_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz4_Level11_Stage1_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz4_Level11_Stage1_Jawa.id = 1
+        image1_Quiz4_Level11_Stage1_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz4_Level11_Stage1_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz4_Level11_Stage1_Jawa.id = 2
+        image2_Quiz4_Level11_Stage1_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz4_Level11_Stage1_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz4_Level11_Stage1_Jawa.id = 3
+        image3_Quiz4_Level11_Stage1_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz4_Level11_Stage1_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz4_Level11_Stage1_Jawa.id = 4
+        image4_Quiz4_Level11_Stage1_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz4_level11_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level11_stage1_Jawa.id = 4
@@ -770,8 +1822,8 @@ class MainViewController: UIViewController {
         quiz4_level11_stage1_Jawa.type = "C"
         quiz4_level11_stage1_Jawa.isCorrect = false
         quiz4_level11_stage1_Jawa.question = "Ca"
-        quiz4_level11_stage1_Jawa.choices = []
-        quiz4_level11_stage1_Jawa.images = []
+        quiz4_level11_stage1_Jawa.choices = [choice1_Quiz4_Level11_Stage1_Jawa, choice2_Quiz4_Level11_Stage1_Jawa, choice3_Quiz4_Level11_Stage1_Jawa, choice4_Quiz4_Level11_Stage1_Jawa]
+        quiz4_level11_stage1_Jawa.images = [image1_Quiz4_Level11_Stage1_Jawa, image2_Quiz4_Level11_Stage1_Jawa, image3_Quiz4_Level11_Stage1_Jawa, image4_Quiz4_Level11_Stage1_Jawa]
         
         let quiz5_level11_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz5_level11_stage1_Jawa.id = 5
@@ -801,14 +1853,82 @@ class MainViewController: UIViewController {
         quiz1_level12_stage1_Jawa.choices = []
         quiz1_level12_stage1_Jawa.images = []
         
+        //MARK: Choice
+        let choice1_Quiz2_Level12_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level12_Stage1_Jawa.id = 1
+        choice1_Quiz2_Level12_Stage1_Jawa.name = "Ha"
+        
+        let choice2_Quiz2_Level12_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level12_Stage1_Jawa.id = 2
+        choice2_Quiz2_Level12_Stage1_Jawa.name = "Na"
+        
+        let choice3_Quiz2_Level12_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level12_Stage1_Jawa.id = 3
+        choice3_Quiz2_Level12_Stage1_Jawa.name = "Ca"
+        
+        let choice4_Quiz2_Level12_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level12_Stage1_Jawa.id = 4
+        choice4_Quiz2_Level12_Stage1_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz2_Level12_Stage1_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz2_Level12_Stage1_Jawa.id = 1
+        image1_Quiz2_Level12_Stage1_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz2_Level12_Stage1_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz2_Level12_Stage1_Jawa.id = 2
+        image2_Quiz2_Level12_Stage1_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz2_Level12_Stage1_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz2_Level12_Stage1_Jawa.id = 3
+        image3_Quiz2_Level12_Stage1_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz2_Level12_Stage1_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz2_Level12_Stage1_Jawa.id = 4
+        image4_Quiz2_Level12_Stage1_Jawa.name = "Ra_Aksara_Jawa"
+        
         let quiz2_level12_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz2_level12_stage1_Jawa.id = 2
         quiz2_level12_stage1_Jawa.name = "Kuis 1"
         quiz2_level12_stage1_Jawa.type = "A"
         quiz2_level12_stage1_Jawa.isCorrect = false
         quiz2_level12_stage1_Jawa.question = "Ca"
-        quiz2_level12_stage1_Jawa.choices = []
-        quiz2_level12_stage1_Jawa.images = []
+        quiz2_level12_stage1_Jawa.choices = [choice1_Quiz2_Level12_Stage1_Jawa, choice2_Quiz2_Level12_Stage1_Jawa, choice3_Quiz2_Level12_Stage1_Jawa, choice4_Quiz2_Level12_Stage1_Jawa]
+        quiz2_level12_stage1_Jawa.images = [image1_Quiz2_Level12_Stage1_Jawa, image2_Quiz2_Level12_Stage1_Jawa, image3_Quiz2_Level12_Stage1_Jawa, image4_Quiz2_Level12_Stage1_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level12_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level12_Stage1_Jawa.id = 1
+        choice1_Quiz3_Level12_Stage1_Jawa.name = "Ha"
+        
+        let choice2_Quiz3_Level12_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level12_Stage1_Jawa.id = 2
+        choice2_Quiz3_Level12_Stage1_Jawa.name = "Na"
+        
+        let choice3_Quiz3_Level12_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level12_Stage1_Jawa.id = 3
+        choice3_Quiz3_Level12_Stage1_Jawa.name = "Ca"
+        
+        let choice4_Quiz3_Level12_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level12_Stage1_Jawa.id = 4
+        choice4_Quiz3_Level12_Stage1_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz3_Level12_Stage1_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz3_Level12_Stage1_Jawa.id = 1
+        image1_Quiz3_Level12_Stage1_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz3_Level12_Stage1_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz3_Level12_Stage1_Jawa.id = 2
+        image2_Quiz3_Level12_Stage1_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz3_Level12_Stage1_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz3_Level12_Stage1_Jawa.id = 3
+        image3_Quiz3_Level12_Stage1_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz3_Level12_Stage1_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz3_Level12_Stage1_Jawa.id = 4
+        image4_Quiz3_Level12_Stage1_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz3_level12_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level12_stage1_Jawa.id = 3
@@ -816,8 +1936,42 @@ class MainViewController: UIViewController {
         quiz3_level12_stage1_Jawa.type = "B"
         quiz3_level12_stage1_Jawa.isCorrect = false
         quiz3_level12_stage1_Jawa.question = "Ca"
-        quiz3_level12_stage1_Jawa.choices = []
-        quiz3_level12_stage1_Jawa.images = []
+        quiz3_level12_stage1_Jawa.choices = [choice1_Quiz3_Level12_Stage1_Jawa, choice2_Quiz3_Level12_Stage1_Jawa, choice3_Quiz3_Level12_Stage1_Jawa, choice4_Quiz3_Level12_Stage1_Jawa]
+        quiz3_level12_stage1_Jawa.images = [image1_Quiz3_Level12_Stage1_Jawa, image2_Quiz3_Level12_Stage1_Jawa, image3_Quiz3_Level12_Stage1_Jawa, image4_Quiz3_Level12_Stage1_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level12_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level12_Stage1_Jawa.id = 1
+        choice1_Quiz4_Level12_Stage1_Jawa.name = "Ha"
+        
+        let choice2_Quiz4_Level12_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level12_Stage1_Jawa.id = 2
+        choice2_Quiz4_Level12_Stage1_Jawa.name = "Na"
+        
+        let choice3_Quiz4_Level12_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level12_Stage1_Jawa.id = 3
+        choice3_Quiz4_Level12_Stage1_Jawa.name = "Ca"
+        
+        let choice4_Quiz4_Level12_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level12_Stage1_Jawa.id = 4
+        choice4_Quiz4_Level12_Stage1_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz4_Level12_Stage1_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz4_Level12_Stage1_Jawa.id = 1
+        image1_Quiz4_Level12_Stage1_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz4_Level12_Stage1_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz4_Level12_Stage1_Jawa.id = 2
+        image2_Quiz4_Level12_Stage1_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz4_Level12_Stage1_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz4_Level12_Stage1_Jawa.id = 3
+        image3_Quiz4_Level12_Stage1_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz4_Level12_Stage1_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz4_Level12_Stage1_Jawa.id = 4
+        image4_Quiz4_Level12_Stage1_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz4_level12_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level12_stage1_Jawa.id = 4
@@ -825,8 +1979,8 @@ class MainViewController: UIViewController {
         quiz4_level12_stage1_Jawa.type = "C"
         quiz4_level12_stage1_Jawa.isCorrect = false
         quiz4_level12_stage1_Jawa.question = "Ca"
-        quiz4_level12_stage1_Jawa.choices = []
-        quiz4_level12_stage1_Jawa.images = []
+        quiz4_level12_stage1_Jawa.choices = [choice1_Quiz4_Level12_Stage1_Jawa, choice2_Quiz4_Level12_Stage1_Jawa, choice3_Quiz4_Level12_Stage1_Jawa, choice4_Quiz4_Level12_Stage1_Jawa]
+        quiz4_level12_stage1_Jawa.images = [image1_Quiz4_Level12_Stage1_Jawa, image2_Quiz4_Level12_Stage1_Jawa, image3_Quiz4_Level12_Stage1_Jawa, image4_Quiz4_Level12_Stage1_Jawa]
         
         let quiz5_level12_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz5_level12_stage1_Jawa.id = 5
@@ -856,14 +2010,82 @@ class MainViewController: UIViewController {
         quiz1_level13_stage1_Jawa.choices = []
         quiz1_level13_stage1_Jawa.images = []
         
+        //MARK: Choice
+        let choice1_Quiz2_Level13_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level13_Stage1_Jawa.id = 1
+        choice1_Quiz2_Level13_Stage1_Jawa.name = "Ha"
+        
+        let choice2_Quiz2_Level13_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level13_Stage1_Jawa.id = 2
+        choice2_Quiz2_Level13_Stage1_Jawa.name = "Na"
+        
+        let choice3_Quiz2_Level13_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level13_Stage1_Jawa.id = 3
+        choice3_Quiz2_Level13_Stage1_Jawa.name = "Ca"
+        
+        let choice4_Quiz2_Level13_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level13_Stage1_Jawa.id = 4
+        choice4_Quiz2_Level13_Stage1_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz2_Level13_Stage1_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz2_Level13_Stage1_Jawa.id = 1
+        image1_Quiz2_Level13_Stage1_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz2_Level13_Stage1_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz2_Level13_Stage1_Jawa.id = 2
+        image2_Quiz2_Level13_Stage1_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz2_Level13_Stage1_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz2_Level13_Stage1_Jawa.id = 3
+        image3_Quiz2_Level13_Stage1_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz2_Level13_Stage1_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz2_Level13_Stage1_Jawa.id = 4
+        image4_Quiz2_Level13_Stage1_Jawa.name = "Ra_Aksara_Jawa"
+        
         let quiz2_level13_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz2_level13_stage1_Jawa.id = 2
         quiz2_level13_stage1_Jawa.name = "Kuis 1"
         quiz2_level13_stage1_Jawa.type = "A"
         quiz2_level13_stage1_Jawa.isCorrect = false
         quiz2_level13_stage1_Jawa.question = "Ca"
-        quiz2_level13_stage1_Jawa.choices = []
-        quiz2_level13_stage1_Jawa.images = []
+        quiz2_level13_stage1_Jawa.choices = [choice1_Quiz2_Level13_Stage1_Jawa, choice2_Quiz2_Level13_Stage1_Jawa, choice3_Quiz2_Level13_Stage1_Jawa, choice4_Quiz2_Level13_Stage1_Jawa]
+        quiz2_level13_stage1_Jawa.images = [image1_Quiz2_Level13_Stage1_Jawa, image2_Quiz2_Level13_Stage1_Jawa, image3_Quiz2_Level13_Stage1_Jawa, image4_Quiz2_Level13_Stage1_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level13_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level13_Stage1_Jawa.id = 1
+        choice1_Quiz3_Level13_Stage1_Jawa.name = "Ha"
+        
+        let choice2_Quiz3_Level13_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level13_Stage1_Jawa.id = 2
+        choice2_Quiz3_Level13_Stage1_Jawa.name = "Na"
+        
+        let choice3_Quiz3_Level13_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level13_Stage1_Jawa.id = 3
+        choice3_Quiz3_Level13_Stage1_Jawa.name = "Ca"
+        
+        let choice4_Quiz3_Level13_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level13_Stage1_Jawa.id = 4
+        choice4_Quiz3_Level13_Stage1_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz3_Level13_Stage1_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz3_Level13_Stage1_Jawa.id = 1
+        image1_Quiz3_Level13_Stage1_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz3_Level13_Stage1_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz3_Level13_Stage1_Jawa.id = 2
+        image2_Quiz3_Level13_Stage1_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz3_Level13_Stage1_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz3_Level13_Stage1_Jawa.id = 3
+        image3_Quiz3_Level13_Stage1_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz3_Level13_Stage1_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz3_Level13_Stage1_Jawa.id = 4
+        image4_Quiz3_Level13_Stage1_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz3_level13_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level13_stage1_Jawa.id = 3
@@ -871,8 +2093,42 @@ class MainViewController: UIViewController {
         quiz3_level13_stage1_Jawa.type = "B"
         quiz3_level13_stage1_Jawa.isCorrect = false
         quiz3_level13_stage1_Jawa.question = "Ca"
-        quiz3_level13_stage1_Jawa.choices = []
-        quiz3_level13_stage1_Jawa.images = []
+        quiz3_level13_stage1_Jawa.choices = [choice1_Quiz3_Level13_Stage1_Jawa, choice2_Quiz3_Level13_Stage1_Jawa, choice3_Quiz3_Level13_Stage1_Jawa, choice4_Quiz3_Level13_Stage1_Jawa]
+        quiz3_level13_stage1_Jawa.images = [image1_Quiz3_Level13_Stage1_Jawa, image2_Quiz3_Level13_Stage1_Jawa, image3_Quiz3_Level13_Stage1_Jawa, image4_Quiz3_Level13_Stage1_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level13_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level13_Stage1_Jawa.id = 1
+        choice1_Quiz4_Level13_Stage1_Jawa.name = "Ha"
+        
+        let choice2_Quiz4_Level13_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level13_Stage1_Jawa.id = 2
+        choice2_Quiz4_Level13_Stage1_Jawa.name = "Na"
+        
+        let choice3_Quiz4_Level13_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level13_Stage1_Jawa.id = 3
+        choice3_Quiz4_Level13_Stage1_Jawa.name = "Ca"
+        
+        let choice4_Quiz4_Level13_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level13_Stage1_Jawa.id = 4
+        choice4_Quiz4_Level13_Stage1_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz4_Level13_Stage1_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz4_Level13_Stage1_Jawa.id = 1
+        image1_Quiz4_Level13_Stage1_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz4_Level13_Stage1_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz4_Level13_Stage1_Jawa.id = 2
+        image2_Quiz4_Level13_Stage1_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz4_Level13_Stage1_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz4_Level13_Stage1_Jawa.id = 3
+        image3_Quiz4_Level13_Stage1_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz4_Level13_Stage1_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz4_Level13_Stage1_Jawa.id = 4
+        image4_Quiz4_Level13_Stage1_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz4_level13_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level13_stage1_Jawa.id = 4
@@ -880,8 +2136,8 @@ class MainViewController: UIViewController {
         quiz4_level13_stage1_Jawa.type = "C"
         quiz4_level13_stage1_Jawa.isCorrect = false
         quiz4_level13_stage1_Jawa.question = "Ca"
-        quiz4_level13_stage1_Jawa.choices = []
-        quiz4_level13_stage1_Jawa.images = []
+        quiz4_level13_stage1_Jawa.choices = [choice1_Quiz4_Level13_Stage1_Jawa, choice2_Quiz4_Level13_Stage1_Jawa, choice3_Quiz4_Level13_Stage1_Jawa, choice4_Quiz4_Level13_Stage1_Jawa]
+        quiz4_level13_stage1_Jawa.images = [image1_Quiz4_Level13_Stage1_Jawa, image2_Quiz4_Level13_Stage1_Jawa, image3_Quiz4_Level13_Stage1_Jawa, image4_Quiz4_Level13_Stage1_Jawa]
         
         let quiz5_level13_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz5_level13_stage1_Jawa.id = 5
@@ -911,14 +2167,82 @@ class MainViewController: UIViewController {
         quiz1_level14_stage1_Jawa.choices = []
         quiz1_level14_stage1_Jawa.images = []
         
+        //MARK: Choice
+        let choice1_Quiz2_Level14_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level14_Stage1_Jawa.id = 1
+        choice1_Quiz2_Level14_Stage1_Jawa.name = "Ha"
+        
+        let choice2_Quiz2_Level14_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level14_Stage1_Jawa.id = 2
+        choice2_Quiz2_Level14_Stage1_Jawa.name = "Na"
+        
+        let choice3_Quiz2_Level14_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level14_Stage1_Jawa.id = 3
+        choice3_Quiz2_Level14_Stage1_Jawa.name = "Ca"
+        
+        let choice4_Quiz2_Level14_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level14_Stage1_Jawa.id = 4
+        choice4_Quiz2_Level14_Stage1_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz2_Level14_Stage1_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz2_Level14_Stage1_Jawa.id = 1
+        image1_Quiz2_Level14_Stage1_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz2_Level14_Stage1_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz2_Level14_Stage1_Jawa.id = 2
+        image2_Quiz2_Level14_Stage1_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz2_Level14_Stage1_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz2_Level14_Stage1_Jawa.id = 3
+        image3_Quiz2_Level14_Stage1_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz2_Level14_Stage1_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz2_Level14_Stage1_Jawa.id = 4
+        image4_Quiz2_Level14_Stage1_Jawa.name = "Ra_Aksara_Jawa"
+        
         let quiz2_level14_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz2_level14_stage1_Jawa.id = 2
         quiz2_level14_stage1_Jawa.name = "Kuis 1"
         quiz2_level14_stage1_Jawa.type = "A"
         quiz2_level14_stage1_Jawa.isCorrect = false
         quiz2_level14_stage1_Jawa.question = "Ca"
-        quiz2_level14_stage1_Jawa.choices = []
-        quiz2_level14_stage1_Jawa.images = []
+        quiz2_level14_stage1_Jawa.choices = [choice1_Quiz2_Level14_Stage1_Jawa, choice2_Quiz2_Level14_Stage1_Jawa, choice3_Quiz2_Level14_Stage1_Jawa, choice4_Quiz2_Level14_Stage1_Jawa]
+        quiz2_level14_stage1_Jawa.images = [image1_Quiz2_Level14_Stage1_Jawa, image2_Quiz2_Level14_Stage1_Jawa, image3_Quiz2_Level14_Stage1_Jawa, image4_Quiz2_Level14_Stage1_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level14_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level14_Stage1_Jawa.id = 1
+        choice1_Quiz3_Level14_Stage1_Jawa.name = "Ha"
+        
+        let choice2_Quiz3_Level14_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level14_Stage1_Jawa.id = 2
+        choice2_Quiz3_Level14_Stage1_Jawa.name = "Na"
+        
+        let choice3_Quiz3_Level14_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level14_Stage1_Jawa.id = 3
+        choice3_Quiz3_Level14_Stage1_Jawa.name = "Ca"
+        
+        let choice4_Quiz3_Level14_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level14_Stage1_Jawa.id = 4
+        choice4_Quiz3_Level14_Stage1_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz3_Level14_Stage1_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz3_Level14_Stage1_Jawa.id = 1
+        image1_Quiz3_Level14_Stage1_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz3_Level14_Stage1_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz3_Level14_Stage1_Jawa.id = 2
+        image2_Quiz3_Level14_Stage1_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz3_Level14_Stage1_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz3_Level14_Stage1_Jawa.id = 3
+        image3_Quiz3_Level14_Stage1_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz3_Level14_Stage1_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz3_Level14_Stage1_Jawa.id = 4
+        image4_Quiz3_Level14_Stage1_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz3_level14_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level14_stage1_Jawa.id = 3
@@ -926,8 +2250,42 @@ class MainViewController: UIViewController {
         quiz3_level14_stage1_Jawa.type = "B"
         quiz3_level14_stage1_Jawa.isCorrect = false
         quiz3_level14_stage1_Jawa.question = "Ca"
-        quiz3_level14_stage1_Jawa.choices = []
-        quiz3_level14_stage1_Jawa.images = []
+        quiz3_level14_stage1_Jawa.choices = [choice1_Quiz3_Level14_Stage1_Jawa, choice2_Quiz3_Level14_Stage1_Jawa, choice3_Quiz3_Level14_Stage1_Jawa, choice4_Quiz3_Level14_Stage1_Jawa]
+        quiz3_level14_stage1_Jawa.images = [image1_Quiz3_Level14_Stage1_Jawa, image2_Quiz3_Level14_Stage1_Jawa, image3_Quiz3_Level14_Stage1_Jawa, image4_Quiz3_Level14_Stage1_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level14_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level14_Stage1_Jawa.id = 1
+        choice1_Quiz4_Level14_Stage1_Jawa.name = "Ha"
+        
+        let choice2_Quiz4_Level14_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level14_Stage1_Jawa.id = 2
+        choice2_Quiz4_Level14_Stage1_Jawa.name = "Na"
+        
+        let choice3_Quiz4_Level14_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level14_Stage1_Jawa.id = 3
+        choice3_Quiz4_Level14_Stage1_Jawa.name = "Ca"
+        
+        let choice4_Quiz4_Level14_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level14_Stage1_Jawa.id = 4
+        choice4_Quiz4_Level14_Stage1_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz4_Level14_Stage1_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz4_Level14_Stage1_Jawa.id = 1
+        image1_Quiz4_Level14_Stage1_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz4_Level14_Stage1_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz4_Level14_Stage1_Jawa.id = 2
+        image2_Quiz4_Level14_Stage1_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz4_Level14_Stage1_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz4_Level14_Stage1_Jawa.id = 3
+        image3_Quiz4_Level14_Stage1_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz4_Level14_Stage1_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz4_Level14_Stage1_Jawa.id = 4
+        image4_Quiz4_Level14_Stage1_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz4_level14_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level14_stage1_Jawa.id = 4
@@ -935,8 +2293,8 @@ class MainViewController: UIViewController {
         quiz4_level14_stage1_Jawa.type = "C"
         quiz4_level14_stage1_Jawa.isCorrect = false
         quiz4_level14_stage1_Jawa.question = "Ca"
-        quiz4_level14_stage1_Jawa.choices = []
-        quiz4_level14_stage1_Jawa.images = []
+        quiz4_level14_stage1_Jawa.choices = [choice1_Quiz4_Level14_Stage1_Jawa, choice2_Quiz4_Level14_Stage1_Jawa, choice3_Quiz4_Level14_Stage1_Jawa, choice4_Quiz4_Level14_Stage1_Jawa]
+        quiz4_level14_stage1_Jawa.images = [image1_Quiz4_Level14_Stage1_Jawa, image2_Quiz4_Level14_Stage1_Jawa, image3_Quiz4_Level14_Stage1_Jawa, image4_Quiz4_Level14_Stage1_Jawa]
         
         let quiz5_level14_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz5_level14_stage1_Jawa.id = 5
@@ -966,14 +2324,82 @@ class MainViewController: UIViewController {
         quiz1_level15_stage1_Jawa.choices = []
         quiz1_level15_stage1_Jawa.images = []
         
+        //MARK: Choice
+        let choice1_Quiz2_Level15_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level15_Stage1_Jawa.id = 1
+        choice1_Quiz2_Level15_Stage1_Jawa.name = "Ha"
+        
+        let choice2_Quiz2_Level15_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level15_Stage1_Jawa.id = 2
+        choice2_Quiz2_Level15_Stage1_Jawa.name = "Na"
+        
+        let choice3_Quiz2_Level15_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level15_Stage1_Jawa.id = 3
+        choice3_Quiz2_Level15_Stage1_Jawa.name = "Ca"
+        
+        let choice4_Quiz2_Level15_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level15_Stage1_Jawa.id = 4
+        choice4_Quiz2_Level15_Stage1_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz2_Level15_Stage1_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz2_Level15_Stage1_Jawa.id = 1
+        image1_Quiz2_Level15_Stage1_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz2_Level15_Stage1_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz2_Level15_Stage1_Jawa.id = 2
+        image2_Quiz2_Level15_Stage1_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz2_Level15_Stage1_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz2_Level15_Stage1_Jawa.id = 3
+        image3_Quiz2_Level15_Stage1_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz2_Level15_Stage1_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz2_Level15_Stage1_Jawa.id = 4
+        image4_Quiz2_Level15_Stage1_Jawa.name = "Ra_Aksara_Jawa"
+        
         let quiz2_level15_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz2_level15_stage1_Jawa.id = 2
         quiz2_level15_stage1_Jawa.name = "Kuis 1"
         quiz2_level15_stage1_Jawa.type = "A"
         quiz2_level15_stage1_Jawa.isCorrect = false
         quiz2_level15_stage1_Jawa.question = "Ca"
-        quiz2_level15_stage1_Jawa.choices = []
-        quiz2_level15_stage1_Jawa.images = []
+        quiz2_level15_stage1_Jawa.choices = [choice1_Quiz2_Level15_Stage1_Jawa, choice2_Quiz2_Level15_Stage1_Jawa, choice3_Quiz2_Level15_Stage1_Jawa, choice4_Quiz2_Level15_Stage1_Jawa]
+        quiz2_level15_stage1_Jawa.images = [image1_Quiz2_Level15_Stage1_Jawa, image2_Quiz2_Level15_Stage1_Jawa, image3_Quiz2_Level15_Stage1_Jawa, image4_Quiz2_Level15_Stage1_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level15_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level15_Stage1_Jawa.id = 1
+        choice1_Quiz3_Level15_Stage1_Jawa.name = "Ha"
+        
+        let choice2_Quiz3_Level15_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level15_Stage1_Jawa.id = 2
+        choice2_Quiz3_Level15_Stage1_Jawa.name = "Na"
+        
+        let choice3_Quiz3_Level15_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level15_Stage1_Jawa.id = 3
+        choice3_Quiz3_Level15_Stage1_Jawa.name = "Ca"
+        
+        let choice4_Quiz3_Level15_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level15_Stage1_Jawa.id = 4
+        choice4_Quiz3_Level15_Stage1_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz3_Level15_Stage1_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz3_Level15_Stage1_Jawa.id = 1
+        image1_Quiz3_Level15_Stage1_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz3_Level15_Stage1_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz3_Level15_Stage1_Jawa.id = 2
+        image2_Quiz3_Level15_Stage1_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz3_Level15_Stage1_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz3_Level15_Stage1_Jawa.id = 3
+        image3_Quiz3_Level15_Stage1_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz3_Level15_Stage1_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz3_Level15_Stage1_Jawa.id = 4
+        image4_Quiz3_Level15_Stage1_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz3_level15_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level15_stage1_Jawa.id = 3
@@ -981,8 +2407,42 @@ class MainViewController: UIViewController {
         quiz3_level15_stage1_Jawa.type = "B"
         quiz3_level15_stage1_Jawa.isCorrect = false
         quiz3_level15_stage1_Jawa.question = "Ca"
-        quiz3_level15_stage1_Jawa.choices = []
-        quiz3_level15_stage1_Jawa.images = []
+        quiz3_level15_stage1_Jawa.choices = [choice1_Quiz3_Level15_Stage1_Jawa, choice2_Quiz3_Level15_Stage1_Jawa, choice3_Quiz3_Level15_Stage1_Jawa, choice4_Quiz3_Level15_Stage1_Jawa]
+        quiz3_level15_stage1_Jawa.images = [image1_Quiz3_Level15_Stage1_Jawa, image2_Quiz3_Level15_Stage1_Jawa, image3_Quiz3_Level15_Stage1_Jawa, image4_Quiz3_Level15_Stage1_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level15_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level15_Stage1_Jawa.id = 1
+        choice1_Quiz4_Level15_Stage1_Jawa.name = "Ha"
+        
+        let choice2_Quiz4_Level15_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level15_Stage1_Jawa.id = 2
+        choice2_Quiz4_Level15_Stage1_Jawa.name = "Na"
+        
+        let choice3_Quiz4_Level15_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level15_Stage1_Jawa.id = 3
+        choice3_Quiz4_Level15_Stage1_Jawa.name = "Ca"
+        
+        let choice4_Quiz4_Level15_Stage1_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level15_Stage1_Jawa.id = 4
+        choice4_Quiz4_Level15_Stage1_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz4_Level15_Stage1_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz4_Level15_Stage1_Jawa.id = 1
+        image1_Quiz4_Level15_Stage1_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz4_Level15_Stage1_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz4_Level15_Stage1_Jawa.id = 2
+        image2_Quiz4_Level15_Stage1_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz4_Level15_Stage1_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz4_Level15_Stage1_Jawa.id = 3
+        image3_Quiz4_Level15_Stage1_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz4_Level15_Stage1_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz4_Level15_Stage1_Jawa.id = 4
+        image4_Quiz4_Level15_Stage1_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz4_level15_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level15_stage1_Jawa.id = 4
@@ -990,8 +2450,8 @@ class MainViewController: UIViewController {
         quiz4_level15_stage1_Jawa.type = "C"
         quiz4_level15_stage1_Jawa.isCorrect = false
         quiz4_level15_stage1_Jawa.question = "Ca"
-        quiz4_level15_stage1_Jawa.choices = []
-        quiz4_level15_stage1_Jawa.images = []
+        quiz4_level15_stage1_Jawa.choices = [choice1_Quiz4_Level15_Stage1_Jawa, choice2_Quiz4_Level15_Stage1_Jawa, choice3_Quiz4_Level15_Stage1_Jawa, choice4_Quiz4_Level15_Stage1_Jawa]
+        quiz4_level15_stage1_Jawa.images = [image1_Quiz4_Level15_Stage1_Jawa, image2_Quiz4_Level15_Stage1_Jawa, image3_Quiz4_Level15_Stage1_Jawa, image4_Quiz4_Level15_Stage1_Jawa]
         
         let quiz5_level15_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz5_level15_stage1_Jawa.id = 5
@@ -1021,14 +2481,82 @@ class MainViewController: UIViewController {
         quiz1_level1_stage2_Jawa.choices = []
         quiz1_level1_stage2_Jawa.images = []
         
+        //MARK: Choice
+        let choice1_Quiz2_Level1_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level1_Stage2_Jawa.id = 1
+        choice1_Quiz2_Level1_Stage2_Jawa.name = "Ha"
+        
+        let choice2_Quiz2_Level1_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level1_Stage2_Jawa.id = 2
+        choice2_Quiz2_Level1_Stage2_Jawa.name = "Na"
+        
+        let choice3_Quiz2_Level1_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level1_Stage2_Jawa.id = 3
+        choice3_Quiz2_Level1_Stage2_Jawa.name = "Ca"
+        
+        let choice4_Quiz2_Level1_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level1_Stage2_Jawa.id = 4
+        choice4_Quiz2_Level1_Stage2_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz2_Level1_Stage2_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz2_Level1_Stage2_Jawa.id = 1
+        image1_Quiz2_Level1_Stage2_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz2_Level1_Stage2_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz2_Level1_Stage2_Jawa.id = 2
+        image2_Quiz2_Level1_Stage2_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz2_Level1_Stage2_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz2_Level1_Stage2_Jawa.id = 3
+        image3_Quiz2_Level1_Stage2_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz2_Level1_Stage2_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz2_Level1_Stage2_Jawa.id = 4
+        image4_Quiz2_Level1_Stage2_Jawa.name = "Ra_Aksara_Jawa"
+        
         let quiz2_level1_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz2_level1_stage2_Jawa.id = 2
         quiz2_level1_stage2_Jawa.name = "Kuis 1"
         quiz2_level1_stage2_Jawa.type = "A"
         quiz2_level1_stage2_Jawa.isCorrect = false
         quiz2_level1_stage2_Jawa.question = "Ha"
-        quiz2_level1_stage2_Jawa.choices = []
-        quiz2_level1_stage2_Jawa.images = []
+        quiz2_level1_stage2_Jawa.choices = [choice1_Quiz2_Level1_Stage2_Jawa, choice2_Quiz2_Level1_Stage2_Jawa, choice3_Quiz2_Level1_Stage2_Jawa, choice4_Quiz2_Level1_Stage2_Jawa]
+        quiz2_level1_stage2_Jawa.images = [image1_Quiz2_Level1_Stage2_Jawa, image2_Quiz2_Level1_Stage2_Jawa, image3_Quiz2_Level1_Stage2_Jawa, image4_Quiz2_Level1_Stage2_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level1_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level1_Stage2_Jawa.id = 1
+        choice1_Quiz3_Level1_Stage2_Jawa.name = "Ha"
+        
+        let choice2_Quiz3_Level1_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level1_Stage2_Jawa.id = 2
+        choice2_Quiz3_Level1_Stage2_Jawa.name = "Na"
+        
+        let choice3_Quiz3_Level1_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level1_Stage2_Jawa.id = 3
+        choice3_Quiz3_Level1_Stage2_Jawa.name = "Ca"
+        
+        let choice4_Quiz3_Level1_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level1_Stage2_Jawa.id = 4
+        choice4_Quiz3_Level1_Stage2_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz3_Level1_Stage2_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz3_Level1_Stage2_Jawa.id = 1
+        image1_Quiz3_Level1_Stage2_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz3_Level1_Stage2_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz3_Level1_Stage2_Jawa.id = 2
+        image2_Quiz3_Level1_Stage2_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz3_Level1_Stage2_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz3_Level1_Stage2_Jawa.id = 3
+        image3_Quiz3_Level1_Stage2_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz3_Level1_Stage2_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz3_Level1_Stage2_Jawa.id = 4
+        image4_Quiz3_Level1_Stage2_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz3_level1_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level1_stage2_Jawa.id = 3
@@ -1036,8 +2564,42 @@ class MainViewController: UIViewController {
         quiz3_level1_stage2_Jawa.type = "B"
         quiz3_level1_stage2_Jawa.isCorrect = false
         quiz3_level1_stage2_Jawa.question = "Ha"
-        quiz3_level1_stage2_Jawa.choices = []
-        quiz3_level1_stage2_Jawa.images = []
+        quiz3_level1_stage2_Jawa.choices = [choice1_Quiz3_Level1_Stage2_Jawa, choice2_Quiz3_Level1_Stage2_Jawa, choice3_Quiz3_Level1_Stage2_Jawa, choice4_Quiz3_Level1_Stage2_Jawa]
+        quiz3_level1_stage2_Jawa.images = [image1_Quiz3_Level1_Stage2_Jawa, image2_Quiz3_Level1_Stage2_Jawa, image3_Quiz3_Level1_Stage2_Jawa, image4_Quiz3_Level1_Stage2_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level1_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level1_Stage2_Jawa.id = 1
+        choice1_Quiz4_Level1_Stage2_Jawa.name = "Ha"
+        
+        let choice2_Quiz4_Level1_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level1_Stage2_Jawa.id = 2
+        choice2_Quiz4_Level1_Stage2_Jawa.name = "Na"
+        
+        let choice3_Quiz4_Level1_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level1_Stage2_Jawa.id = 3
+        choice3_Quiz4_Level1_Stage2_Jawa.name = "Ca"
+        
+        let choice4_Quiz4_Level1_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level1_Stage2_Jawa.id = 4
+        choice4_Quiz4_Level1_Stage2_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz4_Level1_Stage2_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz4_Level1_Stage2_Jawa.id = 1
+        image1_Quiz4_Level1_Stage2_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz4_Level1_Stage2_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz4_Level1_Stage2_Jawa.id = 2
+        image2_Quiz4_Level1_Stage2_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz4_Level1_Stage2_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz4_Level1_Stage2_Jawa.id = 3
+        image3_Quiz4_Level1_Stage2_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz4_Level1_Stage2_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz4_Level1_Stage2_Jawa.id = 4
+        image4_Quiz4_Level1_Stage2_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz4_level1_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level1_stage2_Jawa.id = 4
@@ -1045,8 +2607,8 @@ class MainViewController: UIViewController {
         quiz4_level1_stage2_Jawa.type = "C"
         quiz4_level1_stage2_Jawa.isCorrect = false
         quiz4_level1_stage2_Jawa.question = "Ha"
-        quiz4_level1_stage2_Jawa.choices = []
-        quiz4_level1_stage2_Jawa.images = []
+        quiz4_level1_stage2_Jawa.choices = [choice1_Quiz4_Level1_Stage2_Jawa, choice2_Quiz4_Level1_Stage2_Jawa, choice3_Quiz4_Level1_Stage2_Jawa, choice4_Quiz4_Level1_Stage2_Jawa]
+        quiz4_level1_stage2_Jawa.images = [image1_Quiz4_Level1_Stage2_Jawa, image2_Quiz4_Level1_Stage2_Jawa, image3_Quiz4_Level1_Stage2_Jawa, image4_Quiz4_Level1_Stage2_Jawa]
         
         let quiz5_level1_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz5_level1_stage2_Jawa.id = 5
@@ -1076,14 +2638,82 @@ class MainViewController: UIViewController {
         quiz1_level2_stage2_Jawa.choices = []
         quiz1_level2_stage2_Jawa.images = []
         
+        //MARK: Choice
+        let choice1_Quiz2_Level2_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level2_Stage2_Jawa.id = 1
+        choice1_Quiz2_Level2_Stage2_Jawa.name = "Ha"
+        
+        let choice2_Quiz2_Level2_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level2_Stage2_Jawa.id = 2
+        choice2_Quiz2_Level2_Stage2_Jawa.name = "Na"
+        
+        let choice3_Quiz2_Level2_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level2_Stage2_Jawa.id = 3
+        choice3_Quiz2_Level2_Stage2_Jawa.name = "Ca"
+        
+        let choice4_Quiz2_Level2_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level2_Stage2_Jawa.id = 4
+        choice4_Quiz2_Level2_Stage2_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz2_Level2_Stage2_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz2_Level2_Stage2_Jawa.id = 1
+        image1_Quiz2_Level2_Stage2_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz2_Level2_Stage2_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz2_Level2_Stage2_Jawa.id = 2
+        image2_Quiz2_Level2_Stage2_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz2_Level2_Stage2_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz2_Level2_Stage2_Jawa.id = 3
+        image3_Quiz2_Level2_Stage2_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz2_Level2_Stage2_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz2_Level2_Stage2_Jawa.id = 4
+        image4_Quiz2_Level2_Stage2_Jawa.name = "Ra_Aksara_Jawa"
+        
         let quiz2_level2_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz2_level2_stage2_Jawa.id = 2
         quiz2_level2_stage2_Jawa.name = "Kuis 1"
         quiz2_level2_stage2_Jawa.type = "A"
         quiz2_level2_stage2_Jawa.isCorrect = false
         quiz2_level2_stage2_Jawa.question = "Na"
-        quiz2_level2_stage2_Jawa.choices = []
-        quiz2_level2_stage2_Jawa.images = []
+        quiz2_level2_stage2_Jawa.choices = [choice1_Quiz2_Level2_Stage2_Jawa, choice2_Quiz2_Level2_Stage2_Jawa, choice3_Quiz2_Level2_Stage2_Jawa, choice4_Quiz2_Level2_Stage2_Jawa]
+        quiz2_level2_stage2_Jawa.images = [image1_Quiz2_Level2_Stage2_Jawa, image2_Quiz2_Level2_Stage2_Jawa, image3_Quiz2_Level2_Stage2_Jawa, image4_Quiz2_Level2_Stage2_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level2_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level2_Stage2_Jawa.id = 1
+        choice1_Quiz3_Level2_Stage2_Jawa.name = "Ha"
+        
+        let choice2_Quiz3_Level2_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level2_Stage2_Jawa.id = 2
+        choice2_Quiz3_Level2_Stage2_Jawa.name = "Na"
+        
+        let choice3_Quiz3_Level2_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level2_Stage2_Jawa.id = 3
+        choice3_Quiz3_Level2_Stage2_Jawa.name = "Ca"
+        
+        let choice4_Quiz3_Level2_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level2_Stage2_Jawa.id = 4
+        choice4_Quiz3_Level2_Stage2_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz3_Level2_Stage2_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz3_Level2_Stage2_Jawa.id = 1
+        image1_Quiz3_Level2_Stage2_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz3_Level2_Stage2_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz3_Level2_Stage2_Jawa.id = 2
+        image2_Quiz3_Level2_Stage2_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz3_Level2_Stage2_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz3_Level2_Stage2_Jawa.id = 3
+        image3_Quiz3_Level2_Stage2_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz3_Level2_Stage2_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz3_Level2_Stage2_Jawa.id = 4
+        image4_Quiz3_Level2_Stage2_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz3_level2_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level2_stage2_Jawa.id = 3
@@ -1091,8 +2721,42 @@ class MainViewController: UIViewController {
         quiz3_level2_stage2_Jawa.type = "B"
         quiz3_level2_stage2_Jawa.isCorrect = false
         quiz3_level2_stage2_Jawa.question = "Na"
-        quiz3_level2_stage2_Jawa.choices = []
-        quiz3_level2_stage2_Jawa.images = []
+        quiz3_level2_stage2_Jawa.choices = [choice1_Quiz3_Level2_Stage2_Jawa, choice2_Quiz3_Level2_Stage2_Jawa, choice2_Quiz3_Level2_Stage2_Jawa, choice2_Quiz3_Level2_Stage2_Jawa]
+        quiz3_level2_stage2_Jawa.images = [image1_Quiz3_Level2_Stage2_Jawa, image2_Quiz3_Level2_Stage2_Jawa, image3_Quiz3_Level2_Stage2_Jawa, image4_Quiz3_Level2_Stage2_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level2_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level2_Stage2_Jawa.id = 1
+        choice1_Quiz4_Level2_Stage2_Jawa.name = "Ha"
+        
+        let choice2_Quiz4_Level2_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level2_Stage2_Jawa.id = 2
+        choice2_Quiz4_Level2_Stage2_Jawa.name = "Na"
+        
+        let choice3_Quiz4_Level2_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level2_Stage2_Jawa.id = 3
+        choice3_Quiz4_Level2_Stage2_Jawa.name = "Ca"
+        
+        let choice4_Quiz4_Level2_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level2_Stage2_Jawa.id = 4
+        choice4_Quiz4_Level2_Stage2_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz4_Level2_Stage2_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz4_Level2_Stage2_Jawa.id = 1
+        image1_Quiz4_Level2_Stage2_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz4_Level2_Stage2_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz4_Level2_Stage2_Jawa.id = 2
+        image2_Quiz4_Level2_Stage2_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz4_Level2_Stage2_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz4_Level2_Stage2_Jawa.id = 3
+        image3_Quiz4_Level2_Stage2_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz4_Level2_Stage2_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz4_Level2_Stage2_Jawa.id = 4
+        image4_Quiz4_Level2_Stage2_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz4_level2_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level2_stage2_Jawa.id = 4
@@ -1100,8 +2764,8 @@ class MainViewController: UIViewController {
         quiz4_level2_stage2_Jawa.type = "C"
         quiz4_level2_stage2_Jawa.isCorrect = false
         quiz4_level2_stage2_Jawa.question = "Na"
-        quiz4_level2_stage2_Jawa.choices = []
-        quiz4_level2_stage2_Jawa.images = []
+        quiz4_level2_stage2_Jawa.choices = [choice1_Quiz4_Level2_Stage2_Jawa, choice2_Quiz4_Level2_Stage2_Jawa, choice3_Quiz4_Level2_Stage2_Jawa, choice4_Quiz4_Level2_Stage2_Jawa]
+        quiz4_level2_stage2_Jawa.images = [image1_Quiz4_Level2_Stage2_Jawa, image2_Quiz4_Level2_Stage2_Jawa, image3_Quiz4_Level2_Stage2_Jawa, image4_Quiz4_Level2_Stage2_Jawa]
         
         let quiz5_level2_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz5_level2_stage2_Jawa.id = 5
@@ -1131,14 +2795,82 @@ class MainViewController: UIViewController {
         quiz1_level3_stage2_Jawa.choices = []
         quiz1_level3_stage2_Jawa.images = []
         
+        //MARK: Choice
+        let choice1_Quiz2_Level3_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level3_Stage2_Jawa.id = 1
+        choice1_Quiz2_Level3_Stage2_Jawa.name = "Ha"
+        
+        let choice2_Quiz2_Level3_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level3_Stage2_Jawa.id = 2
+        choice2_Quiz2_Level3_Stage2_Jawa.name = "Na"
+        
+        let choice3_Quiz2_Level3_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level3_Stage2_Jawa.id = 3
+        choice3_Quiz2_Level3_Stage2_Jawa.name = "Ca"
+        
+        let choice4_Quiz2_Level3_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level3_Stage2_Jawa.id = 4
+        choice4_Quiz2_Level3_Stage2_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz2_Level3_Stage2_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz2_Level3_Stage2_Jawa.id = 1
+        image1_Quiz2_Level3_Stage2_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz2_Level3_Stage2_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz2_Level3_Stage2_Jawa.id = 2
+        image2_Quiz2_Level3_Stage2_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz2_Level3_Stage2_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz2_Level3_Stage2_Jawa.id = 3
+        image3_Quiz2_Level3_Stage2_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz2_Level3_Stage2_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz2_Level3_Stage2_Jawa.id = 4
+        image4_Quiz2_Level3_Stage2_Jawa.name = "Ra_Aksara_Jawa"
+        
         let quiz2_level3_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz2_level3_stage2_Jawa.id = 2
         quiz2_level3_stage2_Jawa.name = "Kuis 1"
         quiz2_level3_stage2_Jawa.type = "A"
         quiz2_level3_stage2_Jawa.isCorrect = false
         quiz2_level3_stage2_Jawa.question = "Ca"
-        quiz2_level3_stage2_Jawa.choices = []
-        quiz2_level3_stage2_Jawa.images = []
+        quiz2_level3_stage2_Jawa.choices = [choice1_Quiz2_Level3_Stage2_Jawa, choice1_Quiz2_Level3_Stage2_Jawa, choice1_Quiz2_Level3_Stage2_Jawa, choice1_Quiz2_Level3_Stage2_Jawa]
+        quiz2_level3_stage2_Jawa.images = [image1_Quiz2_Level3_Stage2_Jawa, image1_Quiz2_Level3_Stage2_Jawa, image1_Quiz2_Level3_Stage2_Jawa, image1_Quiz2_Level3_Stage2_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level3_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level3_Stage2_Jawa.id = 1
+        choice1_Quiz3_Level3_Stage2_Jawa.name = "Ha"
+        
+        let choice2_Quiz3_Level3_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level3_Stage2_Jawa.id = 2
+        choice2_Quiz3_Level3_Stage2_Jawa.name = "Na"
+        
+        let choice3_Quiz3_Level3_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level3_Stage2_Jawa.id = 3
+        choice3_Quiz3_Level3_Stage2_Jawa.name = "Ca"
+        
+        let choice4_Quiz3_Level3_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level3_Stage2_Jawa.id = 4
+        choice4_Quiz3_Level3_Stage2_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz3_Level3_Stage2_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz3_Level3_Stage2_Jawa.id = 1
+        image1_Quiz3_Level3_Stage2_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz3_Level3_Stage2_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz3_Level3_Stage2_Jawa.id = 2
+        image2_Quiz3_Level3_Stage2_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz3_Level3_Stage2_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz3_Level3_Stage2_Jawa.id = 3
+        image3_Quiz3_Level3_Stage2_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz3_Level3_Stage2_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz3_Level3_Stage2_Jawa.id = 4
+        image4_Quiz3_Level3_Stage2_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz3_level3_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level3_stage2_Jawa.id = 3
@@ -1146,8 +2878,42 @@ class MainViewController: UIViewController {
         quiz3_level3_stage2_Jawa.type = "B"
         quiz3_level3_stage2_Jawa.isCorrect = false
         quiz3_level3_stage2_Jawa.question = "Ca"
-        quiz3_level3_stage2_Jawa.choices = []
-        quiz3_level3_stage2_Jawa.images = []
+        quiz3_level3_stage2_Jawa.choices = [choice1_Quiz3_Level3_Stage2_Jawa, choice2_Quiz3_Level3_Stage2_Jawa, choice3_Quiz3_Level3_Stage2_Jawa, choice4_Quiz3_Level3_Stage2_Jawa]
+        quiz3_level3_stage2_Jawa.images = [image1_Quiz3_Level3_Stage2_Jawa, image2_Quiz3_Level3_Stage2_Jawa, image3_Quiz3_Level3_Stage2_Jawa, image4_Quiz3_Level3_Stage2_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level3_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level3_Stage2_Jawa.id = 1
+        choice1_Quiz4_Level3_Stage2_Jawa.name = "Ha"
+        
+        let choice2_Quiz4_Level3_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level3_Stage2_Jawa.id = 2
+        choice2_Quiz4_Level3_Stage2_Jawa.name = "Na"
+        
+        let choice3_Quiz4_Level3_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level3_Stage2_Jawa.id = 3
+        choice3_Quiz4_Level3_Stage2_Jawa.name = "Ca"
+        
+        let choice4_Quiz4_Level3_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level3_Stage2_Jawa.id = 4
+        choice4_Quiz4_Level3_Stage2_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz4_Level3_Stage2_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz4_Level3_Stage2_Jawa.id = 1
+        image1_Quiz4_Level3_Stage2_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz4_Level3_Stage2_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz4_Level3_Stage2_Jawa.id = 2
+        image2_Quiz4_Level3_Stage2_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz4_Level3_Stage2_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz4_Level3_Stage2_Jawa.id = 3
+        image3_Quiz4_Level3_Stage2_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz4_Level3_Stage2_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz4_Level3_Stage2_Jawa.id = 4
+        image4_Quiz4_Level3_Stage2_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz4_level3_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level3_stage2_Jawa.id = 4
@@ -1155,8 +2921,8 @@ class MainViewController: UIViewController {
         quiz4_level3_stage2_Jawa.type = "C"
         quiz4_level3_stage2_Jawa.isCorrect = false
         quiz4_level3_stage2_Jawa.question = "Ca"
-        quiz4_level3_stage2_Jawa.choices = []
-        quiz4_level3_stage2_Jawa.images = []
+        quiz4_level3_stage2_Jawa.choices = [choice1_Quiz4_Level3_Stage2_Jawa, choice2_Quiz4_Level3_Stage2_Jawa, choice3_Quiz4_Level3_Stage2_Jawa, choice4_Quiz4_Level3_Stage2_Jawa]
+        quiz4_level3_stage2_Jawa.images = [image1_Quiz4_Level3_Stage2_Jawa, image2_Quiz4_Level3_Stage2_Jawa, image3_Quiz4_Level3_Stage2_Jawa, image4_Quiz4_Level3_Stage2_Jawa]
         
         let quiz5_level3_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz5_level3_stage2_Jawa.id = 5
@@ -1186,14 +2952,82 @@ class MainViewController: UIViewController {
         quiz1_level4_stage2_Jawa.choices = []
         quiz1_level4_stage2_Jawa.images = []
         
+        //MARK: Choice
+        let choice1_Quiz2_Level4_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level4_Stage2_Jawa.id = 1
+        choice1_Quiz2_Level4_Stage2_Jawa.name = "Ha"
+        
+        let choice2_Quiz2_Level4_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level4_Stage2_Jawa.id = 2
+        choice2_Quiz2_Level4_Stage2_Jawa.name = "Na"
+        
+        let choice3_Quiz2_Level4_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level4_Stage2_Jawa.id = 3
+        choice3_Quiz2_Level4_Stage2_Jawa.name = "Ca"
+        
+        let choice4_Quiz2_Level4_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level4_Stage2_Jawa.id = 4
+        choice4_Quiz2_Level4_Stage2_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz2_Level4_Stage2_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz2_Level4_Stage2_Jawa.id = 1
+        image1_Quiz2_Level4_Stage2_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz2_Level4_Stage2_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz2_Level4_Stage2_Jawa.id = 2
+        image2_Quiz2_Level4_Stage2_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz2_Level4_Stage2_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz2_Level4_Stage2_Jawa.id = 3
+        image3_Quiz2_Level4_Stage2_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz2_Level4_Stage2_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz2_Level4_Stage2_Jawa.id = 4
+        image4_Quiz2_Level4_Stage2_Jawa.name = "Ra_Aksara_Jawa"
+        
         let quiz2_level4_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz2_level4_stage2_Jawa.id = 2
         quiz2_level4_stage2_Jawa.name = "Kuis 1"
         quiz2_level4_stage2_Jawa.type = "A"
         quiz2_level4_stage2_Jawa.isCorrect = false
         quiz2_level4_stage2_Jawa.question = "Ca"
-        quiz2_level4_stage2_Jawa.choices = []
-        quiz2_level4_stage2_Jawa.images = []
+        quiz2_level4_stage2_Jawa.choices = [choice1_Quiz2_Level4_Stage2_Jawa, choice2_Quiz2_Level4_Stage2_Jawa, choice3_Quiz2_Level4_Stage2_Jawa, choice4_Quiz2_Level4_Stage2_Jawa]
+        quiz2_level4_stage2_Jawa.images = [image1_Quiz2_Level4_Stage2_Jawa, image2_Quiz2_Level4_Stage2_Jawa, image3_Quiz2_Level4_Stage2_Jawa, image4_Quiz2_Level4_Stage2_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level4_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level4_Stage2_Jawa.id = 1
+        choice1_Quiz3_Level4_Stage2_Jawa.name = "Ha"
+        
+        let choice2_Quiz3_Level4_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level4_Stage2_Jawa.id = 2
+        choice2_Quiz3_Level4_Stage2_Jawa.name = "Na"
+        
+        let choice3_Quiz3_Level4_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level4_Stage2_Jawa.id = 3
+        choice3_Quiz3_Level4_Stage2_Jawa.name = "Ca"
+        
+        let choice4_Quiz3_Level4_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level4_Stage2_Jawa.id = 4
+        choice4_Quiz3_Level4_Stage2_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz3_Level4_Stage2_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz3_Level4_Stage2_Jawa.id = 1
+        image1_Quiz3_Level4_Stage2_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz3_Level4_Stage2_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz3_Level4_Stage2_Jawa.id = 2
+        image2_Quiz3_Level4_Stage2_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz3_Level4_Stage2_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz3_Level4_Stage2_Jawa.id = 3
+        image3_Quiz3_Level4_Stage2_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz3_Level4_Stage2_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz3_Level4_Stage2_Jawa.id = 4
+        image4_Quiz3_Level4_Stage2_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz3_level4_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level4_stage2_Jawa.id = 3
@@ -1201,8 +3035,42 @@ class MainViewController: UIViewController {
         quiz3_level4_stage2_Jawa.type = "B"
         quiz3_level4_stage2_Jawa.isCorrect = false
         quiz3_level4_stage2_Jawa.question = "Ca"
-        quiz3_level4_stage2_Jawa.choices = []
-        quiz3_level4_stage2_Jawa.images = []
+        quiz3_level4_stage2_Jawa.choices = [choice1_Quiz3_Level4_Stage2_Jawa, choice2_Quiz3_Level4_Stage2_Jawa, choice3_Quiz3_Level4_Stage2_Jawa, choice4_Quiz3_Level4_Stage2_Jawa]
+        quiz3_level4_stage2_Jawa.images = [image1_Quiz3_Level4_Stage2_Jawa, image2_Quiz3_Level4_Stage2_Jawa, image3_Quiz3_Level4_Stage2_Jawa, image4_Quiz3_Level4_Stage2_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level4_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level4_Stage2_Jawa.id = 1
+        choice1_Quiz4_Level4_Stage2_Jawa.name = "Ha"
+        
+        let choice2_Quiz4_Level4_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level4_Stage2_Jawa.id = 2
+        choice2_Quiz4_Level4_Stage2_Jawa.name = "Na"
+        
+        let choice3_Quiz4_Level4_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level4_Stage2_Jawa.id = 3
+        choice3_Quiz4_Level4_Stage2_Jawa.name = "Ca"
+        
+        let choice4_Quiz4_Level4_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level4_Stage2_Jawa.id = 4
+        choice4_Quiz4_Level4_Stage2_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz4_Level4_Stage2_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz4_Level4_Stage2_Jawa.id = 1
+        image1_Quiz4_Level4_Stage2_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz4_Level4_Stage2_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz4_Level4_Stage2_Jawa.id = 2
+        image2_Quiz4_Level4_Stage2_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz4_Level4_Stage2_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz4_Level4_Stage2_Jawa.id = 3
+        image3_Quiz4_Level4_Stage2_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz4_Level4_Stage2_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz4_Level4_Stage2_Jawa.id = 4
+        image4_Quiz4_Level4_Stage2_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz4_level4_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level4_stage2_Jawa.id = 4
@@ -1210,8 +3078,8 @@ class MainViewController: UIViewController {
         quiz4_level4_stage2_Jawa.type = "C"
         quiz4_level4_stage2_Jawa.isCorrect = false
         quiz4_level4_stage2_Jawa.question = "Ca"
-        quiz4_level4_stage2_Jawa.choices = []
-        quiz4_level4_stage2_Jawa.images = []
+        quiz4_level4_stage2_Jawa.choices = [choice1_Quiz4_Level4_Stage2_Jawa, choice2_Quiz4_Level4_Stage2_Jawa, choice3_Quiz4_Level4_Stage2_Jawa, choice4_Quiz4_Level4_Stage2_Jawa]
+        quiz4_level4_stage2_Jawa.images = [image1_Quiz4_Level4_Stage2_Jawa, image2_Quiz4_Level4_Stage2_Jawa, image3_Quiz4_Level4_Stage2_Jawa, image4_Quiz4_Level4_Stage2_Jawa]
         
         let quiz5_level4_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz5_level4_stage2_Jawa.id = 5
@@ -1241,14 +3109,82 @@ class MainViewController: UIViewController {
         quiz1_level5_stage2_Jawa.choices = []
         quiz1_level5_stage2_Jawa.images = []
         
+        //MARK: Choice
+        let choice1_Quiz2_Level5_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level5_Stage2_Jawa.id = 1
+        choice1_Quiz2_Level5_Stage2_Jawa.name = "Ha"
+        
+        let choice2_Quiz2_Level5_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level5_Stage2_Jawa.id = 2
+        choice2_Quiz2_Level5_Stage2_Jawa.name = "Na"
+        
+        let choice3_Quiz2_Level5_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level5_Stage2_Jawa.id = 3
+        choice3_Quiz2_Level5_Stage2_Jawa.name = "Ca"
+        
+        let choice4_Quiz2_Level5_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level5_Stage2_Jawa.id = 4
+        choice4_Quiz2_Level5_Stage2_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz2_Level5_Stage2_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz2_Level5_Stage2_Jawa.id = 1
+        image1_Quiz2_Level5_Stage2_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz2_Level5_Stage2_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz2_Level5_Stage2_Jawa.id = 2
+        image2_Quiz2_Level5_Stage2_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz2_Level5_Stage2_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz2_Level5_Stage2_Jawa.id = 3
+        image3_Quiz2_Level5_Stage2_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz2_Level5_Stage2_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz2_Level5_Stage2_Jawa.id = 4
+        image4_Quiz2_Level5_Stage2_Jawa.name = "Ra_Aksara_Jawa"
+        
         let quiz2_level5_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz2_level5_stage2_Jawa.id = 2
         quiz2_level5_stage1_Jawa.name = "Kuis 1"
         quiz2_level5_stage1_Jawa.type = "A"
         quiz2_level5_stage1_Jawa.isCorrect = false
         quiz2_level5_stage1_Jawa.question = "Ca"
-        quiz2_level5_stage1_Jawa.choices = []
-        quiz2_level5_stage1_Jawa.images = []
+        quiz2_level5_stage1_Jawa.choices = [choice1_Quiz2_Level5_Stage2_Jawa, choice2_Quiz2_Level5_Stage2_Jawa, choice3_Quiz2_Level5_Stage2_Jawa, choice4_Quiz2_Level5_Stage2_Jawa]
+        quiz2_level5_stage1_Jawa.images = [image1_Quiz2_Level5_Stage2_Jawa, image2_Quiz2_Level5_Stage2_Jawa, image3_Quiz2_Level5_Stage2_Jawa, image4_Quiz2_Level5_Stage2_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level5_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level5_Stage2_Jawa.id = 1
+        choice1_Quiz3_Level5_Stage2_Jawa.name = "Ha"
+        
+        let choice2_Quiz3_Level5_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level5_Stage2_Jawa.id = 2
+        choice2_Quiz3_Level5_Stage2_Jawa.name = "Na"
+        
+        let choice3_Quiz3_Level5_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level5_Stage2_Jawa.id = 3
+        choice3_Quiz3_Level5_Stage2_Jawa.name = "Ca"
+        
+        let choice4_Quiz3_Level5_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level5_Stage2_Jawa.id = 4
+        choice4_Quiz3_Level5_Stage2_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz3_Level5_Stage2_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz3_Level5_Stage2_Jawa.id = 1
+        image1_Quiz3_Level5_Stage2_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz3_Level5_Stage2_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz3_Level5_Stage2_Jawa.id = 2
+        image2_Quiz3_Level5_Stage2_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz3_Level5_Stage2_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz3_Level5_Stage2_Jawa.id = 3
+        image3_Quiz3_Level5_Stage2_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz3_Level5_Stage2_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz3_Level5_Stage2_Jawa.id = 4
+        image4_Quiz3_Level5_Stage2_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz3_level5_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level5_stage2_Jawa.id = 3
@@ -1256,8 +3192,42 @@ class MainViewController: UIViewController {
         quiz3_level5_stage2_Jawa.type = "B"
         quiz3_level5_stage2_Jawa.isCorrect = false
         quiz3_level5_stage2_Jawa.question = "Ca"
-        quiz3_level5_stage2_Jawa.choices = []
-        quiz3_level5_stage2_Jawa.images = []
+        quiz3_level5_stage2_Jawa.choices = [choice1_Quiz3_Level5_Stage2_Jawa, choice2_Quiz3_Level5_Stage2_Jawa, choice3_Quiz3_Level5_Stage2_Jawa, choice4_Quiz3_Level5_Stage2_Jawa]
+        quiz3_level5_stage2_Jawa.images = [image1_Quiz3_Level5_Stage2_Jawa, image2_Quiz3_Level5_Stage2_Jawa, image3_Quiz3_Level5_Stage2_Jawa, image4_Quiz3_Level5_Stage2_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level5_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level5_Stage2_Jawa.id = 1
+        choice1_Quiz4_Level5_Stage2_Jawa.name = "Ha"
+        
+        let choice2_Quiz4_Level5_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level5_Stage2_Jawa.id = 2
+        choice2_Quiz4_Level5_Stage2_Jawa.name = "Na"
+        
+        let choice3_Quiz4_Level5_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level5_Stage2_Jawa.id = 3
+        choice3_Quiz4_Level5_Stage2_Jawa.name = "Ca"
+        
+        let choice4_Quiz4_Level5_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level5_Stage2_Jawa.id = 4
+        choice4_Quiz4_Level5_Stage2_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz4_Level5_Stage2_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz4_Level5_Stage2_Jawa.id = 1
+        image1_Quiz4_Level5_Stage2_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz4_Level5_Stage2_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz4_Level5_Stage2_Jawa.id = 2
+        image2_Quiz4_Level5_Stage2_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz4_Level5_Stage2_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz4_Level5_Stage2_Jawa.id = 3
+        image3_Quiz4_Level5_Stage2_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz4_Level5_Stage2_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz4_Level5_Stage2_Jawa.id = 4
+        image4_Quiz4_Level5_Stage2_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz4_level5_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level5_stage2_Jawa.id = 4
@@ -1265,8 +3235,8 @@ class MainViewController: UIViewController {
         quiz4_level5_stage2_Jawa.type = "C"
         quiz4_level5_stage2_Jawa.isCorrect = false
         quiz4_level5_stage2_Jawa.question = "Ca"
-        quiz4_level5_stage2_Jawa.choices = []
-        quiz4_level5_stage2_Jawa.images = []
+        quiz4_level5_stage2_Jawa.choices = [choice1_Quiz4_Level5_Stage2_Jawa, choice2_Quiz4_Level5_Stage2_Jawa, choice3_Quiz4_Level5_Stage2_Jawa, choice4_Quiz4_Level5_Stage2_Jawa]
+        quiz4_level5_stage2_Jawa.images = [image1_Quiz4_Level5_Stage2_Jawa, image2_Quiz4_Level5_Stage2_Jawa, image3_Quiz4_Level5_Stage2_Jawa, image4_Quiz4_Level5_Stage2_Jawa]
         
         let quiz5_level5_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz5_level5_stage2_Jawa.id = 5
@@ -1296,14 +3266,82 @@ class MainViewController: UIViewController {
         quiz1_level6_stage2_Jawa.choices = []
         quiz1_level6_stage2_Jawa.images = []
         
+        //MARK: Choice
+        let choice1_Quiz2_Level6_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level6_Stage2_Jawa.id = 1
+        choice1_Quiz2_Level6_Stage2_Jawa.name = "Ha"
+        
+        let choice2_Quiz2_Level6_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level6_Stage2_Jawa.id = 2
+        choice2_Quiz2_Level6_Stage2_Jawa.name = "Na"
+        
+        let choice3_Quiz2_Level6_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level6_Stage2_Jawa.id = 3
+        choice3_Quiz2_Level6_Stage2_Jawa.name = "Ca"
+        
+        let choice4_Quiz2_Level6_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level6_Stage2_Jawa.id = 4
+        choice4_Quiz2_Level6_Stage2_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz2_Level6_Stage2_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz2_Level6_Stage2_Jawa.id = 1
+        image1_Quiz2_Level6_Stage2_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz2_Level6_Stage2_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz2_Level6_Stage2_Jawa.id = 2
+        image2_Quiz2_Level6_Stage2_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz2_Level6_Stage2_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz2_Level6_Stage2_Jawa.id = 3
+        image3_Quiz2_Level6_Stage2_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz2_Level6_Stage2_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz2_Level6_Stage2_Jawa.id = 4
+        image4_Quiz2_Level6_Stage2_Jawa.name = "Ra_Aksara_Jawa"
+        
         let quiz2_level6_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz2_level6_stage2_Jawa.id = 2
         quiz2_level6_stage2_Jawa.name = "Kuis 1"
         quiz2_level6_stage2_Jawa.type = "A"
         quiz2_level6_stage2_Jawa.isCorrect = false
         quiz2_level6_stage2_Jawa.question = "Ca"
-        quiz2_level6_stage2_Jawa.choices = []
-        quiz2_level6_stage2_Jawa.images = []
+        quiz2_level6_stage2_Jawa.choices = [choice1_Quiz2_Level6_Stage2_Jawa, choice2_Quiz2_Level6_Stage2_Jawa, choice3_Quiz2_Level6_Stage2_Jawa, choice4_Quiz2_Level6_Stage2_Jawa]
+        quiz2_level6_stage2_Jawa.images = [image1_Quiz2_Level6_Stage2_Jawa, image2_Quiz2_Level6_Stage2_Jawa, image3_Quiz2_Level6_Stage2_Jawa, image4_Quiz2_Level6_Stage2_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level6_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level6_Stage2_Jawa.id = 1
+        choice1_Quiz3_Level6_Stage2_Jawa.name = "Ha"
+        
+        let choice2_Quiz3_Level6_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level6_Stage2_Jawa.id = 2
+        choice2_Quiz3_Level6_Stage2_Jawa.name = "Na"
+        
+        let choice3_Quiz3_Level6_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level6_Stage2_Jawa.id = 3
+        choice3_Quiz3_Level6_Stage2_Jawa.name = "Ca"
+        
+        let choice4_Quiz3_Level6_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level6_Stage2_Jawa.id = 4
+        choice4_Quiz3_Level6_Stage2_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz3_Level6_Stage2_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz3_Level6_Stage2_Jawa.id = 1
+        image1_Quiz3_Level6_Stage2_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz3_Level6_Stage2_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz3_Level6_Stage2_Jawa.id = 2
+        image2_Quiz3_Level6_Stage2_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz3_Level6_Stage2_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz3_Level6_Stage2_Jawa.id = 3
+        image3_Quiz3_Level6_Stage2_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz3_Level6_Stage2_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz3_Level6_Stage2_Jawa.id = 4
+        image4_Quiz3_Level6_Stage2_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz3_level6_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level6_stage2_Jawa.id = 3
@@ -1311,8 +3349,42 @@ class MainViewController: UIViewController {
         quiz3_level6_stage2_Jawa.type = "B"
         quiz3_level6_stage2_Jawa.isCorrect = false
         quiz3_level6_stage2_Jawa.question = "Ca"
-        quiz3_level6_stage2_Jawa.choices = []
-        quiz3_level6_stage2_Jawa.images = []
+        quiz3_level6_stage2_Jawa.choices = [choice1_Quiz3_Level6_Stage2_Jawa, choice2_Quiz3_Level6_Stage2_Jawa, choice3_Quiz3_Level6_Stage2_Jawa, choice4_Quiz3_Level6_Stage2_Jawa]
+        quiz3_level6_stage2_Jawa.images = [image1_Quiz3_Level6_Stage2_Jawa, image2_Quiz3_Level6_Stage2_Jawa, image3_Quiz3_Level6_Stage2_Jawa, image4_Quiz3_Level6_Stage2_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level6_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level6_Stage2_Jawa.id = 1
+        choice1_Quiz4_Level6_Stage2_Jawa.name = "Ha"
+        
+        let choice2_Quiz4_Level6_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level6_Stage2_Jawa.id = 2
+        choice2_Quiz4_Level6_Stage2_Jawa.name = "Na"
+        
+        let choice3_Quiz4_Level6_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level6_Stage2_Jawa.id = 3
+        choice3_Quiz4_Level6_Stage2_Jawa.name = "Ca"
+        
+        let choice4_Quiz4_Level6_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level6_Stage2_Jawa.id = 4
+        choice4_Quiz4_Level6_Stage2_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz4_Level6_Stage2_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz4_Level6_Stage2_Jawa.id = 1
+        image1_Quiz4_Level6_Stage2_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz4_Level6_Stage2_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz4_Level6_Stage2_Jawa.id = 2
+        image2_Quiz4_Level6_Stage2_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz4_Level6_Stage2_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz4_Level6_Stage2_Jawa.id = 3
+        image3_Quiz4_Level6_Stage2_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz4_Level6_Stage2_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz4_Level6_Stage2_Jawa.id = 4
+        image4_Quiz4_Level6_Stage2_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz4_level6_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level6_stage2_Jawa.id = 4
@@ -1320,8 +3392,8 @@ class MainViewController: UIViewController {
         quiz4_level6_stage2_Jawa.type = "C"
         quiz4_level6_stage2_Jawa.isCorrect = false
         quiz4_level6_stage2_Jawa.question = "Ca"
-        quiz4_level6_stage2_Jawa.choices = []
-        quiz4_level6_stage2_Jawa.images = []
+        quiz4_level6_stage2_Jawa.choices = [choice1_Quiz4_Level6_Stage2_Jawa, choice2_Quiz4_Level6_Stage2_Jawa, choice3_Quiz4_Level6_Stage2_Jawa, choice4_Quiz4_Level6_Stage2_Jawa]
+        quiz4_level6_stage2_Jawa.images = [image1_Quiz4_Level6_Stage2_Jawa, image2_Quiz4_Level6_Stage2_Jawa, image3_Quiz4_Level6_Stage2_Jawa, image4_Quiz4_Level6_Stage2_Jawa]
         
         let quiz5_level6_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz5_level6_stage2_Jawa.id = 5
@@ -1351,14 +3423,82 @@ class MainViewController: UIViewController {
         quiz1_level7_stage2_Jawa.choices = []
         quiz1_level7_stage2_Jawa.images = []
         
+        //MARK: Choice
+        let choice1_Quiz2_Level7_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level7_Stage2_Jawa.id = 1
+        choice1_Quiz2_Level7_Stage2_Jawa.name = "Ha"
+        
+        let choice2_Quiz2_Level7_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level7_Stage2_Jawa.id = 2
+        choice2_Quiz2_Level7_Stage2_Jawa.name = "Na"
+        
+        let choice3_Quiz2_Level7_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level7_Stage2_Jawa.id = 3
+        choice3_Quiz2_Level7_Stage2_Jawa.name = "Ca"
+        
+        let choice4_Quiz2_Level7_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level7_Stage2_Jawa.id = 4
+        choice4_Quiz2_Level7_Stage2_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz2_Level7_Stage2_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz2_Level7_Stage2_Jawa.id = 1
+        image1_Quiz2_Level7_Stage2_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz2_Level7_Stage2_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz2_Level7_Stage2_Jawa.id = 2
+        image2_Quiz2_Level7_Stage2_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz2_Level7_Stage2_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz2_Level7_Stage2_Jawa.id = 3
+        image3_Quiz2_Level7_Stage2_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz2_Level7_Stage2_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz2_Level7_Stage2_Jawa.id = 4
+        image4_Quiz2_Level7_Stage2_Jawa.name = "Ra_Aksara_Jawa"
+        
         let quiz2_level7_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz2_level7_stage2_Jawa.id = 2
         quiz2_level7_stage2_Jawa.name = "Kuis 1"
         quiz2_level7_stage2_Jawa.type = "A"
         quiz2_level7_stage2_Jawa.isCorrect = false
         quiz2_level7_stage2_Jawa.question = "Ca"
-        quiz2_level7_stage2_Jawa.choices = []
-        quiz2_level7_stage2_Jawa.images = []
+        quiz2_level7_stage2_Jawa.choices = [choice1_Quiz2_Level7_Stage2_Jawa, choice2_Quiz2_Level7_Stage2_Jawa, choice3_Quiz2_Level7_Stage2_Jawa, choice4_Quiz2_Level7_Stage2_Jawa]
+        quiz2_level7_stage2_Jawa.images = [image1_Quiz2_Level7_Stage2_Jawa, image2_Quiz2_Level7_Stage2_Jawa, image3_Quiz2_Level7_Stage2_Jawa, image4_Quiz2_Level7_Stage2_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level7_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level7_Stage2_Jawa.id = 1
+        choice1_Quiz3_Level7_Stage2_Jawa.name = "Ha"
+        
+        let choice2_Quiz3_Level7_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level7_Stage2_Jawa.id = 2
+        choice2_Quiz3_Level7_Stage2_Jawa.name = "Na"
+        
+        let choice3_Quiz3_Level7_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level7_Stage2_Jawa.id = 3
+        choice3_Quiz3_Level7_Stage2_Jawa.name = "Ca"
+        
+        let choice4_Quiz3_Level7_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level7_Stage2_Jawa.id = 4
+        choice4_Quiz3_Level7_Stage2_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz3_Level7_Stage2_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz3_Level7_Stage2_Jawa.id = 1
+        image1_Quiz3_Level7_Stage2_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz3_Level7_Stage2_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz3_Level7_Stage2_Jawa.id = 2
+        image2_Quiz3_Level7_Stage2_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz3_Level7_Stage2_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz3_Level7_Stage2_Jawa.id = 3
+        image3_Quiz3_Level7_Stage2_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz3_Level7_Stage2_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz3_Level7_Stage2_Jawa.id = 4
+        image4_Quiz3_Level7_Stage2_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz3_level7_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level7_stage2_Jawa.id = 3
@@ -1366,8 +3506,42 @@ class MainViewController: UIViewController {
         quiz3_level7_stage2_Jawa.type = "B"
         quiz3_level7_stage2_Jawa.isCorrect = false
         quiz3_level7_stage2_Jawa.question = "Ca"
-        quiz3_level7_stage2_Jawa.choices = []
-        quiz3_level7_stage2_Jawa.images = []
+        quiz3_level7_stage2_Jawa.choices = [choice1_Quiz3_Level7_Stage2_Jawa, choice2_Quiz3_Level7_Stage2_Jawa, choice3_Quiz3_Level7_Stage2_Jawa, choice4_Quiz3_Level7_Stage2_Jawa]
+        quiz3_level7_stage2_Jawa.images = [image1_Quiz3_Level7_Stage2_Jawa, image2_Quiz3_Level7_Stage2_Jawa, image3_Quiz3_Level7_Stage2_Jawa, image4_Quiz3_Level7_Stage2_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level7_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level7_Stage2_Jawa.id = 1
+        choice1_Quiz4_Level7_Stage2_Jawa.name = "Ha"
+        
+        let choice2_Quiz4_Level7_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level7_Stage2_Jawa.id = 2
+        choice2_Quiz4_Level7_Stage2_Jawa.name = "Na"
+        
+        let choice3_Quiz4_Level7_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level7_Stage2_Jawa.id = 3
+        choice3_Quiz4_Level7_Stage2_Jawa.name = "Ca"
+        
+        let choice4_Quiz4_Level7_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level7_Stage2_Jawa.id = 4
+        choice4_Quiz4_Level7_Stage2_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz4_Level7_Stage2_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz4_Level7_Stage2_Jawa.id = 1
+        image1_Quiz4_Level7_Stage2_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz4_Level7_Stage2_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz4_Level7_Stage2_Jawa.id = 2
+        image2_Quiz4_Level7_Stage2_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz4_Level7_Stage2_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz4_Level7_Stage2_Jawa.id = 3
+        image3_Quiz4_Level7_Stage2_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz4_Level7_Stage2_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz4_Level7_Stage2_Jawa.id = 4
+        image4_Quiz4_Level7_Stage2_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz4_level7_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level7_stage2_Jawa.id = 4
@@ -1375,8 +3549,8 @@ class MainViewController: UIViewController {
         quiz4_level7_stage2_Jawa.type = "C"
         quiz4_level7_stage2_Jawa.isCorrect = false
         quiz4_level7_stage2_Jawa.question = "Ca"
-        quiz4_level7_stage2_Jawa.choices = []
-        quiz4_level7_stage2_Jawa.images = []
+        quiz4_level7_stage2_Jawa.choices = [choice1_Quiz4_Level7_Stage2_Jawa, choice2_Quiz4_Level7_Stage2_Jawa, choice3_Quiz4_Level7_Stage2_Jawa, choice4_Quiz4_Level7_Stage2_Jawa]
+        quiz4_level7_stage2_Jawa.images = [image1_Quiz4_Level7_Stage2_Jawa, image2_Quiz4_Level7_Stage2_Jawa, image3_Quiz4_Level7_Stage2_Jawa, image4_Quiz4_Level7_Stage2_Jawa]
         
         let quiz5_level7_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz5_level7_stage2_Jawa.id = 5
@@ -1406,14 +3580,82 @@ class MainViewController: UIViewController {
         quiz1_level8_stage2_Jawa.choices = []
         quiz1_level8_stage2_Jawa.images = []
         
+        //MARK: Choice
+        let choice1_Quiz2_Level8_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level8_Stage2_Jawa.id = 1
+        choice1_Quiz2_Level8_Stage2_Jawa.name = "Ha"
+        
+        let choice2_Quiz2_Level8_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level8_Stage2_Jawa.id = 2
+        choice2_Quiz2_Level8_Stage2_Jawa.name = "Na"
+        
+        let choice3_Quiz2_Level8_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level8_Stage2_Jawa.id = 3
+        choice3_Quiz2_Level8_Stage2_Jawa.name = "Ca"
+        
+        let choice4_Quiz2_Level8_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level8_Stage2_Jawa.id = 4
+        choice4_Quiz2_Level8_Stage2_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz2_Level8_Stage2_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz2_Level8_Stage2_Jawa.id = 1
+        image1_Quiz2_Level8_Stage2_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz2_Level8_Stage2_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz2_Level8_Stage2_Jawa.id = 2
+        image2_Quiz2_Level8_Stage2_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz2_Level8_Stage2_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz2_Level8_Stage2_Jawa.id = 3
+        image3_Quiz2_Level8_Stage2_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz2_Level8_Stage2_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz2_Level8_Stage2_Jawa.id = 4
+        image4_Quiz2_Level8_Stage2_Jawa.name = "Ra_Aksara_Jawa"
+        
         let quiz2_level8_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz2_level8_stage2_Jawa.id = 2
         quiz2_level8_stage2_Jawa.name = "Kuis 1"
         quiz2_level8_stage2_Jawa.type = "A"
         quiz2_level8_stage2_Jawa.isCorrect = false
         quiz2_level8_stage2_Jawa.question = "Ca"
-        quiz2_level8_stage2_Jawa.choices = []
-        quiz2_level8_stage2_Jawa.images = []
+        quiz2_level8_stage2_Jawa.choices = [choice1_Quiz2_Level8_Stage2_Jawa, choice2_Quiz2_Level8_Stage2_Jawa, choice3_Quiz2_Level8_Stage2_Jawa, choice4_Quiz2_Level8_Stage2_Jawa]
+        quiz2_level8_stage2_Jawa.images = [image1_Quiz2_Level8_Stage2_Jawa, image2_Quiz2_Level8_Stage2_Jawa, image3_Quiz2_Level8_Stage2_Jawa, image4_Quiz2_Level8_Stage2_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level8_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level8_Stage2_Jawa.id = 1
+        choice1_Quiz3_Level8_Stage2_Jawa.name = "Ha"
+        
+        let choice2_Quiz3_Level8_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level8_Stage2_Jawa.id = 2
+        choice2_Quiz3_Level8_Stage2_Jawa.name = "Na"
+        
+        let choice3_Quiz3_Level8_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level8_Stage2_Jawa.id = 3
+        choice3_Quiz3_Level8_Stage2_Jawa.name = "Ca"
+        
+        let choice4_Quiz3_Level8_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level8_Stage2_Jawa.id = 4
+        choice4_Quiz3_Level8_Stage2_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz3_Level8_Stage2_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz3_Level8_Stage2_Jawa.id = 1
+        image1_Quiz3_Level8_Stage2_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz3_Level8_Stage2_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz3_Level8_Stage2_Jawa.id = 2
+        image2_Quiz3_Level8_Stage2_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz3_Level8_Stage2_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz3_Level8_Stage2_Jawa.id = 3
+        image3_Quiz3_Level8_Stage2_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz3_Level8_Stage2_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz3_Level8_Stage2_Jawa.id = 4
+        image4_Quiz3_Level8_Stage2_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz3_level8_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level8_stage2_Jawa.id = 3
@@ -1421,8 +3663,42 @@ class MainViewController: UIViewController {
         quiz3_level8_stage2_Jawa.type = "B"
         quiz3_level8_stage2_Jawa.isCorrect = false
         quiz3_level8_stage2_Jawa.question = "Ca"
-        quiz3_level8_stage2_Jawa.choices = []
-        quiz3_level8_stage2_Jawa.images = []
+        quiz3_level8_stage2_Jawa.choices = [choice1_Quiz3_Level8_Stage2_Jawa, choice2_Quiz3_Level8_Stage2_Jawa, choice3_Quiz3_Level8_Stage2_Jawa, choice4_Quiz3_Level8_Stage2_Jawa]
+        quiz3_level8_stage2_Jawa.images = [image1_Quiz3_Level8_Stage2_Jawa, image2_Quiz3_Level8_Stage2_Jawa, image3_Quiz3_Level8_Stage2_Jawa, image4_Quiz3_Level8_Stage2_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level8_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level8_Stage2_Jawa.id = 1
+        choice1_Quiz4_Level8_Stage2_Jawa.name = "Ha"
+        
+        let choice2_Quiz4_Level8_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level8_Stage2_Jawa.id = 2
+        choice2_Quiz4_Level8_Stage2_Jawa.name = "Na"
+        
+        let choice3_Quiz4_Level8_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level8_Stage2_Jawa.id = 3
+        choice3_Quiz4_Level8_Stage2_Jawa.name = "Ca"
+        
+        let choice4_Quiz4_Level8_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level8_Stage2_Jawa.id = 4
+        choice4_Quiz4_Level8_Stage2_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz4_Level8_Stage2_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz4_Level8_Stage2_Jawa.id = 1
+        image1_Quiz4_Level8_Stage2_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz4_Level8_Stage2_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz4_Level8_Stage2_Jawa.id = 2
+        image2_Quiz4_Level8_Stage2_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz4_Level8_Stage2_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz4_Level8_Stage2_Jawa.id = 3
+        image3_Quiz4_Level8_Stage2_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz4_Level8_Stage2_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz4_Level8_Stage2_Jawa.id = 4
+        image4_Quiz4_Level8_Stage2_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz4_level8_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level8_stage2_Jawa.id = 4
@@ -1430,8 +3706,8 @@ class MainViewController: UIViewController {
         quiz4_level8_stage2_Jawa.type = "C"
         quiz4_level8_stage2_Jawa.isCorrect = false
         quiz4_level8_stage2_Jawa.question = "Ca"
-        quiz4_level8_stage2_Jawa.choices = []
-        quiz4_level8_stage2_Jawa.images = []
+        quiz4_level8_stage2_Jawa.choices = [choice1_Quiz4_Level8_Stage2_Jawa, choice2_Quiz4_Level8_Stage2_Jawa, choice3_Quiz4_Level8_Stage2_Jawa, choice4_Quiz4_Level8_Stage2_Jawa]
+        quiz4_level8_stage2_Jawa.images = [image1_Quiz4_Level8_Stage2_Jawa, image2_Quiz4_Level8_Stage2_Jawa, image3_Quiz4_Level8_Stage2_Jawa, image4_Quiz4_Level8_Stage2_Jawa]
         
         let quiz5_level8_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz5_level8_stage2_Jawa.id = 5
@@ -1461,14 +3737,82 @@ class MainViewController: UIViewController {
         quiz1_level9_stage2_Jawa.choices = []
         quiz1_level9_stage2_Jawa.images = []
         
+        //MARK: Choice
+        let choice1_Quiz2_Level9_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level9_Stage2_Jawa.id = 1
+        choice1_Quiz2_Level9_Stage2_Jawa.name = "Ha"
+        
+        let choice2_Quiz2_Level9_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level9_Stage2_Jawa.id = 2
+        choice2_Quiz2_Level9_Stage2_Jawa.name = "Na"
+        
+        let choice3_Quiz2_Level9_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level9_Stage2_Jawa.id = 3
+        choice3_Quiz2_Level9_Stage2_Jawa.name = "Ca"
+        
+        let choice4_Quiz2_Level9_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level9_Stage2_Jawa.id = 4
+        choice4_Quiz2_Level9_Stage2_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz2_Level9_Stage2_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz2_Level9_Stage2_Jawa.id = 1
+        image1_Quiz2_Level9_Stage2_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz2_Level9_Stage2_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz2_Level9_Stage2_Jawa.id = 2
+        image2_Quiz2_Level9_Stage2_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz2_Level9_Stage2_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz2_Level9_Stage2_Jawa.id = 3
+        image3_Quiz2_Level9_Stage2_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz2_Level9_Stage2_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz2_Level9_Stage2_Jawa.id = 4
+        image4_Quiz2_Level9_Stage2_Jawa.name = "Ra_Aksara_Jawa"
+        
         let quiz2_level9_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz2_level9_stage2_Jawa.id = 2
         quiz2_level9_stage2_Jawa.name = "Kuis 1"
         quiz2_level9_stage2_Jawa.type = "A"
         quiz2_level9_stage2_Jawa.isCorrect = false
         quiz2_level9_stage2_Jawa.question = "Ca"
-        quiz2_level9_stage2_Jawa.choices = []
-        quiz2_level9_stage2_Jawa.images = []
+        quiz2_level9_stage2_Jawa.choices = [choice1_Quiz2_Level9_Stage2_Jawa, choice2_Quiz2_Level9_Stage2_Jawa, choice3_Quiz2_Level9_Stage2_Jawa, choice4_Quiz2_Level9_Stage2_Jawa]
+        quiz2_level9_stage2_Jawa.images = [image1_Quiz2_Level9_Stage2_Jawa, image2_Quiz2_Level9_Stage2_Jawa, image3_Quiz2_Level9_Stage2_Jawa, image4_Quiz2_Level9_Stage2_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level9_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level9_Stage2_Jawa.id = 1
+        choice1_Quiz3_Level9_Stage2_Jawa.name = "Ha"
+        
+        let choice2_Quiz3_Level9_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level9_Stage2_Jawa.id = 2
+        choice2_Quiz3_Level9_Stage2_Jawa.name = "Na"
+        
+        let choice3_Quiz3_Level9_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level9_Stage2_Jawa.id = 3
+        choice3_Quiz3_Level9_Stage2_Jawa.name = "Ca"
+        
+        let choice4_Quiz3_Level9_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level9_Stage2_Jawa.id = 4
+        choice4_Quiz3_Level9_Stage2_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz3_Level9_Stage2_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz3_Level9_Stage2_Jawa.id = 1
+        image1_Quiz3_Level9_Stage2_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz3_Level9_Stage2_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz3_Level9_Stage2_Jawa.id = 2
+        image2_Quiz3_Level9_Stage2_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz3_Level9_Stage2_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz3_Level9_Stage2_Jawa.id = 3
+        image3_Quiz3_Level9_Stage2_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz3_Level9_Stage2_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz3_Level9_Stage2_Jawa.id = 4
+        image4_Quiz3_Level9_Stage2_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz3_level9_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level9_stage2_Jawa.id = 3
@@ -1476,8 +3820,42 @@ class MainViewController: UIViewController {
         quiz3_level9_stage2_Jawa.type = "B"
         quiz3_level9_stage2_Jawa.isCorrect = false
         quiz3_level9_stage2_Jawa.question = "Ca"
-        quiz3_level9_stage2_Jawa.choices = []
-        quiz3_level9_stage2_Jawa.images = []
+        quiz3_level9_stage2_Jawa.choices = [choice1_Quiz3_Level9_Stage2_Jawa, choice2_Quiz3_Level9_Stage2_Jawa, choice3_Quiz3_Level9_Stage2_Jawa, choice4_Quiz3_Level9_Stage2_Jawa]
+        quiz3_level9_stage2_Jawa.images = [image1_Quiz3_Level9_Stage2_Jawa, image2_Quiz3_Level9_Stage2_Jawa, image3_Quiz3_Level9_Stage2_Jawa, image4_Quiz3_Level9_Stage2_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level9_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level9_Stage2_Jawa.id = 1
+        choice1_Quiz4_Level9_Stage2_Jawa.name = "Ha"
+        
+        let choice2_Quiz4_Level9_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level9_Stage2_Jawa.id = 2
+        choice2_Quiz4_Level9_Stage2_Jawa.name = "Na"
+        
+        let choice3_Quiz4_Level9_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level9_Stage2_Jawa.id = 3
+        choice3_Quiz4_Level9_Stage2_Jawa.name = "Ca"
+        
+        let choice4_Quiz4_Level9_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level9_Stage2_Jawa.id = 4
+        choice4_Quiz4_Level9_Stage2_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz4_Level9_Stage2_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz4_Level9_Stage2_Jawa.id = 1
+        image1_Quiz4_Level9_Stage2_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz4_Level9_Stage2_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz4_Level9_Stage2_Jawa.id = 2
+        image2_Quiz4_Level9_Stage2_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz4_Level9_Stage2_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz4_Level9_Stage2_Jawa.id = 3
+        image3_Quiz4_Level9_Stage2_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz4_Level9_Stage2_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz4_Level9_Stage2_Jawa.id = 4
+        image4_Quiz4_Level9_Stage2_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz4_level9_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level9_stage2_Jawa.id = 4
@@ -1485,8 +3863,8 @@ class MainViewController: UIViewController {
         quiz4_level9_stage2_Jawa.type = "C"
         quiz4_level9_stage2_Jawa.isCorrect = false
         quiz4_level9_stage2_Jawa.question = "Ca"
-        quiz4_level9_stage2_Jawa.choices = []
-        quiz4_level9_stage2_Jawa.images = []
+        quiz4_level9_stage2_Jawa.choices = [choice1_Quiz4_Level9_Stage2_Jawa, choice2_Quiz4_Level9_Stage2_Jawa, choice3_Quiz4_Level9_Stage2_Jawa, choice4_Quiz4_Level9_Stage2_Jawa]
+        quiz4_level9_stage2_Jawa.images = [image1_Quiz4_Level9_Stage2_Jawa, image2_Quiz4_Level9_Stage2_Jawa, image3_Quiz4_Level9_Stage2_Jawa, image4_Quiz4_Level9_Stage2_Jawa]
         
         let quiz5_level9_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz5_level9_stage2_Jawa.id = 5
@@ -1516,14 +3894,82 @@ class MainViewController: UIViewController {
         quiz1_level10_stage2_Jawa.choices = []
         quiz1_level10_stage2_Jawa.images = []
         
+        //MARK: Choice
+        let choice1_Quiz2_Level10_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level10_Stage2_Jawa.id = 1
+        choice1_Quiz2_Level10_Stage2_Jawa.name = "Ha"
+        
+        let choice2_Quiz2_Level10_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level10_Stage2_Jawa.id = 2
+        choice2_Quiz2_Level10_Stage2_Jawa.name = "Na"
+        
+        let choice3_Quiz2_Level10_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level10_Stage2_Jawa.id = 3
+        choice3_Quiz2_Level10_Stage2_Jawa.name = "Ca"
+        
+        let choice4_Quiz2_Level10_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level10_Stage2_Jawa.id = 4
+        choice4_Quiz2_Level10_Stage2_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz2_Level10_Stage2_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz2_Level10_Stage2_Jawa.id = 1
+        image1_Quiz2_Level10_Stage2_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz2_Level10_Stage2_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz2_Level10_Stage2_Jawa.id = 2
+        image2_Quiz2_Level10_Stage2_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz2_Level10_Stage2_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz2_Level10_Stage2_Jawa.id = 3
+        image3_Quiz2_Level10_Stage2_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz2_Level10_Stage2_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz2_Level10_Stage2_Jawa.id = 4
+        image4_Quiz2_Level10_Stage2_Jawa.name = "Ra_Aksara_Jawa"
+        
         let quiz2_level10_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz2_level10_stage2_Jawa.id = 2
         quiz2_level10_stage2_Jawa.name = "Kuis 1"
         quiz2_level10_stage2_Jawa.type = "A"
         quiz2_level10_stage2_Jawa.isCorrect = false
         quiz2_level10_stage2_Jawa.question = "Ca"
-        quiz2_level10_stage2_Jawa.choices = []
-        quiz2_level10_stage2_Jawa.images = []
+        quiz2_level10_stage2_Jawa.choices = [choice1_Quiz2_Level10_Stage2_Jawa, choice2_Quiz2_Level10_Stage2_Jawa, choice3_Quiz2_Level10_Stage2_Jawa, choice4_Quiz2_Level10_Stage2_Jawa]
+        quiz2_level10_stage2_Jawa.images = [image1_Quiz2_Level10_Stage2_Jawa, image2_Quiz2_Level10_Stage2_Jawa, image3_Quiz2_Level10_Stage2_Jawa, image4_Quiz2_Level10_Stage2_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level10_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level10_Stage2_Jawa.id = 1
+        choice1_Quiz3_Level10_Stage2_Jawa.name = "Ha"
+        
+        let choice2_Quiz3_Level10_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level10_Stage2_Jawa.id = 2
+        choice2_Quiz3_Level10_Stage2_Jawa.name = "Na"
+        
+        let choice3_Quiz3_Level10_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level10_Stage2_Jawa.id = 3
+        choice3_Quiz3_Level10_Stage2_Jawa.name = "Ca"
+        
+        let choice4_Quiz3_Level10_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level10_Stage2_Jawa.id = 4
+        choice4_Quiz3_Level10_Stage2_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz3_Level10_Stage2_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz3_Level10_Stage2_Jawa.id = 1
+        image1_Quiz3_Level10_Stage2_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz3_Level10_Stage2_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz3_Level10_Stage2_Jawa.id = 2
+        image2_Quiz3_Level10_Stage2_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz3_Level10_Stage2_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz3_Level10_Stage2_Jawa.id = 3
+        image3_Quiz3_Level10_Stage2_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz3_Level10_Stage2_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz3_Level10_Stage2_Jawa.id = 4
+        image4_Quiz3_Level10_Stage2_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz3_level10_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level10_stage2_Jawa.id = 3
@@ -1531,8 +3977,42 @@ class MainViewController: UIViewController {
         quiz3_level10_stage2_Jawa.type = "B"
         quiz3_level10_stage2_Jawa.isCorrect = false
         quiz3_level10_stage2_Jawa.question = "Ca"
-        quiz3_level10_stage2_Jawa.choices = []
-        quiz3_level10_stage2_Jawa.images = []
+        quiz3_level10_stage2_Jawa.choices = [choice1_Quiz3_Level10_Stage2_Jawa, choice2_Quiz3_Level10_Stage2_Jawa, choice3_Quiz3_Level10_Stage2_Jawa, choice4_Quiz3_Level10_Stage2_Jawa]
+        quiz3_level10_stage2_Jawa.images = [image1_Quiz3_Level10_Stage2_Jawa, image2_Quiz3_Level10_Stage2_Jawa, image3_Quiz3_Level10_Stage2_Jawa, image4_Quiz3_Level10_Stage2_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level10_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level10_Stage2_Jawa.id = 1
+        choice1_Quiz4_Level10_Stage2_Jawa.name = "Ha"
+        
+        let choice2_Quiz4_Level10_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level10_Stage2_Jawa.id = 2
+        choice2_Quiz4_Level10_Stage2_Jawa.name = "Na"
+        
+        let choice3_Quiz4_Level10_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level10_Stage2_Jawa.id = 3
+        choice3_Quiz4_Level10_Stage2_Jawa.name = "Ca"
+        
+        let choice4_Quiz4_Level10_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level10_Stage2_Jawa.id = 4
+        choice4_Quiz4_Level10_Stage2_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz4_Level10_Stage2_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz4_Level10_Stage2_Jawa.id = 1
+        image1_Quiz4_Level10_Stage2_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz4_Level10_Stage2_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz4_Level10_Stage2_Jawa.id = 2
+        image2_Quiz4_Level10_Stage2_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz4_Level10_Stage2_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz4_Level10_Stage2_Jawa.id = 3
+        image3_Quiz4_Level10_Stage2_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz4_Level10_Stage2_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz4_Level10_Stage2_Jawa.id = 4
+        image4_Quiz4_Level10_Stage2_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz4_level10_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level10_stage2_Jawa.id = 4
@@ -1540,7 +4020,7 @@ class MainViewController: UIViewController {
         quiz4_level10_stage2_Jawa.type = "C"
         quiz4_level10_stage2_Jawa.isCorrect = false
         quiz4_level10_stage2_Jawa.question = "Ca"
-        quiz4_level10_stage2_Jawa.choices = []
+        quiz4_level10_stage2_Jawa.choices = [choice1_Quiz4_Level10_Stage2_Jawa, choice2_Quiz4_Level10_Stage2_Jawa, choice3_Quiz4_Level10_Stage2_Jawa, choice4_Quiz4_Level10_Stage2_Jawa]
         quiz4_level10_stage2_Jawa.images = []
         
         let quiz5_level10_stage2_Jawa = Quiz(context: PersistenceService.context)
@@ -1571,14 +4051,82 @@ class MainViewController: UIViewController {
         quiz1_level11_stage2_Jawa.choices = []
         quiz1_level11_stage2_Jawa.images = []
         
+        //MARK: Choice
+        let choice1_Quiz2_Level11_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level11_Stage2_Jawa.id = 1
+        choice1_Quiz2_Level11_Stage2_Jawa.name = "Ha"
+        
+        let choice2_Quiz2_Level11_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level11_Stage2_Jawa.id = 2
+        choice2_Quiz2_Level11_Stage2_Jawa.name = "Na"
+        
+        let choice3_Quiz2_Level11_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level11_Stage2_Jawa.id = 3
+        choice3_Quiz2_Level11_Stage2_Jawa.name = "Ca"
+        
+        let choice4_Quiz2_Level11_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level11_Stage2_Jawa.id = 4
+        choice4_Quiz2_Level11_Stage2_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz2_Level11_Stage2_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz2_Level11_Stage2_Jawa.id = 1
+        image1_Quiz2_Level11_Stage2_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz2_Level11_Stage2_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz2_Level11_Stage2_Jawa.id = 2
+        image2_Quiz2_Level11_Stage2_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz2_Level11_Stage2_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz2_Level11_Stage2_Jawa.id = 3
+        image3_Quiz2_Level11_Stage2_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz2_Level11_Stage2_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz2_Level11_Stage2_Jawa.id = 4
+        image4_Quiz2_Level11_Stage2_Jawa.name = "Ra_Aksara_Jawa"
+        
         let quiz2_level11_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz2_level11_stage2_Jawa.id = 2
         quiz2_level11_stage2_Jawa.name = "Kuis 1"
         quiz2_level11_stage2_Jawa.type = "A"
         quiz2_level11_stage2_Jawa.isCorrect = false
         quiz2_level11_stage2_Jawa.question = "Ca"
-        quiz2_level11_stage2_Jawa.choices = []
-        quiz2_level11_stage2_Jawa.images = []
+        quiz2_level11_stage2_Jawa.choices = [choice1_Quiz2_Level11_Stage2_Jawa, choice2_Quiz2_Level11_Stage2_Jawa, choice3_Quiz2_Level11_Stage2_Jawa, choice4_Quiz2_Level11_Stage2_Jawa]
+        quiz2_level11_stage2_Jawa.images = [image1_Quiz2_Level11_Stage2_Jawa, image2_Quiz2_Level11_Stage2_Jawa, image3_Quiz2_Level11_Stage2_Jawa, image4_Quiz2_Level11_Stage2_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level11_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level11_Stage2_Jawa.id = 1
+        choice1_Quiz3_Level11_Stage2_Jawa.name = "Ha"
+        
+        let choice2_Quiz3_Level11_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level11_Stage2_Jawa.id = 2
+        choice2_Quiz3_Level11_Stage2_Jawa.name = "Na"
+        
+        let choice3_Quiz3_Level11_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level11_Stage2_Jawa.id = 3
+        choice3_Quiz3_Level11_Stage2_Jawa.name = "Ca"
+        
+        let choice4_Quiz3_Level11_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level11_Stage2_Jawa.id = 4
+        choice4_Quiz3_Level11_Stage2_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz3_Level11_Stage2_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz3_Level11_Stage2_Jawa.id = 1
+        image1_Quiz3_Level11_Stage2_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz3_Level11_Stage2_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz3_Level11_Stage2_Jawa.id = 2
+        image2_Quiz3_Level11_Stage2_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz3_Level11_Stage2_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz3_Level11_Stage2_Jawa.id = 3
+        image3_Quiz3_Level11_Stage2_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz3_Level11_Stage2_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz3_Level11_Stage2_Jawa.id = 4
+        image4_Quiz3_Level11_Stage2_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz3_level11_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level11_stage2_Jawa.id = 3
@@ -1586,8 +4134,42 @@ class MainViewController: UIViewController {
         quiz3_level11_stage2_Jawa.type = "B"
         quiz3_level11_stage2_Jawa.isCorrect = false
         quiz3_level11_stage2_Jawa.question = "Ca"
-        quiz3_level11_stage2_Jawa.choices = []
-        quiz3_level11_stage2_Jawa.images = []
+        quiz3_level11_stage2_Jawa.choices = [choice1_Quiz3_Level11_Stage2_Jawa, choice2_Quiz3_Level11_Stage2_Jawa, choice3_Quiz3_Level11_Stage2_Jawa, choice4_Quiz3_Level11_Stage2_Jawa]
+        quiz3_level11_stage2_Jawa.images = [image1_Quiz3_Level11_Stage2_Jawa, image2_Quiz3_Level11_Stage2_Jawa, image3_Quiz3_Level11_Stage2_Jawa, image4_Quiz3_Level11_Stage2_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level11_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level11_Stage2_Jawa.id = 1
+        choice1_Quiz4_Level11_Stage2_Jawa.name = "Ha"
+        
+        let choice2_Quiz4_Level11_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level11_Stage2_Jawa.id = 2
+        choice2_Quiz4_Level11_Stage2_Jawa.name = "Na"
+        
+        let choice3_Quiz4_Level11_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level11_Stage2_Jawa.id = 3
+        choice3_Quiz4_Level11_Stage2_Jawa.name = "Ca"
+        
+        let choice4_Quiz4_Level11_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level11_Stage2_Jawa.id = 4
+        choice4_Quiz4_Level11_Stage2_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz4_Level11_Stage2_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz4_Level11_Stage2_Jawa.id = 1
+        image1_Quiz4_Level11_Stage2_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz4_Level11_Stage2_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz4_Level11_Stage2_Jawa.id = 2
+        image2_Quiz4_Level11_Stage2_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz4_Level11_Stage2_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz4_Level11_Stage2_Jawa.id = 3
+        image3_Quiz4_Level11_Stage2_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz4_Level11_Stage2_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz4_Level11_Stage2_Jawa.id = 4
+        image4_Quiz4_Level11_Stage2_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz4_level11_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level11_stage2_Jawa.id = 4
@@ -1595,8 +4177,8 @@ class MainViewController: UIViewController {
         quiz4_level11_stage2_Jawa.type = "C"
         quiz4_level11_stage2_Jawa.isCorrect = false
         quiz4_level11_stage2_Jawa.question = "Ca"
-        quiz4_level11_stage2_Jawa.choices = []
-        quiz4_level11_stage2_Jawa.images = []
+        quiz4_level11_stage2_Jawa.choices = [choice1_Quiz4_Level11_Stage2_Jawa, choice2_Quiz4_Level11_Stage2_Jawa, choice3_Quiz4_Level11_Stage2_Jawa, choice4_Quiz4_Level11_Stage2_Jawa]
+        quiz4_level11_stage2_Jawa.images = [image1_Quiz4_Level11_Stage2_Jawa, image2_Quiz4_Level11_Stage2_Jawa, image3_Quiz4_Level11_Stage2_Jawa, image4_Quiz4_Level11_Stage2_Jawa]
         
         let quiz5_level11_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz5_level11_stage2_Jawa.id = 5
@@ -1626,14 +4208,82 @@ class MainViewController: UIViewController {
         quiz1_level12_stage2_Jawa.choices = []
         quiz1_level12_stage2_Jawa.images = []
         
+        //MARK: Choice
+        let choice1_Quiz2_Level12_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level12_Stage2_Jawa.id = 1
+        choice1_Quiz2_Level12_Stage2_Jawa.name = "Ha"
+        
+        let choice2_Quiz2_Level12_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level12_Stage2_Jawa.id = 2
+        choice2_Quiz2_Level12_Stage2_Jawa.name = "Na"
+        
+        let choice3_Quiz2_Level12_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level12_Stage2_Jawa.id = 3
+        choice3_Quiz2_Level12_Stage2_Jawa.name = "Ca"
+        
+        let choice4_Quiz2_Level12_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level12_Stage2_Jawa.id = 4
+        choice4_Quiz2_Level12_Stage2_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz2_Level12_Stage2_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz2_Level12_Stage2_Jawa.id = 1
+        image1_Quiz2_Level12_Stage2_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz2_Level12_Stage2_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz2_Level12_Stage2_Jawa.id = 2
+        image2_Quiz2_Level12_Stage2_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz2_Level12_Stage2_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz2_Level12_Stage2_Jawa.id = 3
+        image3_Quiz2_Level12_Stage2_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz2_Level12_Stage2_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz2_Level12_Stage2_Jawa.id = 4
+        image4_Quiz2_Level12_Stage2_Jawa.name = "Ra_Aksara_Jawa"
+        
         let quiz2_level12_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz2_level12_stage2_Jawa.id = 2
         quiz2_level12_stage2_Jawa.name = "Kuis 1"
         quiz2_level12_stage2_Jawa.type = "A"
         quiz2_level12_stage2_Jawa.isCorrect = false
         quiz2_level12_stage2_Jawa.question = "Ca"
-        quiz2_level12_stage2_Jawa.choices = []
-        quiz2_level12_stage2_Jawa.images = []
+        quiz2_level12_stage2_Jawa.choices = [choice1_Quiz2_Level12_Stage2_Jawa, choice2_Quiz2_Level12_Stage2_Jawa, choice3_Quiz2_Level12_Stage2_Jawa, choice4_Quiz2_Level12_Stage2_Jawa]
+        quiz2_level12_stage2_Jawa.images = [image1_Quiz2_Level12_Stage2_Jawa, image2_Quiz2_Level12_Stage2_Jawa, image3_Quiz2_Level12_Stage2_Jawa, image4_Quiz2_Level12_Stage2_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level12_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level12_Stage2_Jawa.id = 1
+        choice1_Quiz3_Level12_Stage2_Jawa.name = "Ha"
+        
+        let choice2_Quiz3_Level12_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level12_Stage2_Jawa.id = 2
+        choice2_Quiz3_Level12_Stage2_Jawa.name = "Na"
+        
+        let choice3_Quiz3_Level12_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level12_Stage2_Jawa.id = 3
+        choice3_Quiz3_Level12_Stage2_Jawa.name = "Ca"
+        
+        let choice4_Quiz3_Level12_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level12_Stage2_Jawa.id = 4
+        choice4_Quiz3_Level12_Stage2_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz3_Level12_Stage2_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz3_Level12_Stage2_Jawa.id = 1
+        image1_Quiz3_Level12_Stage2_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz3_Level12_Stage2_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz3_Level12_Stage2_Jawa.id = 2
+        image2_Quiz3_Level12_Stage2_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz3_Level12_Stage2_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz3_Level12_Stage2_Jawa.id = 3
+        image3_Quiz3_Level12_Stage2_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz3_Level12_Stage2_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz3_Level12_Stage2_Jawa.id = 4
+        image4_Quiz3_Level12_Stage2_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz3_level12_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level12_stage2_Jawa.id = 3
@@ -1641,8 +4291,42 @@ class MainViewController: UIViewController {
         quiz3_level12_stage2_Jawa.type = "B"
         quiz3_level12_stage2_Jawa.isCorrect = false
         quiz3_level12_stage2_Jawa.question = "Ca"
-        quiz3_level12_stage2_Jawa.choices = []
-        quiz3_level12_stage2_Jawa.images = []
+        quiz3_level12_stage2_Jawa.choices = [choice1_Quiz3_Level12_Stage2_Jawa, choice2_Quiz3_Level12_Stage2_Jawa, choice3_Quiz3_Level12_Stage2_Jawa, choice4_Quiz3_Level12_Stage2_Jawa]
+        quiz3_level12_stage2_Jawa.images = [image1_Quiz3_Level12_Stage2_Jawa, image2_Quiz3_Level12_Stage2_Jawa, image3_Quiz3_Level12_Stage2_Jawa, image4_Quiz3_Level12_Stage2_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level12_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level12_Stage2_Jawa.id = 1
+        choice1_Quiz4_Level12_Stage2_Jawa.name = "Ha"
+        
+        let choice2_Quiz4_Level12_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level12_Stage2_Jawa.id = 2
+        choice2_Quiz4_Level12_Stage2_Jawa.name = "Na"
+        
+        let choice3_Quiz4_Level12_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level12_Stage2_Jawa.id = 3
+        choice3_Quiz4_Level12_Stage2_Jawa.name = "Ca"
+        
+        let choice4_Quiz4_Level12_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level12_Stage2_Jawa.id = 4
+        choice4_Quiz4_Level12_Stage2_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz4_Level12_Stage2_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz4_Level12_Stage2_Jawa.id = 1
+        image1_Quiz4_Level12_Stage2_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz4_Level12_Stage2_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz4_Level12_Stage2_Jawa.id = 2
+        image2_Quiz4_Level12_Stage2_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz4_Level12_Stage2_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz4_Level12_Stage2_Jawa.id = 3
+        image3_Quiz4_Level12_Stage2_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz4_Level12_Stage2_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz4_Level12_Stage2_Jawa.id = 4
+        image4_Quiz4_Level12_Stage2_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz4_level12_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level12_stage2_Jawa.id = 4
@@ -1650,8 +4334,8 @@ class MainViewController: UIViewController {
         quiz4_level12_stage2_Jawa.type = "C"
         quiz4_level12_stage2_Jawa.isCorrect = false
         quiz4_level12_stage2_Jawa.question = "Ca"
-        quiz4_level12_stage2_Jawa.choices = []
-        quiz4_level12_stage2_Jawa.images = []
+        quiz4_level12_stage2_Jawa.choices = [choice1_Quiz4_Level12_Stage2_Jawa, choice2_Quiz4_Level12_Stage2_Jawa, choice3_Quiz4_Level12_Stage2_Jawa, choice4_Quiz4_Level12_Stage2_Jawa]
+        quiz4_level12_stage2_Jawa.images = [image1_Quiz4_Level12_Stage2_Jawa, image2_Quiz4_Level12_Stage2_Jawa, image3_Quiz4_Level12_Stage2_Jawa, image4_Quiz4_Level12_Stage2_Jawa]
         
         let quiz5_level12_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz5_level12_stage2_Jawa.id = 5
@@ -1681,14 +4365,82 @@ class MainViewController: UIViewController {
         quiz1_level13_stage2_Jawa.choices = []
         quiz1_level13_stage2_Jawa.images = []
         
+        //MARK: Choice
+        let choice1_Quiz2_Level13_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level13_Stage2_Jawa.id = 1
+        choice1_Quiz2_Level13_Stage2_Jawa.name = "Ha"
+        
+        let choice2_Quiz2_Level13_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level13_Stage2_Jawa.id = 2
+        choice2_Quiz2_Level13_Stage2_Jawa.name = "Na"
+        
+        let choice3_Quiz2_Level13_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level13_Stage2_Jawa.id = 3
+        choice3_Quiz2_Level13_Stage2_Jawa.name = "Ca"
+        
+        let choice4_Quiz2_Level13_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level13_Stage2_Jawa.id = 4
+        choice4_Quiz2_Level13_Stage2_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz2_Level13_Stage2_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz2_Level13_Stage2_Jawa.id = 1
+        image1_Quiz2_Level13_Stage2_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz2_Level13_Stage2_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz2_Level13_Stage2_Jawa.id = 2
+        image2_Quiz2_Level13_Stage2_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz2_Level13_Stage2_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz2_Level13_Stage2_Jawa.id = 3
+        image3_Quiz2_Level13_Stage2_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz2_Level13_Stage2_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz2_Level13_Stage2_Jawa.id = 4
+        image4_Quiz2_Level13_Stage2_Jawa.name = "Ra_Aksara_Jawa"
+        
         let quiz2_level13_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz2_level13_stage2_Jawa.id = 2
         quiz2_level13_stage2_Jawa.name = "Kuis 1"
         quiz2_level13_stage2_Jawa.type = "A"
         quiz2_level13_stage2_Jawa.isCorrect = false
         quiz2_level13_stage2_Jawa.question = "Ca"
-        quiz2_level13_stage2_Jawa.choices = []
-        quiz2_level13_stage2_Jawa.images = []
+        quiz2_level13_stage2_Jawa.choices = [choice1_Quiz2_Level13_Stage2_Jawa, choice2_Quiz2_Level13_Stage2_Jawa, choice3_Quiz2_Level13_Stage2_Jawa, choice4_Quiz2_Level13_Stage2_Jawa]
+        quiz2_level13_stage2_Jawa.images = [image1_Quiz2_Level13_Stage2_Jawa, image2_Quiz2_Level13_Stage2_Jawa, image3_Quiz2_Level13_Stage2_Jawa, image4_Quiz2_Level13_Stage2_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level13_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level13_Stage2_Jawa.id = 1
+        choice1_Quiz3_Level13_Stage2_Jawa.name = "Ha"
+        
+        let choice2_Quiz3_Level13_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level13_Stage2_Jawa.id = 2
+        choice2_Quiz3_Level13_Stage2_Jawa.name = "Na"
+        
+        let choice3_Quiz3_Level13_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level13_Stage2_Jawa.id = 3
+        choice3_Quiz3_Level13_Stage2_Jawa.name = "Ca"
+        
+        let choice4_Quiz3_Level13_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level13_Stage2_Jawa.id = 4
+        choice4_Quiz3_Level13_Stage2_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz3_Level13_Stage2_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz3_Level13_Stage2_Jawa.id = 1
+        image1_Quiz3_Level13_Stage2_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz3_Level13_Stage2_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz3_Level13_Stage2_Jawa.id = 2
+        image2_Quiz3_Level13_Stage2_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz3_Level13_Stage2_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz3_Level13_Stage2_Jawa.id = 3
+        image3_Quiz3_Level13_Stage2_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz3_Level13_Stage2_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz3_Level13_Stage2_Jawa.id = 4
+        image4_Quiz3_Level13_Stage2_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz3_level13_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level13_stage2_Jawa.id = 3
@@ -1696,8 +4448,42 @@ class MainViewController: UIViewController {
         quiz3_level13_stage2_Jawa.type = "B"
         quiz3_level13_stage2_Jawa.isCorrect = false
         quiz3_level13_stage2_Jawa.question = "Ca"
-        quiz3_level13_stage2_Jawa.choices = []
-        quiz3_level13_stage2_Jawa.images = []
+        quiz3_level13_stage2_Jawa.choices = [choice1_Quiz3_Level13_Stage2_Jawa, choice2_Quiz3_Level13_Stage2_Jawa, choice3_Quiz3_Level13_Stage2_Jawa, choice4_Quiz3_Level13_Stage2_Jawa]
+        quiz3_level13_stage2_Jawa.images = [image1_Quiz3_Level13_Stage2_Jawa, image2_Quiz3_Level13_Stage2_Jawa, image3_Quiz3_Level13_Stage2_Jawa, image4_Quiz3_Level13_Stage2_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level13_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level13_Stage2_Jawa.id = 1
+        choice1_Quiz4_Level13_Stage2_Jawa.name = "Ha"
+        
+        let choice2_Quiz4_Level13_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level13_Stage2_Jawa.id = 2
+        choice2_Quiz4_Level13_Stage2_Jawa.name = "Na"
+        
+        let choice3_Quiz4_Level13_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level13_Stage2_Jawa.id = 3
+        choice3_Quiz4_Level13_Stage2_Jawa.name = "Ca"
+        
+        let choice4_Quiz4_Level13_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level13_Stage2_Jawa.id = 4
+        choice4_Quiz4_Level13_Stage2_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz4_Level13_Stage2_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz4_Level13_Stage2_Jawa.id = 1
+        image1_Quiz4_Level13_Stage2_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz4_Level13_Stage2_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz4_Level13_Stage2_Jawa.id = 2
+        image2_Quiz4_Level13_Stage2_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz4_Level13_Stage2_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz4_Level13_Stage2_Jawa.id = 3
+        image3_Quiz4_Level13_Stage2_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz4_Level13_Stage2_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz4_Level13_Stage2_Jawa.id = 4
+        image4_Quiz4_Level13_Stage2_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz4_level13_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level13_stage2_Jawa.id = 4
@@ -1705,8 +4491,8 @@ class MainViewController: UIViewController {
         quiz4_level13_stage2_Jawa.type = "C"
         quiz4_level13_stage2_Jawa.isCorrect = false
         quiz4_level13_stage2_Jawa.question = "Ca"
-        quiz4_level13_stage2_Jawa.choices = []
-        quiz4_level13_stage2_Jawa.images = []
+        quiz4_level13_stage2_Jawa.choices = [choice1_Quiz4_Level13_Stage2_Jawa, choice2_Quiz4_Level13_Stage2_Jawa, choice3_Quiz4_Level13_Stage2_Jawa, choice4_Quiz4_Level13_Stage2_Jawa]
+        quiz4_level13_stage2_Jawa.images = [image1_Quiz4_Level13_Stage2_Jawa , image2_Quiz4_Level13_Stage2_Jawa, image3_Quiz4_Level13_Stage2_Jawa, image4_Quiz4_Level13_Stage2_Jawa]
         
         let quiz5_level13_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz5_level13_stage2_Jawa.id = 5
@@ -1736,14 +4522,82 @@ class MainViewController: UIViewController {
         quiz1_level14_stage2_Jawa.choices = []
         quiz1_level14_stage2_Jawa.images = []
         
+        //MARK: Choice
+        let choice1_Quiz2_Level14_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level14_Stage2_Jawa.id = 1
+        choice1_Quiz2_Level14_Stage2_Jawa.name = "Ha"
+        
+        let choice2_Quiz2_Level14_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level14_Stage2_Jawa.id = 2
+        choice2_Quiz2_Level14_Stage2_Jawa.name = "Na"
+        
+        let choice3_Quiz2_Level14_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level14_Stage2_Jawa.id = 3
+        choice3_Quiz2_Level14_Stage2_Jawa.name = "Ca"
+        
+        let choice4_Quiz2_Level14_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level14_Stage2_Jawa.id = 4
+        choice4_Quiz2_Level14_Stage2_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz2_Level14_Stage2_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz2_Level14_Stage2_Jawa.id = 1
+        image1_Quiz2_Level14_Stage2_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz2_Level14_Stage2_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz2_Level14_Stage2_Jawa.id = 2
+        image2_Quiz2_Level14_Stage2_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz2_Level14_Stage2_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz2_Level14_Stage2_Jawa.id = 3
+        image3_Quiz2_Level14_Stage2_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz2_Level14_Stage2_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz2_Level14_Stage2_Jawa.id = 4
+        image4_Quiz2_Level14_Stage2_Jawa.name = "Ra_Aksara_Jawa"
+        
         let quiz2_level14_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz2_level14_stage2_Jawa.id = 2
         quiz2_level14_stage2_Jawa.name = "Kuis 1"
         quiz2_level14_stage2_Jawa.type = "A"
         quiz2_level14_stage2_Jawa.isCorrect = false
         quiz2_level14_stage2_Jawa.question = "Ca"
-        quiz2_level14_stage2_Jawa.choices = []
-        quiz2_level14_stage2_Jawa.images = []
+        quiz2_level14_stage2_Jawa.choices = [choice1_Quiz2_Level14_Stage2_Jawa, choice2_Quiz2_Level14_Stage2_Jawa, choice3_Quiz2_Level14_Stage2_Jawa, choice4_Quiz2_Level14_Stage2_Jawa]
+        quiz2_level14_stage2_Jawa.images = [image1_Quiz2_Level14_Stage2_Jawa, image2_Quiz2_Level14_Stage2_Jawa, image3_Quiz2_Level14_Stage2_Jawa, image4_Quiz2_Level14_Stage2_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level14_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level14_Stage2_Jawa.id = 1
+        choice1_Quiz3_Level14_Stage2_Jawa.name = "Ha"
+        
+        let choice2_Quiz3_Level14_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level14_Stage2_Jawa.id = 2
+        choice2_Quiz3_Level14_Stage2_Jawa.name = "Na"
+        
+        let choice3_Quiz3_Level14_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level14_Stage2_Jawa.id = 3
+        choice3_Quiz3_Level14_Stage2_Jawa.name = "Ca"
+        
+        let choice4_Quiz3_Level14_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level14_Stage2_Jawa.id = 4
+        choice4_Quiz3_Level14_Stage2_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz3_Level14_Stage2_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz3_Level14_Stage2_Jawa.id = 1
+        image1_Quiz3_Level14_Stage2_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz3_Level14_Stage2_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz3_Level14_Stage2_Jawa.id = 2
+        image2_Quiz3_Level14_Stage2_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz3_Level14_Stage2_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz3_Level14_Stage2_Jawa.id = 3
+        image3_Quiz3_Level14_Stage2_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz3_Level14_Stage2_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz3_Level14_Stage2_Jawa.id = 4
+        image4_Quiz3_Level14_Stage2_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz3_level14_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level14_stage2_Jawa.id = 3
@@ -1751,8 +4605,42 @@ class MainViewController: UIViewController {
         quiz3_level14_stage2_Jawa.type = "B"
         quiz3_level14_stage2_Jawa.isCorrect = false
         quiz3_level14_stage2_Jawa.question = "Ca"
-        quiz3_level14_stage2_Jawa.choices = []
-        quiz3_level14_stage2_Jawa.images = []
+        quiz3_level14_stage2_Jawa.choices = [choice1_Quiz3_Level14_Stage2_Jawa, choice2_Quiz3_Level14_Stage2_Jawa, choice3_Quiz3_Level14_Stage2_Jawa, choice4_Quiz3_Level14_Stage2_Jawa]
+        quiz3_level14_stage2_Jawa.images = [image1_Quiz3_Level14_Stage2_Jawa, image2_Quiz3_Level14_Stage2_Jawa, image3_Quiz3_Level14_Stage2_Jawa, image4_Quiz3_Level14_Stage2_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level14_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level14_Stage2_Jawa.id = 1
+        choice1_Quiz4_Level14_Stage2_Jawa.name = "Ha"
+        
+        let choice2_Quiz4_Level14_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level14_Stage2_Jawa.id = 2
+        choice2_Quiz4_Level14_Stage2_Jawa.name = "Na"
+        
+        let choice3_Quiz4_Level14_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level14_Stage2_Jawa.id = 3
+        choice3_Quiz4_Level14_Stage2_Jawa.name = "Ca"
+        
+        let choice4_Quiz4_Level14_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level14_Stage2_Jawa.id = 4
+        choice4_Quiz4_Level14_Stage2_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz4_Level14_Stage2_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz4_Level14_Stage2_Jawa.id = 1
+        image1_Quiz4_Level14_Stage2_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz4_Level14_Stage2_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz4_Level14_Stage2_Jawa.id = 2
+        image2_Quiz4_Level14_Stage2_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz4_Level14_Stage2_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz4_Level14_Stage2_Jawa.id = 3
+        image3_Quiz4_Level14_Stage2_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz4_Level14_Stage2_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz4_Level14_Stage2_Jawa.id = 4
+        image4_Quiz4_Level14_Stage2_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz4_level14_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level14_stage2_Jawa.id = 4
@@ -1760,8 +4648,8 @@ class MainViewController: UIViewController {
         quiz4_level14_stage2_Jawa.type = "C"
         quiz4_level14_stage2_Jawa.isCorrect = false
         quiz4_level14_stage2_Jawa.question = "Ca"
-        quiz4_level14_stage2_Jawa.choices = []
-        quiz4_level14_stage2_Jawa.images = []
+        quiz4_level14_stage2_Jawa.choices = [choice1_Quiz4_Level14_Stage2_Jawa, choice2_Quiz4_Level14_Stage2_Jawa, choice3_Quiz4_Level14_Stage2_Jawa, choice4_Quiz4_Level14_Stage2_Jawa]
+        quiz4_level14_stage2_Jawa.images = [image1_Quiz4_Level14_Stage2_Jawa, image2_Quiz4_Level14_Stage2_Jawa, image3_Quiz4_Level14_Stage2_Jawa, image4_Quiz4_Level14_Stage2_Jawa]
         
         let quiz5_level14_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz5_level14_stage2_Jawa.id = 5
@@ -1791,14 +4679,82 @@ class MainViewController: UIViewController {
         quiz1_level15_stage2_Jawa.choices = []
         quiz1_level15_stage2_Jawa.images = []
         
+        //MARK: Choice
+        let choice1_Quiz2_Level15_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level15_Stage2_Jawa.id = 1
+        choice1_Quiz2_Level15_Stage2_Jawa.name = "Ha"
+        
+        let choice2_Quiz2_Level15_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level15_Stage2_Jawa.id = 2
+        choice2_Quiz2_Level15_Stage2_Jawa.name = "Na"
+        
+        let choice3_Quiz2_Level15_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level15_Stage2_Jawa.id = 3
+        choice3_Quiz2_Level15_Stage2_Jawa.name = "Ca"
+        
+        let choice4_Quiz2_Level15_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level15_Stage2_Jawa.id = 4
+        choice4_Quiz2_Level15_Stage2_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz2_Level15_Stage2_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz2_Level15_Stage2_Jawa.id = 1
+        image1_Quiz2_Level15_Stage2_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz2_Level15_Stage2_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz2_Level15_Stage2_Jawa.id = 2
+        image2_Quiz2_Level15_Stage2_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz2_Level15_Stage2_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz2_Level15_Stage2_Jawa.id = 3
+        image3_Quiz2_Level15_Stage2_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz2_Level15_Stage2_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz2_Level15_Stage2_Jawa.id = 4
+        image4_Quiz2_Level15_Stage2_Jawa.name = "Ra_Aksara_Jawa"
+        
         let quiz2_level15_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz2_level15_stage2_Jawa.id = 2
         quiz2_level15_stage2_Jawa.name = "Kuis 1"
         quiz2_level15_stage2_Jawa.type = "A"
         quiz2_level15_stage2_Jawa.isCorrect = false
         quiz2_level15_stage2_Jawa.question = "Ca"
-        quiz2_level15_stage2_Jawa.choices = []
-        quiz2_level15_stage2_Jawa.images = []
+        quiz2_level15_stage2_Jawa.choices = [choice1_Quiz2_Level15_Stage2_Jawa, choice2_Quiz2_Level15_Stage2_Jawa, choice3_Quiz2_Level15_Stage2_Jawa, choice4_Quiz2_Level15_Stage2_Jawa]
+        quiz2_level15_stage2_Jawa.images = [image1_Quiz2_Level15_Stage2_Jawa, image2_Quiz2_Level15_Stage2_Jawa, image3_Quiz2_Level15_Stage2_Jawa, image4_Quiz2_Level15_Stage2_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level15_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level15_Stage2_Jawa.id = 1
+        choice1_Quiz3_Level15_Stage2_Jawa.name = "Ha"
+        
+        let choice2_Quiz3_Level15_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level15_Stage2_Jawa.id = 2
+        choice2_Quiz3_Level15_Stage2_Jawa.name = "Na"
+        
+        let choice3_Quiz3_Level15_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level15_Stage2_Jawa.id = 3
+        choice3_Quiz3_Level15_Stage2_Jawa.name = "Ca"
+        
+        let choice4_Quiz3_Level15_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level15_Stage2_Jawa.id = 4
+        choice4_Quiz3_Level15_Stage2_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz3_Level15_Stage2_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz3_Level15_Stage2_Jawa.id = 1
+        image1_Quiz3_Level15_Stage2_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz3_Level15_Stage2_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz3_Level15_Stage2_Jawa.id = 2
+        image2_Quiz3_Level15_Stage2_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz3_Level15_Stage2_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz3_Level15_Stage2_Jawa.id = 3
+        image3_Quiz3_Level15_Stage2_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz3_Level15_Stage2_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz3_Level15_Stage2_Jawa.id = 4
+        image4_Quiz3_Level15_Stage2_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz3_level15_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level15_stage2_Jawa.id = 3
@@ -1806,8 +4762,42 @@ class MainViewController: UIViewController {
         quiz3_level15_stage2_Jawa.type = "B"
         quiz3_level15_stage2_Jawa.isCorrect = false
         quiz3_level15_stage2_Jawa.question = "Ca"
-        quiz3_level15_stage2_Jawa.choices = []
-        quiz3_level15_stage2_Jawa.images = []
+        quiz3_level15_stage2_Jawa.choices = [choice1_Quiz3_Level15_Stage2_Jawa, choice2_Quiz3_Level15_Stage2_Jawa, choice3_Quiz3_Level15_Stage2_Jawa, choice4_Quiz3_Level15_Stage2_Jawa]
+        quiz3_level15_stage2_Jawa.images = [image1_Quiz3_Level15_Stage2_Jawa, image2_Quiz3_Level15_Stage2_Jawa, image3_Quiz3_Level15_Stage2_Jawa, image4_Quiz3_Level15_Stage2_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level15_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level15_Stage2_Jawa.id = 1
+        choice1_Quiz4_Level15_Stage2_Jawa.name = "Ha"
+        
+        let choice2_Quiz4_Level15_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level15_Stage2_Jawa.id = 2
+        choice2_Quiz4_Level15_Stage2_Jawa.name = "Na"
+        
+        let choice3_Quiz4_Level15_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level15_Stage2_Jawa.id = 3
+        choice3_Quiz4_Level15_Stage2_Jawa.name = "Ca"
+        
+        let choice4_Quiz4_Level15_Stage2_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level15_Stage2_Jawa.id = 4
+        choice4_Quiz4_Level15_Stage2_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz4_Level15_Stage2_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz4_Level15_Stage2_Jawa.id = 1
+        image1_Quiz4_Level15_Stage2_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz4_Level15_Stage2_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz4_Level15_Stage2_Jawa.id = 2
+        image2_Quiz4_Level15_Stage2_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz4_Level15_Stage2_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz4_Level15_Stage2_Jawa.id = 3
+        image3_Quiz4_Level15_Stage2_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz4_Level15_Stage2_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz4_Level15_Stage2_Jawa.id = 4
+        image4_Quiz4_Level15_Stage2_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz4_level15_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level15_stage2_Jawa.id = 4
@@ -1815,8 +4805,8 @@ class MainViewController: UIViewController {
         quiz4_level15_stage2_Jawa.type = "C"
         quiz4_level15_stage2_Jawa.isCorrect = false
         quiz4_level15_stage2_Jawa.question = "Ca"
-        quiz4_level15_stage2_Jawa.choices = []
-        quiz4_level15_stage2_Jawa.images = []
+        quiz4_level15_stage2_Jawa.choices = [choice1_Quiz4_Level15_Stage2_Jawa, choice2_Quiz4_Level15_Stage2_Jawa, choice3_Quiz4_Level15_Stage2_Jawa, choice4_Quiz4_Level15_Stage2_Jawa]
+        quiz4_level15_stage2_Jawa.images = [image1_Quiz4_Level15_Stage2_Jawa, image2_Quiz4_Level15_Stage2_Jawa, image3_Quiz4_Level15_Stage2_Jawa, image4_Quiz4_Level15_Stage2_Jawa]
         
         let quiz5_level15_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz5_level15_stage2_Jawa.id = 5
@@ -1846,14 +4836,82 @@ class MainViewController: UIViewController {
         quiz1_level1_stage3_Jawa.choices = []
         quiz1_level1_stage3_Jawa.images = []
         
+        //MARK: Choice
+        let choice1_Quiz2_Level1_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level1_Stage3_Jawa.id = 1
+        choice1_Quiz2_Level1_Stage3_Jawa.name = "Ha"
+        
+        let choice2_Quiz2_Level1_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level1_Stage3_Jawa.id = 2
+        choice2_Quiz2_Level1_Stage3_Jawa.name = "Na"
+        
+        let choice3_Quiz2_Level1_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level1_Stage3_Jawa.id = 3
+        choice3_Quiz2_Level1_Stage3_Jawa.name = "Ca"
+        
+        let choice4_Quiz2_Level1_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level1_Stage3_Jawa.id = 4
+        choice4_Quiz2_Level1_Stage3_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz2_Level1_Stage3_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz2_Level1_Stage3_Jawa.id = 1
+        image1_Quiz2_Level1_Stage3_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz2_Level1_Stage3_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz2_Level1_Stage3_Jawa.id = 2
+        image2_Quiz2_Level1_Stage3_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz2_Level1_Stage3_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz2_Level1_Stage3_Jawa.id = 3
+        image3_Quiz2_Level1_Stage3_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz2_Level1_Stage3_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz2_Level1_Stage3_Jawa.id = 4
+        image4_Quiz2_Level1_Stage3_Jawa.name = "Ra_Aksara_Jawa"
+        
         let quiz2_level1_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz2_level1_stage3_Jawa.id = 2
         quiz2_level1_stage3_Jawa.name = "Kuis 1"
         quiz2_level1_stage3_Jawa.type = "A"
         quiz2_level1_stage3_Jawa.isCorrect = false
         quiz2_level1_stage3_Jawa.question = "Ha"
-        quiz2_level1_stage3_Jawa.choices = []
-        quiz2_level1_stage3_Jawa.images = []
+        quiz2_level1_stage3_Jawa.choices = [choice1_Quiz2_Level1_Stage3_Jawa, choice2_Quiz2_Level1_Stage3_Jawa, choice3_Quiz2_Level1_Stage3_Jawa, choice4_Quiz2_Level1_Stage3_Jawa]
+        quiz2_level1_stage3_Jawa.images = [image1_Quiz2_Level1_Stage3_Jawa, image2_Quiz2_Level1_Stage3_Jawa, image3_Quiz2_Level1_Stage3_Jawa, image4_Quiz2_Level1_Stage3_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level1_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level1_Stage3_Jawa.id = 1
+        choice1_Quiz3_Level1_Stage3_Jawa.name = "Ha"
+        
+        let choice2_Quiz3_Level1_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level1_Stage3_Jawa.id = 2
+        choice2_Quiz3_Level1_Stage3_Jawa.name = "Na"
+        
+        let choice3_Quiz3_Level1_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level1_Stage3_Jawa.id = 3
+        choice3_Quiz3_Level1_Stage3_Jawa.name = "Ca"
+        
+        let choice4_Quiz3_Level1_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level1_Stage3_Jawa.id = 4
+        choice4_Quiz3_Level1_Stage3_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz3_Level1_Stage3_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz3_Level1_Stage3_Jawa.id = 1
+        image1_Quiz3_Level1_Stage3_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz3_Level1_Stage3_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz3_Level1_Stage3_Jawa.id = 2
+        image2_Quiz3_Level1_Stage3_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz3_Level1_Stage3_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz3_Level1_Stage3_Jawa.id = 3
+        image3_Quiz3_Level1_Stage3_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz3_Level1_Stage3_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz3_Level1_Stage3_Jawa.id = 4
+        image4_Quiz3_Level1_Stage3_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz3_level1_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level1_stage3_Jawa.id = 3
@@ -1861,8 +4919,42 @@ class MainViewController: UIViewController {
         quiz3_level1_stage3_Jawa.type = "B"
         quiz3_level1_stage3_Jawa.isCorrect = false
         quiz3_level1_stage3_Jawa.question = "Ha"
-        quiz3_level1_stage3_Jawa.choices = []
-        quiz3_level1_stage3_Jawa.images = []
+        quiz3_level1_stage3_Jawa.choices = [choice1_Quiz3_Level1_Stage3_Jawa, choice2_Quiz3_Level1_Stage3_Jawa, choice3_Quiz3_Level1_Stage3_Jawa, choice4_Quiz3_Level1_Stage3_Jawa]
+        quiz3_level1_stage3_Jawa.images = [image1_Quiz3_Level1_Stage3_Jawa, image2_Quiz3_Level1_Stage3_Jawa, image3_Quiz3_Level1_Stage3_Jawa, image4_Quiz3_Level1_Stage3_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level1_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level1_Stage3_Jawa.id = 1
+        choice1_Quiz4_Level1_Stage3_Jawa.name = "Ha"
+        
+        let choice2_Quiz4_Level1_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level1_Stage3_Jawa.id = 2
+        choice2_Quiz4_Level1_Stage3_Jawa.name = "Na"
+        
+        let choice3_Quiz4_Level1_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level1_Stage3_Jawa.id = 3
+        choice3_Quiz4_Level1_Stage3_Jawa.name = "Ca"
+        
+        let choice4_Quiz4_Level1_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level1_Stage3_Jawa.id = 4
+        choice4_Quiz4_Level1_Stage3_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz4_Level1_Stage3_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz4_Level1_Stage3_Jawa.id = 1
+        image1_Quiz4_Level1_Stage3_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz4_Level1_Stage3_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz4_Level1_Stage3_Jawa.id = 2
+        image2_Quiz4_Level1_Stage3_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz4_Level1_Stage3_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz4_Level1_Stage3_Jawa.id = 3
+        image3_Quiz4_Level1_Stage3_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz4_Level1_Stage3_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz4_Level1_Stage3_Jawa.id = 4
+        image4_Quiz4_Level1_Stage3_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz4_level1_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level1_stage3_Jawa.id = 4
@@ -1870,8 +4962,8 @@ class MainViewController: UIViewController {
         quiz4_level1_stage3_Jawa.type = "C"
         quiz4_level1_stage3_Jawa.isCorrect = false
         quiz4_level1_stage3_Jawa.question = "Ha"
-        quiz4_level1_stage3_Jawa.choices = []
-        quiz4_level1_stage3_Jawa.images = []
+        quiz4_level1_stage3_Jawa.choices = [choice1_Quiz4_Level1_Stage3_Jawa, choice2_Quiz4_Level1_Stage3_Jawa, choice3_Quiz4_Level1_Stage3_Jawa, choice4_Quiz4_Level1_Stage3_Jawa]
+        quiz4_level1_stage3_Jawa.images = [image1_Quiz4_Level1_Stage3_Jawa, image2_Quiz4_Level1_Stage3_Jawa, image3_Quiz4_Level1_Stage3_Jawa, image4_Quiz4_Level1_Stage3_Jawa]
         
         let quiz5_level1_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz5_level1_stage3_Jawa.id = 5
@@ -1901,14 +4993,82 @@ class MainViewController: UIViewController {
         quiz1_level2_stage3_Jawa.choices = []
         quiz1_level2_stage3_Jawa.images = []
         
+        //MARK: Choice
+        let choice1_Quiz2_Level2_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level2_Stage3_Jawa.id = 1
+        choice1_Quiz2_Level2_Stage3_Jawa.name = "Ha"
+        
+        let choice2_Quiz2_Level2_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level2_Stage3_Jawa.id = 2
+        choice2_Quiz2_Level2_Stage3_Jawa.name = "Na"
+        
+        let choice3_Quiz2_Level2_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level2_Stage3_Jawa.id = 3
+        choice3_Quiz2_Level2_Stage3_Jawa.name = "Ca"
+        
+        let choice4_Quiz2_Level2_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level2_Stage3_Jawa.id = 4
+        choice4_Quiz2_Level2_Stage3_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz2_Level2_Stage3_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz2_Level2_Stage3_Jawa.id = 1
+        image1_Quiz2_Level2_Stage3_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz2_Level2_Stage3_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz2_Level2_Stage3_Jawa.id = 2
+        image2_Quiz2_Level2_Stage3_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz2_Level2_Stage3_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz2_Level2_Stage3_Jawa.id = 3
+        image3_Quiz2_Level2_Stage3_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz2_Level2_Stage3_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz2_Level2_Stage3_Jawa.id = 4
+        image4_Quiz2_Level2_Stage3_Jawa.name = "Ra_Aksara_Jawa"
+        
         let quiz2_level2_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz2_level2_stage3_Jawa.id = 2
         quiz2_level2_stage3_Jawa.name = "Kuis 1"
         quiz2_level2_stage3_Jawa.type = "A"
         quiz2_level2_stage3_Jawa.isCorrect = false
         quiz2_level2_stage3_Jawa.question = "Na"
-        quiz2_level2_stage3_Jawa.choices = []
-        quiz2_level2_stage3_Jawa.images = []
+        quiz2_level2_stage3_Jawa.choices = [choice1_Quiz2_Level2_Stage3_Jawa, choice2_Quiz2_Level2_Stage3_Jawa, choice3_Quiz2_Level2_Stage3_Jawa, choice4_Quiz2_Level2_Stage3_Jawa]
+        quiz2_level2_stage3_Jawa.images = [image1_Quiz2_Level2_Stage3_Jawa, image2_Quiz2_Level2_Stage3_Jawa, image3_Quiz2_Level2_Stage3_Jawa, image4_Quiz2_Level2_Stage3_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level2_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level2_Stage3_Jawa.id = 1
+        choice1_Quiz3_Level2_Stage3_Jawa.name = "Ha"
+        
+        let choice2_Quiz3_Level2_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level2_Stage3_Jawa.id = 2
+        choice2_Quiz3_Level2_Stage3_Jawa.name = "Na"
+        
+        let choice3_Quiz3_Level2_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level2_Stage3_Jawa.id = 3
+        choice3_Quiz3_Level2_Stage3_Jawa.name = "Ca"
+        
+        let choice4_Quiz3_Level2_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level2_Stage3_Jawa.id = 4
+        choice4_Quiz3_Level2_Stage3_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz3_Level2_Stage3_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz3_Level2_Stage3_Jawa.id = 1
+        image1_Quiz3_Level2_Stage3_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz3_Level2_Stage3_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz3_Level2_Stage3_Jawa.id = 2
+        image2_Quiz3_Level2_Stage3_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz3_Level2_Stage3_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz3_Level2_Stage3_Jawa.id = 3
+        image3_Quiz3_Level2_Stage3_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz3_Level2_Stage3_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz3_Level2_Stage3_Jawa.id = 4
+        image4_Quiz3_Level2_Stage3_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz3_level2_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level2_stage3_Jawa.id = 3
@@ -1916,8 +5076,42 @@ class MainViewController: UIViewController {
         quiz3_level2_stage3_Jawa.type = "B"
         quiz3_level2_stage3_Jawa.isCorrect = false
         quiz3_level2_stage3_Jawa.question = "Na"
-        quiz3_level2_stage3_Jawa.choices = []
-        quiz3_level2_stage3_Jawa.images = []
+        quiz3_level2_stage3_Jawa.choices = [choice1_Quiz3_Level2_Stage3_Jawa, choice2_Quiz3_Level2_Stage3_Jawa, choice3_Quiz3_Level2_Stage3_Jawa, choice4_Quiz3_Level2_Stage3_Jawa]
+        quiz3_level2_stage3_Jawa.images = [image1_Quiz3_Level2_Stage3_Jawa, image2_Quiz3_Level2_Stage3_Jawa, image3_Quiz3_Level2_Stage3_Jawa, image4_Quiz3_Level2_Stage3_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level2_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level2_Stage3_Jawa.id = 1
+        choice1_Quiz4_Level2_Stage3_Jawa.name = "Ha"
+        
+        let choice2_Quiz4_Level2_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level2_Stage3_Jawa.id = 2
+        choice2_Quiz4_Level2_Stage3_Jawa.name = "Na"
+        
+        let choice3_Quiz4_Level2_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level2_Stage3_Jawa.id = 3
+        choice3_Quiz4_Level2_Stage3_Jawa.name = "Ca"
+        
+        let choice4_Quiz4_Level2_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level2_Stage3_Jawa.id = 4
+        choice4_Quiz4_Level2_Stage3_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz4_Level2_Stage3_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz4_Level2_Stage3_Jawa.id = 1
+        image1_Quiz4_Level2_Stage3_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz4_Level2_Stage3_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz4_Level2_Stage3_Jawa.id = 2
+        image2_Quiz4_Level2_Stage3_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz4_Level2_Stage3_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz4_Level2_Stage3_Jawa.id = 3
+        image3_Quiz4_Level2_Stage3_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz4_Level2_Stage3_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz4_Level2_Stage3_Jawa.id = 4
+        image4_Quiz4_Level2_Stage3_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz4_level2_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level2_stage3_Jawa.id = 4
@@ -1925,8 +5119,8 @@ class MainViewController: UIViewController {
         quiz4_level2_stage3_Jawa.type = "C"
         quiz4_level2_stage3_Jawa.isCorrect = false
         quiz4_level2_stage3_Jawa.question = "Na"
-        quiz4_level2_stage3_Jawa.choices = []
-        quiz4_level2_stage3_Jawa.images = []
+        quiz4_level2_stage3_Jawa.choices = [choice1_Quiz4_Level2_Stage3_Jawa, choice2_Quiz4_Level2_Stage3_Jawa, choice3_Quiz4_Level2_Stage3_Jawa, choice4_Quiz4_Level2_Stage3_Jawa]
+        quiz4_level2_stage3_Jawa.images = [image1_Quiz4_Level2_Stage3_Jawa, image2_Quiz4_Level2_Stage3_Jawa, image3_Quiz4_Level2_Stage3_Jawa, image4_Quiz4_Level2_Stage3_Jawa]
         
         let quiz5_level2_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz5_level2_stage3_Jawa.id = 5
@@ -1956,14 +5150,82 @@ class MainViewController: UIViewController {
         quiz1_level3_stage3_Jawa.choices = []
         quiz1_level3_stage3_Jawa.images = []
         
+        //MARK: Choice
+        let choice1_Quiz2_Level3_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level3_Stage3_Jawa.id = 1
+        choice1_Quiz2_Level3_Stage3_Jawa.name = "Ha"
+        
+        let choice2_Quiz2_Level3_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level3_Stage3_Jawa.id = 2
+        choice2_Quiz2_Level3_Stage3_Jawa.name = "Na"
+        
+        let choice3_Quiz2_Level3_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level3_Stage3_Jawa.id = 3
+        choice3_Quiz2_Level3_Stage3_Jawa.name = "Ca"
+        
+        let choice4_Quiz2_Level3_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level3_Stage3_Jawa.id = 4
+        choice4_Quiz2_Level3_Stage3_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz2_Level3_Stage3_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz2_Level3_Stage3_Jawa.id = 1
+        image1_Quiz2_Level3_Stage3_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz2_Level3_Stage3_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz2_Level3_Stage3_Jawa.id = 2
+        image2_Quiz2_Level3_Stage3_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz2_Level3_Stage3_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz2_Level3_Stage3_Jawa.id = 3
+        image3_Quiz2_Level3_Stage3_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz2_Level3_Stage3_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz2_Level3_Stage3_Jawa.id = 4
+        image4_Quiz2_Level3_Stage3_Jawa.name = "Ra_Aksara_Jawa"
+        
         let quiz2_level3_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz2_level3_stage3_Jawa.id = 2
         quiz2_level3_stage3_Jawa.name = "Kuis 1"
         quiz2_level3_stage3_Jawa.type = "A"
         quiz2_level3_stage3_Jawa.isCorrect = false
         quiz2_level3_stage3_Jawa.question = "Ca"
-        quiz2_level3_stage3_Jawa.choices = []
-        quiz2_level3_stage3_Jawa.images = []
+        quiz2_level3_stage3_Jawa.choices = [choice1_Quiz2_Level3_Stage3_Jawa, choice2_Quiz2_Level3_Stage3_Jawa, choice3_Quiz2_Level3_Stage3_Jawa, choice4_Quiz2_Level3_Stage3_Jawa]
+        quiz2_level3_stage3_Jawa.images = [image1_Quiz2_Level3_Stage3_Jawa, image2_Quiz2_Level3_Stage3_Jawa, image3_Quiz2_Level3_Stage3_Jawa, image4_Quiz2_Level3_Stage3_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level3_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level3_Stage3_Jawa.id = 1
+        choice1_Quiz3_Level3_Stage3_Jawa.name = "Ha"
+        
+        let choice2_Quiz3_Level3_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level3_Stage3_Jawa.id = 2
+        choice2_Quiz3_Level3_Stage3_Jawa.name = "Na"
+        
+        let choice3_Quiz3_Level3_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level3_Stage3_Jawa.id = 3
+        choice3_Quiz3_Level3_Stage3_Jawa.name = "Ca"
+        
+        let choice4_Quiz3_Level3_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level3_Stage3_Jawa.id = 4
+        choice4_Quiz3_Level3_Stage3_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz3_Level3_Stage3_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz3_Level3_Stage3_Jawa.id = 1
+        image1_Quiz3_Level3_Stage3_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz3_Level3_Stage3_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz3_Level3_Stage3_Jawa.id = 2
+        image2_Quiz3_Level3_Stage3_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz3_Level3_Stage3_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz3_Level3_Stage3_Jawa.id = 3
+        image3_Quiz3_Level3_Stage3_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz3_Level3_Stage3_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz3_Level3_Stage3_Jawa.id = 4
+        image4_Quiz3_Level3_Stage3_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz3_level3_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level3_stage3_Jawa.id = 3
@@ -1971,8 +5233,42 @@ class MainViewController: UIViewController {
         quiz3_level3_stage3_Jawa.type = "B"
         quiz3_level3_stage3_Jawa.isCorrect = false
         quiz3_level3_stage3_Jawa.question = "Ca"
-        quiz3_level3_stage3_Jawa.choices = []
-        quiz3_level3_stage3_Jawa.images = []
+        quiz3_level3_stage3_Jawa.choices = [choice1_Quiz3_Level3_Stage3_Jawa, choice2_Quiz3_Level3_Stage3_Jawa, choice3_Quiz3_Level3_Stage3_Jawa, choice4_Quiz3_Level3_Stage3_Jawa]
+        quiz3_level3_stage3_Jawa.images = [image1_Quiz3_Level3_Stage3_Jawa, image2_Quiz3_Level3_Stage3_Jawa, image3_Quiz3_Level3_Stage3_Jawa, image4_Quiz3_Level3_Stage3_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level3_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level3_Stage3_Jawa.id = 1
+        choice1_Quiz4_Level3_Stage3_Jawa.name = "Ha"
+        
+        let choice2_Quiz4_Level3_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level3_Stage3_Jawa.id = 2
+        choice2_Quiz4_Level3_Stage3_Jawa.name = "Na"
+        
+        let choice3_Quiz4_Level3_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level3_Stage3_Jawa.id = 3
+        choice3_Quiz4_Level3_Stage3_Jawa.name = "Ca"
+        
+        let choice4_Quiz4_Level3_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level3_Stage3_Jawa.id = 4
+        choice4_Quiz4_Level3_Stage3_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz4_Level3_Stage3_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz4_Level3_Stage3_Jawa.id = 1
+        image1_Quiz4_Level3_Stage3_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz4_Level3_Stage3_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz4_Level3_Stage3_Jawa.id = 2
+        image2_Quiz4_Level3_Stage3_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz4_Level3_Stage3_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz4_Level3_Stage3_Jawa.id = 3
+        image3_Quiz4_Level3_Stage3_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz4_Level3_Stage3_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz4_Level3_Stage3_Jawa.id = 4
+        image4_Quiz4_Level3_Stage3_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz4_level3_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level3_stage3_Jawa.id = 4
@@ -1980,8 +5276,8 @@ class MainViewController: UIViewController {
         quiz4_level3_stage3_Jawa.type = "C"
         quiz4_level3_stage3_Jawa.isCorrect = false
         quiz4_level3_stage3_Jawa.question = "Ca"
-        quiz4_level3_stage3_Jawa.choices = []
-        quiz4_level3_stage3_Jawa.images = []
+        quiz4_level3_stage3_Jawa.choices = [choice1_Quiz4_Level3_Stage3_Jawa, choice2_Quiz4_Level3_Stage3_Jawa, choice3_Quiz4_Level3_Stage3_Jawa, choice4_Quiz4_Level3_Stage3_Jawa]
+        quiz4_level3_stage3_Jawa.images = [image1_Quiz4_Level3_Stage3_Jawa, image2_Quiz4_Level3_Stage3_Jawa, image3_Quiz4_Level3_Stage3_Jawa, image4_Quiz4_Level3_Stage3_Jawa]
         
         let quiz5_level3_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz5_level3_stage3_Jawa.id = 5
@@ -2011,14 +5307,82 @@ class MainViewController: UIViewController {
         quiz1_level4_stage3_Jawa.choices = []
         quiz1_level4_stage3_Jawa.images = []
         
+        //MARK: Choice
+        let choice1_Quiz2_Level4_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level4_Stage3_Jawa.id = 1
+        choice1_Quiz2_Level4_Stage3_Jawa.name = "Ha"
+        
+        let choice2_Quiz2_Level4_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level4_Stage3_Jawa.id = 2
+        choice2_Quiz2_Level4_Stage3_Jawa.name = "Na"
+        
+        let choice3_Quiz2_Level4_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level4_Stage3_Jawa.id = 3
+        choice3_Quiz2_Level4_Stage3_Jawa.name = "Ca"
+        
+        let choice4_Quiz2_Level4_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level4_Stage3_Jawa.id = 4
+        choice4_Quiz2_Level4_Stage3_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz2_Level4_Stage3_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz2_Level4_Stage3_Jawa.id = 1
+        image1_Quiz2_Level4_Stage3_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz2_Level4_Stage3_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz2_Level4_Stage3_Jawa.id = 2
+        image2_Quiz2_Level4_Stage3_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz2_Level4_Stage3_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz2_Level4_Stage3_Jawa.id = 3
+        image3_Quiz2_Level4_Stage3_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz2_Level4_Stage3_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz2_Level4_Stage3_Jawa.id = 4
+        image4_Quiz2_Level4_Stage3_Jawa.name = "Ra_Aksara_Jawa"
+        
         let quiz2_level4_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz2_level4_stage3_Jawa.id = 2
         quiz2_level4_stage3_Jawa.name = "Kuis 1"
         quiz2_level4_stage3_Jawa.type = "A"
         quiz2_level4_stage3_Jawa.isCorrect = false
         quiz2_level4_stage3_Jawa.question = "Ca"
-        quiz2_level4_stage3_Jawa.choices = []
-        quiz2_level4_stage3_Jawa.images = []
+        quiz2_level4_stage3_Jawa.choices = [choice1_Quiz2_Level4_Stage3_Jawa, choice2_Quiz2_Level4_Stage3_Jawa, choice3_Quiz2_Level4_Stage3_Jawa, choice4_Quiz2_Level4_Stage3_Jawa]
+        quiz2_level4_stage3_Jawa.images = [image1_Quiz2_Level4_Stage3_Jawa, image2_Quiz2_Level4_Stage3_Jawa, image3_Quiz2_Level4_Stage3_Jawa, image4_Quiz2_Level4_Stage3_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level4_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level4_Stage3_Jawa.id = 1
+        choice1_Quiz3_Level4_Stage3_Jawa.name = "Ha"
+        
+        let choice2_Quiz3_Level4_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level4_Stage3_Jawa.id = 2
+        choice2_Quiz3_Level4_Stage3_Jawa.name = "Na"
+        
+        let choice3_Quiz3_Level4_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level4_Stage3_Jawa.id = 3
+        choice3_Quiz3_Level4_Stage3_Jawa.name = "Ca"
+        
+        let choice4_Quiz3_Level4_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level4_Stage3_Jawa.id = 4
+        choice4_Quiz3_Level4_Stage3_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz3_Level4_Stage3_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz3_Level4_Stage3_Jawa.id = 1
+        image1_Quiz3_Level4_Stage3_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz3_Level4_Stage3_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz3_Level4_Stage3_Jawa.id = 2
+        image2_Quiz3_Level4_Stage3_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz3_Level4_Stage3_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz3_Level4_Stage3_Jawa.id = 3
+        image3_Quiz3_Level4_Stage3_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz3_Level4_Stage3_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz3_Level4_Stage3_Jawa.id = 4
+        image4_Quiz3_Level4_Stage3_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz3_level4_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level4_stage3_Jawa.id = 3
@@ -2026,8 +5390,42 @@ class MainViewController: UIViewController {
         quiz3_level4_stage3_Jawa.type = "B"
         quiz3_level4_stage3_Jawa.isCorrect = false
         quiz3_level4_stage3_Jawa.question = "Ca"
-        quiz3_level4_stage3_Jawa.choices = []
-        quiz3_level4_stage3_Jawa.images = []
+        quiz3_level4_stage3_Jawa.choices = [choice1_Quiz3_Level4_Stage3_Jawa, choice2_Quiz3_Level4_Stage3_Jawa, choice3_Quiz3_Level4_Stage3_Jawa, choice4_Quiz3_Level4_Stage3_Jawa]
+        quiz3_level4_stage3_Jawa.images = [image1_Quiz3_Level4_Stage3_Jawa, image2_Quiz3_Level4_Stage3_Jawa, image3_Quiz3_Level4_Stage3_Jawa, image4_Quiz3_Level4_Stage3_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level4_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level4_Stage3_Jawa.id = 1
+        choice1_Quiz4_Level4_Stage3_Jawa.name = "Ha"
+        
+        let choice2_Quiz4_Level4_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level4_Stage3_Jawa.id = 2
+        choice2_Quiz4_Level4_Stage3_Jawa.name = "Na"
+        
+        let choice3_Quiz4_Level4_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level4_Stage3_Jawa.id = 3
+        choice3_Quiz4_Level4_Stage3_Jawa.name = "Ca"
+        
+        let choice4_Quiz4_Level4_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level4_Stage3_Jawa.id = 4
+        choice4_Quiz4_Level4_Stage3_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz4_Level4_Stage3_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz4_Level4_Stage3_Jawa.id = 1
+        image1_Quiz4_Level4_Stage3_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz4_Level4_Stage3_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz4_Level4_Stage3_Jawa.id = 2
+        image2_Quiz4_Level4_Stage3_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz4_Level4_Stage3_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz4_Level4_Stage3_Jawa.id = 3
+        image3_Quiz4_Level4_Stage3_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz4_Level4_Stage3_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz4_Level4_Stage3_Jawa.id = 4
+        image4_Quiz4_Level4_Stage3_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz4_level4_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level4_stage3_Jawa.id = 4
@@ -2035,8 +5433,8 @@ class MainViewController: UIViewController {
         quiz4_level4_stage3_Jawa.type = "C"
         quiz4_level4_stage3_Jawa.isCorrect = false
         quiz4_level4_stage3_Jawa.question = "Ca"
-        quiz4_level4_stage3_Jawa.choices = []
-        quiz4_level4_stage3_Jawa.images = []
+        quiz4_level4_stage3_Jawa.choices = [choice1_Quiz4_Level4_Stage3_Jawa, choice2_Quiz4_Level4_Stage3_Jawa, choice3_Quiz4_Level4_Stage3_Jawa, choice4_Quiz4_Level4_Stage3_Jawa]
+        quiz4_level4_stage3_Jawa.images = [image1_Quiz4_Level4_Stage3_Jawa, image2_Quiz4_Level4_Stage3_Jawa, image3_Quiz4_Level4_Stage3_Jawa, image4_Quiz4_Level4_Stage3_Jawa]
         
         let quiz5_level4_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz5_level4_stage3_Jawa.id = 5
@@ -2066,14 +5464,82 @@ class MainViewController: UIViewController {
         quiz1_level5_stage3_Jawa.choices = []
         quiz1_level5_stage3_Jawa.images = []
         
+        //MARK: Choice
+        let choice1_Quiz2_Level5_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level5_Stage3_Jawa.id = 1
+        choice1_Quiz2_Level5_Stage3_Jawa.name = "Ha"
+        
+        let choice2_Quiz2_Level5_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level5_Stage3_Jawa.id = 2
+        choice2_Quiz2_Level5_Stage3_Jawa.name = "Na"
+        
+        let choice3_Quiz2_Level5_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level5_Stage3_Jawa.id = 3
+        choice3_Quiz2_Level5_Stage3_Jawa.name = "Ca"
+        
+        let choice4_Quiz2_Level5_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level5_Stage3_Jawa.id = 4
+        choice4_Quiz2_Level5_Stage3_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz2_Level5_Stage3_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz2_Level5_Stage3_Jawa.id = 1
+        image1_Quiz2_Level5_Stage3_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz2_Level5_Stage3_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz2_Level5_Stage3_Jawa.id = 2
+        image2_Quiz2_Level5_Stage3_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz2_Level5_Stage3_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz2_Level5_Stage3_Jawa.id = 3
+        image3_Quiz2_Level5_Stage3_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz2_Level5_Stage3_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz2_Level5_Stage3_Jawa.id = 4
+        image4_Quiz2_Level5_Stage3_Jawa.name = "Ra_Aksara_Jawa"
+        
         let quiz2_level5_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz2_level5_stage3_Jawa.id = 2
         quiz2_level5_stage3_Jawa.name = "Kuis 1"
         quiz2_level5_stage3_Jawa.type = "A"
         quiz2_level5_stage3_Jawa.isCorrect = false
         quiz2_level5_stage3_Jawa.question = "Ca"
-        quiz2_level5_stage3_Jawa.choices = []
-        quiz2_level5_stage3_Jawa.images = []
+        quiz2_level5_stage3_Jawa.choices = [choice1_Quiz2_Level5_Stage3_Jawa, choice2_Quiz2_Level5_Stage3_Jawa, choice3_Quiz2_Level5_Stage3_Jawa, choice4_Quiz2_Level5_Stage3_Jawa]
+        quiz2_level5_stage3_Jawa.images = [image1_Quiz2_Level5_Stage3_Jawa, image2_Quiz2_Level5_Stage3_Jawa, image3_Quiz2_Level5_Stage3_Jawa, image4_Quiz2_Level5_Stage3_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level5_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level5_Stage3_Jawa.id = 1
+        choice1_Quiz3_Level5_Stage3_Jawa.name = "Ha"
+        
+        let choice2_Quiz3_Level5_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level5_Stage3_Jawa.id = 2
+        choice2_Quiz3_Level5_Stage3_Jawa.name = "Na"
+        
+        let choice3_Quiz3_Level5_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level5_Stage3_Jawa.id = 3
+        choice3_Quiz3_Level5_Stage3_Jawa.name = "Ca"
+        
+        let choice4_Quiz3_Level5_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level5_Stage3_Jawa.id = 4
+        choice4_Quiz3_Level5_Stage3_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz3_Level5_Stage3_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz3_Level5_Stage3_Jawa.id = 1
+        image1_Quiz3_Level5_Stage3_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz3_Level5_Stage3_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz3_Level5_Stage3_Jawa.id = 2
+        image2_Quiz3_Level5_Stage3_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz3_Level5_Stage3_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz3_Level5_Stage3_Jawa.id = 3
+        image3_Quiz3_Level5_Stage3_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz3_Level5_Stage3_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz3_Level5_Stage3_Jawa.id = 4
+        image4_Quiz3_Level5_Stage3_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz3_level5_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level5_stage3_Jawa.id = 3
@@ -2081,8 +5547,42 @@ class MainViewController: UIViewController {
         quiz3_level5_stage3_Jawa.type = "B"
         quiz3_level5_stage3_Jawa.isCorrect = false
         quiz3_level5_stage3_Jawa.question = "Ca"
-        quiz3_level5_stage3_Jawa.choices = []
-        quiz3_level5_stage3_Jawa.images = []
+        quiz3_level5_stage3_Jawa.choices = [choice1_Quiz3_Level5_Stage3_Jawa, choice2_Quiz3_Level5_Stage3_Jawa, choice3_Quiz3_Level5_Stage3_Jawa, choice4_Quiz3_Level5_Stage3_Jawa]
+        quiz3_level5_stage3_Jawa.images = [image1_Quiz3_Level5_Stage3_Jawa, image2_Quiz3_Level5_Stage3_Jawa, image3_Quiz3_Level5_Stage3_Jawa, image4_Quiz3_Level5_Stage3_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level5_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level5_Stage3_Jawa.id = 1
+        choice1_Quiz4_Level5_Stage3_Jawa.name = "Ha"
+        
+        let choice2_Quiz4_Level5_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level5_Stage3_Jawa.id = 2
+        choice2_Quiz4_Level5_Stage3_Jawa.name = "Na"
+        
+        let choice3_Quiz4_Level5_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level5_Stage3_Jawa.id = 3
+        choice3_Quiz4_Level5_Stage3_Jawa.name = "Ca"
+        
+        let choice4_Quiz4_Level5_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level5_Stage3_Jawa.id = 4
+        choice4_Quiz4_Level5_Stage3_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz4_Level5_Stage3_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz4_Level5_Stage3_Jawa.id = 1
+        image1_Quiz4_Level5_Stage3_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz4_Level5_Stage3_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz4_Level5_Stage3_Jawa.id = 2
+        image2_Quiz4_Level5_Stage3_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz4_Level5_Stage3_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz4_Level5_Stage3_Jawa.id = 3
+        image3_Quiz4_Level5_Stage3_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz4_Level5_Stage3_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz4_Level5_Stage3_Jawa.id = 4
+        image4_Quiz4_Level5_Stage3_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz4_level5_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level5_stage3_Jawa.id = 4
@@ -2090,8 +5590,8 @@ class MainViewController: UIViewController {
         quiz4_level5_stage3_Jawa.type = "C"
         quiz4_level5_stage3_Jawa.isCorrect = false
         quiz4_level5_stage3_Jawa.question = "Ca"
-        quiz4_level5_stage3_Jawa.choices = []
-        quiz4_level5_stage3_Jawa.images = []
+        quiz4_level5_stage3_Jawa.choices = [choice1_Quiz4_Level5_Stage3_Jawa, choice2_Quiz4_Level5_Stage3_Jawa, choice3_Quiz4_Level5_Stage3_Jawa, choice4_Quiz4_Level5_Stage3_Jawa]
+        quiz4_level5_stage3_Jawa.images = [image1_Quiz4_Level5_Stage3_Jawa, image2_Quiz4_Level5_Stage3_Jawa, image3_Quiz4_Level5_Stage3_Jawa, image4_Quiz4_Level5_Stage3_Jawa]
         
         let quiz5_level5_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz5_level5_stage3_Jawa.id = 5
@@ -2121,14 +5621,82 @@ class MainViewController: UIViewController {
         quiz1_level6_stage3_Jawa.choices = []
         quiz1_level6_stage3_Jawa.images = []
         
+        //MARK: Choice
+        let choice1_Quiz2_Level6_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level6_Stage3_Jawa.id = 1
+        choice1_Quiz2_Level6_Stage3_Jawa.name = "Ha"
+        
+        let choice2_Quiz2_Level6_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level6_Stage3_Jawa.id = 2
+        choice2_Quiz2_Level6_Stage3_Jawa.name = "Na"
+        
+        let choice3_Quiz2_Level6_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level6_Stage3_Jawa.id = 3
+        choice3_Quiz2_Level6_Stage3_Jawa.name = "Ca"
+        
+        let choice4_Quiz2_Level6_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level6_Stage3_Jawa.id = 4
+        choice4_Quiz2_Level6_Stage3_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz2_Level6_Stage3_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz2_Level6_Stage3_Jawa.id = 1
+        image1_Quiz2_Level6_Stage3_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz2_Level6_Stage3_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz2_Level6_Stage3_Jawa.id = 2
+        image2_Quiz2_Level6_Stage3_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz2_Level6_Stage3_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz2_Level6_Stage3_Jawa.id = 3
+        image3_Quiz2_Level6_Stage3_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz2_Level6_Stage3_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz2_Level6_Stage3_Jawa.id = 4
+        image4_Quiz2_Level6_Stage3_Jawa.name = "Ra_Aksara_Jawa"
+        
         let quiz2_level6_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz2_level6_stage3_Jawa.id = 2
         quiz2_level6_stage3_Jawa.name = "Kuis 1"
         quiz2_level6_stage3_Jawa.type = "A"
         quiz2_level6_stage3_Jawa.isCorrect = false
         quiz2_level6_stage3_Jawa.question = "Ca"
-        quiz2_level6_stage3_Jawa.choices = []
-        quiz2_level6_stage3_Jawa.images = []
+        quiz2_level6_stage3_Jawa.choices = [choice1_Quiz2_Level6_Stage3_Jawa, choice2_Quiz2_Level6_Stage3_Jawa, choice3_Quiz2_Level6_Stage3_Jawa, choice4_Quiz2_Level6_Stage3_Jawa]
+        quiz2_level6_stage3_Jawa.images = [image1_Quiz2_Level6_Stage3_Jawa, image2_Quiz2_Level6_Stage3_Jawa, image3_Quiz2_Level6_Stage3_Jawa, image4_Quiz2_Level6_Stage3_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level6_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level6_Stage3_Jawa.id = 1
+        choice1_Quiz3_Level6_Stage3_Jawa.name = "Ha"
+        
+        let choice2_Quiz3_Level6_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level6_Stage3_Jawa.id = 2
+        choice2_Quiz3_Level6_Stage3_Jawa.name = "Na"
+        
+        let choice3_Quiz3_Level6_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level6_Stage3_Jawa.id = 3
+        choice3_Quiz3_Level6_Stage3_Jawa.name = "Ca"
+        
+        let choice4_Quiz3_Level6_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level6_Stage3_Jawa.id = 4
+        choice4_Quiz3_Level6_Stage3_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz3_Level6_Stage3_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz3_Level6_Stage3_Jawa.id = 1
+        image1_Quiz3_Level6_Stage3_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz3_Level6_Stage3_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz3_Level6_Stage3_Jawa.id = 2
+        image2_Quiz3_Level6_Stage3_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz3_Level6_Stage3_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz3_Level6_Stage3_Jawa.id = 3
+        image3_Quiz3_Level6_Stage3_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz3_Level6_Stage3_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz3_Level6_Stage3_Jawa.id = 4
+        image4_Quiz3_Level6_Stage3_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz3_level6_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level6_stage3_Jawa.id = 3
@@ -2136,8 +5704,42 @@ class MainViewController: UIViewController {
         quiz3_level6_stage3_Jawa.type = "B"
         quiz3_level6_stage3_Jawa.isCorrect = false
         quiz3_level6_stage3_Jawa.question = "Ca"
-        quiz3_level6_stage3_Jawa.choices = []
-        quiz3_level6_stage3_Jawa.images = []
+        quiz3_level6_stage3_Jawa.choices = [choice1_Quiz3_Level6_Stage3_Jawa, choice2_Quiz3_Level6_Stage3_Jawa, choice3_Quiz3_Level6_Stage3_Jawa, choice4_Quiz3_Level6_Stage3_Jawa]
+        quiz3_level6_stage3_Jawa.images = [image1_Quiz3_Level6_Stage3_Jawa, image2_Quiz3_Level6_Stage3_Jawa, image3_Quiz3_Level6_Stage3_Jawa, image4_Quiz3_Level6_Stage3_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level6_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level6_Stage3_Jawa.id = 1
+        choice1_Quiz4_Level6_Stage3_Jawa.name = "Ha"
+        
+        let choice2_Quiz4_Level6_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level6_Stage3_Jawa.id = 2
+        choice2_Quiz4_Level6_Stage3_Jawa.name = "Na"
+        
+        let choice3_Quiz4_Level6_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level6_Stage3_Jawa.id = 3
+        choice3_Quiz4_Level6_Stage3_Jawa.name = "Ca"
+        
+        let choice4_Quiz4_Level6_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level6_Stage3_Jawa.id = 4
+        choice4_Quiz4_Level6_Stage3_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz4_Level6_Stage3_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz4_Level6_Stage3_Jawa.id = 1
+        image1_Quiz4_Level6_Stage3_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz4_Level6_Stage3_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz4_Level6_Stage3_Jawa.id = 2
+        image2_Quiz4_Level6_Stage3_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz4_Level6_Stage3_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz4_Level6_Stage3_Jawa.id = 3
+        image3_Quiz4_Level6_Stage3_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz4_Level6_Stage3_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz4_Level6_Stage3_Jawa.id = 4
+        image4_Quiz4_Level6_Stage3_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz4_level6_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level6_stage3_Jawa.id = 4
@@ -2145,8 +5747,8 @@ class MainViewController: UIViewController {
         quiz4_level6_stage3_Jawa.type = "C"
         quiz4_level6_stage3_Jawa.isCorrect = false
         quiz4_level6_stage3_Jawa.question = "Ca"
-        quiz4_level6_stage3_Jawa.choices = []
-        quiz4_level6_stage3_Jawa.images = []
+        quiz4_level6_stage3_Jawa.choices = [choice1_Quiz4_Level6_Stage3_Jawa, choice2_Quiz4_Level6_Stage3_Jawa, choice3_Quiz4_Level6_Stage3_Jawa, choice4_Quiz4_Level6_Stage3_Jawa]
+        quiz4_level6_stage3_Jawa.images = [image1_Quiz4_Level6_Stage3_Jawa, image2_Quiz4_Level6_Stage3_Jawa, image3_Quiz4_Level6_Stage3_Jawa, image4_Quiz4_Level6_Stage3_Jawa]
         
         let quiz5_level6_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz5_level6_stage3_Jawa.id = 5
@@ -2176,14 +5778,82 @@ class MainViewController: UIViewController {
         quiz1_level7_stage3_Jawa.choices = []
         quiz1_level7_stage3_Jawa.images = []
         
+        //MARK: Choice
+        let choice1_Quiz2_Level7_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level7_Stage3_Jawa.id = 1
+        choice1_Quiz2_Level7_Stage3_Jawa.name = "Ha"
+        
+        let choice2_Quiz2_Level7_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level7_Stage3_Jawa.id = 2
+        choice2_Quiz2_Level7_Stage3_Jawa.name = "Na"
+        
+        let choice3_Quiz2_Level7_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level7_Stage3_Jawa.id = 3
+        choice3_Quiz2_Level7_Stage3_Jawa.name = "Ca"
+        
+        let choice4_Quiz2_Level7_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level7_Stage3_Jawa.id = 4
+        choice4_Quiz2_Level7_Stage3_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz2_Level7_Stage3_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz2_Level7_Stage3_Jawa.id = 1
+        image1_Quiz2_Level7_Stage3_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz2_Level7_Stage3_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz2_Level7_Stage3_Jawa.id = 2
+        image2_Quiz2_Level7_Stage3_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz2_Level7_Stage3_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz2_Level7_Stage3_Jawa.id = 3
+        image3_Quiz2_Level7_Stage3_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz2_Level7_Stage3_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz2_Level7_Stage3_Jawa.id = 4
+        image4_Quiz2_Level7_Stage3_Jawa.name = "Ra_Aksara_Jawa"
+        
         let quiz2_level7_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz2_level7_stage3_Jawa.id = 2
         quiz2_level7_stage3_Jawa.name = "Kuis 1"
         quiz2_level7_stage3_Jawa.type = "A"
         quiz2_level7_stage3_Jawa.isCorrect = false
         quiz2_level7_stage3_Jawa.question = "Ca"
-        quiz2_level7_stage3_Jawa.choices = []
-        quiz2_level7_stage3_Jawa.images = []
+        quiz2_level7_stage3_Jawa.choices = [choice1_Quiz2_Level7_Stage3_Jawa, choice2_Quiz2_Level7_Stage3_Jawa, choice3_Quiz2_Level7_Stage3_Jawa, choice4_Quiz2_Level7_Stage3_Jawa]
+        quiz2_level7_stage3_Jawa.images = [image1_Quiz2_Level7_Stage3_Jawa, image2_Quiz2_Level7_Stage3_Jawa, image3_Quiz2_Level7_Stage3_Jawa, image4_Quiz2_Level7_Stage3_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level7_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level7_Stage3_Jawa.id = 1
+        choice1_Quiz3_Level7_Stage3_Jawa.name = "Ha"
+        
+        let choice2_Quiz3_Level7_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level7_Stage3_Jawa.id = 2
+        choice2_Quiz3_Level7_Stage3_Jawa.name = "Na"
+        
+        let choice3_Quiz3_Level7_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level7_Stage3_Jawa.id = 3
+        choice3_Quiz3_Level7_Stage3_Jawa.name = "Ca"
+        
+        let choice4_Quiz3_Level7_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level7_Stage3_Jawa.id = 4
+        choice4_Quiz3_Level7_Stage3_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz3_Level7_Stage3_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz3_Level7_Stage3_Jawa.id = 1
+        image1_Quiz3_Level7_Stage3_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz3_Level7_Stage3_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz3_Level7_Stage3_Jawa.id = 2
+        image2_Quiz3_Level7_Stage3_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz3_Level7_Stage3_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz3_Level7_Stage3_Jawa.id = 3
+        image3_Quiz3_Level7_Stage3_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz3_Level7_Stage3_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz3_Level7_Stage3_Jawa.id = 4
+        image4_Quiz3_Level7_Stage3_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz3_level7_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level7_stage3_Jawa.id = 3
@@ -2191,8 +5861,42 @@ class MainViewController: UIViewController {
         quiz3_level7_stage3_Jawa.type = "B"
         quiz3_level7_stage3_Jawa.isCorrect = false
         quiz3_level7_stage3_Jawa.question = "Ca"
-        quiz3_level7_stage3_Jawa.choices = []
-        quiz3_level7_stage3_Jawa.images = []
+        quiz3_level7_stage3_Jawa.choices = [choice1_Quiz3_Level7_Stage3_Jawa, choice2_Quiz3_Level7_Stage3_Jawa, choice3_Quiz3_Level7_Stage3_Jawa, choice4_Quiz3_Level7_Stage3_Jawa]
+        quiz3_level7_stage3_Jawa.images = [image1_Quiz3_Level7_Stage3_Jawa, image2_Quiz3_Level7_Stage3_Jawa, image3_Quiz3_Level7_Stage3_Jawa, image4_Quiz3_Level7_Stage3_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level7_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level7_Stage3_Jawa.id = 1
+        choice1_Quiz4_Level7_Stage3_Jawa.name = "Ha"
+        
+        let choice2_Quiz4_Level7_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level7_Stage3_Jawa.id = 2
+        choice2_Quiz4_Level7_Stage3_Jawa.name = "Na"
+        
+        let choice3_Quiz4_Level7_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level7_Stage3_Jawa.id = 3
+        choice3_Quiz4_Level7_Stage3_Jawa.name = "Ca"
+        
+        let choice4_Quiz4_Level7_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level7_Stage3_Jawa.id = 4
+        choice4_Quiz4_Level7_Stage3_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz4_Level7_Stage3_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz4_Level7_Stage3_Jawa.id = 1
+        image1_Quiz4_Level7_Stage3_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz4_Level7_Stage3_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz4_Level7_Stage3_Jawa.id = 2
+        image2_Quiz4_Level7_Stage3_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz4_Level7_Stage3_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz4_Level7_Stage3_Jawa.id = 3
+        image3_Quiz4_Level7_Stage3_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz4_Level7_Stage3_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz4_Level7_Stage3_Jawa.id = 4
+        image4_Quiz4_Level7_Stage3_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz4_level7_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level7_stage3_Jawa.id = 4
@@ -2200,8 +5904,8 @@ class MainViewController: UIViewController {
         quiz4_level7_stage3_Jawa.type = "C"
         quiz4_level7_stage3_Jawa.isCorrect = false
         quiz4_level7_stage3_Jawa.question = "Ca"
-        quiz4_level7_stage3_Jawa.choices = []
-        quiz4_level7_stage3_Jawa.images = []
+        quiz4_level7_stage3_Jawa.choices = [choice1_Quiz4_Level7_Stage3_Jawa, choice2_Quiz4_Level7_Stage3_Jawa, choice3_Quiz4_Level7_Stage3_Jawa, choice4_Quiz4_Level7_Stage3_Jawa]
+        quiz4_level7_stage3_Jawa.images = [image1_Quiz4_Level7_Stage3_Jawa, image2_Quiz4_Level7_Stage3_Jawa, image3_Quiz4_Level7_Stage3_Jawa, image4_Quiz4_Level7_Stage3_Jawa]
         
         let quiz5_level7_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz5_level7_stage3_Jawa.id = 5
@@ -2231,14 +5935,82 @@ class MainViewController: UIViewController {
         quiz1_level8_stage3_Jawa.choices = []
         quiz1_level8_stage3_Jawa.images = []
         
+        //MARK: Choice
+        let choice1_Quiz2_Level8_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level8_Stage3_Jawa.id = 1
+        choice1_Quiz2_Level8_Stage3_Jawa.name = "Ha"
+        
+        let choice2_Quiz2_Level8_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level8_Stage3_Jawa.id = 2
+        choice2_Quiz2_Level8_Stage3_Jawa.name = "Na"
+        
+        let choice3_Quiz2_Level8_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level8_Stage3_Jawa.id = 3
+        choice3_Quiz2_Level8_Stage3_Jawa.name = "Ca"
+        
+        let choice4_Quiz2_Level8_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level8_Stage3_Jawa.id = 4
+        choice4_Quiz2_Level8_Stage3_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz2_Level8_Stage3_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz2_Level8_Stage3_Jawa.id = 1
+        image1_Quiz2_Level8_Stage3_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz2_Level8_Stage3_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz2_Level8_Stage3_Jawa.id = 2
+        image2_Quiz2_Level8_Stage3_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz2_Level8_Stage3_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz2_Level8_Stage3_Jawa.id = 3
+        image3_Quiz2_Level8_Stage3_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz2_Level8_Stage3_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz2_Level8_Stage3_Jawa.id = 4
+        image4_Quiz2_Level8_Stage3_Jawa.name = "Ra_Aksara_Jawa"
+        
         let quiz2_level8_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz2_level8_stage3_Jawa.id = 2
         quiz2_level8_stage3_Jawa.name = "Kuis 1"
         quiz2_level8_stage3_Jawa.type = "A"
         quiz2_level8_stage3_Jawa.isCorrect = false
         quiz2_level8_stage3_Jawa.question = "Ca"
-        quiz2_level8_stage3_Jawa.choices = []
-        quiz2_level8_stage3_Jawa.images = []
+        quiz2_level8_stage3_Jawa.choices = [choice1_Quiz2_Level8_Stage3_Jawa, choice2_Quiz2_Level8_Stage3_Jawa, choice3_Quiz2_Level8_Stage3_Jawa, choice4_Quiz2_Level8_Stage3_Jawa]
+        quiz2_level8_stage3_Jawa.images = [image1_Quiz2_Level8_Stage3_Jawa, image2_Quiz2_Level8_Stage3_Jawa, image3_Quiz2_Level8_Stage3_Jawa, image4_Quiz2_Level8_Stage3_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level8_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level8_Stage3_Jawa.id = 1
+        choice1_Quiz3_Level8_Stage3_Jawa.name = "Ha"
+        
+        let choice2_Quiz3_Level8_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level8_Stage3_Jawa.id = 2
+        choice2_Quiz3_Level8_Stage3_Jawa.name = "Na"
+        
+        let choice3_Quiz3_Level8_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level8_Stage3_Jawa.id = 3
+        choice3_Quiz3_Level8_Stage3_Jawa.name = "Ca"
+        
+        let choice4_Quiz3_Level8_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level8_Stage3_Jawa.id = 4
+        choice4_Quiz3_Level8_Stage3_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz3_Level8_Stage3_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz3_Level8_Stage3_Jawa.id = 1
+        image1_Quiz3_Level8_Stage3_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz3_Level8_Stage3_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz3_Level8_Stage3_Jawa.id = 2
+        image2_Quiz3_Level8_Stage3_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz3_Level8_Stage3_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz3_Level8_Stage3_Jawa.id = 3
+        image3_Quiz3_Level8_Stage3_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz3_Level8_Stage3_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz3_Level8_Stage3_Jawa.id = 4
+        image4_Quiz3_Level8_Stage3_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz3_level8_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level8_stage3_Jawa.id = 3
@@ -2246,8 +6018,42 @@ class MainViewController: UIViewController {
         quiz3_level8_stage3_Jawa.type = "B"
         quiz3_level8_stage3_Jawa.isCorrect = false
         quiz3_level8_stage3_Jawa.question = "Ca"
-        quiz3_level8_stage3_Jawa.choices = []
-        quiz3_level8_stage3_Jawa.images = []
+        quiz3_level8_stage3_Jawa.choices = [choice1_Quiz3_Level8_Stage3_Jawa, choice2_Quiz3_Level8_Stage3_Jawa, choice3_Quiz3_Level8_Stage3_Jawa, choice4_Quiz3_Level8_Stage3_Jawa]
+        quiz3_level8_stage3_Jawa.images = [image1_Quiz3_Level8_Stage3_Jawa, image2_Quiz3_Level8_Stage3_Jawa, image3_Quiz3_Level8_Stage3_Jawa, image4_Quiz3_Level8_Stage3_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level8_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level8_Stage3_Jawa.id = 1
+        choice1_Quiz4_Level8_Stage3_Jawa.name = "Ha"
+        
+        let choice2_Quiz4_Level8_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level8_Stage3_Jawa.id = 2
+        choice2_Quiz4_Level8_Stage3_Jawa.name = "Na"
+        
+        let choice3_Quiz4_Level8_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level8_Stage3_Jawa.id = 3
+        choice3_Quiz4_Level8_Stage3_Jawa.name = "Ca"
+        
+        let choice4_Quiz4_Level8_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level8_Stage3_Jawa.id = 4
+        choice4_Quiz4_Level8_Stage3_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz4_Level8_Stage3_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz4_Level8_Stage3_Jawa.id = 1
+        image1_Quiz4_Level8_Stage3_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz4_Level8_Stage3_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz4_Level8_Stage3_Jawa.id = 2
+        image2_Quiz4_Level8_Stage3_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz4_Level8_Stage3_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz4_Level8_Stage3_Jawa.id = 3
+        image3_Quiz4_Level8_Stage3_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz4_Level8_Stage3_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz4_Level8_Stage3_Jawa.id = 4
+        image4_Quiz4_Level8_Stage3_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz4_level8_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level8_stage3_Jawa.id = 4
@@ -2255,8 +6061,8 @@ class MainViewController: UIViewController {
         quiz4_level8_stage3_Jawa.type = "C"
         quiz4_level8_stage3_Jawa.isCorrect = false
         quiz4_level8_stage3_Jawa.question = "Ca"
-        quiz4_level8_stage3_Jawa.choices = []
-        quiz4_level8_stage3_Jawa.images = []
+        quiz4_level8_stage3_Jawa.choices = [choice1_Quiz4_Level8_Stage3_Jawa, choice2_Quiz4_Level8_Stage3_Jawa, choice3_Quiz4_Level8_Stage3_Jawa, choice4_Quiz4_Level8_Stage3_Jawa]
+        quiz4_level8_stage3_Jawa.images = [image1_Quiz4_Level8_Stage3_Jawa, image2_Quiz4_Level8_Stage3_Jawa, image3_Quiz4_Level8_Stage3_Jawa, image4_Quiz4_Level8_Stage3_Jawa]
         
         let quiz5_level8_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz5_level8_stage3_Jawa.id = 5
@@ -2286,14 +6092,82 @@ class MainViewController: UIViewController {
         quiz1_level9_stage3_Jawa.choices = []
         quiz1_level9_stage3_Jawa.images = []
         
+        //MARK: Choice
+        let choice1_Quiz2_Level9_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level9_Stage3_Jawa.id = 1
+        choice1_Quiz2_Level9_Stage3_Jawa.name = "Ha"
+        
+        let choice2_Quiz2_Level9_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level9_Stage3_Jawa.id = 2
+        choice2_Quiz2_Level9_Stage3_Jawa.name = "Na"
+        
+        let choice3_Quiz2_Level9_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level9_Stage3_Jawa.id = 3
+        choice3_Quiz2_Level9_Stage3_Jawa.name = "Ca"
+        
+        let choice4_Quiz2_Level9_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level9_Stage3_Jawa.id = 4
+        choice4_Quiz2_Level9_Stage3_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz2_Level9_Stage3_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz2_Level9_Stage3_Jawa.id = 1
+        image1_Quiz2_Level9_Stage3_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz2_Level9_Stage3_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz2_Level9_Stage3_Jawa.id = 2
+        image2_Quiz2_Level9_Stage3_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz2_Level9_Stage3_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz2_Level9_Stage3_Jawa.id = 3
+        image3_Quiz2_Level9_Stage3_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz2_Level9_Stage3_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz2_Level9_Stage3_Jawa.id = 4
+        image4_Quiz2_Level9_Stage3_Jawa.name = "Ra_Aksara_Jawa"
+        
         let quiz2_level9_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz2_level9_stage3_Jawa.id = 2
         quiz2_level9_stage3_Jawa.name = "Kuis 1"
         quiz2_level9_stage3_Jawa.type = "A"
         quiz2_level9_stage3_Jawa.isCorrect = false
         quiz2_level9_stage3_Jawa.question = "Ca"
-        quiz2_level9_stage3_Jawa.choices = []
-        quiz2_level9_stage3_Jawa.images = []
+        quiz2_level9_stage3_Jawa.choices = [choice1_Quiz2_Level9_Stage3_Jawa, choice2_Quiz2_Level9_Stage3_Jawa, choice3_Quiz2_Level9_Stage3_Jawa, choice4_Quiz2_Level9_Stage3_Jawa]
+        quiz2_level9_stage3_Jawa.images = [image1_Quiz2_Level9_Stage3_Jawa, image2_Quiz2_Level9_Stage3_Jawa, image3_Quiz2_Level9_Stage3_Jawa, image4_Quiz2_Level9_Stage3_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level9_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level9_Stage3_Jawa.id = 1
+        choice1_Quiz3_Level9_Stage3_Jawa.name = "Ha"
+        
+        let choice2_Quiz3_Level9_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level9_Stage3_Jawa.id = 2
+        choice2_Quiz3_Level9_Stage3_Jawa.name = "Na"
+        
+        let choice3_Quiz3_Level9_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level9_Stage3_Jawa.id = 3
+        choice3_Quiz3_Level9_Stage3_Jawa.name = "Ca"
+        
+        let choice4_Quiz3_Level9_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level9_Stage3_Jawa.id = 4
+        choice4_Quiz3_Level9_Stage3_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz3_Level9_Stage3_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz3_Level9_Stage3_Jawa.id = 1
+        image1_Quiz3_Level9_Stage3_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz3_Level9_Stage3_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz3_Level9_Stage3_Jawa.id = 2
+        image2_Quiz3_Level9_Stage3_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz3_Level9_Stage3_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz3_Level9_Stage3_Jawa.id = 3
+        image3_Quiz3_Level9_Stage3_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz3_Level9_Stage3_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz3_Level9_Stage3_Jawa.id = 4
+        image4_Quiz3_Level9_Stage3_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz3_level9_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level9_stage3_Jawa.id = 3
@@ -2301,8 +6175,42 @@ class MainViewController: UIViewController {
         quiz3_level9_stage3_Jawa.type = "B"
         quiz3_level9_stage3_Jawa.isCorrect = false
         quiz3_level9_stage3_Jawa.question = "Ca"
-        quiz3_level9_stage3_Jawa.choices = []
-        quiz3_level9_stage3_Jawa.images = []
+        quiz3_level9_stage3_Jawa.choices = [choice1_Quiz3_Level9_Stage3_Jawa, choice2_Quiz3_Level9_Stage3_Jawa, choice3_Quiz3_Level9_Stage3_Jawa, choice4_Quiz3_Level9_Stage3_Jawa]
+        quiz3_level9_stage3_Jawa.images = [image1_Quiz3_Level9_Stage3_Jawa, image2_Quiz3_Level9_Stage3_Jawa, image3_Quiz3_Level9_Stage3_Jawa, image4_Quiz3_Level9_Stage3_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level9_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level9_Stage3_Jawa.id = 1
+        choice1_Quiz4_Level9_Stage3_Jawa.name = "Ha"
+        
+        let choice2_Quiz4_Level9_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level9_Stage3_Jawa.id = 2
+        choice2_Quiz4_Level9_Stage3_Jawa.name = "Na"
+        
+        let choice3_Quiz4_Level9_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level9_Stage3_Jawa.id = 3
+        choice3_Quiz4_Level9_Stage3_Jawa.name = "Ca"
+        
+        let choice4_Quiz4_Level9_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level9_Stage3_Jawa.id = 4
+        choice4_Quiz4_Level9_Stage3_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz4_Level9_Stage3_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz4_Level9_Stage3_Jawa.id = 1
+        image1_Quiz4_Level9_Stage3_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz4_Level9_Stage3_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz4_Level9_Stage3_Jawa.id = 2
+        image2_Quiz4_Level9_Stage3_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz4_Level9_Stage3_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz4_Level9_Stage3_Jawa.id = 3
+        image3_Quiz4_Level9_Stage3_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz4_Level9_Stage3_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz4_Level9_Stage3_Jawa.id = 4
+        image4_Quiz4_Level9_Stage3_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz4_level9_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level9_stage3_Jawa.id = 4
@@ -2310,8 +6218,8 @@ class MainViewController: UIViewController {
         quiz4_level9_stage3_Jawa.type = "C"
         quiz4_level9_stage3_Jawa.isCorrect = false
         quiz4_level9_stage3_Jawa.question = "Ca"
-        quiz4_level9_stage3_Jawa.choices = []
-        quiz4_level9_stage3_Jawa.images = []
+        quiz4_level9_stage3_Jawa.choices = [choice1_Quiz4_Level9_Stage3_Jawa, choice2_Quiz4_Level9_Stage3_Jawa, choice3_Quiz4_Level9_Stage3_Jawa, choice4_Quiz4_Level9_Stage3_Jawa]
+        quiz4_level9_stage3_Jawa.images = [image1_Quiz4_Level9_Stage3_Jawa, image2_Quiz4_Level9_Stage3_Jawa, image3_Quiz4_Level9_Stage3_Jawa, image4_Quiz4_Level9_Stage3_Jawa]
         
         let quiz5_level9_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz5_level9_stage3_Jawa.id = 5
@@ -2341,14 +6249,82 @@ class MainViewController: UIViewController {
         quiz1_level10_stage3_Jawa.choices = []
         quiz1_level10_stage3_Jawa.images = []
         
+        //MARK: Choice
+        let choice1_Quiz2_Level10_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level10_Stage3_Jawa.id = 1
+        choice1_Quiz2_Level10_Stage3_Jawa.name = "Ha"
+        
+        let choice2_Quiz2_Level10_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level10_Stage3_Jawa.id = 2
+        choice2_Quiz2_Level10_Stage3_Jawa.name = "Na"
+        
+        let choice3_Quiz2_Level10_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level10_Stage3_Jawa.id = 3
+        choice3_Quiz2_Level10_Stage3_Jawa.name = "Ca"
+        
+        let choice4_Quiz2_Level10_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level10_Stage3_Jawa.id = 4
+        choice4_Quiz2_Level10_Stage3_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz2_Level10_Stage3_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz2_Level10_Stage3_Jawa.id = 1
+        image1_Quiz2_Level10_Stage3_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz2_Level10_Stage3_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz2_Level10_Stage3_Jawa.id = 2
+        image2_Quiz2_Level10_Stage3_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz2_Level10_Stage3_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz2_Level10_Stage3_Jawa.id = 3
+        image3_Quiz2_Level10_Stage3_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz2_Level10_Stage3_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz2_Level10_Stage3_Jawa.id = 4
+        image4_Quiz2_Level10_Stage3_Jawa.name = "Ra_Aksara_Jawa"
+        
         let quiz2_level10_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz2_level10_stage3_Jawa.id = 2
         quiz2_level10_stage3_Jawa.name = "Kuis 1"
         quiz2_level10_stage3_Jawa.type = "A"
         quiz2_level10_stage3_Jawa.isCorrect = false
         quiz2_level10_stage3_Jawa.question = "Ca"
-        quiz2_level10_stage3_Jawa.choices = []
-        quiz2_level10_stage3_Jawa.images = []
+        quiz2_level10_stage3_Jawa.choices = [choice1_Quiz2_Level10_Stage3_Jawa, choice2_Quiz2_Level10_Stage3_Jawa, choice3_Quiz2_Level10_Stage3_Jawa, choice4_Quiz2_Level10_Stage3_Jawa]
+        quiz2_level10_stage3_Jawa.images = [image1_Quiz2_Level10_Stage3_Jawa, image2_Quiz2_Level10_Stage3_Jawa, image3_Quiz2_Level10_Stage3_Jawa, image4_Quiz2_Level10_Stage3_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level10_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level10_Stage3_Jawa.id = 1
+        choice1_Quiz3_Level10_Stage3_Jawa.name = "Ha"
+        
+        let choice2_Quiz3_Level10_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level10_Stage3_Jawa.id = 2
+        choice2_Quiz3_Level10_Stage3_Jawa.name = "Na"
+        
+        let choice3_Quiz3_Level10_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level10_Stage3_Jawa.id = 3
+        choice3_Quiz3_Level10_Stage3_Jawa.name = "Ca"
+        
+        let choice4_Quiz3_Level10_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level10_Stage3_Jawa.id = 4
+        choice4_Quiz3_Level10_Stage3_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz3_Level10_Stage3_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz3_Level10_Stage3_Jawa.id = 1
+        image1_Quiz3_Level10_Stage3_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz3_Level10_Stage3_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz3_Level10_Stage3_Jawa.id = 2
+        image2_Quiz3_Level10_Stage3_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz3_Level10_Stage3_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz3_Level10_Stage3_Jawa.id = 3
+        image3_Quiz3_Level10_Stage3_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz3_Level10_Stage3_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz3_Level10_Stage3_Jawa.id = 4
+        image4_Quiz3_Level10_Stage3_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz3_level10_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level10_stage3_Jawa.id = 3
@@ -2356,8 +6332,42 @@ class MainViewController: UIViewController {
         quiz3_level10_stage3_Jawa.type = "B"
         quiz3_level10_stage3_Jawa.isCorrect = false
         quiz3_level10_stage3_Jawa.question = "Ca"
-        quiz3_level10_stage3_Jawa.choices = []
-        quiz3_level10_stage3_Jawa.images = []
+        quiz3_level10_stage3_Jawa.choices = [choice1_Quiz3_Level10_Stage3_Jawa, choice2_Quiz3_Level10_Stage3_Jawa, choice3_Quiz3_Level10_Stage3_Jawa, choice4_Quiz3_Level10_Stage3_Jawa]
+        quiz3_level10_stage3_Jawa.images = [image1_Quiz3_Level10_Stage3_Jawa, image2_Quiz3_Level10_Stage3_Jawa, image3_Quiz3_Level10_Stage3_Jawa, image4_Quiz3_Level10_Stage3_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level10_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level10_Stage3_Jawa.id = 1
+        choice1_Quiz4_Level10_Stage3_Jawa.name = "Ha"
+        
+        let choice2_Quiz4_Level10_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level10_Stage3_Jawa.id = 2
+        choice2_Quiz4_Level10_Stage3_Jawa.name = "Na"
+        
+        let choice3_Quiz4_Level10_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level10_Stage3_Jawa.id = 3
+        choice3_Quiz4_Level10_Stage3_Jawa.name = "Ca"
+        
+        let choice4_Quiz4_Level10_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level10_Stage3_Jawa.id = 4
+        choice4_Quiz4_Level10_Stage3_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz4_Level10_Stage3_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz4_Level10_Stage3_Jawa.id = 1
+        image1_Quiz4_Level10_Stage3_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz4_Level10_Stage3_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz4_Level10_Stage3_Jawa.id = 2
+        image2_Quiz4_Level10_Stage3_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz4_Level10_Stage3_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz4_Level10_Stage3_Jawa.id = 3
+        image3_Quiz4_Level10_Stage3_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz4_Level10_Stage3_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz4_Level10_Stage3_Jawa.id = 4
+        image4_Quiz4_Level10_Stage3_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz4_level10_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level10_stage3_Jawa.id = 4
@@ -2365,8 +6375,8 @@ class MainViewController: UIViewController {
         quiz4_level10_stage3_Jawa.type = "C"
         quiz4_level10_stage3_Jawa.isCorrect = false
         quiz4_level10_stage3_Jawa.question = "Ca"
-        quiz4_level10_stage3_Jawa.choices = []
-        quiz4_level10_stage3_Jawa.images = []
+        quiz4_level10_stage3_Jawa.choices = [choice1_Quiz4_Level10_Stage3_Jawa, choice2_Quiz4_Level10_Stage3_Jawa, choice3_Quiz4_Level10_Stage3_Jawa, choice4_Quiz4_Level10_Stage3_Jawa]
+        quiz4_level10_stage3_Jawa.images = [image1_Quiz4_Level10_Stage3_Jawa, image2_Quiz4_Level10_Stage3_Jawa, image3_Quiz4_Level10_Stage3_Jawa, image4_Quiz4_Level10_Stage3_Jawa]
         
         let quiz5_level10_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz5_level10_stage3_Jawa.id = 5
@@ -2396,14 +6406,82 @@ class MainViewController: UIViewController {
         quiz1_level11_stage3_Jawa.choices = []
         quiz1_level11_stage3_Jawa.images = []
         
+        //MARK: Choice
+        let choice1_Quiz2_Level11_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level11_Stage3_Jawa.id = 1
+        choice1_Quiz2_Level11_Stage3_Jawa.name = "Ha"
+        
+        let choice2_Quiz2_Level11_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level11_Stage3_Jawa.id = 2
+        choice2_Quiz2_Level11_Stage3_Jawa.name = "Na"
+        
+        let choice3_Quiz2_Level11_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level11_Stage3_Jawa.id = 3
+        choice3_Quiz2_Level11_Stage3_Jawa.name = "Ca"
+        
+        let choice4_Quiz2_Level11_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level11_Stage3_Jawa.id = 4
+        choice4_Quiz2_Level11_Stage3_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz2_Level11_Stage3_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz2_Level11_Stage3_Jawa.id = 1
+        image1_Quiz2_Level11_Stage3_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz2_Level11_Stage3_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz2_Level11_Stage3_Jawa.id = 2
+        image2_Quiz2_Level11_Stage3_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz2_Level11_Stage3_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz2_Level11_Stage3_Jawa.id = 3
+        image3_Quiz2_Level11_Stage3_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz2_Level11_Stage3_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz2_Level11_Stage3_Jawa.id = 4
+        image4_Quiz2_Level11_Stage3_Jawa.name = "Ra_Aksara_Jawa"
+        
         let quiz2_level11_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz2_level11_stage3_Jawa.id = 2
         quiz2_level11_stage3_Jawa.name = "Kuis 1"
         quiz2_level11_stage3_Jawa.type = "A"
         quiz2_level11_stage3_Jawa.isCorrect = false
         quiz2_level11_stage3_Jawa.question = "Ca"
-        quiz2_level11_stage3_Jawa.choices = []
-        quiz2_level11_stage3_Jawa.images = []
+        quiz2_level11_stage3_Jawa.choices = [choice1_Quiz2_Level11_Stage3_Jawa, choice2_Quiz2_Level11_Stage3_Jawa, choice3_Quiz2_Level11_Stage3_Jawa, choice4_Quiz2_Level11_Stage3_Jawa]
+        quiz2_level11_stage3_Jawa.images = [image1_Quiz2_Level11_Stage3_Jawa, image2_Quiz2_Level11_Stage3_Jawa, image3_Quiz2_Level11_Stage3_Jawa, image4_Quiz2_Level11_Stage3_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level11_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level11_Stage3_Jawa.id = 1
+        choice1_Quiz3_Level11_Stage3_Jawa.name = "Ha"
+        
+        let choice2_Quiz3_Level11_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level11_Stage3_Jawa.id = 2
+        choice2_Quiz3_Level11_Stage3_Jawa.name = "Na"
+        
+        let choice3_Quiz3_Level11_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level11_Stage3_Jawa.id = 3
+        choice3_Quiz3_Level11_Stage3_Jawa.name = "Ca"
+        
+        let choice4_Quiz3_Level11_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level11_Stage3_Jawa.id = 4
+        choice4_Quiz3_Level11_Stage3_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz3_Level11_Stage3_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz3_Level11_Stage3_Jawa.id = 1
+        image1_Quiz3_Level11_Stage3_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz3_Level11_Stage3_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz3_Level11_Stage3_Jawa.id = 2
+        image2_Quiz3_Level11_Stage3_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz3_Level11_Stage3_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz3_Level11_Stage3_Jawa.id = 3
+        image3_Quiz3_Level11_Stage3_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz3_Level11_Stage3_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz3_Level11_Stage3_Jawa.id = 4
+        image4_Quiz3_Level11_Stage3_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz3_level11_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level11_stage3_Jawa.id = 3
@@ -2411,8 +6489,42 @@ class MainViewController: UIViewController {
         quiz3_level11_stage3_Jawa.type = "B"
         quiz3_level11_stage3_Jawa.isCorrect = false
         quiz3_level11_stage3_Jawa.question = "Ca"
-        quiz3_level11_stage3_Jawa.choices = []
-        quiz3_level11_stage3_Jawa.images = []
+        quiz3_level11_stage3_Jawa.choices = [choice1_Quiz3_Level11_Stage3_Jawa, choice2_Quiz3_Level11_Stage3_Jawa, choice3_Quiz3_Level11_Stage3_Jawa, choice4_Quiz3_Level11_Stage3_Jawa]
+        quiz3_level11_stage3_Jawa.images = [image1_Quiz3_Level11_Stage3_Jawa, image2_Quiz3_Level11_Stage3_Jawa, image3_Quiz3_Level11_Stage3_Jawa, image4_Quiz3_Level11_Stage3_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level11_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level11_Stage3_Jawa.id = 1
+        choice1_Quiz4_Level11_Stage3_Jawa.name = "Ha"
+        
+        let choice2_Quiz4_Level11_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level11_Stage3_Jawa.id = 2
+        choice2_Quiz4_Level11_Stage3_Jawa.name = "Na"
+        
+        let choice3_Quiz4_Level11_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level11_Stage3_Jawa.id = 3
+        choice3_Quiz4_Level11_Stage3_Jawa.name = "Ca"
+        
+        let choice4_Quiz4_Level11_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level11_Stage3_Jawa.id = 4
+        choice4_Quiz4_Level11_Stage3_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz4_Level11_Stage3_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz4_Level11_Stage3_Jawa.id = 1
+        image1_Quiz4_Level11_Stage3_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz4_Level11_Stage3_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz4_Level11_Stage3_Jawa.id = 2
+        image2_Quiz4_Level11_Stage3_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz4_Level11_Stage3_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz4_Level11_Stage3_Jawa.id = 3
+        image3_Quiz4_Level11_Stage3_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz4_Level11_Stage3_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz4_Level11_Stage3_Jawa.id = 4
+        image4_Quiz4_Level11_Stage3_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz4_level11_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level11_stage3_Jawa.id = 4
@@ -2420,8 +6532,8 @@ class MainViewController: UIViewController {
         quiz4_level11_stage3_Jawa.type = "C"
         quiz4_level11_stage3_Jawa.isCorrect = false
         quiz4_level11_stage3_Jawa.question = "Ca"
-        quiz4_level11_stage3_Jawa.choices = []
-        quiz4_level11_stage3_Jawa.images = []
+        quiz4_level11_stage3_Jawa.choices = [choice1_Quiz4_Level11_Stage3_Jawa, choice2_Quiz4_Level11_Stage3_Jawa, choice3_Quiz4_Level11_Stage3_Jawa, choice4_Quiz4_Level11_Stage3_Jawa]
+        quiz4_level11_stage3_Jawa.images = [image1_Quiz4_Level11_Stage3_Jawa, image2_Quiz4_Level11_Stage3_Jawa, image3_Quiz4_Level11_Stage3_Jawa, image4_Quiz4_Level11_Stage3_Jawa]
         
         let quiz5_level11_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz5_level11_stage3_Jawa.id = 5
@@ -2451,14 +6563,82 @@ class MainViewController: UIViewController {
         quiz1_level12_stage3_Jawa.choices = []
         quiz1_level12_stage3_Jawa.images = []
         
+        //MARK: Choice
+        let choice1_Quiz2_Level12_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level12_Stage3_Jawa.id = 1
+        choice1_Quiz2_Level12_Stage3_Jawa.name = "Ha"
+        
+        let choice2_Quiz2_Level12_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level12_Stage3_Jawa.id = 2
+        choice2_Quiz2_Level12_Stage3_Jawa.name = "Na"
+        
+        let choice3_Quiz2_Level12_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level12_Stage3_Jawa.id = 3
+        choice3_Quiz2_Level12_Stage3_Jawa.name = "Ca"
+        
+        let choice4_Quiz2_Level12_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level12_Stage3_Jawa.id = 4
+        choice4_Quiz2_Level12_Stage3_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz2_Level12_Stage3_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz2_Level12_Stage3_Jawa.id = 1
+        image1_Quiz2_Level12_Stage3_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz2_Level12_Stage3_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz2_Level12_Stage3_Jawa.id = 2
+        image2_Quiz2_Level12_Stage3_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz2_Level12_Stage3_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz2_Level12_Stage3_Jawa.id = 3
+        image3_Quiz2_Level12_Stage3_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz2_Level12_Stage3_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz2_Level12_Stage3_Jawa.id = 4
+        image4_Quiz2_Level12_Stage3_Jawa.name = "Ra_Aksara_Jawa"
+        
         let quiz2_level12_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz2_level12_stage3_Jawa.id = 2
         quiz2_level12_stage3_Jawa.name = "Kuis 1"
         quiz2_level12_stage3_Jawa.type = "A"
         quiz2_level12_stage3_Jawa.isCorrect = false
         quiz2_level12_stage3_Jawa.question = "Ca"
-        quiz2_level12_stage3_Jawa.choices = []
-        quiz2_level12_stage3_Jawa.images = []
+        quiz2_level12_stage3_Jawa.choices = [choice1_Quiz2_Level12_Stage3_Jawa, choice2_Quiz2_Level12_Stage3_Jawa, choice3_Quiz2_Level12_Stage3_Jawa, choice4_Quiz2_Level12_Stage3_Jawa]
+        quiz2_level12_stage3_Jawa.images = [image1_Quiz2_Level12_Stage3_Jawa, image2_Quiz2_Level12_Stage3_Jawa, image3_Quiz2_Level12_Stage3_Jawa, image4_Quiz2_Level12_Stage3_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level12_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level12_Stage3_Jawa.id = 1
+        choice1_Quiz3_Level12_Stage3_Jawa.name = "Ha"
+        
+        let choice2_Quiz3_Level12_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level12_Stage3_Jawa.id = 2
+        choice2_Quiz3_Level12_Stage3_Jawa.name = "Na"
+        
+        let choice3_Quiz3_Level12_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level12_Stage3_Jawa.id = 3
+        choice3_Quiz3_Level12_Stage3_Jawa.name = "Ca"
+        
+        let choice4_Quiz3_Level12_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level12_Stage3_Jawa.id = 4
+        choice4_Quiz3_Level12_Stage3_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz3_Level12_Stage3_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz3_Level12_Stage3_Jawa.id = 1
+        image1_Quiz3_Level12_Stage3_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz3_Level12_Stage3_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz3_Level12_Stage3_Jawa.id = 2
+        image2_Quiz3_Level12_Stage3_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz3_Level12_Stage3_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz3_Level12_Stage3_Jawa.id = 3
+        image3_Quiz3_Level12_Stage3_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz3_Level12_Stage3_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz3_Level12_Stage3_Jawa.id = 4
+        image4_Quiz3_Level12_Stage3_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz3_level12_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level12_stage3_Jawa.id = 3
@@ -2466,8 +6646,42 @@ class MainViewController: UIViewController {
         quiz3_level12_stage3_Jawa.type = "B"
         quiz3_level12_stage3_Jawa.isCorrect = false
         quiz3_level12_stage3_Jawa.question = "Ca"
-        quiz3_level12_stage3_Jawa.choices = []
-        quiz3_level12_stage3_Jawa.images = []
+        quiz3_level12_stage3_Jawa.choices = [choice1_Quiz3_Level12_Stage3_Jawa, choice2_Quiz3_Level12_Stage3_Jawa, choice3_Quiz3_Level12_Stage3_Jawa, choice4_Quiz3_Level12_Stage3_Jawa]
+        quiz3_level12_stage3_Jawa.images = [image1_Quiz3_Level12_Stage3_Jawa, image2_Quiz3_Level12_Stage3_Jawa, image3_Quiz3_Level12_Stage3_Jawa, image4_Quiz3_Level12_Stage3_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level12_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level12_Stage3_Jawa.id = 1
+        choice1_Quiz4_Level12_Stage3_Jawa.name = "Ha"
+        
+        let choice2_Quiz4_Level12_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level12_Stage3_Jawa.id = 2
+        choice2_Quiz4_Level12_Stage3_Jawa.name = "Na"
+        
+        let choice3_Quiz4_Level12_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level12_Stage3_Jawa.id = 3
+        choice3_Quiz4_Level12_Stage3_Jawa.name = "Ca"
+        
+        let choice4_Quiz4_Level12_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level12_Stage3_Jawa.id = 4
+        choice4_Quiz4_Level12_Stage3_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz4_Level12_Stage3_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz4_Level12_Stage3_Jawa.id = 1
+        image1_Quiz4_Level12_Stage3_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz4_Level12_Stage3_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz4_Level12_Stage3_Jawa.id = 2
+        image2_Quiz4_Level12_Stage3_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz4_Level12_Stage3_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz4_Level12_Stage3_Jawa.id = 3
+        image3_Quiz4_Level12_Stage3_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz4_Level12_Stage3_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz4_Level12_Stage3_Jawa.id = 4
+        image4_Quiz4_Level12_Stage3_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz4_level12_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level12_stage3_Jawa.id = 4
@@ -2475,8 +6689,8 @@ class MainViewController: UIViewController {
         quiz4_level12_stage3_Jawa.type = "C"
         quiz4_level12_stage3_Jawa.isCorrect = false
         quiz4_level12_stage3_Jawa.question = "Ca"
-        quiz4_level12_stage3_Jawa.choices = []
-        quiz4_level12_stage3_Jawa.images = []
+        quiz4_level12_stage3_Jawa.choices = [choice1_Quiz4_Level12_Stage3_Jawa, choice2_Quiz4_Level12_Stage3_Jawa, choice3_Quiz4_Level12_Stage3_Jawa, choice4_Quiz4_Level12_Stage3_Jawa]
+        quiz4_level12_stage3_Jawa.images = [image1_Quiz4_Level12_Stage3_Jawa, image2_Quiz4_Level12_Stage3_Jawa, image3_Quiz4_Level12_Stage3_Jawa, image4_Quiz4_Level12_Stage3_Jawa]
         
         let quiz5_level12_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz5_level12_stage3_Jawa.id = 5
@@ -2506,14 +6720,82 @@ class MainViewController: UIViewController {
         quiz1_level13_stage3_Jawa.choices = []
         quiz1_level13_stage3_Jawa.images = []
         
+        //MARK: Choice
+        let choice1_Quiz2_Level13_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level13_Stage3_Jawa.id = 1
+        choice1_Quiz2_Level13_Stage3_Jawa.name = "Ha"
+        
+        let choice2_Quiz2_Level13_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level13_Stage3_Jawa.id = 2
+        choice2_Quiz2_Level13_Stage3_Jawa.name = "Na"
+        
+        let choice3_Quiz2_Level13_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level13_Stage3_Jawa.id = 3
+        choice3_Quiz2_Level13_Stage3_Jawa.name = "Ca"
+        
+        let choice4_Quiz2_Level13_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level13_Stage3_Jawa.id = 4
+        choice4_Quiz2_Level13_Stage3_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz2_Level13_Stage3_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz2_Level13_Stage3_Jawa.id = 1
+        image1_Quiz2_Level13_Stage3_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz2_Level13_Stage3_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz2_Level13_Stage3_Jawa.id = 2
+        image2_Quiz2_Level13_Stage3_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz2_Level13_Stage3_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz2_Level13_Stage3_Jawa.id = 3
+        image3_Quiz2_Level13_Stage3_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz2_Level13_Stage3_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz2_Level13_Stage3_Jawa.id = 4
+        image4_Quiz2_Level13_Stage3_Jawa.name = "Ra_Aksara_Jawa"
+        
         let quiz2_level13_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz2_level13_stage3_Jawa.id = 2
         quiz2_level13_stage3_Jawa.name = "Kuis 1"
         quiz2_level13_stage3_Jawa.type = "A"
         quiz2_level13_stage3_Jawa.isCorrect = false
         quiz2_level13_stage3_Jawa.question = "Ca"
-        quiz2_level13_stage3_Jawa.choices = []
-        quiz2_level13_stage3_Jawa.images = []
+        quiz2_level13_stage3_Jawa.choices = [choice1_Quiz2_Level13_Stage3_Jawa, choice2_Quiz2_Level13_Stage3_Jawa, choice3_Quiz2_Level13_Stage3_Jawa, choice4_Quiz2_Level13_Stage3_Jawa]
+        quiz2_level13_stage3_Jawa.images = [image1_Quiz2_Level13_Stage3_Jawa, image2_Quiz2_Level13_Stage3_Jawa, image3_Quiz2_Level13_Stage3_Jawa, image4_Quiz2_Level13_Stage3_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level13_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level13_Stage3_Jawa.id = 1
+        choice1_Quiz3_Level13_Stage3_Jawa.name = "Ha"
+        
+        let choice2_Quiz3_Level13_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level13_Stage3_Jawa.id = 2
+        choice2_Quiz3_Level13_Stage3_Jawa.name = "Na"
+        
+        let choice3_Quiz3_Level13_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level13_Stage3_Jawa.id = 3
+        choice3_Quiz3_Level13_Stage3_Jawa.name = "Ca"
+        
+        let choice4_Quiz3_Level13_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level13_Stage3_Jawa.id = 4
+        choice4_Quiz3_Level13_Stage3_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz3_Level13_Stage3_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz3_Level13_Stage3_Jawa.id = 1
+        image1_Quiz3_Level13_Stage3_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz3_Level13_Stage3_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz3_Level13_Stage3_Jawa.id = 2
+        image2_Quiz3_Level13_Stage3_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz3_Level13_Stage3_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz3_Level13_Stage3_Jawa.id = 3
+        image3_Quiz3_Level13_Stage3_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz3_Level13_Stage3_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz3_Level13_Stage3_Jawa.id = 4
+        image4_Quiz3_Level13_Stage3_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz3_level13_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level13_stage3_Jawa.id = 3
@@ -2521,8 +6803,42 @@ class MainViewController: UIViewController {
         quiz3_level13_stage3_Jawa.type = "B"
         quiz3_level13_stage3_Jawa.isCorrect = false
         quiz3_level13_stage3_Jawa.question = "Ca"
-        quiz3_level13_stage3_Jawa.choices = []
-        quiz3_level13_stage3_Jawa.images = []
+        quiz3_level13_stage3_Jawa.choices = [choice1_Quiz3_Level13_Stage3_Jawa, choice2_Quiz3_Level13_Stage3_Jawa, choice3_Quiz3_Level13_Stage3_Jawa, choice4_Quiz3_Level13_Stage3_Jawa]
+        quiz3_level13_stage3_Jawa.images = [image1_Quiz3_Level13_Stage3_Jawa, image2_Quiz3_Level13_Stage3_Jawa, image3_Quiz3_Level13_Stage3_Jawa, image4_Quiz3_Level13_Stage3_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level13_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level13_Stage3_Jawa.id = 1
+        choice1_Quiz4_Level13_Stage3_Jawa.name = "Ha"
+        
+        let choice2_Quiz4_Level13_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level13_Stage3_Jawa.id = 2
+        choice2_Quiz4_Level13_Stage3_Jawa.name = "Na"
+        
+        let choice3_Quiz4_Level13_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level13_Stage3_Jawa.id = 3
+        choice3_Quiz4_Level13_Stage3_Jawa.name = "Ca"
+        
+        let choice4_Quiz4_Level13_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level13_Stage3_Jawa.id = 4
+        choice4_Quiz4_Level13_Stage3_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz4_Level13_Stage3_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz4_Level13_Stage3_Jawa.id = 1
+        image1_Quiz4_Level13_Stage3_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz4_Level13_Stage3_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz4_Level13_Stage3_Jawa.id = 2
+        image2_Quiz4_Level13_Stage3_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz4_Level13_Stage3_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz4_Level13_Stage3_Jawa.id = 3
+        image3_Quiz4_Level13_Stage3_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz4_Level13_Stage3_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz4_Level13_Stage3_Jawa.id = 4
+        image4_Quiz4_Level13_Stage3_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz4_level13_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level13_stage3_Jawa.id = 4
@@ -2530,8 +6846,8 @@ class MainViewController: UIViewController {
         quiz4_level13_stage3_Jawa.type = "C"
         quiz4_level13_stage3_Jawa.isCorrect = false
         quiz4_level13_stage3_Jawa.question = "Ca"
-        quiz4_level13_stage3_Jawa.choices = []
-        quiz4_level13_stage3_Jawa.images = []
+        quiz4_level13_stage3_Jawa.choices = [choice1_Quiz4_Level13_Stage3_Jawa, choice2_Quiz4_Level13_Stage3_Jawa, choice3_Quiz4_Level13_Stage3_Jawa, choice4_Quiz4_Level13_Stage3_Jawa]
+        quiz4_level13_stage3_Jawa.images = [image1_Quiz4_Level13_Stage3_Jawa, image2_Quiz4_Level13_Stage3_Jawa, image3_Quiz4_Level13_Stage3_Jawa, image4_Quiz4_Level13_Stage3_Jawa]
         
         let quiz5_level13_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz5_level13_stage3_Jawa.id = 5
@@ -2561,14 +6877,82 @@ class MainViewController: UIViewController {
         quiz1_level14_stage3_Jawa.choices = []
         quiz1_level14_stage3_Jawa.images = []
         
+        //MARK: Choice
+        let choice1_Quiz2_Level14_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level14_Stage3_Jawa.id = 1
+        choice1_Quiz2_Level14_Stage3_Jawa.name = "Ha"
+        
+        let choice2_Quiz2_Level14_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level14_Stage3_Jawa.id = 2
+        choice2_Quiz2_Level14_Stage3_Jawa.name = "Na"
+        
+        let choice3_Quiz2_Level14_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level14_Stage3_Jawa.id = 3
+        choice3_Quiz2_Level14_Stage3_Jawa.name = "Ca"
+        
+        let choice4_Quiz2_Level14_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level14_Stage3_Jawa.id = 4
+        choice4_Quiz2_Level14_Stage3_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz2_Level14_Stage3_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz2_Level14_Stage3_Jawa.id = 1
+        image1_Quiz2_Level14_Stage3_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz2_Level14_Stage3_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz2_Level14_Stage3_Jawa.id = 2
+        image2_Quiz2_Level14_Stage3_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz2_Level14_Stage3_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz2_Level14_Stage3_Jawa.id = 3
+        image3_Quiz2_Level14_Stage3_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz2_Level14_Stage3_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz2_Level14_Stage3_Jawa.id = 4
+        image4_Quiz2_Level14_Stage3_Jawa.name = "Ra_Aksara_Jawa"
+        
         let quiz2_level14_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz2_level14_stage3_Jawa.id = 2
         quiz2_level14_stage3_Jawa.name = "Kuis 1"
         quiz2_level14_stage3_Jawa.type = "A"
         quiz2_level14_stage3_Jawa.isCorrect = false
         quiz2_level14_stage3_Jawa.question = "Ca"
-        quiz2_level14_stage3_Jawa.choices = []
-        quiz2_level14_stage3_Jawa.images = []
+        quiz2_level14_stage3_Jawa.choices = [choice1_Quiz2_Level14_Stage3_Jawa, choice2_Quiz2_Level14_Stage3_Jawa, choice3_Quiz2_Level14_Stage3_Jawa, choice4_Quiz2_Level14_Stage3_Jawa]
+        quiz2_level14_stage3_Jawa.images = [image1_Quiz2_Level14_Stage3_Jawa, image2_Quiz2_Level14_Stage3_Jawa, image3_Quiz2_Level14_Stage3_Jawa, image4_Quiz2_Level14_Stage3_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level14_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level14_Stage3_Jawa.id = 1
+        choice1_Quiz3_Level14_Stage3_Jawa.name = "Ha"
+        
+        let choice2_Quiz3_Level14_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level14_Stage3_Jawa.id = 2
+        choice2_Quiz3_Level14_Stage3_Jawa.name = "Na"
+        
+        let choice3_Quiz3_Level14_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level14_Stage3_Jawa.id = 3
+        choice3_Quiz3_Level14_Stage3_Jawa.name = "Ca"
+        
+        let choice4_Quiz3_Level14_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level14_Stage3_Jawa.id = 4
+        choice4_Quiz3_Level14_Stage3_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz3_Level14_Stage3_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz3_Level14_Stage3_Jawa.id = 1
+        image1_Quiz3_Level14_Stage3_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz3_Level14_Stage3_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz3_Level14_Stage3_Jawa.id = 2
+        image2_Quiz3_Level14_Stage3_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz3_Level14_Stage3_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz3_Level14_Stage3_Jawa.id = 3
+        image3_Quiz3_Level14_Stage3_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz3_Level14_Stage3_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz3_Level14_Stage3_Jawa.id = 4
+        image4_Quiz3_Level14_Stage3_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz3_level14_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level14_stage3_Jawa.id = 3
@@ -2576,8 +6960,42 @@ class MainViewController: UIViewController {
         quiz3_level14_stage3_Jawa.type = "B"
         quiz3_level14_stage3_Jawa.isCorrect = false
         quiz3_level14_stage3_Jawa.question = "Ca"
-        quiz3_level14_stage3_Jawa.choices = []
-        quiz3_level14_stage3_Jawa.images = []
+        quiz3_level14_stage3_Jawa.choices = [choice1_Quiz3_Level14_Stage3_Jawa, choice2_Quiz3_Level14_Stage3_Jawa, choice3_Quiz3_Level14_Stage3_Jawa, choice4_Quiz3_Level14_Stage3_Jawa]
+        quiz3_level14_stage3_Jawa.images = [image1_Quiz3_Level14_Stage3_Jawa, image2_Quiz3_Level14_Stage3_Jawa, image3_Quiz3_Level14_Stage3_Jawa, image4_Quiz3_Level14_Stage3_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level14_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level14_Stage3_Jawa.id = 1
+        choice1_Quiz4_Level14_Stage3_Jawa.name = "Ha"
+        
+        let choice2_Quiz4_Level14_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level14_Stage3_Jawa.id = 2
+        choice2_Quiz4_Level14_Stage3_Jawa.name = "Na"
+        
+        let choice3_Quiz4_Level14_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level14_Stage3_Jawa.id = 3
+        choice3_Quiz4_Level14_Stage3_Jawa.name = "Ca"
+        
+        let choice4_Quiz4_Level14_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level14_Stage3_Jawa.id = 4
+        choice4_Quiz4_Level14_Stage3_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz4_Level14_Stage3_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz4_Level14_Stage3_Jawa.id = 1
+        image1_Quiz4_Level14_Stage3_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz4_Level14_Stage3_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz4_Level14_Stage3_Jawa.id = 2
+        image2_Quiz4_Level14_Stage3_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz4_Level14_Stage3_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz4_Level14_Stage3_Jawa.id = 3
+        image3_Quiz4_Level14_Stage3_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz4_Level14_Stage3_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz4_Level14_Stage3_Jawa.id = 4
+        image4_Quiz4_Level14_Stage3_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz4_level14_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level14_stage3_Jawa.id = 4
@@ -2585,8 +7003,8 @@ class MainViewController: UIViewController {
         quiz4_level14_stage3_Jawa.type = "C"
         quiz4_level14_stage3_Jawa.isCorrect = false
         quiz4_level14_stage3_Jawa.question = "Ca"
-        quiz4_level14_stage3_Jawa.choices = []
-        quiz4_level14_stage3_Jawa.images = []
+        quiz4_level14_stage3_Jawa.choices = [choice1_Quiz4_Level14_Stage3_Jawa, choice2_Quiz4_Level14_Stage3_Jawa, choice3_Quiz4_Level14_Stage3_Jawa, choice4_Quiz4_Level14_Stage3_Jawa]
+        quiz4_level14_stage3_Jawa.images = [image1_Quiz4_Level14_Stage3_Jawa, image2_Quiz4_Level14_Stage3_Jawa, image3_Quiz4_Level14_Stage3_Jawa, image4_Quiz4_Level14_Stage3_Jawa]
         
         let quiz5_level14_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz5_level14_stage3_Jawa.id = 5
@@ -2616,14 +7034,82 @@ class MainViewController: UIViewController {
         quiz1_level15_stage3_Jawa.choices = []
         quiz1_level15_stage3_Jawa.images = []
         
+        //MARK: Choice
+        let choice1_Quiz2_Level15_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level15_Stage3_Jawa.id = 1
+        choice1_Quiz2_Level15_Stage3_Jawa.name = "Ha"
+        
+        let choice2_Quiz2_Level15_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level15_Stage3_Jawa.id = 2
+        choice2_Quiz2_Level15_Stage3_Jawa.name = "Na"
+        
+        let choice3_Quiz2_Level15_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level15_Stage3_Jawa.id = 3
+        choice3_Quiz2_Level15_Stage3_Jawa.name = "Ca"
+        
+        let choice4_Quiz2_Level15_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level15_Stage3_Jawa.id = 4
+        choice4_Quiz2_Level15_Stage3_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz2_Level15_Stage3_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz2_Level15_Stage3_Jawa.id = 1
+        image1_Quiz2_Level15_Stage3_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz2_Level15_Stage3_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz2_Level15_Stage3_Jawa.id = 2
+        image2_Quiz2_Level15_Stage3_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz2_Level15_Stage3_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz2_Level15_Stage3_Jawa.id = 3
+        image3_Quiz2_Level15_Stage3_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz2_Level15_Stage3_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz2_Level15_Stage3_Jawa.id = 4
+        image4_Quiz2_Level15_Stage3_Jawa.name = "Ra_Aksara_Jawa"
+        
         let quiz2_level15_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz2_level15_stage3_Jawa.id = 2
         quiz2_level15_stage3_Jawa.name = "Kuis 1"
         quiz2_level15_stage3_Jawa.type = "A"
         quiz2_level15_stage3_Jawa.isCorrect = false
         quiz2_level15_stage3_Jawa.question = "Ca"
-        quiz2_level15_stage3_Jawa.choices = []
-        quiz2_level15_stage3_Jawa.images = []
+        quiz2_level15_stage3_Jawa.choices = [choice1_Quiz2_Level15_Stage3_Jawa, choice2_Quiz2_Level15_Stage3_Jawa, choice3_Quiz2_Level15_Stage3_Jawa, choice4_Quiz2_Level15_Stage3_Jawa]
+        quiz2_level15_stage3_Jawa.images = [image1_Quiz2_Level15_Stage3_Jawa, image2_Quiz2_Level15_Stage3_Jawa, image3_Quiz2_Level15_Stage3_Jawa, image4_Quiz2_Level15_Stage3_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level15_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level15_Stage3_Jawa.id = 1
+        choice1_Quiz3_Level15_Stage3_Jawa.name = "Ha"
+        
+        let choice2_Quiz3_Level15_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level15_Stage3_Jawa.id = 2
+        choice2_Quiz3_Level15_Stage3_Jawa.name = "Na"
+        
+        let choice3_Quiz3_Level15_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level15_Stage3_Jawa.id = 3
+        choice3_Quiz3_Level15_Stage3_Jawa.name = "Ca"
+        
+        let choice4_Quiz3_Level15_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level15_Stage3_Jawa.id = 4
+        choice4_Quiz3_Level15_Stage3_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz3_Level15_Stage3_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz3_Level15_Stage3_Jawa.id = 1
+        image1_Quiz3_Level15_Stage3_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz3_Level15_Stage3_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz3_Level15_Stage3_Jawa.id = 2
+        image2_Quiz3_Level15_Stage3_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz3_Level15_Stage3_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz3_Level15_Stage3_Jawa.id = 3
+        image3_Quiz3_Level15_Stage3_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz3_Level15_Stage3_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz3_Level15_Stage3_Jawa.id = 4
+        image4_Quiz3_Level15_Stage3_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz3_level15_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level15_stage3_Jawa.id = 3
@@ -2631,8 +7117,42 @@ class MainViewController: UIViewController {
         quiz3_level15_stage3_Jawa.type = "B"
         quiz3_level15_stage3_Jawa.isCorrect = false
         quiz3_level15_stage3_Jawa.question = "Ca"
-        quiz3_level15_stage3_Jawa.choices = []
-        quiz3_level15_stage3_Jawa.images = []
+        quiz3_level15_stage3_Jawa.choices = [choice1_Quiz3_Level15_Stage3_Jawa, choice2_Quiz3_Level15_Stage3_Jawa, choice3_Quiz3_Level15_Stage3_Jawa, choice4_Quiz3_Level15_Stage3_Jawa]
+        quiz3_level15_stage3_Jawa.images = [image1_Quiz3_Level15_Stage3_Jawa, image2_Quiz3_Level15_Stage3_Jawa, image3_Quiz3_Level15_Stage3_Jawa, image4_Quiz3_Level15_Stage3_Jawa]
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level15_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level15_Stage3_Jawa.id = 1
+        choice1_Quiz4_Level15_Stage3_Jawa.name = "Ha"
+        
+        let choice2_Quiz4_Level15_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level15_Stage3_Jawa.id = 2
+        choice2_Quiz4_Level15_Stage3_Jawa.name = "Na"
+        
+        let choice3_Quiz4_Level15_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level15_Stage3_Jawa.id = 3
+        choice3_Quiz4_Level15_Stage3_Jawa.name = "Ca"
+        
+        let choice4_Quiz4_Level15_Stage3_Jawa = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level15_Stage3_Jawa.id = 4
+        choice4_Quiz4_Level15_Stage3_Jawa.name = "Ra"
+        
+        //MARK: Image
+        let image1_Quiz4_Level15_Stage3_Jawa = Image(context: PersistenceService.context)
+        image1_Quiz4_Level15_Stage3_Jawa.id = 1
+        image1_Quiz4_Level15_Stage3_Jawa.name = "Ha_Aksara_Jawa"
+        
+        let image2_Quiz4_Level15_Stage3_Jawa = Image(context: PersistenceService.context)
+        image2_Quiz4_Level15_Stage3_Jawa.id = 2
+        image2_Quiz4_Level15_Stage3_Jawa.name = "Na_Aksara_Jawa"
+        
+        let image3_Quiz4_Level15_Stage3_Jawa = Image(context: PersistenceService.context)
+        image3_Quiz4_Level15_Stage3_Jawa.id = 3
+        image3_Quiz4_Level15_Stage3_Jawa.name = "Ca_Aksara_Jawa"
+        
+        let image4_Quiz4_Level15_Stage3_Jawa = Image(context: PersistenceService.context)
+        image4_Quiz4_Level15_Stage3_Jawa.id = 4
+        image4_Quiz4_Level15_Stage3_Jawa.name = "Ra_Aksara_Jawa"
         
         let quiz4_level15_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level15_stage3_Jawa.id = 4
@@ -2640,8 +7160,8 @@ class MainViewController: UIViewController {
         quiz4_level15_stage3_Jawa.type = "C"
         quiz4_level15_stage3_Jawa.isCorrect = false
         quiz4_level15_stage3_Jawa.question = "Ca"
-        quiz4_level15_stage3_Jawa.choices = []
-        quiz4_level15_stage3_Jawa.images = []
+        quiz4_level15_stage3_Jawa.choices = [choice1_Quiz4_Level15_Stage3_Jawa, choice2_Quiz4_Level15_Stage3_Jawa, choice3_Quiz4_Level15_Stage3_Jawa, choice4_Quiz4_Level15_Stage3_Jawa]
+        quiz4_level15_stage3_Jawa.images = [image1_Quiz4_Level15_Stage3_Jawa, image2_Quiz4_Level15_Stage3_Jawa, image3_Quiz4_Level15_Stage3_Jawa, image4_Quiz4_Level15_Stage3_Jawa]
         
         let quiz5_level15_stage3_Jawa = Quiz(context: PersistenceService.context)
         quiz5_level15_stage3_Jawa.id = 5
