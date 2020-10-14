@@ -33,15 +33,19 @@
 		A41A7816252D9A43001C4FAD /* NowAlt-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = A41A780A252D9A43001C4FAD /* NowAlt-Thin.otf */; };
 		A48FBC75252DC2DB0004EC93 /* PersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48FBC74252DC2DB0004EC93 /* PersistenceService.swift */; };
 		A4F19FC52535939400F5BA23 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F19FC42535939400F5BA23 /* BaseView.swift */; };
+		DA666F577C7465F9A53CCC8F /* Pods_aksaraMC4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CC4C2B2BDF5350BA10417E0 /* Pods_aksaraMC4.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6CC4C2B2BDF5350BA10417E0 /* Pods_aksaraMC4.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_aksaraMC4.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		914344E2252DBAD0002E867B /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		914344E5252DBADE002E867B /* ThemeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeProtocol.swift; sourceTree = "<group>"; };
 		914344E8252DBAFC002E867B /* LightTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightTheme.swift; sourceTree = "<group>"; };
 		914344EF252DBFB9002E867B /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		914344F5252DC366002E867B /* RegionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionController.swift; sourceTree = "<group>"; };
 		914344FE252DC436002E867B /* RegionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionView.swift; sourceTree = "<group>"; };
+		9C280DC7DA303D6AD9D00A92 /* Pods-aksaraMC4.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aksaraMC4.debug.xcconfig"; path = "Target Support Files/Pods-aksaraMC4/Pods-aksaraMC4.debug.xcconfig"; sourceTree = "<group>"; };
+		9DB790D026838342CEDF8B35 /* Pods-aksaraMC4.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aksaraMC4.release.xcconfig"; path = "Target Support Files/Pods-aksaraMC4/Pods-aksaraMC4.release.xcconfig"; sourceTree = "<group>"; };
 		A41A77E4252D9586001C4FAD /* aksaraMC4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = aksaraMC4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A41A77E7252D9586001C4FAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A41A77E9252D9586001C4FAD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,12 +75,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA666F577C7465F9A53CCC8F /* Pods_aksaraMC4.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7C252FE5C07226A83AA53D09 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6CC4C2B2BDF5350BA10417E0 /* Pods_aksaraMC4.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		913FCA5D252DB8F400438A23 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +139,8 @@
 			children = (
 				A41A77E6252D9586001C4FAD /* aksaraMC4 */,
 				A41A77E5252D9586001C4FAD /* Products */,
+				E473EFB322B835768E79C009 /* Pods */,
+				7C252FE5C07226A83AA53D09 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -183,6 +198,16 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		E473EFB322B835768E79C009 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9C280DC7DA303D6AD9D00A92 /* Pods-aksaraMC4.debug.xcconfig */,
+				9DB790D026838342CEDF8B35 /* Pods-aksaraMC4.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -190,9 +215,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A41A77FB252D9588001C4FAD /* Build configuration list for PBXNativeTarget "aksaraMC4" */;
 			buildPhases = (
+				75416A928068B13C62077255 /* [CP] Check Pods Manifest.lock */,
 				A41A77E0252D9586001C4FAD /* Sources */,
 				A41A77E1252D9586001C4FAD /* Frameworks */,
 				A41A77E2252D9586001C4FAD /* Resources */,
+				D79908FCBF41B8005C99292B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -259,6 +286,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		75416A928068B13C62077255 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-aksaraMC4-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D79908FCBF41B8005C99292B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-aksaraMC4/Pods-aksaraMC4-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-aksaraMC4/Pods-aksaraMC4-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-aksaraMC4/Pods-aksaraMC4-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A41A77E0252D9586001C4FAD /* Sources */ = {
@@ -410,6 +479,7 @@
 		};
 		A41A77FC252D9588001C4FAD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9C280DC7DA303D6AD9D00A92 /* Pods-aksaraMC4.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -429,6 +499,7 @@
 		};
 		A41A77FD252D9588001C4FAD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9DB790D026838342CEDF8B35 /* Pods-aksaraMC4.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
