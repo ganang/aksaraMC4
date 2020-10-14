@@ -12,14 +12,6 @@ import CoreData
 class MainViewController: UIViewController {
     
     var stages: [Stage]?
-    
-    let progressView: UIProgressView = {
-        let progressView = UIProgressView()
-        progressView.translatesAutoresizingMaskIntoConstraints = false
-        progressView.progress = 0.5
-        
-        return progressView
-    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,16 +21,7 @@ class MainViewController: UIViewController {
         
 //        deleteRecord()
 //        setupRecord()
-//        getRecord()
-        
-        let gradientImage = UIImage.gradientImage(with: progressView.frame, colors: [UIColor.blue.cgColor, UIColor.systemBlue.cgColor], locations: nil)
-        progressView.progressImage = gradientImage!
-        progressView.setProgress(0.75, animated: true)
-        view.addSubview(progressView)
-        progressView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        progressView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        progressView.widthAnchor.constraint(equalToConstant: 400).isActive = true
-        progressView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        getRecord()
     }
     
     func deleteRecord() {
@@ -7813,6 +7796,367 @@ class MainViewController: UIViewController {
         fourthStageJawa.totalMedal = 45
         fourthStageJawa.isLocked = true
         fourthStageJawa.levels = []
+        
+        //MARK: AKSARA JAWA
+        
+        //MARK: Carakan
+        let aksara_1_Carakan = Aksara(context: PersistenceService.context)
+        aksara_1_Carakan.id = 1
+        aksara_1_Carakan.name = "Ha"
+        
+        let aksara_2_Carakan = Aksara(context: PersistenceService.context)
+        aksara_2_Carakan.id = 2
+        aksara_2_Carakan.name = "Na"
+        
+        let aksara_3_Carakan = Aksara(context: PersistenceService.context)
+        aksara_3_Carakan.id = 3
+        aksara_3_Carakan.name = "Ca"
+        
+        let aksara_4_Carakan = Aksara(context: PersistenceService.context)
+        aksara_4_Carakan.id = 4
+        aksara_4_Carakan.name = "Ra"
+        
+        let aksara_5_Carakan = Aksara(context: PersistenceService.context)
+        aksara_5_Carakan.id = 5
+        aksara_5_Carakan.name = "Ka"
+        
+        let aksara_6_Carakan = Aksara(context: PersistenceService.context)
+        aksara_6_Carakan.id = 6
+        aksara_6_Carakan.name = "Da"
+        
+        let aksara_7_Carakan = Aksara(context: PersistenceService.context)
+        aksara_7_Carakan.id = 7
+        aksara_7_Carakan.name = "Ta"
+        
+        let aksara_8_Carakan = Aksara(context: PersistenceService.context)
+        aksara_8_Carakan.id = 8
+        aksara_8_Carakan.name = "Sa"
+        
+        let aksara_9_Carakan = Aksara(context: PersistenceService.context)
+        aksara_9_Carakan.id = 9
+        aksara_9_Carakan.name = "Wa"
+        
+        let aksara_10_Carakan = Aksara(context: PersistenceService.context)
+        aksara_10_Carakan.id = 10
+        aksara_10_Carakan.name = "La"
+        
+        let aksara_11_Carakan = Aksara(context: PersistenceService.context)
+        aksara_11_Carakan.id = 11
+        aksara_11_Carakan.name = "Pa"
+        
+        let aksara_12_Carakan = Aksara(context: PersistenceService.context)
+        aksara_12_Carakan.id = 12
+        aksara_12_Carakan.name = "Dha"
+        
+        let aksara_13_Carakan = Aksara(context: PersistenceService.context)
+        aksara_13_Carakan.id = 13
+        aksara_13_Carakan.name = "Ja"
+        
+        let aksara_14_Carakan = Aksara(context: PersistenceService.context)
+        aksara_14_Carakan.id = 14
+        aksara_14_Carakan.name = "Ya"
+        
+        let aksara_15_Carakan = Aksara(context: PersistenceService.context)
+        aksara_15_Carakan.id = 15
+        aksara_15_Carakan.name = "Nya"
+        
+        let aksara_16_Carakan = Aksara(context: PersistenceService.context)
+        aksara_16_Carakan.id = 16
+        aksara_16_Carakan.name = "Ma"
+        
+        let aksara_17_Carakan = Aksara(context: PersistenceService.context)
+        aksara_17_Carakan.id = 17
+        aksara_17_Carakan.name = "Ga"
+        
+        let aksara_18_Carakan = Aksara(context: PersistenceService.context)
+        aksara_18_Carakan.id = 18
+        aksara_18_Carakan.name = "Ba"
+        
+        let aksara_19_Carakan = Aksara(context: PersistenceService.context)
+        aksara_19_Carakan.id = 19
+        aksara_19_Carakan.name = "Tha"
+        
+        let aksara_20_Carakan = Aksara(context: PersistenceService.context)
+        aksara_20_Carakan.id = 20
+        aksara_20_Carakan.name = "Nga"
+        
+        //MARK: Sandangan
+        let aksara_1_Sandhangan = Aksara(context: PersistenceService.context)
+        aksara_1_Sandhangan.id = 1
+        aksara_1_Sandhangan.name = "Wulu"
+        
+        let aksara_2_Sandhangan = Aksara(context: PersistenceService.context)
+        aksara_2_Sandhangan.id = 2
+        aksara_2_Sandhangan.name = "Suku"
+        
+        let aksara_3_Sandhangan = Aksara(context: PersistenceService.context)
+        aksara_3_Sandhangan.id = 3
+        aksara_3_Sandhangan.name = "Taling"
+        
+        let aksara_4_Sandhangan = Aksara(context: PersistenceService.context)
+        aksara_4_Sandhangan.id = 4
+        aksara_4_Sandhangan.name = "Pepet"
+        
+        let aksara_5_Sandhangan = Aksara(context: PersistenceService.context)
+        aksara_5_Sandhangan.id = 5
+        aksara_5_Sandhangan.name = "Taling Tarung"
+        
+        let aksara_6_Sandhangan = Aksara(context: PersistenceService.context)
+        aksara_6_Sandhangan.id = 6
+        aksara_6_Sandhangan.name = "Layar"
+        
+        let aksara_7_Sandhangan = Aksara(context: PersistenceService.context)
+        aksara_7_Sandhangan.id = 7
+        aksara_7_Sandhangan.name = "Wignyan"
+        
+        let aksara_8_Sandhangan = Aksara(context: PersistenceService.context)
+        aksara_8_Sandhangan.id = 8
+        aksara_8_Sandhangan.name = "Cecek"
+        
+        let aksara_9_Sandhangan = Aksara(context: PersistenceService.context)
+        aksara_9_Sandhangan.id = 9
+        aksara_9_Sandhangan.name = "Pangkon"
+        
+        let aksara_10_Sandhangan = Aksara(context: PersistenceService.context)
+        aksara_10_Sandhangan.id = 10
+        aksara_10_Sandhangan.name = "Pengkal"
+        
+        let aksara_11_Sandhangan = Aksara(context: PersistenceService.context)
+        aksara_11_Sandhangan.id = 11
+        aksara_11_Sandhangan.name = "Cakra"
+        
+        let aksara_12_Sandhangan = Aksara(context: PersistenceService.context)
+        aksara_12_Sandhangan.id = 12
+        aksara_12_Sandhangan.name = "Cakra Keret"
+        
+        
+        //MARK: DICTIONARY JAWA
+        let carakan = Dictionary(context: PersistenceService.context)
+        carakan.id = 1
+        carakan.name = "Carakan"
+        carakan.isLocked = false
+        carakan.title = "Huruf konsonan"
+        carakan.titleDescription = "Memiliki vokal dasar /a/"
+        carakan.aksaras = [aksara_1_Carakan, aksara_2_Carakan, aksara_3_Carakan, aksara_4_Carakan, aksara_5_Carakan, aksara_6_Carakan, aksara_7_Carakan, aksara_8_Carakan, aksara_9_Carakan, aksara_10_Carakan, aksara_11_Carakan, aksara_12_Carakan, aksara_13_Carakan, aksara_14_Carakan, aksara_15_Carakan, aksara_16_Carakan, aksara_17_Carakan, aksara_18_Carakan, aksara_19_Carakan, aksara_20_Carakan]
+        
+        let sandhangan = Dictionary(context: PersistenceService.context)
+        sandhangan.id = 2
+        sandhangan.name = "Sandhangan"
+        sandhangan.isLocked = false
+        sandhangan.title = "Vokalisasi"
+        sandhangan.titleDescription = "Merubah vokal dasar Carakan atau dapat mematikan vokalnya"
+        sandhangan.aksaras = [aksara_1_Sandhangan, aksara_2_Sandhangan, aksara_3_Sandhangan, aksara_4_Sandhangan, aksara_5_Sandhangan, aksara_6_Sandhangan, aksara_7_Sandhangan, aksara_8_Sandhangan, aksara_9_Sandhangan, aksara_10_Sandhangan, aksara_11_Sandhangan, aksara_12_Sandhangan]
+        
+        let pasangan = Dictionary(context: PersistenceService.context)
+        pasangan.id = 3
+        pasangan.name = "Pasangan"
+        pasangan.isLocked = true
+        pasangan.title = "Pasangan"
+        pasangan.titleDescription = "Mematikan huruf sebelumnya sekaligus menjadi huruf selanjutnya"
+        pasangan.aksaras = []
+        
+        
+        //MARK: AKSARA SUNDA
+        
+        //MARK: Ngalegena
+        let aksara_1_Ngalegena = Aksara(context: PersistenceService.context)
+        aksara_1_Ngalegena.id = 1
+        aksara_1_Ngalegena.name = "Ka"
+        
+        let aksara_2_Ngalegena = Aksara(context: PersistenceService.context)
+        aksara_2_Ngalegena.id = 2
+        aksara_2_Ngalegena.name = "Ga"
+        
+        let aksara_3_Ngalegena = Aksara(context: PersistenceService.context)
+        aksara_3_Ngalegena.id = 3
+        aksara_3_Ngalegena.name = "Nga"
+        
+        let aksara_4_Ngalegena = Aksara(context: PersistenceService.context)
+        aksara_4_Ngalegena.id = 4
+        aksara_4_Ngalegena.name = "Ca"
+        
+        let aksara_5_Ngalegena = Aksara(context: PersistenceService.context)
+        aksara_5_Ngalegena.id = 5
+        aksara_5_Ngalegena.name = "Ja"
+        
+        let aksara_6_Ngalegena = Aksara(context: PersistenceService.context)
+        aksara_6_Ngalegena.id = 6
+        aksara_6_Ngalegena.name = "Nya"
+        
+        let aksara_7_Ngalegena = Aksara(context: PersistenceService.context)
+        aksara_7_Ngalegena.id = 7
+        aksara_7_Ngalegena.name = "Ta"
+        
+        let aksara_8_Ngalegena = Aksara(context: PersistenceService.context)
+        aksara_8_Ngalegena.id = 8
+        aksara_8_Ngalegena.name = "Da"
+        
+        let aksara_9_Ngalegena = Aksara(context: PersistenceService.context)
+        aksara_9_Ngalegena.id = 9
+        aksara_9_Ngalegena.name = "Na"
+        
+        let aksara_10_Ngalegena = Aksara(context: PersistenceService.context)
+        aksara_10_Ngalegena.id = 10
+        aksara_10_Ngalegena.name = "Pa"
+        
+        let aksara_11_Ngalegena = Aksara(context: PersistenceService.context)
+        aksara_11_Ngalegena.id = 11
+        aksara_11_Ngalegena.name = "Ba"
+        
+        let aksara_12_Ngalegena = Aksara(context: PersistenceService.context)
+        aksara_12_Ngalegena.id = 12
+        aksara_12_Ngalegena.name = "Ma"
+        
+        let aksara_13_Ngalegena = Aksara(context: PersistenceService.context)
+        aksara_13_Ngalegena.id = 13
+        aksara_13_Ngalegena.name = "Ya"
+        
+        let aksara_14_Ngalegena = Aksara(context: PersistenceService.context)
+        aksara_14_Ngalegena.id = 14
+        aksara_14_Ngalegena.name = "Ra"
+        
+        let aksara_15_Ngalegena = Aksara(context: PersistenceService.context)
+        aksara_15_Ngalegena.id = 15
+        aksara_15_Ngalegena.name = "La"
+        
+        let aksara_16_Ngalegena = Aksara(context: PersistenceService.context)
+        aksara_16_Ngalegena.id = 16
+        aksara_16_Ngalegena.name = "Wa"
+        
+        let aksara_17_Ngalegena = Aksara(context: PersistenceService.context)
+        aksara_17_Ngalegena.id = 17
+        aksara_17_Ngalegena.name = "Sa"
+        
+        let aksara_18_Ngalegena = Aksara(context: PersistenceService.context)
+        aksara_18_Ngalegena.id = 18
+        aksara_18_Ngalegena.name = "Ha"
+        
+        let aksara_19_Ngalegena = Aksara(context: PersistenceService.context)
+        aksara_19_Ngalegena.id = 19
+        aksara_19_Ngalegena.name = "Fa"
+        
+        let aksara_20_Ngalegena = Aksara(context: PersistenceService.context)
+        aksara_20_Ngalegena.id = 20
+        aksara_20_Ngalegena.name = "Va"
+        
+        let aksara_21_Ngalegena = Aksara(context: PersistenceService.context)
+        aksara_21_Ngalegena.id = 21
+        aksara_21_Ngalegena.name = "Qa"
+        
+        let aksara_22_Ngalegena = Aksara(context: PersistenceService.context)
+        aksara_22_Ngalegena.id = 22
+        aksara_22_Ngalegena.name = "Xa"
+        
+        let aksara_23_Ngalegena = Aksara(context: PersistenceService.context)
+        aksara_23_Ngalegena.id = 23
+        aksara_23_Ngalegena.name = "Za"
+        
+        //MARK: Swara
+        let aksara_1_Swara = Aksara(context: PersistenceService.context)
+        aksara_1_Swara.id = 1
+        aksara_1_Swara.name = "A/a"
+        
+        let aksara_2_Swara = Aksara(context: PersistenceService.context)
+        aksara_2_Swara.id = 2
+        aksara_2_Swara.name = "I/i"
+        
+        let aksara_3_Swara = Aksara(context: PersistenceService.context)
+        aksara_3_Swara.id = 3
+        aksara_3_Swara.name = "U/u"
+        
+        let aksara_4_Swara = Aksara(context: PersistenceService.context)
+        aksara_4_Swara.id = 4
+        aksara_4_Swara.name = "O/o"
+        
+        let aksara_5_Swara = Aksara(context: PersistenceService.context)
+        aksara_5_Swara.id = 5
+        aksara_5_Swara.name = "E/e"
+        
+        let aksara_6_Swara = Aksara(context: PersistenceService.context)
+        aksara_6_Swara.id = 6
+        aksara_6_Swara.name = "É/ê"
+        
+        let aksara_7_Swara = Aksara(context: PersistenceService.context)
+        aksara_7_Swara.id = 7
+        aksara_7_Swara.name = "Eu/eu"
+        
+        //MARK: Rarangken
+        let aksara_1_Rarangken = Aksara(context: PersistenceService.context)
+        aksara_1_Rarangken.id = 1
+        aksara_1_Rarangken.name = "Panghulu"
+        
+        let aksara_2_Rarangken = Aksara(context: PersistenceService.context)
+        aksara_2_Rarangken.id = 2
+        aksara_2_Rarangken.name = "Pamepet"
+        
+        let aksara_3_Rarangken = Aksara(context: PersistenceService.context)
+        aksara_3_Rarangken.id = 3
+        aksara_3_Rarangken.name = "Paneuleung"
+        
+        let aksara_4_Rarangken = Aksara(context: PersistenceService.context)
+        aksara_4_Rarangken.id = 4
+        aksara_4_Rarangken.name = "Panglayar"
+        
+        let aksara_5_Rarangken = Aksara(context: PersistenceService.context)
+        aksara_5_Rarangken.id = 5
+        aksara_5_Rarangken.name = "Panyecek"
+        
+        let aksara_6_Rarangken = Aksara(context: PersistenceService.context)
+        aksara_6_Rarangken.id = 6
+        aksara_6_Rarangken.name = "Paneleng"
+        
+        let aksara_7_Rarangken = Aksara(context: PersistenceService.context)
+        aksara_7_Rarangken.id = 7
+        aksara_7_Rarangken.name = "Panolong"
+        
+        let aksara_8_Rarangken = Aksara(context: PersistenceService.context)
+        aksara_8_Rarangken.id = 8
+        aksara_8_Rarangken.name = "Pamingkal"
+        
+        let aksara_9_Rarangken = Aksara(context: PersistenceService.context)
+        aksara_9_Rarangken.id = 9
+        aksara_9_Rarangken.name = "Pangwisad"
+        
+        let aksara_10_Rarangken = Aksara(context: PersistenceService.context)
+        aksara_10_Rarangken.id = 10
+        aksara_10_Rarangken.name = "Pamaeh"
+        
+        let aksara_11_Rarangken = Aksara(context: PersistenceService.context)
+        aksara_11_Rarangken.id = 11
+        aksara_11_Rarangken.name = "Panyuku"
+        
+        let aksara_12_Rarangken = Aksara(context: PersistenceService.context)
+        aksara_12_Rarangken.id = 12
+        aksara_12_Rarangken.name = "Panyakra"
+        
+        let aksara_13_Rarangken = Aksara(context: PersistenceService.context)
+        aksara_13_Rarangken.id = 13
+        aksara_13_Rarangken.name = "Panyiku"
+        
+        //MARK: DICTIONARY SUNDA
+        let ngalegena = Dictionary(context: PersistenceService.context)
+        ngalegena.id = 1
+        ngalegena.name = "Ngalegena"
+        ngalegena.isLocked = false
+        ngalegena.title = "Huruf konsonan"
+        ngalegena.titleDescription = "Memiliki vokal dasar /a/"
+        ngalegena.aksaras = [aksara_1_Ngalegena, aksara_2_Ngalegena, aksara_3_Ngalegena, aksara_4_Ngalegena, aksara_5_Ngalegena, aksara_6_Ngalegena, aksara_7_Ngalegena, aksara_8_Ngalegena, aksara_9_Ngalegena, aksara_10_Ngalegena, aksara_11_Ngalegena, aksara_12_Ngalegena, aksara_13_Ngalegena, aksara_14_Ngalegena, aksara_15_Ngalegena, aksara_16_Ngalegena, aksara_17_Ngalegena, aksara_18_Ngalegena, aksara_19_Ngalegena, aksara_20_Ngalegena, aksara_21_Ngalegena, aksara_22_Ngalegena, aksara_23_Ngalegena]
+        
+        let swara = Dictionary(context: PersistenceService.context)
+        swara.id = 2
+        swara.name = "Swara"
+        swara.isLocked = false
+        swara.title = "Huruf vokal"
+        swara.titleDescription = "Huruf vokal a, i, u, e, o yang dapat berdiri sendiri sebagai suku kata"
+        swara.aksaras = [aksara_1_Swara, aksara_2_Swara, aksara_3_Swara, aksara_4_Swara, aksara_5_Swara, aksara_6_Swara, aksara_7_Swara]
+        
+        let rarangken = Dictionary(context: PersistenceService.context)
+        rarangken.id = 3
+        rarangken.name = "Rarangken"
+        rarangken.isLocked = false
+        rarangken.title = "Vokalisasi"
+        rarangken.titleDescription = "Merubah vokal dasar Ngalegena atau dapat mematikan vokalnya"
+        rarangken.aksaras = [aksara_1_Rarangken, aksara_2_Rarangken, aksara_3_Rarangken, aksara_4_Rarangken, aksara_5_Rarangken, aksara_6_Rarangken, aksara_7_Rarangken, aksara_8_Rarangken, aksara_9_Rarangken, aksara_10_Rarangken, aksara_11_Rarangken, aksara_12_Rarangken, aksara_13_Rarangken]
         
         // MARK: Stage Sunda
         let firstStageSunda = Stage(context: PersistenceService.context)
