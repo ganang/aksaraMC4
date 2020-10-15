@@ -111,7 +111,7 @@ extension UIImageView {
         self.tintColor = color
     }
 
-    func addBlurEffect() {
+    func addBlurEffectView() {
         let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = self.bounds
@@ -237,6 +237,14 @@ extension UIColor {
 
 //View -> UIImage
 extension UIView {
+    
+    func addBlurEffect() {
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = self.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight] // for supporting device rotation
+        self.addSubview(blurEffectView)
+    }
 
     // Using a function since `var image` might conflict with an existing variable
     // (like on `UIImageView`)

@@ -9,6 +9,27 @@
 import UIKit
 
 class RegionView: UIView {
+    
+    let backButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(named: "backButton"), for: .normal)
+        button.imageEdgeInsets = UIEdgeInsets(top:-8, left: -8, bottom:-8, right: -8)
+        //button.subviews.first?.contentMode = .scaleAspectFit
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    
+    let backButtonTitle: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.init(name: "Now-Medium", size: 32)
+        label.text = "Tahap 1"
+        label.textColor = Theme.current.textColor1
+        //label.setTextColorToGradient(image: UIImage(named: "gradientText")!)
+        return label
+    }()
+    
 
     let textLabel: UILabel = {
         let label = UILabel()
@@ -26,6 +47,7 @@ class RegionView: UIView {
         view.layer.cornerRadius = 24
         view.addInnerShadow()
         view.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
+        view.isUserInteractionEnabled = true
         return view
     }()
     
@@ -74,6 +96,7 @@ class RegionView: UIView {
         view.layer.cornerRadius = 24
         view.addInnerShadow()
         view.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
+        view.isUserInteractionEnabled = true
         return view
     }()
     
@@ -110,6 +133,7 @@ class RegionView: UIView {
         label.font = UIFont.init(name: "Now-Regular", size: 18)
         label.textColor = Theme.current.textColor1
         label.text = "Carakan, Sandhangan, Angka, Swara"
+        label.numberOfLines = 2
         return label
     }()
     
@@ -120,9 +144,17 @@ class RegionView: UIView {
     }
     
     func setupView() {
-        addSubview(textLabel)
-        textLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        textLabel.topAnchor.constraint(equalTo: topAnchor, constant: 112).isActive = true
+        
+        addSubview(backButton)
+        backButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30).isActive = true
+        backButton.topAnchor.constraint(equalTo: topAnchor, constant: 56).isActive = true
+        backButton.widthAnchor.constraint(equalToConstant: 48).isActive = true
+        backButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        
+        addSubview(backButtonTitle)
+        backButtonTitle.centerYAnchor.constraint(equalTo: backButton.centerYAnchor, constant: 0).isActive = true
+        backButtonTitle.leadingAnchor.constraint(equalTo: backButton.trailingAnchor, constant: 32).isActive = true
+
         
         
         addSubview(menuCard)
