@@ -13,6 +13,13 @@
 		914344F0252DBFB9002E867B /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914344EF252DBFB9002E867B /* Extension.swift */; };
 		914344F6252DC366002E867B /* RegionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914344F5252DC366002E867B /* RegionController.swift */; };
 		914344FF252DC436002E867B /* RegionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914344FE252DC436002E867B /* RegionView.swift */; };
+		9193764225317E3100C3FC10 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9193764125317E3100C3FC10 /* StartView.swift */; };
+		9193764625317E3B00C3FC10 /* StartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9193764525317E3B00C3FC10 /* StartController.swift */; };
+		91C98768252EFE7900D67BC0 /* StageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C98767252EFE7900D67BC0 /* StageView.swift */; };
+		91C9876D252EFE8D00D67BC0 /* StageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C9876C252EFE8D00D67BC0 /* StageController.swift */; };
+		91C98775252F268400D67BC0 /* LevelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C98774252F268400D67BC0 /* LevelController.swift */; };
+		91C98779252F269000D67BC0 /* LevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C98778252F269000D67BC0 /* LevelView.swift */; };
+		A411F9CE252EF8CC0092F9BD /* TestingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A411F9CD252EF8CC0092F9BD /* TestingViewController.swift */; };
 		A41A77E8252D9586001C4FAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41A77E7252D9586001C4FAD /* AppDelegate.swift */; };
 		A41A77EA252D9586001C4FAD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41A77E9252D9586001C4FAD /* SceneDelegate.swift */; };
 		A41A77EC252D9586001C4FAD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41A77EB252D9586001C4FAD /* MainViewController.swift */; };
@@ -44,6 +51,13 @@
 		914344EF252DBFB9002E867B /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		914344F5252DC366002E867B /* RegionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionController.swift; sourceTree = "<group>"; };
 		914344FE252DC436002E867B /* RegionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionView.swift; sourceTree = "<group>"; };
+		9193764125317E3100C3FC10 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
+		9193764525317E3B00C3FC10 /* StartController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartController.swift; sourceTree = "<group>"; };
+		91C98767252EFE7900D67BC0 /* StageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageView.swift; sourceTree = "<group>"; };
+		91C9876C252EFE8D00D67BC0 /* StageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageController.swift; sourceTree = "<group>"; };
+		91C98774252F268400D67BC0 /* LevelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelController.swift; sourceTree = "<group>"; };
+		91C98778252F269000D67BC0 /* LevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelView.swift; sourceTree = "<group>"; };
+		A411F9CD252EF8CC0092F9BD /* TestingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingViewController.swift; sourceTree = "<group>"; };
 		9C280DC7DA303D6AD9D00A92 /* Pods-aksaraMC4.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aksaraMC4.debug.xcconfig"; path = "Target Support Files/Pods-aksaraMC4/Pods-aksaraMC4.debug.xcconfig"; sourceTree = "<group>"; };
 		9DB790D026838342CEDF8B35 /* Pods-aksaraMC4.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aksaraMC4.release.xcconfig"; path = "Target Support Files/Pods-aksaraMC4/Pods-aksaraMC4.release.xcconfig"; sourceTree = "<group>"; };
 		A41A77E4252D9586001C4FAD /* aksaraMC4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = aksaraMC4.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,6 +148,81 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		9193763D25317DFF00C3FC10 /* StartScreen */ = {
+			isa = PBXGroup;
+			children = (
+				9193764025317E1E00C3FC10 /* Controller */,
+				9193763E25317E0800C3FC10 /* View */,
+			);
+			path = StartScreen;
+			sourceTree = "<group>";
+		};
+		9193763E25317E0800C3FC10 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9193764125317E3100C3FC10 /* StartView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9193764025317E1E00C3FC10 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9193764525317E3B00C3FC10 /* StartController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		91C98764252EFE4800D67BC0 /* StageScreen */ = {
+			isa = PBXGroup;
+			children = (
+				91C98766252EFE6300D67BC0 /* Controller */,
+				91C98765252EFE5800D67BC0 /* View */,
+			);
+			path = StageScreen;
+			sourceTree = "<group>";
+		};
+		91C98765252EFE5800D67BC0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				91C98767252EFE7900D67BC0 /* StageView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		91C98766252EFE6300D67BC0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				91C9876C252EFE8D00D67BC0 /* StageController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		91C98770252F1A0A00D67BC0 /* LevelScreen */ = {
+			isa = PBXGroup;
+			children = (
+				91C98773252F267700D67BC0 /* Controller */,
+				91C98772252F266700D67BC0 /* View */,
+			);
+			path = LevelScreen;
+			sourceTree = "<group>";
+		};
+		91C98772252F266700D67BC0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				91C98778252F269000D67BC0 /* LevelView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		91C98773252F267700D67BC0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				91C98774252F268400D67BC0 /* LevelController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		A41A77DB252D9586001C4FAD = {
 			isa = PBXGroup;
 			children = (
@@ -155,8 +244,11 @@
 		A41A77E6252D9586001C4FAD /* aksaraMC4 */ = {
 			isa = PBXGroup;
 			children = (
+				91C98770252F1A0A00D67BC0 /* LevelScreen */,
+				91C98764252EFE4800D67BC0 /* StageScreen */,
 				A4F19FC9253598FB00F5BA23 /* Common */,
 				914344F3252DC347002E867B /* RegionScreen */,
+				9193763D25317DFF00C3FC10 /* StartScreen */,
 				913FCA5D252DB8F400438A23 /* Utils */,
 				A41A77FE252D9A2C001C4FAD /* Fonts */,
 				A41A77E7252D9586001C4FAD /* AppDelegate.swift */,
@@ -334,14 +426,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9193764225317E3100C3FC10 /* StartView.swift in Sources */,
+				91C9876D252EFE8D00D67BC0 /* StageController.swift in Sources */,
+				9193764625317E3B00C3FC10 /* StartController.swift in Sources */,
 				A48FBC75252DC2DB0004EC93 /* PersistenceService.swift in Sources */,
 				A41A77EC252D9586001C4FAD /* MainViewController.swift in Sources */,
+				91C98768252EFE7900D67BC0 /* StageView.swift in Sources */,
 				A41A77F2252D9586001C4FAD /* aksaraMC4.xcdatamodeld in Sources */,
 				914344FF252DC436002E867B /* RegionView.swift in Sources */,
 				914344E3252DBAD0002E867B /* Theme.swift in Sources */,
 				914344E6252DBADE002E867B /* ThemeProtocol.swift in Sources */,
+				91C98779252F269000D67BC0 /* LevelView.swift in Sources */,
 				914344F6252DC366002E867B /* RegionController.swift in Sources */,
 				A41A77E8252D9586001C4FAD /* AppDelegate.swift in Sources */,
+				91C98775252F268400D67BC0 /* LevelController.swift in Sources */,
 				914344E9252DBAFC002E867B /* LightTheme.swift in Sources */,
 				A41A77EA252D9586001C4FAD /* SceneDelegate.swift in Sources */,
 				A4F19FC52535939400F5BA23 /* BaseView.swift in Sources */,

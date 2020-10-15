@@ -21,7 +21,7 @@ class MainViewController: UIViewController {
         
 //        deleteRecord()
 //        setupRecord()
-        getRecord()
+//        getRecord()
     }
     
     func deleteRecord() {
