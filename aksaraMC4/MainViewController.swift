@@ -2438,7 +2438,7 @@ class MainViewController: UIViewController {
         
         let choice3_Quiz2_Level1_Stage2_Jawa = Choice(context: PersistenceService.context)
         choice3_Quiz2_Level1_Stage2_Jawa.id = 3
-        choice3_Quiz2_Level1_Stage2_Jawa.name = "Sang"
+        choice3_Quiz2_Level1_Stage2_Jawa.name = "Dang"
         
         let choice4_Quiz2_Level1_Stage2_Jawa = Choice(context: PersistenceService.context)
         choice4_Quiz2_Level1_Stage2_Jawa.id = 4
@@ -2455,7 +2455,7 @@ class MainViewController: UIViewController {
         
         let image3_Quiz2_Level1_Stage2_Jawa = Image(context: PersistenceService.context)
         image3_Quiz2_Level1_Stage2_Jawa.id = 3
-        image3_Quiz2_Level1_Stage2_Jawa.name = "Sang_Aksara_Jawa"
+        image3_Quiz2_Level1_Stage2_Jawa.name = "Dang_Aksara_Jawa"
         
         let image4_Quiz2_Level1_Stage2_Jawa = Image(context: PersistenceService.context)
         image4_Quiz2_Level1_Stage2_Jawa.id = 4
@@ -2473,7 +2473,7 @@ class MainViewController: UIViewController {
         //MARK: Choice
         let choice1_Quiz3_Level1_Stage2_Jawa = Choice(context: PersistenceService.context)
         choice1_Quiz3_Level1_Stage2_Jawa.id = 1
-        choice1_Quiz3_Level1_Stage2_Jawa.name = "Sang"
+        choice1_Quiz3_Level1_Stage2_Jawa.name = "Dang"
         
         let choice2_Quiz3_Level1_Stage2_Jawa = Choice(context: PersistenceService.context)
         choice2_Quiz3_Level1_Stage2_Jawa.id = 2
@@ -2490,7 +2490,7 @@ class MainViewController: UIViewController {
         //MARK: Image
         let image1_Quiz3_Level1_Stage2_Jawa = Image(context: PersistenceService.context)
         image1_Quiz3_Level1_Stage2_Jawa.id = 1
-        image1_Quiz3_Level1_Stage2_Jawa.name = "Sang_Aksara_Jawa"
+        image1_Quiz3_Level1_Stage2_Jawa.name = "Dang_Aksara_Jawa"
         
         let image2_Quiz3_Level1_Stage2_Jawa = Image(context: PersistenceService.context)
         image2_Quiz3_Level1_Stage2_Jawa.id = 2
@@ -2528,7 +2528,7 @@ class MainViewController: UIViewController {
         
         let choice4_Quiz4_Level1_Stage2_Jawa = Choice(context: PersistenceService.context)
         choice4_Quiz4_Level1_Stage2_Jawa.id = 4
-        choice4_Quiz4_Level1_Stage2_Jawa.name = "Sang"
+        choice4_Quiz4_Level1_Stage2_Jawa.name = "Dang"
         
         //MARK: Image
         let image1_Quiz4_Level1_Stage2_Jawa = Image(context: PersistenceService.context)
@@ -2545,7 +2545,7 @@ class MainViewController: UIViewController {
         
         let image4_Quiz4_Level1_Stage2_Jawa = Image(context: PersistenceService.context)
         image4_Quiz4_Level1_Stage2_Jawa.id = 4
-        image4_Quiz4_Level1_Stage2_Jawa.name = "Sang_Aksara_Jawa"
+        image4_Quiz4_Level1_Stage2_Jawa.name = "Dang_Aksara_Jawa"
         
         let quiz4_level1_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level1_stage2_Jawa.id = 4
@@ -2677,11 +2677,11 @@ class MainViewController: UIViewController {
         
         let choice2_Quiz4_Level2_Stage2_Jawa = Choice(context: PersistenceService.context)
         choice2_Quiz4_Level2_Stage2_Jawa.id = 2
-        choice2_Quiz4_Level2_Stage2_Jawa.name = "Dar"
+        choice2_Quiz4_Level2_Stage2_Jawa.name = "Se"
         
         let choice3_Quiz4_Level2_Stage2_Jawa = Choice(context: PersistenceService.context)
         choice3_Quiz4_Level2_Stage2_Jawa.id = 3
-        choice3_Quiz4_Level2_Stage2_Jawa.name = "Se"
+        choice3_Quiz4_Level2_Stage2_Jawa.name = "Dar"
         
         let choice4_Quiz4_Level2_Stage2_Jawa = Choice(context: PersistenceService.context)
         choice4_Quiz4_Level2_Stage2_Jawa.id = 4
@@ -2694,11 +2694,11 @@ class MainViewController: UIViewController {
         
         let image2_Quiz4_Level2_Stage2_Jawa = Image(context: PersistenceService.context)
         image2_Quiz4_Level2_Stage2_Jawa.id = 2
-        image2_Quiz4_Level2_Stage2_Jawa.name = "Dar_Aksara_Jawa"
+        image2_Quiz4_Level2_Stage2_Jawa.name = "Se_Aksara_Jawa"
         
         let image3_Quiz4_Level2_Stage2_Jawa = Image(context: PersistenceService.context)
         image3_Quiz4_Level2_Stage2_Jawa.id = 3
-        image3_Quiz4_Level2_Stage2_Jawa.name = "Se_Aksara_Jawa"
+        image3_Quiz4_Level2_Stage2_Jawa.name = "Dar_Aksara_Jawa"
         
         let image4_Quiz4_Level2_Stage2_Jawa = Image(context: PersistenceService.context)
         image4_Quiz4_Level2_Stage2_Jawa.id = 4
@@ -2905,7 +2905,7 @@ class MainViewController: UIViewController {
         
         let choice2_Quiz2_Level4_Stage2_Jawa = Choice(context: PersistenceService.context)
         choice2_Quiz2_Level4_Stage2_Jawa.id = 2
-        choice2_Quiz2_Level4_Stage2_Jawa.name = "Har"
+        choice2_Quiz2_Level4_Stage2_Jawa.name = "Hre"
         
         let choice3_Quiz2_Level4_Stage2_Jawa = Choice(context: PersistenceService.context)
         choice3_Quiz2_Level4_Stage2_Jawa.id = 3
@@ -2922,7 +2922,7 @@ class MainViewController: UIViewController {
         
         let image2_Quiz2_Level4_Stage2_Jawa = Image(context: PersistenceService.context)
         image2_Quiz2_Level4_Stage2_Jawa.id = 2
-        image2_Quiz2_Level4_Stage2_Jawa.name = "Har_Aksara_Jawa"
+        image2_Quiz2_Level4_Stage2_Jawa.name = "Hre_Aksara_Jawa"
         
         let image3_Quiz2_Level4_Stage2_Jawa = Image(context: PersistenceService.context)
         image3_Quiz2_Level4_Stage2_Jawa.id = 3
@@ -2944,11 +2944,11 @@ class MainViewController: UIViewController {
         //MARK: Choice
         let choice1_Quiz3_Level4_Stage2_Jawa = Choice(context: PersistenceService.context)
         choice1_Quiz3_Level4_Stage2_Jawa.id = 1
-        choice1_Quiz3_Level4_Stage2_Jawa.name = "Kra"
+        choice1_Quiz3_Level4_Stage2_Jawa.name = "Hre"
         
         let choice2_Quiz3_Level4_Stage2_Jawa = Choice(context: PersistenceService.context)
         choice2_Quiz3_Level4_Stage2_Jawa.id = 2
-        choice2_Quiz3_Level4_Stage2_Jawa.name = "Har"
+        choice2_Quiz3_Level4_Stage2_Jawa.name = "Kra"
         
         let choice3_Quiz3_Level4_Stage2_Jawa = Choice(context: PersistenceService.context)
         choice3_Quiz3_Level4_Stage2_Jawa.id = 3
@@ -2961,11 +2961,11 @@ class MainViewController: UIViewController {
         //MARK: Image
         let image1_Quiz3_Level4_Stage2_Jawa = Image(context: PersistenceService.context)
         image1_Quiz3_Level4_Stage2_Jawa.id = 1
-        image1_Quiz3_Level4_Stage2_Jawa.name = "Kra_Aksara_Jawa"
+        image1_Quiz3_Level4_Stage2_Jawa.name = "Hre_Aksara_Jawa"
         
         let image2_Quiz3_Level4_Stage2_Jawa = Image(context: PersistenceService.context)
         image2_Quiz3_Level4_Stage2_Jawa.id = 2
-        image2_Quiz3_Level4_Stage2_Jawa.name = "Har_Aksara_Jawa"
+        image2_Quiz3_Level4_Stage2_Jawa.name = "Kra_Aksara_Jawa"
         
         let image3_Quiz3_Level4_Stage2_Jawa = Image(context: PersistenceService.context)
         image3_Quiz3_Level4_Stage2_Jawa.id = 3
@@ -2999,7 +2999,7 @@ class MainViewController: UIViewController {
         
         let choice4_Quiz4_Level4_Stage2_Jawa = Choice(context: PersistenceService.context)
         choice4_Quiz4_Level4_Stage2_Jawa.id = 4
-        choice4_Quiz4_Level4_Stage2_Jawa.name = "Har"
+        choice4_Quiz4_Level4_Stage2_Jawa.name = "Hre"
         
         //MARK: Image
         let image1_Quiz4_Level4_Stage2_Jawa = Image(context: PersistenceService.context)
@@ -3016,7 +3016,7 @@ class MainViewController: UIViewController {
         
         let image4_Quiz4_Level4_Stage2_Jawa = Image(context: PersistenceService.context)
         image4_Quiz4_Level4_Stage2_Jawa.id = 4
-        image4_Quiz4_Level4_Stage2_Jawa.name = "Har_Aksara_Jawa"
+        image4_Quiz4_Level4_Stage2_Jawa.name = "Hre_Aksara_Jawa"
         
         let quiz4_level4_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level4_stage2_Jawa.id = 4
@@ -3066,7 +3066,7 @@ class MainViewController: UIViewController {
         
         let choice3_Quiz2_Level5_Stage2_Jawa = Choice(context: PersistenceService.context)
         choice3_Quiz2_Level5_Stage2_Jawa.id = 3
-        choice3_Quiz2_Level5_Stage2_Jawa.name = "Dhang"
+        choice3_Quiz2_Level5_Stage2_Jawa.name = "Dhi"
         
         let choice4_Quiz2_Level5_Stage2_Jawa = Choice(context: PersistenceService.context)
         choice4_Quiz2_Level5_Stage2_Jawa.id = 4
@@ -3083,7 +3083,7 @@ class MainViewController: UIViewController {
         
         let image3_Quiz2_Level5_Stage2_Jawa = Image(context: PersistenceService.context)
         image3_Quiz2_Level5_Stage2_Jawa.id = 3
-        image3_Quiz2_Level5_Stage2_Jawa.name = "Dhang_Aksara_Jawa"
+        image3_Quiz2_Level5_Stage2_Jawa.name = "Dhi_Aksara_Jawa"
         
         let image4_Quiz2_Level5_Stage2_Jawa = Image(context: PersistenceService.context)
         image4_Quiz2_Level5_Stage2_Jawa.id = 4
@@ -3101,15 +3101,15 @@ class MainViewController: UIViewController {
         //MARK: Choice
         let choice1_Quiz3_Level5_Stage2_Jawa = Choice(context: PersistenceService.context)
         choice1_Quiz3_Level5_Stage2_Jawa.id = 1
-        choice1_Quiz3_Level5_Stage2_Jawa.name = "Wi"
+        choice1_Quiz3_Level5_Stage2_Jawa.name = "Dhi"
         
         let choice2_Quiz3_Level5_Stage2_Jawa = Choice(context: PersistenceService.context)
         choice2_Quiz3_Level5_Stage2_Jawa.id = 2
-        choice2_Quiz3_Level5_Stage2_Jawa.name = "Ya"
+        choice2_Quiz3_Level5_Stage2_Jawa.name = "Chang"
         
         let choice3_Quiz3_Level5_Stage2_Jawa = Choice(context: PersistenceService.context)
         choice3_Quiz3_Level5_Stage2_Jawa.id = 3
-        choice3_Quiz3_Level5_Stage2_Jawa.name = "Dhang"
+        choice3_Quiz3_Level5_Stage2_Jawa.name = "Wi"
         
         let choice4_Quiz3_Level5_Stage2_Jawa = Choice(context: PersistenceService.context)
         choice4_Quiz3_Level5_Stage2_Jawa.id = 4
@@ -3118,15 +3118,15 @@ class MainViewController: UIViewController {
         //MARK: Image
         let image1_Quiz3_Level5_Stage2_Jawa = Image(context: PersistenceService.context)
         image1_Quiz3_Level5_Stage2_Jawa.id = 1
-        image1_Quiz3_Level5_Stage2_Jawa.name = "Wi_Aksara_Jawa"
+        image1_Quiz3_Level5_Stage2_Jawa.name = "Dhi_Aksara_Jawa"
         
         let image2_Quiz3_Level5_Stage2_Jawa = Image(context: PersistenceService.context)
         image2_Quiz3_Level5_Stage2_Jawa.id = 2
-        image2_Quiz3_Level5_Stage2_Jawa.name = "Ya_Aksara_Jawa"
+        image2_Quiz3_Level5_Stage2_Jawa.name = "Cang_Aksara_Jawa"
         
         let image3_Quiz3_Level5_Stage2_Jawa = Image(context: PersistenceService.context)
         image3_Quiz3_Level5_Stage2_Jawa.id = 3
-        image3_Quiz3_Level5_Stage2_Jawa.name = "Dhang_Aksara_Jawa"
+        image3_Quiz3_Level5_Stage2_Jawa.name = "Wi_Aksara_Jawa"
         
         let image4_Quiz3_Level5_Stage2_Jawa = Image(context: PersistenceService.context)
         image4_Quiz3_Level5_Stage2_Jawa.id = 4
@@ -3148,7 +3148,7 @@ class MainViewController: UIViewController {
         
         let choice2_Quiz4_Level5_Stage2_Jawa = Choice(context: PersistenceService.context)
         choice2_Quiz4_Level5_Stage2_Jawa.id = 2
-        choice2_Quiz4_Level5_Stage2_Jawa.name = "Dhang"
+        choice2_Quiz4_Level5_Stage2_Jawa.name = "Dhi"
         
         let choice3_Quiz4_Level5_Stage2_Jawa = Choice(context: PersistenceService.context)
         choice3_Quiz4_Level5_Stage2_Jawa.id = 3
@@ -3165,7 +3165,7 @@ class MainViewController: UIViewController {
         
         let image2_Quiz4_Level5_Stage2_Jawa = Image(context: PersistenceService.context)
         image2_Quiz4_Level5_Stage2_Jawa.id = 2
-        image2_Quiz4_Level5_Stage2_Jawa.name = "Dhang_Aksara_Jawa"
+        image2_Quiz4_Level5_Stage2_Jawa.name = "Dhi_Aksara_Jawa"
         
         let image3_Quiz4_Level5_Stage2_Jawa = Image(context: PersistenceService.context)
         image3_Quiz4_Level5_Stage2_Jawa.id = 3
@@ -3223,7 +3223,7 @@ class MainViewController: UIViewController {
         
         let choice3_Quiz2_Level6_Stage2_Jawa = Choice(context: PersistenceService.context)
         choice3_Quiz2_Level6_Stage2_Jawa.id = 3
-        choice3_Quiz2_Level6_Stage2_Jawa.name = "Wra"
+        choice3_Quiz2_Level6_Stage2_Jawa.name = "Wre"
         
         let choice4_Quiz2_Level6_Stage2_Jawa = Choice(context: PersistenceService.context)
         choice4_Quiz2_Level6_Stage2_Jawa.id = 4
@@ -3240,7 +3240,7 @@ class MainViewController: UIViewController {
         
         let image3_Quiz2_Level6_Stage2_Jawa = Image(context: PersistenceService.context)
         image3_Quiz2_Level6_Stage2_Jawa.id = 3
-        image3_Quiz2_Level6_Stage2_Jawa.name = "Wra_Aksara_Jawa"
+        image3_Quiz2_Level6_Stage2_Jawa.name = "Wre_Aksara_Jawa"
         
         let image4_Quiz2_Level6_Stage2_Jawa = Image(context: PersistenceService.context)
         image4_Quiz2_Level6_Stage2_Jawa.id = 4
@@ -3270,7 +3270,7 @@ class MainViewController: UIViewController {
         
         let choice4_Quiz3_Level6_Stage2_Jawa = Choice(context: PersistenceService.context)
         choice4_Quiz3_Level6_Stage2_Jawa.id = 4
-        choice4_Quiz3_Level6_Stage2_Jawa.name = "Wra"
+        choice4_Quiz3_Level6_Stage2_Jawa.name = "Wre"
         
         //MARK: Image
         let image1_Quiz3_Level6_Stage2_Jawa = Image(context: PersistenceService.context)
@@ -3287,7 +3287,7 @@ class MainViewController: UIViewController {
         
         let image4_Quiz3_Level6_Stage2_Jawa = Image(context: PersistenceService.context)
         image4_Quiz3_Level6_Stage2_Jawa.id = 4
-        image4_Quiz3_Level6_Stage2_Jawa.name = "Wra_Aksara_Jawa"
+        image4_Quiz3_Level6_Stage2_Jawa.name = "Wre_Aksara_Jawa"
         
         let quiz3_level6_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level6_stage2_Jawa.id = 3
@@ -3309,7 +3309,7 @@ class MainViewController: UIViewController {
         
         let choice3_Quiz4_Level6_Stage2_Jawa = Choice(context: PersistenceService.context)
         choice3_Quiz4_Level6_Stage2_Jawa.id = 3
-        choice3_Quiz4_Level6_Stage2_Jawa.name = "Wra"
+        choice3_Quiz4_Level6_Stage2_Jawa.name = "Wre"
         
         let choice4_Quiz4_Level6_Stage2_Jawa = Choice(context: PersistenceService.context)
         choice4_Quiz4_Level6_Stage2_Jawa.id = 4
@@ -3326,7 +3326,7 @@ class MainViewController: UIViewController {
         
         let image3_Quiz4_Level6_Stage2_Jawa = Image(context: PersistenceService.context)
         image3_Quiz4_Level6_Stage2_Jawa.id = 3
-        image3_Quiz4_Level6_Stage2_Jawa.name = "Wra_Aksara_Jawa"
+        image3_Quiz4_Level6_Stage2_Jawa.name = "Wre_Aksara_Jawa"
         
         let image4_Quiz4_Level6_Stage2_Jawa = Image(context: PersistenceService.context)
         image4_Quiz4_Level6_Stage2_Jawa.id = 4
@@ -3415,7 +3415,7 @@ class MainViewController: UIViewController {
         //MARK: Choice
         let choice1_Quiz3_Level7_Stage2_Jawa = Choice(context: PersistenceService.context)
         choice1_Quiz3_Level7_Stage2_Jawa.id = 1
-        choice1_Quiz3_Level7_Stage2_Jawa.name = "Wan"
+        choice1_Quiz3_Level7_Stage2_Jawa.name = "Gas"
         
         let choice2_Quiz3_Level7_Stage2_Jawa = Choice(context: PersistenceService.context)
         choice2_Quiz3_Level7_Stage2_Jawa.id = 2
@@ -3423,16 +3423,16 @@ class MainViewController: UIViewController {
         
         let choice3_Quiz3_Level7_Stage2_Jawa = Choice(context: PersistenceService.context)
         choice3_Quiz3_Level7_Stage2_Jawa.id = 3
-        choice3_Quiz3_Level7_Stage2_Jawa.name = "Rad"
+        choice3_Quiz3_Level7_Stage2_Jawa.name = "Wan"
         
         let choice4_Quiz3_Level7_Stage2_Jawa = Choice(context: PersistenceService.context)
         choice4_Quiz3_Level7_Stage2_Jawa.id = 4
-        choice4_Quiz3_Level7_Stage2_Jawa.name = "Gas"
+        choice4_Quiz3_Level7_Stage2_Jawa.name = "Rad"
         
         //MARK: Image
         let image1_Quiz3_Level7_Stage2_Jawa = Image(context: PersistenceService.context)
         image1_Quiz3_Level7_Stage2_Jawa.id = 1
-        image1_Quiz3_Level7_Stage2_Jawa.name = "Wan_Aksara_Jawa"
+        image1_Quiz3_Level7_Stage2_Jawa.name = "Gas_Aksara_Jawa"
         
         let image2_Quiz3_Level7_Stage2_Jawa = Image(context: PersistenceService.context)
         image2_Quiz3_Level7_Stage2_Jawa.id = 2
@@ -3440,11 +3440,11 @@ class MainViewController: UIViewController {
         
         let image3_Quiz3_Level7_Stage2_Jawa = Image(context: PersistenceService.context)
         image3_Quiz3_Level7_Stage2_Jawa.id = 3
-        image3_Quiz3_Level7_Stage2_Jawa.name = "Rad_Aksara_Jawa"
+        image3_Quiz3_Level7_Stage2_Jawa.name = "Wan_Aksara_Jawa"
         
         let image4_Quiz3_Level7_Stage2_Jawa = Image(context: PersistenceService.context)
         image4_Quiz3_Level7_Stage2_Jawa.id = 4
-        image4_Quiz3_Level7_Stage2_Jawa.name = "Gas_Aksara_Jawa"
+        image4_Quiz3_Level7_Stage2_Jawa.name = "Rad_Aksara_Jawa"
         
         let quiz3_level7_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level7_stage2_Jawa.id = 3
@@ -3733,7 +3733,7 @@ class MainViewController: UIViewController {
         
         let choice2_Quiz3_Level9_Stage2_Jawa = Choice(context: PersistenceService.context)
         choice2_Quiz3_Level9_Stage2_Jawa.id = 2
-        choice2_Quiz3_Level9_Stage2_Jawa.name = "_Dh"
+        choice2_Quiz3_Level9_Stage2_Jawa.name = "Wah"
         
         let choice3_Quiz3_Level9_Stage2_Jawa = Choice(context: PersistenceService.context)
         choice3_Quiz3_Level9_Stage2_Jawa.id = 3
@@ -3750,7 +3750,7 @@ class MainViewController: UIViewController {
         
         let image2_Quiz3_Level9_Stage2_Jawa = Image(context: PersistenceService.context)
         image2_Quiz3_Level9_Stage2_Jawa.id = 2
-        image2_Quiz3_Level9_Stage2_Jawa.name = "_Dh_Aksara_Jawa"
+        image2_Quiz3_Level9_Stage2_Jawa.name = "Wah_Aksara_Jawa"
         
         let image3_Quiz3_Level9_Stage2_Jawa = Image(context: PersistenceService.context)
         image3_Quiz3_Level9_Stage2_Jawa.id = 3
@@ -3784,7 +3784,7 @@ class MainViewController: UIViewController {
         
         let choice4_Quiz4_Level9_Stage2_Jawa = Choice(context: PersistenceService.context)
         choice4_Quiz4_Level9_Stage2_Jawa.id = 4
-        choice4_Quiz4_Level9_Stage2_Jawa.name = "_Dh"
+        choice4_Quiz4_Level9_Stage2_Jawa.name = "Wah"
         
         //MARK: Image
         let image1_Quiz4_Level9_Stage2_Jawa = Image(context: PersistenceService.context)
@@ -3801,7 +3801,7 @@ class MainViewController: UIViewController {
         
         let image4_Quiz4_Level9_Stage2_Jawa = Image(context: PersistenceService.context)
         image4_Quiz4_Level9_Stage2_Jawa.id = 4
-        image4_Quiz4_Level9_Stage2_Jawa.name = "_Dh_Aksara_Jawa"
+        image4_Quiz4_Level9_Stage2_Jawa.name = "Wah_Aksara_Jawa"
         
         let quiz4_level9_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level9_stage2_Jawa.id = 4
@@ -3929,11 +3929,11 @@ class MainViewController: UIViewController {
         //MARK: Choice
         let choice1_Quiz4_Level10_Stage2_Jawa = Choice(context: PersistenceService.context)
         choice1_Quiz4_Level10_Stage2_Jawa.id = 1
-        choice1_Quiz4_Level10_Stage2_Jawa.name = "Pah"
+        choice1_Quiz4_Level10_Stage2_Jawa.name = "Gah"
         
         let choice2_Quiz4_Level10_Stage2_Jawa = Choice(context: PersistenceService.context)
         choice2_Quiz4_Level10_Stage2_Jawa.id = 2
-        choice2_Quiz4_Level10_Stage2_Jawa.name = "Gah"
+        choice2_Quiz4_Level10_Stage2_Jawa.name = "Pah"
         
         let choice3_Quiz4_Level10_Stage2_Jawa = Choice(context: PersistenceService.context)
         choice3_Quiz4_Level10_Stage2_Jawa.id = 3
@@ -3946,11 +3946,11 @@ class MainViewController: UIViewController {
         //MARK: Image
         let image1_Quiz4_Level10_Stage2_Jawa = Image(context: PersistenceService.context)
         image1_Quiz4_Level10_Stage2_Jawa.id = 1
-        image1_Quiz4_Level10_Stage2_Jawa.name = "Pah_Aksara_Jawa"
+        image1_Quiz4_Level10_Stage2_Jawa.name = "Gah_Aksara_Jawa"
         
         let image2_Quiz4_Level10_Stage2_Jawa = Image(context: PersistenceService.context)
         image2_Quiz4_Level10_Stage2_Jawa.id = 2
-        image2_Quiz4_Level10_Stage2_Jawa.name = "Gah_Aksara_Jawa"
+        image2_Quiz4_Level10_Stage2_Jawa.name = "Pah_Aksara_Jawa"
         
         let image3_Quiz4_Level10_Stage2_Jawa = Image(context: PersistenceService.context)
         image3_Quiz4_Level10_Stage2_Jawa.id = 3
@@ -4086,7 +4086,7 @@ class MainViewController: UIViewController {
         //MARK: Choice
         let choice1_Quiz4_Level11_Stage2_Jawa = Choice(context: PersistenceService.context)
         choice1_Quiz4_Level11_Stage2_Jawa.id = 1
-        choice1_Quiz4_Level11_Stage2_Jawa.name = "Gar"
+        choice1_Quiz4_Level11_Stage2_Jawa.name = "Jah"
         
         let choice2_Quiz4_Level11_Stage2_Jawa = Choice(context: PersistenceService.context)
         choice2_Quiz4_Level11_Stage2_Jawa.id = 2
@@ -4094,7 +4094,7 @@ class MainViewController: UIViewController {
         
         let choice3_Quiz4_Level11_Stage2_Jawa = Choice(context: PersistenceService.context)
         choice3_Quiz4_Level11_Stage2_Jawa.id = 3
-        choice3_Quiz4_Level11_Stage2_Jawa.name = "Jah"
+        choice3_Quiz4_Level11_Stage2_Jawa.name = "Gar"
         
         let choice4_Quiz4_Level11_Stage2_Jawa = Choice(context: PersistenceService.context)
         choice4_Quiz4_Level11_Stage2_Jawa.id = 4
@@ -4103,7 +4103,7 @@ class MainViewController: UIViewController {
         //MARK: Image
         let image1_Quiz4_Level11_Stage2_Jawa = Image(context: PersistenceService.context)
         image1_Quiz4_Level11_Stage2_Jawa.id = 1
-        image1_Quiz4_Level11_Stage2_Jawa.name = "Gar_Aksara_Jawa"
+        image1_Quiz4_Level11_Stage2_Jawa.name = "Jah_Aksara_Jawa"
         
         let image2_Quiz4_Level11_Stage2_Jawa = Image(context: PersistenceService.context)
         image2_Quiz4_Level11_Stage2_Jawa.id = 2
@@ -4111,7 +4111,7 @@ class MainViewController: UIViewController {
         
         let image3_Quiz4_Level11_Stage2_Jawa = Image(context: PersistenceService.context)
         image3_Quiz4_Level11_Stage2_Jawa.id = 3
-        image3_Quiz4_Level11_Stage2_Jawa.name = "Jah_Aksara_Jawa"
+        image3_Quiz4_Level11_Stage2_Jawa.name = "Gar_Aksara_Jawa"
         
         let image4_Quiz4_Level11_Stage2_Jawa = Image(context: PersistenceService.context)
         image4_Quiz4_Level11_Stage2_Jawa.id = 4
@@ -4714,11 +4714,11 @@ class MainViewController: UIViewController {
         //MARK: Choice
         let choice1_Quiz4_Level15_Stage2_Jawa = Choice(context: PersistenceService.context)
         choice1_Quiz4_Level15_Stage2_Jawa.id = 1
-        choice1_Quiz4_Level15_Stage2_Jawa.name = "Nyra"
+        choice1_Quiz4_Level15_Stage2_Jawa.name = "Ngre"
         
         let choice2_Quiz4_Level15_Stage2_Jawa = Choice(context: PersistenceService.context)
         choice2_Quiz4_Level15_Stage2_Jawa.id = 2
-        choice2_Quiz4_Level15_Stage2_Jawa.name = "Ngre"
+        choice2_Quiz4_Level15_Stage2_Jawa.name = "Nyra"
         
         let choice3_Quiz4_Level15_Stage2_Jawa = Choice(context: PersistenceService.context)
         choice3_Quiz4_Level15_Stage2_Jawa.id = 3
@@ -4731,11 +4731,11 @@ class MainViewController: UIViewController {
         //MARK: Image
         let image1_Quiz4_Level15_Stage2_Jawa = Image(context: PersistenceService.context)
         image1_Quiz4_Level15_Stage2_Jawa.id = 1
-        image1_Quiz4_Level15_Stage2_Jawa.name = "Nyra_Aksara_Jawa"
+        image1_Quiz4_Level15_Stage2_Jawa.name = "Ngre_Aksara_Jawa"
         
         let image2_Quiz4_Level15_Stage2_Jawa = Image(context: PersistenceService.context)
         image2_Quiz4_Level15_Stage2_Jawa.id = 2
-        image2_Quiz4_Level15_Stage2_Jawa.name = "Ngre_Aksara_Jawa"
+        image2_Quiz4_Level15_Stage2_Jawa.name = "Nyra_Aksara_Jawa"
         
         let image3_Quiz4_Level15_Stage2_Jawa = Image(context: PersistenceService.context)
         image3_Quiz4_Level15_Stage2_Jawa.id = 3
@@ -7133,6 +7133,7 @@ class MainViewController: UIViewController {
         firstLevelStage1Jawa.id = 1
         firstLevelStage1Jawa.name = "Level 1"
         firstLevelStage1Jawa.isLocked = false
+        firstLevelStage1Jawa.isInitial = true
         firstLevelStage1Jawa.totalMedal = 0
         firstLevelStage1Jawa.quizes = [quiz1_level1_stage1_Jawa, quiz2_level1_stage1_Jawa, quiz3_level1_stage1_Jawa, quiz4_level1_stage1_Jawa, quiz5_level1_stage1_Jawa, quiz6_level1_stage1_Jawa]
         
@@ -7140,6 +7141,7 @@ class MainViewController: UIViewController {
         secondLevelStage1Jawa.id = 2
         secondLevelStage1Jawa.name = "Level 2"
         secondLevelStage1Jawa.isLocked = true
+        secondLevelStage1Jawa.isInitial = true
         secondLevelStage1Jawa.totalMedal = 0
         secondLevelStage1Jawa.quizes = [quiz1_level2_stage1_Jawa, quiz2_level2_stage1_Jawa, quiz3_level2_stage1_Jawa, quiz4_level2_stage1_Jawa, quiz5_level2_stage1_Jawa, quiz6_level2_stage1_Jawa]
         
@@ -7147,6 +7149,7 @@ class MainViewController: UIViewController {
         thirdLevelStage1Jawa.id = 3
         thirdLevelStage1Jawa.name = "Level 3"
         thirdLevelStage1Jawa.isLocked = true
+        thirdLevelStage1Jawa.isInitial = true
         thirdLevelStage1Jawa.totalMedal = 0
         thirdLevelStage1Jawa.quizes = [quiz1_level3_stage1_Jawa, quiz2_level3_stage1_Jawa, quiz3_level3_stage1_Jawa, quiz4_level3_stage1_Jawa, quiz5_level3_stage1_Jawa, quiz6_level3_stage1_Jawa]
         
@@ -7154,6 +7157,7 @@ class MainViewController: UIViewController {
         fourthLevelStage1Jawa.id = 4
         fourthLevelStage1Jawa.name = "Level 4"
         fourthLevelStage1Jawa.isLocked = true
+        fourthLevelStage1Jawa.isInitial = true
         fourthLevelStage1Jawa.totalMedal = 0
         fourthLevelStage1Jawa.quizes = [quiz1_level4_stage1_Jawa, quiz2_level4_stage1_Jawa, quiz3_level4_stage1_Jawa, quiz4_level4_stage1_Jawa, quiz5_level4_stage1_Jawa, quiz6_level4_stage1_Jawa]
         
@@ -7161,6 +7165,7 @@ class MainViewController: UIViewController {
         fifthLevelStage1Jawa.id = 5
         fifthLevelStage1Jawa.name = "Level 5"
         fifthLevelStage1Jawa.isLocked = true
+        fifthLevelStage1Jawa.isInitial = true
         fifthLevelStage1Jawa.totalMedal = 0
         fifthLevelStage1Jawa.quizes = [quiz1_level5_stage1_Jawa, quiz2_level5_stage1_Jawa, quiz3_level5_stage1_Jawa, quiz4_level5_stage1_Jawa, quiz5_level5_stage1_Jawa, quiz6_level5_stage1_Jawa]
         
@@ -7168,6 +7173,7 @@ class MainViewController: UIViewController {
         sixthLevelStage1Jawa.id = 6
         sixthLevelStage1Jawa.name = "Level 6"
         sixthLevelStage1Jawa.isLocked = true
+        sixthLevelStage1Jawa.isInitial = true
         sixthLevelStage1Jawa.totalMedal = 0
         sixthLevelStage1Jawa.quizes = [quiz1_level6_stage1_Jawa, quiz2_level6_stage1_Jawa, quiz3_level6_stage1_Jawa, quiz4_level6_stage1_Jawa, quiz5_level6_stage1_Jawa, quiz6_level6_stage1_Jawa]
         
@@ -7175,6 +7181,7 @@ class MainViewController: UIViewController {
         seventhLevelStage1Jawa.id = 7
         seventhLevelStage1Jawa.name = "Level 7"
         seventhLevelStage1Jawa.isLocked = true
+        seventhLevelStage1Jawa.isInitial = true
         seventhLevelStage1Jawa.totalMedal = 0
         seventhLevelStage1Jawa.quizes = [quiz1_level7_stage1_Jawa, quiz2_level7_stage1_Jawa, quiz3_level7_stage1_Jawa, quiz4_level7_stage1_Jawa, quiz5_level7_stage1_Jawa, quiz6_level7_stage1_Jawa]
         
@@ -7182,6 +7189,7 @@ class MainViewController: UIViewController {
         eightLevelStage1Jawa.id = 8
         eightLevelStage1Jawa.name = "Level 8"
         eightLevelStage1Jawa.isLocked = true
+        eightLevelStage1Jawa.isInitial = true
         eightLevelStage1Jawa.totalMedal = 0
         eightLevelStage1Jawa.quizes = [quiz1_level8_stage1_Jawa, quiz2_level8_stage1_Jawa, quiz3_level8_stage1_Jawa, quiz4_level8_stage1_Jawa, quiz5_level8_stage1_Jawa, quiz6_level8_stage1_Jawa]
         
@@ -7189,6 +7197,7 @@ class MainViewController: UIViewController {
         ninthLevelStage1Jawa.id = 9
         ninthLevelStage1Jawa.name = "Level 9"
         ninthLevelStage1Jawa.isLocked = true
+        ninthLevelStage1Jawa.isInitial = true
         ninthLevelStage1Jawa.totalMedal = 0
         ninthLevelStage1Jawa.quizes = [quiz1_level9_stage1_Jawa, quiz2_level9_stage1_Jawa, quiz3_level9_stage1_Jawa, quiz4_level9_stage1_Jawa, quiz5_level9_stage1_Jawa, quiz6_level9_stage1_Jawa]
         
@@ -7196,6 +7205,7 @@ class MainViewController: UIViewController {
         tenthLevelStage1Jawa.id = 10
         tenthLevelStage1Jawa.name = "Level 10"
         tenthLevelStage1Jawa.isLocked = true
+        tenthLevelStage1Jawa.isInitial = true
         tenthLevelStage1Jawa.totalMedal = 0
         tenthLevelStage1Jawa.quizes = [quiz1_level10_stage1_Jawa, quiz2_level10_stage1_Jawa, quiz3_level10_stage1_Jawa, quiz4_level10_stage1_Jawa, quiz5_level10_stage1_Jawa, quiz6_level10_stage1_Jawa]
         
@@ -7203,6 +7213,7 @@ class MainViewController: UIViewController {
         eleventhLevelStage1Jawa.id = 11
         eleventhLevelStage1Jawa.name = "Level 11"
         eleventhLevelStage1Jawa.isLocked = true
+        eleventhLevelStage1Jawa.isInitial = true
         eleventhLevelStage1Jawa.totalMedal = 0
         eleventhLevelStage1Jawa.quizes = [quiz1_level11_stage1_Jawa, quiz2_level11_stage1_Jawa, quiz3_level11_stage1_Jawa, quiz4_level11_stage1_Jawa, quiz5_level11_stage1_Jawa, quiz6_level11_stage1_Jawa]
         
@@ -7210,6 +7221,7 @@ class MainViewController: UIViewController {
         twelfthLevelStage1Jawa.id = 12
         twelfthLevelStage1Jawa.name = "Level 12"
         twelfthLevelStage1Jawa.isLocked = true
+        twelfthLevelStage1Jawa.isInitial = true
         twelfthLevelStage1Jawa.totalMedal = 0
         twelfthLevelStage1Jawa.quizes = [quiz1_level12_stage1_Jawa, quiz2_level12_stage1_Jawa, quiz3_level12_stage1_Jawa, quiz4_level12_stage1_Jawa, quiz5_level12_stage1_Jawa, quiz6_level12_stage1_Jawa]
         
@@ -7217,6 +7229,7 @@ class MainViewController: UIViewController {
         thirteenthLevelStage1Jawa.id = 13
         thirteenthLevelStage1Jawa.name = "Level 13"
         thirteenthLevelStage1Jawa.isLocked = true
+        thirteenthLevelStage1Jawa.isInitial = true
         thirteenthLevelStage1Jawa.totalMedal = 0
         thirteenthLevelStage1Jawa.quizes = [quiz1_level13_stage1_Jawa, quiz2_level13_stage1_Jawa, quiz3_level13_stage1_Jawa, quiz4_level13_stage1_Jawa, quiz5_level13_stage1_Jawa, quiz6_level13_stage1_Jawa]
         
@@ -7224,6 +7237,7 @@ class MainViewController: UIViewController {
         fourteenthLevelStage1Jawa.id = 14
         fourteenthLevelStage1Jawa.name = "Level 14"
         fourteenthLevelStage1Jawa.isLocked = true
+        fourteenthLevelStage1Jawa.isInitial = true
         fourteenthLevelStage1Jawa.totalMedal = 0
         fourteenthLevelStage1Jawa.quizes = [quiz1_level14_stage1_Jawa, quiz2_level14_stage1_Jawa, quiz3_level14_stage1_Jawa, quiz4_level14_stage1_Jawa, quiz5_level14_stage1_Jawa, quiz6_level14_stage1_Jawa]
         
@@ -7231,6 +7245,7 @@ class MainViewController: UIViewController {
         fifteenthLevelStage1Jawa.id = 15
         fifteenthLevelStage1Jawa.name = "Level 15"
         fifteenthLevelStage1Jawa.isLocked = true
+        fifteenthLevelStage1Jawa.isInitial = true
         fifteenthLevelStage1Jawa.totalMedal = 0
         fifteenthLevelStage1Jawa.quizes = [quiz1_level15_stage1_Jawa, quiz2_level15_stage1_Jawa, quiz3_level15_stage1_Jawa, quiz4_level15_stage1_Jawa, quiz5_level15_stage1_Jawa, quiz6_level15_stage1_Jawa]
         
@@ -7239,6 +7254,7 @@ class MainViewController: UIViewController {
         firstLevelStage2Jawa.id = 1
         firstLevelStage2Jawa.name = "Level 1"
         firstLevelStage2Jawa.isLocked = false
+        firstLevelStage2Jawa.isInitial = true
         firstLevelStage2Jawa.totalMedal = 0
         firstLevelStage2Jawa.quizes = [quiz1_level1_stage2_Jawa, quiz2_level1_stage2_Jawa, quiz3_level1_stage2_Jawa, quiz4_level1_stage2_Jawa, quiz5_level1_stage2_Jawa, quiz6_level1_stage2_Jawa]
         
@@ -7246,6 +7262,7 @@ class MainViewController: UIViewController {
         secondLevelStage2Jawa.id = 2
         secondLevelStage2Jawa.name = "Level 2"
         secondLevelStage2Jawa.isLocked = true
+        secondLevelStage2Jawa.isInitial = true
         secondLevelStage2Jawa.totalMedal = 0
         secondLevelStage2Jawa.quizes = [quiz1_level2_stage2_Jawa, quiz2_level2_stage2_Jawa, quiz3_level2_stage2_Jawa, quiz4_level2_stage2_Jawa, quiz5_level2_stage2_Jawa, quiz6_level2_stage2_Jawa]
         
@@ -7253,6 +7270,7 @@ class MainViewController: UIViewController {
         thirdLevelStage2Jawa.id = 3
         thirdLevelStage2Jawa.name = "Level 3"
         thirdLevelStage2Jawa.isLocked = true
+        thirdLevelStage2Jawa.isInitial = true
         thirdLevelStage2Jawa.totalMedal = 0
         thirdLevelStage2Jawa.quizes = [quiz1_level3_stage2_Jawa, quiz2_level3_stage2_Jawa, quiz3_level3_stage2_Jawa, quiz4_level3_stage2_Jawa, quiz5_level3_stage2_Jawa, quiz6_level3_stage2_Jawa]
         
@@ -7260,6 +7278,7 @@ class MainViewController: UIViewController {
         fourthLevelStage2Jawa.id = 4
         fourthLevelStage2Jawa.name = "Level 4"
         fourthLevelStage2Jawa.isLocked = true
+        fourthLevelStage2Jawa.isInitial = true
         fourthLevelStage2Jawa.totalMedal = 0
         fourthLevelStage2Jawa.quizes = [quiz1_level4_stage2_Jawa, quiz2_level4_stage2_Jawa, quiz3_level4_stage2_Jawa, quiz4_level4_stage2_Jawa, quiz5_level4_stage2_Jawa, quiz6_level4_stage2_Jawa]
         
@@ -7267,6 +7286,7 @@ class MainViewController: UIViewController {
         fifthLevelStage2Jawa.id = 5
         fifthLevelStage2Jawa.name = "Level 5"
         fifthLevelStage2Jawa.isLocked = true
+        fifthLevelStage2Jawa.isInitial = true
         fifthLevelStage2Jawa.totalMedal = 0
         fifthLevelStage2Jawa.quizes = [quiz1_level5_stage2_Jawa, quiz2_level5_stage2_Jawa, quiz3_level5_stage2_Jawa, quiz4_level5_stage2_Jawa, quiz5_level5_stage2_Jawa, quiz6_level5_stage2_Jawa]
         
@@ -7274,6 +7294,7 @@ class MainViewController: UIViewController {
         sixthLevelStage2Jawa.id = 6
         sixthLevelStage2Jawa.name = "Level 6"
         sixthLevelStage2Jawa.isLocked = true
+        sixthLevelStage2Jawa.isInitial = true
         sixthLevelStage2Jawa.totalMedal = 0
         sixthLevelStage2Jawa.quizes = [quiz1_level6_stage2_Jawa, quiz2_level6_stage2_Jawa, quiz3_level6_stage2_Jawa, quiz4_level6_stage2_Jawa, quiz5_level6_stage2_Jawa, quiz6_level6_stage2_Jawa]
         
@@ -7281,6 +7302,7 @@ class MainViewController: UIViewController {
         seventhLevelStage2Jawa.id = 7
         seventhLevelStage2Jawa.name = "Level 7"
         seventhLevelStage2Jawa.isLocked = true
+        seventhLevelStage2Jawa.isInitial = true
         seventhLevelStage2Jawa.totalMedal = 0
         seventhLevelStage2Jawa.quizes = [quiz1_level7_stage2_Jawa, quiz2_level7_stage2_Jawa, quiz3_level7_stage2_Jawa, quiz4_level7_stage2_Jawa, quiz5_level7_stage2_Jawa, quiz6_level7_stage2_Jawa]
         
@@ -7288,6 +7310,7 @@ class MainViewController: UIViewController {
         eightLevelStage2Jawa.id = 8
         eightLevelStage2Jawa.name = "Level 8"
         eightLevelStage2Jawa.isLocked = true
+        eightLevelStage2Jawa.isInitial = true
         eightLevelStage2Jawa.totalMedal = 0
         eightLevelStage2Jawa.quizes = [quiz1_level8_stage2_Jawa, quiz2_level8_stage2_Jawa, quiz3_level8_stage2_Jawa, quiz4_level8_stage2_Jawa, quiz5_level8_stage2_Jawa, quiz6_level8_stage2_Jawa]
         
@@ -7295,6 +7318,7 @@ class MainViewController: UIViewController {
         ninthLevelStage2Jawa.id = 9
         ninthLevelStage2Jawa.name = "Level 9"
         ninthLevelStage2Jawa.isLocked = true
+        ninthLevelStage2Jawa.isInitial = true
         ninthLevelStage2Jawa.totalMedal = 0
         ninthLevelStage2Jawa.quizes = [quiz1_level9_stage2_Jawa, quiz2_level9_stage2_Jawa, quiz3_level9_stage2_Jawa, quiz4_level9_stage2_Jawa, quiz5_level9_stage2_Jawa, quiz6_level9_stage2_Jawa]
         
@@ -7302,6 +7326,7 @@ class MainViewController: UIViewController {
         tenthLevelStage2Jawa.id = 10
         tenthLevelStage2Jawa.name = "Level 10"
         tenthLevelStage2Jawa.isLocked = true
+        tenthLevelStage2Jawa.isInitial = true
         tenthLevelStage2Jawa.totalMedal = 0
         tenthLevelStage2Jawa.quizes = [quiz1_level10_stage2_Jawa, quiz2_level10_stage2_Jawa, quiz3_level10_stage2_Jawa, quiz4_level10_stage2_Jawa, quiz5_level10_stage2_Jawa, quiz6_level10_stage2_Jawa]
         
@@ -7309,6 +7334,7 @@ class MainViewController: UIViewController {
         eleventhLevelStage2Jawa.id = 11
         eleventhLevelStage2Jawa.name = "Level 11"
         eleventhLevelStage2Jawa.isLocked = true
+        eleventhLevelStage2Jawa.isInitial = true
         eleventhLevelStage2Jawa.totalMedal = 0
         eleventhLevelStage2Jawa.quizes = [quiz1_level11_stage2_Jawa, quiz2_level11_stage2_Jawa, quiz3_level11_stage2_Jawa, quiz4_level11_stage2_Jawa, quiz5_level11_stage2_Jawa, quiz6_level11_stage2_Jawa]
         
@@ -7316,6 +7342,7 @@ class MainViewController: UIViewController {
         twelfthLevelStage2Jawa.id = 12
         twelfthLevelStage2Jawa.name = "Level 12"
         twelfthLevelStage2Jawa.isLocked = true
+        twelfthLevelStage2Jawa.isInitial = true
         twelfthLevelStage2Jawa.totalMedal = 0
         twelfthLevelStage2Jawa.quizes = [quiz1_level12_stage2_Jawa, quiz2_level12_stage2_Jawa, quiz3_level12_stage2_Jawa, quiz4_level12_stage2_Jawa, quiz5_level12_stage2_Jawa, quiz6_level12_stage2_Jawa]
         
@@ -7323,6 +7350,7 @@ class MainViewController: UIViewController {
         thirteenthLevelStage2Jawa.id = 13
         thirteenthLevelStage2Jawa.name = "Level 13"
         thirteenthLevelStage2Jawa.isLocked = true
+        thirteenthLevelStage2Jawa.isInitial = true
         thirteenthLevelStage2Jawa.totalMedal = 0
         thirteenthLevelStage2Jawa.quizes = [quiz1_level13_stage2_Jawa, quiz2_level13_stage2_Jawa, quiz3_level13_stage2_Jawa, quiz4_level13_stage2_Jawa, quiz5_level13_stage2_Jawa, quiz6_level13_stage2_Jawa]
         
@@ -7330,6 +7358,7 @@ class MainViewController: UIViewController {
         fourteenthLevelStage2Jawa.id = 14
         fourteenthLevelStage2Jawa.name = "Level 14"
         fourteenthLevelStage2Jawa.isLocked = true
+        fourteenthLevelStage2Jawa.isInitial = true
         fourteenthLevelStage2Jawa.totalMedal = 0
         fourteenthLevelStage2Jawa.quizes = [quiz1_level14_stage2_Jawa, quiz2_level14_stage2_Jawa, quiz3_level14_stage2_Jawa, quiz4_level14_stage2_Jawa, quiz5_level14_stage2_Jawa, quiz6_level14_stage2_Jawa]
         
@@ -7337,6 +7366,7 @@ class MainViewController: UIViewController {
         fifteenthLevelStage2Jawa.id = 15
         fifteenthLevelStage2Jawa.name = "Level 15"
         fifteenthLevelStage2Jawa.isLocked = true
+        fifteenthLevelStage2Jawa.isInitial = true
         fifteenthLevelStage2Jawa.totalMedal = 0
         fifteenthLevelStage2Jawa.quizes = [quiz1_level15_stage2_Jawa, quiz2_level15_stage2_Jawa, quiz3_level15_stage2_Jawa, quiz4_level15_stage2_Jawa, quiz5_level15_stage2_Jawa, quiz6_level15_stage2_Jawa]
         
@@ -7345,6 +7375,7 @@ class MainViewController: UIViewController {
         firstLevelStage3Jawa.id = 1
         firstLevelStage3Jawa.name = "Level 1"
         firstLevelStage3Jawa.isLocked = false
+        firstLevelStage3Jawa.isInitial = true
         firstLevelStage3Jawa.totalMedal = 0
         firstLevelStage3Jawa.quizes = [quiz1_level1_stage3_Jawa, quiz2_level1_stage3_Jawa, quiz3_level1_stage3_Jawa, quiz4_level1_stage3_Jawa, quiz5_level1_stage3_Jawa, quiz6_level1_stage3_Jawa]
         
@@ -7352,6 +7383,7 @@ class MainViewController: UIViewController {
         secondLevelStage3Jawa.id = 2
         secondLevelStage3Jawa.name = "Level 2"
         secondLevelStage3Jawa.isLocked = true
+        secondLevelStage3Jawa.isInitial = true
         secondLevelStage3Jawa.totalMedal = 0
         secondLevelStage3Jawa.quizes = [quiz1_level2_stage3_Jawa, quiz2_level2_stage3_Jawa, quiz3_level2_stage3_Jawa, quiz4_level2_stage3_Jawa, quiz5_level2_stage3_Jawa, quiz6_level2_stage3_Jawa]
         
@@ -7359,6 +7391,7 @@ class MainViewController: UIViewController {
         thirdLevelStage3Jawa.id = 3
         thirdLevelStage3Jawa.name = "Level 3"
         thirdLevelStage3Jawa.isLocked = true
+        thirdLevelStage3Jawa.isInitial = true
         thirdLevelStage3Jawa.totalMedal = 0
         thirdLevelStage3Jawa.quizes = [quiz1_level3_stage3_Jawa, quiz2_level3_stage3_Jawa, quiz3_level3_stage3_Jawa, quiz4_level3_stage3_Jawa, quiz5_level3_stage3_Jawa, quiz6_level3_stage3_Jawa]
         
@@ -7366,6 +7399,7 @@ class MainViewController: UIViewController {
         fourthLevelStage3Jawa.id = 4
         fourthLevelStage3Jawa.name = "Level 4"
         fourthLevelStage3Jawa.isLocked = true
+        fourthLevelStage3Jawa.isInitial = true
         fourthLevelStage3Jawa.totalMedal = 0
         fourthLevelStage3Jawa.quizes = [quiz1_level4_stage3_Jawa, quiz2_level4_stage3_Jawa, quiz3_level4_stage3_Jawa, quiz4_level4_stage3_Jawa, quiz5_level4_stage3_Jawa, quiz6_level4_stage3_Jawa]
         
@@ -7373,6 +7407,7 @@ class MainViewController: UIViewController {
         fifthLevelStage3Jawa.id = 5
         fifthLevelStage3Jawa.name = "Level 5"
         fifthLevelStage3Jawa.isLocked = true
+        fifthLevelStage3Jawa.isInitial = true
         fifthLevelStage3Jawa.totalMedal = 0
         fifthLevelStage3Jawa.quizes = [quiz1_level5_stage3_Jawa, quiz2_level5_stage3_Jawa, quiz3_level5_stage3_Jawa, quiz4_level5_stage3_Jawa, quiz5_level5_stage3_Jawa, quiz6_level5_stage3_Jawa]
         
@@ -7380,6 +7415,7 @@ class MainViewController: UIViewController {
         sixthLevelStage3Jawa.id = 6
         sixthLevelStage3Jawa.name = "Level 6"
         sixthLevelStage3Jawa.isLocked = true
+        sixthLevelStage3Jawa.isInitial = true
         sixthLevelStage3Jawa.totalMedal = 0
         sixthLevelStage3Jawa.quizes = [quiz1_level6_stage3_Jawa, quiz2_level6_stage3_Jawa, quiz3_level6_stage3_Jawa, quiz4_level6_stage3_Jawa, quiz5_level6_stage3_Jawa, quiz6_level6_stage3_Jawa]
         
@@ -7387,6 +7423,7 @@ class MainViewController: UIViewController {
         seventhLevelStage3Jawa.id = 7
         seventhLevelStage3Jawa.name = "Level 7"
         seventhLevelStage3Jawa.isLocked = true
+        seventhLevelStage3Jawa.isInitial = true
         seventhLevelStage3Jawa.totalMedal = 0
         seventhLevelStage3Jawa.quizes = [quiz1_level7_stage3_Jawa, quiz2_level7_stage3_Jawa, quiz3_level7_stage3_Jawa, quiz4_level7_stage3_Jawa, quiz5_level7_stage3_Jawa, quiz6_level7_stage3_Jawa]
         
@@ -7394,6 +7431,7 @@ class MainViewController: UIViewController {
         eightLevelStage3Jawa.id = 8
         eightLevelStage3Jawa.name = "Level 8"
         eightLevelStage3Jawa.isLocked = true
+        eightLevelStage3Jawa.isInitial = true
         eightLevelStage3Jawa.totalMedal = 0
         eightLevelStage3Jawa.quizes = [quiz1_level8_stage3_Jawa, quiz2_level8_stage3_Jawa, quiz3_level8_stage3_Jawa, quiz4_level8_stage3_Jawa, quiz5_level8_stage3_Jawa, quiz6_level8_stage3_Jawa]
         
@@ -7401,6 +7439,7 @@ class MainViewController: UIViewController {
         ninthLevelStage3Jawa.id = 9
         ninthLevelStage3Jawa.name = "Level 9"
         ninthLevelStage3Jawa.isLocked = true
+        ninthLevelStage3Jawa.isInitial = true
         ninthLevelStage3Jawa.totalMedal = 0
         ninthLevelStage3Jawa.quizes = [quiz1_level9_stage3_Jawa, quiz2_level9_stage3_Jawa, quiz3_level9_stage3_Jawa, quiz4_level9_stage3_Jawa, quiz5_level9_stage3_Jawa, quiz6_level9_stage3_Jawa]
         
@@ -7408,6 +7447,7 @@ class MainViewController: UIViewController {
         tenthLevelStage3Jawa.id = 10
         tenthLevelStage3Jawa.name = "Level 10"
         tenthLevelStage3Jawa.isLocked = true
+        tenthLevelStage3Jawa.isInitial = true
         tenthLevelStage3Jawa.totalMedal = 0
         tenthLevelStage3Jawa.quizes = [quiz1_level10_stage3_Jawa, quiz2_level10_stage3_Jawa, quiz3_level10_stage3_Jawa, quiz4_level10_stage3_Jawa, quiz5_level10_stage3_Jawa, quiz6_level10_stage3_Jawa]
         
@@ -7415,6 +7455,7 @@ class MainViewController: UIViewController {
         eleventhLevelStage3Jawa.id = 11
         eleventhLevelStage3Jawa.name = "Level 11"
         eleventhLevelStage3Jawa.isLocked = true
+        eleventhLevelStage3Jawa.isInitial = true
         eleventhLevelStage3Jawa.totalMedal = 0
         eleventhLevelStage3Jawa.quizes = [quiz1_level11_stage3_Jawa, quiz2_level11_stage3_Jawa, quiz3_level11_stage3_Jawa, quiz4_level11_stage3_Jawa, quiz5_level11_stage3_Jawa, quiz6_level11_stage3_Jawa]
         
@@ -7422,6 +7463,7 @@ class MainViewController: UIViewController {
         twelfthLevelStage3Jawa.id = 12
         twelfthLevelStage3Jawa.name = "Level 12"
         twelfthLevelStage3Jawa.isLocked = true
+        twelfthLevelStage3Jawa.isInitial = true
         twelfthLevelStage3Jawa.totalMedal = 0
         twelfthLevelStage3Jawa.quizes = [quiz1_level12_stage3_Jawa, quiz2_level12_stage3_Jawa, quiz3_level12_stage3_Jawa, quiz4_level12_stage3_Jawa, quiz5_level12_stage3_Jawa, quiz6_level12_stage3_Jawa]
         
@@ -7429,6 +7471,7 @@ class MainViewController: UIViewController {
         thirteenthLevelStage3Jawa.id = 13
         thirteenthLevelStage3Jawa.name = "Level 13"
         thirteenthLevelStage3Jawa.isLocked = true
+        thirteenthLevelStage3Jawa.isInitial = true
         thirteenthLevelStage3Jawa.totalMedal = 0
         thirteenthLevelStage3Jawa.quizes = [quiz1_level13_stage3_Jawa, quiz2_level13_stage3_Jawa, quiz3_level13_stage3_Jawa, quiz4_level13_stage3_Jawa, quiz5_level13_stage3_Jawa, quiz6_level13_stage3_Jawa]
         
@@ -7436,6 +7479,7 @@ class MainViewController: UIViewController {
         fourteenthLevelStage3Jawa.id = 14
         fourteenthLevelStage3Jawa.name = "Level 14"
         fourteenthLevelStage3Jawa.isLocked = true
+        fourteenthLevelStage3Jawa.isInitial = true
         fourteenthLevelStage3Jawa.totalMedal = 0
         fourteenthLevelStage3Jawa.quizes = [quiz1_level14_stage3_Jawa, quiz2_level14_stage3_Jawa, quiz3_level14_stage3_Jawa, quiz4_level14_stage3_Jawa, quiz5_level14_stage3_Jawa, quiz6_level14_stage3_Jawa]
         
@@ -7443,120 +7487,1728 @@ class MainViewController: UIViewController {
         fifteenthLevelStage3Jawa.id = 15
         fifteenthLevelStage3Jawa.name = "Level 15"
         fifteenthLevelStage3Jawa.isLocked = true
+        fifteenthLevelStage3Jawa.isInitial = true
         fifteenthLevelStage3Jawa.totalMedal = 0
         fifteenthLevelStage3Jawa.quizes = [quiz1_level15_stage3_Jawa, quiz2_level15_stage3_Jawa, quiz3_level15_stage3_Jawa, quiz4_level15_stage3_Jawa, quiz5_level15_stage3_Jawa, quiz6_level15_stage3_Jawa]
+    
+        // ================================================================================================================= //
+        // MARK: Quiz for Level 1 Stage 1 Sunda
+        let quiz1_level1_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz1_level1_stage1_Sunda.id = 1
+        quiz1_level1_stage1_Sunda.name = "Panduan"
+        quiz1_level1_stage1_Sunda.type = "Panduan"
+        quiz1_level1_stage1_Sunda.isCorrect = false
+        quiz1_level1_stage1_Sunda.question = "Ka"
+        quiz1_level1_stage1_Sunda.choices = []
+        quiz1_level1_stage1_Sunda.images = []
+        
+        //MARK: Choice
+        let choice1_Quiz2_Level1_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level1_Stage1_Sunda.id = 1
+        choice1_Quiz2_Level1_Stage1_Sunda.name = "Ha"
+        
+        let choice2_Quiz2_Level1_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level1_Stage1_Sunda.id = 2
+        choice2_Quiz2_Level1_Stage1_Sunda.name = "Ka"
+        
+        let choice3_Quiz2_Level1_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level1_Stage1_Sunda.id = 3
+        choice3_Quiz2_Level1_Stage1_Sunda.name = "Da"
+        
+        let choice4_Quiz2_Level1_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level1_Stage1_Sunda.id = 4
+        choice4_Quiz2_Level1_Stage1_Sunda.name = "Ba"
+    
+        let quiz2_level1_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz2_level1_stage1_Sunda.id = 2
+        quiz2_level1_stage1_Sunda.name = "Kuis 1"
+        quiz2_level1_stage1_Sunda.type = "A"
+        quiz2_level1_stage1_Sunda.isCorrect = false
+        quiz2_level1_stage1_Sunda.question = "Ka"
+        quiz2_level1_stage1_Sunda.choices = [choice1_Quiz2_Level1_Stage1_Sunda, choice2_Quiz2_Level1_Stage1_Sunda, choice3_Quiz2_Level1_Stage1_Sunda, choice4_Quiz2_Level1_Stage1_Sunda]
+        quiz2_level1_stage1_Sunda.images = []
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level1_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level1_Stage1_Sunda.id = 1
+        choice1_Quiz3_Level1_Stage1_Sunda.name = "Sa"
+        
+        let choice2_Quiz3_Level1_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level1_Stage1_Sunda.id = 2
+        choice2_Quiz3_Level1_Stage1_Sunda.name = "Pa"
+        
+        let choice3_Quiz3_Level1_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level1_Stage1_Sunda.id = 3
+        choice3_Quiz3_Level1_Stage1_Sunda.name = "Nya"
+        
+        let choice4_Quiz3_Level1_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level1_Stage1_Sunda.id = 4
+        choice4_Quiz3_Level1_Stage1_Sunda.name = "Ka"
+        
+        let quiz3_level1_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz3_level1_stage1_Sunda.id = 3
+        quiz3_level1_stage1_Sunda.name = "Kuis 2"
+        quiz3_level1_stage1_Sunda.type = "B"
+        quiz3_level1_stage1_Sunda.isCorrect = false
+        quiz3_level1_stage1_Sunda.question = "Ka"
+        quiz3_level1_stage1_Sunda.choices = [choice1_Quiz3_Level1_Stage1_Sunda, choice2_Quiz3_Level1_Stage1_Sunda, choice3_Quiz3_Level1_Stage1_Sunda, choice4_Quiz3_Level1_Stage1_Sunda]
+        quiz3_level1_stage1_Sunda.images = []
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level1_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level1_Stage1_Sunda.id = 1
+        choice1_Quiz4_Level1_Stage1_Sunda.name = "Sa"
+        
+        let choice2_Quiz4_Level1_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level1_Stage1_Sunda.id = 2
+        choice2_Quiz4_Level1_Stage1_Sunda.name = "Ka"
+        
+        let choice3_Quiz4_Level1_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level1_Stage1_Sunda.id = 3
+        choice3_Quiz4_Level1_Stage1_Sunda.name = "Nya"
+        
+        let choice4_Quiz4_Level1_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level1_Stage1_Sunda.id = 4
+        choice4_Quiz4_Level1_Stage1_Sunda.name = "Pa"
+        
+        let quiz4_level1_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz4_level1_stage1_Sunda.id = 4
+        quiz4_level1_stage1_Sunda.name = "Kuis 3"
+        quiz4_level1_stage1_Sunda.type = "C"
+        quiz4_level1_stage1_Sunda.isCorrect = false
+        quiz4_level1_stage1_Sunda.question = "Ka"
+        quiz4_level1_stage1_Sunda.choices = [choice1_Quiz4_Level1_Stage1_Sunda, choice2_Quiz4_Level1_Stage1_Sunda, choice3_Quiz4_Level1_Stage1_Sunda, choice4_Quiz4_Level1_Stage1_Sunda]
+        quiz4_level1_stage1_Sunda.images = []
+        
+        let quiz5_level1_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz5_level1_stage1_Sunda.id = 5
+        quiz5_level1_stage1_Sunda.name = "Kuis 4"
+        quiz5_level1_stage1_Sunda.type = "D"
+        quiz5_level1_stage1_Sunda.isCorrect = false
+        quiz5_level1_stage1_Sunda.question = "Ka"
+        quiz5_level1_stage1_Sunda.choices = []
+        quiz5_level1_stage1_Sunda.images = []
+        
+        let quiz6_level1_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz6_level1_stage1_Sunda.id = 6
+        quiz6_level1_stage1_Sunda.name = "Kuis 5"
+        quiz6_level1_stage1_Sunda.type = "E"
+        quiz6_level1_stage1_Sunda.isCorrect = false
+        quiz6_level1_stage1_Sunda.question = "Ka"
+        quiz6_level1_stage1_Sunda.choices = []
+        quiz6_level1_stage1_Sunda.images = []
+        
+        // MARK: Quiz for Level 2 Stage 1 Sunda
+        let quiz1_level2_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz1_level2_stage1_Sunda.id = 1
+        quiz1_level2_stage1_Sunda.name = "Panduan"
+        quiz1_level2_stage1_Sunda.type = "Panduan"
+        quiz1_level2_stage1_Sunda.isCorrect = false
+        quiz1_level2_stage1_Sunda.question = "Nya"
+        quiz1_level2_stage1_Sunda.choices = []
+        quiz1_level2_stage1_Sunda.images = []
+        
+        //MARK: Choice
+        let choice1_Quiz2_Level2_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level2_Stage1_Sunda.id = 1
+        choice1_Quiz2_Level2_Stage1_Sunda.name = "Na"
+        
+        let choice2_Quiz2_Level2_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level2_Stage1_Sunda.id = 2
+        choice2_Quiz2_Level2_Stage1_Sunda.name = "Nya"
+        
+        let choice3_Quiz2_Level2_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level2_Stage1_Sunda.id = 3
+        choice3_Quiz2_Level2_Stage1_Sunda.name = "Ca"
+        
+        let choice4_Quiz2_Level2_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level2_Stage1_Sunda.id = 4
+        choice4_Quiz2_Level2_Stage1_Sunda.name = "Nga"
+        
+        let quiz2_level2_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz2_level2_stage1_Sunda.id = 2
+        quiz2_level2_stage1_Sunda.name = "Kuis 1"
+        quiz2_level2_stage1_Sunda.type = "A"
+        quiz2_level2_stage1_Sunda.isCorrect = false
+        quiz2_level2_stage1_Sunda.question = "Nya"
+        quiz2_level2_stage1_Sunda.choices = [choice1_Quiz2_Level2_Stage1_Sunda, choice2_Quiz2_Level2_Stage1_Sunda, choice3_Quiz2_Level2_Stage1_Sunda, choice4_Quiz2_Level2_Stage1_Sunda]
+        quiz2_level2_stage1_Sunda.images = []
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level2_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level2_Stage1_Sunda.id = 1
+        choice1_Quiz3_Level2_Stage1_Sunda.name = "Ja"
+        
+        let choice2_Quiz3_Level2_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level2_Stage1_Sunda.id = 2
+        choice2_Quiz3_Level2_Stage1_Sunda.name = "Ba"
+        
+        let choice3_Quiz3_Level2_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level2_Stage1_Sunda.id = 3
+        choice3_Quiz3_Level2_Stage1_Sunda.name = "Nya"
+        
+        let choice4_Quiz3_Level2_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level2_Stage1_Sunda.id = 4
+        choice4_Quiz3_Level2_Stage1_Sunda.name = "Da"
+        
+        let quiz3_level2_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz3_level2_stage1_Sunda.id = 3
+        quiz3_level2_stage1_Sunda.name = "Kuis 2"
+        quiz3_level2_stage1_Sunda.type = "B"
+        quiz3_level2_stage1_Sunda.isCorrect = false
+        quiz3_level2_stage1_Sunda.question = "Nya"
+        quiz3_level2_stage1_Sunda.choices = [choice1_Quiz3_Level2_Stage1_Sunda, choice2_Quiz3_Level2_Stage1_Sunda, choice3_Quiz3_Level2_Stage1_Sunda, choice4_Quiz3_Level2_Stage1_Sunda]
+        quiz3_level2_stage1_Sunda.images = []
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level2_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level2_Stage1_Sunda.id = 1
+        choice1_Quiz4_Level2_Stage1_Sunda.name = "Ba"
+        
+        let choice2_Quiz4_Level2_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level2_Stage1_Sunda.id = 2
+        choice2_Quiz4_Level2_Stage1_Sunda.name = "Pa"
+        
+        let choice3_Quiz4_Level2_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level2_Stage1_Sunda.id = 3
+        choice3_Quiz4_Level2_Stage1_Sunda.name = "Da"
+        
+        let choice4_Quiz4_Level2_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level2_Stage1_Sunda.id = 4
+        choice4_Quiz4_Level2_Stage1_Sunda.name = "Nya"
+        
+        let quiz4_level2_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz4_level2_stage1_Sunda.id = 4
+        quiz4_level2_stage1_Sunda.name = "Kuis 3"
+        quiz4_level2_stage1_Sunda.type = "C"
+        quiz4_level2_stage1_Sunda.isCorrect = false
+        quiz4_level2_stage1_Sunda.question = "Nya"
+        quiz4_level2_stage1_Sunda.choices = [choice1_Quiz4_Level2_Stage1_Sunda, choice2_Quiz4_Level2_Stage1_Sunda, choice3_Quiz4_Level2_Stage1_Sunda, choice4_Quiz4_Level2_Stage1_Sunda]
+        quiz4_level2_stage1_Sunda.images = []
+        
+        let quiz5_level2_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz5_level2_stage1_Sunda.id = 5
+        quiz5_level2_stage1_Sunda.name = "Kuis 4"
+        quiz5_level2_stage1_Sunda.type = "D"
+        quiz5_level2_stage1_Sunda.isCorrect = false
+        quiz5_level2_stage1_Sunda.question = "Nya"
+        quiz5_level2_stage1_Sunda.choices = []
+        quiz5_level2_stage1_Sunda.images = []
+        
+        let quiz6_level2_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz6_level2_stage1_Sunda.id = 6
+        quiz6_level2_stage1_Sunda.name = "Kuis 5"
+        quiz6_level2_stage1_Sunda.type = "E"
+        quiz6_level2_stage1_Sunda.isCorrect = false
+        quiz6_level2_stage1_Sunda.question = "Nya"
+        quiz6_level2_stage1_Sunda.choices = []
+        quiz6_level2_stage1_Sunda.images = []
+        
+        // MARK: Quiz for Level 3 Stage 1 Jawa
+        let quiz1_level3_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz1_level3_stage1_Sunda.id = 1
+        quiz1_level3_stage1_Sunda.name = "Panduan"
+        quiz1_level3_stage1_Sunda.type = "Panduan"
+        quiz1_level3_stage1_Sunda.isCorrect = false
+        quiz1_level3_stage1_Sunda.question = "Pa"
+        quiz1_level3_stage1_Sunda.choices = []
+        quiz1_level3_stage1_Sunda.images = []
+        
+        //MARK: Choice
+        let choice1_Quiz2_Level3_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level3_Stage1_Sunda.id = 1
+        choice1_Quiz2_Level3_Stage1_Sunda.name = "Fa"
+        
+        let choice2_Quiz2_Level3_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level3_Stage1_Sunda.id = 2
+        choice2_Quiz2_Level3_Stage1_Sunda.name = "Pa"
+        
+        let choice3_Quiz2_Level3_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level3_Stage1_Sunda.id = 3
+        choice3_Quiz2_Level3_Stage1_Sunda.name = "Ba"
+        
+        let choice4_Quiz2_Level3_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level3_Stage1_Sunda.id = 4
+        choice4_Quiz2_Level3_Stage1_Sunda.name = "Da"
+        
+        let quiz2_level3_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz2_level3_stage1_Sunda.id = 2
+        quiz2_level3_stage1_Sunda.name = "Kuis 1"
+        quiz2_level3_stage1_Sunda.type = "A"
+        quiz2_level3_stage1_Sunda.isCorrect = false
+        quiz2_level3_stage1_Sunda.question = "Pa"
+        quiz2_level3_stage1_Sunda.choices = [choice1_Quiz2_Level3_Stage1_Sunda, choice2_Quiz2_Level3_Stage1_Sunda, choice3_Quiz2_Level3_Stage1_Sunda, choice4_Quiz2_Level3_Stage1_Sunda]
+        quiz2_level3_stage1_Sunda.images = []
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level3_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level3_Stage1_Sunda.id = 1
+        choice1_Quiz3_Level3_Stage1_Sunda.name = "Pa"
+        
+        let choice2_Quiz3_Level3_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level3_Stage1_Sunda.id = 2
+        choice2_Quiz3_Level3_Stage1_Sunda.name = "Sa"
+        
+        let choice3_Quiz3_Level3_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level3_Stage1_Sunda.id = 3
+        choice3_Quiz3_Level3_Stage1_Sunda.name = "Xa"
+        
+        let choice4_Quiz3_Level3_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level3_Stage1_Sunda.id = 4
+        choice4_Quiz3_Level3_Stage1_Sunda.name = "Fa"
+        
+        let quiz3_level3_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz3_level3_stage1_Sunda.id = 3
+        quiz3_level3_stage1_Sunda.name = "Kuis 2"
+        quiz3_level3_stage1_Sunda.type = "B"
+        quiz3_level3_stage1_Sunda.isCorrect = false
+        quiz3_level3_stage1_Sunda.question = "Pa"
+        quiz3_level3_stage1_Sunda.choices = [choice1_Quiz3_Level3_Stage1_Jawa, choice2_Quiz3_Level3_Stage1_Jawa, choice3_Quiz3_Level3_Stage1_Jawa, choice4_Quiz3_Level3_Stage1_Jawa]
+        quiz3_level3_stage1_Sunda.images = []
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level3_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level3_Stage1_Sunda.id = 1
+        choice1_Quiz4_Level3_Stage1_Sunda.name = "Fa"
+        
+        let choice2_Quiz4_Level3_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level3_Stage1_Sunda.id = 2
+        choice2_Quiz4_Level3_Stage1_Sunda.name = "Sa"
+        
+        let choice3_Quiz4_Level3_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level3_Stage1_Sunda.id = 3
+        choice3_Quiz4_Level3_Stage1_Sunda.name = "Pa"
+        
+        let choice4_Quiz4_Level3_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level3_Stage1_Sunda.id = 4
+        choice4_Quiz4_Level3_Stage1_Sunda.name = "Xa"
+        
+        let quiz4_level3_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz4_level3_stage1_Sunda.id = 4
+        quiz4_level3_stage1_Sunda.name = "Kuis 3"
+        quiz4_level3_stage1_Sunda.type = "C"
+        quiz4_level3_stage1_Sunda.isCorrect = false
+        quiz4_level3_stage1_Sunda.question = "Pa"
+        quiz4_level3_stage1_Sunda.choices = [choice1_Quiz4_Level3_Stage1_Sunda, choice2_Quiz4_Level3_Stage1_Sunda, choice3_Quiz4_Level3_Stage1_Sunda, choice4_Quiz4_Level3_Stage1_Sunda]
+        quiz4_level3_stage1_Sunda.images = []
+        
+        let quiz5_level3_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz5_level3_stage1_Sunda.id = 5
+        quiz5_level3_stage1_Sunda.name = "Kuis 4"
+        quiz5_level3_stage1_Sunda.type = "D"
+        quiz5_level3_stage1_Sunda.isCorrect = false
+        quiz5_level3_stage1_Sunda.question = "Pa"
+        quiz5_level3_stage1_Sunda.choices = []
+        quiz5_level3_stage1_Sunda.images = []
+        
+        let quiz6_level3_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz6_level3_stage1_Sunda.id = 6
+        quiz6_level3_stage1_Sunda.name = "Kuis 5"
+        quiz6_level3_stage1_Sunda.type = "E"
+        quiz6_level3_stage1_Sunda.isCorrect = false
+        quiz6_level3_stage1_Sunda.question = "Pa"
+        quiz6_level3_stage1_Sunda.choices = []
+        quiz6_level3_stage1_Sunda.images = []
+        
+        // MARK: Quiz for Level 4 Stage 1 Jawa
+        let quiz1_level4_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz1_level4_stage1_Sunda.id = 1
+        quiz1_level4_stage1_Sunda.name = "Panduan"
+        quiz1_level4_stage1_Sunda.type = "Panduan"
+        quiz1_level4_stage1_Sunda.isCorrect = false
+        quiz1_level4_stage1_Sunda.question = "Ba"
+        quiz1_level4_stage1_Sunda.choices = []
+        quiz1_level4_stage1_Sunda.images = []
+        
+        //MARK: Choice
+        let choice1_Quiz2_Level4_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level4_Stage1_Sunda.id = 1
+        choice1_Quiz2_Level4_Stage1_Sunda.name = "Ka"
+        
+        let choice2_Quiz2_Level4_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level4_Stage1_Sunda.id = 2
+        choice2_Quiz2_Level4_Stage1_Sunda.name = "Da"
+        
+        let choice3_Quiz2_Level4_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level4_Stage1_Sunda.id = 3
+        choice3_Quiz2_Level4_Stage1_Sunda.name = "Ba"
+        
+        let choice4_Quiz2_Level4_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level4_Stage1_Sunda.id = 4
+        choice4_Quiz2_Level4_Stage1_Sunda.name = "Ma"
+        
+        let quiz2_level4_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz2_level4_stage1_Sunda.id = 2
+        quiz2_level4_stage1_Sunda.name = "Kuis 1"
+        quiz2_level4_stage1_Sunda.type = "A"
+        quiz2_level4_stage1_Sunda.isCorrect = false
+        quiz2_level4_stage1_Sunda.question = "Ba"
+        quiz2_level4_stage1_Sunda.choices = [choice1_Quiz2_Level4_Stage1_Sunda, choice2_Quiz2_Level4_Stage1_Sunda, choice3_Quiz2_Level4_Stage1_Sunda, choice4_Quiz2_Level4_Stage1_Sunda]
+        quiz2_level4_stage1_Sunda.images = []
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level4_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level4_Stage1_Sunda.id = 1
+        choice1_Quiz3_Level4_Stage1_Sunda.name = "Ja"
+        
+        let choice2_Quiz3_Level4_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level4_Stage1_Sunda.id = 2
+        choice2_Quiz3_Level4_Stage1_Sunda.name = "Ma"
+        
+        let choice3_Quiz3_Level4_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level4_Stage1_Sunda.id = 3
+        choice3_Quiz3_Level4_Stage1_Sunda.name = "Ba"
+        
+        let choice4_Quiz3_Level4_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level4_Stage1_Sunda.id = 4
+        choice4_Quiz3_Level4_Stage1_Sunda.name = "Da"
+        
+        let quiz3_level4_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz3_level4_stage1_Sunda.id = 3
+        quiz3_level4_stage1_Sunda.name = "Kuis 2"
+        quiz3_level4_stage1_Sunda.type = "B"
+        quiz3_level4_stage1_Sunda.isCorrect = false
+        quiz3_level4_stage1_Sunda.question = "Ba"
+        quiz3_level4_stage1_Sunda.choices = [choice1_Quiz3_Level4_Stage1_Sunda, choice2_Quiz3_Level4_Stage1_Sunda, choice3_Quiz3_Level4_Stage1_Sunda, choice4_Quiz3_Level4_Stage1_Sunda]
+        quiz3_level4_stage1_Sunda.images = []
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level4_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level4_Stage1_Sunda.id = 1
+        choice1_Quiz4_Level4_Stage1_Sunda.name = "Da"
+        
+        let choice2_Quiz4_Level4_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level4_Stage1_Sunda.id = 2
+        choice2_Quiz4_Level4_Stage1_Sunda.name = "Ba"
+        
+        let choice3_Quiz4_Level4_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level4_Stage1_Sunda.id = 3
+        choice3_Quiz4_Level4_Stage1_Sunda.name = "Ja"
+        
+        let choice4_Quiz4_Level4_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level4_Stage1_Sunda.id = 4
+        choice4_Quiz4_Level4_Stage1_Sunda.name = "Ma"
+        
+        let quiz4_level4_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz4_level4_stage1_Sunda.id = 4
+        quiz4_level4_stage1_Sunda.name = "Kuis 3"
+        quiz4_level4_stage1_Sunda.type = "C"
+        quiz4_level4_stage1_Sunda.isCorrect = false
+        quiz4_level4_stage1_Sunda.question = "Ba"
+        quiz4_level4_stage1_Sunda.choices = [choice1_Quiz4_Level4_Stage1_Sunda, choice2_Quiz4_Level4_Stage1_Sunda, choice3_Quiz4_Level4_Stage1_Sunda, choice4_Quiz4_Level4_Stage1_Sunda]
+        quiz4_level4_stage1_Jawa.images = []
+        
+        let quiz5_level4_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz5_level4_stage1_Sunda.id = 5
+        quiz5_level4_stage1_Sunda.name = "Kuis 4"
+        quiz5_level4_stage1_Sunda.type = "D"
+        quiz5_level4_stage1_Sunda.isCorrect = false
+        quiz5_level4_stage1_Sunda.question = "Ba"
+        quiz5_level4_stage1_Sunda.choices = []
+        quiz5_level4_stage1_Sunda.images = []
+        
+        let quiz6_level4_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz6_level4_stage1_Sunda.id = 6
+        quiz6_level4_stage1_Sunda.name = "Kuis 5"
+        quiz6_level4_stage1_Sunda.type = "E"
+        quiz6_level4_stage1_Sunda.isCorrect = false
+        quiz6_level4_stage1_Sunda.question = "Ba"
+        quiz6_level4_stage1_Sunda.choices = []
+        quiz6_level4_stage1_Sunda.images = []
+        
+        // MARK: Quiz for Level 5 Stage 1 Jawa
+        let quiz1_level5_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz1_level5_stage1_Sunda.id = 1
+        quiz1_level5_stage1_Sunda.name = "Panduan"
+        quiz1_level5_stage1_Sunda.type = "Panduan"
+        quiz1_level5_stage1_Sunda.isCorrect = false
+        quiz1_level5_stage1_Sunda.question = "Nga"
+        quiz1_level5_stage1_Sunda.choices = []
+        quiz1_level5_stage1_Sunda.images = []
+        
+        //MARK: Choice
+        let choice1_Quiz2_Level5_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level5_Stage1_Sunda.id = 1
+        choice1_Quiz2_Level5_Stage1_Sunda.name = "Nga"
+        
+        let choice2_Quiz2_Level5_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level5_Stage1_Sunda.id = 2
+        choice2_Quiz2_Level5_Stage1_Sunda.name = "La"
+        
+        let choice3_Quiz2_Level5_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level5_Stage1_Sunda.id = 3
+        choice3_Quiz2_Level5_Stage1_Sunda.name = "Ga"
+        
+        let choice4_Quiz2_Level5_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level5_Stage1_Sunda.id = 4
+        choice4_Quiz2_Level5_Stage1_Sunda.name = "Na"
+        
+        let quiz2_level5_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz2_level5_stage1_Sunda.id = 2
+        quiz2_level5_stage1_Sunda.name = "Kuis 1"
+        quiz2_level5_stage1_Sunda.type = "A"
+        quiz2_level5_stage1_Sunda.isCorrect = false
+        quiz2_level5_stage1_Sunda.question = "Nga"
+        quiz2_level5_stage1_Sunda.choices = [choice1_Quiz2_Level5_Stage1_Sunda, choice2_Quiz2_Level5_Stage1_Sunda, choice3_Quiz2_Level5_Stage1_Sunda, choice4_Quiz2_Level5_Stage1_Sunda]
+        quiz2_level5_stage1_Sunda.images = []
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level5_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level5_Stage1_Sunda.id = 1
+        choice1_Quiz3_Level5_Stage1_Sunda.name = "Ga"
+        
+        let choice2_Quiz3_Level5_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level5_Stage1_Sunda.id = 2
+        choice2_Quiz3_Level5_Stage1_Sunda.name = "Nga"
+        
+        let choice3_Quiz3_Level5_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level5_Stage1_Sunda.id = 3
+        choice3_Quiz3_Level5_Stage1_Sunda.name = "Ja"
+        
+        let choice4_Quiz3_Level5_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level5_Stage1_Sunda.id = 4
+        choice4_Quiz3_Level5_Stage1_Sunda.name = "Na"
+        
+        let quiz3_level5_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz3_level5_stage1_Sunda.id = 3
+        quiz3_level5_stage1_Sunda.name = "Kuis 2"
+        quiz3_level5_stage1_Sunda.type = "B"
+        quiz3_level5_stage1_Sunda.isCorrect = false
+        quiz3_level5_stage1_Sunda.question = "Nga"
+        quiz3_level5_stage1_Sunda.choices = [choice1_Quiz3_Level5_Stage1_Sunda, choice2_Quiz3_Level5_Stage1_Sunda, choice3_Quiz3_Level5_Stage1_Sunda, choice4_Quiz3_Level5_Stage1_Sunda]
+        quiz3_level5_stage1_Sunda.images = []
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level5_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level5_Stage1_Sunda.id = 1
+        choice1_Quiz4_Level5_Stage1_Sunda.name = "Nga"
+        
+        let choice2_Quiz4_Level5_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level5_Stage1_Sunda.id = 2
+        choice2_Quiz4_Level5_Stage1_Sunda.name = "Na"
+        
+        let choice3_Quiz4_Level5_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level5_Stage1_Sunda.id = 3
+        choice3_Quiz4_Level5_Stage1_Sunda.name = "Ga"
+        
+        let choice4_Quiz4_Level5_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level5_Stage1_Sunda.id = 4
+        choice4_Quiz4_Level5_Stage1_Sunda.name = "Ja"
+        
+        let quiz4_level5_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz4_level5_stage1_Sunda.id = 4
+        quiz4_level5_stage1_Sunda.name = "Kuis 3"
+        quiz4_level5_stage1_Sunda.type = "C"
+        quiz4_level5_stage1_Sunda.isCorrect = false
+        quiz4_level5_stage1_Sunda.question = "Nga"
+        quiz4_level5_stage1_Sunda.choices = [choice1_Quiz4_Level5_Stage1_Sunda, choice2_Quiz4_Level5_Stage1_Sunda, choice3_Quiz4_Level5_Stage1_Sunda, choice4_Quiz4_Level5_Stage1_Sunda]
+        quiz4_level5_stage1_Sunda.images = []
+        
+        let quiz5_level5_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz5_level5_stage1_Sunda.id = 5
+        quiz5_level5_stage1_Sunda.name = "Kuis 4"
+        quiz5_level5_stage1_Sunda.type = "D"
+        quiz5_level5_stage1_Sunda.isCorrect = false
+        quiz5_level5_stage1_Sunda.question = "Nga"
+        quiz5_level5_stage1_Sunda.choices = []
+        quiz5_level5_stage1_Sunda.images = []
+        
+        let quiz6_level5_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz6_level5_stage1_Sunda.id = 6
+        quiz6_level5_stage1_Sunda.name = "Kuis 5"
+        quiz6_level5_stage1_Sunda.type = "E"
+        quiz6_level5_stage1_Sunda.isCorrect = false
+        quiz6_level5_stage1_Sunda.question = "Nga"
+        quiz6_level5_stage1_Sunda.choices = []
+        quiz6_level5_stage1_Sunda.images = []
+        
+        // MARK: Quiz for Level 6 Stage 1 Jawa
+        let quiz1_level6_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz1_level6_stage1_Sunda.id = 1
+        quiz1_level6_stage1_Sunda.name = "Panduan"
+        quiz1_level6_stage1_Sunda.type = "Panduan"
+        quiz1_level6_stage1_Sunda.isCorrect = false
+        quiz1_level6_stage1_Sunda.question = "Da"
+        quiz1_level6_stage1_Sunda.choices = []
+        quiz1_level6_stage1_Sunda.images = []
+        
+        //MARK: Choice
+        let choice1_Quiz2_Level6_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level6_Stage1_Sunda.id = 1
+        choice1_Quiz2_Level6_Stage1_Sunda.name = "Ga"
+        
+        let choice2_Quiz2_Level6_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level6_Stage1_Sunda.id = 2
+        choice2_Quiz2_Level6_Stage1_Sunda.name = "Wa"
+        
+        let choice3_Quiz2_Level6_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level6_Stage1_Sunda.id = 3
+        choice3_Quiz2_Level6_Stage1_Sunda.name = "Da"
+        
+        let choice4_Quiz2_Level6_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level6_Stage1_Sunda.id = 4
+        choice4_Quiz2_Level6_Stage1_Sunda.name = "Ja"
+        
+        let quiz2_level6_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz2_level6_stage1_Sunda.id = 2
+        quiz2_level6_stage1_Sunda.name = "Kuis 1"
+        quiz2_level6_stage1_Sunda.type = "A"
+        quiz2_level6_stage1_Sunda.isCorrect = false
+        quiz2_level6_stage1_Sunda.question = "Da"
+        quiz2_level6_stage1_Sunda.choices = [choice1_Quiz2_Level6_Stage1_Sunda, choice2_Quiz2_Level6_Stage1_Sunda, choice3_Quiz2_Level6_Stage1_Sunda, choice4_Quiz2_Level6_Stage1_Sunda]
+        quiz2_level6_stage1_Sunda.images = []
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level6_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level6_Stage1_Sunda.id = 1
+        choice1_Quiz3_Level6_Stage1_Sunda.name = "Da"
+        
+        let choice2_Quiz3_Level6_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level6_Stage1_Sunda.id = 2
+        choice2_Quiz3_Level6_Stage1_Sunda.name = "I"
+        
+        let choice3_Quiz3_Level6_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level6_Stage1_Sunda.id = 3
+        choice3_Quiz3_Level6_Stage1_Sunda.name = "Ga"
+        
+        let choice4_Quiz3_Level6_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level6_Stage1_Sunda.id = 4
+        choice4_Quiz3_Level6_Stage1_Sunda.name = "Ja"
+        
+        let quiz3_level6_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz3_level6_stage1_Sunda.id = 3
+        quiz3_level6_stage1_Sunda.name = "Kuis 2"
+        quiz3_level6_stage1_Sunda.type = "B"
+        quiz3_level6_stage1_Sunda.isCorrect = false
+        quiz3_level6_stage1_Sunda.question = "Da"
+        quiz3_level6_stage1_Sunda.choices = [choice1_Quiz3_Level6_Stage1_Sunda, choice2_Quiz3_Level6_Stage1_Sunda, choice3_Quiz3_Level6_Stage1_Sunda, choice4_Quiz3_Level6_Stage1_Sunda]
+        quiz3_level6_stage1_Sunda.images = []
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level6_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level6_Stage1_Sunda.id = 1
+        choice1_Quiz4_Level6_Stage1_Sunda.name = "Ia"
+        
+        let choice2_Quiz4_Level6_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level6_Stage1_Sunda.id = 2
+        choice2_Quiz4_Level6_Stage1_Sunda.name = "Da"
+        
+        let choice3_Quiz4_Level6_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level6_Stage1_Sunda.id = 3
+        choice3_Quiz4_Level6_Stage1_Sunda.name = "Ja"
+        
+        let choice4_Quiz4_Level6_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level6_Stage1_Sunda.id = 4
+        choice4_Quiz4_Level6_Stage1_Sunda.name = "Ga"
+               
+        let quiz4_level6_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz4_level6_stage1_Sunda.id = 4
+        quiz4_level6_stage1_Sunda.name = "Kuis 3"
+        quiz4_level6_stage1_Sunda.type = "C"
+        quiz4_level6_stage1_Sunda.isCorrect = false
+        quiz4_level6_stage1_Sunda.question = "Da"
+        quiz4_level6_stage1_Sunda.choices = [choice1_Quiz4_Level6_Stage1_Sunda, choice2_Quiz4_Level6_Stage1_Sunda, choice3_Quiz4_Level6_Stage1_Sunda, choice4_Quiz4_Level6_Stage1_Sunda]
+        quiz4_level6_stage1_Sunda.images = []
+        
+        let quiz5_level6_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz5_level6_stage1_Sunda.id = 5
+        quiz5_level6_stage1_Sunda.name = "Kuis 4"
+        quiz5_level6_stage1_Sunda.type = "D"
+        quiz5_level6_stage1_Sunda.isCorrect = false
+        quiz5_level6_stage1_Sunda.question = "Da"
+        quiz5_level6_stage1_Sunda.choices = []
+        quiz5_level6_stage1_Sunda.images = []
+        
+        let quiz6_level6_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz6_level6_stage1_Sunda.id = 6
+        quiz6_level6_stage1_Sunda.name = "Kuis 5"
+        quiz6_level6_stage1_Sunda.type = "E"
+        quiz6_level6_stage1_Sunda.isCorrect = false
+        quiz6_level6_stage1_Sunda.question = "Da"
+        quiz6_level6_stage1_Sunda.choices = []
+        quiz6_level6_stage1_Sunda.images = []
+        
+        // MARK: Quiz for Level 7 Stage 1 Jawa
+        let quiz1_level7_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz1_level7_stage1_Sunda.id = 1
+        quiz1_level7_stage1_Sunda.name = "Panduan"
+        quiz1_level7_stage1_Sunda.type = "Panduan"
+        quiz1_level7_stage1_Sunda.isCorrect = false
+        quiz1_level7_stage1_Sunda.question = "É"
+        quiz1_level7_stage1_Sunda.choices = []
+        quiz1_level7_stage1_Sunda.images = []
+        
+        //MARK: Choice
+        let choice1_Quiz2_Level7_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level7_Stage1_Sunda.id = 1
+        choice1_Quiz2_Level7_Stage1_Sunda.name = "A"
+        
+        let choice2_Quiz2_Level7_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level7_Stage1_Sunda.id = 2
+        choice2_Quiz2_Level7_Stage1_Sunda.name = "É"
+        
+        let choice3_Quiz2_Level7_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level7_Stage1_Sunda.id = 3
+        choice3_Quiz2_Level7_Stage1_Sunda.name = "U"
+        
+        let choice4_Quiz2_Level7_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level7_Stage1_Sunda.id = 4
+        choice4_Quiz2_Level7_Stage1_Sunda.name = "E"
+        
+        let quiz2_level7_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz2_level7_stage1_Sunda.id = 2
+        quiz2_level7_stage1_Sunda.name = "Kuis 1"
+        quiz2_level7_stage1_Sunda.type = "A"
+        quiz2_level7_stage1_Sunda.isCorrect = false
+        quiz2_level7_stage1_Sunda.question = "É"
+        quiz2_level7_stage1_Sunda.choices = [choice1_Quiz2_Level7_Stage1_Sunda, choice2_Quiz2_Level7_Stage1_Sunda, choice3_Quiz2_Level7_Stage1_Sunda, choice4_Quiz2_Level7_Stage1_Sunda]
+        quiz2_level7_stage1_Sunda.images = []
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level7_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level7_Stage1_Sunda.id = 1
+        choice1_Quiz3_Level7_Stage1_Sunda.name = "Ya"
+        
+        let choice2_Quiz3_Level7_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level7_Stage1_Sunda.id = 2
+        choice2_Quiz3_Level7_Stage1_Sunda.name = "É"
+        
+        let choice3_Quiz3_Level7_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level7_Stage1_Sunda.id = 3
+        choice3_Quiz3_Level7_Stage1_Sunda.name = "A"
+        
+        let choice4_Quiz3_Level7_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level7_Stage1_Sunda.id = 4
+        choice4_Quiz3_Level7_Stage1_Sunda.name = "Ta"
+        
+        let quiz3_level7_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz3_level7_stage1_Sunda.id = 3
+        quiz3_level7_stage1_Sunda.name = "Kuis 2"
+        quiz3_level7_stage1_Sunda.type = "B"
+        quiz3_level7_stage1_Sunda.isCorrect = false
+        quiz3_level7_stage1_Sunda.question = "É"
+        quiz3_level7_stage1_Sunda.choices = [choice1_Quiz3_Level7_Stage1_Sunda, choice2_Quiz3_Level7_Stage1_Sunda, choice3_Quiz3_Level7_Stage1_Sunda, choice4_Quiz3_Level7_Stage1_Sunda]
+        quiz3_level7_stage1_Sunda.images = []
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level7_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level7_Stage1_Sunda.id = 1
+        choice1_Quiz4_Level7_Stage1_Sunda.name = "A"
+        
+        let choice2_Quiz4_Level7_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level7_Stage1_Sunda.id = 2
+        choice2_Quiz4_Level7_Stage1_Sunda.name = "Ta"
+        
+        let choice3_Quiz4_Level7_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level7_Stage1_Sunda.id = 3
+        choice3_Quiz4_Level7_Stage1_Sunda.name = "É"
+        
+        let choice4_Quiz4_Level7_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level7_Stage1_Sunda.id = 4
+        choice4_Quiz4_Level7_Stage1_Sunda.name = "Ya"
+        
+        let quiz4_level7_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz4_level7_stage1_Sunda.id = 4
+        quiz4_level7_stage1_Sunda.name = "Kuis 3"
+        quiz4_level7_stage1_Sunda.type = "C"
+        quiz4_level7_stage1_Sunda.isCorrect = false
+        quiz4_level7_stage1_Sunda.question = "É"
+        quiz4_level7_stage1_Sunda.choices = [choice1_Quiz4_Level7_Stage1_Sunda, choice2_Quiz4_Level7_Stage1_Sunda, choice3_Quiz4_Level7_Stage1_Sunda, choice4_Quiz4_Level7_Stage1_Sunda]
+        quiz4_level7_stage1_Sunda.images = []
+        
+        let quiz5_level7_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz5_level7_stage1_Sunda.id = 5
+        quiz5_level7_stage1_Sunda.name = "Kuis 4"
+        quiz5_level7_stage1_Sunda.type = "D"
+        quiz5_level7_stage1_Sunda.isCorrect = false
+        quiz5_level7_stage1_Sunda.question = "É"
+        quiz5_level7_stage1_Sunda.choices = []
+        quiz5_level7_stage1_Sunda.images = []
+        
+        let quiz6_level7_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz6_level7_stage1_Sunda.id = 6
+        quiz6_level7_stage1_Sunda.name = "Kuis 5"
+        quiz6_level7_stage1_Sunda.type = "E"
+        quiz6_level7_stage1_Sunda.isCorrect = false
+        quiz6_level7_stage1_Sunda.question = "É"
+        quiz6_level7_stage1_Sunda.choices = []
+        quiz6_level7_stage1_Sunda.images = []
+        
+        // MARK: Quiz for Level 8 Stage 1 Jawa
+        let quiz1_level8_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz1_level8_stage1_Sunda.id = 1
+        quiz1_level8_stage1_Sunda.name = "Panduan"
+        quiz1_level8_stage1_Sunda.type = "Panduan"
+        quiz1_level8_stage1_Sunda.isCorrect = false
+        quiz1_level8_stage1_Sunda.question = "Ga"
+        quiz1_level8_stage1_Sunda.choices = []
+        quiz1_level8_stage1_Sunda.images = []
+        
+        //MARK: Choice
+        let choice1_Quiz2_Level8_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level8_Stage1_Sunda.id = 1
+        choice1_Quiz2_Level8_Stage1_Sunda.name = "Ja"
+        
+        let choice2_Quiz2_Level8_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level8_Stage1_Sunda.id = 2
+        choice2_Quiz2_Level8_Stage1_Sunda.name = "Ga"
+        
+        let choice3_Quiz2_Level8_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level8_Stage1_Sunda.id = 3
+        choice3_Quiz2_Level8_Stage1_Sunda.name = "Ma"
+        
+        let choice4_Quiz2_Level8_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level8_Stage1_Sunda.id = 4
+        choice4_Quiz2_Level8_Stage1_Sunda.name = "Ta"
+        
+        let quiz2_level8_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz2_level8_stage1_Sunda.id = 2
+        quiz2_level8_stage1_Sunda.name = "Kuis 1"
+        quiz2_level8_stage1_Sunda.type = "A"
+        quiz2_level8_stage1_Sunda.isCorrect = false
+        quiz2_level8_stage1_Sunda.question = "Ga"
+        quiz2_level8_stage1_Sunda.choices = [choice1_Quiz2_Level8_Stage1_Sunda, choice2_Quiz2_Level8_Stage1_Sunda, choice3_Quiz2_Level8_Stage1_Sunda, choice4_Quiz2_Level8_Stage1_Sunda]
+        quiz2_level8_stage1_Sunda.images = []
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level8_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level8_Stage1_Sunda.id = 1
+        choice1_Quiz3_Level8_Stage1_Sunda.name = "Ma"
+        
+        let choice2_Quiz3_Level8_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level8_Stage1_Sunda.id = 2
+        choice2_Quiz3_Level8_Stage1_Sunda.name = "Na"
+        
+        let choice3_Quiz3_Level8_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level8_Stage1_Sunda.id = 3
+        choice3_Quiz3_Level8_Stage1_Sunda.name = "Wa"
+        
+        let choice4_Quiz3_Level8_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level8_Stage1_Sunda.id = 4
+        choice4_Quiz3_Level8_Stage1_Sunda.name = "Ga"
+        
+        let quiz3_level8_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz3_level8_stage1_Sunda.id = 3
+        quiz3_level8_stage1_Sunda.name = "Kuis 2"
+        quiz3_level8_stage1_Sunda.type = "B"
+        quiz3_level8_stage1_Sunda.isCorrect = false
+        quiz3_level8_stage1_Sunda.question = "Ga"
+        quiz3_level8_stage1_Sunda.choices = [choice1_Quiz3_Level8_Stage1_Sunda, choice2_Quiz3_Level8_Stage1_Sunda, choice3_Quiz3_Level8_Stage1_Sunda, choice4_Quiz3_Level8_Stage1_Sunda]
+        quiz3_level8_stage1_Sunda.images = []
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level8_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level8_Stage1_Sunda.id = 1
+        choice1_Quiz4_Level8_Stage1_Sunda.name = "Na"
+        
+        let choice2_Quiz4_Level8_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level8_Stage1_Sunda.id = 2
+        choice2_Quiz4_Level8_Stage1_Sunda.name = "Ga"
+        
+        let choice3_Quiz4_Level8_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level8_Stage1_Sunda.id = 3
+        choice3_Quiz4_Level8_Stage1_Sunda.name = "Wa"
+        
+        let choice4_Quiz4_Level8_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level8_Stage1_Sunda.id = 4
+        choice4_Quiz4_Level8_Stage1_Sunda.name = "Ma"
+    
+        let quiz4_level8_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz4_level8_stage1_Sunda.id = 4
+        quiz4_level8_stage1_Sunda.name = "Kuis 3"
+        quiz4_level8_stage1_Sunda.type = "C"
+        quiz4_level8_stage1_Sunda.isCorrect = false
+        quiz4_level8_stage1_Sunda.question = "Ga"
+        quiz4_level8_stage1_Sunda.choices = [choice1_Quiz4_Level8_Stage1_Sunda, choice2_Quiz4_Level8_Stage1_Sunda, choice3_Quiz4_Level8_Stage1_Sunda, choice4_Quiz4_Level8_Stage1_Sunda]
+        quiz4_level8_stage1_Sunda.images = []
+        
+        let quiz5_level8_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz5_level8_stage1_Sunda.id = 5
+        quiz5_level8_stage1_Sunda.name = "Kuis 4"
+        quiz5_level8_stage1_Sunda.type = "D"
+        quiz5_level8_stage1_Sunda.isCorrect = false
+        quiz5_level8_stage1_Sunda.question = "Ga"
+        quiz5_level8_stage1_Sunda.choices = []
+        quiz5_level8_stage1_Sunda.images = []
+        
+        let quiz6_level8_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz6_level8_stage1_Sunda.id = 6
+        quiz6_level8_stage1_Sunda.name = "Kuis 5"
+        quiz6_level8_stage1_Sunda.type = "E"
+        quiz6_level8_stage1_Sunda.isCorrect = false
+        quiz6_level8_stage1_Sunda.question = "Ga"
+        quiz6_level8_stage1_Sunda.choices = []
+        quiz6_level8_stage1_Sunda.images = []
+        
+        // MARK: Quiz for Level 9 Stage 1 Jawa
+        let quiz1_level9_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz1_level9_stage1_Sunda.id = 1
+        quiz1_level9_stage1_Sunda.name = "Panduan"
+        quiz1_level9_stage1_Sunda.type = "Panduan"
+        quiz1_level9_stage1_Sunda.isCorrect = false
+        quiz1_level9_stage1_Sunda.question = "U"
+        quiz1_level9_stage1_Sunda.choices = []
+        quiz1_level9_stage1_Sunda.images = []
+        
+        //MARK: Choice
+        let choice1_Quiz2_Level9_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level9_Stage1_Sunda.id = 1
+        choice1_Quiz2_Level9_Stage1_Sunda.name = "U"
+        
+        let choice2_Quiz2_Level9_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level9_Stage1_Sunda.id = 2
+        choice2_Quiz2_Level9_Stage1_Sunda.name = "Va"
+        
+        let choice3_Quiz2_Level9_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level9_Stage1_Sunda.id = 3
+        choice3_Quiz2_Level9_Stage1_Sunda.name = "Wa"
+        
+        let choice4_Quiz2_Level9_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level9_Stage1_Sunda.id = 4
+        choice4_Quiz2_Level9_Stage1_Sunda.name = "O"
+        
+        let quiz2_level9_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz2_level9_stage1_Sunda.id = 2
+        quiz2_level9_stage1_Sunda.name = "Kuis 1"
+        quiz2_level9_stage1_Sunda.type = "A"
+        quiz2_level9_stage1_Sunda.isCorrect = false
+        quiz2_level9_stage1_Sunda.question = "U"
+        quiz2_level9_stage1_Sunda.choices = [choice1_Quiz2_Level9_Stage1_Sunda, choice2_Quiz2_Level9_Stage1_Sunda, choice3_Quiz2_Level9_Stage1_Sunda, choice4_Quiz2_Level9_Stage1_Sunda]
+        quiz2_level9_stage1_Sunda.images = []
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level9_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level9_Stage1_Sunda.id = 1
+        choice1_Quiz3_Level9_Stage1_Sunda.name = "Va"
+        
+        let choice2_Quiz3_Level9_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level9_Stage1_Sunda.id = 2
+        choice2_Quiz3_Level9_Stage1_Sunda.name = "Za"
+        
+        let choice3_Quiz3_Level9_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level9_Stage1_Sunda.id = 3
+        choice3_Quiz3_Level9_Stage1_Sunda.name = "Ha"
+        
+        let choice4_Quiz3_Level9_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level9_Stage1_Sunda.id = 4
+        choice4_Quiz3_Level9_Stage1_Sunda.name = "U"
+        
+        let quiz3_level9_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz3_level9_stage1_Sunda.id = 3
+        quiz3_level9_stage1_Sunda.name = "Kuis 2"
+        quiz3_level9_stage1_Sunda.type = "B"
+        quiz3_level9_stage1_Sunda.isCorrect = false
+        quiz3_level9_stage1_Sunda.question = "U"
+        quiz3_level9_stage1_Sunda.choices = [choice1_Quiz3_Level9_Stage1_Sunda, choice2_Quiz3_Level9_Stage1_Sunda, choice3_Quiz3_Level9_Stage1_Sunda, choice4_Quiz3_Level9_Stage1_Sunda]
+        quiz3_level9_stage1_Sunda.images = []
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level9_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level9_Stage1_Sunda.id = 1
+        choice1_Quiz4_Level9_Stage1_Sunda.name = "Za"
+        
+        let choice2_Quiz4_Level9_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level9_Stage1_Sunda.id = 2
+        choice2_Quiz4_Level9_Stage1_Sunda.name = "Ha"
+        
+        let choice3_Quiz4_Level9_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level9_Stage1_Sunda.id = 3
+        choice3_Quiz4_Level9_Stage1_Sunda.name = "U"
+        
+        let choice4_Quiz4_Level9_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level9_Stage1_Sunda.id = 4
+        choice4_Quiz4_Level9_Stage1_Sunda.name = "Va"
+        
+        let quiz4_level9_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz4_level9_stage1_Sunda.id = 4
+        quiz4_level9_stage1_Sunda.name = "Kuis 3"
+        quiz4_level9_stage1_Sunda.type = "C"
+        quiz4_level9_stage1_Sunda.isCorrect = false
+        quiz4_level9_stage1_Sunda.question = "U"
+        quiz4_level9_stage1_Sunda.choices = [choice1_Quiz4_Level9_Stage1_Sunda, choice2_Quiz4_Level9_Stage1_Sunda, choice3_Quiz4_Level9_Stage1_Sunda, choice4_Quiz4_Level9_Stage1_Sunda]
+        quiz4_level9_stage1_Sunda.images = []
+        
+        let quiz5_level9_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz5_level9_stage1_Sunda.id = 5
+        quiz5_level9_stage1_Sunda.name = "Kuis 4"
+        quiz5_level9_stage1_Sunda.type = "D"
+        quiz5_level9_stage1_Sunda.isCorrect = false
+        quiz5_level9_stage1_Sunda.question = "U"
+        quiz5_level9_stage1_Sunda.choices = []
+        quiz5_level9_stage1_Sunda.images = []
+        
+        let quiz6_level9_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz6_level9_stage1_Sunda.id = 6
+        quiz6_level9_stage1_Sunda.name = "Kuis 5"
+        quiz6_level9_stage1_Sunda.type = "E"
+        quiz6_level9_stage1_Sunda.isCorrect = false
+        quiz6_level9_stage1_Sunda.question = "U"
+        quiz6_level9_stage1_Sunda.choices = []
+        quiz6_level9_stage1_Sunda.images = []
+        
+        // MARK: Quiz for Level 10 Stage 1 Jawa
+        let quiz1_level10_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz1_level10_stage1_Sunda.id = 1
+        quiz1_level10_stage1_Sunda.name = "Panduan"
+        quiz1_level10_stage1_Sunda.type = "Panduan"
+        quiz1_level10_stage1_Sunda.isCorrect = false
+        quiz1_level10_stage1_Sunda.question = "E"
+        quiz1_level10_stage1_Sunda.choices = []
+        quiz1_level10_stage1_Sunda.images = []
+        
+        //MARK: Choice
+        let choice1_Quiz2_Level10_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level10_Stage1_Sunda.id = 1
+        choice1_Quiz2_Level10_Stage1_Sunda.name = "Eu"
+        
+        let choice2_Quiz2_Level10_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level10_Stage1_Sunda.id = 2
+        choice2_Quiz2_Level10_Stage1_Sunda.name = "Sa"
+        
+        let choice3_Quiz2_Level10_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level10_Stage1_Sunda.id = 3
+        choice3_Quiz2_Level10_Stage1_Sunda.name = "Za"
+        
+        let choice4_Quiz2_Level10_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level10_Stage1_Sunda.id = 4
+        choice4_Quiz2_Level10_Stage1_Sunda.name = "E"
+        
+        let quiz2_level10_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz2_level10_stage1_Sunda.id = 2
+        quiz2_level10_stage1_Sunda.name = "Kuis 1"
+        quiz2_level10_stage1_Sunda.type = "A"
+        quiz2_level10_stage1_Sunda.isCorrect = false
+        quiz2_level10_stage1_Sunda.question = "E"
+        quiz2_level10_stage1_Sunda.choices = [choice1_Quiz2_Level10_Stage1_Sunda, choice2_Quiz2_Level10_Stage1_Sunda, choice3_Quiz2_Level10_Stage1_Sunda, choice4_Quiz2_Level10_Stage1_Sunda]
+        quiz2_level10_stage1_Sunda.images = []
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level10_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level10_Stage1_Sunda.id = 1
+        choice1_Quiz3_Level10_Stage1_Sunda.name = "Wa"
+        
+        let choice2_Quiz3_Level10_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level10_Stage1_Sunda.id = 2
+        choice2_Quiz3_Level10_Stage1_Sunda.name = "Na"
+        
+        let choice3_Quiz3_Level10_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level10_Stage1_Sunda.id = 3
+        choice3_Quiz3_Level10_Stage1_Sunda.name = "E"
+        
+        let choice4_Quiz3_Level10_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level10_Stage1_Sunda.id = 4
+        choice4_Quiz3_Level10_Stage1_Sunda.name = "Qa"
+        
+        let quiz3_level10_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz3_level10_stage1_Sunda.id = 3
+        quiz3_level10_stage1_Sunda.name = "Kuis 2"
+        quiz3_level10_stage1_Sunda.type = "B"
+        quiz3_level10_stage1_Sunda.isCorrect = false
+        quiz3_level10_stage1_Sunda.question = "E"
+        quiz3_level10_stage1_Sunda.choices = [choice1_Quiz3_Level10_Stage1_Sunda, choice2_Quiz3_Level10_Stage1_Sunda, choice3_Quiz3_Level10_Stage1_Sunda, choice4_Quiz3_Level10_Stage1_Sunda]
+        quiz3_level10_stage1_Sunda.images = []
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level10_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level10_Stage1_Sunda.id = 1
+        choice1_Quiz4_Level10_Stage1_Sunda.name = "E"
+        
+        let choice2_Quiz4_Level10_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level10_Stage1_Sunda.id = 2
+        choice2_Quiz4_Level10_Stage1_Sunda.name = "Qa"
+        
+        let choice3_Quiz4_Level10_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level10_Stage1_Sunda.id = 3
+        choice3_Quiz4_Level10_Stage1_Sunda.name = "Na"
+        
+        let choice4_Quiz4_Level10_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level10_Stage1_Sunda.id = 4
+        choice4_Quiz4_Level10_Stage1_Sunda.name = "Wa"
+        
+        let quiz4_level10_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz4_level10_stage1_Sunda.id = 4
+        quiz4_level10_stage1_Sunda.name = "Kuis 3"
+        quiz4_level10_stage1_Sunda.type = "C"
+        quiz4_level10_stage1_Sunda.isCorrect = false
+        quiz4_level10_stage1_Sunda.question = "E"
+        quiz4_level10_stage1_Sunda.choices = [choice1_Quiz4_Level10_Stage1_Sunda, choice2_Quiz4_Level10_Stage1_Sunda, choice3_Quiz4_Level10_Stage1_Sunda, choice4_Quiz4_Level10_Stage1_Sunda]
+        quiz4_level10_stage1_Sunda.images = []
+        
+        let quiz5_level10_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz5_level10_stage1_Sunda.id = 5
+        quiz5_level10_stage1_Sunda.name = "Kuis 4"
+        quiz5_level10_stage1_Sunda.type = "D"
+        quiz5_level10_stage1_Sunda.isCorrect = false
+        quiz5_level10_stage1_Sunda.question = "E"
+        quiz5_level10_stage1_Sunda.choices = []
+        quiz5_level10_stage1_Sunda.images = []
+        
+        let quiz6_level10_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz6_level10_stage1_Sunda.id = 6
+        quiz6_level10_stage1_Sunda.name = "Kuis 5"
+        quiz6_level10_stage1_Sunda.type = "E"
+        quiz6_level10_stage1_Sunda.isCorrect = false
+        quiz6_level10_stage1_Sunda.question = "Ya"
+        quiz6_level10_stage1_Sunda.choices = []
+        quiz6_level10_stage1_Sunda.images = []
+        
+        // MARK: Quiz for Level 11 Stage 1 Jawa
+        let quiz1_level11_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz1_level11_stage1_Sunda.id = 1
+        quiz1_level11_stage1_Sunda.name = "Panduan"
+        quiz1_level11_stage1_Sunda.type = "Panduan"
+        quiz1_level11_stage1_Sunda.isCorrect = false
+        quiz1_level11_stage1_Sunda.question = "La"
+        quiz1_level11_stage1_Sunda.choices = []
+        quiz1_level11_stage1_Sunda.images = []
+        
+        //MARK: Choice
+        let choice1_Quiz2_Level11_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level11_Stage1_Sunda.id = 1
+        choice1_Quiz2_Level11_Stage1_Sunda.name = "Qa"
+        
+        let choice2_Quiz2_Level11_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level11_Stage1_Sunda.id = 2
+        choice2_Quiz2_Level11_Stage1_Sunda.name = "Ra"
+        
+        let choice3_Quiz2_Level11_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level11_Stage1_Sunda.id = 3
+        choice3_Quiz2_Level11_Stage1_Sunda.name = "La"
+        
+        let choice4_Quiz2_Level11_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level11_Stage1_Sunda.id = 4
+        choice4_Quiz2_Level11_Stage1_Sunda.name = "O"
+        
+        let quiz2_level11_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz2_level11_stage1_Sunda.id = 2
+        quiz2_level11_stage1_Sunda.name = "Kuis 1"
+        quiz2_level11_stage1_Sunda.type = "A"
+        quiz2_level11_stage1_Sunda.isCorrect = false
+        quiz2_level11_stage1_Sunda.question = "La"
+        quiz2_level11_stage1_Sunda.choices = [choice1_Quiz2_Level11_Stage1_Sunda, choice2_Quiz2_Level11_Stage1_Sunda, choice3_Quiz2_Level11_Stage1_Sunda, choice4_Quiz2_Level11_Stage1_Sunda]
+        quiz2_level11_stage1_Sunda.images = []
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level11_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level11_Stage1_Sunda.id = 1
+        choice1_Quiz3_Level11_Stage1_Sunda.name = "Na"
+        
+        let choice2_Quiz3_Level11_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level11_Stage1_Sunda.id = 2
+        choice2_Quiz3_Level11_Stage1_Sunda.name = "La"
+        
+        let choice3_Quiz3_Level11_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level11_Stage1_Sunda.id = 3
+        choice3_Quiz3_Level11_Stage1_Sunda.name = "I"
+        
+        let choice4_Quiz3_Level11_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level11_Stage1_Sunda.id = 4
+        choice4_Quiz3_Level11_Stage1_Sunda.name = "Wa"
+        
+        let quiz3_level11_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz3_level11_stage1_Sunda.id = 3
+        quiz3_level11_stage1_Sunda.name = "Kuis 2"
+        quiz3_level11_stage1_Sunda.type = "B"
+        quiz3_level11_stage1_Sunda.isCorrect = false
+        quiz3_level11_stage1_Sunda.question = "La"
+        quiz3_level11_stage1_Sunda.choices = [choice1_Quiz3_Level11_Stage1_Sunda, choice2_Quiz3_Level11_Stage1_Sunda, choice3_Quiz3_Level11_Stage1_Sunda, choice4_Quiz3_Level11_Stage1_Sunda]
+        quiz3_level11_stage1_Sunda.images = []
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level11_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level11_Stage1_Sunda.id = 1
+        choice1_Quiz4_Level11_Stage1_Sunda.name = "I"
+        
+        let choice2_Quiz4_Level11_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level11_Stage1_Sunda.id = 2
+        choice2_Quiz4_Level11_Stage1_Sunda.name = "Wa"
+        
+        let choice3_Quiz4_Level11_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level11_Stage1_Sunda.id = 3
+        choice3_Quiz4_Level11_Stage1_Sunda.name = "La"
+        
+        let choice4_Quiz4_Level11_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level11_Stage1_Sunda.id = 4
+        choice4_Quiz4_Level11_Stage1_Sunda.name = "Na"
+        
+        let quiz4_level11_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz4_level11_stage1_Sunda.id = 4
+        quiz4_level11_stage1_Sunda.name = "Kuis 3"
+        quiz4_level11_stage1_Sunda.type = "C"
+        quiz4_level11_stage1_Sunda.isCorrect = false
+        quiz4_level11_stage1_Sunda.question = "La"
+        quiz4_level11_stage1_Sunda.choices = [choice1_Quiz4_Level11_Stage1_Sunda, choice2_Quiz4_Level11_Stage1_Sunda, choice3_Quiz4_Level11_Stage1_Sunda, choice4_Quiz4_Level11_Stage1_Sunda]
+        quiz4_level11_stage1_Sunda.images = []
+        
+        let quiz5_level11_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz5_level11_stage1_Sunda.id = 5
+        quiz5_level11_stage1_Sunda.name = "Kuis 4"
+        quiz5_level11_stage1_Sunda.type = "D"
+        quiz5_level11_stage1_Sunda.isCorrect = false
+        quiz5_level11_stage1_Sunda.question = "La"
+        quiz5_level11_stage1_Sunda.choices = []
+        quiz5_level11_stage1_Sunda.images = []
+        
+        let quiz6_level11_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz6_level11_stage1_Sunda.id = 6
+        quiz6_level11_stage1_Sunda.name = "Kuis 5"
+        quiz6_level11_stage1_Sunda.type = "E"
+        quiz6_level11_stage1_Sunda.isCorrect = false
+        quiz6_level11_stage1_Sunda.question = "La"
+        quiz6_level11_stage1_Sunda.choices = []
+        quiz6_level11_stage1_Sunda.images = []
+        
+        // MARK: Quiz for Level 12 Stage 1 Jawa
+        let quiz1_level12_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz1_level12_stage1_Sunda.id = 1
+        quiz1_level12_stage1_Sunda.name = "Panduan"
+        quiz1_level12_stage1_Sunda.type = "Panduan"
+        quiz1_level12_stage1_Sunda.isCorrect = false
+        quiz1_level12_stage1_Sunda.question = "Ha"
+        quiz1_level12_stage1_Sunda.choices = []
+        quiz1_level12_stage1_Sunda.images = []
+        
+        //MARK: Choice
+        let choice1_Quiz2_Level12_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level12_Stage1_Sunda.id = 1
+        choice1_Quiz2_Level12_Stage1_Sunda.name = "Ha"
+        
+        let choice2_Quiz2_Level12_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level12_Stage1_Sunda.id = 2
+        choice2_Quiz2_Level12_Stage1_Sunda.name = "Na"
+        
+        let choice3_Quiz2_Level12_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level12_Stage1_Sunda.id = 3
+        choice3_Quiz2_Level12_Stage1_Sunda.name = "Ca"
+        
+        let choice4_Quiz2_Level12_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level12_Stage1_Sunda.id = 4
+        choice4_Quiz2_Level12_Stage1_Sunda.name = "Ra"
+        
+        let quiz2_level12_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz2_level12_stage1_Sunda.id = 2
+        quiz2_level12_stage1_Sunda.name = "Kuis 1"
+        quiz2_level12_stage1_Sunda.type = "A"
+        quiz2_level12_stage1_Sunda.isCorrect = false
+        quiz2_level12_stage1_Sunda.question = "Ha"
+        quiz2_level12_stage1_Sunda.choices = [choice1_Quiz2_Level12_Stage1_Sunda, choice2_Quiz2_Level12_Stage1_Sunda, choice3_Quiz2_Level12_Stage1_Sunda, choice4_Quiz2_Level12_Stage1_Sunda]
+        quiz2_level12_stage1_Sunda.images = []
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level12_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level12_Stage1_Sunda.id = 1
+        choice1_Quiz3_Level12_Stage1_Sunda.name = "Ha"
+        
+        let choice2_Quiz3_Level12_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level12_Stage1_Sunda.id = 2
+        choice2_Quiz3_Level12_Stage1_Sunda.name = "Ma"
+        
+        let choice3_Quiz3_Level12_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level12_Stage1_Sunda.id = 3
+        choice3_Quiz3_Level12_Stage1_Sunda.name = "Ta"
+        
+        let choice4_Quiz3_Level12_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level12_Stage1_Sunda.id = 4
+        choice4_Quiz3_Level12_Stage1_Sunda.name = "Ya"
+        
+        let quiz3_level12_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz3_level12_stage1_Sunda.id = 3
+        quiz3_level12_stage1_Sunda.name = "Kuis 2"
+        quiz3_level12_stage1_Sunda.type = "B"
+        quiz3_level12_stage1_Sunda.isCorrect = false
+        quiz3_level12_stage1_Sunda.question = "Ha"
+        quiz3_level12_stage1_Sunda.choices = [choice1_Quiz3_Level12_Stage1_Sunda, choice2_Quiz3_Level12_Stage1_Sunda, choice3_Quiz3_Level12_Stage1_Sunda, choice4_Quiz3_Level12_Stage1_Sunda]
+        quiz3_level12_stage1_Sunda.images = []
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level12_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level12_Stage1_Sunda.id = 1
+        choice1_Quiz4_Level12_Stage1_Sunda.name = "Ta"
+        
+        let choice2_Quiz4_Level12_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level12_Stage1_Sunda.id = 2
+        choice2_Quiz4_Level12_Stage1_Sunda.name = "Ma"
+        
+        let choice3_Quiz4_Level12_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level12_Stage1_Sunda.id = 3
+        choice3_Quiz4_Level12_Stage1_Sunda.name = "Ya"
+        
+        let choice4_Quiz4_Level12_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level12_Stage1_Sunda.id = 4
+        choice4_Quiz4_Level12_Stage1_Sunda.name = "Ha"
+      
+        let quiz4_level12_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz4_level12_stage1_Sunda.id = 4
+        quiz4_level12_stage1_Sunda.name = "Kuis 3"
+        quiz4_level12_stage1_Sunda.type = "C"
+        quiz4_level12_stage1_Sunda.isCorrect = false
+        quiz4_level12_stage1_Sunda.question = "Ha"
+        quiz4_level12_stage1_Sunda.choices = [choice1_Quiz4_Level12_Stage1_Sunda, choice2_Quiz4_Level12_Stage1_Sunda, choice3_Quiz4_Level12_Stage1_Sunda, choice4_Quiz4_Level12_Stage1_Sunda]
+        quiz4_level12_stage1_Sunda.images = []
+        
+        let quiz5_level12_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz5_level12_stage1_Sunda.id = 5
+        quiz5_level12_stage1_Sunda.name = "Kuis 4"
+        quiz5_level12_stage1_Sunda.type = "D"
+        quiz5_level12_stage1_Sunda.isCorrect = false
+        quiz5_level12_stage1_Sunda.question = "Ha"
+        quiz5_level12_stage1_Sunda.choices = []
+        quiz5_level12_stage1_Sunda.images = []
+        
+        let quiz6_level12_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz6_level12_stage1_Sunda.id = 6
+        quiz6_level12_stage1_Sunda.name = "Kuis 5"
+        quiz6_level12_stage1_Sunda.type = "E"
+        quiz6_level12_stage1_Sunda.isCorrect = false
+        quiz6_level12_stage1_Sunda.question = "Ha"
+        quiz6_level12_stage1_Sunda.choices = []
+        quiz6_level12_stage1_Sunda.images = []
+        
+        // MARK: Quiz for Level 13 Stage 1 Jawa
+        let quiz1_level13_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz1_level13_stage1_Sunda.id = 1
+        quiz1_level13_stage1_Sunda.name = "Panduan"
+        quiz1_level13_stage1_Sunda.type = "Panduan"
+        quiz1_level13_stage1_Sunda.isCorrect = false
+        quiz1_level13_stage1_Sunda.question = "Sa"
+        quiz1_level13_stage1_Sunda.choices = []
+        quiz1_level13_stage1_Sunda.images = []
+        
+        //MARK: Choice
+        let choice1_Quiz2_Level13_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level13_Stage1_Sunda.id = 1
+        choice1_Quiz2_Level13_Stage1_Sunda.name = "Sa"
+        
+        let choice2_Quiz2_Level13_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level13_Stage1_Sunda.id = 2
+        choice2_Quiz2_Level13_Stage1_Sunda.name = "Za"
+        
+        let choice3_Quiz2_Level13_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level13_Stage1_Sunda.id = 3
+        choice3_Quiz2_Level13_Stage1_Sunda.name = "Ja"
+        
+        let choice4_Quiz2_Level13_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level13_Stage1_Sunda.id = 4
+        choice4_Quiz2_Level13_Stage1_Sunda.name = "Ca"
+        
+        let quiz2_level13_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz2_level13_stage1_Sunda.id = 2
+        quiz2_level13_stage1_Sunda.name = "Kuis 1"
+        quiz2_level13_stage1_Sunda.type = "A"
+        quiz2_level13_stage1_Sunda.isCorrect = false
+        quiz2_level13_stage1_Sunda.question = "Sa"
+        quiz2_level13_stage1_Sunda.choices = [choice1_Quiz2_Level13_Stage1_Sunda, choice2_Quiz2_Level13_Stage1_Sunda, choice3_Quiz2_Level13_Stage1_Sunda, choice4_Quiz2_Level13_Stage1_Sunda]
+        quiz2_level13_stage1_Sunda.images = []
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level13_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level13_Stage1_Sunda.id = 1
+        choice1_Quiz3_Level13_Stage1_Sunda.name = "Ka"
+        
+        let choice2_Quiz3_Level13_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level13_Stage1_Sunda.id = 2
+        choice2_Quiz3_Level13_Stage1_Sunda.name = "Sa"
+        
+        let choice3_Quiz3_Level13_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level13_Stage1_Sunda.id = 3
+        choice3_Quiz3_Level13_Stage1_Sunda.name = "Xa"
+        
+        let choice4_Quiz3_Level13_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level13_Stage1_Sunda.id = 4
+        choice4_Quiz3_Level13_Stage1_Sunda.name = "Pa"
+        
+        let quiz3_level13_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz3_level13_stage1_Sunda.id = 3
+        quiz3_level13_stage1_Sunda.name = "Kuis 2"
+        quiz3_level13_stage1_Sunda.type = "B"
+        quiz3_level13_stage1_Sunda.isCorrect = false
+        quiz3_level13_stage1_Sunda.question = "Sa"
+        quiz3_level13_stage1_Sunda.choices = [choice1_Quiz3_Level13_Stage1_Sunda, choice2_Quiz3_Level13_Stage1_Sunda, choice3_Quiz3_Level13_Stage1_Sunda, choice4_Quiz3_Level13_Stage1_Sunda]
+        quiz3_level13_stage1_Sunda.images = []
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level13_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level13_Stage1_Sunda.id = 1
+        choice1_Quiz4_Level13_Stage1_Sunda.name = "Pa"
+        
+        let choice2_Quiz4_Level13_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level13_Stage1_Sunda.id = 2
+        choice2_Quiz4_Level13_Stage1_Sunda.name = "Xa"
+        
+        let choice3_Quiz4_Level13_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level13_Stage1_Sunda.id = 3
+        choice3_Quiz4_Level13_Stage1_Sunda.name = "Sa"
+        
+        let choice4_Quiz4_Level13_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level13_Stage1_Sunda.id = 4
+        choice4_Quiz4_Level13_Stage1_Sunda.name = "Ka"
+        
+        let quiz4_level13_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz4_level13_stage1_Sunda.id = 4
+        quiz4_level13_stage1_Sunda.name = "Kuis 3"
+        quiz4_level13_stage1_Sunda.type = "C"
+        quiz4_level13_stage1_Sunda.isCorrect = false
+        quiz4_level13_stage1_Sunda.question = "Sa"
+        quiz4_level13_stage1_Sunda.choices = [choice1_Quiz4_Level13_Stage1_Sunda, choice2_Quiz4_Level13_Stage1_Sunda, choice3_Quiz4_Level13_Stage1_Sunda, choice4_Quiz4_Level13_Stage1_Sunda]
+        quiz4_level13_stage1_Sunda.images = []
+        
+        let quiz5_level13_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz5_level13_stage1_Sunda.id = 5
+        quiz5_level13_stage1_Sunda.name = "Kuis 4"
+        quiz5_level13_stage1_Sunda.type = "D"
+        quiz5_level13_stage1_Sunda.isCorrect = false
+        quiz5_level13_stage1_Sunda.question = "Sa"
+        quiz5_level13_stage1_Sunda.choices = []
+        quiz5_level13_stage1_Sunda.images = []
+        
+        let quiz6_level13_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz6_level13_stage1_Sunda.id = 6
+        quiz6_level13_stage1_Sunda.name = "Kuis 5"
+        quiz6_level13_stage1_Sunda.type = "E"
+        quiz6_level13_stage1_Sunda.isCorrect = false
+        quiz6_level13_stage1_Sunda.question = "Sa"
+        quiz6_level13_stage1_Sunda.choices = []
+        quiz6_level13_stage1_Sunda.images = []
+        
+        // MARK: Quiz for Level 14 Stage 1 Jawa
+        let quiz1_level14_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz1_level14_stage1_Sunda.id = 1
+        quiz1_level14_stage1_Sunda.name = "Panduan"
+        quiz1_level14_stage1_Sunda.type = "Panduan"
+        quiz1_level14_stage1_Sunda.isCorrect = false
+        quiz1_level14_stage1_Sunda.question = "Za"
+        quiz1_level14_stage1_Sunda.choices = []
+        quiz1_level14_stage1_Sunda.images = []
+        
+        //MARK: Choice
+        let choice1_Quiz2_Level14_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level14_Stage1_Sunda.id = 1
+        choice1_Quiz2_Level14_Stage1_Sunda.name = "O"
+        
+        let choice2_Quiz2_Level14_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level14_Stage1_Sunda.id = 2
+        choice2_Quiz2_Level14_Stage1_Sunda.name = "Za"
+        
+        let choice3_Quiz2_Level14_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level14_Stage1_Sunda.id = 3
+        choice3_Quiz2_Level14_Stage1_Sunda.name = "Ca"
+        
+        let choice4_Quiz2_Level14_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level14_Stage1_Sunda.id = 4
+        choice4_Quiz2_Level14_Stage1_Sunda.name = "Xa"
+        
+        let quiz2_level14_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz2_level14_stage1_Sunda.id = 2
+        quiz2_level14_stage1_Sunda.name = "Kuis 1"
+        quiz2_level14_stage1_Sunda.type = "A"
+        quiz2_level14_stage1_Sunda.isCorrect = false
+        quiz2_level14_stage1_Sunda.question = "Za"
+        quiz2_level14_stage1_Sunda.choices = [choice1_Quiz2_Level14_Stage1_Sunda, choice2_Quiz2_Level14_Stage1_Sunda, choice3_Quiz2_Level14_Stage1_Sunda, choice4_Quiz2_Level14_Stage1_Sunda]
+        quiz2_level14_stage1_Sunda.images = []
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level14_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level14_Stage1_Sunda.id = 1
+        choice1_Quiz3_Level14_Stage1_Sunda.name = "O"
+        
+        let choice2_Quiz3_Level14_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level14_Stage1_Sunda.id = 2
+        choice2_Quiz3_Level14_Stage1_Sunda.name = "Za"
+        
+        let choice3_Quiz3_Level14_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level14_Stage1_Sunda.id = 3
+        choice3_Quiz3_Level14_Stage1_Sunda.name = "Ca"
+        
+        let choice4_Quiz3_Level14_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level14_Stage1_Sunda.id = 4
+        choice4_Quiz3_Level14_Stage1_Sunda.name = "Xa"
+        
+        let quiz3_level14_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz3_level14_stage1_Sunda.id = 3
+        quiz3_level14_stage1_Sunda.name = "Kuis 2"
+        quiz3_level14_stage1_Sunda.type = "B"
+        quiz3_level14_stage1_Sunda.isCorrect = false
+        quiz3_level14_stage1_Sunda.question = "Za"
+        quiz3_level14_stage1_Sunda.choices = [choice1_Quiz3_Level14_Stage1_Sunda, choice2_Quiz3_Level14_Stage1_Sunda, choice3_Quiz3_Level14_Stage1_Sunda, choice4_Quiz3_Level14_Stage1_Sunda]
+        quiz3_level14_stage1_Sunda.images = []
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level14_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level14_Stage1_Sunda.id = 1
+        choice1_Quiz4_Level14_Stage1_Sunda.name = "Za"
+        
+        let choice2_Quiz4_Level14_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level14_Stage1_Sunda.id = 2
+        choice2_Quiz4_Level14_Stage1_Sunda.name = "O"
+        
+        let choice3_Quiz4_Level14_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level14_Stage1_Sunda.id = 3
+        choice3_Quiz4_Level14_Stage1_Sunda.name = "Ha"
+        
+        let choice4_Quiz4_Level14_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level14_Stage1_Sunda.id = 4
+        choice4_Quiz4_Level14_Stage1_Sunda.name = "U"
+        
+        let quiz4_level14_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz4_level14_stage1_Sunda.id = 4
+        quiz4_level14_stage1_Sunda.name = "Kuis 3"
+        quiz4_level14_stage1_Sunda.type = "C"
+        quiz4_level14_stage1_Sunda.isCorrect = false
+        quiz4_level14_stage1_Sunda.question = "Za"
+        quiz4_level14_stage1_Sunda.choices = [choice1_Quiz4_Level14_Stage1_Sunda, choice2_Quiz4_Level14_Stage1_Sunda, choice3_Quiz4_Level14_Stage1_Sunda, choice4_Quiz4_Level14_Stage1_Sunda]
+        quiz4_level14_stage1_Sunda.images = []
+        
+        let quiz5_level14_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz5_level14_stage1_Sunda.id = 5
+        quiz5_level14_stage1_Sunda.name = "Kuis 4"
+        quiz5_level14_stage1_Sunda.type = "D"
+        quiz5_level14_stage1_Sunda.isCorrect = false
+        quiz5_level14_stage1_Sunda.question = "Za"
+        quiz5_level14_stage1_Sunda.choices = []
+        quiz5_level14_stage1_Sunda.images = []
+        
+        let quiz6_level14_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz6_level14_stage1_Sunda.id = 6
+        quiz6_level14_stage1_Sunda.name = "Kuis 5"
+        quiz6_level14_stage1_Sunda.type = "E"
+        quiz6_level14_stage1_Sunda.isCorrect = false
+        quiz6_level14_stage1_Sunda.question = "Za"
+        quiz6_level14_stage1_Sunda.choices = []
+        quiz6_level14_stage1_Sunda.images = []
+        
+        // MARK: Quiz for Level 15 Stage 1 Jawa
+        let quiz1_level15_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz1_level15_stage1_Sunda.id = 1
+        quiz1_level15_stage1_Sunda.name = "Panduan"
+        quiz1_level15_stage1_Sunda.type = "Panduan"
+        quiz1_level15_stage1_Sunda.isCorrect = false
+        quiz1_level15_stage1_Sunda.question = "O"
+        quiz1_level15_stage1_Sunda.choices = []
+        quiz1_level15_stage1_Sunda.images = []
+        
+        //MARK: Choice
+        let choice1_Quiz2_Level15_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice1_Quiz2_Level15_Stage1_Sunda.id = 1
+        choice1_Quiz2_Level15_Stage1_Sunda.name = "Wa"
+        
+        let choice2_Quiz2_Level15_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice2_Quiz2_Level15_Stage1_Sunda.id = 2
+        choice2_Quiz2_Level15_Stage1_Sunda.name = "Ca"
+        
+        let choice3_Quiz2_Level15_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice3_Quiz2_Level15_Stage1_Sunda.id = 3
+        choice3_Quiz2_Level15_Stage1_Sunda.name = "O"
+        
+        let choice4_Quiz2_Level15_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice4_Quiz2_Level15_Stage1_Sunda.id = 4
+        choice4_Quiz2_Level15_Stage1_Sunda.name = "Qa"
+        
+        let quiz2_level15_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz2_level15_stage1_Sunda.id = 2
+        quiz2_level15_stage1_Sunda.name = "Kuis 1"
+        quiz2_level15_stage1_Sunda.type = "A"
+        quiz2_level15_stage1_Sunda.isCorrect = false
+        quiz2_level15_stage1_Sunda.question = "O"
+        quiz2_level15_stage1_Sunda.choices = [choice1_Quiz2_Level15_Stage1_Sunda, choice2_Quiz2_Level15_Stage1_Sunda, choice3_Quiz2_Level15_Stage1_Sunda, choice4_Quiz2_Level15_Stage1_Sunda]
+        quiz2_level15_stage1_Sunda.images = []
+        
+        //MARK: Choice
+        let choice1_Quiz3_Level15_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice1_Quiz3_Level15_Stage1_Sunda.id = 1
+        choice1_Quiz3_Level15_Stage1_Sunda.name = "Ta"
+        
+        let choice2_Quiz3_Level15_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice2_Quiz3_Level15_Stage1_Sunda.id = 2
+        choice2_Quiz3_Level15_Stage1_Sunda.name = "Ya"
+        
+        let choice3_Quiz3_Level15_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice3_Quiz3_Level15_Stage1_Sunda.id = 3
+        choice3_Quiz3_Level15_Stage1_Sunda.name = "O"
+        
+        let choice4_Quiz3_Level15_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice4_Quiz3_Level15_Stage1_Sunda.id = 4
+        choice4_Quiz3_Level15_Stage1_Sunda.name = "Ja"
+        
+        let quiz3_level15_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz3_level15_stage1_Sunda.id = 3
+        quiz3_level15_stage1_Sunda.name = "Kuis 2"
+        quiz3_level15_stage1_Sunda.type = "B"
+        quiz3_level15_stage1_Sunda.isCorrect = false
+        quiz3_level15_stage1_Sunda.question = "O"
+        quiz3_level15_stage1_Sunda.choices = [choice1_Quiz3_Level15_Stage1_Sunda, choice2_Quiz3_Level15_Stage1_Sunda, choice3_Quiz3_Level15_Stage1_Sunda, choice4_Quiz3_Level15_Stage1_Sunda]
+        quiz3_level15_stage1_Sunda.images = []
+        
+        //MARK: Choice
+        let choice1_Quiz4_Level15_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice1_Quiz4_Level15_Stage1_Sunda.id = 1
+        choice1_Quiz4_Level15_Stage1_Sunda.name = "Ja"
+        
+        let choice2_Quiz4_Level15_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice2_Quiz4_Level15_Stage1_Sunda.id = 2
+        choice2_Quiz4_Level15_Stage1_Sunda.name = "O"
+        
+        let choice3_Quiz4_Level15_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice3_Quiz4_Level15_Stage1_Sunda.id = 3
+        choice3_Quiz4_Level15_Stage1_Sunda.name = "Ya"
+        
+        let choice4_Quiz4_Level15_Stage1_Sunda = Choice(context: PersistenceService.context)
+        choice4_Quiz4_Level15_Stage1_Sunda.id = 4
+        choice4_Quiz4_Level15_Stage1_Sunda.name = "Ta"
+        
+        let quiz4_level15_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz4_level15_stage1_Sunda.id = 4
+        quiz4_level15_stage1_Sunda.name = "Kuis 3"
+        quiz4_level15_stage1_Sunda.type = "C"
+        quiz4_level15_stage1_Sunda.isCorrect = false
+        quiz4_level15_stage1_Sunda.question = "O"
+        quiz4_level15_stage1_Sunda.choices = [choice1_Quiz4_Level15_Stage1_Sunda, choice2_Quiz4_Level15_Stage1_Sunda, choice3_Quiz4_Level15_Stage1_Sunda, choice4_Quiz4_Level15_Stage1_Sunda]
+        quiz4_level15_stage1_Sunda.images = []
+        
+        let quiz5_level15_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz5_level15_stage1_Sunda.id = 5
+        quiz5_level15_stage1_Sunda.name = "Kuis 4"
+        quiz5_level15_stage1_Sunda.type = "D"
+        quiz5_level15_stage1_Sunda.isCorrect = false
+        quiz5_level15_stage1_Sunda.question = "O"
+        quiz5_level15_stage1_Sunda.choices = []
+        quiz5_level15_stage1_Sunda.images = []
+        
+        let quiz6_level15_stage1_Sunda = Quiz(context: PersistenceService.context)
+        quiz6_level15_stage1_Sunda.id = 6
+        quiz6_level15_stage1_Sunda.name = "Kuis 5"
+        quiz6_level15_stage1_Sunda.type = "E"
+        quiz6_level15_stage1_Sunda.isCorrect = false
+        quiz6_level15_stage1_Sunda.question = "O"
+        quiz6_level15_stage1_Sunda.choices = []
+        quiz6_level15_stage1_Sunda.images = []
         
         // MARK: Level for Stage 1 Sunda
         let firstLevelStage1Sunda = Level(context: PersistenceService.context)
         firstLevelStage1Sunda.id = 1
         firstLevelStage1Sunda.name = "Level 1"
         firstLevelStage1Sunda.isLocked = false
+        firstLevelStage1Sunda.isInitial = true
         firstLevelStage1Sunda.totalMedal = 0
-        firstLevelStage1Sunda.quizes = []
+        firstLevelStage1Sunda.quizes = [quiz1_level1_stage1_Sunda, quiz2_level1_stage1_Sunda, quiz3_level1_stage1_Sunda, quiz4_level1_stage1_Sunda, quiz5_level1_stage1_Sunda, quiz6_level1_stage1_Sunda]
         
         let secondLevelStage1Sunda = Level(context: PersistenceService.context)
         secondLevelStage1Sunda.id = 2
         secondLevelStage1Sunda.name = "Level 2"
         secondLevelStage1Sunda.isLocked = true
+        secondLevelStage1Sunda.isInitial = true
         secondLevelStage1Sunda.totalMedal = 0
-        secondLevelStage1Sunda.quizes = []
+        secondLevelStage1Sunda.quizes = [quiz1_level2_stage1_Sunda, quiz2_level2_stage1_Sunda, quiz3_level2_stage1_Sunda, quiz4_level2_stage1_Sunda, quiz5_level2_stage1_Sunda, quiz6_level2_stage1_Sunda]
         
         let thirdLevelStage1Sunda = Level(context: PersistenceService.context)
         thirdLevelStage1Sunda.id = 3
         thirdLevelStage1Sunda.name = "Level 3"
         thirdLevelStage1Sunda.isLocked = true
+        thirdLevelStage1Sunda.isInitial = true
         thirdLevelStage1Sunda.totalMedal = 0
-        thirdLevelStage1Sunda.quizes = []
+        thirdLevelStage1Sunda.quizes = [quiz1_level3_stage1_Sunda, quiz2_level3_stage1_Sunda, quiz3_level3_stage1_Sunda, quiz4_level3_stage1_Sunda, quiz5_level3_stage1_Sunda, quiz6_level3_stage1_Sunda]
         
         let fourthLevelStage1Sunda = Level(context: PersistenceService.context)
         fourthLevelStage1Sunda.id = 4
         fourthLevelStage1Sunda.name = "Level 4"
         fourthLevelStage1Sunda.isLocked = true
+        fourthLevelStage1Sunda.isInitial = true
         fourthLevelStage1Sunda.totalMedal = 0
-        fourthLevelStage1Sunda.quizes = []
+        fourthLevelStage1Sunda.quizes = [quiz1_level4_stage1_Sunda, quiz2_level4_stage1_Sunda, quiz3_level4_stage1_Sunda, quiz4_level4_stage1_Sunda, quiz5_level4_stage1_Sunda, quiz6_level4_stage1_Sunda]
         
         let fifthLevelStage1Sunda = Level(context: PersistenceService.context)
         fifthLevelStage1Sunda.id = 5
         fifthLevelStage1Sunda.name = "Level 5"
         fifthLevelStage1Sunda.isLocked = true
+        fifthLevelStage1Sunda.isInitial = true
         fifthLevelStage1Sunda.totalMedal = 0
-        fifthLevelStage1Sunda.quizes = []
+        fifthLevelStage1Sunda.quizes = [quiz1_level5_stage1_Sunda, quiz2_level5_stage1_Sunda, quiz3_level5_stage1_Sunda, quiz4_level5_stage1_Sunda, quiz5_level5_stage1_Sunda, quiz6_level5_stage1_Sunda]
         
         let sixthLevelStage1Sunda = Level(context: PersistenceService.context)
         sixthLevelStage1Sunda.id = 6
         sixthLevelStage1Sunda.name = "Level 6"
         sixthLevelStage1Sunda.isLocked = true
+        sixthLevelStage1Sunda.isInitial = true
         sixthLevelStage1Sunda.totalMedal = 0
-        sixthLevelStage1Sunda.quizes = []
+        sixthLevelStage1Sunda.quizes = [quiz1_level6_stage1_Sunda, quiz2_level6_stage1_Sunda, quiz3_level6_stage1_Sunda, quiz4_level6_stage1_Sunda, quiz5_level6_stage1_Sunda, quiz6_level6_stage1_Sunda]
         
         let seventhLevelStage1Sunda = Level(context: PersistenceService.context)
         seventhLevelStage1Sunda.id = 7
         seventhLevelStage1Sunda.name = "Level 7"
         seventhLevelStage1Sunda.isLocked = true
+        seventhLevelStage1Sunda.isInitial = true
         seventhLevelStage1Sunda.totalMedal = 0
-        seventhLevelStage1Sunda.quizes = []
+        seventhLevelStage1Sunda.quizes = [quiz1_level7_stage1_Sunda, quiz2_level7_stage1_Sunda, quiz3_level7_stage1_Sunda, quiz4_level7_stage1_Sunda, quiz5_level7_stage1_Sunda, quiz6_level7_stage1_Sunda]
         
         let eightLevelStage1Sunda = Level(context: PersistenceService.context)
         eightLevelStage1Sunda.id = 8
         eightLevelStage1Sunda.name = "Level 8"
         eightLevelStage1Sunda.isLocked = true
+        eightLevelStage1Sunda.isInitial = true
         eightLevelStage1Sunda.totalMedal = 0
-        eightLevelStage1Sunda.quizes = []
+        eightLevelStage1Sunda.quizes = [quiz1_level8_stage1_Sunda, quiz2_level8_stage1_Sunda, quiz3_level8_stage1_Sunda, quiz4_level8_stage1_Sunda, quiz5_level8_stage1_Sunda, quiz6_level8_stage1_Sunda]
         
         let ninthLevelStage1Sunda = Level(context: PersistenceService.context)
         ninthLevelStage1Sunda.id = 9
         ninthLevelStage1Sunda.name = "Level 9"
         ninthLevelStage1Sunda.isLocked = true
+        ninthLevelStage1Sunda.isInitial = true
         ninthLevelStage1Sunda.totalMedal = 0
-        ninthLevelStage1Sunda.quizes = []
+        ninthLevelStage1Sunda.quizes = [quiz1_level9_stage1_Sunda, quiz2_level9_stage1_Sunda, quiz3_level9_stage1_Sunda, quiz4_level9_stage1_Sunda, quiz5_level9_stage1_Sunda, quiz6_level9_stage1_Sunda]
         
         let tenthLevelStage1Sunda = Level(context: PersistenceService.context)
         tenthLevelStage1Sunda.id = 10
         tenthLevelStage1Sunda.name = "Level 10"
         tenthLevelStage1Sunda.isLocked = true
+        tenthLevelStage1Sunda.isInitial = true
         tenthLevelStage1Sunda.totalMedal = 0
-        tenthLevelStage1Sunda.quizes = []
+        tenthLevelStage1Sunda.quizes = [quiz1_level10_stage1_Sunda, quiz2_level10_stage1_Sunda, quiz3_level10_stage1_Sunda, quiz4_level10_stage1_Sunda, quiz5_level10_stage1_Sunda, quiz6_level10_stage1_Sunda]
         
         let eleventhLevelStage1Sunda = Level(context: PersistenceService.context)
         eleventhLevelStage1Sunda.id = 11
         eleventhLevelStage1Sunda.name = "Level 11"
         eleventhLevelStage1Sunda.isLocked = true
+        eleventhLevelStage1Sunda.isInitial = true
         eleventhLevelStage1Sunda.totalMedal = 0
-        eleventhLevelStage1Sunda.quizes = []
+        eleventhLevelStage1Sunda.quizes = [quiz1_level11_stage1_Sunda, quiz2_level11_stage1_Sunda, quiz3_level11_stage1_Sunda, quiz4_level11_stage1_Sunda, quiz5_level11_stage1_Sunda, quiz6_level11_stage1_Sunda]
         
         let twelfthLevelStage1Sunda = Level(context: PersistenceService.context)
         twelfthLevelStage1Sunda.id = 12
         twelfthLevelStage1Sunda.name = "Level 12"
         twelfthLevelStage1Sunda.isLocked = true
+        twelfthLevelStage1Sunda.isInitial = true
         twelfthLevelStage1Sunda.totalMedal = 0
-        twelfthLevelStage1Sunda.quizes = []
+        twelfthLevelStage1Sunda.quizes = [quiz1_level12_stage1_Sunda, quiz2_level12_stage1_Sunda, quiz3_level12_stage1_Sunda, quiz4_level12_stage1_Sunda, quiz5_level12_stage1_Sunda, quiz6_level12_stage1_Sunda]
         
         let thirteenthLevelStage1Sunda = Level(context: PersistenceService.context)
         thirteenthLevelStage1Sunda.id = 13
         thirteenthLevelStage1Sunda.name = "Level 13"
         thirteenthLevelStage1Sunda.isLocked = true
+        thirteenthLevelStage1Sunda.isInitial = true
         thirteenthLevelStage1Sunda.totalMedal = 0
-        thirteenthLevelStage1Sunda.quizes = []
+        thirteenthLevelStage1Sunda.quizes = [quiz1_level13_stage1_Sunda, quiz2_level13_stage1_Sunda, quiz3_level13_stage1_Sunda, quiz4_level13_stage1_Sunda, quiz5_level13_stage1_Sunda, quiz6_level13_stage1_Sunda]
         
         let fourteenthLevelStage1Sunda = Level(context: PersistenceService.context)
         fourteenthLevelStage1Sunda.id = 14
         fourteenthLevelStage1Sunda.name = "Level 14"
         fourteenthLevelStage1Sunda.isLocked = true
+        fourteenthLevelStage1Sunda.isInitial = true
         fourteenthLevelStage1Sunda.totalMedal = 0
-        fourteenthLevelStage1Sunda.quizes = []
+        fourteenthLevelStage1Sunda.quizes = [quiz1_level14_stage1_Sunda, quiz2_level14_stage1_Sunda, quiz3_level14_stage1_Sunda, quiz4_level14_stage1_Sunda, quiz5_level14_stage1_Sunda, quiz6_level14_stage1_Sunda]
         
         let fifteenthLevelStage1Sunda = Level(context: PersistenceService.context)
         fifteenthLevelStage1Sunda.id = 15
         fifteenthLevelStage1Sunda.name = "Level 15"
         fifteenthLevelStage1Sunda.isLocked = true
+        fifteenthLevelStage1Sunda.isInitial = true
         fifteenthLevelStage1Sunda.totalMedal = 0
-        fifteenthLevelStage1Sunda.quizes = []
+        fifteenthLevelStage1Sunda.quizes = [quiz1_level15_stage1_Sunda, quiz2_level15_stage1_Sunda, quiz3_level15_stage1_Sunda, quiz4_level15_stage1_Sunda, quiz5_level15_stage1_Sunda, quiz6_level15_stage1_Sunda]
         
         // MARK: Level for Stage 2 Jawa
         let firstLevelStage2Sunda = Level(context: PersistenceService.context)
         firstLevelStage2Sunda.id = 1
         firstLevelStage2Sunda.name = "Level 1"
         firstLevelStage2Sunda.isLocked = false
+        firstLevelStage2Sunda.isInitial = true
         firstLevelStage2Sunda.totalMedal = 0
         firstLevelStage2Sunda.quizes = []
         
@@ -7564,6 +9216,7 @@ class MainViewController: UIViewController {
         secondLevelStage2Sunda.id = 2
         secondLevelStage2Sunda.name = "Level 2"
         secondLevelStage2Sunda.isLocked = true
+        secondLevelStage2Sunda.isInitial = true
         secondLevelStage2Sunda.totalMedal = 0
         secondLevelStage2Sunda.quizes = []
         
@@ -7571,6 +9224,7 @@ class MainViewController: UIViewController {
         thirdLevelStage2Sunda.id = 3
         thirdLevelStage2Sunda.name = "Level 3"
         thirdLevelStage2Sunda.isLocked = true
+        thirdLevelStage2Sunda.isInitial = true
         thirdLevelStage2Sunda.totalMedal = 0
         thirdLevelStage2Sunda.quizes = []
         
@@ -7578,6 +9232,7 @@ class MainViewController: UIViewController {
         fourthLevelStage2Sunda.id = 4
         fourthLevelStage2Sunda.name = "Level 4"
         fourthLevelStage2Sunda.isLocked = true
+        fourthLevelStage2Sunda.isInitial = true
         fourthLevelStage2Sunda.totalMedal = 0
         fourthLevelStage2Sunda.quizes = []
         
@@ -7585,6 +9240,7 @@ class MainViewController: UIViewController {
         fifthLevelStage2Sunda.id = 5
         fifthLevelStage2Sunda.name = "Level 5"
         fifthLevelStage2Sunda.isLocked = true
+        fifthLevelStage2Sunda.isInitial = true
         fifthLevelStage2Sunda.totalMedal = 0
         fifthLevelStage2Sunda.quizes = []
         
@@ -7592,6 +9248,7 @@ class MainViewController: UIViewController {
         sixthLevelStage2Sunda.id = 6
         sixthLevelStage2Sunda.name = "Level 6"
         sixthLevelStage2Sunda.isLocked = true
+        sixthLevelStage2Sunda.isInitial = true
         sixthLevelStage2Sunda.totalMedal = 0
         sixthLevelStage2Sunda.quizes = []
         
@@ -7599,6 +9256,7 @@ class MainViewController: UIViewController {
         seventhLevelStage2Sunda.id = 7
         seventhLevelStage2Sunda.name = "Level 7"
         seventhLevelStage2Sunda.isLocked = true
+        seventhLevelStage2Sunda.isInitial = true
         seventhLevelStage2Sunda.totalMedal = 0
         seventhLevelStage2Sunda.quizes = []
         
@@ -7606,6 +9264,7 @@ class MainViewController: UIViewController {
         eightLevelStage2Sunda.id = 8
         eightLevelStage2Sunda.name = "Level 8"
         eightLevelStage2Sunda.isLocked = true
+        eightLevelStage2Sunda.isInitial = true
         eightLevelStage2Sunda.totalMedal = 0
         eightLevelStage2Sunda.quizes = []
         
@@ -7613,6 +9272,7 @@ class MainViewController: UIViewController {
         ninthLevelStage2Sunda.id = 9
         ninthLevelStage2Sunda.name = "Level 9"
         ninthLevelStage2Sunda.isLocked = true
+        ninthLevelStage2Sunda.isInitial = true
         ninthLevelStage2Sunda.totalMedal = 0
         ninthLevelStage2Sunda.quizes = []
         
@@ -7620,6 +9280,7 @@ class MainViewController: UIViewController {
         tenthLevelStage2Sunda.id = 10
         tenthLevelStage2Sunda.name = "Level 10"
         tenthLevelStage2Sunda.isLocked = true
+        tenthLevelStage2Sunda.isInitial = true
         tenthLevelStage2Sunda.totalMedal = 0
         tenthLevelStage2Sunda.quizes = []
         
@@ -7627,6 +9288,7 @@ class MainViewController: UIViewController {
         eleventhLevelStage2Sunda.id = 11
         eleventhLevelStage2Sunda.name = "Level 11"
         eleventhLevelStage2Sunda.isLocked = true
+        eleventhLevelStage2Sunda.isInitial = true
         eleventhLevelStage2Sunda.totalMedal = 0
         eleventhLevelStage2Sunda.quizes = []
         
@@ -7634,6 +9296,7 @@ class MainViewController: UIViewController {
         twelfthLevelStage2Sunda.id = 12
         twelfthLevelStage2Sunda.name = "Level 12"
         twelfthLevelStage2Sunda.isLocked = true
+        twelfthLevelStage2Sunda.isInitial = true
         twelfthLevelStage2Sunda.totalMedal = 0
         twelfthLevelStage2Sunda.quizes = []
         
@@ -7641,6 +9304,7 @@ class MainViewController: UIViewController {
         thirteenthLevelStage2Sunda.id = 13
         thirteenthLevelStage2Sunda.name = "Level 13"
         thirteenthLevelStage2Sunda.isLocked = true
+        thirteenthLevelStage2Sunda.isInitial = true
         thirteenthLevelStage2Sunda.totalMedal = 0
         thirteenthLevelStage2Sunda.quizes = []
         
@@ -7648,6 +9312,7 @@ class MainViewController: UIViewController {
         fourteenthLevelStage2Sunda.id = 14
         fourteenthLevelStage2Sunda.name = "Level 14"
         fourteenthLevelStage2Sunda.isLocked = true
+        fourteenthLevelStage2Sunda.isInitial = true
         fourteenthLevelStage2Sunda.totalMedal = 0
         fourteenthLevelStage2Sunda.quizes = []
         
@@ -7655,6 +9320,7 @@ class MainViewController: UIViewController {
         fifteenthLevelStage2Sunda.id = 15
         fifteenthLevelStage2Sunda.name = "Level 15"
         fifteenthLevelStage2Sunda.isLocked = true
+        fifteenthLevelStage2Sunda.isInitial = true
         fifteenthLevelStage2Sunda.totalMedal = 0
         fifteenthLevelStage2Sunda.quizes = []
         
@@ -7663,6 +9329,7 @@ class MainViewController: UIViewController {
         firstLevelStage3Sunda.id = 1
         firstLevelStage3Sunda.name = "Level 1"
         firstLevelStage3Sunda.isLocked = false
+        firstLevelStage3Sunda.isInitial = true
         firstLevelStage3Sunda.totalMedal = 0
         firstLevelStage3Sunda.quizes = []
         
@@ -7670,6 +9337,7 @@ class MainViewController: UIViewController {
         secondLevelStage3Sunda.id = 2
         secondLevelStage3Sunda.name = "Level 2"
         secondLevelStage3Sunda.isLocked = true
+        secondLevelStage3Sunda.isInitial = true
         secondLevelStage3Sunda.totalMedal = 0
         secondLevelStage3Sunda.quizes = []
         
@@ -7677,6 +9345,7 @@ class MainViewController: UIViewController {
         thirdLevelStage3Sunda.id = 3
         thirdLevelStage3Sunda.name = "Level 3"
         thirdLevelStage3Sunda.isLocked = true
+        thirdLevelStage3Sunda.isInitial = true
         thirdLevelStage3Sunda.totalMedal = 0
         thirdLevelStage3Sunda.quizes = []
         
@@ -7684,6 +9353,7 @@ class MainViewController: UIViewController {
         fourthLevelStage3Sunda.id = 4
         fourthLevelStage3Sunda.name = "Level 4"
         fourthLevelStage3Sunda.isLocked = true
+        fourthLevelStage3Sunda.isInitial = true
         fourthLevelStage3Sunda.totalMedal = 0
         fourthLevelStage3Sunda.quizes = []
         
@@ -7691,6 +9361,7 @@ class MainViewController: UIViewController {
         fifthLevelStage3Sunda.id = 5
         fifthLevelStage3Sunda.name = "Level 5"
         fifthLevelStage3Sunda.isLocked = true
+        fifthLevelStage3Sunda.isInitial = true
         fifthLevelStage3Sunda.totalMedal = 0
         fifthLevelStage3Sunda.quizes = []
         
@@ -7698,6 +9369,7 @@ class MainViewController: UIViewController {
         sixthLevelStage3Sunda.id = 6
         sixthLevelStage3Sunda.name = "Level 6"
         sixthLevelStage3Sunda.isLocked = true
+        sixthLevelStage3Sunda.isInitial = true
         sixthLevelStage3Sunda.totalMedal = 0
         sixthLevelStage3Sunda.quizes = []
         
@@ -7705,6 +9377,7 @@ class MainViewController: UIViewController {
         seventhLevelStage3Sunda.id = 7
         seventhLevelStage3Sunda.name = "Level 7"
         seventhLevelStage3Sunda.isLocked = true
+        seventhLevelStage3Sunda.isInitial = true
         seventhLevelStage3Sunda.totalMedal = 0
         seventhLevelStage3Sunda.quizes = []
         
@@ -7712,6 +9385,7 @@ class MainViewController: UIViewController {
         eightLevelStage3Sunda.id = 8
         eightLevelStage3Sunda.name = "Level 8"
         eightLevelStage3Sunda.isLocked = true
+        eightLevelStage3Sunda.isInitial = true
         eightLevelStage3Sunda.totalMedal = 0
         eightLevelStage3Sunda.quizes = []
         
@@ -7719,6 +9393,7 @@ class MainViewController: UIViewController {
         ninthLevelStage3Sunda.id = 9
         ninthLevelStage3Sunda.name = "Level 9"
         ninthLevelStage3Sunda.isLocked = true
+        ninthLevelStage3Sunda.isInitial = true
         ninthLevelStage3Sunda.totalMedal = 0
         ninthLevelStage3Sunda.quizes = []
         
@@ -7726,6 +9401,7 @@ class MainViewController: UIViewController {
         tenthLevelStage3Sunda.id = 10
         tenthLevelStage3Sunda.name = "Level 10"
         tenthLevelStage3Sunda.isLocked = true
+        tenthLevelStage3Sunda.isInitial = true
         tenthLevelStage3Sunda.totalMedal = 0
         tenthLevelStage3Sunda.quizes = []
         
@@ -7733,6 +9409,7 @@ class MainViewController: UIViewController {
         eleventhLevelStage3Sunda.id = 11
         eleventhLevelStage3Sunda.name = "Level 11"
         eleventhLevelStage3Sunda.isLocked = true
+        eleventhLevelStage3Sunda.isInitial = true
         eleventhLevelStage3Sunda.totalMedal = 0
         eleventhLevelStage3Sunda.quizes = []
         
@@ -7740,6 +9417,7 @@ class MainViewController: UIViewController {
         twelfthLevelStage3Sunda.id = 12
         twelfthLevelStage3Sunda.name = "Level 12"
         twelfthLevelStage3Sunda.isLocked = true
+        twelfthLevelStage3Sunda.isInitial = true
         twelfthLevelStage3Sunda.totalMedal = 0
         twelfthLevelStage3Sunda.quizes = []
         
@@ -7747,6 +9425,7 @@ class MainViewController: UIViewController {
         thirteenthLevelStage3Sunda.id = 13
         thirteenthLevelStage3Sunda.name = "Level 13"
         thirteenthLevelStage3Sunda.isLocked = true
+        thirteenthLevelStage3Sunda.isInitial = true
         thirteenthLevelStage3Sunda.totalMedal = 0
         thirteenthLevelStage3Sunda.quizes = []
         
@@ -7754,6 +9433,7 @@ class MainViewController: UIViewController {
         fourteenthLevelStage3Sunda.id = 14
         fourteenthLevelStage3Sunda.name = "Level 14"
         fourteenthLevelStage3Sunda.isLocked = true
+        fourteenthLevelStage3Sunda.isInitial = true
         fourteenthLevelStage3Sunda.totalMedal = 0
         fourteenthLevelStage3Sunda.quizes = []
         
@@ -7761,6 +9441,7 @@ class MainViewController: UIViewController {
         fifteenthLevelStage3Sunda.id = 15
         fifteenthLevelStage3Sunda.name = "Level 15"
         fifteenthLevelStage3Sunda.isLocked = true
+        fifteenthLevelStage3Sunda.isInitial = true
         fifteenthLevelStage3Sunda.totalMedal = 0
         fifteenthLevelStage3Sunda.quizes = []
         
@@ -8197,14 +9878,14 @@ class MainViewController: UIViewController {
         firstRegion.name = "Jawa"
         firstRegion.isLocked = false
         firstRegion.stages = [firstStageJawa, secondStageJawa, thirdStageJawa, fourthStageJawa]
-        firstRegion.dictionaries = []
+        firstRegion.dictionaries = [carakan, sandhangan, pasangan]
         
         let secondRegion = Region(context: PersistenceService.context)
         secondRegion.id = 2
         secondRegion.name = "Sunda"
         secondRegion.isLocked = false
         secondRegion.stages = [firstStageSunda, secondStageSunda, thirdStageSunda, fourthStageSunda]
-        secondRegion.dictionaries = []
+        secondRegion.dictionaries = [ngalegena, swara, rarangken]
         
         let thirdRegion = Region(context: PersistenceService.context)
         thirdRegion.id = 3
@@ -8243,22 +9924,4 @@ class MainViewController: UIViewController {
         PersistenceService.saveContext()
     }
 
-}
-
-extension UIImage {
-    static func gradientImage(with bounds: CGRect, colors: [CGColor], locations: [NSNumber]?) -> UIImage? {
-
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = CGRect(x: 0, y: 0, width: 400, height: 50)
-        gradientLayer.colors = colors
-        // This makes it horizontal
-        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
-        gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
-        
-        UIGraphicsBeginImageContext(gradientLayer.bounds.size)
-        gradientLayer.render(in: UIGraphicsGetCurrentContext()!)
-        guard let image = UIGraphicsGetImageFromCurrentImageContext() else { return nil }
-        UIGraphicsEndImageContext()
-        return image
-    }
 }

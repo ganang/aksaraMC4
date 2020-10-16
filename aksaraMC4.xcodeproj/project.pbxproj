@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -22,14 +22,12 @@
 		914344F0252DBFB9002E867B /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914344EF252DBFB9002E867B /* Extension.swift */; };
 		914344F6252DC366002E867B /* RegionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914344F5252DC366002E867B /* RegionController.swift */; };
 		914344FF252DC436002E867B /* RegionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914344FE252DC436002E867B /* RegionView.swift */; };
-		A411F9CE252EF8CC0092F9BD /* TestingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A411F9CD252EF8CC0092F9BD /* TestingViewController.swift */; };
 		9193764225317E3100C3FC10 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9193764125317E3100C3FC10 /* StartView.swift */; };
 		9193764625317E3B00C3FC10 /* StartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9193764525317E3B00C3FC10 /* StartController.swift */; };
 		91C98768252EFE7900D67BC0 /* StageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C98767252EFE7900D67BC0 /* StageView.swift */; };
 		91C9876D252EFE8D00D67BC0 /* StageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C9876C252EFE8D00D67BC0 /* StageController.swift */; };
 		91C98775252F268400D67BC0 /* LevelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C98774252F268400D67BC0 /* LevelController.swift */; };
 		91C98779252F269000D67BC0 /* LevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C98778252F269000D67BC0 /* LevelView.swift */; };
-		A411F9CE252EF8CC0092F9BD /* TestingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A411F9CD252EF8CC0092F9BD /* TestingViewController.swift */; };
 		A41A77E8252D9586001C4FAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41A77E7252D9586001C4FAD /* AppDelegate.swift */; };
 		A41A77EA252D9586001C4FAD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41A77E9252D9586001C4FAD /* SceneDelegate.swift */; };
 		A41A77EC252D9586001C4FAD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41A77EB252D9586001C4FAD /* MainViewController.swift */; };
@@ -70,16 +68,15 @@
 		914344EF252DBFB9002E867B /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		914344F5252DC366002E867B /* RegionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionController.swift; sourceTree = "<group>"; };
 		914344FE252DC436002E867B /* RegionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionView.swift; sourceTree = "<group>"; };
-		A411F9CD252EF8CC0092F9BD /* TestingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingViewController.swift; sourceTree = "<group>"; };
 		9193764125317E3100C3FC10 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		9193764525317E3B00C3FC10 /* StartController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartController.swift; sourceTree = "<group>"; };
 		91C98767252EFE7900D67BC0 /* StageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageView.swift; sourceTree = "<group>"; };
 		91C9876C252EFE8D00D67BC0 /* StageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageController.swift; sourceTree = "<group>"; };
 		91C98774252F268400D67BC0 /* LevelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelController.swift; sourceTree = "<group>"; };
 		91C98778252F269000D67BC0 /* LevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelView.swift; sourceTree = "<group>"; };
-		A411F9CD252EF8CC0092F9BD /* TestingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingViewController.swift; sourceTree = "<group>"; };
 		9C280DC7DA303D6AD9D00A92 /* Pods-aksaraMC4.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aksaraMC4.debug.xcconfig"; path = "Target Support Files/Pods-aksaraMC4/Pods-aksaraMC4.debug.xcconfig"; sourceTree = "<group>"; };
 		9DB790D026838342CEDF8B35 /* Pods-aksaraMC4.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aksaraMC4.release.xcconfig"; path = "Target Support Files/Pods-aksaraMC4/Pods-aksaraMC4.release.xcconfig"; sourceTree = "<group>"; };
+		A411F9CD252EF8CC0092F9BD /* TestingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingViewController.swift; sourceTree = "<group>"; };
 		A41A77E4252D9586001C4FAD /* aksaraMC4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = aksaraMC4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A41A77E7252D9586001C4FAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A41A77E9252D9586001C4FAD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -290,6 +287,7 @@
 				A41A77E5252D9586001C4FAD /* Products */,
 				E473EFB322B835768E79C009 /* Pods */,
 				7C252FE5C07226A83AA53D09 /* Frameworks */,
+				A4A3DDEA2539964C00DC4CF7 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -343,6 +341,14 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		A4A3DDEA2539964C00DC4CF7 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				A411F9CD252EF8CC0092F9BD /* TestingViewController.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		A4F19FC9253598FB00F5BA23 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -357,7 +363,6 @@
 				9C280DC7DA303D6AD9D00A92 /* Pods-aksaraMC4.debug.xcconfig */,
 				9DB790D026838342CEDF8B35 /* Pods-aksaraMC4.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -514,7 +519,6 @@
 				A4F19FC52535939400F5BA23 /* BaseView.swift in Sources */,
 				914344F0252DBFB9002E867B /* Extension.swift in Sources */,
 				235D23B62532DEAB0007F81E /* QuizViewTypeE.swift in Sources */,
-				A411F9CE252EF8CC0092F9BD /* TestingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
