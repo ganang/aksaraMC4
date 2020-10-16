@@ -110,17 +110,27 @@ class StageController: UIViewController {
     }
     
     func tapFunction() {
-        let tapTahap1 = UITapGestureRecognizer(target: self, action: #selector(self.tapTahap1))
-        stageView.tahap1Card.addGestureRecognizer(tapTahap1)
+        if tahap1Model?.isLocked == false {
+            let tapTahap1 = UITapGestureRecognizer(target: self, action: #selector(self.tapTahap1))
+            stageView.tahap1Card.addGestureRecognizer(tapTahap1)
+        }
+
+        if tahap2Model?.isLocked == false {
+            let tapTahap2 = UITapGestureRecognizer(target: self, action: #selector(self.tapTahap2))
+            stageView.tahap2Card.addGestureRecognizer(tapTahap2)
+        }
+
+        if tahap3Model?.isLocked == false {
+            let tapTahap3 = UITapGestureRecognizer(target: self, action: #selector(self.tapTahap3))
+            stageView.tahap3Card.addGestureRecognizer(tapTahap3)
+        }
         
-        let tapTahap2 = UITapGestureRecognizer(target: self, action: #selector(self.tapTahap2))
-        stageView.tahap2Card.addGestureRecognizer(tapTahap2)
-        
-        let tapTahap3 = UITapGestureRecognizer(target: self, action: #selector(self.tapTahap3))
-        stageView.tahap3Card.addGestureRecognizer(tapTahap3)
-        
-        let tapTahap4 = UITapGestureRecognizer(target: self, action: #selector(self.tapTahap4))
-        stageView.tahap4Card.addGestureRecognizer(tapTahap4)
+        if tahap4Model?.isLocked == true {
+            
+            let tapTahap4 = UITapGestureRecognizer(target: self, action: #selector(self.tapTahap4))
+            stageView.tahap4Card.addGestureRecognizer(tapTahap4)
+        }
+
         
         stageView.backButton.addTarget(self, action: #selector(backButton), for: .touchUpInside)
     }
