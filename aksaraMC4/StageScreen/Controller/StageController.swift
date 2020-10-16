@@ -43,11 +43,14 @@ class StageController: UIViewController {
         let view = stageView
         if tahap1Model?.isLocked == true {
             view?.tahap1Card.alpha = 0.3
-        } else if tahap2Model?.isLocked == true {
+        }
+        if tahap2Model?.isLocked == true {
             view?.tahap2Card.alpha = 0.3
-        } else if tahap3Model?.isLocked == true {
+        }
+        if tahap3Model?.isLocked == true {
             view?.tahap3Card.alpha = 0.3
-        } else if tahap4Model?.isLocked == true {
+        }
+        if tahap4Model?.isLocked == true {
             view?.tahap4Card.alpha = 0.3
         }
         
@@ -125,7 +128,7 @@ class StageController: UIViewController {
             stageView.tahap3Card.addGestureRecognizer(tapTahap3)
         }
         
-        if tahap4Model?.isLocked == true {
+        if tahap4Model?.isLocked == false {
             
             let tapTahap4 = UITapGestureRecognizer(target: self, action: #selector(self.tapTahap4))
             stageView.tahap4Card.addGestureRecognizer(tapTahap4)
