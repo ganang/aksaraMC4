@@ -15,13 +15,39 @@ class StartController: UIViewController {
     var stages: [Stage]?
     var regions: [Region]?
     
+    let appDel = UIApplication.shared.delegate as! AppDelegate
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
         self.startView = StartView(frame: self.view.frame)
         self.view = self.startView
-        getUserData()
+//        getUserData()
         tapFunction()
+        
+        // handle first setup
+        setupRecord()
+        
+    }
+    
+    override public var shouldAutorotate: Bool {
+        return false
+    }
+    override public var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .landscapeRight
+    }
+    override public var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        return .landscapeRight
+    }
+    
+    func setupRecord() {
+        if UserDefaults.standard.object(forKey: "FirstLoad") != nil {
+            getUserData()
+        } else {
+            CoreDataRecord.shared.saveRecord()
+            getUserData()
+            UserDefaults.standard.set(true, forKey: "FirstLoad")
+        }
     }
     
     func getUserData() {

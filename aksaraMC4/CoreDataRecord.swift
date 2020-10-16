@@ -1,36 +1,16 @@
 //
-//  ViewController.swift
+//  CoreDataRecord.swift
 //  aksaraMC4
 //
-//  Created by Ganang Arief Pratama on 07/10/20.
+//  Created by Ganang Arief Pratama on 16/10/20.
 //  Copyright © 2020 aksara.id. All rights reserved.
 //
 
 import UIKit
 import CoreData
 
-class MainViewController: UIViewController {
-    
-    var stages: [Stage]?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        self.view.setBackgroundColor()
-        self.navigationController?.navigationBar.isHidden = true
-        
-//        deleteRecord()
-//        setupRecord()
-//        getRecord()
-        
-        if UserDefaults.standard.object(forKey: "FirstLoad") != nil {
-            getRecord()
-        } else {
-            CoreDataRecord.shared.saveRecord()
-            getRecord()
-            UserDefaults.standard.set(true, forKey: "FirstLoad")
-        }
-    }
+class CoreDataRecord {
+    static let shared = CoreDataRecord()
     
     func deleteRecord() {
         let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
@@ -50,25 +30,24 @@ class MainViewController: UIViewController {
         }
     }
     
-    func getRecord() {
-        let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
-        let idSort = NSSortDescriptor(key:"id", ascending:true)
-        fetchRequest.sortDescriptors = [idSort]
-        
-        do {
-            let users = try PersistenceService.context.fetch(fetchRequest)
-            
-            let user: User = users[0]
-            let regions: [Region] = user.regions?.sortedArray(using: [.init(key: "id", ascending: true)]) as! [Region]
-            self.stages = regions[0].stages?.sortedArray(using: [.init(key: "id", ascending: true)]) as? [Stage]
-        
-            
-        } catch {
-            print("ERROR")
-        }
-    }
+//    func getRecord() {
+//        let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
+//        let idSort = NSSortDescriptor(key:"id", ascending:true)
+//        fetchRequest.sortDescriptors = [idSort]
+//
+//        do {
+//            let users = try PersistenceService.context.fetch(fetchRequest)
+//
+//            let user: User = users[0]
+//            let regions: [Region] = user.regions?.sortedArray(using: [.init(key: "id", ascending: true)]) as! [Region]
+//
+//
+//        } catch {
+//            print("ERROR")
+//        }
+//    }
     
-    func setupRecord() {
+    func saveRecord() {
         
         // MARK: Quiz for Level 1 Stage 1 Jawa
         let quiz1_level1_stage1_Jawa = Quiz(context: PersistenceService.context)
@@ -113,7 +92,7 @@ class MainViewController: UIViewController {
         let image4_Quiz2_Level1_Stage1_Jawa = Image(context: PersistenceService.context)
         image4_Quiz2_Level1_Stage1_Jawa.id = 4
         image4_Quiz2_Level1_Stage1_Jawa.name = "Ba_Aksara_Jawa"
-    
+        
         let quiz2_level1_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz2_level1_stage1_Jawa.id = 2
         quiz2_level1_stage1_Jawa.name = "Kuis 1"
@@ -984,7 +963,7 @@ class MainViewController: UIViewController {
         let image4_Quiz4_Level6_Stage1_Jawa = Image(context: PersistenceService.context)
         image4_Quiz4_Level6_Stage1_Jawa.id = 4
         image4_Quiz4_Level6_Stage1_Jawa.name = "Dha_Aksara_Jawa"
-               
+        
         let quiz4_level6_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz4_level6_stage1_Jawa.id = 4
         quiz4_level6_stage1_Jawa.name = "Kuis 3"
@@ -7498,7 +7477,7 @@ class MainViewController: UIViewController {
         fifteenthLevelStage3Jawa.isInitial = true
         fifteenthLevelStage3Jawa.totalMedal = 0
         fifteenthLevelStage3Jawa.quizes = [quiz1_level15_stage3_Jawa, quiz2_level15_stage3_Jawa, quiz3_level15_stage3_Jawa, quiz4_level15_stage3_Jawa, quiz5_level15_stage3_Jawa, quiz6_level15_stage3_Jawa]
-    
+        
         // ================================================================================================================= //
         // MARK: Quiz for Level 1 Stage 1 Sunda
         let quiz1_level1_stage1_Sunda = Quiz(context: PersistenceService.context)
@@ -7526,7 +7505,7 @@ class MainViewController: UIViewController {
         let choice4_Quiz2_Level1_Stage1_Sunda = Choice(context: PersistenceService.context)
         choice4_Quiz2_Level1_Stage1_Sunda.id = 4
         choice4_Quiz2_Level1_Stage1_Sunda.name = "Ba"
-    
+        
         let quiz2_level1_stage1_Sunda = Quiz(context: PersistenceService.context)
         quiz2_level1_stage1_Sunda.id = 2
         quiz2_level1_stage1_Sunda.name = "Kuis 1"
@@ -8108,7 +8087,7 @@ class MainViewController: UIViewController {
         let choice4_Quiz4_Level6_Stage1_Sunda = Choice(context: PersistenceService.context)
         choice4_Quiz4_Level6_Stage1_Sunda.id = 4
         choice4_Quiz4_Level6_Stage1_Sunda.name = "Ga"
-               
+        
         let quiz4_level6_stage1_Sunda = Quiz(context: PersistenceService.context)
         quiz4_level6_stage1_Sunda.id = 4
         quiz4_level6_stage1_Sunda.name = "Kuis 3"
@@ -8320,7 +8299,7 @@ class MainViewController: UIViewController {
         let choice4_Quiz4_Level8_Stage1_Sunda = Choice(context: PersistenceService.context)
         choice4_Quiz4_Level8_Stage1_Sunda.id = 4
         choice4_Quiz4_Level8_Stage1_Sunda.name = "Ma"
-    
+        
         let quiz4_level8_stage1_Sunda = Quiz(context: PersistenceService.context)
         quiz4_level8_stage1_Sunda.id = 4
         quiz4_level8_stage1_Sunda.name = "Kuis 3"
@@ -8744,7 +8723,7 @@ class MainViewController: UIViewController {
         let choice4_Quiz4_Level12_Stage1_Sunda = Choice(context: PersistenceService.context)
         choice4_Quiz4_Level12_Stage1_Sunda.id = 4
         choice4_Quiz4_Level12_Stage1_Sunda.name = "Ha"
-      
+        
         let quiz4_level12_stage1_Sunda = Quiz(context: PersistenceService.context)
         quiz4_level12_stage1_Sunda.id = 4
         quiz4_level12_stage1_Sunda.name = "Kuis 3"
@@ -9854,7 +9833,7 @@ class MainViewController: UIViewController {
         firstStageSunda.currentMedal = 0
         firstStageSunda.totalMedal = 45
         firstStageSunda.isLocked = false
-        firstStageSunda.levels = []
+        firstStageSunda.levels = [firstLevelStage1Sunda, secondLevelStage1Sunda, thirdLevelStage1Sunda, fourthLevelStage1Sunda, fifthLevelStage1Sunda, sixthLevelStage1Sunda, seventhLevelStage1Sunda, eightLevelStage1Sunda, ninthLevelStage1Sunda, tenthLevelStage1Sunda, eleventhLevelStage1Sunda, twelfthLevelStage1Sunda, thirteenthLevelStage1Sunda, fourteenthLevelStage1Sunda, fifteenthLevelStage1Sunda]
         
         let secondStageSunda = Stage(context: PersistenceService.context)
         secondStageSunda.id = 6
