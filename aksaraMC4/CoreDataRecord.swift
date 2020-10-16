@@ -9840,7 +9840,7 @@ class CoreDataRecord {
         secondStageSunda.name = "Stage 2"
         secondStageSunda.currentMedal = 0
         secondStageSunda.totalMedal = 45
-        secondStageSunda.isLocked = false
+        secondStageSunda.isLocked = true
         secondStageSunda.levels = []
         
         let thirdStageSunda = Stage(context: PersistenceService.context)
@@ -9848,7 +9848,7 @@ class CoreDataRecord {
         thirdStageSunda.name = "Stage 3"
         thirdStageSunda.currentMedal = 0
         thirdStageSunda.totalMedal = 45
-        thirdStageSunda.isLocked = false
+        thirdStageSunda.isLocked = true
         thirdStageSunda.levels = []
         
         let fourthStageSunda = Stage(context: PersistenceService.context)
