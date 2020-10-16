@@ -16,4 +16,7 @@ class LightTheme: ThemeProtocol {
     var textColor2: UIColor = UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1)
     var accentColor: UIColor = UIColor.init(displayP3Red: 24/255, green: 23/255, blue: 39/255, alpha: 1)
     var purpleColor: UIColor = UIColor.init(displayP3Red: 64/255, green: 20/255, blue: 128/255, alpha: 1)
+    var accentWhite: UIColor = UIColor.init(displayP3Red: 243/255, green: 250/255, blue: 255/255, alpha: 1)
+    var accentLightBlue: UIColor = UIColor.init(displayP3Red: 188/255, green: 235/255, blue: 255/255, alpha: 1)
+    var accentTextBlue: UIColor = UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1)
 }

@@ -267,6 +267,32 @@ extension UIView {
         self.layer.insertSublayer(gradientLayer, at:0)
     }
     
+    func setCardTrueBackgroundColor() {
+        let colorTop =  UIColor(red: 134/255.0, green: 227/255.0, blue: 145/255.0, alpha: 1.0).cgColor
+        let colorBottom = UIColor(red: 7/255.0, green: 202/255.0, blue: 95/255.0, alpha: 1.0).cgColor
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorTop, colorBottom]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame = CGRect(x: -10.0, y: -10.0, width: 240, height: 160)
+        gradientLayer.cornerRadius = 24
+        
+        self.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
+    func setCardFalseBackgroundColor() {
+        let colorTop =  UIColor(red: 246/255.0, green: 81/255.0, blue: 100/255.0, alpha: 1.0).cgColor
+        let colorBottom = UIColor(red: 215/255.0, green: 58/255.0, blue: 76/255.0, alpha: 1.0).cgColor
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorTop, colorBottom]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame = CGRect(x: 0.0, y: 0.0, width: 220, height: 140)
+        gradientLayer.cornerRadius = 24
+        
+        self.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
     func setTextGradientColor() {
         let colorTop =  UIColor(red: 36/255.0, green: 194/255.0, blue: 255/255.0, alpha: 1.0).cgColor
         let colorBottom = UIColor(red: 54/255.0, green: 159/255.0, blue: 255/255.0, alpha: 1.0).cgColor
@@ -296,7 +322,7 @@ extension UILabel {
     func setTextColorToGradient(image: UIImage) {
         UIGraphicsBeginImageContext(frame.size)
         image.draw(in: bounds)
-        let myGradient = UIGraphicsGetImageFromCurrentImageContext()
+        //let myGradient = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
 
         self.textColor = UIColor(patternImage: UIImage(named: "gradientText")!)
