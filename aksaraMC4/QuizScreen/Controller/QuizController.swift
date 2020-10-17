@@ -692,12 +692,13 @@ class QuizController: UIViewController, QuizControllerProtocol {
         return button
     }()
     
+    // BUTTON KEMBALI, NAMANYA MAIN ULANG
     @objc let mainUlangButton: UIButton = {
         let button = UIButton()
         button.setBackgroundImage(UIImage(named: "mainUlangButton"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
-        button.addTarget(self, action: #selector(handlePopBack), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handlePopBackFromReward), for: .touchUpInside)
         return button
     }()
     
@@ -934,13 +935,27 @@ class QuizController: UIViewController, QuizControllerProtocol {
             quizScreen.levels = levels
             quizScreen.level = nextLevel
             
-            nextLevel?.isLocked = false
+            level?.isLocked = false
             level?.totalMedal = Int64(totalMedal)
             PersistenceService.saveContext()
             
             navigationController?.pushViewController(quizScreen, animated: true)
         }
     
+    }
+    
+    @objc func handlePopBackFromReward() {
+        if (Int(level!.id) < 15) {
+            let levelId = Int(level!.id)
+            self.nextLevel = levels![levelId]
+            
+            nextLevel?.isLocked = false
+            
+        }
+        level?.totalMedal = Int64(totalMedal)
+        PersistenceService.saveContext()
+        
+        handlePopBack()
     }
  
 //    @objc func restartQuiz() {
