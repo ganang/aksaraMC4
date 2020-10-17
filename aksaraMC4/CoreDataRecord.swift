@@ -350,7 +350,7 @@ class CoreDataRecord {
         quiz5_level2_stage1_Jawa.name = "Kuis 4"
         quiz5_level2_stage1_Jawa.type = "D"
         quiz5_level2_stage1_Jawa.isCorrect = false
-        quiz5_level2_stage1_Jawa.question = "ka"
+        quiz5_level2_stage1_Jawa.question = "Ka"
         quiz5_level2_stage1_Jawa.choices = []
         quiz5_level2_stage1_Jawa.images = []
         

@@ -16,7 +16,18 @@ class QuizViewTypeE: UICollectionViewCell {
     var soalKe : String = "5"
     var alphabet : String?
     var regionSelected : String?
-    var quizData: Quiz?
+    var quizData: Quiz? {
+        didSet {
+            self.alphabet = quizData?.question
+            let questionString: String = alphabet!
+            let imageString: String = "Jawa Soal 5 \(questionString)"
+            
+            print("EEEE", imageString)
+                
+            quizAnswerLabel.text = "Tulis Aksara \(questionString)"
+            answerImage.image = UIImage(named: imageString)
+        }
+    }
     
     func handleTimer() {
         
@@ -77,7 +88,7 @@ class QuizViewTypeE: UICollectionViewCell {
     //Image
     let answerImage: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "Jawa Soal 5 Ha")
+//        image.image = UIImage(named: "Jawa Soal 5 Ha")
         image.contentMode = .scaleAspectFit
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
@@ -89,7 +100,7 @@ class QuizViewTypeE: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.init(name: "Now-Medium", size: 24)
         label.textColor = Theme.current.textColor1
-        label.text = "Tulis aksara Ha"
+//        label.text = "Tulis aksara Ha"
         return label
     }()
     
