@@ -70,7 +70,42 @@ class LevelController: UIViewController {
         modalTap()
         setupCurrentLevel()
         settingLayout()
+        settingNotificationCenter()
+        settingInitial()
 
+    }
+    
+    func settingNotificationCenter() {
+        NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveData), name: NSNotification.Name(rawValue: "updateData"), object: .none)
+    }
+    
+    @objc func onDidReceiveData(_ notification: Notification) {
+        let userInfo = notification.userInfo
+        if (userInfo!["update"] != nil) == true {
+            print("MASUK SINIIIIII")
+            levelView.backgroundBlurView.removeFromSuperview()
+            tapFunction()
+            tapButtonFunction()
+            modalTap()
+            setupCurrentLevel()
+            settingLayout()
+            settingInitial()
+            
+            
+        }
+        
+    }
+    
+    func settingInitial() {
+//        print("sampai sini")
+//        let correctLabel = [levelView.correctOrWrongAnswerImage1, levelView.correctOrWrongAnswerImage2,levelView.correctOrWrongAnswerImage3,levelView.correctOrWrongAnswerImage4,levelView.correctOrWrongAnswerImage5]
+//
+//        if level?.isInitial == true {
+//            levelView.startPlayButton.setTitle("Mulai Main", for: .normal)
+//            for n in 1...quizes!.count - 1 {
+//                correctLabel[n-1].image = UIImage(named: "")
+//            }
+//        }
     }
     
     func setupCurrentLevel() {
@@ -669,13 +704,15 @@ class LevelController: UIViewController {
     
     @objc func levelSelector(sender: UIButton) {
         
-        let i = sender.tag - 1
-        self.quizes = levels![i].quizes!.sortedArray(using: [.init(key: "id", ascending: true)]) as? [Quiz]
-        self.level = levels![i]
+        let i = sender.tag
+        self.quizes = levels![i-1].quizes!.sortedArray(using: [.init(key: "id", ascending: true)]) as? [Quiz]
+        self.level = levels?[i-1]
         levelView.levelCircleLogoModal.setTitle("\(i)", for: .normal)
-        let totalmedal = levels![i].totalMedal
+        let totalmedal = levels![i-1].totalMedal
         let gununganImageName = "GununganStand\(totalmedal)"
         levelView.gununganImageModal.image = UIImage(named: gununganImageName)
+        
+
         
         //find count correct answer
         let correctLabel = [levelView.correctOrWrongAnswerImage1, levelView.correctOrWrongAnswerImage2,levelView.correctOrWrongAnswerImage3,levelView.correctOrWrongAnswerImage4,levelView.correctOrWrongAnswerImage5]
@@ -688,6 +725,14 @@ class LevelController: UIViewController {
                 correctLabel[n-1].image = UIImage(named: "wrongAnswer")
             }
         }
+        if level?.isInitial == true {
+            levelView.startPlayButton.setTitle("Mulai Main", for: .normal)
+            for n in 1...quizes!.count - 1 {
+                correctLabel[n-1].image = UIImage(named: "")
+            }
+        } else {
+            levelView.startPlayButton.setTitle("Main Lagi", for: .normal)
+        }
         
         levelView.nilaiLabel.text = "\(totalCorrect)/5"
         levelView.showModal()
@@ -699,7 +744,6 @@ class LevelController: UIViewController {
         quizScreen.quizes = quizes
         quizScreen.levels = levels
         quizScreen.level = level
-        
         navigationController?.pushViewController(quizScreen, animated: true)
     }
     
@@ -708,6 +752,5 @@ class LevelController: UIViewController {
     }
     
     @objc func tapCtnr() {
-        print("tapped Ctnr")
     }
 }

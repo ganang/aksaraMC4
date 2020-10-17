@@ -21,7 +21,7 @@ class QuizViewTypeB: UICollectionViewCell {
     var imageNameSoal4 : String?
     var imageNameJawab : String?
     var initialClick = false
-    lazy var choices = [String]()
+    var choicesArray = [String]()
     var answersBGView = [CustomView]()
     var answersChoiceLabel = [UILabel]()
     var answersChoiceImage = [UIImageView]()
@@ -31,25 +31,26 @@ class QuizViewTypeB: UICollectionViewCell {
             self.alphabet = quizData?.question!
             
             let choices = quizData?.choices?.sortedArray(using: [.init(key: "id", ascending: true)]) as? [Choice]
+            print("CHOICES", choices)
             
             for i in 0...choices!.count - 1 {
                 let choice = choices?[i].name
-                self.choices.append(choice!)
+                self.choicesArray.append(choice!)
             }
             
-            imageNameSoal1 = "\(regionSelected!) Jawaban \(self.choices[0])"
-            imageNameSoal2 = "\(regionSelected!) Jawaban \(self.choices[1])"
-            imageNameSoal3 = "\(regionSelected!) Jawaban \(self.choices[2])"
-            imageNameSoal4 = "\(regionSelected!) Jawaban \(self.choices[3])"
+            imageNameSoal1 = "\(regionSelected!) Jawaban \(self.choicesArray[0])"
+            imageNameSoal2 = "\(regionSelected!) Jawaban \(self.choicesArray[1])"
+            imageNameSoal3 = "\(regionSelected!) Jawaban \(self.choicesArray[2])"
+            imageNameSoal4 = "\(regionSelected!) Jawaban \(self.choicesArray[3])"
             self.pilgan1Answer.image = UIImage(named: imageNameSoal1!)
             self.pilgan2Answer.image = UIImage(named: imageNameSoal2!)
             self.pilgan3Answer.image = UIImage(named: imageNameSoal3!)
             self.pilgan4Answer.image = UIImage(named: imageNameSoal4!)
             
-            self.answer1BgView.choice = self.choices[0]
-            self.answer2BgView.choice = self.choices[1]
-            self.answer3BgView.choice = self.choices[2]
-            self.answer4BgView.choice = self.choices[3]
+            self.answer1BgView.choice = self.choicesArray[0]
+            self.answer2BgView.choice = self.choicesArray[1]
+            self.answer3BgView.choice = self.choicesArray[2]
+            self.answer4BgView.choice = self.choicesArray[3]
             
             //aksaraQuizLabel
             aksaraQuizLabel.text = "\(alphabet!)"
@@ -61,7 +62,7 @@ class QuizViewTypeB: UICollectionViewCell {
     
     func handleTimer() {
         var arrayAlpha = [0, 1, 2, 3]
-        let index = choices.firstIndex(of: alphabet!)
+        let index = choicesArray.firstIndex(of: alphabet!)
         arrayAlpha = arrayAlpha.filter { $0 != index}
         
         for i in arrayAlpha {
@@ -290,7 +291,7 @@ class QuizViewTypeB: UICollectionViewCell {
     
     @objc func answerPressed(_ sender: UITapGestureRecognizer) {
         let view = sender.view as! CustomView
-        let index = choices.firstIndex(of: alphabet!)
+        let index = choicesArray.firstIndex(of: alphabet!)
         let id = view.id
         
         if initialClick == false {

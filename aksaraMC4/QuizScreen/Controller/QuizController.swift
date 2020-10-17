@@ -26,7 +26,7 @@ class QuizController: UIViewController, QuizControllerProtocol {
     
     var quizes : [Quiz]? {
         didSet {
-            //print("QUIZES SENT",quizes?.count)
+            print("QUIZES SENT",quizes?[2].choices?.count)
             quizTypeGuideModel = quizes![0]
             quizTypeAModel = quizes![1]
             quizTypeBModel = quizes![2]
@@ -780,10 +780,12 @@ class QuizController: UIViewController, QuizControllerProtocol {
             gununganImageModal.image = UIImage(named: "Gulungan True 2")
             selanjutnyaButton.addTarget(self, action: #selector(handleSelanjutnya), for: .touchUpInside)
             totalMedal = 2
+            handleNextLevel()
         } else{
             gununganImageModal.image = UIImage(named: "Gulungan True All")
             selanjutnyaButton.addTarget(self, action: #selector(handleSelanjutnya), for: .touchUpInside)
             totalMedal = 3
+            handleNextLevel()
         }
         
         
@@ -795,6 +797,28 @@ class QuizController: UIViewController, QuizControllerProtocol {
         
         nilaiLabel.text = "Nilai: \(totalQuizCorrect)/5"
         aksaraStepLabel.text = "Aksara Jawa Tahap \(stingStageIdString)-\(stingLevelIdString)"
+        
+        level?.totalMedal = Int64(totalMedal)
+        PersistenceService.saveContext()
+        
+        handleUpdateTotalMedalStage()
+    }
+    
+    func handleUpdateTotalMedalStage() {
+        var totalMedal = 0
+        
+        for i in 0...levels!.count - 1 {
+            let medal = Int((levels?[i].totalMedal)!)
+            
+            totalMedal = totalMedal + medal
+        }
+        
+        level?.stage?.currentMedal = Int64(totalMedal)
+        level?.isInitial = false
+        PersistenceService.saveContext()
+//        NotificationCenter.default.post(name: Notification.Name("updateData"), object: nil, userInfo: ["selectedPodcast": selectedPodcast as Any])
+        
+        NotificationCenter.default.post(name: Notification.Name("updateData"), object: nil, userInfo: ["update" : true])
     }
     
     @objc func showModal() {
@@ -943,7 +967,6 @@ class QuizController: UIViewController, QuizControllerProtocol {
             quizScreen.level = nextLevel
             
             level?.isLocked = false
-            level?.totalMedal = Int64(totalMedal)
             PersistenceService.saveContext()
             
             navigationController?.pushViewController(quizScreen, animated: true)
@@ -952,17 +975,24 @@ class QuizController: UIViewController, QuizControllerProtocol {
     }
     
     @objc func handlePopBackFromReward() {
+       
+        //change become not initial anymore
+        level?.isInitial = false
+        PersistenceService.saveContext()
+        
+        handleNextLevel()
+        handlePopBack()
+        
+    }
+    
+    func handleNextLevel() {
         if (Int(level!.id) < 15) {
             let levelId = Int(level!.id)
             self.nextLevel = levels![levelId]
             
             nextLevel?.isLocked = false
-            
+            PersistenceService.saveContext()
         }
-        level?.totalMedal = Int64(totalMedal)
-        PersistenceService.saveContext()
-        
-        handlePopBack()
     }
  
 //    @objc func restartQuiz() {
@@ -1043,7 +1073,9 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
             cell.lewatiButton.tag = indexPath.item
             cell.arrowRightButton.tag = indexPath.item
             cell.regionSelected = regionSelected
-            cell.quizData = quizTypeBModel
+            print("QUIZ2", quizes![2].choices?.count)
+            cell.quizData = quizes![2]
+            
             
             cell.delegate = self
             

@@ -34,8 +34,20 @@ class StageController: UIViewController {
         self.view = self.stageView
         tapFunction()
         settingLayout()
+        settingNotificationCenter()
         
-
+    }
+    
+    func settingNotificationCenter() {
+        NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveData), name: NSNotification.Name(rawValue: "updateData"), object: .none)
+    }
+    
+    @objc func onDidReceiveData(_ notification: Notification) {
+        let userInfo = notification.userInfo
+        if (userInfo!["update"] != nil) == true {
+            settingLayout()
+        }
+        
     }
     
     func settingLayout() {
@@ -129,7 +141,6 @@ class StageController: UIViewController {
         }
         
         if tahap4Model?.isLocked == false {
-            
             let tapTahap4 = UITapGestureRecognizer(target: self, action: #selector(self.tapTahap4))
             stageView.tahap4Card.addGestureRecognizer(tapTahap4)
         }

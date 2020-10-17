@@ -432,23 +432,7 @@ class CoreDataRecord {
         let choice4_Quiz3_Level3_Stage1_Jawa = Choice(context: PersistenceService.context)
         choice4_Quiz3_Level3_Stage1_Jawa.id = 4
         choice4_Quiz3_Level3_Stage1_Jawa.name = "Da"
-        
-        //MARK: Image
-        let image1_Quiz3_Level3_Stage1_Jawa = Image(context: PersistenceService.context)
-        image1_Quiz3_Level3_Stage1_Jawa.id = 1
-        image1_Quiz3_Level3_Stage1_Jawa.name = "Sa_Aksara_Jawa"
-        
-        let image2_Quiz3_Level3_Stage1_Jawa = Image(context: PersistenceService.context)
-        image2_Quiz3_Level3_Stage1_Jawa.id = 2
-        image2_Quiz3_Level3_Stage1_Jawa.name = "Ka_Aksara_Jawa"
-        
-        let image3_Quiz3_Level3_Stage1_Jawa = Image(context: PersistenceService.context)
-        image3_Quiz3_Level3_Stage1_Jawa.id = 3
-        image3_Quiz3_Level3_Stage1_Jawa.name = "Na_Aksara_Jawa"
-        
-        let image4_Quiz3_Level3_Stage1_Jawa = Image(context: PersistenceService.context)
-        image4_Quiz3_Level3_Stage1_Jawa.id = 4
-        image4_Quiz3_Level3_Stage1_Jawa.name = "Da_Aksara_Jawa"
+
         
         let quiz3_level3_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz3_level3_stage1_Jawa.id = 3
@@ -457,7 +441,7 @@ class CoreDataRecord {
         quiz3_level3_stage1_Jawa.isCorrect = false
         quiz3_level3_stage1_Jawa.question = "Da"
         quiz3_level3_stage1_Jawa.choices = [choice1_Quiz3_Level3_Stage1_Jawa, choice2_Quiz3_Level3_Stage1_Jawa, choice3_Quiz3_Level3_Stage1_Jawa, choice4_Quiz3_Level3_Stage1_Jawa]
-        quiz3_level3_stage1_Jawa.images = [image1_Quiz3_Level3_Stage1_Jawa, image2_Quiz3_Level3_Stage1_Jawa, image3_Quiz3_Level3_Stage1_Jawa, image4_Quiz3_Level3_Stage1_Jawa]
+        quiz3_level3_stage1_Jawa.images = []
         
         //MARK: Choice
         let choice1_Quiz4_Level3_Stage1_Jawa = Choice(context: PersistenceService.context)
@@ -7750,7 +7734,7 @@ class CoreDataRecord {
         quiz3_level3_stage1_Sunda.type = "B"
         quiz3_level3_stage1_Sunda.isCorrect = false
         quiz3_level3_stage1_Sunda.question = "Pa"
-        quiz3_level3_stage1_Sunda.choices = [choice1_Quiz3_Level3_Stage1_Jawa, choice2_Quiz3_Level3_Stage1_Jawa, choice3_Quiz3_Level3_Stage1_Jawa, choice4_Quiz3_Level3_Stage1_Jawa]
+        quiz3_level3_stage1_Sunda.choices = [choice1_Quiz3_Level3_Stage1_Sunda, choice2_Quiz3_Level3_Stage1_Sunda, choice3_Quiz3_Level3_Stage1_Sunda, choice4_Quiz3_Level3_Stage1_Sunda]
         quiz3_level3_stage1_Sunda.images = []
         
         //MARK: Choice
