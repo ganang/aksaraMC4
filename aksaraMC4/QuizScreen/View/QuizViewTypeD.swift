@@ -110,6 +110,7 @@ class QuizViewTypeD: UICollectionViewCell {
         canvasView.layer.cornerRadius = 24
         canvasView.backgroundColor = .clear
         canvasView.isOpaque = false
+        canvasView.allowsFingerDrawing = true
         
         return canvasView
     }()
