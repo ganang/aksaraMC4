@@ -10,10 +10,58 @@ import UIKit
 import AVFoundation
 
 class QuizViewTypeB: UICollectionViewCell {
-
+    
+    var delegate : QuizControllerProtocol?
+    
+    var alphabet : String?
+    var regionSelected : String?
+    var imageNameSoal1 : String?
+    var imageNameSoal2 : String?
+    var imageNameSoal3 : String?
+    var imageNameSoal4 : String?
+    var imageNameJawab : String?
+    var initialClick = false
+    lazy var choices = [String]()
+    var answersBGView = [CustomView]()
+    var answersChoiceLabel = [UILabel]()
+    var answersChoiceImage = [UIImageView]()
+    
+    var quizData: Quiz? {
+        didSet {
+            self.alphabet = quizData?.question!
+            
+            let choices = quizData?.choices?.sortedArray(using: [.init(key: "id", ascending: true)]) as? [Choice]
+            
+            for i in 0...choices!.count - 1 {
+                let choice = choices?[i].name
+                self.choices.append(choice!)
+            }
+            
+            imageNameSoal1 = "\(regionSelected!) Jawaban \(self.choices[0])"
+            imageNameSoal2 = "\(regionSelected!) Jawaban \(self.choices[1])"
+            imageNameSoal3 = "\(regionSelected!) Jawaban \(self.choices[2])"
+            imageNameSoal4 = "\(regionSelected!) Jawaban \(self.choices[3])"
+            self.pilgan1Answer.image = UIImage(named: imageNameSoal1!)
+            self.pilgan2Answer.image = UIImage(named: imageNameSoal2!)
+            self.pilgan3Answer.image = UIImage(named: imageNameSoal3!)
+            self.pilgan4Answer.image = UIImage(named: imageNameSoal4!)
+            
+            self.answer1BgView.choice = self.choices[0]
+            self.answer2BgView.choice = self.choices[1]
+            self.answer3BgView.choice = self.choices[2]
+            self.answer4BgView.choice = self.choices[3]
+            
+            //aksaraQuizLabel
+            aksaraQuizLabel.text = "\(alphabet!)"
+            
+            //aksaraLabel
+            aksaraLabel.text = "Aksara \(regionSelected!)"
+        }
+    }
+    
     func handleTimer() {
         var arrayAlpha = [0, 1, 2, 3]
-        let index = choices.firstIndex(of: "Ha")
+        let index = choices.firstIndex(of: alphabet!)
         arrayAlpha = arrayAlpha.filter { $0 != index}
         
         for i in arrayAlpha {
@@ -25,6 +73,10 @@ class QuizViewTypeB: UICollectionViewCell {
         answersChoiceImage[index!].setImageColor(color: .white)
         arrowRightButton.isHidden = false
         lewatiButton.isHidden = false
+        
+        // handle core data
+        quizData?.isCorrect = false
+        PersistenceService.saveContext()
     }
     
     //Button
@@ -48,11 +100,6 @@ class QuizViewTypeB: UICollectionViewCell {
         button.isHidden = true
         return button
     }()
-    
-       //Func
-    
-   
-       
     
     //Image
     let pilgan1Answer: UIImageView = {
@@ -176,7 +223,7 @@ class QuizViewTypeB: UICollectionViewCell {
     lazy var answer1BgView : CustomView = {
         let view = CustomView()
         view.id = 0
-        view.choice = "Ta"
+        view.choice = ""
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = Theme.current.cardColor1
         view.layer.cornerRadius = 32
@@ -193,7 +240,7 @@ class QuizViewTypeB: UICollectionViewCell {
     lazy var answer2BgView : CustomView = {
         let view = CustomView()
         view.id = 1
-        view.choice = "Ha"
+        view.choice = ""
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = Theme.current.cardColor1
         view.layer.cornerRadius = 32
@@ -210,7 +257,7 @@ class QuizViewTypeB: UICollectionViewCell {
     lazy var answer3BgView : CustomView = {
         let view = CustomView()
         view.id = 2
-        view.choice = "Pa"
+        view.choice = ""
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = Theme.current.cardColor1
         view.layer.cornerRadius = 32
@@ -227,7 +274,7 @@ class QuizViewTypeB: UICollectionViewCell {
     lazy var answer4BgView : CustomView = {
         let view = CustomView()
         view.id = 3
-        view.choice = "La"
+        view.choice = ""
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = Theme.current.cardColor1
         view.layer.cornerRadius = 32
@@ -241,25 +288,30 @@ class QuizViewTypeB: UICollectionViewCell {
         return view
     }()
     
-    var initial = false
-    var correctAnswer = "Ha"
-    var choices = ["Ta", "Ha", "Pa", "La"]
-    var answersBGView = [CustomView]()
-    var answersChoiceLabel = [UILabel]()
-    var answersChoiceImage = [UIImageView]()
-    
     @objc func answerPressed(_ sender: UITapGestureRecognizer) {
         let view = sender.view as! CustomView
-        let index = choices.firstIndex(of: "Ha")
+        let index = choices.firstIndex(of: alphabet!)
         let id = view.id
         
-        if initial == false {
-            if view.choice == correctAnswer {
+        if initialClick == false {
+            if view.choice == alphabet {
                 print("True")
                 answersBGView[index!].setCardTrueBackgroundColor()
                 answersChoiceLabel[index!].textColor = .white
                 answersChoiceImage[index!].setImageColor(color: .white)
-                playSound()
+                
+                var arrayAlpha = [0, 1, 2, 3]
+                arrayAlpha = arrayAlpha.filter { $0 != index}
+                
+                for i in arrayAlpha {
+                    answersBGView[i].alpha = 0.4
+                }
+                delegate?.stopTimerChoosen()
+//                playSound()
+                
+                // handle core data
+                quizData?.isCorrect = true
+                PersistenceService.saveContext()
             }else {
                 print("False")
                 answersBGView[id!].setCardFalseBackgroundColor()
@@ -269,11 +321,24 @@ class QuizViewTypeB: UICollectionViewCell {
                 answersBGView[index!].setCardTrueBackgroundColor()
                 answersChoiceLabel[index!].textColor = .white
                 answersChoiceImage[index!].setImageColor(color: .white)
-                playSound()
+                
+                var arrayAlpha = [0, 1, 2, 3]
+                arrayAlpha = arrayAlpha.filter { $0 != index}
+                arrayAlpha = arrayAlpha.filter { $0 != id}
+                
+                for i in arrayAlpha {
+                    answersBGView[i].alpha = 0.4
+                }
+                delegate?.stopTimerChoosen()
+//                playSound()
+                
+                // handle core data
+                quizData?.isCorrect = false
+                PersistenceService.saveContext()
             }
-            initial = true
             arrowRightButton.isHidden = false
             lewatiButton.isHidden = false
+            initialClick = true
         }
     }
     

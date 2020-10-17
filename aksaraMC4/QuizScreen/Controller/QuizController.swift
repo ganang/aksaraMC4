@@ -10,7 +10,39 @@ import UIKit
 import AVFoundation
 import PencilKit
 
-class QuizController: UIViewController {
+protocol QuizControllerProtocol {
+    func stopTimerChoosen()
+}
+
+class QuizController: UIViewController, QuizControllerProtocol {
+    
+    var regionSelected : String?
+    var quizTypeGuideModel: Quiz?
+    var quizTypeAModel: Quiz?
+    var quizTypeBModel: Quiz?
+    var quizTypeCModel: Quiz?
+    var quizTypeDModel: Quiz?
+    var quizTypeEModel: Quiz?
+    
+    var quizes : [Quiz]? {
+        didSet {
+            //print("QUIZES SENT",quizes?.count)
+            quizTypeGuideModel = quizes![0]
+            quizTypeAModel = quizes![1]
+            quizTypeBModel = quizes![2]
+            quizTypeCModel = quizes![3]
+            quizTypeDModel = quizes![4]
+            quizTypeEModel = quizes![5]
+        }
+    }
+    
+    var levels: [Level]? {
+        didSet {
+            
+        }
+    }
+    
+    var level: Level?
     
     private let QuizViewCell = "QuizViewCell"
     private let QuizViewTypeACell = "QuizViewTypeACell"
@@ -99,6 +131,11 @@ class QuizController: UIViewController {
 
     func endTimer() {
         countdownTimer.invalidate()
+        
+    }
+    
+    func stopTimerChoosen() {
+        endTimer()
     }
 
     func timeFormatted(_ totalSeconds: Int) -> String {
@@ -121,7 +158,7 @@ class QuizController: UIViewController {
     
     let previousButton : UIButton = {
         let button = UIButton(type: .custom)
-        if let image = UIImage(named: "BackButton.png") {
+        if let image = UIImage(named: "Back Button") {
             button.setImage(image, for: .normal)
         }
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -195,15 +232,10 @@ class QuizController: UIViewController {
         valueProgressBar = valueProgressBar + 0.1666666667
         self.progressiveBar.progress = Float(valueProgressBar)
         
-        // handle scroll collection
-        let indexPath = IndexPath(item: sender.tag + 1, section: 0)
-        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-        self.indexCollection = indexPath
-        
         // handle timer label button
-        timerLabelButton.isHidden = false
+        self.timerLabelButton.isHidden = false
         self.quizTopNumberLabel.text = quizPageFill[sender.tag + 1].navHeaderText
-        totalTime = quizPageFill[sender.tag + 1].HeaderTimer
+        self.totalTime = quizPageFill[sender.tag + 1].HeaderTimer
         
         // handle timer
         if (countdownTimer != nil) {
@@ -211,10 +243,21 @@ class QuizController: UIViewController {
         }
         
         startTimer()
+        
+        // handle scroll collection
+        let indexPath = IndexPath(item: sender.tag + 1, section: 0)
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        self.indexCollection = indexPath
     }
     
     @objc func handlePopBack(){
-        navigationController?.popViewController(animated: true)
+        // handle progress
+        for controller in self.navigationController!.viewControllers as Array {
+            if controller.isKind(of: LevelController.self) {
+                self.navigationController!.popToViewController(controller, animated: true)
+                break
+            }
+        }
     }
     
     override func viewDidLoad() {
@@ -222,6 +265,8 @@ class QuizController: UIViewController {
         setupCV()
         registerCV()
         setupDelegate()
+        
+        //print("REGION", regionSelected)
         
 
     }
@@ -643,16 +688,15 @@ class QuizController: UIViewController {
         button.setBackgroundImage(UIImage(named: "selanjutnyaButton"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
-        button.addTarget(self, action: #selector(hideRewardModal), for: .touchUpInside)
         return button
     }()
     
-    let mainUlangButton: UIButton = {
+    @objc let mainUlangButton: UIButton = {
         let button = UIButton()
         button.setBackgroundImage(UIImage(named: "mainUlangButton"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
-        button.addTarget(self, action: #selector(hideRewardModal), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handlePopBack), for: .touchUpInside)
         return button
     }()
     
@@ -665,7 +709,83 @@ class QuizController: UIViewController {
         return button
     }()
     
+    var totalQuizCorrect = 0
+    
+    func handleQuizRecord() {
+        let isCorrectQuiz1 = quizes?[1].isCorrect
+        let isCorrectQuiz2 = quizes?[2].isCorrect
+        let isCorrectQuiz3 = quizes?[3].isCorrect
+        let isCorrectQuiz4 = quizes?[4].isCorrect
+        let isCorrectQuiz5 = quizes?[5].isCorrect
+        
+        if isCorrectQuiz1! {
+            correctOrWrongAnswerImage1.image = UIImage(named: "correctAnswer")
+        } else {
+            correctOrWrongAnswerImage1.image = UIImage(named: "falseAnswer")
+        }
+        
+        if isCorrectQuiz2! {
+            correctOrWrongAnswerImage2.image = UIImage(named: "correctAnswer")
+        } else {
+            correctOrWrongAnswerImage2.image = UIImage(named: "falseAnswer")
+        }
+        
+        if isCorrectQuiz3! {
+            correctOrWrongAnswerImage3.image = UIImage(named: "correctAnswer")
+        } else {
+            correctOrWrongAnswerImage3.image = UIImage(named: "falseAnswer")
+        }
+        
+        if isCorrectQuiz4! {
+            correctOrWrongAnswerImage4.image = UIImage(named: "correctAnswer")
+        } else {
+            correctOrWrongAnswerImage4.image = UIImage(named: "falseAnswer")
+        }
+        
+        if isCorrectQuiz5! {
+            correctOrWrongAnswerImage5.image = UIImage(named: "correctAnswer")
+        } else {
+            correctOrWrongAnswerImage5.image = UIImage(named: "falseAnswer")
+        }
+        
+        
+        
+        for i in 0...quizes!.count - 1{
+            if quizes![i].isCorrect {
+                totalQuizCorrect = totalQuizCorrect + 1
+            }
+        }
+        
+        if totalQuizCorrect == 0 {
+            gununganImageModal.image = UIImage(named: "Gulungan True 0")
+            selanjutnyaButton.setBackgroundImage(UIImage(named: "mainLagiButton"), for: .normal)
+            selanjutnyaButton.addTarget(self, action: #selector(handleMainLagi), for: .touchUpInside)
+        } else if totalQuizCorrect == 1 || totalQuizCorrect == 2{
+            gununganImageModal.image = UIImage(named: "Gulungan True 1")
+            selanjutnyaButton.setBackgroundImage(UIImage(named: "mainLagiButton"), for: .normal)
+            selanjutnyaButton.addTarget(self, action: #selector(handleMainLagi), for: .touchUpInside)
+        } else if totalQuizCorrect == 3 || totalQuizCorrect == 4{
+            gununganImageModal.image = UIImage(named: "Gulungan True 2")
+            selanjutnyaButton.addTarget(self, action: #selector(handleSelanjutnya), for: .touchUpInside)
+        } else{
+            gununganImageModal.image = UIImage(named: "Gulungan True All")
+            selanjutnyaButton.addTarget(self, action: #selector(handleSelanjutnya), for: .touchUpInside)
+        }
+        
+        
+        let stingStageId : Int = Int((level?.stage!.id)!)
+        let stingStageIdString = String(stingStageId)
+        
+        let stingLevelId : Int = Int(level!.id)
+        let stingLevelIdString = String(stingLevelId)
+        
+        nilaiLabel.text = "Nilai: \(totalQuizCorrect)/5"
+        aksaraStepLabel.text = "Aksara Jawa Tahap \(stingStageIdString)-\(stingLevelIdString)"
+    }
+    
     @objc func showModal() {
+        
+        handleQuizRecord()
 
         view.addSubview(backgroundBlurView)
         backgroundBlurView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -785,7 +905,48 @@ class QuizController: UIViewController {
     @objc func hideRewardModal() {
         backgroundBlurView.removeFromSuperview()
     }
+    
+    @objc func handleMainLagi() {
+         let quizScreen = QuizController()
+        quizScreen.regionSelected = regionSelected
+        quizScreen.quizes = quizes
+        quizScreen.levels = levels
+        quizScreen.level = level
+        
+        navigationController?.pushViewController(quizScreen, animated: true)
+    }
+    
+    @objc func handleSelanjutnya() {
+        if (Int(level!.id) < 15) {
+            let levelId = Int(level!.id)
+            self.quizes = levels![levelId].quizes!.sortedArray(using: [.init(key: "id", ascending: true)]) as? [Quiz]
+            self.level = levels![levelId]
+            
+            let quizScreen = QuizController()
+            quizScreen.regionSelected = regionSelected
+            quizScreen.quizes = quizes
+            quizScreen.levels = levels
+            quizScreen.level = level
+            
+            level?.isLocked = false
+            level?.totalMedal = Int64(totalQuizCorrect)
+            PersistenceService.saveContext()
+            
+            navigationController?.pushViewController(quizScreen, animated: true)
+        }
+    
+    }
  
+//    @objc func restartQuiz() {
+//        let quizScreen = QuizController()
+//        quizScreen.regionSelected = regionSelected
+//        quizScreen.quizes = quizes
+//        quizScreen.levels = levels
+//
+//        navigationController?.pushViewController(quizScreen, animated: true)
+//    }
+    
+    
 }
 
 extension UIImage {
@@ -823,22 +984,28 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
             cell.setBackgroundColor()
             cell.kuisButton.addTarget(self, action: #selector(handleProgressBar), for: .touchUpInside)
 //            cell.reloadButton.addTarget(self, action: #selector(reloadPencilKit), for: .touchUpInside)
+            cell.regionSelected = regionSelected
+            cell.quizData = quizTypeGuideModel
             
             let tap = UITapGestureRecognizer(target: self, action: #selector(self.playSound(_:)))
             cell.quizBgView.isUserInteractionEnabled = true
             cell.quizBgView.addGestureRecognizer(tap)
-            
             
             cell.kuisButton.tag = indexPath.item
             return cell
         } else if(indexPath.item == 1){
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuizViewTypeACell, for: indexPath) as! QuizViewTypeA
             cell.setBackgroundColor()
+            cell.regionSelected = regionSelected
+            cell.quizData = quizTypeAModel
             
             cell.lewatiButton.addTarget(self, action: #selector(handleProgressBar), for: .touchUpInside)
             cell.arrowRightButton.addTarget(self, action: #selector(handleProgressBar), for: .touchUpInside)
             cell.lewatiButton.tag = indexPath.item
             cell.arrowRightButton.tag = indexPath.item
+            
+            cell.delegate = self
+            
             return cell
         } else if(indexPath.item == 2){
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuizViewTypeBCell, for: indexPath) as! QuizViewTypeB
@@ -847,6 +1014,10 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
             cell.arrowRightButton.addTarget(self, action: #selector(handleProgressBar), for: .touchUpInside)
             cell.lewatiButton.tag = indexPath.item
             cell.arrowRightButton.tag = indexPath.item
+            cell.regionSelected = regionSelected
+            cell.quizData = quizTypeBModel
+            
+            cell.delegate = self
             
             return cell
         } else if(indexPath.item == 3){
@@ -856,10 +1027,14 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
             cell.arrowRightButton.addTarget(self, action: #selector(handleProgressBar), for: .touchUpInside)
             cell.lewatiButton.tag = indexPath.item
             cell.arrowRightButton.tag = indexPath.item
+            cell.regionSelected = regionSelected
+            cell.quizData = quizTypeCModel
             
             let tap = UITapGestureRecognizer(target: self, action: #selector(self.playSound(_:)))
             cell.quizBgView.isUserInteractionEnabled = true
             cell.quizBgView.addGestureRecognizer(tap)
+            
+            cell.delegate = self
             
             return cell
         } else if(indexPath.item == 4){
@@ -869,6 +1044,10 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
             cell.arrowRightButton.addTarget(self, action: #selector(handleProgressBar), for: .touchUpInside)
             cell.lewatiButton.tag = indexPath.item
             cell.arrowRightButton.tag = indexPath.item
+            cell.regionSelected = regionSelected
+            cell.quizData = quizTypeDModel
+            
+            cell.delegate = self
             
             return cell
         } else{
@@ -876,9 +1055,12 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
             cell.setBackgroundColor()
             cell.lewatiButton.addTarget(self, action: #selector(showModal), for: .touchUpInside)
             cell.arrowRightButton.addTarget(self, action: #selector(showModal), for: .touchUpInside)
-            cell.confirmButton.addTarget(self, action: #selector(showModal), for: .touchUpInside)
             cell.lewatiButton.tag = indexPath.item
             cell.arrowRightButton.tag = indexPath.item
+            cell.regionSelected = regionSelected
+            cell.quizData = quizTypeEModel
+            
+            cell.delegate = self
             
             return cell
         }
