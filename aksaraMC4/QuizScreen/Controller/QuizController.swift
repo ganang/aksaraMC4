@@ -247,8 +247,13 @@ class QuizController: UIViewController, QuizControllerProtocol {
         
         // handle scroll collection
         let indexPath = IndexPath(item: sender.tag + 1, section: 0)
-        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         self.indexCollection = indexPath
+//        collectionView.scrollToItem(at: indexPath, at: .top, animated: true)
+        
+        if self.collectionView.dataSource?.collectionView(self.collectionView, cellForItemAt: IndexPath(row: 0, section: 0)) != nil {
+            let rect = self.collectionView.layoutAttributesForItem(at: indexPath)?.frame
+            self.collectionView.scrollRectToVisible(rect!, animated: false)
+        }
     }
     
     @objc func handlePopBack(){
@@ -347,6 +352,8 @@ class QuizController: UIViewController, QuizControllerProtocol {
         collectionView.register(QuizViewTypeD.self, forCellWithReuseIdentifier: QuizViewTypeDCell)
         collectionView.register(QuizViewTypeE.self, forCellWithReuseIdentifier: QuizViewTypeECell)
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "example")
+        collectionView.reloadData()
+        collectionView.layoutIfNeeded()
     }
     
     func setupDelegate() {
