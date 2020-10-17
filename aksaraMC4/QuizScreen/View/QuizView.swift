@@ -187,12 +187,14 @@ class QuizView: UICollectionViewCell {
         return view
     }()
     
-    let canvasView: PKCanvasView = {
+    lazy var canvasView: PKCanvasView = {
         let canvasView = PKCanvasView()
         canvasView.translatesAutoresizingMaskIntoConstraints = false
         canvasView.layer.cornerRadius = 24
         canvasView.backgroundColor = .clear
         canvasView.isOpaque = false
+        canvasView.alwaysBounceVertical = true
+        canvasView.allowsFingerDrawing = true
         
         return canvasView
     }()
@@ -210,7 +212,6 @@ class QuizView: UICollectionViewCell {
     @objc func reloadPencilKit() {
         canvasView.drawing = PKDrawing()
     }
-    
     
     func setupView(){
         
