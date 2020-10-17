@@ -799,9 +799,11 @@ class QuizController: UIViewController, QuizControllerProtocol {
         aksaraStepLabel.text = "Aksara Jawa Tahap \(stingStageIdString)-\(stingLevelIdString)"
         
         level?.totalMedal = Int64(totalMedal)
-        PersistenceService.saveContext()
         
         handleUpdateTotalMedalStage()
+        PersistenceService.saveContext()
+        
+        
     }
     
     func handleUpdateTotalMedalStage() {
@@ -814,6 +816,8 @@ class QuizController: UIViewController, QuizControllerProtocol {
         }
         
         level?.stage?.currentMedal = Int64(totalMedal)
+        print("TOTAL MEDAL",totalMedal)
+        print("TOTAL MEDAL ON COREDATA", level?.stage?.currentMedal)
         level?.isInitial = false
         PersistenceService.saveContext()
 //        NotificationCenter.default.post(name: Notification.Name("updateData"), object: nil, userInfo: ["selectedPodcast": selectedPodcast as Any])

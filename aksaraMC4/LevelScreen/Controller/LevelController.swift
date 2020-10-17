@@ -71,7 +71,6 @@ class LevelController: UIViewController {
         setupCurrentLevel()
         settingLayout()
         settingNotificationCenter()
-        settingInitial()
 
     }
     
@@ -89,24 +88,18 @@ class LevelController: UIViewController {
             modalTap()
             setupCurrentLevel()
             settingLayout()
-            settingInitial()
+            settingCurrentMedal()
             
             
         }
         
     }
     
-    func settingInitial() {
-//        print("sampai sini")
-//        let correctLabel = [levelView.correctOrWrongAnswerImage1, levelView.correctOrWrongAnswerImage2,levelView.correctOrWrongAnswerImage3,levelView.correctOrWrongAnswerImage4,levelView.correctOrWrongAnswerImage5]
-//
-//        if level?.isInitial == true {
-//            levelView.startPlayButton.setTitle("Mulai Main", for: .normal)
-//            for n in 1...quizes!.count - 1 {
-//                correctLabel[n-1].image = UIImage(named: "")
-//            }
-//        }
+    func settingCurrentMedal() {
+        levelView.currentGununganLabel.text = "\(level?.stage?.currentMedal ?? 0)"
     }
+    
+
     
     func setupCurrentLevel() {
         
@@ -135,8 +128,10 @@ class LevelController: UIViewController {
     
     func settingLayout() {
         
+        print("currentmedal on setuplayout",levelCurrentMedal)
         
         levelView.currentGununganLabel.text = "\(levelCurrentMedal ?? 0)"
+        
         levelView.backButtonTitle.text = "Tahap \(currentStage!)"
         
         //setting layout level 1

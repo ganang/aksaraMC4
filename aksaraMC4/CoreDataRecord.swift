@@ -1496,7 +1496,7 @@ class CoreDataRecord {
         quiz2_level10_stage1_Jawa.type = "A"
         quiz2_level10_stage1_Jawa.isCorrect = false
         quiz2_level10_stage1_Jawa.question = "Ya"
-        quiz2_level10_stage1_Jawa.choices = [choice1_Quiz2_Level10_Stage1_Jawa, choice2_Quiz2_Level10_Stage1_Jawa, choice3_Quiz2_Level10_Stage1_Jawa, choice3_Quiz2_Level10_Stage1_Jawa]
+        quiz2_level10_stage1_Jawa.choices = [choice1_Quiz2_Level10_Stage1_Jawa, choice2_Quiz2_Level10_Stage1_Jawa, choice3_Quiz2_Level10_Stage1_Jawa, choice4_Quiz2_Level10_Stage1_Jawa]
         quiz2_level10_stage1_Jawa.images = [image1_Quiz2_Level10_Stage1_Jawa, image2_Quiz2_Level10_Stage1_Jawa, image3_Quiz2_Level10_Stage1_Jawa, image4_Quiz2_Level10_Stage1_Jawa]
         
         //MARK: Choice
@@ -3062,12 +3062,12 @@ class CoreDataRecord {
         
         let quiz2_level5_stage2_Jawa = Quiz(context: PersistenceService.context)
         quiz2_level5_stage2_Jawa.id = 2
-        quiz2_level5_stage1_Jawa.name = "Kuis 1"
-        quiz2_level5_stage1_Jawa.type = "A"
-        quiz2_level5_stage1_Jawa.isCorrect = false
-        quiz2_level5_stage1_Jawa.question = "Wang"
-        quiz2_level5_stage1_Jawa.choices = [choice1_Quiz2_Level5_Stage2_Jawa, choice2_Quiz2_Level5_Stage2_Jawa, choice3_Quiz2_Level5_Stage2_Jawa, choice4_Quiz2_Level5_Stage2_Jawa]
-        quiz2_level5_stage1_Jawa.images = [image1_Quiz2_Level5_Stage2_Jawa, image2_Quiz2_Level5_Stage2_Jawa, image3_Quiz2_Level5_Stage2_Jawa, image4_Quiz2_Level5_Stage2_Jawa]
+        quiz2_level5_stage2_Jawa.name = "Kuis 1"
+        quiz2_level5_stage2_Jawa.type = "A"
+        quiz2_level5_stage2_Jawa.isCorrect = false
+        quiz2_level5_stage2_Jawa.question = "Wang"
+        quiz2_level5_stage2_Jawa.choices = [choice1_Quiz2_Level5_Stage2_Jawa, choice2_Quiz2_Level5_Stage2_Jawa, choice3_Quiz2_Level5_Stage2_Jawa, choice4_Quiz2_Level5_Stage2_Jawa]
+        quiz2_level5_stage2_Jawa.images = [image1_Quiz2_Level5_Stage2_Jawa, image2_Quiz2_Level5_Stage2_Jawa, image3_Quiz2_Level5_Stage2_Jawa, image4_Quiz2_Level5_Stage2_Jawa]
         
         //MARK: Choice
         let choice1_Quiz3_Level5_Stage2_Jawa = Choice(context: PersistenceService.context)
