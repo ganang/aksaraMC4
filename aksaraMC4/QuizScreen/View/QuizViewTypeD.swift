@@ -11,8 +11,18 @@ import PencilKit
 
 class QuizViewTypeD: UICollectionViewCell {
 
+    var delegate : QuizControllerProtocol?
+    
+    var soalKe : String = "4"
+    var alphabet : String?
+    var regionSelected : String?
+    var quizData: Quiz?
+   
     func handleTimer() {
-        print("ping")
+        
+        // handle core data
+        quizData?.isCorrect = true
+        PersistenceService.saveContext()
     }
     
     //Button
@@ -26,12 +36,12 @@ class QuizViewTypeD: UICollectionViewCell {
         return button
     }()
     
-    let confirmButton: UIButton = {
+    lazy var confirmButton: UIButton = {
         let button = UIButton()
         button.setBackgroundImage(UIImage(named: "buttonConfirm"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(handleNext), for: .touchUpInside)
         button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
+        button.addTarget(self, action: #selector(konfirmasiCanvas), for: .touchUpInside)
         return button
     }()
     
@@ -40,7 +50,6 @@ class QuizViewTypeD: UICollectionViewCell {
         let symbolConfig = UIImage.SymbolConfiguration(pointSize: 20.0, weight: .medium, scale: .default)
         button.setBackgroundImage(UIImage(systemName: "chevron.right", withConfiguration: symbolConfig), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(handleNext), for: .touchUpInside)
         button.tintColor = Theme.current.accentTextBlue
         return button
     }()
@@ -52,16 +61,18 @@ class QuizViewTypeD: UICollectionViewCell {
         button.setAttributedTitle(custombutton, for: .normal)
         button.titleLabel?.font = UIFont.init(name: "Now-Medium", size: 20)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(handleNext), for: .touchUpInside)
         return button
     }()
     
        //Func
-       @objc func handleNext() {
-           print("Next")
+       @objc func konfirmasiCanvas() {
+           print("ping")
+           delegate?.stopTimerChoosen()
+        
+            // handle core data
+            quizData?.isCorrect = true
+            PersistenceService.saveContext()
        }
-   
-       
     
     //Image
     let answerImage: UIImageView = {

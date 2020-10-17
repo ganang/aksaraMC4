@@ -50,6 +50,8 @@ class LevelController: UIViewController {
             level15Model = levels![14]
         }
     }
+    var quizes : [Quiz]?
+    var level: Level?
     
 
     
@@ -667,9 +669,9 @@ class LevelController: UIViewController {
     
     @objc func levelSelector(sender: UIButton) {
         
-        let i = sender.tag
-        let quizes = levels![i].quizes!.sortedArray(using: [.init(key: "id", ascending: true)]) as? [Quiz]
-        //print(quizes)
+        let i = sender.tag - 1
+        self.quizes = levels![i].quizes!.sortedArray(using: [.init(key: "id", ascending: true)]) as? [Quiz]
+        self.level = levels![i]
         levelView.levelCircleLogoModal.setTitle("\(i)", for: .normal)
         let totalmedal = levels![i].totalMedal
         let gununganImageName = "GununganStand\(totalmedal)"
@@ -692,7 +694,13 @@ class LevelController: UIViewController {
     }
     
     @objc func goToQuizSection() {
-        print("Go To Quiz")
+        let quizScreen = QuizController()
+        quizScreen.regionSelected = regionSelected
+        quizScreen.quizes = quizes
+        quizScreen.levels = levels
+        quizScreen.level = level
+        
+        navigationController?.pushViewController(quizScreen, animated: true)
     }
     
     @objc func hideModal() {

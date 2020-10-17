@@ -11,6 +11,31 @@ import PencilKit
 
 class QuizView: UICollectionViewCell {
 
+    var soalKe : String = "1"
+    var alphabet : String?
+    var regionSelected : String?
+    var imageNameSoal : String?
+    var imageNameJawab : String?
+    var quizData: Quiz? {
+        didSet {
+            self.alphabet = quizData?.question!
+            
+            //quizImage
+            imageNameSoal = "\(regionSelected!) Soal \(soalKe) \(alphabet!)"
+            quizImage.image = UIImage(named: imageNameSoal!)
+            
+            //carakanLabel
+            carakanLabel.text = "\(alphabet!)"
+            
+            //aksaraLabel
+            aksaraLabel.text = "Aksara \(regionSelected!)"
+            
+            //answerImage
+            imageNameJawab = "\(regionSelected!) Soal 4 \(alphabet!)"
+            answerImage.image = UIImage(named: imageNameJawab!)
+        }
+    }
+    
     //Button
     lazy var reloadButton: UIButton = {
         let button = UIButton()

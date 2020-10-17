@@ -659,7 +659,7 @@ class LevelView: UIView {
         button.titleLabel?.font = UIFont.init(name: "Now-Medium", size: 20)
         button.setTitleColor(Theme.current.textColor1, for: .normal)
         button.layer.cornerRadius = 28
-        button.layer.borderColor = CGColor.init(red: 29/255, green: 112/255, blue: 188/255, alpha: 1)
+//        button.layer.borderColor = CGColor.init(red: 29/255, green: 112/255, blue: 188/255, alpha: 1)
         button.layer.borderWidth = 2
         button.translatesAutoresizingMaskIntoConstraints = false
         
