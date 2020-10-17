@@ -43,6 +43,7 @@ class QuizController: UIViewController, QuizControllerProtocol {
     }
     
     var level: Level?
+    var nextLevel: Level?
     
     private let QuizViewCell = "QuizViewCell"
     private let QuizViewTypeACell = "QuizViewTypeACell"
@@ -710,6 +711,7 @@ class QuizController: UIViewController, QuizControllerProtocol {
     }()
     
     var totalQuizCorrect = 0
+    var totalMedal = 0
     
     func handleQuizRecord() {
         let isCorrectQuiz1 = quizes?[1].isCorrect
@@ -760,16 +762,20 @@ class QuizController: UIViewController, QuizControllerProtocol {
             gununganImageModal.image = UIImage(named: "Gulungan True 0")
             selanjutnyaButton.setBackgroundImage(UIImage(named: "mainLagiButton"), for: .normal)
             selanjutnyaButton.addTarget(self, action: #selector(handleMainLagi), for: .touchUpInside)
+            totalMedal = 0
         } else if totalQuizCorrect == 1 || totalQuizCorrect == 2{
             gununganImageModal.image = UIImage(named: "Gulungan True 1")
             selanjutnyaButton.setBackgroundImage(UIImage(named: "mainLagiButton"), for: .normal)
             selanjutnyaButton.addTarget(self, action: #selector(handleMainLagi), for: .touchUpInside)
+            totalMedal = 1
         } else if totalQuizCorrect == 3 || totalQuizCorrect == 4{
             gununganImageModal.image = UIImage(named: "Gulungan True 2")
             selanjutnyaButton.addTarget(self, action: #selector(handleSelanjutnya), for: .touchUpInside)
+            totalMedal = 2
         } else{
             gununganImageModal.image = UIImage(named: "Gulungan True All")
             selanjutnyaButton.addTarget(self, action: #selector(handleSelanjutnya), for: .touchUpInside)
+            totalMedal = 3
         }
         
         
@@ -920,16 +926,16 @@ class QuizController: UIViewController, QuizControllerProtocol {
         if (Int(level!.id) < 15) {
             let levelId = Int(level!.id)
             self.quizes = levels![levelId].quizes!.sortedArray(using: [.init(key: "id", ascending: true)]) as? [Quiz]
-            self.level = levels![levelId]
+            self.nextLevel = levels![levelId]
             
             let quizScreen = QuizController()
             quizScreen.regionSelected = regionSelected
             quizScreen.quizes = quizes
             quizScreen.levels = levels
-            quizScreen.level = level
+            quizScreen.level = nextLevel
             
-            level?.isLocked = false
-            level?.totalMedal = Int64(totalQuizCorrect)
+            nextLevel?.isLocked = false
+            level?.totalMedal = Int64(totalMedal)
             PersistenceService.saveContext()
             
             navigationController?.pushViewController(quizScreen, animated: true)
