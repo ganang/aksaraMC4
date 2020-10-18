@@ -8058,7 +8058,7 @@ class CoreDataRecord {
         //MARK: Choice
         let choice1_Quiz4_Level6_Stage1_Sunda = Choice(context: PersistenceService.context)
         choice1_Quiz4_Level6_Stage1_Sunda.id = 1
-        choice1_Quiz4_Level6_Stage1_Sunda.name = "Ia"
+        choice1_Quiz4_Level6_Stage1_Sunda.name = "I"
         
         let choice2_Quiz4_Level6_Stage1_Sunda = Choice(context: PersistenceService.context)
         choice2_Quiz4_Level6_Stage1_Sunda.id = 2
@@ -8519,7 +8519,7 @@ class CoreDataRecord {
         quiz6_level10_stage1_Sunda.name = "Kuis 5"
         quiz6_level10_stage1_Sunda.type = "E"
         quiz6_level10_stage1_Sunda.isCorrect = false
-        quiz6_level10_stage1_Sunda.question = "Ya"
+        quiz6_level10_stage1_Sunda.question = "E"
         quiz6_level10_stage1_Sunda.choices = []
         quiz6_level10_stage1_Sunda.images = []
         
@@ -9812,7 +9812,7 @@ class CoreDataRecord {
         
         // MARK: Stage Sunda
         let firstStageSunda = Stage(context: PersistenceService.context)
-        firstStageSunda.id = 5
+        firstStageSunda.id = 1
         firstStageSunda.name = "Stage 1"
         firstStageSunda.currentMedal = 0
         firstStageSunda.totalMedal = 45
@@ -9820,7 +9820,7 @@ class CoreDataRecord {
         firstStageSunda.levels = [firstLevelStage1Sunda, secondLevelStage1Sunda, thirdLevelStage1Sunda, fourthLevelStage1Sunda, fifthLevelStage1Sunda, sixthLevelStage1Sunda, seventhLevelStage1Sunda, eightLevelStage1Sunda, ninthLevelStage1Sunda, tenthLevelStage1Sunda, eleventhLevelStage1Sunda, twelfthLevelStage1Sunda, thirteenthLevelStage1Sunda, fourteenthLevelStage1Sunda, fifteenthLevelStage1Sunda]
         
         let secondStageSunda = Stage(context: PersistenceService.context)
-        secondStageSunda.id = 6
+        secondStageSunda.id = 2
         secondStageSunda.name = "Stage 2"
         secondStageSunda.currentMedal = 0
         secondStageSunda.totalMedal = 45
@@ -9828,7 +9828,7 @@ class CoreDataRecord {
         secondStageSunda.levels = []
         
         let thirdStageSunda = Stage(context: PersistenceService.context)
-        thirdStageSunda.id = 7
+        thirdStageSunda.id = 3
         thirdStageSunda.name = "Stage 3"
         thirdStageSunda.currentMedal = 0
         thirdStageSunda.totalMedal = 45
@@ -9836,7 +9836,7 @@ class CoreDataRecord {
         thirdStageSunda.levels = []
         
         let fourthStageSunda = Stage(context: PersistenceService.context)
-        fourthStageSunda.id = 8
+        fourthStageSunda.id = 4
         fourthStageSunda.name = "Stage 4"
         fourthStageSunda.currentMedal = 0
         fourthStageSunda.totalMedal = 45

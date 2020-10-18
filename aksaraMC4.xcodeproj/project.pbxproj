@@ -7,12 +7,60 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		231ACF762534765A00B46D58 /* motivation.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 231ACF752534765A00B46D58 /* motivation.mp3 */; };
 		231EA807252DE9C7004FB678 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231EA806252DE9C7004FB678 /* QuizView.swift */; };
 		231EA809252DEA18004FB678 /* QuizController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231EA808252DEA18004FB678 /* QuizController.swift */; };
 		235D23B42532DA680007F81E /* QuizViewTypeD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235D23B32532DA680007F81E /* QuizViewTypeD.swift */; };
 		235D23B62532DEAB0007F81E /* QuizViewTypeE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235D23B52532DEAB0007F81E /* QuizViewTypeE.swift */; };
 		2372F70F2530420000E79198 /* QuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2372F70E2530420000E79198 /* QuizModel.swift */; };
+		23A900DB253C2BFE008636B1 /* Sunda Suara Ya.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A900A9253C2BFD008636B1 /* Sunda Suara Ya.mp3 */; };
+		23A900DC253C2BFE008636B1 /* Sunda Suara La.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A900AA253C2BFD008636B1 /* Sunda Suara La.mp3 */; };
+		23A900DD253C2BFE008636B1 /* Sunda Suara Ta.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A900AB253C2BFD008636B1 /* Sunda Suara Ta.mp3 */; };
+		23A900DE253C2BFE008636B1 /* Sunda Suara Nya.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A900AC253C2BFD008636B1 /* Sunda Suara Nya.mp3 */; };
+		23A900DF253C2BFE008636B1 /* Sunda Suara Ma.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A900AD253C2BFD008636B1 /* Sunda Suara Ma.mp3 */; };
+		23A900E0253C2BFE008636B1 /* Sunda Suara Xa.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A900AE253C2BFD008636B1 /* Sunda Suara Xa.mp3 */; };
+		23A900E1253C2BFE008636B1 /* Sunda Suara Sa.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A900AF253C2BFD008636B1 /* Sunda Suara Sa.mp3 */; };
+		23A900E2253C2BFE008636B1 /* Sunda Suara Nga.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A900B0253C2BFD008636B1 /* Sunda Suara Nga.mp3 */; };
+		23A900E3253C2BFE008636B1 /* Sunda Suara Fa.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A900B1253C2BFD008636B1 /* Sunda Suara Fa.mp3 */; };
+		23A900E4253C2BFE008636B1 /* Sunda Suara Ja.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A900B2253C2BFD008636B1 /* Sunda Suara Ja.mp3 */; };
+		23A900E5253C2BFE008636B1 /* Sunda Suara O.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A900B3253C2BFD008636B1 /* Sunda Suara O.mp3 */; };
+		23A900E6253C2BFE008636B1 /* Sunda Suara Ka.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A900B4253C2BFD008636B1 /* Sunda Suara Ka.mp3 */; };
+		23A900E7253C2BFE008636B1 /* Sunda Suara É.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A900B5253C2BFD008636B1 /* Sunda Suara É.mp3 */; };
+		23A900E8253C2BFE008636B1 /* Sunda Suara Ga.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A900B6253C2BFD008636B1 /* Sunda Suara Ga.mp3 */; };
+		23A900E9253C2BFE008636B1 /* Sunda Suara Ra.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A900B7253C2BFD008636B1 /* Sunda Suara Ra.mp3 */; };
+		23A900EA253C2BFE008636B1 /* Sunda Suara I.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A900B8253C2BFD008636B1 /* Sunda Suara I.mp3 */; };
+		23A900EB253C2BFE008636B1 /* Sunda Suara Da.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A900B9253C2BFD008636B1 /* Sunda Suara Da.mp3 */; };
+		23A900EC253C2BFE008636B1 /* Sunda Suara Qa.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A900BA253C2BFD008636B1 /* Sunda Suara Qa.mp3 */; };
+		23A900ED253C2BFE008636B1 /* Sunda Suara E.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A900BB253C2BFD008636B1 /* Sunda Suara E.mp3 */; };
+		23A900EE253C2BFE008636B1 /* Sunda Suara Ha.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A900BC253C2BFD008636B1 /* Sunda Suara Ha.mp3 */; };
+		23A900EF253C2BFE008636B1 /* Sunda Suara U.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A900BD253C2BFD008636B1 /* Sunda Suara U.mp3 */; };
+		23A900F0253C2BFE008636B1 /* Sunda Suara A.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A900BE253C2BFD008636B1 /* Sunda Suara A.mp3 */; };
+		23A900F1253C2BFE008636B1 /* Sunda Suara Pa.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A900BF253C2BFD008636B1 /* Sunda Suara Pa.mp3 */; };
+		23A900F2253C2BFE008636B1 /* Sunda Suara Na.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A900C0253C2BFD008636B1 /* Sunda Suara Na.mp3 */; };
+		23A900F3253C2BFE008636B1 /* Sunda Suara Ba.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A900C1253C2BFD008636B1 /* Sunda Suara Ba.mp3 */; };
+		23A900F4253C2BFE008636B1 /* Sunda Suara Wa.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A900C2253C2BFD008636B1 /* Sunda Suara Wa.mp3 */; };
+		23A900F5253C2BFE008636B1 /* Sunda Suara Va.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A900C3253C2BFD008636B1 /* Sunda Suara Va.mp3 */; };
+		23A900F6253C2BFE008636B1 /* Sunda Suara Ca.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A900C4253C2BFD008636B1 /* Sunda Suara Ca.mp3 */; };
+		23A900F7253C2BFE008636B1 /* Sunda Suara Za.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A900C5253C2BFD008636B1 /* Sunda Suara Za.mp3 */; };
+		23A90121253C44E1008636B1 /* Jawa Suara Ma.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A9010D253C44E1008636B1 /* Jawa Suara Ma.mp3 */; };
+		23A90122253C44E1008636B1 /* Jawa Suara Tha.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A9010E253C44E1008636B1 /* Jawa Suara Tha.mp3 */; };
+		23A90123253C44E1008636B1 /* Jawa Suara Ta.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A9010F253C44E1008636B1 /* Jawa Suara Ta.mp3 */; };
+		23A90124253C44E1008636B1 /* Jawa Suara Ya.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A90110253C44E1008636B1 /* Jawa Suara Ya.mp3 */; };
+		23A90125253C44E1008636B1 /* Jawa Suara La.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A90111253C44E1008636B1 /* Jawa Suara La.mp3 */; };
+		23A90126253C44E1008636B1 /* Jawa Suara Ga.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A90112253C44E1008636B1 /* Jawa Suara Ga.mp3 */; };
+		23A90127253C44E1008636B1 /* Jawa Suara Ra.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A90113253C44E1008636B1 /* Jawa Suara Ra.mp3 */; };
+		23A90128253C44E1008636B1 /* Jawa Suara Ka.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A90114253C44E1008636B1 /* Jawa Suara Ka.mp3 */; };
+		23A90129253C44E1008636B1 /* Jawa Suara Ja.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A90115253C44E1008636B1 /* Jawa Suara Ja.mp3 */; };
+		23A9012A253C44E1008636B1 /* Jawa Suara Sa.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A90116253C44E1008636B1 /* Jawa Suara Sa.mp3 */; };
+		23A9012B253C44E1008636B1 /* Jawa Suara Pa.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A90117253C44E1008636B1 /* Jawa Suara Pa.mp3 */; };
+		23A9012C253C44E1008636B1 /* Jawa Suara Dha.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A90118253C44E1008636B1 /* Jawa Suara Dha.mp3 */; };
+		23A9012D253C44E1008636B1 /* Jawa Suara Ha.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A90119253C44E1008636B1 /* Jawa Suara Ha.mp3 */; };
+		23A9012E253C44E1008636B1 /* Jawa Suara Nga.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A9011A253C44E1008636B1 /* Jawa Suara Nga.mp3 */; };
+		23A9012F253C44E1008636B1 /* Jawa Suara Da.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A9011B253C44E1008636B1 /* Jawa Suara Da.mp3 */; };
+		23A90130253C44E1008636B1 /* Jawa Suara Ca.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A9011C253C44E1008636B1 /* Jawa Suara Ca.mp3 */; };
+		23A90131253C44E1008636B1 /* Jawa Suara Nya.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A9011D253C44E1008636B1 /* Jawa Suara Nya.mp3 */; };
+		23A90132253C44E1008636B1 /* Jawa Suara Ba.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A9011E253C44E1008636B1 /* Jawa Suara Ba.mp3 */; };
+		23A90133253C44E1008636B1 /* Jawa Suara Wa.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A9011F253C44E1008636B1 /* Jawa Suara Wa.mp3 */; };
+		23A90134253C44E1008636B1 /* Jawa Suara Na.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A90120253C44E1008636B1 /* Jawa Suara Na.mp3 */; };
 		23F2828A2531984D009EC52B /* QuizViewTypeA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F282892531984D009EC52B /* QuizViewTypeA.swift */; };
 		23F2828C2531BC89009EC52B /* QuizViewTypeB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F2828B2531BC89009EC52B /* QuizViewTypeB.swift */; };
 		23F2828E2531D273009EC52B /* QuizViewTypeC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F2828D2531D273009EC52B /* QuizViewTypeC.swift */; };
@@ -53,12 +101,60 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		231ACF752534765A00B46D58 /* motivation.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = motivation.mp3; sourceTree = "<group>"; };
 		231EA806252DE9C7004FB678 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		231EA808252DEA18004FB678 /* QuizController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizController.swift; sourceTree = "<group>"; };
 		235D23B32532DA680007F81E /* QuizViewTypeD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewTypeD.swift; sourceTree = "<group>"; };
 		235D23B52532DEAB0007F81E /* QuizViewTypeE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewTypeE.swift; sourceTree = "<group>"; };
 		2372F70E2530420000E79198 /* QuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizModel.swift; sourceTree = "<group>"; };
+		23A900A9253C2BFD008636B1 /* Sunda Suara Ya.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sunda Suara Ya.mp3"; sourceTree = "<group>"; };
+		23A900AA253C2BFD008636B1 /* Sunda Suara La.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sunda Suara La.mp3"; sourceTree = "<group>"; };
+		23A900AB253C2BFD008636B1 /* Sunda Suara Ta.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sunda Suara Ta.mp3"; sourceTree = "<group>"; };
+		23A900AC253C2BFD008636B1 /* Sunda Suara Nya.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sunda Suara Nya.mp3"; sourceTree = "<group>"; };
+		23A900AD253C2BFD008636B1 /* Sunda Suara Ma.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sunda Suara Ma.mp3"; sourceTree = "<group>"; };
+		23A900AE253C2BFD008636B1 /* Sunda Suara Xa.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sunda Suara Xa.mp3"; sourceTree = "<group>"; };
+		23A900AF253C2BFD008636B1 /* Sunda Suara Sa.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sunda Suara Sa.mp3"; sourceTree = "<group>"; };
+		23A900B0253C2BFD008636B1 /* Sunda Suara Nga.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sunda Suara Nga.mp3"; sourceTree = "<group>"; };
+		23A900B1253C2BFD008636B1 /* Sunda Suara Fa.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sunda Suara Fa.mp3"; sourceTree = "<group>"; };
+		23A900B2253C2BFD008636B1 /* Sunda Suara Ja.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sunda Suara Ja.mp3"; sourceTree = "<group>"; };
+		23A900B3253C2BFD008636B1 /* Sunda Suara O.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sunda Suara O.mp3"; sourceTree = "<group>"; };
+		23A900B4253C2BFD008636B1 /* Sunda Suara Ka.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sunda Suara Ka.mp3"; sourceTree = "<group>"; };
+		23A900B5253C2BFD008636B1 /* Sunda Suara É.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sunda Suara É.mp3"; sourceTree = "<group>"; };
+		23A900B6253C2BFD008636B1 /* Sunda Suara Ga.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sunda Suara Ga.mp3"; sourceTree = "<group>"; };
+		23A900B7253C2BFD008636B1 /* Sunda Suara Ra.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sunda Suara Ra.mp3"; sourceTree = "<group>"; };
+		23A900B8253C2BFD008636B1 /* Sunda Suara I.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sunda Suara I.mp3"; sourceTree = "<group>"; };
+		23A900B9253C2BFD008636B1 /* Sunda Suara Da.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sunda Suara Da.mp3"; sourceTree = "<group>"; };
+		23A900BA253C2BFD008636B1 /* Sunda Suara Qa.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sunda Suara Qa.mp3"; sourceTree = "<group>"; };
+		23A900BB253C2BFD008636B1 /* Sunda Suara E.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sunda Suara E.mp3"; sourceTree = "<group>"; };
+		23A900BC253C2BFD008636B1 /* Sunda Suara Ha.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sunda Suara Ha.mp3"; sourceTree = "<group>"; };
+		23A900BD253C2BFD008636B1 /* Sunda Suara U.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sunda Suara U.mp3"; sourceTree = "<group>"; };
+		23A900BE253C2BFD008636B1 /* Sunda Suara A.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sunda Suara A.mp3"; sourceTree = "<group>"; };
+		23A900BF253C2BFD008636B1 /* Sunda Suara Pa.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sunda Suara Pa.mp3"; sourceTree = "<group>"; };
+		23A900C0253C2BFD008636B1 /* Sunda Suara Na.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sunda Suara Na.mp3"; sourceTree = "<group>"; };
+		23A900C1253C2BFD008636B1 /* Sunda Suara Ba.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sunda Suara Ba.mp3"; sourceTree = "<group>"; };
+		23A900C2253C2BFD008636B1 /* Sunda Suara Wa.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sunda Suara Wa.mp3"; sourceTree = "<group>"; };
+		23A900C3253C2BFD008636B1 /* Sunda Suara Va.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sunda Suara Va.mp3"; sourceTree = "<group>"; };
+		23A900C4253C2BFD008636B1 /* Sunda Suara Ca.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sunda Suara Ca.mp3"; sourceTree = "<group>"; };
+		23A900C5253C2BFD008636B1 /* Sunda Suara Za.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sunda Suara Za.mp3"; sourceTree = "<group>"; };
+		23A9010D253C44E1008636B1 /* Jawa Suara Ma.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara Ma.mp3"; sourceTree = "<group>"; };
+		23A9010E253C44E1008636B1 /* Jawa Suara Tha.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara Tha.mp3"; sourceTree = "<group>"; };
+		23A9010F253C44E1008636B1 /* Jawa Suara Ta.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara Ta.mp3"; sourceTree = "<group>"; };
+		23A90110253C44E1008636B1 /* Jawa Suara Ya.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara Ya.mp3"; sourceTree = "<group>"; };
+		23A90111253C44E1008636B1 /* Jawa Suara La.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara La.mp3"; sourceTree = "<group>"; };
+		23A90112253C44E1008636B1 /* Jawa Suara Ga.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara Ga.mp3"; sourceTree = "<group>"; };
+		23A90113253C44E1008636B1 /* Jawa Suara Ra.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara Ra.mp3"; sourceTree = "<group>"; };
+		23A90114253C44E1008636B1 /* Jawa Suara Ka.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara Ka.mp3"; sourceTree = "<group>"; };
+		23A90115253C44E1008636B1 /* Jawa Suara Ja.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara Ja.mp3"; sourceTree = "<group>"; };
+		23A90116253C44E1008636B1 /* Jawa Suara Sa.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara Sa.mp3"; sourceTree = "<group>"; };
+		23A90117253C44E1008636B1 /* Jawa Suara Pa.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara Pa.mp3"; sourceTree = "<group>"; };
+		23A90118253C44E1008636B1 /* Jawa Suara Dha.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara Dha.mp3"; sourceTree = "<group>"; };
+		23A90119253C44E1008636B1 /* Jawa Suara Ha.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara Ha.mp3"; sourceTree = "<group>"; };
+		23A9011A253C44E1008636B1 /* Jawa Suara Nga.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara Nga.mp3"; sourceTree = "<group>"; };
+		23A9011B253C44E1008636B1 /* Jawa Suara Da.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara Da.mp3"; sourceTree = "<group>"; };
+		23A9011C253C44E1008636B1 /* Jawa Suara Ca.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara Ca.mp3"; sourceTree = "<group>"; };
+		23A9011D253C44E1008636B1 /* Jawa Suara Nya.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara Nya.mp3"; sourceTree = "<group>"; };
+		23A9011E253C44E1008636B1 /* Jawa Suara Ba.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara Ba.mp3"; sourceTree = "<group>"; };
+		23A9011F253C44E1008636B1 /* Jawa Suara Wa.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara Wa.mp3"; sourceTree = "<group>"; };
+		23A90120253C44E1008636B1 /* Jawa Suara Na.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara Na.mp3"; sourceTree = "<group>"; };
 		23F282892531984D009EC52B /* QuizViewTypeA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewTypeA.swift; sourceTree = "<group>"; };
 		23F2828B2531BC89009EC52B /* QuizViewTypeB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewTypeB.swift; sourceTree = "<group>"; };
 		23F2828D2531D273009EC52B /* QuizViewTypeC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewTypeC.swift; sourceTree = "<group>"; };
@@ -118,7 +214,6 @@
 		231EA802252DE940004FB678 /* QuizScreen */ = {
 			isa = PBXGroup;
 			children = (
-				231ACF752534765A00B46D58 /* motivation.mp3 */,
 				2372F70D253041E300E79198 /* Model */,
 				231EA805252DE96A004FB678 /* View */,
 				231EA804252DE961004FB678 /* Controller */,
@@ -153,6 +248,70 @@
 				2372F70E2530420000E79198 /* QuizModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		23A900A8253C2BFD008636B1 /* Sunda Suara */ = {
+			isa = PBXGroup;
+			children = (
+				23A900A9253C2BFD008636B1 /* Sunda Suara Ya.mp3 */,
+				23A900AA253C2BFD008636B1 /* Sunda Suara La.mp3 */,
+				23A900AB253C2BFD008636B1 /* Sunda Suara Ta.mp3 */,
+				23A900AC253C2BFD008636B1 /* Sunda Suara Nya.mp3 */,
+				23A900AD253C2BFD008636B1 /* Sunda Suara Ma.mp3 */,
+				23A900AE253C2BFD008636B1 /* Sunda Suara Xa.mp3 */,
+				23A900AF253C2BFD008636B1 /* Sunda Suara Sa.mp3 */,
+				23A900B0253C2BFD008636B1 /* Sunda Suara Nga.mp3 */,
+				23A900B1253C2BFD008636B1 /* Sunda Suara Fa.mp3 */,
+				23A900B2253C2BFD008636B1 /* Sunda Suara Ja.mp3 */,
+				23A900B3253C2BFD008636B1 /* Sunda Suara O.mp3 */,
+				23A900B4253C2BFD008636B1 /* Sunda Suara Ka.mp3 */,
+				23A900B5253C2BFD008636B1 /* Sunda Suara É.mp3 */,
+				23A900B6253C2BFD008636B1 /* Sunda Suara Ga.mp3 */,
+				23A900B7253C2BFD008636B1 /* Sunda Suara Ra.mp3 */,
+				23A900B8253C2BFD008636B1 /* Sunda Suara I.mp3 */,
+				23A900B9253C2BFD008636B1 /* Sunda Suara Da.mp3 */,
+				23A900BA253C2BFD008636B1 /* Sunda Suara Qa.mp3 */,
+				23A900BB253C2BFD008636B1 /* Sunda Suara E.mp3 */,
+				23A900BC253C2BFD008636B1 /* Sunda Suara Ha.mp3 */,
+				23A900BD253C2BFD008636B1 /* Sunda Suara U.mp3 */,
+				23A900BE253C2BFD008636B1 /* Sunda Suara A.mp3 */,
+				23A900BF253C2BFD008636B1 /* Sunda Suara Pa.mp3 */,
+				23A900C0253C2BFD008636B1 /* Sunda Suara Na.mp3 */,
+				23A900C1253C2BFD008636B1 /* Sunda Suara Ba.mp3 */,
+				23A900C2253C2BFD008636B1 /* Sunda Suara Wa.mp3 */,
+				23A900C3253C2BFD008636B1 /* Sunda Suara Va.mp3 */,
+				23A900C4253C2BFD008636B1 /* Sunda Suara Ca.mp3 */,
+				23A900C5253C2BFD008636B1 /* Sunda Suara Za.mp3 */,
+			);
+			path = "Sunda Suara";
+			sourceTree = "<group>";
+		};
+		23A9010C253C44E1008636B1 /* Asset Suara */ = {
+			isa = PBXGroup;
+			children = (
+				23A9010D253C44E1008636B1 /* Jawa Suara Ma.mp3 */,
+				23A9010E253C44E1008636B1 /* Jawa Suara Tha.mp3 */,
+				23A9010F253C44E1008636B1 /* Jawa Suara Ta.mp3 */,
+				23A90110253C44E1008636B1 /* Jawa Suara Ya.mp3 */,
+				23A90111253C44E1008636B1 /* Jawa Suara La.mp3 */,
+				23A90112253C44E1008636B1 /* Jawa Suara Ga.mp3 */,
+				23A90113253C44E1008636B1 /* Jawa Suara Ra.mp3 */,
+				23A90114253C44E1008636B1 /* Jawa Suara Ka.mp3 */,
+				23A90115253C44E1008636B1 /* Jawa Suara Ja.mp3 */,
+				23A90116253C44E1008636B1 /* Jawa Suara Sa.mp3 */,
+				23A90117253C44E1008636B1 /* Jawa Suara Pa.mp3 */,
+				23A90118253C44E1008636B1 /* Jawa Suara Dha.mp3 */,
+				23A90119253C44E1008636B1 /* Jawa Suara Ha.mp3 */,
+				23A9011A253C44E1008636B1 /* Jawa Suara Nga.mp3 */,
+				23A9011B253C44E1008636B1 /* Jawa Suara Da.mp3 */,
+				23A9011C253C44E1008636B1 /* Jawa Suara Ca.mp3 */,
+				23A9011D253C44E1008636B1 /* Jawa Suara Nya.mp3 */,
+				23A9011E253C44E1008636B1 /* Jawa Suara Ba.mp3 */,
+				23A9011F253C44E1008636B1 /* Jawa Suara Wa.mp3 */,
+				23A90120253C44E1008636B1 /* Jawa Suara Na.mp3 */,
+			);
+			name = "Asset Suara";
+			path = "../../Asset Suara";
 			sourceTree = "<group>";
 		};
 		7C252FE5C07226A83AA53D09 /* Frameworks */ = {
@@ -304,6 +463,8 @@
 		A41A77E6252D9586001C4FAD /* aksaraMC4 */ = {
 			isa = PBXGroup;
 			children = (
+				23A9010C253C44E1008636B1 /* Asset Suara */,
+				23A900A8253C2BFD008636B1 /* Sunda Suara */,
 				231EA802252DE940004FB678 /* QuizScreen */,
 				91C98770252F1A0A00D67BC0 /* LevelScreen */,
 				91C98764252EFE4800D67BC0 /* StageScreen */,
@@ -429,21 +590,69 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23A900E8253C2BFE008636B1 /* Sunda Suara Ga.mp3 in Resources */,
+				23A9012C253C44E1008636B1 /* Jawa Suara Dha.mp3 in Resources */,
+				23A90129253C44E1008636B1 /* Jawa Suara Ja.mp3 in Resources */,
+				23A900F6253C2BFE008636B1 /* Sunda Suara Ca.mp3 in Resources */,
 				A41A780E252D9A43001C4FAD /* Now-Bold.otf in Resources */,
+				23A900E6253C2BFE008636B1 /* Sunda Suara Ka.mp3 in Resources */,
+				23A900F0253C2BFE008636B1 /* Sunda Suara A.mp3 in Resources */,
+				23A900E5253C2BFE008636B1 /* Sunda Suara O.mp3 in Resources */,
+				23A900DF253C2BFE008636B1 /* Sunda Suara Ma.mp3 in Resources */,
+				23A9012A253C44E1008636B1 /* Jawa Suara Sa.mp3 in Resources */,
+				23A900DB253C2BFE008636B1 /* Sunda Suara Ya.mp3 in Resources */,
+				23A900DE253C2BFE008636B1 /* Sunda Suara Nya.mp3 in Resources */,
+				23A900EF253C2BFE008636B1 /* Sunda Suara U.mp3 in Resources */,
 				A41A7815252D9A43001C4FAD /* NowAlt-Medium.otf in Resources */,
+				23A90125253C44E1008636B1 /* Jawa Suara La.mp3 in Resources */,
 				A41A77F7252D9588001C4FAD /* LaunchScreen.storyboard in Resources */,
 				A41A780C252D9A43001C4FAD /* Now-Light.otf in Resources */,
+				23A90128253C44E1008636B1 /* Jawa Suara Ka.mp3 in Resources */,
+				23A90133253C44E1008636B1 /* Jawa Suara Wa.mp3 in Resources */,
+				23A9012B253C44E1008636B1 /* Jawa Suara Pa.mp3 in Resources */,
 				A41A7811252D9A43001C4FAD /* NowAlt-Light.otf in Resources */,
+				23A900E0253C2BFE008636B1 /* Sunda Suara Xa.mp3 in Resources */,
+				23A900EB253C2BFE008636B1 /* Sunda Suara Da.mp3 in Resources */,
+				23A90121253C44E1008636B1 /* Jawa Suara Ma.mp3 in Resources */,
+				23A9012F253C44E1008636B1 /* Jawa Suara Da.mp3 in Resources */,
 				A41A7812252D9A43001C4FAD /* NowAlt-Regular.otf in Resources */,
+				23A90134253C44E1008636B1 /* Jawa Suara Na.mp3 in Resources */,
 				A41A780B252D9A43001C4FAD /* Now-Regular.otf in Resources */,
+				23A900ED253C2BFE008636B1 /* Sunda Suara E.mp3 in Resources */,
+				23A900F1253C2BFE008636B1 /* Sunda Suara Pa.mp3 in Resources */,
+				23A900E7253C2BFE008636B1 /* Sunda Suara É.mp3 in Resources */,
+				23A900EA253C2BFE008636B1 /* Sunda Suara I.mp3 in Resources */,
 				A41A7813252D9A43001C4FAD /* Now-Black.otf in Resources */,
+				23A90127253C44E1008636B1 /* Jawa Suara Ra.mp3 in Resources */,
 				A41A780D252D9A43001C4FAD /* Now-Medium.otf in Resources */,
-				231ACF762534765A00B46D58 /* motivation.mp3 in Resources */,
+				23A90126253C44E1008636B1 /* Jawa Suara Ga.mp3 in Resources */,
+				23A90124253C44E1008636B1 /* Jawa Suara Ya.mp3 in Resources */,
+				23A90131253C44E1008636B1 /* Jawa Suara Nya.mp3 in Resources */,
+				23A900DD253C2BFE008636B1 /* Sunda Suara Ta.mp3 in Resources */,
+				23A900F5253C2BFE008636B1 /* Sunda Suara Va.mp3 in Resources */,
+				23A900E3253C2BFE008636B1 /* Sunda Suara Fa.mp3 in Resources */,
+				23A900E2253C2BFE008636B1 /* Sunda Suara Nga.mp3 in Resources */,
+				23A90132253C44E1008636B1 /* Jawa Suara Ba.mp3 in Resources */,
+				23A900F3253C2BFE008636B1 /* Sunda Suara Ba.mp3 in Resources */,
+				23A9012D253C44E1008636B1 /* Jawa Suara Ha.mp3 in Resources */,
+				23A90122253C44E1008636B1 /* Jawa Suara Tha.mp3 in Resources */,
+				23A9012E253C44E1008636B1 /* Jawa Suara Nga.mp3 in Resources */,
+				23A900F4253C2BFE008636B1 /* Sunda Suara Wa.mp3 in Resources */,
 				A41A77F4252D9588001C4FAD /* Assets.xcassets in Resources */,
+				23A900DC253C2BFE008636B1 /* Sunda Suara La.mp3 in Resources */,
+				23A900E1253C2BFE008636B1 /* Sunda Suara Sa.mp3 in Resources */,
+				23A900F7253C2BFE008636B1 /* Sunda Suara Za.mp3 in Resources */,
+				23A90130253C44E1008636B1 /* Jawa Suara Ca.mp3 in Resources */,
 				A41A7814252D9A43001C4FAD /* NowAlt-Bold.otf in Resources */,
+				23A900E4253C2BFE008636B1 /* Sunda Suara Ja.mp3 in Resources */,
+				23A900E9253C2BFE008636B1 /* Sunda Suara Ra.mp3 in Resources */,
 				A41A780F252D9A43001C4FAD /* Now-Thin.otf in Resources */,
+				23A900F2253C2BFE008636B1 /* Sunda Suara Na.mp3 in Resources */,
+				23A900EE253C2BFE008636B1 /* Sunda Suara Ha.mp3 in Resources */,
 				A41A7816252D9A43001C4FAD /* NowAlt-Thin.otf in Resources */,
+				23A900EC253C2BFE008636B1 /* Sunda Suara Qa.mp3 in Resources */,
 				A41A7810252D9A43001C4FAD /* NowAlt-Black.otf in Resources */,
+				23A90123253C44E1008636B1 /* Jawa Suara Ta.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

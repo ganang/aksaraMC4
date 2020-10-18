@@ -199,32 +199,6 @@ class QuizController: UIViewController, QuizControllerProtocol {
     
     var valueProgressBar = 0.1666666667
     
-    var player: AVAudioPlayer?
-
-    @objc func playSound(_ sender: UITapGestureRecognizer) {
-        print("Hello Dear you are here")
-
-        guard let url = Bundle.main.url(forResource: "motivation", withExtension: "mp3") else { return }
-
-        do {
-            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
-            try AVAudioSession.sharedInstance().setActive(true)
-
-            /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
-            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
-
-            /* iOS 10 and earlier require the following line:
-            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
-
-            guard let player = player else { return }
-
-            player.play()
-
-        } catch let error {
-            print(error.localizedDescription)
-        }
-    }
-    
     var indexCollection: IndexPath?
     
     @objc func handleProgressBar(_ sender: UIButton) {
@@ -792,11 +766,13 @@ class QuizController: UIViewController, QuizControllerProtocol {
         let stingStageId : Int = Int((level?.stage!.id)!)
         let stingStageIdString = String(stingStageId)
         
+        let stringRegion =  String(regionSelected!)
+        
         let stingLevelId : Int = Int(level!.id)
         let stingLevelIdString = String(stingLevelId)
         
         nilaiLabel.text = "Nilai: \(totalQuizCorrect)/5"
-        aksaraStepLabel.text = "Aksara Jawa Tahap \(stingStageIdString)-\(stingLevelIdString)"
+        aksaraStepLabel.text = "Aksara \(stringRegion) Tahap \(stingStageIdString)-\(stingLevelIdString)"
         
         level?.totalMedal = Int64(totalMedal)
         
@@ -1049,10 +1025,6 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
             cell.regionSelected = regionSelected
             cell.quizData = quizTypeGuideModel
             
-            let tap = UITapGestureRecognizer(target: self, action: #selector(self.playSound(_:)))
-            cell.quizBgView.isUserInteractionEnabled = true
-            cell.quizBgView.addGestureRecognizer(tap)
-            
             cell.kuisButton.tag = indexPath.item
             return cell
         } else if(indexPath.item == 1){
@@ -1093,10 +1065,6 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
             cell.arrowRightButton.tag = indexPath.item
             cell.regionSelected = regionSelected
             cell.quizData = quizTypeCModel
-            
-            let tap = UITapGestureRecognizer(target: self, action: #selector(self.playSound(_:)))
-            cell.quizBgView.isUserInteractionEnabled = true
-            cell.quizBgView.addGestureRecognizer(tap)
             
             cell.delegate = self
             

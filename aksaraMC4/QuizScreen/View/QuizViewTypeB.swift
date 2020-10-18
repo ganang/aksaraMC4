@@ -31,7 +31,6 @@ class QuizViewTypeB: UICollectionViewCell {
             self.alphabet = quizData?.question!
             
             let choices = quizData?.choices?.sortedArray(using: [.init(key: "id", ascending: true)]) as? [Choice]
-            print("CHOICES", choices)
             
             for i in 0...choices!.count - 1 {
                 let choice = choices?[i].name
@@ -42,6 +41,18 @@ class QuizViewTypeB: UICollectionViewCell {
             imageNameSoal2 = "\(regionSelected!) Jawaban \(self.choicesArray[1])"
             imageNameSoal3 = "\(regionSelected!) Jawaban \(self.choicesArray[2])"
             imageNameSoal4 = "\(regionSelected!) Jawaban \(self.choicesArray[3])"
+            
+            
+            if (self.choicesArray[0] == "É") {
+                imageNameSoal1 = "\(regionSelected!) Jawaban \(self.choicesArray[0])É"
+            } else if (self.choicesArray[1] == "É"){
+                imageNameSoal2 = "\(regionSelected!) Jawaban \(self.choicesArray[1])É"
+            } else if (self.choicesArray[2] == "É"){
+                imageNameSoal3 = "\(regionSelected!) Jawaban \(self.choicesArray[2])É"
+            } else if (self.choicesArray[3] == "É"){
+                imageNameSoal4 = "\(regionSelected!) Jawaban \(self.choicesArray[3])É"
+            }
+            
             self.pilgan1Answer.image = UIImage(named: imageNameSoal1!)
             self.pilgan2Answer.image = UIImage(named: imageNameSoal2!)
             self.pilgan3Answer.image = UIImage(named: imageNameSoal3!)
