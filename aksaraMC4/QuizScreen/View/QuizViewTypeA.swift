@@ -47,6 +47,9 @@ class QuizViewTypeA: UICollectionViewCell {
             
             //quizImage
             imageNameSoal = "\(regionSelected!) Soal \(soalKe) \(alphabet!)"
+            if (alphabet == "É") {
+                imageNameSoal = "\(regionSelected!) Soal \(soalKe) \(alphabet!)É"
+            }
             quizImage.image = UIImage(named: imageNameSoal!)
             
             //aksaraLabel

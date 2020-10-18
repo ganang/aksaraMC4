@@ -8,9 +8,11 @@
 
 import UIKit
 import PencilKit
+import AVFoundation
 
 class QuizView: UICollectionViewCell {
 
+    var player: AVAudioPlayer?
     var soalKe : String = "1"
     var alphabet : String?
     var regionSelected : String?
@@ -22,6 +24,9 @@ class QuizView: UICollectionViewCell {
             
             //quizImage
             imageNameSoal = "\(regionSelected!) Soal \(soalKe) \(alphabet!)"
+            if (alphabet == "É") {
+                imageNameSoal = "\(regionSelected!) Soal \(soalKe) \(alphabet!)É"
+            }
             quizImage.image = UIImage(named: imageNameSoal!)
             
             //carakanLabel
@@ -32,6 +37,9 @@ class QuizView: UICollectionViewCell {
             
             //answerImage
             imageNameJawab = "\(regionSelected!) Soal 4 \(alphabet!)"
+            if (alphabet == "É") {
+                imageNameJawab = "\(regionSelected!) Soal 4 \(alphabet!)É"
+            }
             answerImage.image = UIImage(named: imageNameJawab!)
         }
     }
@@ -167,13 +175,16 @@ class QuizView: UICollectionViewCell {
     }()
     
     //Background View
-    let quizBgView : UIView = {
+    lazy var quizBgView : UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = Theme.current.accentLightBlue
         view.layer.cornerRadius = 24
         view.addInnerShadow()
         view.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(playSound))
+        view.isUserInteractionEnabled = true
+        view.addGestureRecognizer(tap)
         return view
     }()
    
@@ -211,6 +222,30 @@ class QuizView: UICollectionViewCell {
     
     @objc func reloadPencilKit() {
         canvasView.drawing = PKDrawing()
+    }
+    
+    @objc func playSound() {
+        let soundNameAsset = "\(regionSelected!) Suara \(alphabet!)"
+
+        guard let url = Bundle.main.url(forResource: "\(soundNameAsset)", withExtension: "mp3") else { return }
+
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+
+            /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+
+            /* iOS 10 and earlier require the following line:
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
+
+            guard let player = player else { return }
+
+            player.play()
+
+        } catch let error {
+            print(error.localizedDescription)
+        }
     }
     
     func setupView(){

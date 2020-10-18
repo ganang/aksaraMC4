@@ -20,9 +20,11 @@ class QuizViewTypeE: UICollectionViewCell {
         didSet {
             self.alphabet = quizData?.question
             let questionString: String = alphabet!
-            let imageString: String = "Jawa Soal 5 \(questionString)"
+            var imageString: String = "\(regionSelected!) Soal 5 \(questionString)"
             
-            print("EEEE", imageString)
+            if (alphabet == "É") {
+                imageString = "\(regionSelected!) Soal 5 \(questionString)É"
+            }
                 
             quizAnswerLabel.text = "Tulis Aksara \(questionString)"
             answerImage.image = UIImage(named: imageString)

@@ -13,13 +13,14 @@ class QuizViewTypeC: UICollectionViewCell {
 
     var delegate : QuizControllerProtocol?
     
+    var player: AVAudioPlayer?
     var alphabet : String?
     var regionSelected : String?
     var imageNameSoal1 : String?
     var imageNameSoal2 : String?
     var imageNameSoal3 : String?
     var imageNameSoal4 : String?
-    var imageNameJawab : String?
+    var soundNameAsset : String?
     var initialClick = false
     lazy var choices = [String]()
     var answersBGView = [CustomView]()
@@ -41,6 +42,19 @@ class QuizViewTypeC: UICollectionViewCell {
             imageNameSoal2 = "\(regionSelected!) Jawaban \(self.choices[1])"
             imageNameSoal3 = "\(regionSelected!) Jawaban \(self.choices[2])"
             imageNameSoal4 = "\(regionSelected!) Jawaban \(self.choices[3])"
+            
+            print(imageNameSoal1)
+            
+            if (self.choices[0] == "É") {
+                imageNameSoal1 = "\(regionSelected!) Jawaban \(self.choices[0])É"
+            } else if (self.choices[1] == "É"){
+                imageNameSoal2 = "\(regionSelected!) Jawaban \(self.choices[1])É"
+            } else if (self.choices[2] == "É"){
+                imageNameSoal3 = "\(regionSelected!) Jawaban \(self.choices[2])É"
+            } else if (self.choices[3] == "É"){
+                imageNameSoal4 = "\(regionSelected!) Jawaban \(self.choices[3])É"
+            }
+            
             self.pilgan1Answer.image = UIImage(named: imageNameSoal1!)
             self.pilgan2Answer.image = UIImage(named: imageNameSoal2!)
             self.pilgan3Answer.image = UIImage(named: imageNameSoal3!)
@@ -229,6 +243,10 @@ class QuizViewTypeC: UICollectionViewCell {
         view.layer.cornerRadius = 24
         view.addInnerShadow()
         view.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
+
+        let tap = UITapGestureRecognizer(target: self, action: #selector(playSound))
+        view.isUserInteractionEnabled = true
+        view.addGestureRecognizer(tap)
         return view
     }()
     
@@ -346,12 +364,11 @@ class QuizViewTypeC: UICollectionViewCell {
         }
     }
     
-    var player: AVAudioPlayer?
-    
     @objc func playSound() {
         print("Hello Dear you are here")
+        let soundNameAsset = "\(regionSelected!) Suara \(alphabet!)"
 
-        guard let url = Bundle.main.url(forResource: "motivation", withExtension: "mp3") else { return }
+        guard let url = Bundle.main.url(forResource: "\(soundNameAsset)", withExtension: "mp3") else { return }
 
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
