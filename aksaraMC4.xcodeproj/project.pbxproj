@@ -74,6 +74,26 @@
 		A41A7814252D9A43001C4FAD /* NowAlt-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A41A7808252D9A43001C4FAD /* NowAlt-Bold.otf */; };
 		A41A7815252D9A43001C4FAD /* NowAlt-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = A41A7809252D9A43001C4FAD /* NowAlt-Medium.otf */; };
 		A41A7816252D9A43001C4FAD /* NowAlt-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = A41A780A252D9A43001C4FAD /* NowAlt-Thin.otf */; };
+		A48A0FB6253C4AF800AB1ED5 /* Jawa Suara Ma.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A48A0FA2253C4AF800AB1ED5 /* Jawa Suara Ma.mp3 */; };
+		A48A0FB7253C4AF800AB1ED5 /* Jawa Suara Tha.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A48A0FA3253C4AF800AB1ED5 /* Jawa Suara Tha.mp3 */; };
+		A48A0FB8253C4AF800AB1ED5 /* Jawa Suara Ta.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A48A0FA4253C4AF800AB1ED5 /* Jawa Suara Ta.mp3 */; };
+		A48A0FB9253C4AF800AB1ED5 /* Jawa Suara Ya.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A48A0FA5253C4AF800AB1ED5 /* Jawa Suara Ya.mp3 */; };
+		A48A0FBA253C4AF800AB1ED5 /* Jawa Suara La.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A48A0FA6253C4AF800AB1ED5 /* Jawa Suara La.mp3 */; };
+		A48A0FBB253C4AF800AB1ED5 /* Jawa Suara Ga.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A48A0FA7253C4AF800AB1ED5 /* Jawa Suara Ga.mp3 */; };
+		A48A0FBC253C4AF800AB1ED5 /* Jawa Suara Ra.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A48A0FA8253C4AF800AB1ED5 /* Jawa Suara Ra.mp3 */; };
+		A48A0FBD253C4AF800AB1ED5 /* Jawa Suara Ka.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A48A0FA9253C4AF800AB1ED5 /* Jawa Suara Ka.mp3 */; };
+		A48A0FBE253C4AF800AB1ED5 /* Jawa Suara Ja.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A48A0FAA253C4AF800AB1ED5 /* Jawa Suara Ja.mp3 */; };
+		A48A0FBF253C4AF800AB1ED5 /* Jawa Suara Sa.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A48A0FAB253C4AF800AB1ED5 /* Jawa Suara Sa.mp3 */; };
+		A48A0FC0253C4AF800AB1ED5 /* Jawa Suara Pa.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A48A0FAC253C4AF800AB1ED5 /* Jawa Suara Pa.mp3 */; };
+		A48A0FC1253C4AF800AB1ED5 /* Jawa Suara Dha.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A48A0FAD253C4AF800AB1ED5 /* Jawa Suara Dha.mp3 */; };
+		A48A0FC2253C4AF800AB1ED5 /* Jawa Suara Ha.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A48A0FAE253C4AF800AB1ED5 /* Jawa Suara Ha.mp3 */; };
+		A48A0FC3253C4AF800AB1ED5 /* Jawa Suara Nga.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A48A0FAF253C4AF800AB1ED5 /* Jawa Suara Nga.mp3 */; };
+		A48A0FC4253C4AF800AB1ED5 /* Jawa Suara Da.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A48A0FB0253C4AF800AB1ED5 /* Jawa Suara Da.mp3 */; };
+		A48A0FC5253C4AF800AB1ED5 /* Jawa Suara Ca.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A48A0FB1253C4AF800AB1ED5 /* Jawa Suara Ca.mp3 */; };
+		A48A0FC6253C4AF800AB1ED5 /* Jawa Suara Nya.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A48A0FB2253C4AF800AB1ED5 /* Jawa Suara Nya.mp3 */; };
+		A48A0FC7253C4AF800AB1ED5 /* Jawa Suara Ba.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A48A0FB3253C4AF800AB1ED5 /* Jawa Suara Ba.mp3 */; };
+		A48A0FC8253C4AF800AB1ED5 /* Jawa Suara Wa.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A48A0FB4253C4AF800AB1ED5 /* Jawa Suara Wa.mp3 */; };
+		A48A0FC9253C4AF800AB1ED5 /* Jawa Suara Na.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A48A0FB5253C4AF800AB1ED5 /* Jawa Suara Na.mp3 */; };
 		A48FBC75252DC2DB0004EC93 /* PersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48FBC74252DC2DB0004EC93 /* PersistenceService.swift */; };
 		A4C715BC2539A45B00270D58 /* CoreDataRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C715BB2539A45B00270D58 /* CoreDataRecord.swift */; };
 		A4F19FC52535939400F5BA23 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F19FC42535939400F5BA23 /* BaseView.swift */; };
@@ -154,6 +174,26 @@
 		A41A7808252D9A43001C4FAD /* NowAlt-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NowAlt-Bold.otf"; sourceTree = "<group>"; };
 		A41A7809252D9A43001C4FAD /* NowAlt-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NowAlt-Medium.otf"; sourceTree = "<group>"; };
 		A41A780A252D9A43001C4FAD /* NowAlt-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NowAlt-Thin.otf"; sourceTree = "<group>"; };
+		A48A0FA2253C4AF800AB1ED5 /* Jawa Suara Ma.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara Ma.mp3"; sourceTree = "<group>"; };
+		A48A0FA3253C4AF800AB1ED5 /* Jawa Suara Tha.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara Tha.mp3"; sourceTree = "<group>"; };
+		A48A0FA4253C4AF800AB1ED5 /* Jawa Suara Ta.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara Ta.mp3"; sourceTree = "<group>"; };
+		A48A0FA5253C4AF800AB1ED5 /* Jawa Suara Ya.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara Ya.mp3"; sourceTree = "<group>"; };
+		A48A0FA6253C4AF800AB1ED5 /* Jawa Suara La.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara La.mp3"; sourceTree = "<group>"; };
+		A48A0FA7253C4AF800AB1ED5 /* Jawa Suara Ga.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara Ga.mp3"; sourceTree = "<group>"; };
+		A48A0FA8253C4AF800AB1ED5 /* Jawa Suara Ra.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara Ra.mp3"; sourceTree = "<group>"; };
+		A48A0FA9253C4AF800AB1ED5 /* Jawa Suara Ka.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara Ka.mp3"; sourceTree = "<group>"; };
+		A48A0FAA253C4AF800AB1ED5 /* Jawa Suara Ja.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara Ja.mp3"; sourceTree = "<group>"; };
+		A48A0FAB253C4AF800AB1ED5 /* Jawa Suara Sa.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara Sa.mp3"; sourceTree = "<group>"; };
+		A48A0FAC253C4AF800AB1ED5 /* Jawa Suara Pa.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara Pa.mp3"; sourceTree = "<group>"; };
+		A48A0FAD253C4AF800AB1ED5 /* Jawa Suara Dha.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara Dha.mp3"; sourceTree = "<group>"; };
+		A48A0FAE253C4AF800AB1ED5 /* Jawa Suara Ha.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara Ha.mp3"; sourceTree = "<group>"; };
+		A48A0FAF253C4AF800AB1ED5 /* Jawa Suara Nga.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara Nga.mp3"; sourceTree = "<group>"; };
+		A48A0FB0253C4AF800AB1ED5 /* Jawa Suara Da.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara Da.mp3"; sourceTree = "<group>"; };
+		A48A0FB1253C4AF800AB1ED5 /* Jawa Suara Ca.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara Ca.mp3"; sourceTree = "<group>"; };
+		A48A0FB2253C4AF800AB1ED5 /* Jawa Suara Nya.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara Nya.mp3"; sourceTree = "<group>"; };
+		A48A0FB3253C4AF800AB1ED5 /* Jawa Suara Ba.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara Ba.mp3"; sourceTree = "<group>"; };
+		A48A0FB4253C4AF800AB1ED5 /* Jawa Suara Wa.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara Wa.mp3"; sourceTree = "<group>"; };
+		A48A0FB5253C4AF800AB1ED5 /* Jawa Suara Na.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara Na.mp3"; sourceTree = "<group>"; };
 		A48FBC74252DC2DB0004EC93 /* PersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceService.swift; sourceTree = "<group>"; };
 		A4C715BB2539A45B00270D58 /* CoreDataRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRecord.swift; sourceTree = "<group>"; };
 		A4F19FC42535939400F5BA23 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
@@ -395,6 +435,7 @@
 		A41A77E6252D9586001C4FAD /* aksaraMC4 */ = {
 			isa = PBXGroup;
 			children = (
+				A48A0FA1253C4AF800AB1ED5 /* Asset Suara */,
 				23A900A8253C2BFD008636B1 /* Sunda Suara */,
 				231EA802252DE940004FB678 /* QuizScreen */,
 				91C98770252F1A0A00D67BC0 /* LevelScreen */,
@@ -434,6 +475,33 @@
 				A41A780A252D9A43001C4FAD /* NowAlt-Thin.otf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		A48A0FA1253C4AF800AB1ED5 /* Asset Suara */ = {
+			isa = PBXGroup;
+			children = (
+				A48A0FA2253C4AF800AB1ED5 /* Jawa Suara Ma.mp3 */,
+				A48A0FA3253C4AF800AB1ED5 /* Jawa Suara Tha.mp3 */,
+				A48A0FA4253C4AF800AB1ED5 /* Jawa Suara Ta.mp3 */,
+				A48A0FA5253C4AF800AB1ED5 /* Jawa Suara Ya.mp3 */,
+				A48A0FA6253C4AF800AB1ED5 /* Jawa Suara La.mp3 */,
+				A48A0FA7253C4AF800AB1ED5 /* Jawa Suara Ga.mp3 */,
+				A48A0FA8253C4AF800AB1ED5 /* Jawa Suara Ra.mp3 */,
+				A48A0FA9253C4AF800AB1ED5 /* Jawa Suara Ka.mp3 */,
+				A48A0FAA253C4AF800AB1ED5 /* Jawa Suara Ja.mp3 */,
+				A48A0FAB253C4AF800AB1ED5 /* Jawa Suara Sa.mp3 */,
+				A48A0FAC253C4AF800AB1ED5 /* Jawa Suara Pa.mp3 */,
+				A48A0FAD253C4AF800AB1ED5 /* Jawa Suara Dha.mp3 */,
+				A48A0FAE253C4AF800AB1ED5 /* Jawa Suara Ha.mp3 */,
+				A48A0FAF253C4AF800AB1ED5 /* Jawa Suara Nga.mp3 */,
+				A48A0FB0253C4AF800AB1ED5 /* Jawa Suara Da.mp3 */,
+				A48A0FB1253C4AF800AB1ED5 /* Jawa Suara Ca.mp3 */,
+				A48A0FB2253C4AF800AB1ED5 /* Jawa Suara Nya.mp3 */,
+				A48A0FB3253C4AF800AB1ED5 /* Jawa Suara Ba.mp3 */,
+				A48A0FB4253C4AF800AB1ED5 /* Jawa Suara Wa.mp3 */,
+				A48A0FB5253C4AF800AB1ED5 /* Jawa Suara Na.mp3 */,
+			);
+			path = "Asset Suara";
 			sourceTree = "<group>";
 		};
 		A4A3DDEA2539964C00DC4CF7 /* Recovered References */ = {
@@ -522,39 +590,58 @@
 			buildActionMask = 2147483647;
 			files = (
 				23A900E8253C2BFE008636B1 /* Sunda Suara Ga.mp3 in Resources */,
+				A48A0FC1253C4AF800AB1ED5 /* Jawa Suara Dha.mp3 in Resources */,
+				A48A0FBE253C4AF800AB1ED5 /* Jawa Suara Ja.mp3 in Resources */,
 				23A900F6253C2BFE008636B1 /* Sunda Suara Ca.mp3 in Resources */,
 				A41A780E252D9A43001C4FAD /* Now-Bold.otf in Resources */,
 				23A900E6253C2BFE008636B1 /* Sunda Suara Ka.mp3 in Resources */,
 				23A900F0253C2BFE008636B1 /* Sunda Suara A.mp3 in Resources */,
 				23A900E5253C2BFE008636B1 /* Sunda Suara O.mp3 in Resources */,
 				23A900DF253C2BFE008636B1 /* Sunda Suara Ma.mp3 in Resources */,
+				A48A0FBF253C4AF800AB1ED5 /* Jawa Suara Sa.mp3 in Resources */,
 				23A900DB253C2BFE008636B1 /* Sunda Suara Ya.mp3 in Resources */,
 				23A900DE253C2BFE008636B1 /* Sunda Suara Nya.mp3 in Resources */,
 				23A900EF253C2BFE008636B1 /* Sunda Suara U.mp3 in Resources */,
 				A41A7815252D9A43001C4FAD /* NowAlt-Medium.otf in Resources */,
+				A48A0FBA253C4AF800AB1ED5 /* Jawa Suara La.mp3 in Resources */,
 				A41A77F7252D9588001C4FAD /* LaunchScreen.storyboard in Resources */,
 				A41A780C252D9A43001C4FAD /* Now-Light.otf in Resources */,
+				A48A0FBD253C4AF800AB1ED5 /* Jawa Suara Ka.mp3 in Resources */,
+				A48A0FC8253C4AF800AB1ED5 /* Jawa Suara Wa.mp3 in Resources */,
+				A48A0FC0253C4AF800AB1ED5 /* Jawa Suara Pa.mp3 in Resources */,
 				A41A7811252D9A43001C4FAD /* NowAlt-Light.otf in Resources */,
 				23A900E0253C2BFE008636B1 /* Sunda Suara Xa.mp3 in Resources */,
 				23A900EB253C2BFE008636B1 /* Sunda Suara Da.mp3 in Resources */,
+				A48A0FB6253C4AF800AB1ED5 /* Jawa Suara Ma.mp3 in Resources */,
+				A48A0FC4253C4AF800AB1ED5 /* Jawa Suara Da.mp3 in Resources */,
 				A41A7812252D9A43001C4FAD /* NowAlt-Regular.otf in Resources */,
+				A48A0FC9253C4AF800AB1ED5 /* Jawa Suara Na.mp3 in Resources */,
 				A41A780B252D9A43001C4FAD /* Now-Regular.otf in Resources */,
 				23A900ED253C2BFE008636B1 /* Sunda Suara E.mp3 in Resources */,
 				23A900F1253C2BFE008636B1 /* Sunda Suara Pa.mp3 in Resources */,
 				23A900E7253C2BFE008636B1 /* Sunda Suara É.mp3 in Resources */,
 				23A900EA253C2BFE008636B1 /* Sunda Suara I.mp3 in Resources */,
 				A41A7813252D9A43001C4FAD /* Now-Black.otf in Resources */,
+				A48A0FBC253C4AF800AB1ED5 /* Jawa Suara Ra.mp3 in Resources */,
 				A41A780D252D9A43001C4FAD /* Now-Medium.otf in Resources */,
+				A48A0FBB253C4AF800AB1ED5 /* Jawa Suara Ga.mp3 in Resources */,
+				A48A0FB9253C4AF800AB1ED5 /* Jawa Suara Ya.mp3 in Resources */,
+				A48A0FC6253C4AF800AB1ED5 /* Jawa Suara Nya.mp3 in Resources */,
 				23A900DD253C2BFE008636B1 /* Sunda Suara Ta.mp3 in Resources */,
 				23A900F5253C2BFE008636B1 /* Sunda Suara Va.mp3 in Resources */,
 				23A900E3253C2BFE008636B1 /* Sunda Suara Fa.mp3 in Resources */,
 				23A900E2253C2BFE008636B1 /* Sunda Suara Nga.mp3 in Resources */,
+				A48A0FC7253C4AF800AB1ED5 /* Jawa Suara Ba.mp3 in Resources */,
 				23A900F3253C2BFE008636B1 /* Sunda Suara Ba.mp3 in Resources */,
+				A48A0FC2253C4AF800AB1ED5 /* Jawa Suara Ha.mp3 in Resources */,
+				A48A0FB7253C4AF800AB1ED5 /* Jawa Suara Tha.mp3 in Resources */,
+				A48A0FC3253C4AF800AB1ED5 /* Jawa Suara Nga.mp3 in Resources */,
 				23A900F4253C2BFE008636B1 /* Sunda Suara Wa.mp3 in Resources */,
 				A41A77F4252D9588001C4FAD /* Assets.xcassets in Resources */,
 				23A900DC253C2BFE008636B1 /* Sunda Suara La.mp3 in Resources */,
 				23A900E1253C2BFE008636B1 /* Sunda Suara Sa.mp3 in Resources */,
 				23A900F7253C2BFE008636B1 /* Sunda Suara Za.mp3 in Resources */,
+				A48A0FC5253C4AF800AB1ED5 /* Jawa Suara Ca.mp3 in Resources */,
 				A41A7814252D9A43001C4FAD /* NowAlt-Bold.otf in Resources */,
 				23A900E4253C2BFE008636B1 /* Sunda Suara Ja.mp3 in Resources */,
 				23A900E9253C2BFE008636B1 /* Sunda Suara Ra.mp3 in Resources */,
@@ -564,6 +651,7 @@
 				A41A7816252D9A43001C4FAD /* NowAlt-Thin.otf in Resources */,
 				23A900EC253C2BFE008636B1 /* Sunda Suara Qa.mp3 in Resources */,
 				A41A7810252D9A43001C4FAD /* NowAlt-Black.otf in Resources */,
+				A48A0FB8253C4AF800AB1ED5 /* Jawa Suara Ta.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
