@@ -10,8 +10,9 @@ import UIKit
 import PencilKit
 import AVFoundation
 
-class QuizView: UICollectionViewCell {
+class QuizView: UICollectionViewCell, PKToolPickerObserver {
 
+    var toolPicker: PKToolPicker!
     var player: AVAudioPlayer?
     var soalKe : String = "1"
     var alphabet : String?
@@ -198,7 +199,18 @@ class QuizView: UICollectionViewCell {
         return view
     }()
     
-    lazy var canvasView: PKCanvasView = {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setBackgroundColor()
+        setupView()
+        setupPencilKit()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    let canvasView: PKCanvasView = {
         let canvasView = PKCanvasView()
         canvasView.translatesAutoresizingMaskIntoConstraints = false
         canvasView.layer.cornerRadius = 24
@@ -206,18 +218,19 @@ class QuizView: UICollectionViewCell {
         canvasView.isOpaque = false
         canvasView.alwaysBounceVertical = true
         canvasView.allowsFingerDrawing = true
+        canvasView.tool = PKInkingTool(.pen, color: .black, width: 2)
         
         return canvasView
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setBackgroundColor()
-        setupView()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    func setupPencilKit() {
+        if let window = UIApplication.shared.windows.first {
+            toolPicker = PKToolPicker.shared(for: window)
+            toolPicker.setVisible(false, forFirstResponder: canvasView)
+            toolPicker.addObserver(canvasView)
+            toolPicker.addObserver(self)
+            canvasView.becomeFirstResponder()
+        }
     }
     
     @objc func reloadPencilKit() {
