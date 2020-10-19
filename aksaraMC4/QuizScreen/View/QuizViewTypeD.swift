@@ -9,10 +9,10 @@
 import UIKit
 import PencilKit
 
-class QuizViewTypeD: UICollectionViewCell {
+class QuizViewTypeD: UICollectionViewCell, PKToolPickerObserver {
 
+    var toolPicker: PKToolPicker!
     var delegate : QuizControllerProtocol?
-    
     var soalKe : String = "4"
     var alphabet : String?
     var regionSelected : String?
@@ -123,6 +123,7 @@ class QuizViewTypeD: UICollectionViewCell {
         canvasView.backgroundColor = .clear
         canvasView.isOpaque = false
         canvasView.allowsFingerDrawing = true
+        canvasView.tool = PKInkingTool(.pen, color: .black, width: 2)
         
         return canvasView
     }()
@@ -131,11 +132,23 @@ class QuizViewTypeD: UICollectionViewCell {
         canvasView.drawing = PKDrawing()
     }
     
+    func setupPencilKit() {
+        if let window = UIApplication.shared.windows.first {
+            toolPicker = PKToolPicker.shared(for: window)
+            toolPicker.setVisible(false, forFirstResponder: canvasView)
+            toolPicker.addObserver(canvasView)
+            toolPicker.addObserver(self)
+            canvasView.becomeFirstResponder()
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setBackgroundColor()
         setupView()
+        setupPencilKit()
     }
+    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

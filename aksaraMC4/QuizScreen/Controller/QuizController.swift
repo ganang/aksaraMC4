@@ -26,7 +26,6 @@ class QuizController: UIViewController, QuizControllerProtocol {
     
     var quizes : [Quiz]? {
         didSet {
-            print("QUIZES SENT",quizes?[2].choices?.count)
             quizTypeGuideModel = quizes![0]
             quizTypeAModel = quizes![1]
             quizTypeBModel = quizes![2]
@@ -792,11 +791,8 @@ class QuizController: UIViewController, QuizControllerProtocol {
         }
         
         level?.stage?.currentMedal = Int64(totalMedal)
-        print("TOTAL MEDAL",totalMedal)
-        print("TOTAL MEDAL ON COREDATA", level?.stage?.currentMedal)
         level?.isInitial = false
         PersistenceService.saveContext()
-//        NotificationCenter.default.post(name: Notification.Name("updateData"), object: nil, userInfo: ["selectedPodcast": selectedPodcast as Any])
         
         NotificationCenter.default.post(name: Notification.Name("updateData"), object: nil, userInfo: ["update" : true])
     }
@@ -1049,7 +1045,6 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
             cell.lewatiButton.tag = indexPath.item
             cell.arrowRightButton.tag = indexPath.item
             cell.regionSelected = regionSelected
-            print("QUIZ2", quizes![2].choices?.count)
             cell.quizData = quizes![2]
             
             
