@@ -74,9 +74,9 @@ class QuizController: UIViewController, QuizControllerProtocol {
     let quizTopNumberLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.init(name: "Now-Medium", size: 32)
+        label.font = UIFont.init(name: "NowAlt-Medium", size: 24)
         label.textColor = Theme.current.textColor1
-        label.text = "Panduan"
+        label.text = ""
         return label
     }()
     
@@ -88,7 +88,7 @@ class QuizController: UIViewController, QuizControllerProtocol {
     let headerTimer: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.init(name: "Now-Medium", size: 24)
+        label.font = UIFont.init(name: "NowAlt-Medium", size: 24)
         label.textColor = Theme.current.textColor1
         label.text = ""
         return label
@@ -174,9 +174,9 @@ class QuizController: UIViewController, QuizControllerProtocol {
          pv.tintColor = UIColor.blue
          pv.trackTintColor = Theme.current.accentLightBlue
          pv.clipsToBounds = true
-         pv.layer.cornerRadius = 8
-         pv.layer.sublayers![1].cornerRadius = 8
-         pv.subviews[1].clipsToBounds = true
+//         pv.layer.cornerRadius = 8
+//         pv.layer.sublayers![1].cornerRadius = 8
+//         pv.subviews[1].clipsToBounds = true
          pv.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
          return pv
      }()
@@ -208,7 +208,7 @@ class QuizController: UIViewController, QuizControllerProtocol {
         
         // handle timer label button
         self.timerLabelButton.isHidden = false
-        self.quizTopNumberLabel.text = quizPageFill[sender.tag + 1].navHeaderText
+//        self.quizTopNumberLabel.text = quizPageFill[sender.tag + 1].navHeaderText
         self.totalTime = quizPageFill[sender.tag + 1].HeaderTimer
         
         // handle timer
@@ -258,32 +258,44 @@ class QuizController: UIViewController, QuizControllerProtocol {
             headerView.topAnchor.constraint(equalTo: view.topAnchor),
             headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            headerView.heightAnchor.constraint(equalToConstant: 160)
+            headerView.heightAnchor.constraint(equalToConstant: view.frame.height * 0.1918465228)
         ])
         
         //Nav Section
         headerView.addSubview(previousButton)
         NSLayoutConstraint.activate([
-            previousButton.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 56),
-            previousButton.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 30)
+            previousButton.topAnchor.constraint(equalTo: headerView.topAnchor, constant: view.frame.height * 0.0479616307),
+            previousButton.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: view.frame.width * 0.03350083752)
         ])
+        
+        
+        //HandleQuizTopNumberLabel
+        let stingStageId : Int = Int((level?.stage!.id)!)
+        let stingStageIdString = String(stingStageId)
+        
+        let stringRegion =  String(regionSelected!)
+        
+        let stingLevelId : Int = Int(level!.id)
+        let stingLevelIdString = String(stingLevelId)
+        
+        self.quizTopNumberLabel.text = "Aksara \(stringRegion) Tahap \(stingStageIdString)-\(stingLevelIdString)"
         
         headerView.addSubview(quizTopNumberLabel)
         NSLayoutConstraint.activate([
-            quizTopNumberLabel.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 61),
-        quizTopNumberLabel.leadingAnchor.constraint(equalTo: previousButton.trailingAnchor, constant: 32)
+            quizTopNumberLabel.topAnchor.constraint(equalTo: headerView.topAnchor, constant: view.frame.height * 0.06354916067),
+            quizTopNumberLabel.centerXAnchor.constraint(equalTo: headerView.centerXAnchor)
         ])
         
         headerView.addSubview(headerTimer)
         NSLayoutConstraint.activate([
-        headerTimer.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 66),
-        headerTimer.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -110)
+            headerTimer.topAnchor.constraint(equalTo: headerView.topAnchor, constant: view.frame.height * 0.06354916067),
+            headerTimer.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -view.frame.width * 0.03350083752)
         ])
         
         headerView.addSubview(timerLabelButton)
         NSLayoutConstraint.activate([
-        timerLabelButton.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 65),
-        timerLabelButton.trailingAnchor.constraint(equalTo: headerTimer.leadingAnchor, constant: -8)
+            timerLabelButton.topAnchor.constraint(equalTo: headerView.topAnchor, constant: view.frame.height * 0.0623501199),
+            timerLabelButton.trailingAnchor.constraint(equalTo: headerTimer.leadingAnchor, constant: -view.frame.width * 0.006700167504)
         ])
         
         
@@ -291,18 +303,18 @@ class QuizController: UIViewController, QuizControllerProtocol {
         progressiveBar.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-        progressiveBar.topAnchor.constraint(equalTo: previousButton.bottomAnchor, constant: 24),
-        progressiveBar.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 110),
-        progressiveBar.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -110),
-        progressiveBar.heightAnchor.constraint(equalToConstant: 16)
+            progressiveBar.topAnchor.constraint(equalTo: previousButton.bottomAnchor, constant: view.frame.height * 0.02877697842),
+            progressiveBar.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
+            progressiveBar.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
+            progressiveBar.heightAnchor.constraint(equalToConstant: view.frame.height * 0.01438848921)
         ])
         
         let colorTop =  UIColor(red: 36/255.0, green: 194/255.0, blue: 255/255.0, alpha: 1.0).cgColor
         let colorBottom = UIColor(red: 54/255.0, green: 159/255.0, blue: 255/255.0, alpha: 1.0).cgColor
         
         let gradientImage = UIImage.gradientImage(with: progressiveBar.frame,
-        colors: [colorTop, colorBottom],
-        locations: nil)
+                                                  colors: [colorTop, colorBottom],
+                                                  locations: nil)
         
         progressiveBar.progressImage = gradientImage!
         progressiveBar.setProgress(0.1666666667, animated: true)
@@ -443,6 +455,117 @@ class QuizController: UIViewController, QuizControllerProtocol {
         backBackgroundBlurView.removeFromSuperview()
     }
     
+    //View HandlePanduanInfoMenulis
+    lazy var backgroundInfoBlurView : UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.init(displayP3Red: 29/255, green: 112/255, blue: 188/255, alpha: 0.2)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.isUserInteractionEnabled = true
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.regular)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = view.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.addSubview(blurEffectView)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.hidePanduanInfoMenulis))
+        view.isUserInteractionEnabled = true
+        view.addGestureRecognizer(tap)
+        
+        return view
+    }()
+    
+    lazy var containerInfoView : UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor.init(displayP3Red: 1, green: 1, blue: 1, alpha: 0.8)
+        view.layer.cornerRadius = 24
+        view.addInnerShadow()
+        view.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
+        view.isUserInteractionEnabled = true
+        return view
+    }()
+    
+    let labelPanduan: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.paragraphSpacing = 12
+        paragraphStyle.lineSpacing = 10
+        
+        let firstWord   = ""
+        let secondWord = "Menulis Aksara\n"
+        let attrs      = [NSAttributedString.Key.font: UIFont.init(name: "Now-Bold", size: 24), NSAttributedString.Key.foregroundColor: Theme.current.textColor1, NSAttributedString.Key.paragraphStyle: paragraphStyle]
+        let attrs2      = [NSAttributedString.Key.font: UIFont.init(name: "Now-Medium", size: 18), NSAttributedString.Key.foregroundColor: Theme.current.textColor1, NSAttributedString.Key.paragraphStyle: paragraphStyle]
+        let thirdWord   = "Anda dapat menggunakan Apple Pencil atau ujung jari untuk menuliskan aksara sesuai panduan gambar"
+        let attributedText = NSMutableAttributedString(string:firstWord)
+        attributedText.append(NSAttributedString(string: secondWord, attributes: attrs as [NSAttributedString.Key : Any]))
+        attributedText.append(NSAttributedString(string: thirdWord, attributes: attrs2 as [NSAttributedString.Key : Any]))
+        label.setTextColorToGradient(image: UIImage(named: "gradientText")!)
+        label.attributedText = attributedText
+        return label
+    }()
+    
+    let panduanInfo: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "panduanInfo")
+        image.contentMode = .scaleAspectFit
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
+    }()
+    
+    let mengertiButton: UIButton = {
+        let button = UIButton()
+        let attributedString = NSAttributedString(string: NSLocalizedString("Mengerti", comment: ""), attributes:[
+            NSAttributedString.Key.font : UIFont.init(name: "Now-medium", size: 20),
+            NSAttributedString.Key.foregroundColor : Theme.current.textColor2,
+            NSAttributedString.Key.underlineStyle: 1.0
+        ])
+        button.setAttributedTitle(attributedString, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(hidePanduanInfoMenulis), for: .touchUpInside)
+        return button
+    }()
+    
+    //HandlePanduanInfoMenulis
+    @objc func showPanduanInfoMenulis() {
+        view.addSubview(backgroundInfoBlurView)
+        backgroundInfoBlurView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        backgroundInfoBlurView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        backgroundInfoBlurView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        backgroundInfoBlurView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        
+        
+        backgroundInfoBlurView.addSubview(containerInfoView)
+        containerInfoView.centerXAnchor.constraint(equalTo: backgroundInfoBlurView.centerXAnchor).isActive = true
+        containerInfoView.centerYAnchor.constraint(equalTo: backgroundInfoBlurView.centerYAnchor).isActive = true
+        containerInfoView.heightAnchor.constraint(equalToConstant: 560).isActive = true
+        containerInfoView.widthAnchor.constraint(equalToConstant: 440).isActive = true
+        
+        
+        containerInfoView.addSubview(labelPanduan)
+        labelPanduan.leadingAnchor.constraint(equalTo: containerInfoView.leadingAnchor, constant: 32).isActive = true
+        labelPanduan.topAnchor.constraint(equalTo: containerInfoView.topAnchor, constant: 40).isActive = true
+        labelPanduan.trailingAnchor.constraint(equalTo: containerInfoView.trailingAnchor, constant: -40).isActive = true
+        
+        
+        containerInfoView.addSubview(panduanInfo)
+        panduanInfo.topAnchor.constraint(equalTo: containerInfoView.topAnchor, constant: 189).isActive = true
+        panduanInfo.leadingAnchor.constraint(equalTo: containerInfoView.leadingAnchor, constant: 70).isActive = true
+        panduanInfo.heightAnchor.constraint(equalToConstant: 274).isActive = true
+        panduanInfo.widthAnchor.constraint(equalToConstant: 462).isActive = true
+        
+
+        containerInfoView.addSubview(mengertiButton)
+        mengertiButton.centerXAnchor.constraint(equalTo: containerInfoView.centerXAnchor).isActive = true
+        mengertiButton.bottomAnchor.constraint(equalTo: containerInfoView.bottomAnchor, constant: -40).isActive = true
+        
+    }
+    
+    @objc func hidePanduanInfoMenulis() {
+        backgroundInfoBlurView.removeFromSuperview()
+    }
+    
     //For Modal
     lazy var backgroundBlurView : UIView = {
         let view = UIView()
@@ -454,13 +577,13 @@ class QuizController: UIViewController, QuizControllerProtocol {
         blurEffectView.frame = view.bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(blurEffectView)
-        
+
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.hideWarningModal))
         view.isUserInteractionEnabled = true
         view.addGestureRecognizer(tap)
         return view
     }()
-    
+
     lazy var containerView : UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -471,7 +594,7 @@ class QuizController: UIViewController, QuizControllerProtocol {
         view.isUserInteractionEnabled = true
         return view
     }()
-    
+
     let aksaraStepLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -772,6 +895,7 @@ class QuizController: UIViewController, QuizControllerProtocol {
         
         nilaiLabel.text = "Nilai: \(totalQuizCorrect)/5"
         aksaraStepLabel.text = "Aksara \(stringRegion) Tahap \(stingStageIdString)-\(stingLevelIdString)"
+        quizTopNumberLabel.text = "Aksara \(stringRegion) Tahap \(stingStageIdString)-\(stingLevelIdString)"
         
         level?.totalMedal = Int64(totalMedal)
         
@@ -1017,7 +1141,7 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuizViewCell, for: indexPath) as! QuizView
             cell.setBackgroundColor()
             cell.kuisButton.addTarget(self, action: #selector(handleProgressBar), for: .touchUpInside)
-//            cell.reloadButton.addTarget(self, action: #selector(reloadPencilKit), for: .touchUpInside)
+            cell.infoButton.addTarget(self, action: #selector(showPanduanInfoMenulis), for: .touchUpInside)
             cell.regionSelected = regionSelected
             cell.quizData = quizTypeGuideModel
             

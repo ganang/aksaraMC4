@@ -9,9 +9,20 @@
 /* Begin PBXBuildFile section */
 		231EA807252DE9C7004FB678 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231EA806252DE9C7004FB678 /* QuizView.swift */; };
 		231EA809252DEA18004FB678 /* QuizController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231EA808252DEA18004FB678 /* QuizController.swift */; };
+		23419AD725419C37001F4CB8 /* DictionaryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23419AD625419C37001F4CB8 /* DictionaryController.swift */; };
+		23419AD925419C6C001F4CB8 /* DictionaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23419AD825419C6C001F4CB8 /* DictionaryView.swift */; };
+		2351981725400B9800121816 /* Jawaban_Salah_D.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2351981225400B9700121816 /* Jawaban_Salah_D.mp3 */; };
+		2351981825400B9800121816 /* Hasil_Jelek_D.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2351981325400B9700121816 /* Hasil_Jelek_D.mp3 */; };
+		2351981925400B9800121816 /* Jawaban_Benar_A.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2351981425400B9800121816 /* Jawaban_Benar_A.mp3 */; };
+		2351981A25400B9800121816 /* Donkgedank_-_SUMRINGAH_(No_Copyright_Backsound)_+_Link.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2351981525400B9800121816 /* Donkgedank_-_SUMRINGAH_(No_Copyright_Backsound)_+_Link.mp3 */; };
+		2351981B25400B9800121816 /* Hasil_Bagus_B.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2351981625400B9800121816 /* Hasil_Bagus_B.mp3 */; };
 		235D23B42532DA680007F81E /* QuizViewTypeD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235D23B32532DA680007F81E /* QuizViewTypeD.swift */; };
 		235D23B62532DEAB0007F81E /* QuizViewTypeE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235D23B52532DEAB0007F81E /* QuizViewTypeE.swift */; };
 		2372F70F2530420000E79198 /* QuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2372F70E2530420000E79198 /* QuizModel.swift */; };
+		237BC09B2545C31000494281 /* KonsonanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237BC09A2545C31000494281 /* KonsonanCell.swift */; };
+		23812D8C2542C24600C17F53 /* KonsonanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23812D8B2542C24600C17F53 /* KonsonanView.swift */; };
+		23812D8E2542C34D00C17F53 /* VokalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23812D8D2542C34D00C17F53 /* VokalView.swift */; };
+		23812D902542C37A00C17F53 /* PasanganView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23812D8F2542C37A00C17F53 /* PasanganView.swift */; };
 		23A900DB253C2BFE008636B1 /* Sunda Suara Ya.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A900A9253C2BFD008636B1 /* Sunda Suara Ya.mp3 */; };
 		23A900DC253C2BFE008636B1 /* Sunda Suara La.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A900AA253C2BFD008636B1 /* Sunda Suara La.mp3 */; };
 		23A900DD253C2BFE008636B1 /* Sunda Suara Ta.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A900AB253C2BFD008636B1 /* Sunda Suara Ta.mp3 */; };
@@ -103,9 +114,20 @@
 /* Begin PBXFileReference section */
 		231EA806252DE9C7004FB678 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		231EA808252DEA18004FB678 /* QuizController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizController.swift; sourceTree = "<group>"; };
+		23419AD625419C37001F4CB8 /* DictionaryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryController.swift; sourceTree = "<group>"; };
+		23419AD825419C6C001F4CB8 /* DictionaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryView.swift; sourceTree = "<group>"; };
+		2351981225400B9700121816 /* Jawaban_Salah_D.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Jawaban_Salah_D.mp3; sourceTree = "<group>"; };
+		2351981325400B9700121816 /* Hasil_Jelek_D.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Hasil_Jelek_D.mp3; sourceTree = "<group>"; };
+		2351981425400B9800121816 /* Jawaban_Benar_A.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Jawaban_Benar_A.mp3; sourceTree = "<group>"; };
+		2351981525400B9800121816 /* Donkgedank_-_SUMRINGAH_(No_Copyright_Backsound)_+_Link.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Donkgedank_-_SUMRINGAH_(No_Copyright_Backsound)_+_Link.mp3"; sourceTree = "<group>"; };
+		2351981625400B9800121816 /* Hasil_Bagus_B.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Hasil_Bagus_B.mp3; sourceTree = "<group>"; };
 		235D23B32532DA680007F81E /* QuizViewTypeD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewTypeD.swift; sourceTree = "<group>"; };
 		235D23B52532DEAB0007F81E /* QuizViewTypeE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewTypeE.swift; sourceTree = "<group>"; };
 		2372F70E2530420000E79198 /* QuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizModel.swift; sourceTree = "<group>"; };
+		237BC09A2545C31000494281 /* KonsonanCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KonsonanCell.swift; sourceTree = "<group>"; };
+		23812D8B2542C24600C17F53 /* KonsonanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KonsonanView.swift; sourceTree = "<group>"; };
+		23812D8D2542C34D00C17F53 /* VokalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VokalView.swift; sourceTree = "<group>"; };
+		23812D8F2542C37A00C17F53 /* PasanganView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasanganView.swift; sourceTree = "<group>"; };
 		23A900A9253C2BFD008636B1 /* Sunda Suara Ya.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sunda Suara Ya.mp3"; sourceTree = "<group>"; };
 		23A900AA253C2BFD008636B1 /* Sunda Suara La.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sunda Suara La.mp3"; sourceTree = "<group>"; };
 		23A900AB253C2BFD008636B1 /* Sunda Suara Ta.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sunda Suara Ta.mp3"; sourceTree = "<group>"; };
@@ -240,6 +262,47 @@
 				235D23B52532DEAB0007F81E /* QuizViewTypeE.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		23419AD3254195E3001F4CB8 /* DictionaryScreen */ = {
+			isa = PBXGroup;
+			children = (
+				23419AD42541961B001F4CB8 /* Controller */,
+				23419AD5254196D3001F4CB8 /* View */,
+			);
+			path = DictionaryScreen;
+			sourceTree = "<group>";
+		};
+		23419AD42541961B001F4CB8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				23419AD625419C37001F4CB8 /* DictionaryController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		23419AD5254196D3001F4CB8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				23419AD825419C6C001F4CB8 /* DictionaryView.swift */,
+				23812D8B2542C24600C17F53 /* KonsonanView.swift */,
+				23812D8D2542C34D00C17F53 /* VokalView.swift */,
+				23812D8F2542C37A00C17F53 /* PasanganView.swift */,
+				237BC09A2545C31000494281 /* KonsonanCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2351981125400B8500121816 /* Other Suara */ = {
+			isa = PBXGroup;
+			children = (
+				2351981525400B9800121816 /* Donkgedank_-_SUMRINGAH_(No_Copyright_Backsound)_+_Link.mp3 */,
+				2351981625400B9800121816 /* Hasil_Bagus_B.mp3 */,
+				2351981325400B9700121816 /* Hasil_Jelek_D.mp3 */,
+				2351981425400B9800121816 /* Jawaban_Benar_A.mp3 */,
+				2351981225400B9700121816 /* Jawaban_Salah_D.mp3 */,
+			);
+			path = "Other Suara";
 			sourceTree = "<group>";
 		};
 		2372F70D253041E300E79198 /* Model */ = {
@@ -435,8 +498,10 @@
 		A41A77E6252D9586001C4FAD /* aksaraMC4 */ = {
 			isa = PBXGroup;
 			children = (
-				A48A0FA1253C4AF800AB1ED5 /* Asset Suara */,
+				2351981125400B8500121816 /* Other Suara */,
+				A48A0FA1253C4AF800AB1ED5 /* Jawa Suara */,
 				23A900A8253C2BFD008636B1 /* Sunda Suara */,
+				23419AD3254195E3001F4CB8 /* DictionaryScreen */,
 				231EA802252DE940004FB678 /* QuizScreen */,
 				91C98770252F1A0A00D67BC0 /* LevelScreen */,
 				91C98764252EFE4800D67BC0 /* StageScreen */,
@@ -477,7 +542,7 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		A48A0FA1253C4AF800AB1ED5 /* Asset Suara */ = {
+		A48A0FA1253C4AF800AB1ED5 /* Jawa Suara */ = {
 			isa = PBXGroup;
 			children = (
 				A48A0FA2253C4AF800AB1ED5 /* Jawa Suara Ma.mp3 */,
@@ -501,7 +566,7 @@
 				A48A0FB4253C4AF800AB1ED5 /* Jawa Suara Wa.mp3 */,
 				A48A0FB5253C4AF800AB1ED5 /* Jawa Suara Na.mp3 */,
 			);
-			path = "Asset Suara";
+			path = "Jawa Suara";
 			sourceTree = "<group>";
 		};
 		A4A3DDEA2539964C00DC4CF7 /* Recovered References */ = {
@@ -599,11 +664,13 @@
 				23A900E5253C2BFE008636B1 /* Sunda Suara O.mp3 in Resources */,
 				23A900DF253C2BFE008636B1 /* Sunda Suara Ma.mp3 in Resources */,
 				A48A0FBF253C4AF800AB1ED5 /* Jawa Suara Sa.mp3 in Resources */,
+				2351981825400B9800121816 /* Hasil_Jelek_D.mp3 in Resources */,
 				23A900DB253C2BFE008636B1 /* Sunda Suara Ya.mp3 in Resources */,
 				23A900DE253C2BFE008636B1 /* Sunda Suara Nya.mp3 in Resources */,
 				23A900EF253C2BFE008636B1 /* Sunda Suara U.mp3 in Resources */,
 				A41A7815252D9A43001C4FAD /* NowAlt-Medium.otf in Resources */,
 				A48A0FBA253C4AF800AB1ED5 /* Jawa Suara La.mp3 in Resources */,
+				2351981A25400B9800121816 /* Donkgedank_-_SUMRINGAH_(No_Copyright_Backsound)_+_Link.mp3 in Resources */,
 				A41A77F7252D9588001C4FAD /* LaunchScreen.storyboard in Resources */,
 				A41A780C252D9A43001C4FAD /* Now-Light.otf in Resources */,
 				A48A0FBD253C4AF800AB1ED5 /* Jawa Suara Ka.mp3 in Resources */,
@@ -621,6 +688,7 @@
 				23A900F1253C2BFE008636B1 /* Sunda Suara Pa.mp3 in Resources */,
 				23A900E7253C2BFE008636B1 /* Sunda Suara É.mp3 in Resources */,
 				23A900EA253C2BFE008636B1 /* Sunda Suara I.mp3 in Resources */,
+				2351981B25400B9800121816 /* Hasil_Bagus_B.mp3 in Resources */,
 				A41A7813252D9A43001C4FAD /* Now-Black.otf in Resources */,
 				A48A0FBC253C4AF800AB1ED5 /* Jawa Suara Ra.mp3 in Resources */,
 				A41A780D252D9A43001C4FAD /* Now-Medium.otf in Resources */,
@@ -637,6 +705,7 @@
 				A48A0FB7253C4AF800AB1ED5 /* Jawa Suara Tha.mp3 in Resources */,
 				A48A0FC3253C4AF800AB1ED5 /* Jawa Suara Nga.mp3 in Resources */,
 				23A900F4253C2BFE008636B1 /* Sunda Suara Wa.mp3 in Resources */,
+				2351981725400B9800121816 /* Jawaban_Salah_D.mp3 in Resources */,
 				A41A77F4252D9588001C4FAD /* Assets.xcassets in Resources */,
 				23A900DC253C2BFE008636B1 /* Sunda Suara La.mp3 in Resources */,
 				23A900E1253C2BFE008636B1 /* Sunda Suara Sa.mp3 in Resources */,
@@ -651,6 +720,7 @@
 				A41A7816252D9A43001C4FAD /* NowAlt-Thin.otf in Resources */,
 				23A900EC253C2BFE008636B1 /* Sunda Suara Qa.mp3 in Resources */,
 				A41A7810252D9A43001C4FAD /* NowAlt-Black.otf in Resources */,
+				2351981925400B9800121816 /* Jawaban_Benar_A.mp3 in Resources */,
 				A48A0FB8253C4AF800AB1ED5 /* Jawa Suara Ta.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -721,12 +791,18 @@
 				23F2828E2531D273009EC52B /* QuizViewTypeC.swift in Sources */,
 				2372F70F2530420000E79198 /* QuizModel.swift in Sources */,
 				A41A77E8252D9586001C4FAD /* AppDelegate.swift in Sources */,
+				23812D902542C37A00C17F53 /* PasanganView.swift in Sources */,
+				23812D8E2542C34D00C17F53 /* VokalView.swift in Sources */,
+				23812D8C2542C24600C17F53 /* KonsonanView.swift in Sources */,
+				237BC09B2545C31000494281 /* KonsonanCell.swift in Sources */,
+				23419AD925419C6C001F4CB8 /* DictionaryView.swift in Sources */,
 				231EA809252DEA18004FB678 /* QuizController.swift in Sources */,
 				91C98775252F268400D67BC0 /* LevelController.swift in Sources */,
 				914344E9252DBAFC002E867B /* LightTheme.swift in Sources */,
 				23F2828C2531BC89009EC52B /* QuizViewTypeB.swift in Sources */,
 				A4C715BC2539A45B00270D58 /* CoreDataRecord.swift in Sources */,
 				A41A77EA252D9586001C4FAD /* SceneDelegate.swift in Sources */,
+				23419AD725419C37001F4CB8 /* DictionaryController.swift in Sources */,
 				23F2828A2531984D009EC52B /* QuizViewTypeA.swift in Sources */,
 				A4F19FC52535939400F5BA23 /* BaseView.swift in Sources */,
 				914344F0252DBFB9002E867B /* Extension.swift in Sources */,
