@@ -42,7 +42,7 @@ class RegionController: UIViewController {
             regionView.kamusCardSubtitle1.text = "Kamus Aksara Jawa"
             regionView.kamusCardSubtitle2.text = "Carakan, Sandhangan, Angka, Swara"
         } else if regionSelected == "Sunda" {
-            regionView.backButtonTitle.text = "Aksara Sunda"
+            regionView.backButtonTitle.text = "Akara Sunda"
             
             regionView.menuImageIcon.image = UIImage(named: "mainAksaraSunda")
             regionView.mainCardTitle.text = "Main"
@@ -85,7 +85,9 @@ class RegionController: UIViewController {
     
     
     @objc func tapKamus() {
-        
+        let dictionaryScreen = DictionaryController()
+        dictionaryScreen.regionSelected = regionSelected
+        navigationController?.pushViewController(dictionaryScreen, animated: true)
     }
     
     @objc func backButton() {

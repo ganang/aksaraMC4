@@ -25,6 +25,8 @@ class QuizViewTypeB: UICollectionViewCell {
     var answersBGView = [CustomView]()
     var answersChoiceLabel = [UILabel]()
     var answersChoiceImage = [UIImageView]()
+    var stateTrueImage = [UIImageView]()
+    var stateFalseImage = [UIImageView]()
     
     var quizData: Quiz? {
         didSet {
@@ -83,6 +85,7 @@ class QuizViewTypeB: UICollectionViewCell {
         answersBGView[index!].setCardTrueBackgroundColor()
         answersChoiceLabel[index!].textColor = .white
         answersChoiceImage[index!].setImageColor(color: .white)
+        stateTrueImage[index!].isHidden = false
         arrowRightButton.isHidden = false
         lewatiButton.isHidden = false
         
@@ -146,6 +149,78 @@ class QuizViewTypeB: UICollectionViewCell {
         return image
     }()
     
+    let falseState1: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "falseState")
+        image.contentMode = .scaleAspectFit
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.isHidden = true
+        return image
+    }()
+    
+    let falseState2: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "falseState")
+        image.contentMode = .scaleAspectFit
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.isHidden = true
+        return image
+    }()
+    
+    let falseState3: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "falseState")
+        image.contentMode = .scaleAspectFit
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.isHidden = true
+        return image
+    }()
+    
+    let falseState4: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "falseState")
+        image.contentMode = .scaleAspectFit
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.isHidden = true
+        return image
+    }()
+    
+    let trueState1: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "trueState")
+        image.contentMode = .scaleAspectFit
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.isHidden = true
+        return image
+    }()
+    
+    let trueState2: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "trueState")
+        image.contentMode = .scaleAspectFit
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.isHidden = true
+        return image
+    }()
+    
+    let trueState3: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "trueState")
+        image.contentMode = .scaleAspectFit
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.isHidden = true
+        return image
+    }()
+    
+    let trueState4: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "trueState")
+        image.contentMode = .scaleAspectFit
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.isHidden = true
+        return image
+    }()
+    
     //Label
     let aksaraLabel: UILabel = {
         let label = UILabel()
@@ -168,7 +243,7 @@ class QuizViewTypeB: UICollectionViewCell {
     let kelompokLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.init(name: "NowAlt-Regular", size: 24)
+        label.font = UIFont.init(name: "Now-Regular", size: 24)
         label.textColor = Theme.current.accentWhite
         label.text = "Kelompok Carakan"
         return label
@@ -186,7 +261,7 @@ class QuizViewTypeB: UICollectionViewCell {
     let pilgan1: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.init(name: "NowAlt-Regular", size: 20)
+        label.font = UIFont.init(name: "Now-Regular", size: 20)
         label.textColor = Theme.current.textColor1
         label.text = "A."
         return label
@@ -195,7 +270,7 @@ class QuizViewTypeB: UICollectionViewCell {
     let pilgan2: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.init(name: "NowAlt-Regular", size: 20)
+        label.font = UIFont.init(name: "Now-Regular", size: 20)
         label.textColor = Theme.current.textColor1
         label.text = "B."
         return label
@@ -204,7 +279,7 @@ class QuizViewTypeB: UICollectionViewCell {
     let pilgan3: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.init(name: "NowAlt-Regular", size: 20)
+        label.font = UIFont.init(name: "Now-Regular", size: 20)
         label.textColor = Theme.current.textColor1
         label.text = "C."
         return label
@@ -213,7 +288,7 @@ class QuizViewTypeB: UICollectionViewCell {
     let pilgan4: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.init(name: "NowAlt-Regular", size: 20)
+        label.font = UIFont.init(name: "Now-Regular", size: 20)
         label.textColor = Theme.current.textColor1
         label.text = "D."
         return label
@@ -306,47 +381,60 @@ class QuizViewTypeB: UICollectionViewCell {
         let id = view.id
         
         if initialClick == false {
-            if view.choice == alphabet {
-                print("True")
-                answersBGView[index!].setCardTrueBackgroundColor()
-                answersChoiceLabel[index!].textColor = .white
-                answersChoiceImage[index!].setImageColor(color: .white)
-                
-                var arrayAlpha = [0, 1, 2, 3]
-                arrayAlpha = arrayAlpha.filter { $0 != index}
-                
-                for i in arrayAlpha {
-                    answersBGView[i].alpha = 0.4
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self.answersBGView[id!].setCardChooseBackgroundColor()
+                self.answersChoiceLabel[id!].textColor = .white
+                self.answersChoiceImage[id!].setImageColor(color: .white)
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                self.answersBGView[id!].removeLayer(name: "xxx")
+                if view.choice == self.alphabet {
+                    print("True")
+                    self.answersBGView[index!].setCardTrueBackgroundColor()
+                    self.answersChoiceLabel[index!].textColor = .white
+                    self.answersChoiceImage[index!].setImageColor(color: .white)
+                    self.stateTrueImage[index!].isHidden = false
+                    //                playSound()
+                    var arrayAlpha = [0, 1, 2, 3]
+                    arrayAlpha = arrayAlpha.filter { $0 != index}
+                    
+                    for i in arrayAlpha {
+                        self.answersBGView[i].alpha = 0.4
+                    }
+                    
+                    self.delegate?.stopTimerChoosen()
+                    
+                    // handle core data
+                    self.quizData?.isCorrect = true
+                    PersistenceService.saveContext()
+                }else {
+                    print("False")
+                    self.answersBGView[id!].setCardFalseBackgroundColor()
+                    self.answersChoiceLabel[id!].textColor = .white
+                    self.answersChoiceImage[id!].setImageColor(color: .white)
+                    self.stateFalseImage[id!].isHidden = false
+                    
+                    self.answersBGView[index!].setCardTrueBackgroundColor()
+                    self.answersChoiceLabel[index!].textColor = .white
+                    self.answersChoiceImage[index!].setImageColor(color: .white)
+                    self.stateTrueImage[index!].isHidden = false
+                    //                playSound()
+                    var arrayAlpha = [0, 1, 2, 3]
+                    arrayAlpha = arrayAlpha.filter { $0 != index}
+                    arrayAlpha = arrayAlpha.filter { $0 != id}
+                    
+                    for i in arrayAlpha {
+                        self.answersBGView[i].alpha = 0.4
+                    }
+                    
+                    self.delegate?.stopTimerChoosen()
+                    
+                    // handle core data
+                    self.quizData?.isCorrect = false
+                    PersistenceService.saveContext()
                 }
-                delegate?.stopTimerChoosen()
-//                playSound()
-                
-                // handle core data
-                quizData?.isCorrect = true
-                PersistenceService.saveContext()
-            }else {
-                print("False")
-                answersBGView[id!].setCardFalseBackgroundColor()
-                answersChoiceLabel[id!].textColor = .white
-                answersChoiceImage[id!].setImageColor(color: .white)
-                
-                answersBGView[index!].setCardTrueBackgroundColor()
-                answersChoiceLabel[index!].textColor = .white
-                answersChoiceImage[index!].setImageColor(color: .white)
-                
-                var arrayAlpha = [0, 1, 2, 3]
-                arrayAlpha = arrayAlpha.filter { $0 != index}
-                arrayAlpha = arrayAlpha.filter { $0 != id}
-                
-                for i in arrayAlpha {
-                    answersBGView[i].alpha = 0.4
-                }
-                delegate?.stopTimerChoosen()
-//                playSound()
-                
-                // handle core data
-                quizData?.isCorrect = false
-                PersistenceService.saveContext()
             }
             arrowRightButton.isHidden = false
             lewatiButton.isHidden = false
@@ -387,6 +475,8 @@ class QuizViewTypeB: UICollectionViewCell {
         self.answersBGView = [answer1BgView, answer2BgView, answer3BgView, answer4BgView]
         self.answersChoiceLabel = [pilgan1, pilgan2, pilgan3, pilgan4]
         self.answersChoiceImage = [pilgan1Answer, pilgan2Answer, pilgan3Answer, pilgan4Answer]
+        self.stateTrueImage = [trueState1, trueState2, trueState3, trueState4]
+        self.stateFalseImage = [falseState1, falseState2, falseState3, falseState4]
     }
     
     required init?(coder: NSCoder) {
@@ -408,8 +498,8 @@ class QuizViewTypeB: UICollectionViewCell {
             //QuizLeftSection
             addSubview(quizBgView)
             NSLayoutConstraint.activate([
-                quizBgView.topAnchor.constraint(equalTo: topAnchor, constant: 151),
-                quizBgView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 110),
+                quizBgView.topAnchor.constraint(equalTo: topAnchor, constant: frame.height * 0.1810551559),
+                quizBgView.centerXAnchor.constraint(equalTo: centerXAnchor, constant: -247),
                 quizBgView.heightAnchor.constraint(equalToConstant: 440),
                 quizBgView.widthAnchor.constraint(equalToConstant: 440)
             ])
@@ -439,8 +529,8 @@ class QuizViewTypeB: UICollectionViewCell {
             //Pilgan1
             addSubview(answer1BgView)
             NSLayoutConstraint.activate([
-            answer1BgView.topAnchor.constraint(equalTo: topAnchor, constant: 210),
-            answer1BgView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -346),
+            answer1BgView.topAnchor.constraint(equalTo: topAnchor, constant: frame.height * 0.2517985612),
+            answer1BgView.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 121),
             answer1BgView.heightAnchor.constraint(equalToConstant: 140),
             answer1BgView.widthAnchor.constraint(equalToConstant: 220)
             ])
@@ -462,7 +552,7 @@ class QuizViewTypeB: UICollectionViewCell {
             //Pilgan2
             addSubview(answer2BgView)
             NSLayoutConstraint.activate([
-            answer2BgView.topAnchor.constraint(equalTo: topAnchor, constant: 210),
+            answer2BgView.topAnchor.constraint(equalTo: topAnchor, constant: frame.height * 0.2517985612),
             answer2BgView.leadingAnchor.constraint(equalTo: answer1BgView.trailingAnchor, constant: 24),
             answer2BgView.heightAnchor.constraint(equalToConstant: 140),
             answer2BgView.widthAnchor.constraint(equalToConstant: 220)
@@ -528,7 +618,71 @@ class QuizViewTypeB: UICollectionViewCell {
             pilgan4Answer.centerXAnchor.constraint(equalTo: answer4BgView.centerXAnchor)
             ])
             
+            //TrueState
+            answer1BgView.addSubview(trueState1)
+            NSLayoutConstraint.activate([
+                trueState1.trailingAnchor.constraint(equalTo: answer1BgView.trailingAnchor, constant: -10),
+                trueState1.topAnchor.constraint(equalTo: answer1BgView.topAnchor, constant: 10),
+                trueState1.heightAnchor.constraint(equalToConstant: 20),
+                trueState1.widthAnchor.constraint(equalToConstant: 21)
+            ])
             
+            answer2BgView.addSubview(trueState2)
+            NSLayoutConstraint.activate([
+                trueState2.trailingAnchor.constraint(equalTo: answer2BgView.trailingAnchor, constant: -10),
+                trueState2.topAnchor.constraint(equalTo: answer2BgView.topAnchor, constant: 10),
+                trueState2.heightAnchor.constraint(equalToConstant: 20),
+                trueState2.widthAnchor.constraint(equalToConstant: 21)
+            ])
+            
+            answer3BgView.addSubview(trueState3)
+            NSLayoutConstraint.activate([
+                trueState3.trailingAnchor.constraint(equalTo: answer3BgView.trailingAnchor, constant: -10),
+                trueState3.topAnchor.constraint(equalTo: answer3BgView.topAnchor, constant: 10),
+                trueState3.heightAnchor.constraint(equalToConstant: 20),
+                trueState3.widthAnchor.constraint(equalToConstant: 21)
+            ])
+            
+            answer4BgView.addSubview(trueState4)
+            NSLayoutConstraint.activate([
+                trueState4.trailingAnchor.constraint(equalTo: answer4BgView.trailingAnchor, constant: -10),
+                trueState4.topAnchor.constraint(equalTo: answer4BgView.topAnchor, constant: 10),
+                trueState4.heightAnchor.constraint(equalToConstant: 20),
+                trueState4.widthAnchor.constraint(equalToConstant: 21)
+            ])
+            
+            //FalseState
+            answer1BgView.addSubview(falseState1)
+            NSLayoutConstraint.activate([
+                falseState1.trailingAnchor.constraint(equalTo: answer1BgView.trailingAnchor, constant: -16),
+                falseState1.topAnchor.constraint(equalTo: answer1BgView.topAnchor, constant: 16),
+                falseState1.heightAnchor.constraint(equalToConstant: 18),
+                falseState1.widthAnchor.constraint(equalToConstant: 18)
+            ])
+            
+            answer2BgView.addSubview(falseState2)
+            NSLayoutConstraint.activate([
+                falseState2.trailingAnchor.constraint(equalTo: answer2BgView.trailingAnchor, constant: -16),
+                falseState2.topAnchor.constraint(equalTo: answer2BgView.topAnchor, constant: 16),
+                falseState2.heightAnchor.constraint(equalToConstant: 18),
+                falseState2.widthAnchor.constraint(equalToConstant: 18)
+            ])
+            
+            answer3BgView.addSubview(falseState3)
+            NSLayoutConstraint.activate([
+                falseState3.trailingAnchor.constraint(equalTo: answer3BgView.trailingAnchor, constant: -16),
+                falseState3.topAnchor.constraint(equalTo: answer3BgView.topAnchor, constant: 16),
+                falseState3.heightAnchor.constraint(equalToConstant: 18),
+                falseState3.widthAnchor.constraint(equalToConstant: 18)
+            ])
+            
+            answer4BgView.addSubview(falseState4)
+            NSLayoutConstraint.activate([
+                falseState4.trailingAnchor.constraint(equalTo: answer4BgView.trailingAnchor, constant: -16),
+                falseState4.topAnchor.constraint(equalTo: answer4BgView.topAnchor, constant: 16),
+                falseState4.heightAnchor.constraint(equalToConstant: 18),
+                falseState4.widthAnchor.constraint(equalToConstant: 18)
+            ])
             
             
             addSubview(quizAnswerLabel)
@@ -544,7 +698,7 @@ class QuizViewTypeB: UICollectionViewCell {
             NSLayoutConstraint.activate([
             lewatiButton.heightAnchor.constraint(equalToConstant: 24),
             lewatiButton.topAnchor.constraint(equalTo: answer4BgView.bottomAnchor, constant: 41),
-            lewatiButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -315)
+            lewatiButton.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 245)
             ])
             
             addSubview(arrowRightButton)

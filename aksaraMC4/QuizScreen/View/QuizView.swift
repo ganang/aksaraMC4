@@ -56,12 +56,13 @@ class QuizView: UICollectionViewCell, PKToolPickerObserver {
         return button
     }()
     
-    let infoButton: UIButton = {
+    lazy var infoButton: UIButton = {
         let button = UIButton()
         let symbolConfig = UIImage.SymbolConfiguration(pointSize: 24.0, weight: .bold, scale: .default)
         button.setBackgroundImage(UIImage(systemName: "info.circle.fill", withConfiguration: symbolConfig), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.tintColor = Theme.current.textColor1
+//        button.addTarget(self, action: #selector(showPanduanInfoMenulis), for: .touchUpInside)
         return button
     }()
     
@@ -142,7 +143,7 @@ class QuizView: UICollectionViewCell, PKToolPickerObserver {
     let kelompokLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.init(name: "NowAlt-Regular", size: 24)
+        label.font = UIFont.init(name: "Now-Regular", size: 24)
         label.textColor = Theme.current.accentWhite
         label.text = "Kelompok Carakan"
         return label
@@ -151,7 +152,7 @@ class QuizView: UICollectionViewCell, PKToolPickerObserver {
     let soundAksaraLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.init(name: "NowAlt-Regular", size: 24)
+        label.font = UIFont.init(name: "Now-Regular", size: 24)
         label.textColor = Theme.current.accentWhite
         label.text = "Ha : hawa"
         return label
@@ -275,8 +276,8 @@ class QuizView: UICollectionViewCell, PKToolPickerObserver {
         //QuizLeftSection
         addSubview(quizBgView)
         NSLayoutConstraint.activate([
-            quizBgView.topAnchor.constraint(equalTo: topAnchor, constant: 104),
-            quizBgView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 110),
+            quizBgView.topAnchor.constraint(equalTo: topAnchor, constant: frame.height * 0.1247002398),
+            quizBgView.centerXAnchor.constraint(equalTo: centerXAnchor, constant: -247),
             quizBgView.heightAnchor.constraint(equalToConstant: 560),
             quizBgView.widthAnchor.constraint(equalToConstant: 440)
         ])
@@ -334,8 +335,8 @@ class QuizView: UICollectionViewCell, PKToolPickerObserver {
         //QuizRightSection
         addSubview(answerBgView)
         NSLayoutConstraint.activate([
-            answerBgView.topAnchor.constraint(equalTo: topAnchor, constant: 168),
-            answerBgView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -164),
+            answerBgView.topAnchor.constraint(equalTo: topAnchor, constant: frame.height * 0.2014388489),
+            answerBgView.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 213),
             answerBgView.heightAnchor.constraint(equalToConstant: 400),
             answerBgView.widthAnchor.constraint(equalToConstant: 400)
         ])
@@ -351,8 +352,8 @@ class QuizView: UICollectionViewCell, PKToolPickerObserver {
         
         answerBgView.addSubview(canvasView)
         NSLayoutConstraint.activate([
-            canvasView.topAnchor.constraint(equalTo: topAnchor, constant: 168),
-            canvasView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -164),
+            canvasView.topAnchor.constraint(equalTo: topAnchor, constant: frame.height * 0.2014388489),
+            canvasView.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 213),
             canvasView.heightAnchor.constraint(equalToConstant: 400),
             canvasView.widthAnchor.constraint(equalToConstant: 400)
         ])
@@ -361,39 +362,41 @@ class QuizView: UICollectionViewCell, PKToolPickerObserver {
         NSLayoutConstraint.activate([
             checkButton.heightAnchor.constraint(equalToConstant: 40),
             checkButton.widthAnchor.constraint(equalToConstant: 80),
-            checkButton.bottomAnchor.constraint(equalTo: answerBgView.topAnchor, constant: -17),
-            checkButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -164)
+            checkButton.bottomAnchor.constraint(equalTo: answerBgView.topAnchor, constant: -frame.height * 0.02038369305),
+            checkButton.trailingAnchor.constraint(equalTo: answerBgView.trailingAnchor)
         ])
         
         addSubview(reloadButton)
         NSLayoutConstraint.activate([
             reloadButton.heightAnchor.constraint(equalToConstant: 29),
             reloadButton.widthAnchor.constraint(equalToConstant: 28),
-            reloadButton.bottomAnchor.constraint(equalTo: answerBgView.topAnchor, constant: -23),
-            reloadButton.trailingAnchor.constraint(equalTo: checkButton.leadingAnchor, constant: -12)
-        ])
-        
-        addSubview(quizAnswerLabel)
-        NSLayoutConstraint.activate([
-            quizAnswerLabel.bottomAnchor.constraint(equalTo: answerBgView.topAnchor, constant: -22),
-            quizAnswerLabel.trailingAnchor.constraint(equalTo: reloadButton.leadingAnchor, constant: -64)
+            reloadButton.bottomAnchor.constraint(equalTo: answerBgView.topAnchor, constant: -frame.height * 0.02757793765),
+            reloadButton.trailingAnchor.constraint(equalTo: checkButton.leadingAnchor, constant: -frame.width * 0.01005025126)
         ])
         
         addSubview(infoButton)
         NSLayoutConstraint.activate([
             infoButton.heightAnchor.constraint(equalToConstant: 29),
             infoButton.widthAnchor.constraint(equalToConstant: 28),
-            infoButton.bottomAnchor.constraint(equalTo: answerBgView.topAnchor, constant: -23),
-            infoButton.trailingAnchor.constraint(equalTo: quizAnswerLabel.leadingAnchor, constant: -8)
+            infoButton.bottomAnchor.constraint(equalTo: answerBgView.topAnchor, constant: -frame.height * 0.02757793765),
+            infoButton.leadingAnchor.constraint(equalTo: answerBgView.leadingAnchor)
         ])
+        
+        addSubview(quizAnswerLabel)
+        NSLayoutConstraint.activate([
+            quizAnswerLabel.bottomAnchor.constraint(equalTo: answerBgView.topAnchor, constant: -frame.height * 0.02637889688),
+            quizAnswerLabel.leadingAnchor.constraint(equalTo: infoButton.trailingAnchor, constant: frame.width * 0.006700167504)
+        ])
+        
+        
         
         //KuisButton
         addSubview(kuisButton)
         NSLayoutConstraint.activate([
             kuisButton.heightAnchor.constraint(equalToConstant: 56),
             kuisButton.widthAnchor.constraint(equalToConstant: 400),
-            kuisButton.topAnchor.constraint(equalTo: answerBgView.bottomAnchor, constant: 34),
-            kuisButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -164)
+            kuisButton.topAnchor.constraint(equalTo: answerBgView.bottomAnchor, constant: frame.height * 0.04076738609),
+            kuisButton.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 213)
         ])
     }
     

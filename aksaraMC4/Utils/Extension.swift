@@ -267,6 +267,33 @@ extension UIView {
         self.layer.insertSublayer(gradientLayer, at:0)
     }
     
+    func setCardChooseBackgroundColor() {
+        //GradientBlueAnswer
+        let colorTop =  UIColor(red: 36/255.0, green: 194/255.0, blue: 255/255.0, alpha: 1.0).cgColor
+        let colorBottom = UIColor(red: 54/255.0, green: 159/255.0, blue: 255/255.0, alpha: 1.0).cgColor
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorTop, colorBottom]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame = CGRect(x: 0.0, y: 0.0, width: 220, height: 140)
+        gradientLayer.cornerRadius = 24
+        gradientLayer.name = "xxx"
+        
+        self.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
+    func setKamusBackgroundColor() {
+        let colorTop =  UIColor(red: 243/255.0, green: 250/255.0, blue: 255/255.0, alpha: 1.0).cgColor
+        let colorBottom = UIColor(red: 218/255.0, green: 237/255.0, blue: 255/255.0, alpha: 1.0).cgColor
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorTop, colorBottom]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame = CGRect(x: 0.0, y: 0.0, width: 1366, height: 924)
+        
+        self.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
     func setCardTrueBackgroundColor() {
         let colorTop =  UIColor(red: 134/255.0, green: 227/255.0, blue: 145/255.0, alpha: 1.0).cgColor
         let colorBottom = UIColor(red: 7/255.0, green: 202/255.0, blue: 95/255.0, alpha: 1.0).cgColor
