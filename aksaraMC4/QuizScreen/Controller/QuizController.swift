@@ -258,7 +258,7 @@ class QuizController: UIViewController, QuizControllerProtocol {
             headerView.topAnchor.constraint(equalTo: view.topAnchor),
             headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            headerView.heightAnchor.constraint(equalToConstant: view.frame.height * 0.1918465228)
+            headerView.heightAnchor.constraint(equalToConstant: 124)
         ])
         
         //Nav Section
