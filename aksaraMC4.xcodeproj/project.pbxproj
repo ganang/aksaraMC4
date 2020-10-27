@@ -112,6 +112,7 @@
 		A48A0FC8253C4AF800AB1ED5 /* Jawa Suara Wa.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A48A0FB4253C4AF800AB1ED5 /* Jawa Suara Wa.mp3 */; };
 		A48A0FC9253C4AF800AB1ED5 /* Jawa Suara Na.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A48A0FB5253C4AF800AB1ED5 /* Jawa Suara Na.mp3 */; };
 		A48FBC75252DC2DB0004EC93 /* PersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48FBC74252DC2DB0004EC93 /* PersistenceService.swift */; };
+		A4AA3E9F25480A8B00D03C47 /* QuizDragAndDropView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AA3E9E25480A8B00D03C47 /* QuizDragAndDropView2.swift */; };
 		A4C715BC2539A45B00270D58 /* CoreDataRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C715BB2539A45B00270D58 /* CoreDataRecord.swift */; };
 		A4F19FC52535939400F5BA23 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F19FC42535939400F5BA23 /* BaseView.swift */; };
 		DA666F577C7465F9A53CCC8F /* Pods_aksaraMC4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CC4C2B2BDF5350BA10417E0 /* Pods_aksaraMC4.framework */; };
@@ -229,6 +230,7 @@
 		A48A0FB4253C4AF800AB1ED5 /* Jawa Suara Wa.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara Wa.mp3"; sourceTree = "<group>"; };
 		A48A0FB5253C4AF800AB1ED5 /* Jawa Suara Na.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara Na.mp3"; sourceTree = "<group>"; };
 		A48FBC74252DC2DB0004EC93 /* PersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceService.swift; sourceTree = "<group>"; };
+		A4AA3E9E25480A8B00D03C47 /* QuizDragAndDropView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizDragAndDropView2.swift; sourceTree = "<group>"; };
 		A4C715BB2539A45B00270D58 /* CoreDataRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRecord.swift; sourceTree = "<group>"; };
 		A4F19FC42535939400F5BA23 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -535,6 +537,7 @@
 				A445D450253D810500A985CF /* TextGenerator.swift */,
 				A445D454253DA95900A985CF /* PKStrokeMatching.swift */,
 				A46968C42546C48C00281D2C /* QuizDragAndDropView.swift */,
+				A4AA3E9E25480A8B00D03C47 /* QuizDragAndDropView2.swift */,
 			);
 			path = aksaraMC4;
 			sourceTree = "<group>";
@@ -793,6 +796,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9193764225317E3100C3FC10 /* StartView.swift in Sources */,
+				A4AA3E9F25480A8B00D03C47 /* QuizDragAndDropView2.swift in Sources */,
 				A46968C92546EF9600281D2C /* CustomUIView.swift in Sources */,
 				A445D455253DA95900A985CF /* PKStrokeMatching.swift in Sources */,
 				91C9876D252EFE8D00D67BC0 /* StageController.swift in Sources */,
