@@ -203,7 +203,7 @@ class QuizViewTypeA: UICollectionViewCell {
     let aksaraLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.init(name: "Now-Medium", size: 24)
+        label.font = UIFont.init(name: "NowAlt-Medium", size: 24)
         label.textColor = Theme.current.accentWhite
         label.text = "Aksara Jawa"
         return label
@@ -212,7 +212,7 @@ class QuizViewTypeA: UICollectionViewCell {
     let kelompokLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.init(name: "Now-Regular", size: 24)
+        label.font = UIFont.init(name: "NowAlt-Regular", size: 20)
         label.textColor = Theme.current.accentWhite
         label.text = "Kelompok Carakan"
         return label
@@ -221,7 +221,7 @@ class QuizViewTypeA: UICollectionViewCell {
     let quizAnswerLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.init(name: "Now-Medium", size: 24)
+        label.font = UIFont.init(name: "NowAlt-Medium", size: 24)
         label.textColor = Theme.current.textColor1
         label.text = "Aksara apakah itu?"
         return label
@@ -230,7 +230,7 @@ class QuizViewTypeA: UICollectionViewCell {
     let pilgan1: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.init(name: "Now-Regular", size: 20)
+        label.font = UIFont.init(name: "NowAlt-Regular", size: 20)
         label.textColor = Theme.current.textColor1
         label.text = "A."
         return label
@@ -239,7 +239,7 @@ class QuizViewTypeA: UICollectionViewCell {
     let pilgan2: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.init(name: "Now-Regular", size: 20)
+        label.font = UIFont.init(name: "NowAlt-Regular", size: 20)
         label.textColor = Theme.current.textColor1
         label.text = "B."
         return label
@@ -248,7 +248,7 @@ class QuizViewTypeA: UICollectionViewCell {
     let pilgan3: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.init(name: "Now-Regular", size: 20)
+        label.font = UIFont.init(name: "NowAlt-Regular", size: 20)
         label.textColor = Theme.current.textColor1
         label.text = "C."
         return label
@@ -257,7 +257,7 @@ class QuizViewTypeA: UICollectionViewCell {
     let pilgan4: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.init(name: "Now-Regular", size: 20)
+        label.font = UIFont.init(name: "NowAlt-Regular", size: 20)
         label.textColor = Theme.current.textColor1
         label.text = "D."
         return label
@@ -266,7 +266,7 @@ class QuizViewTypeA: UICollectionViewCell {
     lazy var pilgan1Answer: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.init(name: "Now-Medium", size: 24)
+        label.font = UIFont.init(name: "NowAlt-Medium", size: 24)
         label.textColor = Theme.current.textColor1
         label.text = ""
         return label
@@ -275,7 +275,7 @@ class QuizViewTypeA: UICollectionViewCell {
     let pilgan2Answer: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.init(name: "Now-Medium", size: 24)
+        label.font = UIFont.init(name: "NowAlt-Medium", size: 24)
         label.textColor = Theme.current.textColor1
         label.text = ""
         return label
@@ -284,7 +284,7 @@ class QuizViewTypeA: UICollectionViewCell {
     let pilgan3Answer: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.init(name: "Now-Medium", size: 24)
+        label.font = UIFont.init(name: "NowAlt-Medium", size: 24)
         label.textColor = Theme.current.textColor1
         label.text = ""
         return label
@@ -293,7 +293,7 @@ class QuizViewTypeA: UICollectionViewCell {
     let pilgan4Answer: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.init(name: "Now-Medium", size: 24)
+        label.font = UIFont.init(name: "NowAlt-Medium", size: 24)
         label.textColor = Theme.current.textColor1
         label.text = ""
         return label
@@ -496,7 +496,7 @@ class QuizViewTypeA: UICollectionViewCell {
         addSubview(quizBgView)
         NSLayoutConstraint.activate([
             quizBgView.topAnchor.constraint(equalTo: topAnchor, constant: frame.height * 0.1810551559),
-            quizBgView.centerXAnchor.constraint(equalTo: centerXAnchor, constant: -247),
+            quizBgView.centerXAnchor.constraint(equalTo: centerXAnchor, constant: -260),
             quizBgView.heightAnchor.constraint(equalToConstant: 440),
             quizBgView.widthAnchor.constraint(equalToConstant: 440)
         ])
@@ -511,15 +511,15 @@ class QuizViewTypeA: UICollectionViewCell {
         
         quizBgView.addSubview(quizImage)
         NSLayoutConstraint.activate([
-            quizImage.heightAnchor.constraint(equalToConstant: 200),
-            quizImage.widthAnchor.constraint(equalToConstant: 300),
+            quizImage.heightAnchor.constraint(equalToConstant: 100),
+            quizImage.widthAnchor.constraint(equalToConstant: 200),
             quizImage.centerYAnchor.constraint(equalTo: quizBgView.centerYAnchor),
             quizImage.centerXAnchor.constraint(equalTo: quizBgView.centerXAnchor)
         ])
         
         quizBgView.addSubview(kelompokLabel)
         NSLayoutConstraint.activate([
-            kelompokLabel.bottomAnchor.constraint(equalTo: quizBgView.bottomAnchor, constant: -41),
+            kelompokLabel.bottomAnchor.constraint(equalTo: quizBgView.bottomAnchor, constant: -32),
             kelompokLabel.leadingAnchor.constraint(equalTo: quizBgView.leadingAnchor, constant: 32)
         ])
         
@@ -529,7 +529,7 @@ class QuizViewTypeA: UICollectionViewCell {
         addSubview(answer1BgView)
         NSLayoutConstraint.activate([
             answer1BgView.topAnchor.constraint(equalTo: topAnchor, constant: frame.height * 0.2517985612),
-            answer1BgView.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 121),
+            answer1BgView.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 110),
             answer1BgView.heightAnchor.constraint(equalToConstant: 140),
             answer1BgView.widthAnchor.constraint(equalToConstant: 220)
         ])
@@ -689,7 +689,7 @@ class QuizViewTypeA: UICollectionViewCell {
         NSLayoutConstraint.activate([
             lewatiButton.heightAnchor.constraint(equalToConstant: 24),
             lewatiButton.topAnchor.constraint(equalTo: answer4BgView.bottomAnchor, constant: 41),
-            lewatiButton.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 245)
+            lewatiButton.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 234)
         ])
         
         addSubview(arrowRightButton)
