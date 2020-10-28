@@ -277,7 +277,7 @@ extension UIView {
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = [colorTop, colorBottom]
         gradientLayer.locations = [0.0, 1.0]
-        gradientLayer.frame = CGRect(x: 0.0, y: 0.0, width: 220, height: 140)
+        gradientLayer.frame = CGRect(x: 0.0, y: 0.0, width: 320, height: 140)
         gradientLayer.cornerRadius = 24
         gradientLayer.name = "xxx"
         
@@ -292,7 +292,7 @@ extension UIView {
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = [colorTop, colorBottom]
         gradientLayer.locations = [0.0, 1.0]
-        gradientLayer.frame = CGRect(x: 0.0, y: 0.0, width: 220, height: 140)
+        gradientLayer.frame = CGRect(x: 0.0, y: 0.0, width: 320, height: 140)
         gradientLayer.cornerRadius = 16
         gradientLayer.name = "dragAndDrop"
         
@@ -348,7 +348,7 @@ extension UIView {
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = [colorTop, colorBottom]
         gradientLayer.locations = [0.0, 1.0]
-        gradientLayer.frame = CGRect(x: -10.0, y: -10.0, width: 240, height: 160)
+        gradientLayer.frame = CGRect(x: 0.0, y: 0.0, width: 320, height: 140)
         gradientLayer.cornerRadius = 24
         
         self.layer.insertSublayer(gradientLayer, at: 0)
@@ -361,7 +361,7 @@ extension UIView {
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = [colorTop, colorBottom]
         gradientLayer.locations = [0.0, 1.0]
-        gradientLayer.frame = CGRect(x: 0.0, y: 0.0, width: 220, height: 140)
+        gradientLayer.frame = CGRect(x: 0.0, y: 0.0, width: 320, height: 140)
         gradientLayer.cornerRadius = 24
         
         self.layer.insertSublayer(gradientLayer, at: 0)

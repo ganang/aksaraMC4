@@ -48,14 +48,11 @@ class QuizViewTypeA: UICollectionViewCell {
             self.answer4BgView.choice = self.choices[3]
             
             //quizImage
-            imageNameSoal = "\(regionSelected!) Soal \(soalKe) \(alphabet!)"
+            imageNameSoal = "\(regionSelected!) Jawaban \(alphabet!)"
             if (alphabet == "É") {
-                imageNameSoal = "\(regionSelected!) Soal \(soalKe) \(alphabet!)É"
+                imageNameSoal = "\(regionSelected!) Jawaban \(alphabet!)É"
             }
             quizImage.image = UIImage(named: imageNameSoal!)
-            
-            //aksaraLabel
-            aksaraLabel.text = "Aksara \(regionSelected!)"
         }
     }
     
@@ -72,8 +69,7 @@ class QuizViewTypeA: UICollectionViewCell {
         answersChoiceLabel[index!].textColor = .white
         answersChoiceImage[index!].textColor = .white
         stateTrueImage[index!].isHidden = false
-        arrowRightButton.isHidden = false
-        lewatiButton.isHidden = false
+        successButton.isHidden = false
     
 //        playSound()
         
@@ -88,14 +84,29 @@ class QuizViewTypeA: UICollectionViewCell {
     }
     
     //Button
+    lazy var successButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Lanjut 􀆊", for: .normal)
+        button.titleLabel?.font = UIFont.init(name: "NowAlt-Medium", size: 16)
+        button.setCheckButtonBackgroundColorTrue(withOpacity: 1)
+        button.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
+        button.addInnerShadow()
+        button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
+        button.clipsToBounds = true
+        button.isEnabled = true
+        button.isHidden = true
+        
+        return button
+    }()
+    
+    
     let arrowRightButton: UIButton = {
         let button = UIButton()
         let symbolConfig = UIImage.SymbolConfiguration(pointSize: 20.0, weight: .medium, scale: .default)
         button.setBackgroundImage(UIImage(systemName: "chevron.right", withConfiguration: symbolConfig), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(handleNext), for: .touchUpInside)
         button.tintColor = Theme.current.accentTextBlue
-        button.isHidden = true
         return button
     }()
     
@@ -106,16 +117,8 @@ class QuizViewTypeA: UICollectionViewCell {
         button.setAttributedTitle(custombutton, for: .normal)
         button.titleLabel?.font = UIFont.init(name: "Now-Medium", size: 20)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(handleNext), for: .touchUpInside)
-        button.isHidden = true
         return button
     }()
-    
-       //Func
-       @objc func handleNext() {
-           print("Next")
-       }
-   
        
     
     //Image
@@ -200,21 +203,12 @@ class QuizViewTypeA: UICollectionViewCell {
     }()
     
     //Label
-    let aksaraLabel: UILabel = {
+    let questionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.init(name: "NowAlt-Medium", size: 24)
-        label.textColor = Theme.current.accentWhite
-        label.text = "Aksara Jawa"
-        return label
-    }()
-    
-    let kelompokLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.init(name: "NowAlt-Regular", size: 20)
-        label.textColor = Theme.current.accentWhite
-        label.text = "Kelompok Carakan"
+        label.textColor = Theme.current.textColor1
+        label.text = "?"
         return label
     }()
     
@@ -223,7 +217,7 @@ class QuizViewTypeA: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.init(name: "NowAlt-Medium", size: 24)
         label.textColor = Theme.current.textColor1
-        label.text = "Aksara apakah itu?"
+        label.text = "Aksara apakah ini"
         return label
     }()
     
@@ -300,22 +294,13 @@ class QuizViewTypeA: UICollectionViewCell {
     }()
     
     //Background View
-    let quizBgView : UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = Theme.current.accentLightBlue
-        view.layer.cornerRadius = 24
-        view.addInnerShadow()
-        view.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
-        return view
-    }()
     
     lazy var answer1BgView : CustomView = {
         let view = CustomView()
         view.id = 0
         view.choice = ""
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = Theme.current.cardColor1
+        view.backgroundColor = .init(white: 1, alpha: 0.8)
         view.layer.cornerRadius = 32
         view.addInnerShadow()
         view.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
@@ -330,7 +315,7 @@ class QuizViewTypeA: UICollectionViewCell {
         view.id = 1
         view.choice = ""
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = Theme.current.cardColor1
+        view.backgroundColor = .init(white: 1, alpha: 0.8)
         view.layer.cornerRadius = 32
         view.addInnerShadow()
         view.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
@@ -345,7 +330,7 @@ class QuizViewTypeA: UICollectionViewCell {
         view.id = 2
         view.choice = ""
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = Theme.current.cardColor1
+        view.backgroundColor = .init(white: 1, alpha: 0.8)
         view.layer.cornerRadius = 32
         view.addInnerShadow()
         view.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
@@ -360,7 +345,7 @@ class QuizViewTypeA: UICollectionViewCell {
         view.id = 3
         view.choice = ""
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = Theme.current.cardColor1
+        view.backgroundColor = .init(white: 1, alpha: 0.8)
         view.layer.cornerRadius = 32
         view.addInnerShadow()
         view.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
@@ -387,6 +372,7 @@ class QuizViewTypeA: UICollectionViewCell {
                 self.answersBGView[id!].removeLayer(name: "xxx")
                 if view.choice == self.alphabet {
                     print("True")
+                    self.quizAnswerLabel.text = "Betul sekali 😄"
                     
                     self.answersBGView[index!].setCardTrueBackgroundColor()
                     self.answersChoiceLabel[index!].textColor = .white
@@ -407,6 +393,7 @@ class QuizViewTypeA: UICollectionViewCell {
                     PersistenceService.saveContext()
                 }else {
                     print("False")
+                    self.quizAnswerLabel.text = "Sayang sekali ☹️"
                     self.answersBGView[id!].setCardFalseBackgroundColor()
                     self.answersChoiceLabel[id!].textColor = .white
                     self.answersChoiceImage[id!].textColor = .white
@@ -433,8 +420,7 @@ class QuizViewTypeA: UICollectionViewCell {
                 }
             }
             
-            arrowRightButton.isHidden = false
-            lewatiButton.isHidden = false
+            successButton.isHidden = false
             initialClick = true
         }
     }
@@ -467,8 +453,8 @@ class QuizViewTypeA: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setBackgroundColor()
         setupView()
+        print(frame.height)
         self.answersBGView = [answer1BgView, answer2BgView, answer3BgView, answer4BgView]
         self.answersChoiceLabel = [pilgan1, pilgan2, pilgan3, pilgan4]
         self.answersChoiceImage = [pilgan1Answer, pilgan2Answer, pilgan3Answer, pilgan4Answer]
@@ -482,56 +468,35 @@ class QuizViewTypeA: UICollectionViewCell {
     
     
     func setupView(){
-            
-        let colorTop =  UIColor(red: 36/255.0, green: 194/255.0, blue: 255/255.0, alpha: 1.0).cgColor
-        let colorBottom = UIColor(red: 54/255.0, green: 159/255.0, blue: 255/255.0, alpha: 1.0).cgColor
         
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [colorTop, colorBottom]
-        gradientLayer.locations = [0.0, 1.0]
-        gradientLayer.frame = CGRect(x: 0.0, y: 0.0, width: 440, height: 440)
-        gradientLayer.cornerRadius = 24
-        
-        //QuizLeftSection
-        addSubview(quizBgView)
+        addSubview(quizAnswerLabel)
         NSLayoutConstraint.activate([
-            quizBgView.topAnchor.constraint(equalTo: topAnchor, constant: frame.height * 0.1810551559),
-            quizBgView.centerXAnchor.constraint(equalTo: centerXAnchor, constant: -260),
-            quizBgView.heightAnchor.constraint(equalToConstant: 440),
-            quizBgView.widthAnchor.constraint(equalToConstant: 440)
+            quizAnswerLabel.topAnchor.constraint(equalTo: topAnchor, constant: 120),
+            quizAnswerLabel.centerXAnchor.constraint(equalTo: centerXAnchor, constant: -48)
         ])
         
-        quizBgView.layer.insertSublayer(gradientLayer, at: 0)
-        
-        quizBgView.addSubview(aksaraLabel)
+        addSubview(quizImage)
         NSLayoutConstraint.activate([
-            aksaraLabel.topAnchor.constraint(equalTo: quizBgView.topAnchor, constant: 32),
-            aksaraLabel.leadingAnchor.constraint(equalTo: quizBgView.leadingAnchor, constant: 32)
+            quizImage.heightAnchor.constraint(equalToConstant: 32),
+            quizImage.widthAnchor.constraint(equalToConstant: 56),
+            quizImage.leadingAnchor.constraint(equalTo: quizAnswerLabel.trailingAnchor, constant: 16),
+            quizImage.topAnchor.constraint(equalTo: topAnchor, constant: 119)
         ])
         
-        quizBgView.addSubview(quizImage)
+        addSubview(questionLabel)
         NSLayoutConstraint.activate([
-            quizImage.heightAnchor.constraint(equalToConstant: 100),
-            quizImage.widthAnchor.constraint(equalToConstant: 200),
-            quizImage.centerYAnchor.constraint(equalTo: quizBgView.centerYAnchor),
-            quizImage.centerXAnchor.constraint(equalTo: quizBgView.centerXAnchor)
+            questionLabel.topAnchor.constraint(equalTo: topAnchor, constant: 120),
+            questionLabel.leadingAnchor.constraint(equalTo: quizImage.trailingAnchor, constant: 16)
         ])
-        
-        quizBgView.addSubview(kelompokLabel)
-        NSLayoutConstraint.activate([
-            kelompokLabel.bottomAnchor.constraint(equalTo: quizBgView.bottomAnchor, constant: -32),
-            kelompokLabel.leadingAnchor.constraint(equalTo: quizBgView.leadingAnchor, constant: 32)
-        ])
-        
         //QuizRightSection
         
         //Pilgan1
         addSubview(answer1BgView)
         NSLayoutConstraint.activate([
-            answer1BgView.topAnchor.constraint(equalTo: topAnchor, constant: frame.height * 0.2517985612),
-            answer1BgView.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 110),
+            answer1BgView.topAnchor.constraint(equalTo: quizAnswerLabel.bottomAnchor, constant: 44),
+            answer1BgView.centerXAnchor.constraint(equalTo: centerXAnchor, constant: -168),
             answer1BgView.heightAnchor.constraint(equalToConstant: 140),
-            answer1BgView.widthAnchor.constraint(equalToConstant: 220)
+            answer1BgView.widthAnchor.constraint(equalToConstant: 320)
         ])
         
         answer1BgView.addSubview(pilgan1)
@@ -549,10 +514,10 @@ class QuizViewTypeA: UICollectionViewCell {
         //Pilgan2
         addSubview(answer2BgView)
         NSLayoutConstraint.activate([
-            answer2BgView.topAnchor.constraint(equalTo: topAnchor, constant: frame.height * 0.2517985612),
+            answer2BgView.topAnchor.constraint(equalTo: quizAnswerLabel.bottomAnchor, constant: 44),
             answer2BgView.leadingAnchor.constraint(equalTo: answer1BgView.trailingAnchor, constant: 24),
             answer2BgView.heightAnchor.constraint(equalToConstant: 140),
-            answer2BgView.widthAnchor.constraint(equalToConstant: 220)
+            answer2BgView.widthAnchor.constraint(equalToConstant: 320)
         ])
         
         answer2BgView.addSubview(pilgan2)
@@ -573,7 +538,7 @@ class QuizViewTypeA: UICollectionViewCell {
             answer3BgView.topAnchor.constraint(equalTo: answer1BgView.bottomAnchor, constant: 24),
             answer3BgView.trailingAnchor.constraint(equalTo: answer1BgView.trailingAnchor),
             answer3BgView.heightAnchor.constraint(equalToConstant: 140),
-            answer3BgView.widthAnchor.constraint(equalToConstant: 220)
+            answer3BgView.widthAnchor.constraint(equalToConstant: 320)
         ])
         
         answer3BgView.addSubview(pilgan3)
@@ -594,7 +559,7 @@ class QuizViewTypeA: UICollectionViewCell {
             answer4BgView.topAnchor.constraint(equalTo: answer2BgView.bottomAnchor, constant: 24),
             answer4BgView.trailingAnchor.constraint(equalTo: answer2BgView.trailingAnchor),
             answer4BgView.heightAnchor.constraint(equalToConstant: 140),
-            answer4BgView.widthAnchor.constraint(equalToConstant: 220)
+            answer4BgView.widthAnchor.constraint(equalToConstant: 320)
         ])
         
         answer4BgView.addSubview(pilgan4)
@@ -609,13 +574,11 @@ class QuizViewTypeA: UICollectionViewCell {
             pilgan4Answer.centerXAnchor.constraint(equalTo: answer4BgView.centerXAnchor)
         ])
         
-        
-        
-        
-        addSubview(quizAnswerLabel)
+        addSubview(successButton)
         NSLayoutConstraint.activate([
-            quizAnswerLabel.bottomAnchor.constraint(equalTo: answer1BgView.topAnchor, constant: -24),
-            quizAnswerLabel.leadingAnchor.constraint(equalTo: answer1BgView.leadingAnchor)
+            successButton.heightAnchor.constraint(equalToConstant: 56),
+            successButton.widthAnchor.constraint(equalToConstant: frame.width),
+            successButton.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
         
         //TrueState
@@ -685,20 +648,9 @@ class QuizViewTypeA: UICollectionViewCell {
         ])
         
         //LewatiButton
-        addSubview(lewatiButton)
-        NSLayoutConstraint.activate([
-            lewatiButton.heightAnchor.constraint(equalToConstant: 24),
-            lewatiButton.topAnchor.constraint(equalTo: answer4BgView.bottomAnchor, constant: 41),
-            lewatiButton.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 234)
-        ])
         
-        addSubview(arrowRightButton)
-        NSLayoutConstraint.activate([
-            arrowRightButton.heightAnchor.constraint(equalToConstant: 24),
-            arrowRightButton.topAnchor.constraint(equalTo: answer4BgView.bottomAnchor, constant: 40),
-            arrowRightButton.leadingAnchor.constraint(equalTo: lewatiButton.trailingAnchor, constant: 8)
-        ])
     }
+    
 
 }
 

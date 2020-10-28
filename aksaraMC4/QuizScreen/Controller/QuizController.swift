@@ -1152,11 +1152,9 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
             cell.setBackgroundColor()
             cell.regionSelected = regionSelected
             cell.quizData = quizTypeAModel
-            
-            cell.lewatiButton.addTarget(self, action: #selector(handleProgressBar), for: .touchUpInside)
-            cell.arrowRightButton.addTarget(self, action: #selector(handleProgressBar), for: .touchUpInside)
-            cell.lewatiButton.tag = indexPath.item
-            cell.arrowRightButton.tag = indexPath.item
+//
+            cell.successButton.addTarget(self, action: #selector(handleProgressBar), for: .touchUpInside)
+            cell.successButton.tag = indexPath.item
             
             cell.delegate = self
             
@@ -1164,10 +1162,8 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
         } else if(indexPath.item == 2){
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuizViewTypeBCell, for: indexPath) as! QuizViewTypeB
             cell.setBackgroundColor()
-            cell.lewatiButton.addTarget(self, action: #selector(handleProgressBar), for: .touchUpInside)
-            cell.arrowRightButton.addTarget(self, action: #selector(handleProgressBar), for: .touchUpInside)
-            cell.lewatiButton.tag = indexPath.item
-            cell.arrowRightButton.tag = indexPath.item
+            cell.successButton.addTarget(self, action: #selector(handleProgressBar), for: .touchUpInside)
+            cell.successButton.tag = indexPath.item
             cell.regionSelected = regionSelected
             cell.quizData = quizes![2]
             
@@ -1178,10 +1174,8 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
         } else if(indexPath.item == 3){
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuizViewTypeCCell, for: indexPath) as! QuizViewTypeC
             cell.setBackgroundColor()
-            cell.lewatiButton.addTarget(self, action: #selector(handleProgressBar), for: .touchUpInside)
-            cell.arrowRightButton.addTarget(self, action: #selector(handleProgressBar), for: .touchUpInside)
-            cell.lewatiButton.tag = indexPath.item
-            cell.arrowRightButton.tag = indexPath.item
+            cell.successButton.addTarget(self, action: #selector(handleProgressBar), for: .touchUpInside)
+            cell.successButton.tag = indexPath.item
             cell.regionSelected = regionSelected
             cell.quizData = quizTypeCModel
             
@@ -1218,9 +1212,12 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: view.frame.height)
+        return CGSize(width: view.frame.width, height: view.frame.height - 124)
     }
     
+    override var prefersHomeIndicatorAutoHidden: Bool {
+        return true
+    }
     
 }
 

@@ -202,7 +202,6 @@ class QuizView: UICollectionViewCell, PKToolPickerObserver {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setBackgroundColor()
         setupView()
         setupPencilKit()
     }
