@@ -8,6 +8,8 @@
 
 import UIKit
 
+let SCREEN_WIDTH: CGFloat = UIScreen.main.bounds.width
+
 extension UIView {
 
     func isPasswordValid(_ password : String) -> Bool {
@@ -278,6 +280,51 @@ extension UIView {
         gradientLayer.frame = CGRect(x: 0.0, y: 0.0, width: 220, height: 140)
         gradientLayer.cornerRadius = 24
         gradientLayer.name = "xxx"
+        
+        self.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
+    func setChoosenBackgroundColor() {
+        //GradientBlueAnswer
+        let colorTop =  UIColor(red: 3/255.0, green: 131/255.0, blue: 251/255.0, alpha: 1.0).cgColor
+        let colorBottom = UIColor(red: 4/255.0, green: 110/255.0, blue: 208/255.0, alpha: 1.0).cgColor
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorTop, colorBottom]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame = CGRect(x: 0.0, y: 0.0, width: 220, height: 140)
+        gradientLayer.cornerRadius = 16
+        gradientLayer.name = "dragAndDrop"
+        
+        self.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
+    func setCheckButtonBackgroundColor(withOpacity opacity: Float) {
+        //GradientBlueAnswer
+        let colorTop =  UIColor(red: 3/255.0, green: 131/255.0, blue: 251/255.0, alpha: 1.0).cgColor
+        let colorBottom = UIColor(red: 4/255.0, green: 110/255.0, blue: 208/255.0, alpha: 1.0).cgColor
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorTop, colorBottom]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame = CGRect(x: 0.0, y: 0.0, width: SCREEN_WIDTH, height: 56)
+        gradientLayer.name = "check"
+        gradientLayer.opacity = opacity
+        
+        self.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
+    func setCheckButtonBackgroundColorTrue(withOpacity opacity: Float) {
+        //GradientBlueAnswer
+        let colorTop =  UIColor(red: 25/255.0, green: 200/255.0, blue: 95/255.0, alpha: 1.0).cgColor
+        let colorBottom = UIColor(red: 25/255.0, green: 163/255.0, blue: 113/255.0, alpha: 1.0).cgColor
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorTop, colorBottom]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame = CGRect(x: 0.0, y: 0.0, width: SCREEN_WIDTH, height: 56)
+        gradientLayer.name = "checkTrue"
+        gradientLayer.opacity = opacity
         
         self.layer.insertSublayer(gradientLayer, at: 0)
     }
