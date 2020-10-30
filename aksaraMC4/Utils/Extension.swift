@@ -123,26 +123,26 @@ extension UIImageView {
 }
 
 extension CALayer {
-  func applySketchShadow(
-    color: UIColor = .black,
-    alpha: Float = 0.5,
-    x: CGFloat = 0,
-    y: CGFloat = 2,
-    blur: CGFloat = 4,
-    spread: CGFloat = 0)
-  {
-    shadowColor = color.cgColor
-    shadowOpacity = alpha
-    shadowOffset = CGSize(width: x, height: y)
-    shadowRadius = blur / 2.0
-    if spread == 0 {
-      shadowPath = nil
-    } else {
-      let dx = -spread
-      let rect = bounds.insetBy(dx: dx, dy: dx)
-      shadowPath = UIBezierPath(rect: rect).cgPath
+    func applySketchShadow(
+        color: UIColor = .black,
+        alpha: Float = 0.5,
+        x: CGFloat = 0,
+        y: CGFloat = 2,
+        blur: CGFloat = 4,
+        spread: CGFloat = 0)
+    {
+        shadowColor = color.cgColor
+        shadowOpacity = alpha
+        shadowOffset = CGSize(width: x, height: y)
+        shadowRadius = blur / 2.0
+        if spread == 0 {
+            shadowPath = nil
+        } else {
+            let dx = -spread
+            let rect = bounds.insetBy(dx: dx, dy: dx)
+            shadowPath = UIBezierPath(rect: rect).cgPath
+        }
     }
-  }
 }
 
 extension UIColor {
@@ -299,6 +299,21 @@ extension UIView {
         self.layer.insertSublayer(gradientLayer, at: 0)
     }
     
+    func setChoosenBackgroundColorLayer(withHeight height: CGFloat, withWidth width: CGFloat) {
+        //GradientBlueAnswer
+        let colorTop =  UIColor(red: 3/255.0, green: 131/255.0, blue: 251/255.0, alpha: 1.0).cgColor
+        let colorBottom = UIColor(red: 4/255.0, green: 110/255.0, blue: 208/255.0, alpha: 1.0).cgColor
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorTop, colorBottom]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame = CGRect(x: 0.0, y: 0.0, width: height, height: width)
+        gradientLayer.cornerRadius = 16
+        gradientLayer.name = "dragAndDropLayer"
+        
+        self.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
     func setCheckButtonBackgroundColor(withOpacity opacity: Float) {
         //GradientBlueAnswer
         let colorTop =  UIColor(red: 3/255.0, green: 131/255.0, blue: 251/255.0, alpha: 1.0).cgColor
@@ -314,7 +329,7 @@ extension UIView {
         self.layer.insertSublayer(gradientLayer, at: 0)
     }
     
-    func setCheckButtonBackgroundColorTrue(withOpacity opacity: Float) {
+    func setCheckButtonBackgroundColorTrue(withOpacity opacity: Float, withHeight height: Double, withWidth width: Double, withCorner corner: CGFloat) {
         //GradientBlueAnswer
         let colorTop =  UIColor(red: 25/255.0, green: 200/255.0, blue: 95/255.0, alpha: 1.0).cgColor
         let colorBottom = UIColor(red: 25/255.0, green: 163/255.0, blue: 113/255.0, alpha: 1.0).cgColor
@@ -322,9 +337,10 @@ extension UIView {
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = [colorTop, colorBottom]
         gradientLayer.locations = [0.0, 1.0]
-        gradientLayer.frame = CGRect(x: 0.0, y: 0.0, width: SCREEN_WIDTH, height: 56)
+        gradientLayer.frame = CGRect(x: 0.0, y: 0.0, width: width, height: height)
         gradientLayer.name = "checkTrue"
         gradientLayer.opacity = opacity
+        gradientLayer.cornerRadius = corner
         
         self.layer.insertSublayer(gradientLayer, at: 0)
     }
@@ -388,6 +404,7 @@ extension UIView {
             topColor.cgColor,
             UIColor.white.withAlphaComponent(0).cgColor
         ]
+        shadowLayer.name = "innerShadow"
         layer.addSublayer(shadowLayer)
     }
 }
@@ -401,6 +418,18 @@ extension UILabel {
 
         self.textColor = UIColor(patternImage: UIImage(named: "gradientText")!)
     }
+}
+
+extension UIButton {
+
+    func shake() {
+        let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
+        animation.duration = 0.6
+        animation.values = [-20.0, 20.0, -20.0, 20.0, -10.0, 10.0, -5.0, 5.0, 0.0 ]
+        layer.add(animation, forKey: "shake")
+    }
+
 }
 
 

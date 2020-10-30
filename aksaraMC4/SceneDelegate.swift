@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let windowScene = scene as? UIWindowScene {
             let navController: UINavigationController = UINavigationController()
             let window = UIWindow(windowScene: windowScene)
-            navController.viewControllers = [StartController()]
+            navController.viewControllers = [QuizViewTypeE3()]
             window.rootViewController = navController
             self.window = window
             window.makeKeyAndVisible()

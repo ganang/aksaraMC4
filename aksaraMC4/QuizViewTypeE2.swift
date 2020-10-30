@@ -8,7 +8,7 @@
 
 import UIKit
 
-class QuizHeadAndTailView: UIViewController, UIGestureRecognizerDelegate {
+class QuizViewTypeE2: UIViewController, UIGestureRecognizerDelegate {
     
     let SCREEN_WIDTH: CGFloat = UIScreen.main.bounds.width
     let SCREEN_HEIGHT: CGFloat = UIScreen.main.bounds.height
@@ -23,15 +23,17 @@ class QuizHeadAndTailView: UIViewController, UIGestureRecognizerDelegate {
     let originTailCPosition = CGRect(x: UIScreen.main.bounds.width - 112, y: UIScreen.main.bounds.height/2 + 4, width: 64, height: 64)
     let originTailDPosition = CGRect(x: UIScreen.main.bounds.width - 184, y: UIScreen.main.bounds.height/2 + 4, width: 64, height: 64)
     
-    let originHeaderHead = CGRect(x: 73, y: UIScreen.main.bounds.height/2 - 96, width: 100, height: 20)
-    let originHeaderTail = CGRect(x: UIScreen.main.bounds.width - 136, y: UIScreen.main.bounds.height/2 - 96, width: 100, height: 20)
+    let originHeaderHead = CGRect(x: 70, y: UIScreen.main.bounds.height/2 - 96, width: 100, height: 20)
+    let originHeaderTail = CGRect(x: UIScreen.main.bounds.width - 156, y: UIScreen.main.bounds.height/2 - 96, width: 100, height: 20)
     
     var isHeadFill = false
     var isTailFill = false
     
+    var selectedArray = [10, 11]
+    
     var centerPlaceHolderConstraint: NSLayoutConstraint?
     
-    lazy var placeholderHead: UIButton = {
+    lazy var placeholderCarakanA: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.imageView?.contentMode = .scaleAspectFit
@@ -45,7 +47,7 @@ class QuizHeadAndTailView: UIViewController, UIGestureRecognizerDelegate {
         return button
     }()
     
-    lazy var placeholderTail: UIButton = {
+    lazy var placeholderCarakanB: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.imageView?.contentMode = .scaleAspectFit
@@ -62,25 +64,25 @@ class QuizHeadAndTailView: UIViewController, UIGestureRecognizerDelegate {
     let questionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Bagaimana anatomi aksara Ha ?"
+        label.text = "Bagaimanakah aksaranya ?"
         label.font = UIFont.init(name: "NowAlt-Medium", size: 24)
         label.textColor = Theme.current.textColor1
         
         return label
     }()
     
-    let headerHeadLabel: UILabel = {
+    let headerCarakanALabel: UILabel = {
         let label = UILabel()
-        label.text = "Kepala"
+        label.text = "Carakan"
         label.font = UIFont.init(name: "NowAlt-Medium", size: 20)
         label.textColor = Theme.current.textColor1
         
         return label
     }()
     
-    let headerTailLabel: UILabel = {
+    let headerCarakanBLabel: UILabel = {
         let label = UILabel()
-        label.text = "Ekor"
+        label.text = "Carakan"
         label.font = UIFont.init(name: "NowAlt-Medium", size: 20)
         label.textColor = Theme.current.textColor1
         
@@ -90,7 +92,7 @@ class QuizHeadAndTailView: UIViewController, UIGestureRecognizerDelegate {
     let footerPlaceholderHead: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Kepala"
+        label.text = "Ha"
         label.font = UIFont.init(name: "NowAlt-Medium", size: 16)
         label.textColor = Theme.current.textColor1
         
@@ -100,7 +102,7 @@ class QuizHeadAndTailView: UIViewController, UIGestureRecognizerDelegate {
     let footerPlaceholderTail: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Ekor"
+        label.text = "Wa"
         label.font = UIFont.init(name: "NowAlt-Medium", size: 16)
         label.textColor = Theme.current.textColor1
         
@@ -145,7 +147,7 @@ class QuizHeadAndTailView: UIViewController, UIGestureRecognizerDelegate {
         return button
     }()
     
-    lazy var questionPlaceholder: UIButton = {
+    lazy var questionPlaceholder1: UIButton = {
         let button = UIButton()
         var image = UIImage(named: "Jawa Jawaban Da")?.withRenderingMode(.alwaysTemplate)
         button.setImage(image, for: .normal)
@@ -164,14 +166,26 @@ class QuizHeadAndTailView: UIViewController, UIGestureRecognizerDelegate {
         return button
     }()
     
-    lazy var checkPlaceholderHead: UIButton = {
+    let aksaraLabel1: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Ha"
+        label.font = UIFont.init(name: "NowAlt-Medium", size: 16)
+        label.textColor = Theme.current.textColor1
+        label.isHidden = true
+        
+        return label
+    }()
+    
+    lazy var questionPlaceholder2: UIButton = {
         let button = UIButton()
-        var image = UIImage(named: "Jawa Jawaban Da")?.withRenderingMode(.alwaysTemplate)
-        button.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
+        var image = UIImage(named: "Jawa Jawaban Tha")?.withRenderingMode(.alwaysTemplate)
+        button.setImage(image, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.isUserInteractionEnabled = true
         button.imageView?.contentMode = .scaleAspectFit
         button.backgroundColor = .init(white: 1, alpha: 0.8)
+        button.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
         button.addInnerShadow()
         button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
         button.layer.cornerRadius = 16
@@ -182,21 +196,15 @@ class QuizHeadAndTailView: UIViewController, UIGestureRecognizerDelegate {
         return button
     }()
     
-    lazy var checkPlaceholderTail: UIButton = {
-        let button = UIButton()
-        var image = UIImage(named: "Jawa Jawaban Da")?.withRenderingMode(.alwaysTemplate)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.isUserInteractionEnabled = true
-        button.imageView?.contentMode = .scaleAspectFit
-        button.backgroundColor = .init(white: 1, alpha: 0.8)
-        button.addInnerShadow()
-        button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
-        button.layer.cornerRadius = 16
-        button.clipsToBounds = true
-        button.isHidden = true
-        button.layer.masksToBounds = false
+    let aksaraLabel2: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Wa"
+        label.font = UIFont.init(name: "NowAlt-Medium", size: 16)
+        label.textColor = Theme.current.textColor1
+        label.isHidden = true
         
-        return button
+        return label
     }()
     
     let questionFullDetailLabel: UILabel = {
@@ -221,119 +229,94 @@ class QuizHeadAndTailView: UIViewController, UIGestureRecognizerDelegate {
         return label
     }()
     
-    let aksaraLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Ha"
-        label.font = UIFont.init(name: "NowAlt-Medium", size: 16)
-        label.textColor = Theme.current.textColor1
-        label.isHidden = true
-        
-        return label
-    }()
-    
-    let answerHeadLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Kepala"
-        label.font = UIFont.init(name: "NowAlt-Medium", size: 16)
-        label.textColor = Theme.current.textColor1
-        label.isHidden = true
-        
-        return label
-    }()
-    
-    let answerTailLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Ekor"
-        label.font = UIFont.init(name: "NowAlt-Medium", size: 16)
-        label.textColor = Theme.current.textColor1
-        label.isHidden = true
-        
-        return label
-    }()
-    
     // --------------------------------------------------------------------------------------------------- //
     
-    lazy var moveGS_HeadA: CustomPanGestureRecognizer = {
+    lazy var moveGS_carakan1: CustomPanGestureRecognizer = {
         let moveGS = CustomPanGestureRecognizer(target: self, action: #selector(self.gestureMoveObject(_:)))
         moveGS.name = "Head"
         moveGS.viewName = "Jawa Jawaban Ha"
         moveGS.delegate = self
+        moveGS.index = 0
         
         return moveGS
     }()
     
-    lazy var moveGS_HeadB: CustomPanGestureRecognizer = {
+    lazy var moveGS_carakan2: CustomPanGestureRecognizer = {
         let moveGS = CustomPanGestureRecognizer(target: self, action: #selector(self.gestureMoveObject(_:)))
         moveGS.name = "Head"
         moveGS.viewName = "Jawa Jawaban Na"
         moveGS.delegate = self
+        moveGS.index = 1
         
         return moveGS
     }()
     
-    lazy var moveGS_HeadC: CustomPanGestureRecognizer = {
+    lazy var moveGS_carakan3: CustomPanGestureRecognizer = {
         let moveGS = CustomPanGestureRecognizer(target: self, action: #selector(self.gestureMoveObject(_:)))
         moveGS.name = "Head"
         moveGS.viewName = "Jawa Jawaban Ca"
         moveGS.delegate = self
+        moveGS.index = 2
         
         return moveGS
     }()
     
-    lazy var moveGS_HeadD: CustomPanGestureRecognizer = {
+    lazy var moveGS_carakan4: CustomPanGestureRecognizer = {
         let moveGS = CustomPanGestureRecognizer(target: self, action: #selector(self.gestureMoveObject(_:)))
         moveGS.name = "Head"
         moveGS.viewName = "Jawa Jawaban Ra"
         moveGS.delegate = self
+        moveGS.index = 3
         
         return moveGS
     }()
     
-    lazy var moveGS_TailA: CustomPanGestureRecognizer = {
+    lazy var moveGS_carakan5: CustomPanGestureRecognizer = {
         let moveGS = CustomPanGestureRecognizer(target: self, action: #selector(self.gestureMoveObject(_:)))
         moveGS.name = "Tail"
         moveGS.viewName = "Jawa Jawaban Ka"
         moveGS.delegate = self
+        moveGS.index = 4
         
         return moveGS
     }()
     
-    lazy var moveGS_TailB: CustomPanGestureRecognizer = {
+    lazy var moveGS_carakan6: CustomPanGestureRecognizer = {
         let moveGS = CustomPanGestureRecognizer(target: self, action: #selector(self.gestureMoveObject(_:)))
         moveGS.name = "Tail"
         moveGS.viewName = "Jawa Jawaban Da"
         moveGS.delegate = self
+        moveGS.index = 5
         
         return moveGS
     }()
     
-    lazy var moveGS_TailC: CustomPanGestureRecognizer = {
+    lazy var moveGS_carakan7: CustomPanGestureRecognizer = {
         let moveGS = CustomPanGestureRecognizer(target: self, action: #selector(self.gestureMoveObject(_:)))
         moveGS.name = "Tail"
         moveGS.viewName = "Jawa Jawaban Tha"
         moveGS.delegate = self
+        moveGS.index = 6
         
         return moveGS
     }()
     
-    lazy var moveGS_TailD: CustomPanGestureRecognizer = {
+    lazy var moveGS_carakan8: CustomPanGestureRecognizer = {
         let moveGS = CustomPanGestureRecognizer(target: self, action: #selector(self.gestureMoveObject(_:)))
         moveGS.name = "Tail"
         moveGS.viewName = "Jawa Jawaban Sa"
         moveGS.delegate = self
+        moveGS.index = 7
         
         return moveGS
     }()
     
-    lazy var headA: UIButton = {
+    lazy var carakan1: UIButton = {
         let button = UIButton()
         var image = UIImage(named: "Jawa Jawaban Ha")?.withRenderingMode(.alwaysTemplate)
         button.setImage(image, for: .normal)
         button.isUserInteractionEnabled = true
-        button.addGestureRecognizer(moveGS_HeadA)
+        button.addGestureRecognizer(moveGS_carakan1)
         button.imageView?.contentMode = .scaleAspectFit
         button.backgroundColor = .init(white: 1, alpha: 0.8)
         button.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
@@ -345,12 +328,12 @@ class QuizHeadAndTailView: UIViewController, UIGestureRecognizerDelegate {
         return button
     }()
     
-    lazy var headB: UIButton = {
+    lazy var carakan2: UIButton = {
         let button = UIButton()
         var image = UIImage(named: "Jawa Jawaban Na")?.withRenderingMode(.alwaysTemplate)
         button.setImage(image, for: .normal)
         button.isUserInteractionEnabled = true
-        button.addGestureRecognizer(moveGS_HeadB)
+        button.addGestureRecognizer(moveGS_carakan2)
         button.imageView?.contentMode = .scaleAspectFit
         button.backgroundColor = .init(white: 1, alpha: 0.8)
         
@@ -363,12 +346,12 @@ class QuizHeadAndTailView: UIViewController, UIGestureRecognizerDelegate {
         return button
     }()
     
-    lazy var headC: UIButton = {
+    lazy var carakan3: UIButton = {
         let button = UIButton()
         var image = UIImage(named: "Jawa Jawaban Ca")?.withRenderingMode(.alwaysTemplate)
         button.setImage(image, for: .normal)
         button.isUserInteractionEnabled = true
-        button.addGestureRecognizer(moveGS_HeadC)
+        button.addGestureRecognizer(moveGS_carakan3)
         button.imageView?.contentMode = .scaleAspectFit
         button.backgroundColor = .init(white: 1, alpha: 0.8)
         
@@ -381,12 +364,12 @@ class QuizHeadAndTailView: UIViewController, UIGestureRecognizerDelegate {
         return button
     }()
     
-    lazy var headD: UIButton = {
+    lazy var carakan4: UIButton = {
         let button = UIButton()
         var image = UIImage(named: "Jawa Jawaban Ra")?.withRenderingMode(.alwaysTemplate)
         button.setImage(image, for: .normal)
         button.isUserInteractionEnabled = true
-        button.addGestureRecognizer(moveGS_HeadD)
+        button.addGestureRecognizer(moveGS_carakan4)
         button.imageView?.contentMode = .scaleAspectFit
         button.backgroundColor = .init(white: 1, alpha: 0.8)
         
@@ -399,12 +382,12 @@ class QuizHeadAndTailView: UIViewController, UIGestureRecognizerDelegate {
         return button
     }()
     
-    lazy var tailA: UIButton = {
+    lazy var carakan5: UIButton = {
         let button = UIButton()
         var image = UIImage(named: "Jawa Jawaban Ka")?.withRenderingMode(.alwaysTemplate)
         button.setImage(image, for: .normal)
         button.isUserInteractionEnabled = true
-        button.addGestureRecognizer(moveGS_TailA)
+        button.addGestureRecognizer(moveGS_carakan5)
         button.imageView?.contentMode = .scaleAspectFit
         button.backgroundColor = .init(white: 1, alpha: 0.8)
         
@@ -417,12 +400,12 @@ class QuizHeadAndTailView: UIViewController, UIGestureRecognizerDelegate {
         return button
     }()
     
-    lazy var tailB: UIButton = {
+    lazy var carakan6: UIButton = {
         let button = UIButton()
         var image = UIImage(named: "Jawa Jawaban Da")?.withRenderingMode(.alwaysTemplate)
         button.setImage(image, for: .normal)
         button.isUserInteractionEnabled = true
-        button.addGestureRecognizer(moveGS_TailB)
+        button.addGestureRecognizer(moveGS_carakan6)
         button.imageView?.contentMode = .scaleAspectFit
         button.backgroundColor = .init(white: 1, alpha: 0.8)
         
@@ -435,12 +418,12 @@ class QuizHeadAndTailView: UIViewController, UIGestureRecognizerDelegate {
         return button
     }()
     
-    lazy var tailC: UIButton = {
+    lazy var carakan7: UIButton = {
         let button = UIButton()
         var image = UIImage(named: "Jawa Jawaban Tha")?.withRenderingMode(.alwaysTemplate)
         button.setImage(image, for: .normal)
         button.isUserInteractionEnabled = true
-        button.addGestureRecognizer(moveGS_TailC)
+        button.addGestureRecognizer(moveGS_carakan7)
         button.imageView?.contentMode = .scaleAspectFit
         button.backgroundColor = .init(white: 1, alpha: 0.8)
         
@@ -453,12 +436,12 @@ class QuizHeadAndTailView: UIViewController, UIGestureRecognizerDelegate {
         return button
     }()
     
-    lazy var tailD: UIButton = {
+    lazy var carakan8: UIButton = {
         let button = UIButton()
         var image = UIImage(named: "Jawa Jawaban Sa")?.withRenderingMode(.alwaysTemplate)
         button.setImage(image, for: .normal)
         button.isUserInteractionEnabled = true
-        button.addGestureRecognizer(moveGS_TailD)
+        button.addGestureRecognizer(moveGS_carakan8)
         button.imageView?.contentMode = .scaleAspectFit
         button.backgroundColor = .init(white: 1, alpha: 0.8)
         
@@ -486,70 +469,69 @@ class QuizHeadAndTailView: UIViewController, UIGestureRecognizerDelegate {
     }
     
     func setupInterfaceComponent() {
-        view.addSubview(placeholderHead)
-        view.addSubview(placeholderTail)
+        view.addSubview(placeholderCarakanA)
+        view.addSubview(placeholderCarakanB)
         
         view.addSubview(questionLabel)
-        view.addSubview(headerHeadLabel)
-        view.addSubview(headerTailLabel)
+        view.addSubview(headerCarakanALabel)
+        view.addSubview(headerCarakanBLabel)
         view.addSubview(footerPlaceholderHead)
         view.addSubview(footerPlaceholderTail)
         
-        view.addSubview(headA)
-        view.addSubview(headB)
-        view.addSubview(headC)
-        view.addSubview(headD)
+        view.addSubview(carakan1)
+        view.addSubview(carakan2)
+        view.addSubview(carakan3)
+        view.addSubview(carakan4)
         
-        view.addSubview(tailA)
-        view.addSubview(tailB)
-        view.addSubview(tailC)
-        view.addSubview(tailD)
+        view.addSubview(carakan5)
+        view.addSubview(carakan6)
+        view.addSubview(carakan7)
+        view.addSubview(carakan8)
         
         view.addSubview(checkButton)
         view.addSubview(successButton)
         
-        view.addSubview(questionPlaceholder)
-        view.addSubview(checkPlaceholderHead)
-        view.addSubview(checkPlaceholderTail)
-        
+        view.addSubview(questionPlaceholder1)
+        view.addSubview(questionPlaceholder2)
+        view.addSubview(aksaraLabel1)
+        view.addSubview(aksaraLabel2)
+    
         view.addSubview(questionFullDetailLabel)
-        view.addSubview(aksaraLabel)
         view.addSubview(answersFullDetailLabel)
     }
     
     func setupConstraint() {
-        placeholderHead.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        placeholderHead.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        placeholderHead.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        centerPlaceHolderConstraint =  placeholderHead.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -72)
+        placeholderCarakanA.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        placeholderCarakanA.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        placeholderCarakanA.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        centerPlaceHolderConstraint =  placeholderCarakanA.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -72)
         centerPlaceHolderConstraint?.isActive = true
         
-        placeholderTail.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        placeholderTail.leadingAnchor.constraint(equalTo: placeholderHead.trailingAnchor, constant: 24).isActive = true
-        placeholderTail.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        placeholderTail.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        placeholderCarakanB.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        placeholderCarakanB.leadingAnchor.constraint(equalTo: placeholderCarakanA.trailingAnchor, constant: 24).isActive = true
+        placeholderCarakanB.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        placeholderCarakanB.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
         questionLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: SCREEN_HEIGHT/4).isActive = true
         questionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
-        headerHeadLabel.frame = originHeaderHead
-        headerTailLabel.frame = originHeaderTail
+        headerCarakanALabel.frame = originHeaderHead
+        headerCarakanBLabel.frame = originHeaderTail
         
-        footerPlaceholderHead.topAnchor.constraint(equalTo: placeholderHead.bottomAnchor, constant: 16).isActive = true
-        footerPlaceholderHead.centerXAnchor.constraint(equalTo: placeholderHead.centerXAnchor).isActive = true
+        footerPlaceholderHead.topAnchor.constraint(equalTo: placeholderCarakanA.bottomAnchor, constant: 16).isActive = true
+        footerPlaceholderHead.centerXAnchor.constraint(equalTo: placeholderCarakanA.centerXAnchor).isActive = true
         
-        footerPlaceholderTail.topAnchor.constraint(equalTo: placeholderTail.bottomAnchor, constant: 16).isActive = true
-        footerPlaceholderTail.centerXAnchor.constraint(equalTo: placeholderTail.centerXAnchor).isActive = true
+        footerPlaceholderTail.topAnchor.constraint(equalTo: placeholderCarakanB.bottomAnchor, constant: 16).isActive = true
+        footerPlaceholderTail.centerXAnchor.constraint(equalTo: placeholderCarakanB.centerXAnchor).isActive = true
         
-        headA.frame = originHeadAPosition
-        headB.frame = originHeadBPosition
-        headC.frame = originHeadCPosition
-        headD.frame = originHeadDPosition
-        
-        tailA.frame = originTailAPosition
-        tailB.frame = originTailBPosition
-        tailC.frame = originTailCPosition
-        tailD.frame = originTailDPosition
+        carakan1.frame = originHeadAPosition
+        carakan2.frame = originHeadBPosition
+        carakan3.frame = originHeadCPosition
+        carakan4.frame = originHeadDPosition
+        carakan5.frame = originTailAPosition
+        carakan6.frame = originTailBPosition
+        carakan7.frame = originTailCPosition
+        carakan8.frame = originTailDPosition
         
         checkButton.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         checkButton.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
@@ -561,60 +543,61 @@ class QuizHeadAndTailView: UIViewController, UIGestureRecognizerDelegate {
         successButton.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         successButton.heightAnchor.constraint(equalToConstant: 56).isActive = true
         
-        questionPlaceholder.trailingAnchor.constraint(equalTo: view.centerXAnchor, constant: -120).isActive = true
-        questionPlaceholder.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        questionPlaceholder.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        questionPlaceholder.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        questionPlaceholder2.trailingAnchor.constraint(equalTo: view.centerXAnchor, constant: -120).isActive = true
+        questionPlaceholder2.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        questionPlaceholder2.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        questionPlaceholder2.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
-        checkPlaceholderHead.leadingAnchor.constraint(equalTo: view.centerXAnchor, constant: 56).isActive = true
-        checkPlaceholderHead.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        checkPlaceholderHead.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        checkPlaceholderHead.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        questionPlaceholder1.trailingAnchor.constraint(equalTo: questionPlaceholder2.leadingAnchor, constant: -16).isActive = true
+        questionPlaceholder1.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        questionPlaceholder1.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        questionPlaceholder1.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
-        checkPlaceholderTail.leadingAnchor.constraint(equalTo: checkPlaceholderHead.trailingAnchor, constant: 24).isActive = true
-        checkPlaceholderTail.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        checkPlaceholderTail.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        checkPlaceholderTail.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        questionFullDetailLabel.bottomAnchor.constraint(equalTo: questionPlaceholder2.topAnchor, constant: -20).isActive = true
+        questionFullDetailLabel.centerXAnchor.constraint(equalTo: questionPlaceholder2.leadingAnchor, constant: -16).isActive = true
         
-        questionFullDetailLabel.bottomAnchor.constraint(equalTo: questionPlaceholder.topAnchor, constant: -16).isActive = true
-        questionFullDetailLabel.centerXAnchor.constraint(equalTo: questionPlaceholder.centerXAnchor).isActive = true
+        aksaraLabel1.topAnchor.constraint(equalTo: questionPlaceholder1.bottomAnchor, constant: 16).isActive = true
+        aksaraLabel1.centerXAnchor.constraint(equalTo: questionPlaceholder1.centerXAnchor).isActive = true
         
-        aksaraLabel.topAnchor.constraint(equalTo: checkPlaceholderHead.bottomAnchor, constant: 16).isActive = true
-        aksaraLabel.centerXAnchor.constraint(equalTo: questionPlaceholder.centerXAnchor).isActive = true
+        aksaraLabel2.topAnchor.constraint(equalTo: questionPlaceholder2.bottomAnchor, constant: 16).isActive = true
+        aksaraLabel2.centerXAnchor.constraint(equalTo: questionPlaceholder2.centerXAnchor).isActive = true
         
-        answersFullDetailLabel.leadingAnchor.constraint(equalTo: checkPlaceholderHead.centerXAnchor).isActive = true
-        answersFullDetailLabel.bottomAnchor.constraint(equalTo: checkPlaceholderHead.topAnchor, constant: -16).isActive = true
+        answersFullDetailLabel.leadingAnchor.constraint(equalTo: placeholderCarakanA.centerXAnchor).isActive = true
+        answersFullDetailLabel.bottomAnchor.constraint(equalTo: placeholderCarakanA.topAnchor, constant: -16).isActive = true
     }
     
     @objc func handleCheckButton() {
-        headA.isHidden = true
-        headB.isHidden = true
-        headC.isHidden = true
-        headD.isHidden = true
-        tailA.isHidden = true
-        tailB.isHidden = true
-        tailC.isHidden = true
-        tailD.isHidden = true
-        headerHeadLabel.isHidden = true
-        headerTailLabel.isHidden = true
+        carakan1.isHidden = true
+        carakan2.isHidden = true
+        carakan3.isHidden = true
+        carakan4.isHidden = true
+        carakan5.isHidden = true
+        carakan6.isHidden = true
+        carakan7.isHidden = true
+        carakan8.isHidden = true
+        headerCarakanALabel.isHidden = true
+        headerCarakanBLabel.isHidden = true
+        
         questionLabel.text = "Benar sekali 😄"
         questionLabel.textColor = .systemGreen
         
         checkButton.isHidden = true
         
         successButton.isHidden = false
-        questionPlaceholder.isHidden = false
+        questionPlaceholder1.isHidden = false
+        questionPlaceholder2.isHidden = false
         questionFullDetailLabel.isHidden = false
         answersFullDetailLabel.isHidden = false
-        aksaraLabel.isHidden = false
+        aksaraLabel1.isHidden = false
+        aksaraLabel2.isHidden = false
         
-        placeholderHead.removeLayer(name: "dragAndDropLayer")
-        placeholderTail.removeLayer(name: "dragAndDropLayer")
-        placeholderHead.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
-        placeholderTail.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
+        placeholderCarakanA.removeLayer(name: "dragAndDropLayer")
+        placeholderCarakanB.removeLayer(name: "dragAndDropLayer")
+        placeholderCarakanA.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
+        placeholderCarakanB.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
         centerPlaceHolderConstraint?.constant = 120
         
-        placeholderTail.shake()
+        placeholderCarakanB.shake()
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
         
@@ -633,98 +616,124 @@ class QuizHeadAndTailView: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
+    func rectIntersectionInPerc(r1:CGRect, r2:CGRect) -> CGFloat {
+        if (r1.intersects(r2)) {
+
+           //let interRect:CGRect = r1.rectByIntersecting(r2); //OLD
+           let interRect:CGRect = r1.intersection(r2);
+
+           return ((interRect.width * interRect.height) / (((r1.width * r1.height) + (r2.width * r2.height))/2.0) * 100.0)
+        }
+        return 0;
+    }
+    
+    func resetButton() {
+        let arrayOfCarakanIndex = [0, 1, 2, 3, 4, 5, 6, 7]
+        let arrayOfCarakanView = [carakan1, carakan2, carakan3, carakan4, carakan5, carakan6, carakan7, carakan8]
+        let filteredArray = arrayOfCarakanIndex.filter{ !selectedArray.contains($0) }
+    
+        for (_, unselect) in filteredArray.enumerated() {
+            arrayOfCarakanView[unselect].removeLayer(name: "dragAndDrop")
+            arrayOfCarakanView[unselect].tintColor = .systemBlue
+        }
+    }
+    
     // MARK: Gesture to move selected object
     @objc func gestureMoveObject(_ sender: CustomPanGestureRecognizer){
         let senderView = sender.view
-        let name =  sender.name
         let viewName = sender.viewName
+        let index = sender.index! as Int
         
         if sender.state == .ended {
             
-            if (name == "Head") {
-                if (placeholderHead.frame.intersects(sender.view!.frame)) {
+            if (placeholderCarakanA.frame.intersects(sender.view!.frame) && placeholderCarakanB.frame.intersects(sender.view!.frame)) {
+
+                let percentageA = rectIntersectionInPerc(r1: placeholderCarakanA.frame, r2: sender.view!.frame)
+                let percentageB = rectIntersectionInPerc(r1: placeholderCarakanB.frame, r2: sender.view!.frame)
+                
+                if percentageA > percentageB {
                     let image = UIImage(named: viewName!)?.withRenderingMode(.alwaysTemplate)
-                    placeholderHead.setChoosenBackgroundColorLayer(withHeight: 100, withWidth: 100)
-                    placeholderHead.setImage(image, for: .normal)
-                    placeholderHead.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
-                    placeholderHead.tintColor = .white
-                    
-                    checkPlaceholderHead.setImage(image, for: .normal)
-                    checkPlaceholderHead.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
-                    checkPlaceholderHead.tintColor = .white
-                    
-                    // reset backgroundColor of head
-                    headA.removeLayer(name: "dragAndDrop")
-                    headB.removeLayer(name: "dragAndDrop")
-                    headC.removeLayer(name: "dragAndDrop")
-                    headD.removeLayer(name: "dragAndDrop")
-                    headA.tintColor = .systemBlue
-                    headB.tintColor = .systemBlue
-                    headC.tintColor = .systemBlue
-                    headD.tintColor = .systemBlue
+                    placeholderCarakanA.setChoosenBackgroundColorLayer(withHeight: 100, withWidth: 100)
+                    placeholderCarakanA.setImage(image, for: .normal)
+                    placeholderCarakanA.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
+                    placeholderCarakanA.tintColor = .white
+                    selectedArray[0] = index
+                    resetButton()
                     sender.view!.setChoosenBackgroundColor()
                     sender.view!.tintColor = .white
                     
                     isHeadFill = true
                     updateStatusCheckButton()
-                }
-            } else {
-                if (placeholderTail.frame.intersects(sender.view!.frame)) {
+                } else if (percentageB > percentageA) {
                     let image = UIImage(named: viewName!)?.withRenderingMode(.alwaysTemplate)
-                    placeholderTail.setChoosenBackgroundColorLayer(withHeight: 100, withWidth: 100)
-                    placeholderTail.setImage(image, for: .normal)
-                    placeholderTail.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
-                    placeholderTail.tintColor = .white
-                    
-                    checkPlaceholderTail.setImage(image, for: .normal)
-                    checkPlaceholderTail.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
-                    checkPlaceholderTail.tintColor = .white
-                    
-                    // reset backgroundColor of tail
-                    tailA.removeLayer(name: "dragAndDrop")
-                    tailB.removeLayer(name: "dragAndDrop")
-                    tailC.removeLayer(name: "dragAndDrop")
-                    tailD.removeLayer(name: "dragAndDrop")
-                    tailA.tintColor = .systemBlue
-                    tailB.tintColor = .systemBlue
-                    tailC.tintColor = .systemBlue
-                    tailD.tintColor = .systemBlue
+                    placeholderCarakanB.setChoosenBackgroundColorLayer(withHeight: 100, withWidth: 100)
+                    placeholderCarakanB.setImage(image, for: .normal)
+                    placeholderCarakanB.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
+                    placeholderCarakanB.tintColor = .white
+                    selectedArray[1] = index
+                    resetButton()
                     sender.view!.setChoosenBackgroundColor()
                     sender.view!.tintColor = .white
                     
                     isTailFill = true
                     updateStatusCheckButton()
                 }
+                
+            } else if (placeholderCarakanA.frame.intersects(sender.view!.frame)) {
+                let image = UIImage(named: viewName!)?.withRenderingMode(.alwaysTemplate)
+                placeholderCarakanA.setChoosenBackgroundColorLayer(withHeight: 100, withWidth: 100)
+                placeholderCarakanA.setImage(image, for: .normal)
+                placeholderCarakanA.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
+                placeholderCarakanA.tintColor = .white
+                selectedArray[0] =  index
+                resetButton()
+                
+                sender.view!.setChoosenBackgroundColor()
+                sender.view!.tintColor = .white
+                
+                isHeadFill = true
+                updateStatusCheckButton()
+            } else {
+                let image = UIImage(named: viewName!)?.withRenderingMode(.alwaysTemplate)
+                placeholderCarakanB.setChoosenBackgroundColorLayer(withHeight: 100, withWidth: 100)
+                placeholderCarakanB.setImage(image, for: .normal)
+                placeholderCarakanB.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
+                placeholderCarakanB.tintColor = .white
+                selectedArray[1] = index
+                resetButton()
+                sender.view!.setChoosenBackgroundColor()
+                sender.view!.tintColor = .white
+                
+                isTailFill = true
+                updateStatusCheckButton()
             }
             
-            if (senderView == headA) {
+            
+            if (senderView == carakan1) {
                 sender.view?.frame = self.originHeadAPosition
-            } else if (senderView == headB) {
+            } else if (senderView == carakan2) {
                 sender.view?.frame = self.originHeadBPosition
-            } else if (senderView == headC) {
+            } else if (senderView == carakan3) {
                 sender.view?.frame = self.originHeadCPosition
-            } else if (senderView == headD) {
+            } else if (senderView == carakan4) {
                 sender.view?.frame = self.originHeadDPosition
-            } else if (senderView == tailA) {
+            } else if (senderView == carakan5) {
                 sender.view?.frame = self.originTailAPosition
-            } else if (senderView == tailB) {
+            } else if (senderView == carakan6) {
                 sender.view?.frame = self.originTailBPosition
-            } else if (senderView == tailC) {
+            } else if (senderView == carakan7) {
                 sender.view?.frame = self.originTailCPosition
             } else {
                 sender.view?.frame = self.originTailDPosition
             }
             
-            placeholderHead.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
-            placeholderTail.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
+            placeholderCarakanA.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
+            placeholderCarakanB.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
             
             
         } else if sender.state == .began {
-            if name == "Head" {
-                placeholderHead.layer.applySketchShadow(color: UIColor.init(displayP3Red: 3/255, green: 131/255, blue: 251/255, alpha: 0.6), alpha: 1, x: 0, y: 0, blur: 20, spread: 0)
-            } else {
-                placeholderTail.layer.applySketchShadow(color: UIColor.init(displayP3Red: 3/255, green: 131/255, blue: 251/255, alpha: 0.6), alpha: 1, x: 0, y: 0, blur: 20, spread: 0)
-            }
+            placeholderCarakanA.layer.applySketchShadow(color: UIColor.init(displayP3Red: 3/255, green: 131/255, blue: 251/255, alpha: 0.6), alpha: 1, x: 0, y: 0, blur: 20, spread: 0)
+            placeholderCarakanB.layer.applySketchShadow(color: UIColor.init(displayP3Red: 3/255, green: 131/255, blue: 251/255, alpha: 0.6), alpha: 1, x: 0, y: 0, blur: 20, spread: 0)
             
         } else {
             sender.view?.center = sender.location(in: view)
