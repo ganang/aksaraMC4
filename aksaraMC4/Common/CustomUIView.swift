@@ -11,3 +11,8 @@ import UIKit
 class CustomUIView: UIView {
     var name: String?
 }
+
+class CustomView: UIView {
+    var id : Int?
+    var choice : String?
+}

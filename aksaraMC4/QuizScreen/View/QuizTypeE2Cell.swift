@@ -8,23 +8,23 @@
 
 import UIKit
 
-class QuizViewTypeE2: UIViewController, UIGestureRecognizerDelegate {
+class QuizTypeE2Cell: BaseCell, UIGestureRecognizerDelegate {
     
     let SCREEN_WIDTH: CGFloat = UIScreen.main.bounds.width
     let SCREEN_HEIGHT: CGFloat = UIScreen.main.bounds.height
     
-    let originHeadAPosition = CGRect(x: 40, y: UIScreen.main.bounds.height/2 - 68, width: 64, height: 64)
-    let originHeadBPosition = CGRect(x: 112, y: UIScreen.main.bounds.height/2 - 68, width: 64, height: 64)
-    let originHeadCPosition = CGRect(x: 40, y: UIScreen.main.bounds.height/2 + 4, width: 64, height: 64)
-    let originHeadDPosition = CGRect(x: 112, y: UIScreen.main.bounds.height/2 + 4, width: 64, height: 64)
+    let originHeadAPosition = CGRect(x: 40, y: (UIScreen.main.bounds.height - 121)/2 - 68, width: 64, height: 64)
+    let originHeadBPosition = CGRect(x: 112, y: (UIScreen.main.bounds.height - 121)/2 - 68, width: 64, height: 64)
+    let originHeadCPosition = CGRect(x: 40, y: (UIScreen.main.bounds.height - 121)/2 + 4, width: 64, height: 64)
+    let originHeadDPosition = CGRect(x: 112, y: (UIScreen.main.bounds.height - 121)/2 + 4, width: 64, height: 64)
     
-    let originTailAPosition = CGRect(x: UIScreen.main.bounds.width - 112, y: UIScreen.main.bounds.height/2 - 68, width: 64, height: 64)
-    let originTailBPosition = CGRect(x: UIScreen.main.bounds.width - 184, y: UIScreen.main.bounds.height/2 - 68, width: 64, height: 64)
-    let originTailCPosition = CGRect(x: UIScreen.main.bounds.width - 112, y: UIScreen.main.bounds.height/2 + 4, width: 64, height: 64)
-    let originTailDPosition = CGRect(x: UIScreen.main.bounds.width - 184, y: UIScreen.main.bounds.height/2 + 4, width: 64, height: 64)
+    let originTailAPosition = CGRect(x: UIScreen.main.bounds.width - 112, y: (UIScreen.main.bounds.height - 121)/2 - 68, width: 64, height: 64)
+    let originTailBPosition = CGRect(x: UIScreen.main.bounds.width - 184, y: (UIScreen.main.bounds.height - 121)/2 - 68, width: 64, height: 64)
+    let originTailCPosition = CGRect(x: UIScreen.main.bounds.width - 112, y: (UIScreen.main.bounds.height - 121)/2 + 4, width: 64, height: 64)
+    let originTailDPosition = CGRect(x: UIScreen.main.bounds.width - 184, y: (UIScreen.main.bounds.height - 121)/2 + 4, width: 64, height: 64)
     
-    let originHeaderHead = CGRect(x: 70, y: UIScreen.main.bounds.height/2 - 96, width: 100, height: 20)
-    let originHeaderTail = CGRect(x: UIScreen.main.bounds.width - 156, y: UIScreen.main.bounds.height/2 - 96, width: 100, height: 20)
+    let originHeaderHead = CGRect(x: 70, y: (UIScreen.main.bounds.height - 121)/2 - 96, width: 100, height: 20)
+    let originHeaderTail = CGRect(x: UIScreen.main.bounds.width - 156, y: (UIScreen.main.bounds.height - 121)/2 - 96, width: 100, height: 20)
     
     var isHeadFill = false
     var isTailFill = false
@@ -32,6 +32,8 @@ class QuizViewTypeE2: UIViewController, UIGestureRecognizerDelegate {
     var selectedArray = [10, 11]
     
     var centerPlaceHolderConstraint: NSLayoutConstraint?
+    
+    var delegate : QuizControllerProtocol?
     
     lazy var placeholderCarakanA: UIButton = {
         let button = UIButton()
@@ -139,7 +141,6 @@ class QuizViewTypeE2: UIViewController, UIGestureRecognizerDelegate {
         button.addInnerShadow()
         button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
         button.clipsToBounds = true
-        button.addTarget(self, action: #selector(handleSuccessButton), for: .touchUpInside)
         button.isEnabled = true
         button.isHidden = true
         button.layer.masksToBounds = false
@@ -454,66 +455,57 @@ class QuizViewTypeE2: UIViewController, UIGestureRecognizerDelegate {
         return button
     }()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        view.setBackgroundColor()
-        navigationController?.navigationBar.isHidden = true
-        
-        setupView()
-    }
-    
-    func setupView() {
+    override func setupViews() {
         setupInterfaceComponent()
         setupConstraint()
     }
     
     func setupInterfaceComponent() {
-        view.addSubview(placeholderCarakanA)
-        view.addSubview(placeholderCarakanB)
+        addSubview(placeholderCarakanA)
+        addSubview(placeholderCarakanB)
         
-        view.addSubview(questionLabel)
-        view.addSubview(headerCarakanALabel)
-        view.addSubview(headerCarakanBLabel)
-        view.addSubview(footerPlaceholderHead)
-        view.addSubview(footerPlaceholderTail)
+        addSubview(questionLabel)
+        addSubview(headerCarakanALabel)
+        addSubview(headerCarakanBLabel)
+        addSubview(footerPlaceholderHead)
+        addSubview(footerPlaceholderTail)
         
-        view.addSubview(carakan1)
-        view.addSubview(carakan2)
-        view.addSubview(carakan3)
-        view.addSubview(carakan4)
+        addSubview(carakan1)
+        addSubview(carakan2)
+        addSubview(carakan3)
+        addSubview(carakan4)
         
-        view.addSubview(carakan5)
-        view.addSubview(carakan6)
-        view.addSubview(carakan7)
-        view.addSubview(carakan8)
+        addSubview(carakan5)
+        addSubview(carakan6)
+        addSubview(carakan7)
+        addSubview(carakan8)
         
-        view.addSubview(checkButton)
-        view.addSubview(successButton)
+        addSubview(checkButton)
+        addSubview(successButton)
         
-        view.addSubview(questionPlaceholder1)
-        view.addSubview(questionPlaceholder2)
-        view.addSubview(aksaraLabel1)
-        view.addSubview(aksaraLabel2)
+        addSubview(questionPlaceholder1)
+        addSubview(questionPlaceholder2)
+        addSubview(aksaraLabel1)
+        addSubview(aksaraLabel2)
     
-        view.addSubview(questionFullDetailLabel)
-        view.addSubview(answersFullDetailLabel)
+        addSubview(questionFullDetailLabel)
+        addSubview(answersFullDetailLabel)
     }
     
     func setupConstraint() {
-        placeholderCarakanA.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        placeholderCarakanA.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         placeholderCarakanA.widthAnchor.constraint(equalToConstant: 100).isActive = true
         placeholderCarakanA.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        centerPlaceHolderConstraint =  placeholderCarakanA.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -72)
+        centerPlaceHolderConstraint =  placeholderCarakanA.centerXAnchor.constraint(equalTo: centerXAnchor, constant: -72)
         centerPlaceHolderConstraint?.isActive = true
         
-        placeholderCarakanB.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        placeholderCarakanB.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         placeholderCarakanB.leadingAnchor.constraint(equalTo: placeholderCarakanA.trailingAnchor, constant: 24).isActive = true
         placeholderCarakanB.widthAnchor.constraint(equalToConstant: 100).isActive = true
         placeholderCarakanB.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
-        questionLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: SCREEN_HEIGHT/4).isActive = true
-        questionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        questionLabel.topAnchor.constraint(equalTo: topAnchor, constant: SCREEN_HEIGHT/4).isActive = true
+        questionLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         
         headerCarakanALabel.frame = originHeaderHead
         headerCarakanBLabel.frame = originHeaderTail
@@ -533,23 +525,23 @@ class QuizViewTypeE2: UIViewController, UIGestureRecognizerDelegate {
         carakan7.frame = originTailCPosition
         carakan8.frame = originTailDPosition
         
-        checkButton.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        checkButton.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        checkButton.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        checkButton.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        checkButton.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        checkButton.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         checkButton.heightAnchor.constraint(equalToConstant: 56).isActive = true
         
-        successButton.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        successButton.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        successButton.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        successButton.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        successButton.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        successButton.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         successButton.heightAnchor.constraint(equalToConstant: 56).isActive = true
         
-        questionPlaceholder2.trailingAnchor.constraint(equalTo: view.centerXAnchor, constant: -120).isActive = true
-        questionPlaceholder2.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        questionPlaceholder2.trailingAnchor.constraint(equalTo: centerXAnchor, constant: -120).isActive = true
+        questionPlaceholder2.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         questionPlaceholder2.widthAnchor.constraint(equalToConstant: 100).isActive = true
         questionPlaceholder2.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
         questionPlaceholder1.trailingAnchor.constraint(equalTo: questionPlaceholder2.leadingAnchor, constant: -16).isActive = true
-        questionPlaceholder1.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        questionPlaceholder1.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         questionPlaceholder1.widthAnchor.constraint(equalToConstant: 100).isActive = true
         questionPlaceholder1.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
@@ -601,11 +593,11 @@ class QuizViewTypeE2: UIViewController, UIGestureRecognizerDelegate {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
         
-        self.view.layoutIfNeeded()
+        layoutIfNeeded()
     }
     
-    @objc func handleSuccessButton() {
-        print("LANJUT")
+    func handleTimer() {
+        print("TIME_OUT")
     }
     
     func updateStatusCheckButton() {
@@ -736,7 +728,7 @@ class QuizViewTypeE2: UIViewController, UIGestureRecognizerDelegate {
             placeholderCarakanB.layer.applySketchShadow(color: UIColor.init(displayP3Red: 3/255, green: 131/255, blue: 251/255, alpha: 0.6), alpha: 1, x: 0, y: 0, blur: 20, spread: 0)
             
         } else {
-            sender.view?.center = sender.location(in: view)
+            sender.view?.center = sender.location(in: self)
         }
     }
 }
