@@ -374,6 +374,8 @@ class QuizViewTypeC: UICollectionViewCell {
                     // handle core data
                     self.quizData?.isCorrect = true
                     PersistenceService.saveContext()
+                    
+                    self.successButton.isHidden = false
                 }else {
                     print("False")
                     self.answersBGView[id!].setCardFalseBackgroundColor()
@@ -399,9 +401,11 @@ class QuizViewTypeC: UICollectionViewCell {
                     // handle core data
                     self.quizData?.isCorrect = false
                     PersistenceService.saveContext()
+                    
+                    self.successButton.isHidden = false
                 }
             }
-            successButton.isHidden = false
+            
             initialClick = true
         }
     }

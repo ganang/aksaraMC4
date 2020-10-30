@@ -50,7 +50,9 @@ class QuizController: UIViewController, QuizControllerProtocol {
     private let QuizViewTypeCCell = "QuizViewTypeCCell"
     private let QuizViewTypeDCell = "QuizViewTypeDCell"
     private let QuizViewTypeECell = "QuizViewTypeECell"
-    
+    private let QuizHeadAndTailCellIdentifier = "QuizHeadAndTailCell_ID"
+    private let QuizTypeE2CellIdentifier = "QuizTypeE2Cell_ID"
+    private let QuizTypeE3CellIdentifier = "QuizTypeE3Cell_ID"
     
     let quizPageFill = [
         QuizPage(navHeaderText: "Panduan", HeaderTimer: 0),
@@ -58,7 +60,12 @@ class QuizController: UIViewController, QuizControllerProtocol {
         QuizPage(navHeaderText: "Kuis 2", HeaderTimer: 10),
         QuizPage(navHeaderText: "Kuis 3", HeaderTimer: 10),
         QuizPage(navHeaderText: "Kuis 4", HeaderTimer: 30),
-        QuizPage(navHeaderText: "Kuis 5", HeaderTimer: 30)
+        QuizPage(navHeaderText: "Kuis 5", HeaderTimer: 30),
+        QuizPage(navHeaderText: "Kuis 6", HeaderTimer: 30),
+        QuizPage(navHeaderText: "Kuis 7", HeaderTimer: 30),
+        QuizPage(navHeaderText: "Kuis 8", HeaderTimer: 30),
+        QuizPage(navHeaderText: "Kuis 9", HeaderTimer: 30),
+        QuizPage(navHeaderText: "Kuis 10", HeaderTimer: 30),
     ]
     
     private var quizView: QuizView!
@@ -100,7 +107,7 @@ class QuizController: UIViewController, QuizControllerProtocol {
     
     @objc func updateTime() {
         headerTimer.text = "\(timeFormatted(totalTime))"
-
+        
         if totalTime != 0 {
             totalTime -= 1
         } else {
@@ -117,10 +124,10 @@ class QuizController: UIViewController, QuizControllerProtocol {
                 let cellC = collectionView.cellForItem(at: self.indexCollection!) as! QuizViewTypeC
                 cellC.handleTimer()
             case 4:
-                let cellD = collectionView.cellForItem(at: self.indexCollection!) as! QuizViewTypeD
+                let cellD = collectionView.cellForItem(at: self.indexCollection!) as! QuizHeadAndTailCell
                 cellD.handleTimer()
             case 5:
-                let cellE = collectionView.cellForItem(at: self.indexCollection!) as! QuizViewTypeE
+                let cellE = collectionView.cellForItem(at: self.indexCollection!) as! QuizTypeE2Cell
                 cellE.handleTimer()
             default:
                 print("XXX")
@@ -128,7 +135,7 @@ class QuizController: UIViewController, QuizControllerProtocol {
             
         }
     }
-
+    
     func endTimer() {
         countdownTimer.invalidate()
         
@@ -137,10 +144,10 @@ class QuizController: UIViewController, QuizControllerProtocol {
     func stopTimerChoosen() {
         endTimer()
     }
-
+    
     func timeFormatted(_ totalSeconds: Int) -> String {
         let seconds: Int = totalSeconds % 60
-//        let minutes: Int = (totalSeconds / 60) % 60
+        //        let minutes: Int = (totalSeconds / 60) % 60
         //     let hours: Int = totalSeconds / 3600
         return String(format: "%02d", seconds)
     }
@@ -167,26 +174,23 @@ class QuizController: UIViewController, QuizControllerProtocol {
         return button
     }()
     
-     //ProgressiveBar
-     let progressiveBar: UIProgressView = {
-         let pv = UIProgressView()
-         pv.progress = 0.1666666667
-         pv.tintColor = UIColor.blue
-         pv.trackTintColor = Theme.current.accentLightBlue
-         pv.clipsToBounds = true
-//         pv.layer.cornerRadius = 8
-//         pv.layer.sublayers![1].cornerRadius = 8
-//         pv.subviews[1].clipsToBounds = true
-         pv.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
-         return pv
-     }()
+    //ProgressiveBar
+    let progressiveBar: UIProgressView = {
+        let pv = UIProgressView()
+        pv.progress = 0.1666666667
+        pv.tintColor = UIColor.blue
+        pv.trackTintColor = Theme.current.accentLightBlue
+        pv.clipsToBounds = true
+        pv.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
+        return pv
+    }()
     
     let collectionView : UICollectionView = {
-
+        
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 0
         layout.scrollDirection = .horizontal
-
+        
         let cv = UICollectionView(frame: .zero , collectionViewLayout: layout)
         cv.setBackgroundColor()
         cv.isPagingEnabled = true
@@ -208,7 +212,7 @@ class QuizController: UIViewController, QuizControllerProtocol {
         
         // handle timer label button
         self.timerLabelButton.isHidden = false
-//        self.quizTopNumberLabel.text = quizPageFill[sender.tag + 1].navHeaderText
+        //        self.quizTopNumberLabel.text = quizPageFill[sender.tag + 1].navHeaderText
         self.totalTime = quizPageFill[sender.tag + 1].HeaderTimer
         
         // handle timer
@@ -221,7 +225,7 @@ class QuizController: UIViewController, QuizControllerProtocol {
         // handle scroll collection
         let indexPath = IndexPath(item: sender.tag + 1, section: 0)
         self.indexCollection = indexPath
-//        collectionView.scrollToItem(at: indexPath, at: .top, animated: true)
+        //        collectionView.scrollToItem(at: indexPath, at: .top, animated: true)
         
         if self.collectionView.dataSource?.collectionView(self.collectionView, cellForItemAt: IndexPath(row: 0, section: 0)) != nil {
             let rect = self.collectionView.layoutAttributesForItem(at: indexPath)?.frame
@@ -247,7 +251,7 @@ class QuizController: UIViewController, QuizControllerProtocol {
         
         //print("REGION", regionSelected)
         
-
+        
     }
     
     
@@ -336,6 +340,9 @@ class QuizController: UIViewController, QuizControllerProtocol {
         collectionView.register(QuizViewTypeC.self, forCellWithReuseIdentifier: QuizViewTypeCCell)
         collectionView.register(QuizViewTypeD.self, forCellWithReuseIdentifier: QuizViewTypeDCell)
         collectionView.register(QuizViewTypeE.self, forCellWithReuseIdentifier: QuizViewTypeECell)
+        collectionView.register(QuizHeadAndTailCell.self, forCellWithReuseIdentifier: QuizHeadAndTailCellIdentifier)
+        collectionView.register(QuizTypeE2Cell.self, forCellWithReuseIdentifier: QuizTypeE2CellIdentifier)
+        collectionView.register(QuizTypeE3Cell.self, forCellWithReuseIdentifier: QuizTypeE3CellIdentifier)
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "example")
         collectionView.reloadData()
         collectionView.layoutIfNeeded()
@@ -383,7 +390,7 @@ class QuizController: UIViewController, QuizControllerProtocol {
         
         let attributes = [NSAttributedString.Key.font: UIFont(name: "Now-Medium", size: 20)!,
                           NSAttributedString.Key.foregroundColor: Theme.current.textColor1, NSAttributedString.Key.paragraphStyle: paragraphStyle
-                          ] as [NSAttributedString.Key : Any]
+        ] as [NSAttributedString.Key : Any]
         let attributedText  = NSMutableAttributedString(string: "Anda yakin keluar ? Semua proses tidak akan terhapus", attributes: attributes)
         label.attributedText = attributedText
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -555,7 +562,7 @@ class QuizController: UIViewController, QuizControllerProtocol {
         panduanInfo.heightAnchor.constraint(equalToConstant: 274).isActive = true
         panduanInfo.widthAnchor.constraint(equalToConstant: 462).isActive = true
         
-
+        
         containerInfoView.addSubview(mengertiButton)
         mengertiButton.centerXAnchor.constraint(equalTo: containerInfoView.centerXAnchor).isActive = true
         mengertiButton.bottomAnchor.constraint(equalTo: containerInfoView.bottomAnchor, constant: -40).isActive = true
@@ -577,13 +584,13 @@ class QuizController: UIViewController, QuizControllerProtocol {
         blurEffectView.frame = view.bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(blurEffectView)
-
+        
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.hideWarningModal))
         view.isUserInteractionEnabled = true
         view.addGestureRecognizer(tap)
         return view
     }()
-
+    
     lazy var containerView : UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -594,7 +601,7 @@ class QuizController: UIViewController, QuizControllerProtocol {
         view.isUserInteractionEnabled = true
         return view
     }()
-
+    
     let aksaraStepLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -654,9 +661,9 @@ class QuizController: UIViewController, QuizControllerProtocol {
         let firstWord   = ""
         let secondWord = "Kuis 2\n"
         let attrs      = [NSAttributedString.Key.font: UIFont.init(name: "Now-Bold", size: 20), NSAttributedString.Key.foregroundColor: Theme.current.textColor2,
-            NSAttributedString.Key.paragraphStyle: paragraphStyle]
+                          NSAttributedString.Key.paragraphStyle: paragraphStyle]
         let attrs2      = [NSAttributedString.Key.font: UIFont.init(name: "Now-Medium", size: 16), NSAttributedString.Key.foregroundColor: Theme.current.textColor1,
-            NSAttributedString.Key.paragraphStyle: paragraphStyle]
+                           NSAttributedString.Key.paragraphStyle: paragraphStyle]
         let thirdWord   = "Menebak latin dari bentuk aksara"
         let attributedText = NSMutableAttributedString(string:firstWord)
         attributedText.append(NSAttributedString(string: secondWord, attributes: attrs as [NSAttributedString.Key : Any]))
@@ -678,9 +685,9 @@ class QuizController: UIViewController, QuizControllerProtocol {
         let firstWord   = ""
         let secondWord = "Kuis 3\n"
         let attrs      = [NSAttributedString.Key.font: UIFont.init(name: "Now-Bold", size: 20), NSAttributedString.Key.foregroundColor: Theme.current.textColor2,
-            NSAttributedString.Key.paragraphStyle: paragraphStyle]
+                          NSAttributedString.Key.paragraphStyle: paragraphStyle]
         let attrs2      = [NSAttributedString.Key.font: UIFont.init(name: "Now-Medium", size: 16), NSAttributedString.Key.foregroundColor: Theme.current.textColor1,
-            NSAttributedString.Key.paragraphStyle: paragraphStyle]
+                           NSAttributedString.Key.paragraphStyle: paragraphStyle]
         let thirdWord   = "Menebak latin dari bentuk aksara"
         let attributedText = NSMutableAttributedString(string:firstWord)
         attributedText.append(NSAttributedString(string: secondWord, attributes: attrs as [NSAttributedString.Key : Any]))
@@ -703,9 +710,9 @@ class QuizController: UIViewController, QuizControllerProtocol {
         let firstWord   = ""
         let secondWord = "Kuis 4\n"
         let attrs      = [NSAttributedString.Key.font: UIFont.init(name: "Now-Bold", size: 20), NSAttributedString.Key.foregroundColor: Theme.current.textColor2,
-            NSAttributedString.Key.paragraphStyle: paragraphStyle]
+                          NSAttributedString.Key.paragraphStyle: paragraphStyle]
         let attrs2      = [NSAttributedString.Key.font: UIFont.init(name: "Now-Medium", size: 16), NSAttributedString.Key.foregroundColor: Theme.current.textColor1,
-            NSAttributedString.Key.paragraphStyle: paragraphStyle]
+                           NSAttributedString.Key.paragraphStyle: paragraphStyle]
         let thirdWord   = "Menebak latin dari bentuk aksara"
         let attributedText = NSMutableAttributedString(string:firstWord)
         attributedText.append(NSAttributedString(string: secondWord, attributes: attrs as [NSAttributedString.Key : Any]))
@@ -727,9 +734,9 @@ class QuizController: UIViewController, QuizControllerProtocol {
         let firstWord   = ""
         let secondWord = "Kuis 5\n"
         let attrs      = [NSAttributedString.Key.font: UIFont.init(name: "Now-Bold", size: 20), NSAttributedString.Key.foregroundColor: Theme.current.textColor2,
-            NSAttributedString.Key.paragraphStyle: paragraphStyle]
+                          NSAttributedString.Key.paragraphStyle: paragraphStyle]
         let attrs2      = [NSAttributedString.Key.font: UIFont.init(name: "Now-Medium", size: 16), NSAttributedString.Key.foregroundColor: Theme.current.textColor1,
-            NSAttributedString.Key.paragraphStyle: paragraphStyle]
+                           NSAttributedString.Key.paragraphStyle: paragraphStyle]
         let thirdWord   = "Menebak latin dari bentuk aksara"
         let attributedText = NSMutableAttributedString(string:firstWord)
         attributedText.append(NSAttributedString(string: secondWord, attributes: attrs as [NSAttributedString.Key : Any]))
@@ -744,7 +751,7 @@ class QuizController: UIViewController, QuizControllerProtocol {
         let image = UIImageView()
         image.image = UIImage(named: "correctAnswer")
         image.contentMode = .scaleAspectFit
-
+        
         image.translatesAutoresizingMaskIntoConstraints = false
         image.clipsToBounds = true
         
@@ -924,7 +931,7 @@ class QuizController: UIViewController, QuizControllerProtocol {
     @objc func showModal() {
         
         handleQuizRecord()
-
+        
         view.addSubview(backgroundBlurView)
         backgroundBlurView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         backgroundBlurView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
@@ -980,7 +987,7 @@ class QuizController: UIViewController, QuizControllerProtocol {
         kuis5LabelModal.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 48).isActive = true
         kuis5LabelModal.topAnchor.constraint(equalTo: kuis4LabelModal.bottomAnchor, constant: 24).isActive = true
         
-
+        
         containerView.addSubview(correctOrWrongAnswerImage1)
         correctOrWrongAnswerImage1.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -48).isActive = true
         correctOrWrongAnswerImage1.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 158).isActive = true
@@ -1045,7 +1052,7 @@ class QuizController: UIViewController, QuizControllerProtocol {
     }
     
     @objc func handleMainLagi() {
-         let quizScreen = QuizController()
+        let quizScreen = QuizController()
         quizScreen.regionSelected = regionSelected
         quizScreen.quizes = quizes
         quizScreen.levels = levels
@@ -1071,11 +1078,11 @@ class QuizController: UIViewController, QuizControllerProtocol {
             
             navigationController?.pushViewController(quizScreen, animated: true)
         }
-    
+        
     }
     
     @objc func handlePopBackFromReward() {
-       
+        
         //change become not initial anymore
         level?.isInitial = false
         PersistenceService.saveContext()
@@ -1094,49 +1101,27 @@ class QuizController: UIViewController, QuizControllerProtocol {
             PersistenceService.saveContext()
         }
     }
- 
-//    @objc func restartQuiz() {
-//        let quizScreen = QuizController()
-//        quizScreen.regionSelected = regionSelected
-//        quizScreen.quizes = quizes
-//        quizScreen.levels = levels
-//
-//        navigationController?.pushViewController(quizScreen, animated: true)
-//    }
+    
+    //    @objc func restartQuiz() {
+    //        let quizScreen = QuizController()
+    //        quizScreen.regionSelected = regionSelected
+    //        quizScreen.quizes = quizes
+    //        quizScreen.levels = levels
+    //
+    //        navigationController?.pushViewController(quizScreen, animated: true)
+    //    }
     
     
-}
-
-extension UIImage {
-    static func gradientImage(with bounds: CGRect,
-                            colors: [CGColor],
-                            locations: [NSNumber]?) -> UIImage? {
-
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = CGRect(x: 0, y: 0, width: 974, height: 16)
-        gradientLayer.colors = colors
-        // This makes it horizontal
-        gradientLayer.startPoint = CGPoint(x: 0.0,
-                                        y: 0.5)
-        gradientLayer.endPoint = CGPoint(x: 1.0,
-                                        y: 0.5)
-
-        UIGraphicsBeginImageContext(gradientLayer.bounds.size)
-        gradientLayer.render(in: UIGraphicsGetCurrentContext()!)
-        guard let image = UIGraphicsGetImageFromCurrentImageContext() else { return nil }
-        UIGraphicsEndImageContext()
-        return image
-    }
 }
 
 extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return quizPageFill.count
+        return 12
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-       
+        
         if(indexPath.item == 0) {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuizViewCell, for: indexPath) as! QuizView
             cell.setBackgroundColor()
@@ -1152,7 +1137,7 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
             cell.setBackgroundColor()
             cell.regionSelected = regionSelected
             cell.quizData = quizTypeAModel
-//
+            //
             cell.successButton.addTarget(self, action: #selector(handleProgressBar), for: .touchUpInside)
             cell.successButton.tag = indexPath.item
             
@@ -1182,21 +1167,103 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
             cell.delegate = self
             
             return cell
-        } else if(indexPath.item == 4){
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuizViewTypeDCell, for: indexPath) as! QuizViewTypeD
+        } else if(indexPath.item == 4) {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuizHeadAndTailCellIdentifier, for: indexPath) as! QuizHeadAndTailCell
+            
+            cell.successButton.addTarget(self, action: #selector(handleProgressBar), for: .touchUpInside)
+            cell.successButton.tag = indexPath.item
             cell.setBackgroundColor()
-            cell.lewatiButton.addTarget(self, action: #selector(handleProgressBar), for: .touchUpInside)
-            cell.arrowRightButton.addTarget(self, action: #selector(handleProgressBar), for: .touchUpInside)
+            cell.delegate = self
+            
+            return cell
+            
+        } else if(indexPath.item == 5) {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuizTypeE2CellIdentifier, for: indexPath) as! QuizTypeE2Cell
+            
+            cell.successButton.addTarget(self, action: #selector(handleProgressBar), for: .touchUpInside)
+            cell.successButton.tag = indexPath.item
+            cell.setBackgroundColor()
+            cell.delegate = self
+            
+            return cell
+            
+        } else if(indexPath.item == 6) {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuizTypeE3CellIdentifier, for: indexPath) as! QuizTypeE3Cell
+            
+            cell.successButton.addTarget(self, action: #selector(handleProgressBar), for: .touchUpInside)
+            cell.successButton.tag = indexPath.item
+            cell.setBackgroundColor()
+            cell.delegate = self
+            
+            return cell
+            
+        } else if(indexPath.item == 7) {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuizViewTypeECell, for: indexPath) as! QuizViewTypeE
+            cell.setBackgroundColor()
+            cell.lewatiButton.addTarget(self, action: #selector(showModal), for: .touchUpInside)
+            cell.arrowRightButton.addTarget(self, action: #selector(showModal), for: .touchUpInside)
             cell.lewatiButton.tag = indexPath.item
             cell.arrowRightButton.tag = indexPath.item
             cell.regionSelected = regionSelected
-            cell.quizData = quizTypeDModel
+            cell.quizData = quizTypeEModel
             
             cell.delegate = self
             
             return cell
-        } else{
-          let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuizViewTypeECell, for: indexPath) as! QuizViewTypeE
+        } else if(indexPath.item == 8) {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuizViewTypeECell, for: indexPath) as! QuizViewTypeE
+            cell.setBackgroundColor()
+            cell.lewatiButton.addTarget(self, action: #selector(showModal), for: .touchUpInside)
+            cell.arrowRightButton.addTarget(self, action: #selector(showModal), for: .touchUpInside)
+            cell.lewatiButton.tag = indexPath.item
+            cell.arrowRightButton.tag = indexPath.item
+            cell.regionSelected = regionSelected
+            cell.quizData = quizTypeEModel
+            
+            cell.delegate = self
+            
+            return cell
+        } else if(indexPath.item == 9) {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuizViewTypeECell, for: indexPath) as! QuizViewTypeE
+            cell.setBackgroundColor()
+            cell.lewatiButton.addTarget(self, action: #selector(showModal), for: .touchUpInside)
+            cell.arrowRightButton.addTarget(self, action: #selector(showModal), for: .touchUpInside)
+            cell.lewatiButton.tag = indexPath.item
+            cell.arrowRightButton.tag = indexPath.item
+            cell.regionSelected = regionSelected
+            cell.quizData = quizTypeEModel
+            
+            cell.delegate = self
+            
+            return cell
+        } else if(indexPath.item == 10) {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuizViewTypeECell, for: indexPath) as! QuizViewTypeE
+            cell.setBackgroundColor()
+            cell.lewatiButton.addTarget(self, action: #selector(showModal), for: .touchUpInside)
+            cell.arrowRightButton.addTarget(self, action: #selector(showModal), for: .touchUpInside)
+            cell.lewatiButton.tag = indexPath.item
+            cell.arrowRightButton.tag = indexPath.item
+            cell.regionSelected = regionSelected
+            cell.quizData = quizTypeEModel
+            
+            cell.delegate = self
+            
+            return cell
+        } else if(indexPath.item == 11) {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuizViewTypeECell, for: indexPath) as! QuizViewTypeE
+            cell.setBackgroundColor()
+            cell.lewatiButton.addTarget(self, action: #selector(showModal), for: .touchUpInside)
+            cell.arrowRightButton.addTarget(self, action: #selector(showModal), for: .touchUpInside)
+            cell.lewatiButton.tag = indexPath.item
+            cell.arrowRightButton.tag = indexPath.item
+            cell.regionSelected = regionSelected
+            cell.quizData = quizTypeEModel
+            
+            cell.delegate = self
+            
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuizViewTypeECell, for: indexPath) as! QuizViewTypeE
             cell.setBackgroundColor()
             cell.lewatiButton.addTarget(self, action: #selector(showModal), for: .touchUpInside)
             cell.arrowRightButton.addTarget(self, action: #selector(showModal), for: .touchUpInside)
@@ -1219,9 +1286,4 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
         return true
     }
     
-}
-
-class CustomView: UIView {
-    var id : Int?
-    var choice : String?
 }

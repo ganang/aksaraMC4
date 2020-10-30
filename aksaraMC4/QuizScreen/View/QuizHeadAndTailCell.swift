@@ -8,28 +8,30 @@
 
 import UIKit
 
-class QuizHeadAndTailView: UIViewController, UIGestureRecognizerDelegate {
+class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
     
     let SCREEN_WIDTH: CGFloat = UIScreen.main.bounds.width
     let SCREEN_HEIGHT: CGFloat = UIScreen.main.bounds.height
     
-    let originHeadAPosition = CGRect(x: 40, y: UIScreen.main.bounds.height/2 - 68, width: 64, height: 64)
-    let originHeadBPosition = CGRect(x: 112, y: UIScreen.main.bounds.height/2 - 68, width: 64, height: 64)
-    let originHeadCPosition = CGRect(x: 40, y: UIScreen.main.bounds.height/2 + 4, width: 64, height: 64)
-    let originHeadDPosition = CGRect(x: 112, y: UIScreen.main.bounds.height/2 + 4, width: 64, height: 64)
+    let originHeadAPosition = CGRect(x: 40, y: (UIScreen.main.bounds.height - 121)/2 - 68, width: 64, height: 64)
+    let originHeadBPosition = CGRect(x: 112, y: (UIScreen.main.bounds.height - 121)/2 - 68, width: 64, height: 64)
+    let originHeadCPosition = CGRect(x: 40, y: (UIScreen.main.bounds.height - 121)/2 + 4, width: 64, height: 64)
+    let originHeadDPosition = CGRect(x: 112, y: (UIScreen.main.bounds.height - 121)/2 + 4, width: 64, height: 64)
     
-    let originTailAPosition = CGRect(x: UIScreen.main.bounds.width - 112, y: UIScreen.main.bounds.height/2 - 68, width: 64, height: 64)
-    let originTailBPosition = CGRect(x: UIScreen.main.bounds.width - 184, y: UIScreen.main.bounds.height/2 - 68, width: 64, height: 64)
-    let originTailCPosition = CGRect(x: UIScreen.main.bounds.width - 112, y: UIScreen.main.bounds.height/2 + 4, width: 64, height: 64)
-    let originTailDPosition = CGRect(x: UIScreen.main.bounds.width - 184, y: UIScreen.main.bounds.height/2 + 4, width: 64, height: 64)
+    let originTailAPosition = CGRect(x: UIScreen.main.bounds.width - 112, y: (UIScreen.main.bounds.height - 121)/2 - 68, width: 64, height: 64)
+    let originTailBPosition = CGRect(x: UIScreen.main.bounds.width - 184, y: (UIScreen.main.bounds.height - 121)/2 - 68, width: 64, height: 64)
+    let originTailCPosition = CGRect(x: UIScreen.main.bounds.width - 112, y: (UIScreen.main.bounds.height - 121)/2 + 4, width: 64, height: 64)
+    let originTailDPosition = CGRect(x: UIScreen.main.bounds.width - 184, y: (UIScreen.main.bounds.height - 121)/2 + 4, width: 64, height: 64)
     
-    let originHeaderHead = CGRect(x: 73, y: UIScreen.main.bounds.height/2 - 96, width: 100, height: 20)
-    let originHeaderTail = CGRect(x: UIScreen.main.bounds.width - 136, y: UIScreen.main.bounds.height/2 - 96, width: 100, height: 20)
+    let originHeaderHead = CGRect(x: 73, y: (UIScreen.main.bounds.height - 121)/2 - 96, width: 100, height: 20)
+    let originHeaderTail = CGRect(x: UIScreen.main.bounds.width - 136, y: (UIScreen.main.bounds.height - 121)/2 - 96, width: 100, height: 20)
     
     var isHeadFill = false
     var isTailFill = false
     
     var centerPlaceHolderConstraint: NSLayoutConstraint?
+    
+    var delegate : QuizControllerProtocol?
     
     lazy var placeholderHead: UIButton = {
         let button = UIButton()
@@ -137,7 +139,6 @@ class QuizHeadAndTailView: UIViewController, UIGestureRecognizerDelegate {
         button.addInnerShadow()
         button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
         button.clipsToBounds = true
-        button.addTarget(self, action: #selector(handleSuccessButton), for: .touchUpInside)
         button.isEnabled = true
         button.isHidden = true
         button.layer.masksToBounds = false
@@ -471,66 +472,59 @@ class QuizHeadAndTailView: UIViewController, UIGestureRecognizerDelegate {
         return button
     }()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func setupViews() {
+        setBackgroundColor()
         
-        view.setBackgroundColor()
-        navigationController?.navigationBar.isHidden = true
-        
-        setupView()
-    }
-    
-    func setupView() {
         setupInterfaceComponent()
         setupConstraint()
     }
     
     func setupInterfaceComponent() {
-        view.addSubview(placeholderHead)
-        view.addSubview(placeholderTail)
+        addSubview(placeholderHead)
+        addSubview(placeholderTail)
         
-        view.addSubview(questionLabel)
-        view.addSubview(headerHeadLabel)
-        view.addSubview(headerTailLabel)
-        view.addSubview(footerPlaceholderHead)
-        view.addSubview(footerPlaceholderTail)
+        addSubview(questionLabel)
+        addSubview(headerHeadLabel)
+        addSubview(headerTailLabel)
+        addSubview(footerPlaceholderHead)
+        addSubview(footerPlaceholderTail)
         
-        view.addSubview(headA)
-        view.addSubview(headB)
-        view.addSubview(headC)
-        view.addSubview(headD)
+        addSubview(headA)
+        addSubview(headB)
+        addSubview(headC)
+        addSubview(headD)
         
-        view.addSubview(tailA)
-        view.addSubview(tailB)
-        view.addSubview(tailC)
-        view.addSubview(tailD)
+        addSubview(tailA)
+        addSubview(tailB)
+        addSubview(tailC)
+        addSubview(tailD)
         
-        view.addSubview(checkButton)
-        view.addSubview(successButton)
+        addSubview(checkButton)
+        addSubview(successButton)
         
-        view.addSubview(questionPlaceholder)
-        view.addSubview(checkPlaceholderHead)
-        view.addSubview(checkPlaceholderTail)
+        addSubview(questionPlaceholder)
+        addSubview(checkPlaceholderHead)
+        addSubview(checkPlaceholderTail)
         
-        view.addSubview(questionFullDetailLabel)
-        view.addSubview(aksaraLabel)
-        view.addSubview(answersFullDetailLabel)
+        addSubview(questionFullDetailLabel)
+        addSubview(aksaraLabel)
+        addSubview(answersFullDetailLabel)
     }
     
     func setupConstraint() {
-        placeholderHead.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        placeholderHead.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         placeholderHead.widthAnchor.constraint(equalToConstant: 100).isActive = true
         placeholderHead.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        centerPlaceHolderConstraint =  placeholderHead.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -72)
+        centerPlaceHolderConstraint =  placeholderHead.centerXAnchor.constraint(equalTo: centerXAnchor, constant: -72)
         centerPlaceHolderConstraint?.isActive = true
         
-        placeholderTail.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        placeholderTail.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         placeholderTail.leadingAnchor.constraint(equalTo: placeholderHead.trailingAnchor, constant: 24).isActive = true
         placeholderTail.widthAnchor.constraint(equalToConstant: 100).isActive = true
         placeholderTail.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
-        questionLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: SCREEN_HEIGHT/4).isActive = true
-        questionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        questionLabel.topAnchor.constraint(equalTo: topAnchor, constant: SCREEN_HEIGHT/4).isActive = true
+        questionLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         
         headerHeadLabel.frame = originHeaderHead
         headerTailLabel.frame = originHeaderTail
@@ -551,28 +545,28 @@ class QuizHeadAndTailView: UIViewController, UIGestureRecognizerDelegate {
         tailC.frame = originTailCPosition
         tailD.frame = originTailDPosition
         
-        checkButton.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        checkButton.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        checkButton.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        checkButton.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        checkButton.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        checkButton.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         checkButton.heightAnchor.constraint(equalToConstant: 56).isActive = true
         
-        successButton.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        successButton.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        successButton.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        successButton.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        successButton.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        successButton.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         successButton.heightAnchor.constraint(equalToConstant: 56).isActive = true
         
-        questionPlaceholder.trailingAnchor.constraint(equalTo: view.centerXAnchor, constant: -120).isActive = true
-        questionPlaceholder.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        questionPlaceholder.trailingAnchor.constraint(equalTo: centerXAnchor, constant: -120).isActive = true
+        questionPlaceholder.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         questionPlaceholder.widthAnchor.constraint(equalToConstant: 100).isActive = true
         questionPlaceholder.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
-        checkPlaceholderHead.leadingAnchor.constraint(equalTo: view.centerXAnchor, constant: 56).isActive = true
-        checkPlaceholderHead.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        checkPlaceholderHead.leadingAnchor.constraint(equalTo: centerXAnchor, constant: 56).isActive = true
+        checkPlaceholderHead.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         checkPlaceholderHead.widthAnchor.constraint(equalToConstant: 100).isActive = true
         checkPlaceholderHead.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
         checkPlaceholderTail.leadingAnchor.constraint(equalTo: checkPlaceholderHead.trailingAnchor, constant: 24).isActive = true
-        checkPlaceholderTail.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        checkPlaceholderTail.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         checkPlaceholderTail.widthAnchor.constraint(equalToConstant: 100).isActive = true
         checkPlaceholderTail.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
@@ -618,11 +612,11 @@ class QuizHeadAndTailView: UIViewController, UIGestureRecognizerDelegate {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
         
-        self.view.layoutIfNeeded()
+        layoutIfNeeded()
     }
     
-    @objc func handleSuccessButton() {
-        print("LANJUT")
+    func handleTimer() {
+        print("TIME_OUT")
     }
     
     func updateStatusCheckButton() {
@@ -727,7 +721,7 @@ class QuizHeadAndTailView: UIViewController, UIGestureRecognizerDelegate {
             }
             
         } else {
-            sender.view?.center = sender.location(in: view)
+            sender.view?.center = sender.location(in: self)
         }
     }
 }
