@@ -50,6 +50,11 @@ class QuizController: UIViewController, QuizControllerProtocol {
     private let QuizViewTypeCCell = "QuizViewTypeCCell"
     private let QuizViewTypeDCell = "QuizViewTypeDCell"
     private let QuizViewTypeECell = "QuizViewTypeECell"
+    
+    private let QuizViewTypeGuideCellIdenttifier = "QuizViewTypeGuideCell"
+    private let QuizViewTypeHCellIdenttifier = "QuizViewTypeHCell"
+    private let QuizViewTypeICellIdenttifier = "QuizViewTypeICell"
+    
     private let QuizHeadAndTailCellIdentifier = "QuizHeadAndTailCell_ID"
     private let QuizTypeE2CellIdentifier = "QuizTypeE2Cell_ID"
     private let QuizTypeE3CellIdentifier = "QuizTypeE3Cell_ID"
@@ -343,6 +348,12 @@ class QuizController: UIViewController, QuizControllerProtocol {
         collectionView.register(QuizHeadAndTailCell.self, forCellWithReuseIdentifier: QuizHeadAndTailCellIdentifier)
         collectionView.register(QuizTypeE2Cell.self, forCellWithReuseIdentifier: QuizTypeE2CellIdentifier)
         collectionView.register(QuizTypeE3Cell.self, forCellWithReuseIdentifier: QuizTypeE3CellIdentifier)
+        
+        collectionView.register(QuizCellTypeGuide.self, forCellWithReuseIdentifier: QuizViewTypeGuideCellIdenttifier)
+        collectionView.register(QuizCellTypeH.self, forCellWithReuseIdentifier: QuizViewTypeHCellIdenttifier)
+        collectionView.register(QuizCellTypeI.self, forCellWithReuseIdentifier: QuizViewTypeICellIdenttifier)
+        
+        
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "example")
         collectionView.reloadData()
         collectionView.layoutIfNeeded()
@@ -1117,20 +1128,15 @@ class QuizController: UIViewController, QuizControllerProtocol {
 extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 12
+        return 9
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if(indexPath.item == 0) {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuizViewCell, for: indexPath) as! QuizView
-            cell.setBackgroundColor()
-            cell.kuisButton.addTarget(self, action: #selector(handleProgressBar), for: .touchUpInside)
-            cell.infoButton.addTarget(self, action: #selector(showPanduanInfoMenulis), for: .touchUpInside)
-            cell.regionSelected = regionSelected
-            cell.quizData = quizTypeGuideModel
-            
-            cell.kuisButton.tag = indexPath.item
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuizViewTypeGuideCellIdenttifier, for: indexPath) as! QuizCellTypeGuide
+            cell.continueButton.addTarget(self, action: #selector(handleProgressBar), for: .touchUpInside)
+            cell.continueButton.tag = indexPath.item
             return cell
         } else if(indexPath.item == 1){
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuizViewTypeACell, for: indexPath) as! QuizViewTypeA
@@ -1198,71 +1204,21 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
             return cell
             
         } else if(indexPath.item == 7) {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuizViewTypeECell, for: indexPath) as! QuizViewTypeE
-            cell.setBackgroundColor()
-            cell.lewatiButton.addTarget(self, action: #selector(showModal), for: .touchUpInside)
-            cell.arrowRightButton.addTarget(self, action: #selector(showModal), for: .touchUpInside)
-            cell.lewatiButton.tag = indexPath.item
-            cell.arrowRightButton.tag = indexPath.item
-            cell.regionSelected = regionSelected
-            cell.quizData = quizTypeEModel
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuizViewTypeICellIdenttifier, for: indexPath) as! QuizCellTypeI
+            cell.continueButton.addTarget(self, action: #selector(handleProgressBar), for: .touchUpInside)
+            cell.continueButton.tag = indexPath.item
             
-            cell.delegate = self
+            
             
             return cell
         } else if(indexPath.item == 8) {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuizViewTypeECell, for: indexPath) as! QuizViewTypeE
-            cell.setBackgroundColor()
-            cell.lewatiButton.addTarget(self, action: #selector(showModal), for: .touchUpInside)
-            cell.arrowRightButton.addTarget(self, action: #selector(showModal), for: .touchUpInside)
-            cell.lewatiButton.tag = indexPath.item
-            cell.arrowRightButton.tag = indexPath.item
-            cell.regionSelected = regionSelected
-            cell.quizData = quizTypeEModel
-            
-            cell.delegate = self
+
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuizViewTypeHCellIdenttifier, for: indexPath) as! QuizCellTypeH
+            cell.continueButton.addTarget(self, action: #selector(handleProgressBar), for: .touchUpInside)
+            cell.continueButton.tag = indexPath.item
             
             return cell
-        } else if(indexPath.item == 9) {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuizViewTypeECell, for: indexPath) as! QuizViewTypeE
-            cell.setBackgroundColor()
-            cell.lewatiButton.addTarget(self, action: #selector(showModal), for: .touchUpInside)
-            cell.arrowRightButton.addTarget(self, action: #selector(showModal), for: .touchUpInside)
-            cell.lewatiButton.tag = indexPath.item
-            cell.arrowRightButton.tag = indexPath.item
-            cell.regionSelected = regionSelected
-            cell.quizData = quizTypeEModel
-            
-            cell.delegate = self
-            
-            return cell
-        } else if(indexPath.item == 10) {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuizViewTypeECell, for: indexPath) as! QuizViewTypeE
-            cell.setBackgroundColor()
-            cell.lewatiButton.addTarget(self, action: #selector(showModal), for: .touchUpInside)
-            cell.arrowRightButton.addTarget(self, action: #selector(showModal), for: .touchUpInside)
-            cell.lewatiButton.tag = indexPath.item
-            cell.arrowRightButton.tag = indexPath.item
-            cell.regionSelected = regionSelected
-            cell.quizData = quizTypeEModel
-            
-            cell.delegate = self
-            
-            return cell
-        } else if(indexPath.item == 11) {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuizViewTypeECell, for: indexPath) as! QuizViewTypeE
-            cell.setBackgroundColor()
-            cell.lewatiButton.addTarget(self, action: #selector(showModal), for: .touchUpInside)
-            cell.arrowRightButton.addTarget(self, action: #selector(showModal), for: .touchUpInside)
-            cell.lewatiButton.tag = indexPath.item
-            cell.arrowRightButton.tag = indexPath.item
-            cell.regionSelected = regionSelected
-            cell.quizData = quizTypeEModel
-            
-            cell.delegate = self
-            
-            return cell
-        } else {
+        }  else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuizViewTypeECell, for: indexPath) as! QuizViewTypeE
             cell.setBackgroundColor()
             cell.lewatiButton.addTarget(self, action: #selector(showModal), for: .touchUpInside)
