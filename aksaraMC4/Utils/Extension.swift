@@ -366,6 +366,7 @@ extension UIView {
         gradientLayer.locations = [0.0, 1.0]
         gradientLayer.frame = CGRect(x: 0.0, y: 0.0, width: 320, height: 140)
         gradientLayer.cornerRadius = 24
+        gradientLayer.name = "true"
         
         self.layer.insertSublayer(gradientLayer, at: 0)
     }
@@ -379,9 +380,96 @@ extension UIView {
         gradientLayer.locations = [0.0, 1.0]
         gradientLayer.frame = CGRect(x: 0.0, y: 0.0, width: 320, height: 140)
         gradientLayer.cornerRadius = 24
+        gradientLayer.name = "false"
         
         self.layer.insertSublayer(gradientLayer, at: 0)
     }
+    
+    func setChoiceNeutralBackgroundColor() {
+        let colorTop =  UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 0.8).cgColor
+        let colorBottom = UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 0.8).cgColor
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorTop, colorBottom]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame = self.bounds
+        gradientLayer.cornerRadius = 16
+        gradientLayer.name = "neutral"
+        
+        self.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
+    func setChoiceTapBackgroundColor() {
+        let colorTop =  UIColor(red: 3/255.0, green: 131/255.0, blue: 251/255.0, alpha: 1.0).cgColor
+        let colorBottom = UIColor(red: 4/255.0, green: 110/255.0, blue: 208/255.0, alpha: 1.0).cgColor
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorTop, colorBottom]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame = self.bounds
+        gradientLayer.cornerRadius = 16
+        gradientLayer.name = "tap"
+        
+        self.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
+    func setChoiceTrueBackgroundColor() {
+        let colorTop =  UIColor(red: 25/255.0, green: 200/255.0, blue: 95/255.0, alpha: 1.0).cgColor
+        let colorBottom = UIColor(red: 25/255.0, green: 163/255.0, blue: 113/255.0, alpha: 1.0).cgColor
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorTop, colorBottom]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame = CGRect(x: 0.0, y: 0.0, width: 240, height: 100)
+        gradientLayer.cornerRadius = 16
+//        gradientLayer.opacity = 0.2
+        
+        self.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
+    func setChoiceWrongBackgroundColor() {
+        let colorTop =  UIColor(red: 246/255.0, green: 81/255.0, blue: 100/255.0, alpha: 1.0).cgColor
+        let colorBottom = UIColor(red: 215/255.0, green: 58/255.0, blue: 76/255.0, alpha: 1.0).cgColor
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorTop, colorBottom]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame = CGRect(x: 0.0, y: 0.0, width: 240, height: 100)
+        gradientLayer.cornerRadius = 16
+        
+        self.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
+    func setCheckBottomBlueBackgroundColor() {
+        let colorTop =  UIColor(red: 3/255.0, green: 131/255.0, blue: 251/255.0, alpha: 1.0).cgColor
+        let colorBottom = UIColor(red: 4/255.0, green: 110/255.0, blue: 208/255.0, alpha: 1.0).cgColor
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorTop, colorBottom]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame = CGRect(x: 0.0, y: 0.0, width: 1400, height: 56)
+//        gradientLayer.cornerRadius = 16
+//        gradientLayer.opacity = 0.2
+        
+        self.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
+    
+    func setCardBlueBackgroundColor() {
+        let colorTop =  UIColor(red: 3/255.0, green: 131/255.0, blue: 251/255.0, alpha: 1.0).cgColor
+        let colorBottom = UIColor(red: 4/255.0, green: 110/255.0, blue: 208/255.0, alpha: 1.0).cgColor
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorTop, colorBottom]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame = CGRect(x: 0.0, y: 0.0, width: 440, height: 260)
+        gradientLayer.cornerRadius = 24
+//        gradientLayer.opacity = 0.2
+        
+        self.layer.insertSublayer(gradientLayer, at: 0)
+    }
+
+
     
     func setTextGradientColor() {
         let colorTop =  UIColor(red: 36/255.0, green: 194/255.0, blue: 255/255.0, alpha: 1.0).cgColor
