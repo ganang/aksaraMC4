@@ -10,4 +10,5 @@ import UIKit
 
 class CustomPanGestureRecognizer: UIPanGestureRecognizer {
     var viewName: String?
+    var index: Int?
 }

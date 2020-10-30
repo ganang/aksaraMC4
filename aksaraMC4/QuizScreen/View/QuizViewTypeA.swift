@@ -89,7 +89,7 @@ class QuizViewTypeA: UICollectionViewCell {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Lanjut 􀆊", for: .normal)
         button.titleLabel?.font = UIFont.init(name: "NowAlt-Medium", size: 16)
-        button.setCheckButtonBackgroundColorTrue(withOpacity: 1)
+        button.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 56, withWidth: Double(frame.width), withCorner: 0)
         button.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
         button.addInnerShadow()
         button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
