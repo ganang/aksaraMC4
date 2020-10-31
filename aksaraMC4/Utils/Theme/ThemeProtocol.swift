@@ -16,5 +16,15 @@ protocol ThemeProtocol {
     var purpleColor: UIColor { get }
     var accentWhite: UIColor { get }
     var accentLightBlue: UIColor { get }
+    var accentLightRed: UIColor { get }
+    var accentLightGreen: UIColor { get }
     var accentTextBlue: UIColor { get }
+    var accentTextGreen: UIColor { get }
+    var accentTextRed: UIColor { get }
+    var gradientTopBlue: UIColor { get }
+    var gradientBottomBlue: UIColor { get }
+    var gradientTopGreen: UIColor { get }
+    var gradientBottomGreen: UIColor { get }
+    var gradientTopRed: UIColor { get }
+    var gradientBottomRed: UIColor { get }
 }

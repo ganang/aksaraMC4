@@ -26,6 +26,8 @@ class QuizCellTypeH: UICollectionViewCell {
     var urutanAksara = ["Na","Ra","Ca","Ha"]
     var correctAnswer : Int? = 0
     
+    var delegate : QuizControllerProtocol?
+    
     let questionTitle : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -302,6 +304,10 @@ class QuizCellTypeH: UICollectionViewCell {
         setupView()
         tagFunction()
         tappedFunction()
+    }
+    
+    func handleTimer() {
+        
     }
     
     func tagFunction() {

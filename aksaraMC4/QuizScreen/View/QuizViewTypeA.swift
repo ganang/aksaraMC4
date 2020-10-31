@@ -26,11 +26,14 @@ class QuizViewTypeA: UICollectionViewCell {
     var stateTrueImage = [UIImageView]()
     var stateFalseImage = [UIImageView]()
     
+    var quizAnswerLabelConstraint: NSLayoutConstraint!
+    
     var quizData: Quiz? {
         didSet {
-            self.alphabet = quizData?.question!
             
-            let choices = quizData?.choices?.sortedArray(using: [.init(key: "id", ascending: true)]) as? [Choice]
+            let questions = quizData?.questions?.sortedArray(using: [.init(key: "id", ascending: true)]) as? [Question]
+            self.alphabet = questions?[0].name
+            let choices = quizData?.answerChoices?.sortedArray(using: [.init(key: "id", ascending: true)]) as? [AnswerChoice]
             
             for i in 0...choices!.count - 1 {
                 let choice = choices?[i].name
@@ -69,9 +72,21 @@ class QuizViewTypeA: UICollectionViewCell {
         answersChoiceLabel[index!].textColor = .white
         answersChoiceImage[index!].textColor = .white
         stateTrueImage[index!].isHidden = false
-        successButton.isHidden = false
-    
-//        playSound()
+        
+        continueButton.isHidden = false
+        playSoundFalse()
+        self.quizAnswerLabel.text = "Sayang sekali waktu habis ☹️"
+        self.quizAnswerLabelConstraint.constant = 0
+        self.layoutIfNeeded()
+        self.quizAnswerLabel.textColor = Theme.current.accentTextRed
+        self.quizImage.isHidden = true
+        self.questionLabel.isHidden = true
+        
+        delegate?.setFalseStatus()
+        
+        // handle continue button
+        self.continueButton.isHidden = false
+        self.continueButton.setCheckButtonBackgroundColorFalse(withOpacity: 1, withHeight: 56, withWidth: Double(SCREEN_WIDTH), withCorner: 0)
         
         // handle core data
         quizData?.isCorrect = false
@@ -79,23 +94,24 @@ class QuizViewTypeA: UICollectionViewCell {
     }
     
     func restartQuiz() {
-        print("RESTART")
         answer1BgView.backgroundColor = .red
     }
     
     //Button
-    lazy var successButton: UIButton = {
+    lazy var continueButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Lanjut 􀆊", for: .normal)
+        button.setTitle("Lanjut", for: .normal)
         button.titleLabel?.font = UIFont.init(name: "NowAlt-Medium", size: 16)
-        button.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 56, withWidth: Double(frame.width), withCorner: 0)
-        button.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
+        button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+        button.imageView?.tintColor = Theme.current.accentWhite
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 130, bottom: 0, right: 0)
         button.addInnerShadow()
         button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
         button.clipsToBounds = true
         button.isEnabled = true
         button.isHidden = true
+        button.layer.masksToBounds = false
         
         return button
     }()
@@ -119,7 +135,7 @@ class QuizViewTypeA: UICollectionViewCell {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-       
+    
     
     //Image
     let quizImage: UIImageView = {
@@ -371,14 +387,19 @@ class QuizViewTypeA: UICollectionViewCell {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
                 self.answersBGView[id!].removeLayer(name: "xxx")
                 if view.choice == self.alphabet {
-                    print("True")
-                    self.quizAnswerLabel.text = "Betul sekali 😄"
+                    // handle constraint
+                    self.quizAnswerLabelConstraint.constant = 0
+                    self.layoutIfNeeded()
                     
+                    self.quizAnswerLabel.text = "Betul sekali 😄"
+                    self.quizAnswerLabel.textColor = Theme.current.accentTextGreen
+                    self.quizImage.isHidden = true
+                    self.questionLabel.isHidden = true
                     self.answersBGView[index!].setCardTrueBackgroundColor()
                     self.answersChoiceLabel[index!].textColor = .white
                     self.answersChoiceImage[index!].textColor = .white
                     self.stateTrueImage[index!].isHidden = false
-                    //                playSound()
+        
                     var arrayAlpha = [0, 1, 2, 3]
                     arrayAlpha = arrayAlpha.filter { $0 != index}
                     
@@ -388,14 +409,28 @@ class QuizViewTypeA: UICollectionViewCell {
                     
                     self.delegate?.stopTimerChoosen()
                     
+                    // handle sound
+                    self.playSoundTrue()
+                    
+                    // set status true, eg: progress view, back button, dll
+                    self.delegate?.setTrueStatus()
+                    
                     // handle core data
                     self.quizData?.isCorrect = true
                     PersistenceService.saveContext()
                     
-                    self.successButton.isHidden = false
+                    // handle continue button
+                    self.continueButton.isHidden = false
+                    self.continueButton.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 56, withWidth: Double(SCREEN_WIDTH), withCorner: 0)
                 }else {
-                    print("False")
+                    // handle constraint
+                    self.quizAnswerLabelConstraint.constant = 0
+                    self.layoutIfNeeded()
+                    
                     self.quizAnswerLabel.text = "Sayang sekali ☹️"
+                    self.quizAnswerLabel.textColor = Theme.current.accentTextRed
+                    self.quizImage.isHidden = true
+                    self.questionLabel.isHidden = true
                     self.answersBGView[id!].setCardFalseBackgroundColor()
                     self.answersChoiceLabel[id!].textColor = .white
                     self.answersChoiceImage[id!].textColor = .white
@@ -416,10 +451,19 @@ class QuizViewTypeA: UICollectionViewCell {
                     
                     self.delegate?.stopTimerChoosen()
                     
+                    // set status true, eg: progress view, back button, dll
+                    self.delegate?.setFalseStatus()
+                    
+                    // handle sound
+                    self.playSoundFalse()
+                    
                     // handle core data
                     self.quizData?.isCorrect = false
                     PersistenceService.saveContext()
-                    self.successButton.isHidden = false
+                    
+                    // handle continue button
+                    self.continueButton.isHidden = false
+                    self.continueButton.setCheckButtonBackgroundColorFalse(withOpacity: 1, withHeight: 56, withWidth: Double(SCREEN_WIDTH), withCorner: 0)
                 }
             }
             
@@ -429,10 +473,30 @@ class QuizViewTypeA: UICollectionViewCell {
     
     var player: AVAudioPlayer?
     
-    @objc func playSound() {
-        print("Hello Dear you are here")
+    func playSoundFalse() {
+        guard let url = Bundle.main.url(forResource: "Jawaban_Salah_D", withExtension: "mp3") else { return }
 
-        guard let url = Bundle.main.url(forResource: "motivation", withExtension: "mp3") else { return }
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+
+            /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+
+            /* iOS 10 and earlier require the following line:
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
+
+            guard let player = player else { return }
+
+            player.play()
+
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func playSoundTrue() {
+        guard let url = Bundle.main.url(forResource: "Jawaban_Benar_A", withExtension: "mp3") else { return }
 
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
@@ -472,10 +536,9 @@ class QuizViewTypeA: UICollectionViewCell {
     func setupView(){
         
         addSubview(quizAnswerLabel)
-        NSLayoutConstraint.activate([
-            quizAnswerLabel.topAnchor.constraint(equalTo: topAnchor, constant: 120),
-            quizAnswerLabel.centerXAnchor.constraint(equalTo: centerXAnchor, constant: -48)
-        ])
+        quizAnswerLabel.topAnchor.constraint(equalTo: topAnchor, constant: 120).isActive = true
+        quizAnswerLabelConstraint = quizAnswerLabel.centerXAnchor.constraint(equalTo: centerXAnchor, constant: -48)
+        quizAnswerLabelConstraint.isActive = true
         
         addSubview(quizImage)
         NSLayoutConstraint.activate([
@@ -576,11 +639,11 @@ class QuizViewTypeA: UICollectionViewCell {
             pilgan4Answer.centerXAnchor.constraint(equalTo: answer4BgView.centerXAnchor)
         ])
         
-        addSubview(successButton)
+        addSubview(continueButton)
         NSLayoutConstraint.activate([
-            successButton.heightAnchor.constraint(equalToConstant: 56),
-            successButton.widthAnchor.constraint(equalToConstant: frame.width),
-            successButton.bottomAnchor.constraint(equalTo: bottomAnchor)
+            continueButton.heightAnchor.constraint(equalToConstant: 56),
+            continueButton.widthAnchor.constraint(equalToConstant: frame.width),
+            continueButton.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
         
         //TrueState
@@ -653,15 +716,7 @@ class QuizViewTypeA: UICollectionViewCell {
         
     }
     
-
-}
-
-extension UIView {
-    func removeLayer(name: String) {
-        for item in self.layer.sublayers ?? [] where item.name == name {
-            item.removeFromSuperlayer()
-        }
-    }
+    
 }
 
 

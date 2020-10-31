@@ -240,6 +240,12 @@ extension UIColor {
 //View -> UIImage
 extension UIView {
     
+    func removeLayer(name: String) {
+        for item in self.layer.sublayers ?? [] where item.name == name {
+            item.removeFromSuperlayer()
+        }
+    }
+    
     func addBlurEffect() {
         let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
@@ -345,6 +351,22 @@ extension UIView {
         self.layer.insertSublayer(gradientLayer, at: 0)
     }
     
+    func setCheckButtonBackgroundColorFalse(withOpacity opacity: Float, withHeight height: Double, withWidth width: Double, withCorner corner: CGFloat) {
+        //GradientBlueAnswer
+        let colorTop =  UIColor(red: 246/255.0, green: 81/255.0, blue: 100/255.0, alpha: 1.0).cgColor
+        let colorBottom = UIColor(red: 215/255.0, green: 58/255.0, blue: 76/255.0, alpha: 1.0).cgColor
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorTop, colorBottom]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame = CGRect(x: 0.0, y: 0.0, width: width, height: height)
+        gradientLayer.name = "checkFalse"
+        gradientLayer.opacity = opacity
+        gradientLayer.cornerRadius = corner
+        
+        self.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
     func setKamusBackgroundColor() {
         let colorTop =  UIColor(red: 243/255.0, green: 250/255.0, blue: 255/255.0, alpha: 1.0).cgColor
         let colorBottom = UIColor(red: 218/255.0, green: 237/255.0, blue: 255/255.0, alpha: 1.0).cgColor
@@ -422,7 +444,7 @@ extension UIView {
         gradientLayer.locations = [0.0, 1.0]
         gradientLayer.frame = CGRect(x: 0.0, y: 0.0, width: 240, height: 100)
         gradientLayer.cornerRadius = 16
-//        gradientLayer.opacity = 0.2
+        //        gradientLayer.opacity = 0.2
         
         self.layer.insertSublayer(gradientLayer, at: 0)
     }
@@ -448,8 +470,8 @@ extension UIView {
         gradientLayer.colors = [colorTop, colorBottom]
         gradientLayer.locations = [0.0, 1.0]
         gradientLayer.frame = CGRect(x: 0.0, y: 0.0, width: 1400, height: 56)
-//        gradientLayer.cornerRadius = 16
-//        gradientLayer.opacity = 0.2
+        //        gradientLayer.cornerRadius = 16
+        //        gradientLayer.opacity = 0.2
         
         self.layer.insertSublayer(gradientLayer, at: 0)
     }
@@ -464,12 +486,12 @@ extension UIView {
         gradientLayer.locations = [0.0, 1.0]
         gradientLayer.frame = CGRect(x: 0.0, y: 0.0, width: 440, height: 260)
         gradientLayer.cornerRadius = 24
-//        gradientLayer.opacity = 0.2
+        //        gradientLayer.opacity = 0.2
         
         self.layer.insertSublayer(gradientLayer, at: 0)
     }
-
-
+    
+    
     
     func setTextGradientColor() {
         let colorTop =  UIColor(red: 36/255.0, green: 194/255.0, blue: 255/255.0, alpha: 1.0).cgColor

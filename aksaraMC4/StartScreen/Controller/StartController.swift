@@ -44,7 +44,7 @@ class StartController: UIViewController {
         if UserDefaults.standard.object(forKey: "FirstLoad") != nil {
             getUserData()
         } else {
-            CoreDataRecord.shared.saveRecord()
+            CoreDataRecordV2.shared.saveRecord()
             getUserData()
             UserDefaults.standard.set(true, forKey: "FirstLoad")
         }
@@ -88,12 +88,6 @@ class StartController: UIViewController {
         
         let stages = regions![0].stages?.sortedArray(using: [.init(key: "id", ascending: true)]) as? [Stage]
         let levels = stages![0].levels!.sortedArray(using: [.init(key: "id", ascending: true)]) as? [Level]
-        
-        for i in 0...levels!.count-1 {
-            let level = levels?[i]
-            
-//            print(level?.isLocked)
-        }
         
         navigationController?.pushViewController(regionScreen, animated: true)
         
