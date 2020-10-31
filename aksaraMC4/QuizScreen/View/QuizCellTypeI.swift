@@ -33,7 +33,7 @@ class QuizCellTypeI: UICollectionViewCell{
         return label
     }()
     
-
+    var delegate : QuizControllerProtocol?
     
     lazy var containerCanvasView1 : UIView = {
         let view = UIView()
@@ -228,6 +228,10 @@ class QuizCellTypeI: UICollectionViewCell{
         setupView()
         
         
+        
+    }
+    
+    func handleTimer() {
         
     }
     

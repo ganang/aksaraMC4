@@ -81,7 +81,6 @@ class LevelController: UIViewController {
     @objc func onDidReceiveData(_ notification: Notification) {
         let userInfo = notification.userInfo
         if (userInfo!["update"] != nil) == true {
-            print("MASUK SINIIIIII")
             levelView.backgroundBlurView.removeFromSuperview()
             tapFunction()
             tapButtonFunction()
@@ -127,8 +126,6 @@ class LevelController: UIViewController {
     }
     
     func settingLayout() {
-        
-        print("currentmedal on setuplayout",levelCurrentMedal)
         
         levelView.currentGununganLabel.text = "\(levelCurrentMedal ?? 0)"
         
@@ -710,26 +707,28 @@ class LevelController: UIViewController {
 
         
         //find count correct answer
-        let correctLabel = [levelView.correctOrWrongAnswerImage1, levelView.correctOrWrongAnswerImage2,levelView.correctOrWrongAnswerImage3,levelView.correctOrWrongAnswerImage4,levelView.correctOrWrongAnswerImage5]
-        var totalCorrect = 0
-        for n in 1...quizes!.count - 1 {
-            if quizes![n].isCorrect == true {
-                totalCorrect = totalCorrect + 1
-                correctLabel[n-1].image = UIImage(named: "correctAnswer")
-            } else {
-                correctLabel[n-1].image = UIImage(named: "wrongAnswer")
-            }
-        }
-        if level?.isInitial == true {
-            levelView.startPlayButton.setTitle("Mulai Main", for: .normal)
-            for n in 1...quizes!.count - 1 {
-                correctLabel[n-1].image = UIImage(named: "")
-            }
-        } else {
-            levelView.startPlayButton.setTitle("Main Lagi", for: .normal)
-        }
-        
-        levelView.nilaiLabel.text = "\(totalCorrect)/5"
+//        let correctLabel = [levelView.correctOrWrongAnswerImage1, levelView.correctOrWrongAnswerImage2,levelView.correctOrWrongAnswerImage3,levelView.correctOrWrongAnswerImage4,levelView.correctOrWrongAnswerImage5]
+//        var totalCorrect = 0
+//        
+//        for n in 1...quizes!.count - 1 {
+//            if quizes![n].isCorrect == true {
+//                totalCorrect = totalCorrect + 1
+//                correctLabel[n-1].image = UIImage(named: "correctAnswer")
+//            } else {
+//                correctLabel[n-1].image = UIImage(named: "wrongAnswer")
+//            }
+//        }
+//        
+//        if level?.isInitial == true {
+//            levelView.startPlayButton.setTitle("Mulai Main", for: .normal)
+//            for n in 1...quizes!.count - 1 {
+//                correctLabel[n-1].image = UIImage(named: "")
+//            }
+//        } else {
+//            levelView.startPlayButton.setTitle("Main Lagi", for: .normal)
+//        }
+//        
+//        levelView.nilaiLabel.text = "\(totalCorrect)/5"
         levelView.showModal()
     }
     

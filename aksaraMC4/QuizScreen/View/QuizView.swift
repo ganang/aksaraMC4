@@ -21,7 +21,7 @@ class QuizView: UICollectionViewCell, PKToolPickerObserver {
     var imageNameJawab : String?
     var quizData: Quiz? {
         didSet {
-            self.alphabet = quizData?.question!
+//            self.alphabet = quizData?.question!
             
             //quizImage
             imageNameSoal = "\(regionSelected!) Soal \(soalKe) \(alphabet!)"

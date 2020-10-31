@@ -131,19 +131,23 @@ class QuizTypeE2Cell: BaseCell, UIGestureRecognizerDelegate {
     
     
     // Handle Success View
-    lazy var successButton: UIButton = {
+    lazy var continueButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Lanjut 􀆊", for: .normal)
+        button.setTitle("Lanjut", for: .normal)
         button.titleLabel?.font = UIFont.init(name: "NowAlt-Medium", size: 16)
+        button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+        button.imageView?.tintColor = Theme.current.accentWhite
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 130, bottom: 0, right: 0)
         button.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 56, withWidth: Double(SCREEN_WIDTH), withCorner: 0)
-        button.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
         button.addInnerShadow()
         button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
         button.clipsToBounds = true
         button.isEnabled = true
         button.isHidden = true
         button.layer.masksToBounds = false
+        
+        return button
         
         return button
     }()
@@ -481,7 +485,7 @@ class QuizTypeE2Cell: BaseCell, UIGestureRecognizerDelegate {
         addSubview(carakan8)
         
         addSubview(checkButton)
-        addSubview(successButton)
+        addSubview(continueButton)
         
         addSubview(questionPlaceholder1)
         addSubview(questionPlaceholder2)
@@ -530,10 +534,10 @@ class QuizTypeE2Cell: BaseCell, UIGestureRecognizerDelegate {
         checkButton.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         checkButton.heightAnchor.constraint(equalToConstant: 56).isActive = true
         
-        successButton.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        successButton.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        successButton.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        successButton.heightAnchor.constraint(equalToConstant: 56).isActive = true
+        continueButton.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        continueButton.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        continueButton.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        continueButton.heightAnchor.constraint(equalToConstant: 56).isActive = true
         
         questionPlaceholder2.trailingAnchor.constraint(equalTo: centerXAnchor, constant: -120).isActive = true
         questionPlaceholder2.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
@@ -575,7 +579,7 @@ class QuizTypeE2Cell: BaseCell, UIGestureRecognizerDelegate {
         
         checkButton.isHidden = true
         
-        successButton.isHidden = false
+        continueButton.isHidden = false
         questionPlaceholder1.isHidden = false
         questionPlaceholder2.isHidden = false
         questionFullDetailLabel.isHidden = false
