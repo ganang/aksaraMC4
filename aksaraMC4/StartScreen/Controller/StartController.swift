@@ -12,18 +12,23 @@ import CoreData
 class StartController: UIViewController {
     
     private var startView: StartView!
+    private var chooseRegionView: ChooseRegionView!
+    private var ulasanView: UlasanView!
+    
     var stages: [Stage]?
     var regions: [Region]?
+    
     
     let appDel = UIApplication.shared.delegate as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
-        self.startView = StartView(frame: self.view.frame)
-        self.view = self.startView
+        self.chooseRegionView = ChooseRegionView(frame: self.view.frame)
+        self.view = self.chooseRegionView
 //        getUserData()
         tapFunction()
+        
         
         // handle first setup
         setupRecord()
@@ -69,11 +74,13 @@ class StartController: UIViewController {
     
     func tapFunction() {
         let tapSunda = UITapGestureRecognizer(target: self, action: #selector(self.tapSunda))
-        startView.sundaButton.addGestureRecognizer(tapSunda)
+//        startView.sundaButton.addGestureRecognizer(tapSunda)
         
         let tapJawa = UITapGestureRecognizer(target: self, action: #selector(self.tapJawa))
-        startView.jawaButton.addGestureRecognizer(tapJawa)
+        chooseRegionView.aksaraView1.addGestureRecognizer(tapJawa)
     }
+    
+    
     
     @objc func tapSunda() {
         let regionScreen = RegionController()

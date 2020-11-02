@@ -23,6 +23,9 @@
 		23812D8C2542C24600C17F53 /* KonsonanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23812D8B2542C24600C17F53 /* KonsonanView.swift */; };
 		23812D8E2542C34D00C17F53 /* VokalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23812D8D2542C34D00C17F53 /* VokalView.swift */; };
 		23812D902542C37A00C17F53 /* PasanganView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23812D8F2542C37A00C17F53 /* PasanganView.swift */; };
+		2385AEB0254FC7F500BAB851 /* UlasanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2385AEAF254FC7F500BAB851 /* UlasanView.swift */; };
+		23A8D13A254EAA8C0053409B /* OldStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A8D139254EAA8C0053409B /* OldStartView.swift */; };
+		23A8D13E254EE2630053409B /* ChooseRegionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A8D13D254EE2630053409B /* ChooseRegionView.swift */; };
 		23A900DB253C2BFE008636B1 /* Sunda Suara Ya.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A900A9253C2BFD008636B1 /* Sunda Suara Ya.mp3 */; };
 		23A900DC253C2BFE008636B1 /* Sunda Suara La.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A900AA253C2BFD008636B1 /* Sunda Suara La.mp3 */; };
 		23A900DD253C2BFE008636B1 /* Sunda Suara Ta.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A900AB253C2BFD008636B1 /* Sunda Suara Ta.mp3 */; };
@@ -142,6 +145,9 @@
 		23812D8B2542C24600C17F53 /* KonsonanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KonsonanView.swift; sourceTree = "<group>"; };
 		23812D8D2542C34D00C17F53 /* VokalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VokalView.swift; sourceTree = "<group>"; };
 		23812D8F2542C37A00C17F53 /* PasanganView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasanganView.swift; sourceTree = "<group>"; };
+		2385AEAF254FC7F500BAB851 /* UlasanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UlasanView.swift; sourceTree = "<group>"; };
+		23A8D139254EAA8C0053409B /* OldStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldStartView.swift; sourceTree = "<group>"; };
+		23A8D13D254EE2630053409B /* ChooseRegionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseRegionView.swift; sourceTree = "<group>"; };
 		23A900A9253C2BFD008636B1 /* Sunda Suara Ya.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sunda Suara Ya.mp3"; sourceTree = "<group>"; };
 		23A900AA253C2BFD008636B1 /* Sunda Suara La.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sunda Suara La.mp3"; sourceTree = "<group>"; };
 		23A900AB253C2BFD008636B1 /* Sunda Suara Ta.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sunda Suara Ta.mp3"; sourceTree = "<group>"; };
@@ -449,6 +455,9 @@
 			isa = PBXGroup;
 			children = (
 				9193764125317E3100C3FC10 /* StartView.swift */,
+				23A8D139254EAA8C0053409B /* OldStartView.swift */,
+				23A8D13D254EE2630053409B /* ChooseRegionView.swift */,
+				2385AEAF254FC7F500BAB851 /* UlasanView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -840,6 +849,7 @@
 				A46968C52546C48C00281D2C /* QuizHeadAndTailCell.swift in Sources */,
 				A48FBC75252DC2DB0004EC93 /* PersistenceService.swift in Sources */,
 				91C98768252EFE7900D67BC0 /* StageView.swift in Sources */,
+				23A8D13A254EAA8C0053409B /* OldStartView.swift in Sources */,
 				A41A77F2252D9586001C4FAD /* aksaraMC4.xcdatamodeld in Sources */,
 				231EA807252DE9C7004FB678 /* QuizView.swift in Sources */,
 				235D23B42532DA680007F81E /* QuizViewTypeD.swift in Sources */,
@@ -850,10 +860,12 @@
 				914344E3252DBAD0002E867B /* Theme.swift in Sources */,
 				914344E6252DBADE002E867B /* ThemeProtocol.swift in Sources */,
 				A445D451253D810500A985CF /* TextGenerator.swift in Sources */,
+				2385AEB0254FC7F500BAB851 /* UlasanView.swift in Sources */,
 				91C98779252F269000D67BC0 /* LevelView.swift in Sources */,
 				914344F6252DC366002E867B /* RegionController.swift in Sources */,
 				A48E21F4254BFDC700C013BE /* CoreDataRecordV2.swift in Sources */,
 				23F2828E2531D273009EC52B /* QuizViewTypeC.swift in Sources */,
+				23A8D13E254EE2630053409B /* ChooseRegionView.swift in Sources */,
 				2372F70F2530420000E79198 /* QuizModel.swift in Sources */,
 				A41A77E8252D9586001C4FAD /* AppDelegate.swift in Sources */,
 				23812D902542C37A00C17F53 /* PasanganView.swift in Sources */,
