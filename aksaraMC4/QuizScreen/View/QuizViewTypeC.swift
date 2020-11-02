@@ -47,6 +47,7 @@ class QuizViewTypeC: UICollectionViewCell {
             imageNameSoal3 = "\(regionSelected!) Jawaban \(self.choices[2])"
             imageNameSoal4 = "\(regionSelected!) Jawaban \(self.choices[3])"
             
+            soundNameAsset = "\(regionSelected!) Suara \(String(self.alphabet!))"
             
             if (self.choices[0] == "É") {
                 imageNameSoal1 = "\(regionSelected!) Jawaban \(self.choices[0])É"
@@ -124,12 +125,12 @@ class QuizViewTypeC: UICollectionViewCell {
         return button
     }()
     
-    let soundButton: UIButton = {
+    lazy var soundButton: UIButton = {
         let button = UIButton()
         let symbolConfig = UIImage.SymbolConfiguration(pointSize: 40.0, weight: .medium, scale: .default)
         button.setBackgroundImage(UIImage(systemName: "speaker.2.fill", withConfiguration: symbolConfig), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        //    button.addTarget(self, action: #selector(), for: .touchUpInside)
+        button.addTarget(self, action: #selector(playSoundAksara), for: .touchUpInside)
         button.tintColor = Theme.current.textColor1
         return button
     }()
@@ -173,7 +174,7 @@ class QuizViewTypeC: UICollectionViewCell {
     
     let falseState1: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "falseState")
+        image.image = UIImage(named: "falseAnswer")
         image.contentMode = .scaleAspectFit
         image.translatesAutoresizingMaskIntoConstraints = false
         image.isHidden = true
@@ -182,7 +183,7 @@ class QuizViewTypeC: UICollectionViewCell {
     
     let falseState2: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "falseState")
+        image.image = UIImage(named: "falseAnswer")
         image.contentMode = .scaleAspectFit
         image.translatesAutoresizingMaskIntoConstraints = false
         image.isHidden = true
@@ -191,7 +192,7 @@ class QuizViewTypeC: UICollectionViewCell {
     
     let falseState3: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "falseState")
+        image.image = UIImage(named: "falseAnswer")
         image.contentMode = .scaleAspectFit
         image.translatesAutoresizingMaskIntoConstraints = false
         image.isHidden = true
@@ -200,7 +201,7 @@ class QuizViewTypeC: UICollectionViewCell {
     
     let falseState4: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "falseState")
+        image.image = UIImage(named: "falseAnswer")
         image.contentMode = .scaleAspectFit
         image.translatesAutoresizingMaskIntoConstraints = false
         image.isHidden = true
@@ -209,7 +210,7 @@ class QuizViewTypeC: UICollectionViewCell {
     
     let trueState1: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "trueState")
+        image.image = UIImage(named: "correctAnswer")
         image.contentMode = .scaleAspectFit
         image.translatesAutoresizingMaskIntoConstraints = false
         image.isHidden = true
@@ -218,7 +219,7 @@ class QuizViewTypeC: UICollectionViewCell {
     
     let trueState2: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "trueState")
+        image.image = UIImage(named: "correctAnswer")
         image.contentMode = .scaleAspectFit
         image.translatesAutoresizingMaskIntoConstraints = false
         image.isHidden = true
@@ -227,7 +228,7 @@ class QuizViewTypeC: UICollectionViewCell {
     
     let trueState3: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "trueState")
+        image.image = UIImage(named: "correctAnswer")
         image.contentMode = .scaleAspectFit
         image.translatesAutoresizingMaskIntoConstraints = false
         image.isHidden = true
@@ -236,7 +237,7 @@ class QuizViewTypeC: UICollectionViewCell {
     
     let trueState4: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "trueState")
+        image.image = UIImage(named: "correctAnswer")
         image.contentMode = .scaleAspectFit
         image.translatesAutoresizingMaskIntoConstraints = false
         image.isHidden = true
@@ -455,6 +456,28 @@ class QuizViewTypeC: UICollectionViewCell {
         }
     }
     
+    @objc func playSoundAksara() {
+        guard let url = Bundle.main.url(forResource: soundNameAsset, withExtension: "mp3") else { return }
+
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+
+            /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+
+            /* iOS 10 and earlier require the following line:
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
+
+            guard let player = player else { return }
+
+            player.play()
+
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    
     func playSoundFalse() {
         guard let url = Bundle.main.url(forResource: "Jawaban_Salah_D", withExtension: "mp3") else { return }
 
@@ -623,69 +646,69 @@ class QuizViewTypeC: UICollectionViewCell {
         
         
         //TrueState
-        answer1BgView.addSubview(trueState1)
+        addSubview(trueState1)
         NSLayoutConstraint.activate([
-            trueState1.trailingAnchor.constraint(equalTo: answer1BgView.trailingAnchor, constant: -10),
-            trueState1.topAnchor.constraint(equalTo: answer1BgView.topAnchor, constant: 10),
-            trueState1.heightAnchor.constraint(equalToConstant: 20),
-            trueState1.widthAnchor.constraint(equalToConstant: 21)
+            trueState1.trailingAnchor.constraint(equalTo: answer1BgView.leadingAnchor, constant: -12),
+            trueState1.centerYAnchor.constraint(equalTo: answer1BgView.centerYAnchor),
+            trueState1.heightAnchor.constraint(equalToConstant: 24),
+            trueState1.widthAnchor.constraint(equalToConstant: 24)
         ])
         
-        answer2BgView.addSubview(trueState2)
+        addSubview(trueState2)
         NSLayoutConstraint.activate([
-            trueState2.trailingAnchor.constraint(equalTo: answer2BgView.trailingAnchor, constant: -10),
-            trueState2.topAnchor.constraint(equalTo: answer2BgView.topAnchor, constant: 10),
-            trueState2.heightAnchor.constraint(equalToConstant: 20),
-            trueState2.widthAnchor.constraint(equalToConstant: 21)
+            trueState2.leadingAnchor.constraint(equalTo: answer2BgView.trailingAnchor, constant: 12),
+            trueState2.centerYAnchor.constraint(equalTo: answer2BgView.centerYAnchor),
+            trueState2.heightAnchor.constraint(equalToConstant: 24),
+            trueState2.widthAnchor.constraint(equalToConstant: 24)
         ])
         
-        answer3BgView.addSubview(trueState3)
+        addSubview(trueState3)
         NSLayoutConstraint.activate([
-            trueState3.trailingAnchor.constraint(equalTo: answer3BgView.trailingAnchor, constant: -10),
-            trueState3.topAnchor.constraint(equalTo: answer3BgView.topAnchor, constant: 10),
-            trueState3.heightAnchor.constraint(equalToConstant: 20),
-            trueState3.widthAnchor.constraint(equalToConstant: 21)
+            trueState3.trailingAnchor.constraint(equalTo: answer3BgView.leadingAnchor, constant: -12),
+            trueState3.centerYAnchor.constraint(equalTo: answer3BgView.centerYAnchor),
+            trueState3.heightAnchor.constraint(equalToConstant: 24),
+            trueState3.widthAnchor.constraint(equalToConstant: 24)
         ])
         
-        answer4BgView.addSubview(trueState4)
+        addSubview(trueState4)
         NSLayoutConstraint.activate([
-            trueState4.trailingAnchor.constraint(equalTo: answer4BgView.trailingAnchor, constant: -10),
-            trueState4.topAnchor.constraint(equalTo: answer4BgView.topAnchor, constant: 10),
-            trueState4.heightAnchor.constraint(equalToConstant: 20),
-            trueState4.widthAnchor.constraint(equalToConstant: 21)
+            trueState4.leadingAnchor.constraint(equalTo: answer4BgView.trailingAnchor, constant: 12),
+            trueState4.centerYAnchor.constraint(equalTo: answer4BgView.centerYAnchor),
+            trueState4.heightAnchor.constraint(equalToConstant: 24),
+            trueState4.widthAnchor.constraint(equalToConstant: 24)
         ])
         
         //FalseState
-        answer1BgView.addSubview(falseState1)
+        addSubview(falseState1)
         NSLayoutConstraint.activate([
-            falseState1.trailingAnchor.constraint(equalTo: answer1BgView.trailingAnchor, constant: -16),
-            falseState1.topAnchor.constraint(equalTo: answer1BgView.topAnchor, constant: 16),
-            falseState1.heightAnchor.constraint(equalToConstant: 18),
-            falseState1.widthAnchor.constraint(equalToConstant: 18)
+            falseState1.trailingAnchor.constraint(equalTo: answer1BgView.leadingAnchor, constant: -12),
+            falseState1.centerYAnchor.constraint(equalTo: answer1BgView.centerYAnchor),
+            falseState1.heightAnchor.constraint(equalToConstant: 24),
+            falseState1.widthAnchor.constraint(equalToConstant: 24)
         ])
         
-        answer2BgView.addSubview(falseState2)
+        addSubview(falseState2)
         NSLayoutConstraint.activate([
-            falseState2.trailingAnchor.constraint(equalTo: answer2BgView.trailingAnchor, constant: -16),
-            falseState2.topAnchor.constraint(equalTo: answer2BgView.topAnchor, constant: 16),
-            falseState2.heightAnchor.constraint(equalToConstant: 18),
-            falseState2.widthAnchor.constraint(equalToConstant: 18)
+            falseState2.leadingAnchor.constraint(equalTo: answer2BgView.trailingAnchor, constant: 12),
+            falseState2.centerYAnchor.constraint(equalTo: answer2BgView.centerYAnchor),
+            falseState2.heightAnchor.constraint(equalToConstant: 24),
+            falseState2.widthAnchor.constraint(equalToConstant: 24)
         ])
         
-        answer3BgView.addSubview(falseState3)
+        addSubview(falseState3)
         NSLayoutConstraint.activate([
-            falseState3.trailingAnchor.constraint(equalTo: answer3BgView.trailingAnchor, constant: -16),
-            falseState3.topAnchor.constraint(equalTo: answer3BgView.topAnchor, constant: 16),
-            falseState3.heightAnchor.constraint(equalToConstant: 18),
-            falseState3.widthAnchor.constraint(equalToConstant: 18)
+            falseState3.trailingAnchor.constraint(equalTo: answer3BgView.leadingAnchor, constant: -12),
+            falseState3.centerYAnchor.constraint(equalTo: answer3BgView.centerYAnchor),
+            falseState3.heightAnchor.constraint(equalToConstant: 24),
+            falseState3.widthAnchor.constraint(equalToConstant: 24)
         ])
         
-        answer4BgView.addSubview(falseState4)
+        addSubview(falseState4)
         NSLayoutConstraint.activate([
-            falseState4.trailingAnchor.constraint(equalTo: answer4BgView.trailingAnchor, constant: -16),
-            falseState4.topAnchor.constraint(equalTo: answer4BgView.topAnchor, constant: 16),
-            falseState4.heightAnchor.constraint(equalToConstant: 18),
-            falseState4.widthAnchor.constraint(equalToConstant: 18)
+            falseState4.leadingAnchor.constraint(equalTo: answer4BgView.trailingAnchor, constant: 12),
+            falseState4.centerYAnchor.constraint(equalTo: answer4BgView.centerYAnchor),
+            falseState4.heightAnchor.constraint(equalToConstant: 24),
+            falseState4.widthAnchor.constraint(equalToConstant: 24)
         ])
         
         //LewatiButton

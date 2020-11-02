@@ -1225,6 +1225,7 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
             
         case "Guide":
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuizViewTypeGuideCellIdenttifier, for: indexPath) as! QuizCellTypeGuide
+            view.backgroundColor = UIColor.rgb(red: 23, green: 78, blue: 161, alpha: 1)
             
             cell.continueButton.addTarget(self, action: #selector(handleProgressBar), for: .touchUpInside)
             cell.continueButton.tag = indexPath.item
