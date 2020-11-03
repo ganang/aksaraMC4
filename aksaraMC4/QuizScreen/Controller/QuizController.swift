@@ -76,7 +76,7 @@ class QuizController: UIViewController, QuizControllerProtocol {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.init(name: "NowAlt-Medium", size: 24)
         label.textColor = Theme.current.textColor1
-        label.text = ""
+        label.text = "Aksara Baru !"
         return label
     }()
     
@@ -239,7 +239,13 @@ class QuizController: UIViewController, QuizControllerProtocol {
             let quizName = String((quizes?[sender.tag + 1].title)!)
             let quizesCount = String((quizes!.count - 4))
             
-            self.quizTopNumberLabel.text = "Aksara \(stringRegion) - \(quizName)/\(quizesCount)"
+            if (quizName == "Panduan") {
+                self.quizTopNumberLabel.text = "Aksara Baru!"
+            } else {
+                self.quizTopNumberLabel.text = "Aksara \(stringRegion) - \(quizName)/\(quizesCount)"
+            }
+            
+            
             
             // handle timer
             if (countdownTimer != nil) {
@@ -305,14 +311,6 @@ class QuizController: UIViewController, QuizControllerProtocol {
             backButton.widthAnchor.constraint(equalToConstant: 48),
             backButton.heightAnchor.constraint(equalToConstant: 48)
         ])
-        
-        
-        //HandleQuizTopNumberLabel
-        let stringRegion =  String(regionSelected!)
-        let quizName = String((quizes?[0].title)!)
-        let quizesCount = String((quizes?.count)!)
-        
-        self.quizTopNumberLabel.text = "Aksara \(stringRegion) - \(quizName)/\(quizesCount)"
         
         headerView.addSubview(quizTopNumberLabel)
         NSLayoutConstraint.activate([
@@ -1205,6 +1203,8 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
             cell.continueButton.addTarget(self, action: #selector(handleProgressBar), for: .touchUpInside)
             cell.continueButton.tag = indexPath.item
             cell.delegate = self
+            headerView.backgroundColor = Theme.current.accentWhite
+            quizTopNumberLabel.textColor = Theme.current.textColor1
             
             return cell
             
@@ -1216,6 +1216,8 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
             cell.regionSelected = regionSelected
             cell.quizData = quizes![indexPath.item]
             cell.delegate = self
+            headerView.backgroundColor = Theme.current.accentWhite
+            quizTopNumberLabel.textColor = Theme.current.textColor1
             
             return cell
             
@@ -1227,15 +1229,22 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
             cell.regionSelected = regionSelected
             cell.quizData = quizes![indexPath.item]
             cell.delegate = self
+            headerView.backgroundColor = Theme.current.accentWhite
+            quizTopNumberLabel.textColor = Theme.current.textColor1
             
             return cell
             
         case "Guide":
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuizViewTypeGuideCellIdenttifier, for: indexPath) as! QuizCellTypeGuide
-            view.backgroundColor = UIColor.rgb(red: 23, green: 78, blue: 161, alpha: 1)
             
             cell.continueButton.addTarget(self, action: #selector(handleProgressBar), for: .touchUpInside)
             cell.continueButton.tag = indexPath.item
+            cell.regionSelected = regionSelected
+            cell.quizData = quizes![indexPath.item]
+            
+            view.backgroundColor = UIColor.rgb(red: 23, green: 78, blue: 161, alpha: 1)
+            headerView.backgroundColor = UIColor.rgb(red: 23, green: 78, blue: 161, alpha: 1)
+            quizTopNumberLabel.textColor = .white
             
             return cell
             
@@ -1248,6 +1257,8 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
             cell.delegate = self
             cell.regionSelected = regionSelected
             cell.quizData = quizes![indexPath.item]
+            headerView.backgroundColor = Theme.current.accentWhite
+            quizTopNumberLabel.textColor = Theme.current.textColor1
             
             return cell
             
@@ -1260,6 +1271,8 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
             cell.delegate = self
             cell.regionSelected = regionSelected
             cell.quizData = quizes![indexPath.item]
+            headerView.backgroundColor = Theme.current.accentWhite
+            quizTopNumberLabel.textColor = Theme.current.textColor1
             
             return cell
             
@@ -1272,6 +1285,8 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
             cell.delegate = self
             cell.regionSelected = regionSelected
             cell.quizData = quizes![indexPath.item]
+            headerView.backgroundColor = Theme.current.accentWhite
+            quizTopNumberLabel.textColor = Theme.current.textColor1
             
             return cell
             
@@ -1283,6 +1298,8 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
             cell.delegate = self
             cell.regionSelected = regionSelected
             cell.quizData = quizes![indexPath.item]
+            headerView.backgroundColor = Theme.current.accentWhite
+            quizTopNumberLabel.textColor = Theme.current.textColor1
             
             return cell
             
@@ -1294,6 +1311,8 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
             cell.delegate = self
             cell.regionSelected = regionSelected
             cell.quizData = quizes![indexPath.item]
+            headerView.backgroundColor = Theme.current.accentWhite
+            quizTopNumberLabel.textColor = Theme.current.textColor1
             
             return cell
             
@@ -1305,6 +1324,8 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
             cell.delegate = self
             cell.regionSelected = regionSelected
             cell.quizData = quizes![indexPath.item]
+            headerView.backgroundColor = Theme.current.accentWhite
+            quizTopNumberLabel.textColor = Theme.current.textColor1
             
             return cell
             
@@ -1315,6 +1336,8 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
             cell.delegate = self
             cell.regionSelected = regionSelected
             cell.quizData = quizes![indexPath.item]
+            headerView.backgroundColor = Theme.current.accentWhite
+            quizTopNumberLabel.textColor = Theme.current.textColor1
             
             return cell
             
@@ -1327,8 +1350,8 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
             cell.arrowRightButton.tag = indexPath.item
             cell.regionSelected = regionSelected
             cell.quizData = quizes?[indexPath.item]
-            
             cell.delegate = self
+            headerView.backgroundColor = Theme.current.accentWhite
             
             return cell
         }

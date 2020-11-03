@@ -46,6 +46,7 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
     var quizData: Quiz? {
         didSet {
             
+            let region: String = String(regionSelected!)
             // setup questions
             let questions = quizData?.questions?.sortedArray(using: [.init(key: "id", ascending: true)]) as? [Question]
             let questionName: String = (questions?[0].name!)!
@@ -69,14 +70,52 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
             
             // setup answers
             let answerChoices = quizData?.answerChoices?.sortedArray(using: [.init(key: "id", ascending: true)]) as? [AnswerChoice]
-            moveGS_HeadA.viewName = answerChoices?[0].name
-            moveGS_HeadB.viewName = answerChoices?[1].name
-            moveGS_HeadC.viewName = answerChoices?[2].name
-            moveGS_HeadD.viewName = answerChoices?[3].name
-            moveGS_TailA.viewName = answerChoices?[4].name
-            moveGS_TailB.viewName = answerChoices?[5].name
-            moveGS_TailC.viewName = answerChoices?[6].name
-            moveGS_TailD.viewName = answerChoices?[7].name
+            
+            let answerChoice1: String = (answerChoices?[0].name)!
+            let answerChoice2: String = (answerChoices?[1].name)!
+            let answerChoice3: String = (answerChoices?[2].name)!
+            let answerChoice4: String = (answerChoices?[3].name)!
+            let answerChoice5: String = (answerChoices?[4].name)!
+            let answerChoice6: String = (answerChoices?[5].name)!
+            let answerChoice7: String = (answerChoices?[6].name)!
+            let answerChoice8: String = (answerChoices?[7].name)!
+            
+            moveGS_HeadA.viewName = "\(region) Kepala \(answerChoice1)"
+            moveGS_HeadB.viewName = "\(region) Kepala \(answerChoice2)"
+            moveGS_HeadC.viewName = "\(region) Kepala \(answerChoice3)"
+            moveGS_HeadD.viewName = "\(region) Kepala \(answerChoice4)"
+            moveGS_TailA.viewName = "\(region) Ekor \(answerChoice5)"
+            moveGS_TailB.viewName = "\(region) Ekor \(answerChoice6)"
+            moveGS_TailC.viewName = "\(region) Ekor \(answerChoice7)"
+            moveGS_TailD.viewName = "\(region) Ekor \(answerChoice8)"
+            
+            moveGS_HeadA.aksaraName = "Head \(answerChoice1)"
+            moveGS_HeadB.aksaraName = "Head \(answerChoice2)"
+            moveGS_HeadC.aksaraName = "Head \(answerChoice3)"
+            moveGS_HeadD.aksaraName = "Head \(answerChoice4)"
+            moveGS_TailA.aksaraName = "Tail \(answerChoice5)"
+            moveGS_TailB.aksaraName = "Tail \(answerChoice6)"
+            moveGS_TailC.aksaraName = "Tail \(answerChoice7)"
+            moveGS_TailD.aksaraName = "Tail \(answerChoice8)"
+            
+            let imageHeadA = UIImage(named: "\(region) Kepala \(answerChoice1)")?.withRenderingMode(.alwaysTemplate)
+            let imageHeadB = UIImage(named: "\(region) Kepala \(answerChoice2)")?.withRenderingMode(.alwaysTemplate)
+            let imageHeadC = UIImage(named: "\(region) Kepala \(answerChoice3)")?.withRenderingMode(.alwaysTemplate)
+            let imageHeadD = UIImage(named: "\(region) Kepala \(answerChoice4)")?.withRenderingMode(.alwaysTemplate)
+            let imageTailA = UIImage(named: "\(region) Ekor \(answerChoice5)")?.withRenderingMode(.alwaysTemplate)
+            let imageTailB = UIImage(named: "\(region) Ekor \(answerChoice6)")?.withRenderingMode(.alwaysTemplate)
+            let imageTailC = UIImage(named: "\(region) Ekor \(answerChoice7)")?.withRenderingMode(.alwaysTemplate)
+            let imageTailD = UIImage(named: "\(region) Ekor \(answerChoice8)")?.withRenderingMode(.alwaysTemplate)
+            
+            headA.setImage(imageHeadA, for: .normal)
+            headB.setImage(imageHeadB, for: .normal)
+            headC.setImage(imageHeadC, for: .normal)
+            headD.setImage(imageHeadD, for: .normal)
+            
+            tailA.setImage(imageTailA, for: .normal)
+            tailB.setImage(imageTailB, for: .normal)
+            tailC.setImage(imageTailC, for: .normal)
+            tailD.setImage(imageTailD, for: .normal)
         }
     }
     
@@ -309,6 +348,7 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
         let moveGS = CustomPanGestureRecognizer(target: self, action: #selector(self.gestureMoveObject(_:)))
         moveGS.name = "Head"
         moveGS.viewName = ""
+        moveGS.aksaraName = ""
         moveGS.delegate = self
         
         return moveGS
@@ -318,6 +358,7 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
         let moveGS = CustomPanGestureRecognizer(target: self, action: #selector(self.gestureMoveObject(_:)))
         moveGS.name = "Head"
         moveGS.viewName = ""
+        moveGS.aksaraName = ""
         moveGS.delegate = self
         
         return moveGS
@@ -327,6 +368,7 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
         let moveGS = CustomPanGestureRecognizer(target: self, action: #selector(self.gestureMoveObject(_:)))
         moveGS.name = "Head"
         moveGS.viewName = ""
+        moveGS.aksaraName = ""
         moveGS.delegate = self
         
         return moveGS
@@ -336,6 +378,7 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
         let moveGS = CustomPanGestureRecognizer(target: self, action: #selector(self.gestureMoveObject(_:)))
         moveGS.name = "Head"
         moveGS.viewName = ""
+        moveGS.aksaraName = ""
         moveGS.delegate = self
         
         return moveGS
@@ -345,6 +388,7 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
         let moveGS = CustomPanGestureRecognizer(target: self, action: #selector(self.gestureMoveObject(_:)))
         moveGS.name = "Tail"
         moveGS.viewName = ""
+        moveGS.aksaraName = ""
         moveGS.delegate = self
         
         return moveGS
@@ -354,6 +398,7 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
         let moveGS = CustomPanGestureRecognizer(target: self, action: #selector(self.gestureMoveObject(_:)))
         moveGS.name = "Tail"
         moveGS.viewName = ""
+        moveGS.aksaraName = ""
         moveGS.delegate = self
         
         return moveGS
@@ -363,6 +408,7 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
         let moveGS = CustomPanGestureRecognizer(target: self, action: #selector(self.gestureMoveObject(_:)))
         moveGS.name = "Tail"
         moveGS.viewName = ""
+        moveGS.aksaraName = ""
         moveGS.delegate = self
         
         return moveGS
@@ -372,6 +418,7 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
         let moveGS = CustomPanGestureRecognizer(target: self, action: #selector(self.gestureMoveObject(_:)))
         moveGS.name = "Tail"
         moveGS.viewName = ""
+        moveGS.aksaraName = ""
         moveGS.delegate = self
         
         return moveGS
@@ -646,8 +693,7 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
     }
     
     func checkAnswers() {
-        
-        if (headQuestion == headAnswer && tailQuestion == tailQuestion) {
+        if (headQuestion == headAnswer && tailQuestion == tailAnswer) {
             // handle true
             questionLabel.text = "Benar sekali 😄"
             questionLabel.textColor = Theme.current.accentTextGreen
@@ -655,7 +701,7 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
             placeholderTail.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
             
             
-            delegate?.setTrueStatus()
+//            delegate?.setTrueStatus()
             
             // handle continue button
             self.continueButton.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 56, withWidth: Double(SCREEN_WIDTH), withCorner: 0)
@@ -666,7 +712,7 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
             // handle false
             questionLabel.text = "Sayang sekali ☹️"
             questionLabel.textColor = Theme.current.accentTextRed
-            delegate?.setFalseStatus()
+//            delegate?.setFalseStatus()
             
             // handle continue button
             self.continueButton.setCheckButtonBackgroundColorFalse(withOpacity: 1, withHeight: 56, withWidth: Double(SCREEN_WIDTH), withCorner: 0)
@@ -723,7 +769,7 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
         // handle false
         questionLabel.text = "Sayang sekali waktumu habis ☹️"
         questionLabel.textColor = Theme.current.accentTextRed
-        delegate?.setFalseStatus()
+//        delegate?.setFalseStatus()
         
         // handle continue button
         self.continueButton.setCheckButtonBackgroundColorFalse(withOpacity: 1, withHeight: 56, withWidth: Double(SCREEN_WIDTH), withCorner: 0)
@@ -804,6 +850,7 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
     @objc func gestureMoveObject(_ sender: CustomPanGestureRecognizer){
         let senderView = sender.view
         let name =  sender.name
+        let aksaraName = sender.aksaraName
         let viewName = sender.viewName
         
         if sender.state == .ended {
@@ -815,7 +862,7 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
                     placeholderHead.setImage(image, for: .normal)
                     placeholderHead.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
                     placeholderHead.tintColor = .white
-                    headAnswer = viewName
+                    headAnswer = aksaraName
                     
                     checkPlaceholderHead.setImage(image, for: .normal)
                     checkPlaceholderHead.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
@@ -843,7 +890,7 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
                     placeholderTail.setImage(image, for: .normal)
                     placeholderTail.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
                     placeholderTail.tintColor = .white
-                    tailAnswer = viewName
+                    tailAnswer = aksaraName
                     
                     checkPlaceholderTail.setImage(image, for: .normal)
                     checkPlaceholderTail.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)

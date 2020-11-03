@@ -12,10 +12,10 @@ import AVFoundation
 class QuizCellTypeH: UICollectionViewCell {
     
     var player: AVAudioPlayer?
-    var tempLatin: String? = nil
-    var tempAksara: String? = nil
-    var tempNoLatin: Int? = nil
-    var tempNoAksara: Int? = nil
+    var tempLatin: String? = ""
+    var tempAksara: String? = ""
+    var tempNoLatin: Int? = 4
+    var tempNoAksara: Int? = 4
     var tempButtonLatin: ChoiceButton? = nil
     var tempButtonAksara: ChoiceButton? = nil
     var arrayOfButtonLatin : [ChoiceButton]?
@@ -24,6 +24,8 @@ class QuizCellTypeH: UICollectionViewCell {
     var arrayOfCheckmarkAksara : [UIImageView]?
     var urutanLatin = [String]()
     var urutanAksara = [String]()
+    var answerLatin = [Int]()
+    var answerAksara = [Int]()
     var correctAnswer : Int? = 0
     var regionSelected: String?
     
@@ -205,7 +207,7 @@ class QuizCellTypeH: UICollectionViewCell {
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
-
+    
     let button1Aksara : ChoiceButton = {
         let button = ChoiceButton()
         button.backgroundColor = .init(white: 1, alpha: 0.8)
@@ -216,7 +218,7 @@ class QuizCellTypeH: UICollectionViewCell {
         button.setImage(tintedImage, for: .normal)
         button.tintColor = Theme.current.textColor1
         button.imageEdgeInsets = UIEdgeInsets(top: 34, left: 93, bottom: 34, right: 93)
-
+        
         button.layer.cornerRadius = 16
         button.addInnerShadow()
         button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
@@ -243,7 +245,7 @@ class QuizCellTypeH: UICollectionViewCell {
         button.setImage(tintedImage, for: .normal)
         button.tintColor = Theme.current.textColor1
         button.imageEdgeInsets = UIEdgeInsets(top: 34, left: 93, bottom: 34, right: 93)
-
+        
         button.layer.cornerRadius = 16
         button.addInnerShadow()
         button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
@@ -272,7 +274,7 @@ class QuizCellTypeH: UICollectionViewCell {
         button.setImage(tintedImage, for: .normal)
         button.tintColor = Theme.current.textColor1
         button.imageEdgeInsets = UIEdgeInsets(top: 34, left: 93, bottom: 34, right: 93)
-
+        
         button.layer.cornerRadius = 16
         button.addInnerShadow()
         button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
@@ -299,7 +301,7 @@ class QuizCellTypeH: UICollectionViewCell {
         button.setImage(tintedImage, for: .normal)
         button.tintColor = Theme.current.textColor1
         button.imageEdgeInsets = UIEdgeInsets(top: 34, left: 93, bottom: 34, right: 93)
-
+        
         button.layer.cornerRadius = 16
         button.addInnerShadow()
         button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
@@ -333,7 +335,7 @@ class QuizCellTypeH: UICollectionViewCell {
         setBackgroundColor()
         backgroundColor = .blue
         setupView()
-//        tagFunction()
+        //        tagFunction()
         tappedFunction()
     }
     
@@ -349,12 +351,10 @@ class QuizCellTypeH: UICollectionViewCell {
         button1Latin.nameAksara = urutanLatin[0]
         button2Latin.nameAksara = urutanLatin[1]
         button3Latin.nameAksara = urutanLatin[2]
-//        button4Latin.nameAksara = urutanLatin[3]
         
         button1Aksara.nameAksara = urutanAksara[0]
         button2Aksara.nameAksara = urutanAksara[1]
         button3Aksara.nameAksara = urutanAksara[2]
-//        button4Aksara.nameAksara = urutanAksara[3]
         
         self.arrayOfButtonLatin = [button1Latin, button2Latin, button3Latin]
         self.arrayOfButtonAksara = [button1Aksara, button2Aksara, button3Aksara]
@@ -366,16 +366,16 @@ class QuizCellTypeH: UICollectionViewCell {
         button1Latin.addTarget(self, action: #selector(buttonLatinTapped), for: .touchUpInside)
         button2Latin.addTarget(self, action: #selector(buttonLatinTapped), for: .touchUpInside)
         button3Latin.addTarget(self, action: #selector(buttonLatinTapped), for: .touchUpInside)
-//        button4Latin.addTarget(self, action: #selector(buttonLatinTapped), for: .touchUpInside)
         
         button1Aksara.addTarget(self, action: #selector(buttonAksaraTapped), for: .touchUpInside)
         button2Aksara.addTarget(self, action: #selector(buttonAksaraTapped), for: .touchUpInside)
         button3Aksara.addTarget(self, action: #selector(buttonAksaraTapped), for: .touchUpInside)
-//        button4Aksara.addTarget(self, action: #selector(buttonAksaraTapped), for: .touchUpInside)
     }
     
+    
+    
     @objc func buttonLatinTapped(_ sender: ChoiceButton) {
-        
+
         if button1Latin.isLocked == false {
             button1Latin.removeLayer(name: "tap")
             button1Latin.setTitleColor(Theme.current.textColor1, for: .normal)
@@ -388,22 +388,19 @@ class QuizCellTypeH: UICollectionViewCell {
             button3Latin.removeLayer(name: "tap")
             button3Latin.setTitleColor(Theme.current.textColor1, for: .normal)
         }
-//        if button4Latin.isLocked == false {
-//            button4Latin.removeLayer(name: "tap")
-//            button4Latin.setTitleColor(Theme.current.textColor1, for: .normal)
-//        }
-
-        arrayOfButtonLatin![sender.noButtonLatin!].setChoiceTapBackgroundColor()
-        arrayOfButtonLatin![sender.noButtonLatin!].setTitleColor(Theme.current.accentWhite, for: .normal)
+        
         tempLatin = sender.nameAksara
         tempNoLatin = sender.noButtonLatin
+        
+        arrayOfButtonLatin![sender.noButtonLatin!].setChoiceTapBackgroundColor()
+        arrayOfButtonLatin![sender.noButtonLatin!].setTitleColor(Theme.current.accentWhite, for: .normal)
+        
         checkAnswerNew()
-
+        
     }
     
     @objc func buttonAksaraTapped(_ sender: ChoiceButton) {
 
-        
         if button1Aksara.isLocked == false {
             button1Aksara.removeLayer(name: "tap")
             button1Aksara.tintColor = Theme.current.textColor1
@@ -416,23 +413,21 @@ class QuizCellTypeH: UICollectionViewCell {
             button3Aksara.removeLayer(name: "tap")
             button3Aksara.tintColor = Theme.current.textColor1
         }
-//        if button4Aksara.isLocked == false {
-//            button4Aksara.removeLayer(name: "tap")
-//            button4Aksara.tintColor = Theme.current.textColor1
-//        }
-
-        arrayOfButtonAksara![sender.noButtonAksara!].setChoiceTapBackgroundColor()
-        arrayOfButtonAksara![sender.noButtonAksara!].tintColor = Theme.current.accentWhite
+        
         tempAksara = sender.nameAksara
         tempNoAksara = sender.noButtonAksara
-        checkAnswerNew()
-
-
         
+        arrayOfButtonAksara![sender.noButtonAksara!].setChoiceTapBackgroundColor()
+        arrayOfButtonAksara![sender.noButtonAksara!].tintColor = Theme.current.accentWhite
+        
+        checkAnswerNew()
     }
     
     func checkAnswerNew() {
-        if tempAksara != nil && tempLatin != nil {
+        
+        if tempAksara != "" && tempLatin != "" {
+            self.arrayOfButtonLatin![self.tempNoLatin!].isEnabled = false
+            self.arrayOfButtonAksara![self.tempNoAksara!].isEnabled = false
             checkNow()
         }
         
@@ -457,105 +452,105 @@ class QuizCellTypeH: UICollectionViewCell {
         delegate?.setFalseStatus()
         self.playSoundFalse()
     }
-
+    
     func checkNow() {
+        
+        // handle true
         if tempAksara == tempLatin {
+            self.correctAnswer = self.correctAnswer! + 1
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                // your code here
-                self.correctAnswer = self.correctAnswer! + 1
                 
-                //LATIN
+                // handle button latin
                 self.arrayOfButtonLatin![self.tempNoLatin!].removeLayer(name: "tap")
                 self.arrayOfButtonLatin![self.tempNoLatin!].setTitle("\(self.tempAksara!) :", for: .normal)
                 self.arrayOfButtonLatin![self.tempNoLatin!].titleLabel?.font = UIFont.init(name: "NowAlt-Medium", size: 16)
                 self.arrayOfButtonLatin![self.tempNoLatin!].setTitleColor(Theme.current.accentWhite, for: .normal)
                 self.arrayOfButtonLatin![self.tempNoLatin!].titleEdgeInsets = UIEdgeInsets(top: 40, left: 0, bottom: 40, right: 100)
-                
                 let origImage = UIImage(named: "Jawa Jawaban \(self.tempLatin!)")
                 let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
                 self.arrayOfButtonLatin![self.tempNoLatin!].setImage(tintedImage, for: .normal)
                 self.arrayOfButtonLatin![self.tempNoLatin!].imageEdgeInsets = UIEdgeInsets(top: 38, left: 123, bottom: 38, right: 83)
                 self.arrayOfButtonLatin![self.tempNoLatin!].tintColor = Theme.current.accentWhite
-                
                 self.arrayOfButtonLatin![self.tempNoLatin!].setChoiceTrueBackgroundColor()
                 self.arrayOfButtonLatin![self.tempNoLatin!].removeTarget(self, action: #selector(self.buttonLatinTapped), for: .touchUpInside)
                 self.arrayOfButtonLatin![self.tempNoLatin!].isLocked = true
-                
                 self.arrayOfCheckmarkLatin![self.tempNoLatin!].isHidden = false
                 
-                self.tempNoLatin = nil
-                self.tempLatin = nil
-                
-                //AKSARA
+                // handle button aksara
                 self.arrayOfButtonAksara![self.tempNoAksara!].removeLayer(name: "tap")
                 self.arrayOfButtonAksara![self.tempNoAksara!].setChoiceTrueBackgroundColor()
                 self.arrayOfButtonAksara![self.tempNoAksara!].tintColor = Theme.current.accentWhite
                 self.arrayOfButtonAksara![self.tempNoAksara!].removeTarget(self, action: #selector(self.buttonAksaraTapped), for: .touchUpInside)
                 self.arrayOfButtonAksara![self.tempNoAksara!].isLocked = true
-                
-                //change add hint (add title and image)
                 let origImage2 = UIImage(named: "Jawa Jawaban \(self.tempAksara!)")
                 let tintedImage2 = origImage2?.withRenderingMode(.alwaysTemplate)
                 self.arrayOfButtonAksara![self.tempNoAksara!].setImage(tintedImage2, for: .normal)
                 self.arrayOfButtonAksara![self.tempNoAksara!].tintColor = Theme.current.accentWhite
                 self.arrayOfButtonAksara![self.tempNoAksara!].imageEdgeInsets = UIEdgeInsets(top: 38, left: 123, bottom: 38, right: 83)
-
                 self.arrayOfButtonAksara![self.tempNoAksara!].setTitle("\(self.tempAksara!) :", for: .normal)
                 self.arrayOfButtonAksara![self.tempNoAksara!].titleLabel?.font = UIFont.init(name: "NowAlt-Medium", size: 16)
                 self.arrayOfButtonAksara![self.tempNoAksara!].setTitleColor(Theme.current.accentWhite, for: .normal)
                 self.arrayOfButtonAksara![self.tempNoAksara!].titleEdgeInsets = UIEdgeInsets(top: 40, left: 0, bottom: 40, right: 100)
-                
                 self.arrayOfCheckmarkAksara![self.tempNoAksara!].isHidden = false
-                
-                self.tempNoAksara = nil
-                self.tempAksara = nil
+
+                // handle
+                self.tempNoAksara = 4
+                self.tempAksara = ""
+                self.tempNoLatin = 4
+                self.tempLatin = ""
+
+                // handle sound true
                 self.playSoundTrue()
                 
                 if self.correctAnswer == 3 {
                     self.handleTrue()
                 }
-                
             }
-
+            
+            // handle false
         } else {
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 // your code here
-
+                
                 self.arrayOfButtonLatin![self.tempNoLatin!].removeLayer(name: "tap")
                 self.arrayOfButtonLatin![self.tempNoLatin!].setTitleColor(Theme.current.textColor1, for: .normal)
-                self.tempNoLatin = nil
-                self.tempLatin = nil
-                
-                
                 self.arrayOfButtonAksara![self.tempNoAksara!].removeLayer(name: "tap")
                 self.arrayOfButtonAksara![self.tempNoAksara!].tintColor = Theme.current.textColor1
-                self.tempNoAksara = nil
-                self.tempAksara = nil
                 
+                self.arrayOfButtonLatin![self.tempNoLatin!].isEnabled = true
+                self.arrayOfButtonAksara![self.tempNoAksara!].isEnabled = true
+                
+                self.tempNoLatin = 4
+                self.tempLatin = ""
+                self.tempNoAksara = 4
+                self.tempAksara = ""
+
                 self.playSoundFalse()
+                
+                
             }
         }
     }
     
     func playSoundFalse() {
         guard let url = Bundle.main.url(forResource: "Jawaban_Salah_D", withExtension: "mp3") else { return }
-
+        
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
             try AVAudioSession.sharedInstance().setActive(true)
-
+            
             /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
             player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
-
+            
             /* iOS 10 and earlier require the following line:
-            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
-
+             player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
+            
             guard let player = player else { return }
-
+            
             player.play()
-
+            
         } catch let error {
             print(error.localizedDescription)
         }
@@ -563,21 +558,21 @@ class QuizCellTypeH: UICollectionViewCell {
     
     func playSoundTrue() {
         guard let url = Bundle.main.url(forResource: "Jawaban_Benar_A", withExtension: "mp3") else { return }
-
+        
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
             try AVAudioSession.sharedInstance().setActive(true)
-
+            
             /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
             player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
-
+            
             /* iOS 10 and earlier require the following line:
-            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
-
+             player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
+            
             guard let player = player else { return }
-
+            
             player.play()
-
+            
         } catch let error {
             print(error.localizedDescription)
         }
@@ -628,19 +623,6 @@ class QuizCellTypeH: UICollectionViewCell {
         check3LatinImage.heightAnchor.constraint(equalToConstant: 24).isActive = true
         check3LatinImage.isHidden = true
         
-//        addSubview(button4Latin)
-//        button4Latin.trailingAnchor.constraint(equalTo: centerXAnchor,constant: -20.5).isActive = true
-//        button4Latin.topAnchor.constraint(equalTo: button3Latin.bottomAnchor, constant: 12).isActive = true
-//        button4Latin.widthAnchor.constraint(equalToConstant: 240).isActive = true
-//        button4Latin.heightAnchor.constraint(equalToConstant: 100).isActive = true
-//
-//        addSubview(check4LatinImage)
-//        check4LatinImage.centerYAnchor.constraint(equalTo: button4Latin.centerYAnchor).isActive = true
-//        check4LatinImage.trailingAnchor.constraint(equalTo: button4Latin.leadingAnchor, constant: -12).isActive = true
-//        check4LatinImage.widthAnchor.constraint(equalToConstant: 24).isActive = true
-//        check4LatinImage.heightAnchor.constraint(equalToConstant: 24).isActive = true
-//        check4LatinImage.isHidden = true
-        
         addSubview(button1Aksara)
         button1Aksara.leadingAnchor.constraint(equalTo: centerXAnchor,constant: 20.5).isActive = true
         button1Aksara.topAnchor.constraint(equalTo: questionTitle.bottomAnchor, constant: 32).isActive = true
@@ -679,19 +661,6 @@ class QuizCellTypeH: UICollectionViewCell {
         check3AksaraImage.widthAnchor.constraint(equalToConstant: 24).isActive = true
         check3AksaraImage.heightAnchor.constraint(equalToConstant: 24).isActive = true
         check3AksaraImage.isHidden = true
-        
-//        addSubview(button4Aksara)
-//        button4Aksara.leadingAnchor.constraint(equalTo: centerXAnchor,constant: 20.5).isActive = true
-//        button4Aksara.topAnchor.constraint(equalTo: button3Aksara.bottomAnchor, constant: 12).isActive = true
-//        button4Aksara.widthAnchor.constraint(equalToConstant: 240).isActive = true
-//        button4Aksara.heightAnchor.constraint(equalToConstant: 100).isActive = true
-//
-//        addSubview(check4AksaraImage)
-//        check4AksaraImage.centerYAnchor.constraint(equalTo: button4Aksara.centerYAnchor).isActive = true
-//        check4AksaraImage.leadingAnchor.constraint(equalTo: button4Aksara.trailingAnchor, constant: 12).isActive = true
-//        check4AksaraImage.widthAnchor.constraint(equalToConstant: 24).isActive = true
-//        check4AksaraImage.heightAnchor.constraint(equalToConstant: 24).isActive = true
-//        check4AksaraImage.isHidden = true
         
         addSubview(continueButton)
         continueButton.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
