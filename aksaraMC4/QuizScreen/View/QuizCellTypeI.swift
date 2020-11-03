@@ -8,6 +8,8 @@
 
 import UIKit
 import PencilKit
+import AVFoundation
+import CoreML
 
 class QuizCellTypeI: UICollectionViewCell{
     
@@ -21,8 +23,80 @@ class QuizCellTypeI: UICollectionViewCell{
     var isCanvas2Filled : Bool?
     var isCanvas3Filled : Bool?
     
-    var aksaraCount : Int? = 3
-   
+    var carakan1Question: String?
+    var carakan2Question: String?
+    var carakan3Question: String?
+    var carakan1Answer: String? = ""
+    var carakan2Answer: String? = ""
+    var carakan3Answer: String? = ""
+    var canvasViewImage1: UIImage?
+    var canvasViewImage2: UIImage?
+    var canvasViewImage3: UIImage?
+    
+    var aksaraCount : Int? {
+        didSet {
+            setupView()
+        }
+    }
+    let generator = UINotificationFeedbackGenerator()
+    var player: AVAudioPlayer?
+    var regionSelected: String?
+    var delegate: QuizController?
+    var quizData: Quiz? {
+        didSet {
+            let region: String = String(regionSelected!)
+            
+            // setup questions
+            let questions = quizData?.questions?.sortedArray(using: [.init(key: "id", ascending: true)]) as? [Question]
+            
+            if (aksaraCount == 1) {
+                let question1Name: String = String((questions?[0].name)!)
+                let image1 = UIImage(named: "\(region) Jawaban \(question1Name)")
+                
+                carakan1Question = questions?[0].name
+                question1Label.text = "Aksara \(String((questions?[0].name)!))"
+                shadowImage1.image = image1
+            }
+            
+            if (aksaraCount == 2) {
+                let question1Name: String = String((questions?[0].name)!)
+                let image1 = UIImage(named: "\(region) Jawaban \(question1Name)")
+                let question2Name: String = String((questions?[1].name)!)
+                let image2 = UIImage(named: "\(region) Jawaban \(question2Name)")
+                
+                carakan1Question = questions?[0].name
+                carakan2Question = questions?[1].name
+                
+                question1Label.text = "Aksara \(String((questions?[0].name)!))"
+                question2Label.text = "Aksara \(String((questions?[1].name)!))"
+                
+                shadowImage1.image = image1
+                shadowImage2.image = image2
+            }
+            
+            if (aksaraCount == 3) {
+                let question1Name: String = String((questions?[0].name)!)
+                let image1 = UIImage(named: "\(region) Jawaban \(question1Name)")
+                let question2Name: String = String((questions?[1].name)!)
+                let image2 = UIImage(named: "\(region) Jawaban \(question2Name)")
+                let question3Name: String = String((questions?[2].name)!)
+                let image3 = UIImage(named: "\(region) Jawaban \(question3Name)")
+                
+                carakan1Question = questions?[0].name
+                carakan2Question = questions?[1].name
+                carakan3Question = questions?[2].name
+                
+                question1Label.text = "Aksara \(String((questions?[0].name)!))"
+                question2Label.text = "Aksara \(String((questions?[1].name)!))"
+                question3Label.text = "Aksara \(String((questions?[2].name)!))"
+                
+                shadowImage1.image = image1
+                shadowImage2.image = image2
+                shadowImage3.image = image3
+            }
+        }
+    }
+    
     let questionTitle : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -33,8 +107,6 @@ class QuizCellTypeI: UICollectionViewCell{
         return label
     }()
     
-    var delegate : QuizControllerProtocol?
-    
     lazy var containerCanvasView1 : UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -43,14 +115,12 @@ class QuizCellTypeI: UICollectionViewCell{
         view.addInnerShadow()
         view.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
         
-        
-        
         return view
     }()
     
     let checkmarkImage1 : UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "correctAnswer")
+//        image.image = UIImage(named: "correctAnswer")
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
@@ -62,20 +132,20 @@ class QuizCellTypeI: UICollectionViewCell{
         canvasView.backgroundColor = .clear
         canvasView.isOpaque = false
         canvasView.alwaysBounceVertical = true
-        canvasView.allowsFingerDrawing = true
+        canvasView.drawingPolicy = .anyInput
         canvasView.tool = PKInkingTool(.pen, color: .black, width: 2)
         canvasView.tag = 0
         canvasView.delegate = self
         
         return canvasView
     }()
-
+    
     
     let question1Label : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.init(name: "NowAlt-Medium", size: 20)
-        label.text = "Aksara Wa"
+        label.text = ""
         label.textColor = Theme.current.textColor1
         
         return label
@@ -87,11 +157,11 @@ class QuizCellTypeI: UICollectionViewCell{
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.tag = 0
         btn.addTarget(self, action: #selector(reloadPencilKit(_:)), for: .touchUpInside)
-
+        
         
         return btn
     }()
-
+    
     
     let containerCanvasView2 : UIView = {
         let view = UIView()
@@ -110,7 +180,7 @@ class QuizCellTypeI: UICollectionViewCell{
         canvasView.backgroundColor = .clear
         canvasView.isOpaque = false
         canvasView.alwaysBounceVertical = true
-        canvasView.allowsFingerDrawing = true
+        canvasView.drawingPolicy = .anyInput
         canvasView.tool = PKInkingTool(.pen, color: .black, width: 2)
         canvasView.tag = 1
         canvasView.delegate = self
@@ -120,7 +190,7 @@ class QuizCellTypeI: UICollectionViewCell{
     
     let checkmarkImage2 : UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "correctAnswer")
+//        image.image = UIImage(named: "correctAnswer")
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
@@ -129,7 +199,7 @@ class QuizCellTypeI: UICollectionViewCell{
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.init(name: "NowAlt-Medium", size: 20)
-        label.text = "Aksara Ha"
+        label.text = ""
         label.textColor = Theme.current.textColor1
         
         return label
@@ -141,12 +211,9 @@ class QuizCellTypeI: UICollectionViewCell{
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.tag = 1
         btn.addTarget(self, action: #selector(reloadPencilKit(_:)), for: .touchUpInside)
-
         
         return btn
     }()
-    
-    
     
     let containerCanvasView3 : UIView = {
         let view = UIView()
@@ -165,7 +232,7 @@ class QuizCellTypeI: UICollectionViewCell{
         canvasView.backgroundColor = .clear
         canvasView.isOpaque = false
         canvasView.alwaysBounceVertical = true
-        canvasView.allowsFingerDrawing = true
+        canvasView.drawingPolicy = .anyInput
         canvasView.tool = PKInkingTool(.pen, color: .black, width: 2)
         canvasView.tag = 2
         canvasView.delegate = self
@@ -175,7 +242,7 @@ class QuizCellTypeI: UICollectionViewCell{
     
     let checkmarkImage3 : UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "correctAnswer")
+//        image.image = UIImage(named: "correctAnswer")
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
@@ -184,7 +251,7 @@ class QuizCellTypeI: UICollectionViewCell{
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.init(name: "NowAlt-Medium", size: 20)
-        label.text = "Aksara Na"
+        label.text = ""
         label.textColor = Theme.current.textColor1
         
         return label
@@ -200,39 +267,75 @@ class QuizCellTypeI: UICollectionViewCell{
         return btn
     }()
     
-    let continueButton : UIButton = {
-        let btn = UIButton()
-//        btn.setCheckBottomBlueBackgroundColor()
-        btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.setTitle("Check", for: .normal)
-        btn.titleLabel?.font = UIFont.init(name: "NowAlt-Medium", size: 16)
-        btn.setTitleColor(Theme.current.accentWhite, for: .normal)
+    lazy var checkButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Cek", for: .normal)
+        button.titleLabel?.font = UIFont.init(name: "NowAlt-Medium", size: 16)
+        button.setCheckButtonBackgroundColor(withOpacity: 0.6)
+        button.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
+        button.addInnerShadow()
+        button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
+        button.clipsToBounds = true
         
-        btn.setImage(UIImage(systemName: "chevron.right"), for: .normal)
-        btn.imageView?.tintColor = Theme.current.accentWhite
-        btn.backgroundColor = UIColor.rgb(red: 4, green: 110, blue: 208, alpha: 1)
-        btn.imageEdgeInsets = UIEdgeInsets(top: 0, left: 130, bottom: 0, right: 0)
-        btn.alpha = 0.4
-//        btn.isHidden = true
+        button.addTarget(self, action: #selector(handleCheckButton), for: .touchUpInside)
+        button.isEnabled = false
+        button.layer.masksToBounds = false
         
-//        btn.setCardTrueBackgroundColor()
-        return btn
+        return button
     }()
     
+    lazy var continueButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Lanjut", for: .normal)
+        button.titleLabel?.font = UIFont.init(name: "NowAlt-Medium", size: 16)
+        button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+        button.imageView?.tintColor = Theme.current.accentWhite
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 130, bottom: 0, right: 0)
+        button.addInnerShadow()
+        button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
+        button.clipsToBounds = true
+        button.isEnabled = true
+        button.isHidden = true
+        button.layer.masksToBounds = false
+        
+        return button
+    }()
+    
+    let shadowImage1: UIImageView = {
+        let image = UIImageView()
+        image.contentMode = .scaleAspectFit
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.isHidden = true
+        
+        return image
+    }()
+    
+    let shadowImage2: UIImageView = {
+        let image = UIImageView()
+        image.contentMode = .scaleAspectFit
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.isHidden = true
+        
+        return image
+    }()
+    
+    let shadowImage3: UIImageView = {
+        let image = UIImageView()
+        image.contentMode = .scaleAspectFit
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.isHidden = true
+        
+        return image
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setBackgroundColor()
-
+        
         setupDynamicConstraint()
         setupView()
-        
-        
-        
-    }
-    
-    func handleTimer() {
-        
     }
     
     func setupDynamicConstraint() {
@@ -266,15 +369,22 @@ class QuizCellTypeI: UICollectionViewCell{
         addSubview(containerCanvasView1)
         containerCanvasView1.topAnchor.constraint(equalTo: questionTitle.bottomAnchor, constant: 106).isActive = true
         firstCanvasCenterXAnchor1?.isActive = true
-        containerCanvasView1.widthAnchor.constraint(equalToConstant: 240).isActive = true
-        containerCanvasView1.heightAnchor.constraint(equalToConstant: 240).isActive = true
+        containerCanvasView1.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        containerCanvasView1.heightAnchor.constraint(equalToConstant: 300).isActive = true
         
         containerCanvasView1.addSubview(canvasView1)
         canvasView1.topAnchor.constraint(equalTo: containerCanvasView1.topAnchor).isActive = true
         canvasView1.bottomAnchor.constraint(equalTo: containerCanvasView1.bottomAnchor).isActive = true
         canvasView1.leadingAnchor.constraint(equalTo: containerCanvasView1.leadingAnchor).isActive = true
         canvasView1.trailingAnchor.constraint(equalTo: containerCanvasView1.trailingAnchor).isActive = true
-//
+        
+        containerCanvasView1.addSubview(shadowImage1)
+        shadowImage1.centerXAnchor.constraint(equalTo: containerCanvasView1.centerXAnchor).isActive = true
+        shadowImage1.centerYAnchor.constraint(equalTo: containerCanvasView1.centerYAnchor).isActive = true
+        shadowImage1.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        shadowImage1.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        
+        //
         containerCanvasView1.addSubview(checkmarkImage1)
         checkmarkImage1.trailingAnchor.constraint(equalTo: containerCanvasView1.trailingAnchor, constant: -12).isActive = true
         checkmarkImage1.topAnchor.constraint(equalTo: containerCanvasView1.topAnchor, constant: 12).isActive = true
@@ -291,13 +401,17 @@ class QuizCellTypeI: UICollectionViewCell{
         reloadButton1.heightAnchor.constraint(equalToConstant: 29).isActive = true
         reloadButton1.widthAnchor.constraint(equalToConstant: 25).isActive = true
         
+        addSubview(checkButton)
+        checkButton.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        checkButton.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        checkButton.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        checkButton.heightAnchor.constraint(equalToConstant: 56).isActive = true
+        
         addSubview(continueButton)
         continueButton.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         continueButton.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         continueButton.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         continueButton.heightAnchor.constraint(equalToConstant: 56).isActive = true
-        
-        print(continueButton)
         
         if aksaraCount == 2 {
             firstCanvasCenterXAnchor1?.isActive = false
@@ -306,16 +420,22 @@ class QuizCellTypeI: UICollectionViewCell{
             
             addSubview(containerCanvasView2)
             containerCanvasView2.topAnchor.constraint(equalTo: questionTitle.bottomAnchor, constant: 106).isActive = true
-//            firstCanvasCenterXAnchor1?.isActive = true
+            //            firstCanvasCenterXAnchor1?.isActive = true
             secondCanvasLeadingAnchor1?.isActive = true
-            containerCanvasView2.widthAnchor.constraint(equalToConstant: 240).isActive = true
-            containerCanvasView2.heightAnchor.constraint(equalToConstant: 240).isActive = true
+            containerCanvasView2.widthAnchor.constraint(equalToConstant: 300).isActive = true
+            containerCanvasView2.heightAnchor.constraint(equalToConstant: 300).isActive = true
             
             containerCanvasView2.addSubview(canvasView2)
             canvasView2.topAnchor.constraint(equalTo: containerCanvasView2.topAnchor).isActive = true
             canvasView2.bottomAnchor.constraint(equalTo: containerCanvasView2.bottomAnchor).isActive = true
             canvasView2.leadingAnchor.constraint(equalTo: containerCanvasView2.leadingAnchor).isActive = true
             canvasView2.trailingAnchor.constraint(equalTo: containerCanvasView2.trailingAnchor).isActive = true
+            
+            containerCanvasView2.addSubview(shadowImage2)
+            shadowImage2.centerXAnchor.constraint(equalTo: containerCanvasView2.centerXAnchor).isActive = true
+            shadowImage2.centerYAnchor.constraint(equalTo: containerCanvasView2.centerYAnchor).isActive = true
+            shadowImage2.widthAnchor.constraint(equalToConstant: 60).isActive = true
+            shadowImage2.heightAnchor.constraint(equalToConstant: 60).isActive = true
             
             containerCanvasView2.addSubview(question2Label)
             question2Label.bottomAnchor.constraint(equalTo: containerCanvasView2.topAnchor, constant: -18).isActive = true
@@ -343,14 +463,20 @@ class QuizCellTypeI: UICollectionViewCell{
             addSubview(containerCanvasView2)
             containerCanvasView2.topAnchor.constraint(equalTo: questionTitle.bottomAnchor, constant: 106).isActive = true
             secondCanvasCenterXAnchor2?.isActive = true
-            containerCanvasView2.widthAnchor.constraint(equalToConstant: 240).isActive = true
-            containerCanvasView2.heightAnchor.constraint(equalToConstant: 240).isActive = true
+            containerCanvasView2.widthAnchor.constraint(equalToConstant: 300).isActive = true
+            containerCanvasView2.heightAnchor.constraint(equalToConstant: 300).isActive = true
             
             containerCanvasView2.addSubview(canvasView2)
             canvasView2.topAnchor.constraint(equalTo: containerCanvasView2.topAnchor).isActive = true
             canvasView2.bottomAnchor.constraint(equalTo: containerCanvasView2.bottomAnchor).isActive = true
             canvasView2.leadingAnchor.constraint(equalTo: containerCanvasView2.leadingAnchor).isActive = true
             canvasView2.trailingAnchor.constraint(equalTo: containerCanvasView2.trailingAnchor).isActive = true
+            
+            containerCanvasView2.addSubview(shadowImage2)
+            shadowImage2.centerXAnchor.constraint(equalTo: containerCanvasView2.centerXAnchor).isActive = true
+            shadowImage2.centerYAnchor.constraint(equalTo: containerCanvasView2.centerYAnchor).isActive = true
+            shadowImage2.widthAnchor.constraint(equalToConstant: 60).isActive = true
+            shadowImage2.heightAnchor.constraint(equalToConstant: 60).isActive = true
             
             containerCanvasView2.addSubview(checkmarkImage2)
             checkmarkImage2.trailingAnchor.constraint(equalTo: containerCanvasView2.trailingAnchor, constant: -12).isActive = true
@@ -372,14 +498,20 @@ class QuizCellTypeI: UICollectionViewCell{
             addSubview(containerCanvasView3)
             containerCanvasView3.topAnchor.constraint(equalTo: questionTitle.bottomAnchor, constant: 106).isActive = true
             thirdCanvasLeadingAnchor1?.isActive = true
-            containerCanvasView3.widthAnchor.constraint(equalToConstant: 240).isActive = true
-            containerCanvasView3.heightAnchor.constraint(equalToConstant: 240).isActive = true
+            containerCanvasView3.widthAnchor.constraint(equalToConstant: 300).isActive = true
+            containerCanvasView3.heightAnchor.constraint(equalToConstant: 300).isActive = true
             
             containerCanvasView3.addSubview(canvasView3)
             canvasView3.topAnchor.constraint(equalTo: containerCanvasView3.topAnchor).isActive = true
             canvasView3.bottomAnchor.constraint(equalTo: containerCanvasView3.bottomAnchor).isActive = true
             canvasView3.leadingAnchor.constraint(equalTo: containerCanvasView3.leadingAnchor).isActive = true
             canvasView3.trailingAnchor.constraint(equalTo: containerCanvasView3.trailingAnchor).isActive = true
+            
+            containerCanvasView3.addSubview(shadowImage3)
+            shadowImage3.centerXAnchor.constraint(equalTo: containerCanvasView3.centerXAnchor).isActive = true
+            shadowImage3.centerYAnchor.constraint(equalTo: containerCanvasView3.centerYAnchor).isActive = true
+            shadowImage3.widthAnchor.constraint(equalToConstant: 60).isActive = true
+            shadowImage3.heightAnchor.constraint(equalToConstant: 60).isActive = true
             
             containerCanvasView3.addSubview(checkmarkImage3)
             checkmarkImage3.trailingAnchor.constraint(equalTo: containerCanvasView3.trailingAnchor, constant: -12).isActive = true
@@ -397,9 +529,380 @@ class QuizCellTypeI: UICollectionViewCell{
             reloadButton3.heightAnchor.constraint(equalToConstant: 29).isActive = true
             reloadButton3.widthAnchor.constraint(equalToConstant: 25).isActive = true
         }
-        
 
+    }
+    
+    func handleTimer() {
+        questionTitle.text = "Sayang sekali waktu habis ☹️"
+        questionTitle.textColor = Theme.current.accentTextRed
+        self.continueButton.setCheckButtonBackgroundColorFalse(withOpacity: 1, withHeight: 56, withWidth: Double(SCREEN_WIDTH), withCorner: 0)
         
+        checkButton.isHidden = true
+        continueButton.isHidden = false
+        playSoundFalse()
+        generator.notificationOccurred(.error)
+        
+        if (aksaraCount == 1) {
+            reloadButton1.isHidden = true
+            canvasView1.drawingGestureRecognizer.isEnabled = false
+            shadowImage1.isHidden = false
+            
+            if (isCanvas1Filled == true) {
+                let status = predictAksara1()
+                
+                if (status == true) {
+                    checkmarkImage1.image = UIImage(named: "correctAnswer")
+                } else {
+                    checkmarkImage1.image = UIImage(named: "falseAnswer")
+                }
+            }
+        }
+        
+        if (aksaraCount == 2) {
+            reloadButton1.isHidden = true
+            reloadButton2.isHidden = true
+            canvasView1.drawingGestureRecognizer.isEnabled = false
+            canvasView2.drawingGestureRecognizer.isEnabled = false
+            shadowImage1.isHidden = false
+            shadowImage2.isHidden = false
+            
+            if (isCanvas1Filled == true) {
+                let status = predictAksara1()
+                
+                if (status == true) {
+                    checkmarkImage1.image = UIImage(named: "correctAnswer")
+                } else {
+                    checkmarkImage1.image = UIImage(named: "falseAnswer")
+                }
+            }
+            
+            if (isCanvas2Filled == true) {
+                let status = predictAksara2()
+                
+                if (status == true) {
+                    checkmarkImage2.image = UIImage(named: "correctAnswer")
+                } else {
+                    checkmarkImage2.image = UIImage(named: "falseAnswer")
+                }
+            }
+        }
+        
+        if (aksaraCount == 3) {
+            reloadButton1.isHidden = true
+            reloadButton2.isHidden = true
+            reloadButton3.isHidden = true
+            canvasView1.drawingGestureRecognizer.isEnabled = false
+            canvasView2.drawingGestureRecognizer.isEnabled = false
+            canvasView3.drawingGestureRecognizer.isEnabled = false
+            shadowImage1.isHidden = false
+            shadowImage2.isHidden = false
+            shadowImage3.isHidden = false
+            
+            if (isCanvas1Filled == true) {
+                let status = predictAksara1()
+                
+                if (status == true) {
+                    checkmarkImage1.image = UIImage(named: "correctAnswer")
+                } else {
+                    checkmarkImage1.image = UIImage(named: "falseAnswer")
+                }
+            }
+            
+            if (isCanvas2Filled == true) {
+                let status = predictAksara2()
+                
+                if (status == true) {
+                    checkmarkImage2.image = UIImage(named: "correctAnswer")
+                } else {
+                    checkmarkImage2.image = UIImage(named: "falseAnswer")
+                }
+            }
+            
+            if (isCanvas3Filled == true) {
+                let status = predictAksara3()
+                
+                if (status == true) {
+                    checkmarkImage3.image = UIImage(named: "correctAnswer")
+                } else {
+                    checkmarkImage3.image = UIImage(named: "falseAnswer")
+                }
+            }
+        }
+    }
+    
+    func handleStroke(withCanvas canvas: PKCanvasView) {
+        let strokeCount = canvas.drawing.strokes.count
+        
+        for i in 0...strokeCount - 1 {
+            canvas.drawing.strokes[i].ink.color = .lightGray
+        }
+        
+    }
+    
+    func handleTrue() {
+        questionTitle.text = "Benar sekali 😄"
+        questionTitle.textColor = Theme.current.accentTextGreen
+        
+        delegate?.stopTimerChoosen()
+        
+        // handle continue button
+        self.continueButton.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 56, withWidth: Double(SCREEN_WIDTH), withCorner: 0)
+        
+        playSoundTrue()
+        generator.notificationOccurred(.success)
+    }
+    
+    func handleFalse() {
+        questionTitle.text = "Sayang sekali ☹️"
+        questionTitle.textColor = Theme.current.accentTextRed
+
+        delegate?.stopTimerChoosen()
+        
+        // handle continue button
+        self.continueButton.setCheckButtonBackgroundColorFalse(withOpacity: 1, withHeight: 56, withWidth: Double(SCREEN_WIDTH), withCorner: 0)
+        
+        playSoundFalse()
+        generator.notificationOccurred(.error)
+    }
+    
+    @objc func handleCheckButton() {
+        checkButton.isHidden = true
+        continueButton.isHidden = false
+        
+        if aksaraCount == 1 {
+            canvasView1.drawingGestureRecognizer.isEnabled = false
+            reloadButton1.isHidden = true
+            handleStroke(withCanvas: canvasView1)
+            shadowImage1.isHidden = false
+            
+            let checkStatus = predictAksara1()
+            
+            if checkStatus == true {
+                handleTrue()
+                checkmarkImage1.image = UIImage(named: "correctAnswer")
+            } else {
+                checkmarkImage1.image = UIImage(named: "falseAnswer")
+                handleFalse()
+            }
+            
+            
+        }
+        
+        if aksaraCount == 2 {
+            canvasView1.drawingGestureRecognizer.isEnabled = false
+            canvasView2.drawingGestureRecognizer.isEnabled = false
+            reloadButton1.isHidden = true
+            reloadButton2.isHidden = true
+            handleStroke(withCanvas: canvasView1)
+            handleStroke(withCanvas: canvasView2)
+            shadowImage1.isHidden = false
+            shadowImage2.isHidden = false
+            
+            let checkStatus1 = predictAksara1()
+            let checkStatus2 = predictAksara2()
+            
+            if (checkStatus1 == true && checkStatus2 == true) {
+                handleTrue()
+                checkmarkImage1.image = UIImage(named: "correctAnswer")
+                checkmarkImage2.image = UIImage(named: "correctAnswer")
+            } else {
+                if checkStatus1 == false {
+                    checkmarkImage1.image = UIImage(named: "falseAnswer")
+                } else {
+                    checkmarkImage1.image = UIImage(named: "correctAnswer")
+                }
+                
+                if checkStatus2 == false {
+                    checkmarkImage2.image = UIImage(named: "falseAnswer")
+                } else {
+                    checkmarkImage2.image = UIImage(named: "correctAnswer")
+                }
+                
+                handleFalse()
+            }
+        }
+        
+        if aksaraCount == 3 {
+            canvasView1.drawingGestureRecognizer.isEnabled = false
+            canvasView2.drawingGestureRecognizer.isEnabled = false
+            canvasView3.drawingGestureRecognizer.isEnabled = false
+            reloadButton1.isHidden = true
+            reloadButton2.isHidden = true
+            reloadButton3.isHidden = true
+            handleStroke(withCanvas: canvasView1)
+            handleStroke(withCanvas: canvasView2)
+            handleStroke(withCanvas: canvasView3)
+            shadowImage1.isHidden = false
+            shadowImage2.isHidden = false
+            shadowImage3.isHidden = false
+            
+            let checkStatus1 = predictAksara1()
+            let checkStatus2 = predictAksara2()
+            let checkStatus3 = predictAksara3()
+            
+            if (checkStatus1 == true && checkStatus2 == true && checkStatus3) {
+                handleTrue()
+                checkmarkImage1.image = UIImage(named: "correctAnswer")
+                checkmarkImage2.image = UIImage(named: "correctAnswer")
+                checkmarkImage3.image = UIImage(named: "correctAnswer")
+            } else {
+                if checkStatus1 == false {
+                    checkmarkImage1.image = UIImage(named: "falseAnswer")
+                } else {
+                    checkmarkImage1.image = UIImage(named: "correctAnswer")
+                }
+                
+                if checkStatus2 == false {
+                    checkmarkImage2.image = UIImage(named: "falseAnswer")
+                } else {
+                    checkmarkImage2.image = UIImage(named: "correctAnswer")
+                }
+                
+                if checkStatus3 == false {
+                    checkmarkImage3.image = UIImage(named: "falseAnswer")
+                } else {
+                    checkmarkImage3.image = UIImage(named: "correctAnswer")
+                }
+                
+                handleFalse()
+            }
+        }
+    }
+    
+    func predictAksara1() -> Bool {
+        canvasViewImage1 = canvasView1.drawing.image(from: canvasView1.bounds, scale: 1)
+        
+        guard let pixelBuffer = canvasViewImage1?.pixelBuffer() else {
+            fatalError("Unexpected runtime error.")
+        }
+        
+        let aksaraModel: AksaraModel = try! AksaraModel(configuration: MLModelConfiguration.init())
+        
+        guard let checkNumberOutput = try? aksaraModel.prediction(image: pixelBuffer) else {
+            fatalError("Unexpected runtime error.")
+        }
+        
+        if carakan1Question == checkNumberOutput.classLabel {
+            let probs = checkNumberOutput.classLabelProbs
+            let carakanProbs = probs[carakan1Question!]
+            
+//            if carakanProbs! > 0.88 {
+//                return true
+//            } else {
+//                return false
+//            }
+            
+            return true
+        } else {
+            return false
+        }
+        
+    }
+    
+    func predictAksara2() -> Bool {
+        let image = canvasView2.drawing.image(from: canvasView2.bounds, scale: 1.5)
+        
+        guard let pixelBuffer = image.pixelBuffer() else {
+            fatalError("Unexpected runtime error.")
+        }
+        
+        let aksaraModel: AksaraModel = try! AksaraModel(configuration: MLModelConfiguration.init())
+        
+        guard let checkNumberOutput = try? aksaraModel.prediction(image: pixelBuffer) else {
+            fatalError("Unexpected runtime error.")
+        }
+        
+        if carakan2Question == checkNumberOutput.classLabel {
+            let probs = checkNumberOutput.classLabelProbs
+            let carakanProbs = probs[carakan1Question!]!
+            
+//            if carakanProbs > 0.88 {
+//                return true
+//            } else {
+//                return false
+//            }
+            
+            return true
+            
+        } else {
+            return false
+        }
+    }
+    
+    func predictAksara3() -> Bool {
+        let image = canvasView3.drawing.image(from: canvasView3.bounds, scale: 1)
+        
+        guard let pixelBuffer = image.pixelBuffer() else {
+            fatalError("Unexpected runtime error.")
+        }
+        
+        let aksaraModel: AksaraModel = try! AksaraModel(configuration: MLModelConfiguration.init())
+        
+        guard let checkNumberOutput = try? aksaraModel.prediction(image: pixelBuffer) else {
+            fatalError("Unexpected runtime error.")
+        }
+        
+        if carakan3Question == checkNumberOutput.classLabel {
+            let probs = checkNumberOutput.classLabelProbs
+            let carakanProbs = probs[carakan1Question!]
+            
+//            print("CARAKAN3", carakanProbs)
+//
+//            if carakanProbs! > 0.88 {
+//                return true
+//            } else {
+//                return false
+//            }
+            
+            return true
+            
+        } else {
+            return false
+        }
+    }
+    
+    func playSoundFalse() {
+        guard let url = Bundle.main.url(forResource: "Jawaban_Salah_D", withExtension: "mp3") else { return }
+
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+
+            /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+
+            /* iOS 10 and earlier require the following line:
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
+
+            guard let player = player else { return }
+
+            player.play()
+
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func playSoundTrue() {
+        guard let url = Bundle.main.url(forResource: "Jawaban_Benar_A", withExtension: "mp3") else { return }
+
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+
+            /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+
+            /* iOS 10 and earlier require the following line:
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
+
+            guard let player = player else { return }
+
+            player.play()
+
+        } catch let error {
+            print(error.localizedDescription)
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -408,8 +911,6 @@ class QuizCellTypeI: UICollectionViewCell{
 }
 
 extension QuizCellTypeI : PKCanvasViewDelegate {
-    
-
     
     func canvasViewDrawingDidChange(_ canvasView: PKCanvasView) {
         if canvasView.tag == 0 {
@@ -434,25 +935,23 @@ extension QuizCellTypeI : PKCanvasViewDelegate {
         
         if aksaraCount == 1 {
             if isCanvas1Filled == true {
-                continueButton.alpha = 1
-            } else {
-                continueButton.alpha = 0.4
-            }
+                checkButton.removeLayer(name: "check")
+                checkButton.setCheckButtonBackgroundColor(withOpacity: 1)
+                checkButton.isEnabled = true
+            } 
         } else if aksaraCount == 2 {
             if isCanvas1Filled == true && isCanvas2Filled == true {
-                continueButton.alpha = 1
-            } else {
-                continueButton.alpha = 0.4
+                checkButton.removeLayer(name: "check")
+                checkButton.setCheckButtonBackgroundColor(withOpacity: 1)
+                checkButton.isEnabled = true
             }
         } else if aksaraCount == 3 {
             if isCanvas1Filled == true && isCanvas2Filled == true && isCanvas3Filled == true {
-                continueButton.alpha = 1
-            } else {
-                continueButton.alpha = 0.4
+                checkButton.removeLayer(name: "check")
+                checkButton.setCheckButtonBackgroundColor(withOpacity: 1)
+                checkButton.isEnabled = true
             }
         }
-        
-
     }
-
+    
 }

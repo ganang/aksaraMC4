@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
     
@@ -29,9 +30,55 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
     var isHeadFill = false
     var isTailFill = false
     
+    var headQuestion: String?
+    var tailQuestion: String?
+    var headAnswer: String?
+    var tailAnswer: String?
+    
     var centerPlaceHolderConstraint: NSLayoutConstraint?
     
     var delegate : QuizControllerProtocol?
+    
+    let generator = UINotificationFeedbackGenerator()
+    var player: AVAudioPlayer?
+    
+    var regionSelected: String?
+    var quizData: Quiz? {
+        didSet {
+            
+            // setup questions
+            let questions = quizData?.questions?.sortedArray(using: [.init(key: "id", ascending: true)]) as? [Question]
+            let questionName: String = (questions?[0].name!)!
+            headQuestion = "Head \(questionName)"
+            tailQuestion = "Tail \(questionName)"
+            
+            // set question text
+            let attrs1 = [NSAttributedString.Key.font : UIFont.init(name: "NowAlt-Medium", size: 24), NSAttributedString.Key.foregroundColor : Theme.current.textColor1]
+            let attrs2 = [NSAttributedString.Key.font : UIFont.init(name: "NowAlt-Bold", size: 24), NSAttributedString.Key.foregroundColor : Theme.current.textColor1]
+            let attributedString1 = NSMutableAttributedString(string: "Bagaimana anatomi aksara ", attributes: attrs1 as [NSAttributedString.Key : Any])
+            let attributedString2 = NSMutableAttributedString(string: questionName, attributes: attrs2 as [NSAttributedString.Key : Any])
+            let attributedString3 = NSMutableAttributedString(string: " ?", attributes: attrs1 as [NSAttributedString.Key : Any])
+            attributedString1.append(attributedString2)
+            attributedString1.append(attributedString3)
+            self.questionLabel.attributedText = attributedString1
+            
+            // set question image
+            let image = UIImage(named: "Jawa Jawaban \(questionName)")?.withRenderingMode(.alwaysTemplate)
+            questionPlaceholder.setImage(image, for: .normal)
+            aksaraLabel.text = questionName
+            
+            // setup answers
+            let answerChoices = quizData?.answerChoices?.sortedArray(using: [.init(key: "id", ascending: true)]) as? [AnswerChoice]
+            moveGS_HeadA.viewName = answerChoices?[0].name
+            moveGS_HeadB.viewName = answerChoices?[1].name
+            moveGS_HeadC.viewName = answerChoices?[2].name
+            moveGS_HeadD.viewName = answerChoices?[3].name
+            moveGS_TailA.viewName = answerChoices?[4].name
+            moveGS_TailB.viewName = answerChoices?[5].name
+            moveGS_TailC.viewName = answerChoices?[6].name
+            moveGS_TailD.viewName = answerChoices?[7].name
+        }
+    }
     
     lazy var placeholderHead: UIButton = {
         let button = UIButton()
@@ -64,7 +111,7 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
     let questionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Bagaimana anatomi aksara Ha ?"
+        label.text = ""
         label.font = UIFont.init(name: "NowAlt-Medium", size: 24)
         label.textColor = Theme.current.textColor1
         
@@ -137,7 +184,6 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
         button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
         button.imageView?.tintColor = Theme.current.accentWhite
         button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 130, bottom: 0, right: 0)
-        button.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 56, withWidth: Double(SCREEN_WIDTH), withCorner: 0)
         button.addInnerShadow()
         button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
         button.clipsToBounds = true
@@ -262,7 +308,7 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
     lazy var moveGS_HeadA: CustomPanGestureRecognizer = {
         let moveGS = CustomPanGestureRecognizer(target: self, action: #selector(self.gestureMoveObject(_:)))
         moveGS.name = "Head"
-        moveGS.viewName = "Jawa Jawaban Ha"
+        moveGS.viewName = ""
         moveGS.delegate = self
         
         return moveGS
@@ -271,7 +317,7 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
     lazy var moveGS_HeadB: CustomPanGestureRecognizer = {
         let moveGS = CustomPanGestureRecognizer(target: self, action: #selector(self.gestureMoveObject(_:)))
         moveGS.name = "Head"
-        moveGS.viewName = "Jawa Jawaban Na"
+        moveGS.viewName = ""
         moveGS.delegate = self
         
         return moveGS
@@ -280,7 +326,7 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
     lazy var moveGS_HeadC: CustomPanGestureRecognizer = {
         let moveGS = CustomPanGestureRecognizer(target: self, action: #selector(self.gestureMoveObject(_:)))
         moveGS.name = "Head"
-        moveGS.viewName = "Jawa Jawaban Ca"
+        moveGS.viewName = ""
         moveGS.delegate = self
         
         return moveGS
@@ -289,7 +335,7 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
     lazy var moveGS_HeadD: CustomPanGestureRecognizer = {
         let moveGS = CustomPanGestureRecognizer(target: self, action: #selector(self.gestureMoveObject(_:)))
         moveGS.name = "Head"
-        moveGS.viewName = "Jawa Jawaban Ra"
+        moveGS.viewName = ""
         moveGS.delegate = self
         
         return moveGS
@@ -298,7 +344,7 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
     lazy var moveGS_TailA: CustomPanGestureRecognizer = {
         let moveGS = CustomPanGestureRecognizer(target: self, action: #selector(self.gestureMoveObject(_:)))
         moveGS.name = "Tail"
-        moveGS.viewName = "Jawa Jawaban Ka"
+        moveGS.viewName = ""
         moveGS.delegate = self
         
         return moveGS
@@ -307,7 +353,7 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
     lazy var moveGS_TailB: CustomPanGestureRecognizer = {
         let moveGS = CustomPanGestureRecognizer(target: self, action: #selector(self.gestureMoveObject(_:)))
         moveGS.name = "Tail"
-        moveGS.viewName = "Jawa Jawaban Da"
+        moveGS.viewName = ""
         moveGS.delegate = self
         
         return moveGS
@@ -316,7 +362,7 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
     lazy var moveGS_TailC: CustomPanGestureRecognizer = {
         let moveGS = CustomPanGestureRecognizer(target: self, action: #selector(self.gestureMoveObject(_:)))
         moveGS.name = "Tail"
-        moveGS.viewName = "Jawa Jawaban Tha"
+        moveGS.viewName = ""
         moveGS.delegate = self
         
         return moveGS
@@ -325,7 +371,7 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
     lazy var moveGS_TailD: CustomPanGestureRecognizer = {
         let moveGS = CustomPanGestureRecognizer(target: self, action: #selector(self.gestureMoveObject(_:)))
         moveGS.name = "Tail"
-        moveGS.viewName = "Jawa Jawaban Sa"
+        moveGS.viewName = ""
         moveGS.delegate = self
         
         return moveGS
@@ -525,7 +571,7 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
         placeholderTail.widthAnchor.constraint(equalToConstant: 100).isActive = true
         placeholderTail.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
-        questionLabel.topAnchor.constraint(equalTo: topAnchor, constant: SCREEN_HEIGHT/4).isActive = true
+        questionLabel.topAnchor.constraint(equalTo: topAnchor, constant: 120).isActive = true
         questionLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         
         headerHeadLabel.frame = originHeaderHead
@@ -583,6 +629,68 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
     }
     
     @objc func handleCheckButton() {
+        hideViewAfterCheck()
+        showViewAfterCheck()
+        
+        // remove the original layer background
+        placeholderHead.removeLayer(name: "dragAndDropLayer")
+        placeholderTail.removeLayer(name: "dragAndDropLayer")
+        
+        checkAnswers()
+        
+        delegate?.stopTimerChoosen()
+        
+        // centering the placeholder
+        centerPlaceHolderConstraint?.constant = 120
+        layoutIfNeeded()
+    }
+    
+    func checkAnswers() {
+        
+        if (headQuestion == headAnswer && tailQuestion == tailQuestion) {
+            // handle true
+            questionLabel.text = "Benar sekali 😄"
+            questionLabel.textColor = Theme.current.accentTextGreen
+            placeholderHead.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
+            placeholderTail.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
+            
+            
+            delegate?.setTrueStatus()
+            
+            // handle continue button
+            self.continueButton.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 56, withWidth: Double(SCREEN_WIDTH), withCorner: 0)
+            
+            playSoundTrue()
+            generator.notificationOccurred(.success)
+        } else {
+            // handle false
+            questionLabel.text = "Sayang sekali ☹️"
+            questionLabel.textColor = Theme.current.accentTextRed
+            delegate?.setFalseStatus()
+            
+            // handle continue button
+            self.continueButton.setCheckButtonBackgroundColorFalse(withOpacity: 1, withHeight: 56, withWidth: Double(SCREEN_WIDTH), withCorner: 0)
+            
+            if (headQuestion == headAnswer) {
+                placeholderHead.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
+            } else {
+                placeholderHead.setCheckButtonBackgroundColorFalse(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
+                placeholderHead.shake()
+            }
+            
+            if (tailQuestion == tailAnswer) {
+                placeholderTail.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
+            } else {
+                placeholderTail.setCheckButtonBackgroundColorFalse(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
+                placeholderTail.shake()
+            }
+            
+            playSoundFalse()
+            generator.notificationOccurred(.error)
+        }
+    }
+    
+    func hideViewAfterCheck() {
         headA.isHidden = true
         headB.isHidden = true
         headC.isHidden = true
@@ -594,30 +702,50 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
         headerHeadLabel.isHidden = true
         headerTailLabel.isHidden = true
         checkButton.isHidden = true
+    }
+    
+    func showViewAfterCheck() {
         continueButton.isHidden = false
         questionPlaceholder.isHidden = false
         questionFullDetailLabel.isHidden = false
         answersFullDetailLabel.isHidden = false
         aksaraLabel.isHidden = false
-    
-        questionLabel.text = "Benar sekali 😄"
-        questionLabel.textColor = .systemGreen
-        
-        placeholderHead.removeLayer(name: "dragAndDropLayer")
-        placeholderTail.removeLayer(name: "dragAndDropLayer")
-        placeholderHead.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
-        placeholderTail.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
-        centerPlaceHolderConstraint?.constant = 120
-        
-        placeholderTail.shake()
-        let generator = UINotificationFeedbackGenerator()
-        generator.notificationOccurred(.success)
-        
-        layoutIfNeeded()
     }
     
     func handleTimer() {
-        print("TIME_OUT")
+        hideViewAfterCheck()
+        showViewAfterCheck()
+        
+        // remove the original layer background
+        placeholderHead.removeLayer(name: "dragAndDropLayer")
+        placeholderTail.removeLayer(name: "dragAndDropLayer")
+        
+        // handle false
+        questionLabel.text = "Sayang sekali waktumu habis ☹️"
+        questionLabel.textColor = Theme.current.accentTextRed
+        delegate?.setFalseStatus()
+        
+        // handle continue button
+        self.continueButton.setCheckButtonBackgroundColorFalse(withOpacity: 1, withHeight: 56, withWidth: Double(SCREEN_WIDTH), withCorner: 0)
+        
+        if (headQuestion == headAnswer) {
+            placeholderHead.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
+        } else {
+            placeholderHead.setCheckButtonBackgroundColorFalse(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
+            placeholderHead.shake()
+        }
+        
+        if (tailQuestion == tailAnswer) {
+            placeholderTail.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
+        } else {
+            placeholderTail.setCheckButtonBackgroundColorFalse(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
+            placeholderTail.shake()
+        }
+        
+        generator.notificationOccurred(.error)
+        // centering the placeholder
+        centerPlaceHolderConstraint?.constant = 120
+        layoutIfNeeded()
     }
     
     func updateStatusCheckButton() {
@@ -625,6 +753,50 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
             checkButton.removeLayer(name: "check")
             checkButton.setCheckButtonBackgroundColor(withOpacity: 1)
             checkButton.isEnabled = true
+        }
+    }
+    
+    func playSoundFalse() {
+        guard let url = Bundle.main.url(forResource: "Jawaban_Salah_D", withExtension: "mp3") else { return }
+
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+
+            /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+
+            /* iOS 10 and earlier require the following line:
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
+
+            guard let player = player else { return }
+
+            player.play()
+
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func playSoundTrue() {
+        guard let url = Bundle.main.url(forResource: "Jawaban_Benar_A", withExtension: "mp3") else { return }
+
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+
+            /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+
+            /* iOS 10 and earlier require the following line:
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
+
+            guard let player = player else { return }
+
+            player.play()
+
+        } catch let error {
+            print(error.localizedDescription)
         }
     }
     
@@ -643,6 +815,7 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
                     placeholderHead.setImage(image, for: .normal)
                     placeholderHead.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
                     placeholderHead.tintColor = .white
+                    headAnswer = viewName
                     
                     checkPlaceholderHead.setImage(image, for: .normal)
                     checkPlaceholderHead.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
@@ -670,6 +843,7 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
                     placeholderTail.setImage(image, for: .normal)
                     placeholderTail.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
                     placeholderTail.tintColor = .white
+                    tailAnswer = viewName
                     
                     checkPlaceholderTail.setImage(image, for: .normal)
                     checkPlaceholderTail.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)

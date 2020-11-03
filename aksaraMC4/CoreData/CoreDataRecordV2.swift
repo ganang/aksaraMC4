@@ -496,7 +496,7 @@ class CoreDataRecordV2 {
         question1_Quiz16_Level1_Stage1_Jawa.name = "Na"
         
         let question2_Quiz16_Level1_Stage1_Jawa = Question(context: PersistenceService.context)
-        question2_Quiz16_Level1_Stage1_Jawa.id = 1
+        question2_Quiz16_Level1_Stage1_Jawa.id = 2
         question2_Quiz16_Level1_Stage1_Jawa.name = "Ha"
         
         let quiz16_level1_stage1_Jawa = Quiz(context: PersistenceService.context)
@@ -513,7 +513,7 @@ class CoreDataRecordV2 {
         question1_Quiz17_Level1_Stage1_Jawa.name = "Wa"
         
         let question2_Quiz17_Level1_Stage1_Jawa = Question(context: PersistenceService.context)
-        question2_Quiz17_Level1_Stage1_Jawa.id = 1
+        question2_Quiz17_Level1_Stage1_Jawa.id = 2
         question2_Quiz17_Level1_Stage1_Jawa.name = "Na"
         
         let answerChoice1_Quiz17_Level1_Stage1_Jawa = AnswerChoice(context: PersistenceService.context)
@@ -570,12 +570,12 @@ class CoreDataRecordV2 {
         question1_Quiz18_Level1_Stage1_Jawa.name = "Wa"
         
         let question2_Quiz18_Level1_Stage1_Jawa = Question(context: PersistenceService.context)
-        question2_Quiz18_Level1_Stage1_Jawa.id = 1
+        question2_Quiz18_Level1_Stage1_Jawa.id = 2
         question2_Quiz18_Level1_Stage1_Jawa.name = "Ha"
         
         let question3_Quiz18_Level1_Stage1_Jawa = Question(context: PersistenceService.context)
-        question3_Quiz18_Level1_Stage1_Jawa.id = 1
-        question3_Quiz18_Level1_Stage1_Jawa.name = "Ha"
+        question3_Quiz18_Level1_Stage1_Jawa.id = 3
+        question3_Quiz18_Level1_Stage1_Jawa.name = "Na"
         
         let answerChoice1_Quiz18_Level1_Stage1_Jawa = AnswerChoice(context: PersistenceService.context)
         answerChoice1_Quiz18_Level1_Stage1_Jawa.id = 1
@@ -631,12 +631,12 @@ class CoreDataRecordV2 {
         question1_Quiz19_Level1_Stage1_Jawa.name = "Wa"
         
         let question2_Quiz19_Level1_Stage1_Jawa = Question(context: PersistenceService.context)
-        question2_Quiz19_Level1_Stage1_Jawa.id = 1
+        question2_Quiz19_Level1_Stage1_Jawa.id = 2
         question2_Quiz19_Level1_Stage1_Jawa.name = "Ha"
         
         let question3_Quiz19_Level1_Stage1_Jawa = Question(context: PersistenceService.context)
-        question3_Quiz19_Level1_Stage1_Jawa.id = 1
-        question3_Quiz19_Level1_Stage1_Jawa.name = "Ha"
+        question3_Quiz19_Level1_Stage1_Jawa.id = 3
+        question3_Quiz19_Level1_Stage1_Jawa.name = "Na"
         
         let quiz19_level1_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz19_level1_stage1_Jawa.id = 19
@@ -652,12 +652,12 @@ class CoreDataRecordV2 {
         question1_Quiz20_Level1_Stage1_Jawa.name = "Wa"
         
         let question2_Quiz20_Level1_Stage1_Jawa = Question(context: PersistenceService.context)
-        question2_Quiz20_Level1_Stage1_Jawa.id = 1
+        question2_Quiz20_Level1_Stage1_Jawa.id = 2
         question2_Quiz20_Level1_Stage1_Jawa.name = "Ha"
         
         let question3_Quiz20_Level1_Stage1_Jawa = Question(context: PersistenceService.context)
-        question3_Quiz20_Level1_Stage1_Jawa.id = 1
-        question3_Quiz20_Level1_Stage1_Jawa.name = "Ha"
+        question3_Quiz20_Level1_Stage1_Jawa.id = 3
+        question3_Quiz20_Level1_Stage1_Jawa.name = "Na"
         
         let quiz20_level1_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz20_level1_stage1_Jawa.id = 20
@@ -749,46 +749,6 @@ class CoreDataRecordV2 {
         tenthLevelStage1Jawa.totalMedal = 0
         tenthLevelStage1Jawa.quizes = []
         
-        let eleventhLevelStage1Jawa = Level(context: PersistenceService.context)
-        eleventhLevelStage1Jawa.id = 11
-        eleventhLevelStage1Jawa.name = "Level 11"
-        eleventhLevelStage1Jawa.isLocked = true
-        eleventhLevelStage1Jawa.isInitial = true
-        eleventhLevelStage1Jawa.totalMedal = 0
-        eleventhLevelStage1Jawa.quizes = []
-        
-        let twelfthLevelStage1Jawa = Level(context: PersistenceService.context)
-        twelfthLevelStage1Jawa.id = 12
-        twelfthLevelStage1Jawa.name = "Level 12"
-        twelfthLevelStage1Jawa.isLocked = true
-        twelfthLevelStage1Jawa.isInitial = true
-        twelfthLevelStage1Jawa.totalMedal = 0
-        twelfthLevelStage1Jawa.quizes = []
-        
-        let thirteenthLevelStage1Jawa = Level(context: PersistenceService.context)
-        thirteenthLevelStage1Jawa.id = 13
-        thirteenthLevelStage1Jawa.name = "Level 13"
-        thirteenthLevelStage1Jawa.isLocked = true
-        thirteenthLevelStage1Jawa.isInitial = true
-        thirteenthLevelStage1Jawa.totalMedal = 0
-        thirteenthLevelStage1Jawa.quizes = []
-        
-        let fourteenthLevelStage1Jawa = Level(context: PersistenceService.context)
-        fourteenthLevelStage1Jawa.id = 14
-        fourteenthLevelStage1Jawa.name = "Level 14"
-        fourteenthLevelStage1Jawa.isLocked = true
-        fourteenthLevelStage1Jawa.isInitial = true
-        fourteenthLevelStage1Jawa.totalMedal = 0
-        fourteenthLevelStage1Jawa.quizes = []
-        
-        let fifteenthLevelStage1Jawa = Level(context: PersistenceService.context)
-        fifteenthLevelStage1Jawa.id = 15
-        fifteenthLevelStage1Jawa.name = "Level 15"
-        fifteenthLevelStage1Jawa.isLocked = true
-        fifteenthLevelStage1Jawa.isInitial = true
-        fifteenthLevelStage1Jawa.totalMedal = 0
-        fifteenthLevelStage1Jawa.quizes = []
-        
         // MARK: Level for Stage 2 Jawa
         let firstLevelStage2Jawa = Level(context: PersistenceService.context)
         firstLevelStage2Jawa.id = 1
@@ -814,7 +774,7 @@ class CoreDataRecordV2 {
         firstStageJawa.currentMedal = 0
         firstStageJawa.totalMedal = 45
         firstStageJawa.isLocked = false
-        firstStageJawa.levels = [firstLevelStage1Jawa, secondLevelStage1Jawa, thirdLevelStage1Jawa, fourthLevelStage1Jawa, fifthLevelStage1Jawa, sixthLevelStage1Jawa, seventhLevelStage1Jawa, eightLevelStage1Jawa, ninthLevelStage1Jawa, tenthLevelStage1Jawa, eleventhLevelStage1Jawa, twelfthLevelStage1Jawa, thirteenthLevelStage1Jawa, fourteenthLevelStage1Jawa, fifteenthLevelStage1Jawa]
+        firstStageJawa.levels = [firstLevelStage1Jawa, secondLevelStage1Jawa, thirdLevelStage1Jawa, fourthLevelStage1Jawa, fifthLevelStage1Jawa, sixthLevelStage1Jawa, seventhLevelStage1Jawa, eightLevelStage1Jawa, ninthLevelStage1Jawa, tenthLevelStage1Jawa]
         
         let secondStageJawa = Stage(context: PersistenceService.context)
         secondStageJawa.id = 2

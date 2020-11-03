@@ -22,11 +22,41 @@ class QuizCellTypeH: UICollectionViewCell {
     var arrayOfButtonAksara : [ChoiceButton]?
     var arrayOfCheckmarkLatin : [UIImageView]?
     var arrayOfCheckmarkAksara : [UIImageView]?
-    var urutanLatin = ["Ha","Na","Ca","Ra"]
-    var urutanAksara = ["Na","Ra","Ca","Ha"]
+    var urutanLatin = [String]()
+    var urutanAksara = [String]()
     var correctAnswer : Int? = 0
+    var regionSelected: String?
     
-    var delegate : QuizControllerProtocol?
+    var delegate: QuizController?
+    var quizData: Quiz? {
+        didSet {
+            // setup questions
+            let questions = quizData?.questions?.sortedArray(using: [.init(key: "id", ascending: true)]) as? [Question]
+            let aksara1: String = (questions?[0].name)!
+            let aksara2: String = (questions?[1].name)!
+            let aksara3: String = (questions?[2].name)!
+            
+            let region: String = String(regionSelected!)
+            
+            let image1 = UIImage(named: "\(region) Jawaban \(aksara1)")?.withRenderingMode(.alwaysTemplate)
+            let image2 = UIImage(named: "\(region) Jawaban \(aksara2)")?.withRenderingMode(.alwaysTemplate)
+            let image3 = UIImage(named: "\(region) Jawaban \(aksara3)")?.withRenderingMode(.alwaysTemplate)
+            
+            self.urutanLatin = [aksara1, aksara2, aksara3]
+            self.urutanAksara = [aksara1, aksara2, aksara3]
+            
+            self.button1Latin.setTitle(aksara1, for: .normal)
+            self.button2Latin.setTitle(aksara2, for: .normal)
+            self.button3Latin.setTitle(aksara3, for: .normal)
+            
+            self.button1Aksara.setImage(image1, for: .normal)
+            self.button2Aksara.setImage(image2, for: .normal)
+            self.button3Aksara.setImage(image3, for: .normal)
+            
+            tagFunction()
+            
+        }
+    }
     
     let questionTitle : UILabel = {
         let label = UILabel()
@@ -50,7 +80,7 @@ class QuizCellTypeH: UICollectionViewCell {
         button.backgroundColor = .init(white: 1, alpha: 0.8)
         button.translatesAutoresizingMaskIntoConstraints = false
         
-        button.setTitle("Ha", for: .normal)
+        button.setTitle("", for: .normal)
         button.titleLabel?.font = UIFont.init(name: "NowAlt-Medium", size: 24)
         button.setTitleColor(Theme.current.textColor1, for: .normal)
         
@@ -82,7 +112,7 @@ class QuizCellTypeH: UICollectionViewCell {
         button.backgroundColor = .init(white: 1, alpha: 0.8)
         button.translatesAutoresizingMaskIntoConstraints = false
         
-        button.setTitle("Na", for: .normal)
+        button.setTitle("", for: .normal)
         button.titleLabel?.font = UIFont.init(name: "NowAlt-Medium", size: 24)
         button.setTitleColor(Theme.current.textColor1, for: .normal)
         
@@ -114,7 +144,7 @@ class QuizCellTypeH: UICollectionViewCell {
         button.backgroundColor = .init(white: 1, alpha: 0.8)
         button.translatesAutoresizingMaskIntoConstraints = false
         
-        button.setTitle("Ca", for: .normal)
+        button.setTitle("", for: .normal)
         button.titleLabel?.font = UIFont.init(name: "NowAlt-Medium", size: 24)
         button.setTitleColor(Theme.current.textColor1, for: .normal)
         
@@ -148,7 +178,7 @@ class QuizCellTypeH: UICollectionViewCell {
         button.backgroundColor = .init(white: 1, alpha: 0.8)
         button.translatesAutoresizingMaskIntoConstraints = false
         
-        button.setTitle("Ra", for: .normal)
+        button.setTitle("", for: .normal)
         button.titleLabel?.font = UIFont.init(name: "NowAlt-Medium", size: 24)
         button.setTitleColor(Theme.current.textColor1, for: .normal)
         
@@ -279,21 +309,22 @@ class QuizCellTypeH: UICollectionViewCell {
         return button
     }()
     
-    let continueButton : UIButton = {
-        let btn = UIButton()
-        btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.setTitle("Lanjut", for: .normal)
-        btn.titleLabel?.font = UIFont.init(name: "NowAlt-Medium", size: 16)
-        btn.setTitleColor(Theme.current.accentWhite, for: .normal)
+    lazy var continueButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Lanjut", for: .normal)
+        button.titleLabel?.font = UIFont.init(name: "NowAlt-Medium", size: 16)
+        button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+        button.imageView?.tintColor = Theme.current.accentWhite
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 130, bottom: 0, right: 0)
+        button.addInnerShadow()
+        button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
+        button.clipsToBounds = true
+        button.isEnabled = true
+        button.isHidden = true
+        button.layer.masksToBounds = false
         
-        btn.setImage(UIImage(systemName: "chevron.right"), for: .normal)
-        btn.imageView?.tintColor = Theme.current.accentWhite
-        btn.backgroundColor = UIColor.rgb(red: 25, green: 163, blue: 113, alpha: 1)
-        btn.imageEdgeInsets = UIEdgeInsets(top: 0, left: 130, bottom: 0, right: 0)
-        btn.isHidden = true
-        
-//        btn.setCardTrueBackgroundColor()
-        return btn
+        return button
     }()
     
     
@@ -302,11 +333,15 @@ class QuizCellTypeH: UICollectionViewCell {
         setBackgroundColor()
         backgroundColor = .blue
         setupView()
-        tagFunction()
+//        tagFunction()
         tappedFunction()
     }
     
     func handleTimer() {
+        handleFalse()
+    }
+    
+    @objc func handleCheckButton() {
         
     }
     
@@ -314,29 +349,29 @@ class QuizCellTypeH: UICollectionViewCell {
         button1Latin.nameAksara = urutanLatin[0]
         button2Latin.nameAksara = urutanLatin[1]
         button3Latin.nameAksara = urutanLatin[2]
-        button4Latin.nameAksara = urutanLatin[3]
+//        button4Latin.nameAksara = urutanLatin[3]
         
         button1Aksara.nameAksara = urutanAksara[0]
         button2Aksara.nameAksara = urutanAksara[1]
         button3Aksara.nameAksara = urutanAksara[2]
-        button4Aksara.nameAksara = urutanAksara[3]
+//        button4Aksara.nameAksara = urutanAksara[3]
         
-        self.arrayOfButtonLatin = [button1Latin, button2Latin, button3Latin, button4Latin]
-        self.arrayOfButtonAksara = [button1Aksara, button2Aksara, button3Aksara, button4Aksara]
-        self.arrayOfCheckmarkLatin = [check1LatinImage, check2LatinImage, check3LatinImage, check4LatinImage]
-        self.arrayOfCheckmarkAksara = [check1AksaraImage, check2AksaraImage, check3AksaraImage, check4AksaraImage]
+        self.arrayOfButtonLatin = [button1Latin, button2Latin, button3Latin]
+        self.arrayOfButtonAksara = [button1Aksara, button2Aksara, button3Aksara]
+        self.arrayOfCheckmarkLatin = [check1LatinImage, check2LatinImage, check3LatinImage]
+        self.arrayOfCheckmarkAksara = [check1AksaraImage, check2AksaraImage, check3AksaraImage]
     }
     
     func tappedFunction() {
         button1Latin.addTarget(self, action: #selector(buttonLatinTapped), for: .touchUpInside)
         button2Latin.addTarget(self, action: #selector(buttonLatinTapped), for: .touchUpInside)
         button3Latin.addTarget(self, action: #selector(buttonLatinTapped), for: .touchUpInside)
-        button4Latin.addTarget(self, action: #selector(buttonLatinTapped), for: .touchUpInside)
+//        button4Latin.addTarget(self, action: #selector(buttonLatinTapped), for: .touchUpInside)
         
         button1Aksara.addTarget(self, action: #selector(buttonAksaraTapped), for: .touchUpInside)
         button2Aksara.addTarget(self, action: #selector(buttonAksaraTapped), for: .touchUpInside)
         button3Aksara.addTarget(self, action: #selector(buttonAksaraTapped), for: .touchUpInside)
-        button4Aksara.addTarget(self, action: #selector(buttonAksaraTapped), for: .touchUpInside)
+//        button4Aksara.addTarget(self, action: #selector(buttonAksaraTapped), for: .touchUpInside)
     }
     
     @objc func buttonLatinTapped(_ sender: ChoiceButton) {
@@ -353,10 +388,10 @@ class QuizCellTypeH: UICollectionViewCell {
             button3Latin.removeLayer(name: "tap")
             button3Latin.setTitleColor(Theme.current.textColor1, for: .normal)
         }
-        if button4Latin.isLocked == false {
-            button4Latin.removeLayer(name: "tap")
-            button4Latin.setTitleColor(Theme.current.textColor1, for: .normal)
-        }
+//        if button4Latin.isLocked == false {
+//            button4Latin.removeLayer(name: "tap")
+//            button4Latin.setTitleColor(Theme.current.textColor1, for: .normal)
+//        }
 
         arrayOfButtonLatin![sender.noButtonLatin!].setChoiceTapBackgroundColor()
         arrayOfButtonLatin![sender.noButtonLatin!].setTitleColor(Theme.current.accentWhite, for: .normal)
@@ -381,10 +416,10 @@ class QuizCellTypeH: UICollectionViewCell {
             button3Aksara.removeLayer(name: "tap")
             button3Aksara.tintColor = Theme.current.textColor1
         }
-        if button4Aksara.isLocked == false {
-            button4Aksara.removeLayer(name: "tap")
-            button4Aksara.tintColor = Theme.current.textColor1
-        }
+//        if button4Aksara.isLocked == false {
+//            button4Aksara.removeLayer(name: "tap")
+//            button4Aksara.tintColor = Theme.current.textColor1
+//        }
 
         arrayOfButtonAksara![sender.noButtonAksara!].setChoiceTapBackgroundColor()
         arrayOfButtonAksara![sender.noButtonAksara!].tintColor = Theme.current.accentWhite
@@ -401,6 +436,26 @@ class QuizCellTypeH: UICollectionViewCell {
             checkNow()
         }
         
+    }
+    
+    func handleTrue() {
+        questionTitle.text = "Benar sekali 😄"
+        questionTitle.textColor = Theme.current.accentTextGreen
+        self.continueButton.isHidden = false
+        self.continueButton.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 56, withWidth: Double(SCREEN_WIDTH), withCorner: 0)
+        delegate?.stopTimerChoosen()
+        delegate?.setTrueStatus()
+        self.playSoundTrue()
+    }
+    
+    func handleFalse() {
+        questionTitle.text = "Sayang sekali 😄"
+        questionTitle.textColor = Theme.current.accentTextRed
+        self.continueButton.isHidden = false
+        self.continueButton.setCheckButtonBackgroundColorFalse(withOpacity: 1, withHeight: 56, withWidth: Double(SCREEN_WIDTH), withCorner: 0)
+        delegate?.stopTimerChoosen()
+        delegate?.setFalseStatus()
+        self.playSoundFalse()
     }
 
     func checkNow() {
@@ -432,7 +487,6 @@ class QuizCellTypeH: UICollectionViewCell {
                 self.tempNoLatin = nil
                 self.tempLatin = nil
                 
-                
                 //AKSARA
                 self.arrayOfButtonAksara![self.tempNoAksara!].removeLayer(name: "tap")
                 self.arrayOfButtonAksara![self.tempNoAksara!].setChoiceTrueBackgroundColor()
@@ -458,8 +512,8 @@ class QuizCellTypeH: UICollectionViewCell {
                 self.tempAksara = nil
                 self.playSoundTrue()
                 
-                if self.correctAnswer == 4 {
-                    self.continueButton.isHidden = false
+                if self.correctAnswer == 3 {
+                    self.handleTrue()
                 }
                 
             }
@@ -574,18 +628,18 @@ class QuizCellTypeH: UICollectionViewCell {
         check3LatinImage.heightAnchor.constraint(equalToConstant: 24).isActive = true
         check3LatinImage.isHidden = true
         
-        addSubview(button4Latin)
-        button4Latin.trailingAnchor.constraint(equalTo: centerXAnchor,constant: -20.5).isActive = true
-        button4Latin.topAnchor.constraint(equalTo: button3Latin.bottomAnchor, constant: 12).isActive = true
-        button4Latin.widthAnchor.constraint(equalToConstant: 240).isActive = true
-        button4Latin.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        
-        addSubview(check4LatinImage)
-        check4LatinImage.centerYAnchor.constraint(equalTo: button4Latin.centerYAnchor).isActive = true
-        check4LatinImage.trailingAnchor.constraint(equalTo: button4Latin.leadingAnchor, constant: -12).isActive = true
-        check4LatinImage.widthAnchor.constraint(equalToConstant: 24).isActive = true
-        check4LatinImage.heightAnchor.constraint(equalToConstant: 24).isActive = true
-        check4LatinImage.isHidden = true
+//        addSubview(button4Latin)
+//        button4Latin.trailingAnchor.constraint(equalTo: centerXAnchor,constant: -20.5).isActive = true
+//        button4Latin.topAnchor.constraint(equalTo: button3Latin.bottomAnchor, constant: 12).isActive = true
+//        button4Latin.widthAnchor.constraint(equalToConstant: 240).isActive = true
+//        button4Latin.heightAnchor.constraint(equalToConstant: 100).isActive = true
+//
+//        addSubview(check4LatinImage)
+//        check4LatinImage.centerYAnchor.constraint(equalTo: button4Latin.centerYAnchor).isActive = true
+//        check4LatinImage.trailingAnchor.constraint(equalTo: button4Latin.leadingAnchor, constant: -12).isActive = true
+//        check4LatinImage.widthAnchor.constraint(equalToConstant: 24).isActive = true
+//        check4LatinImage.heightAnchor.constraint(equalToConstant: 24).isActive = true
+//        check4LatinImage.isHidden = true
         
         addSubview(button1Aksara)
         button1Aksara.leadingAnchor.constraint(equalTo: centerXAnchor,constant: 20.5).isActive = true
@@ -626,18 +680,18 @@ class QuizCellTypeH: UICollectionViewCell {
         check3AksaraImage.heightAnchor.constraint(equalToConstant: 24).isActive = true
         check3AksaraImage.isHidden = true
         
-        addSubview(button4Aksara)
-        button4Aksara.leadingAnchor.constraint(equalTo: centerXAnchor,constant: 20.5).isActive = true
-        button4Aksara.topAnchor.constraint(equalTo: button3Aksara.bottomAnchor, constant: 12).isActive = true
-        button4Aksara.widthAnchor.constraint(equalToConstant: 240).isActive = true
-        button4Aksara.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        
-        addSubview(check4AksaraImage)
-        check4AksaraImage.centerYAnchor.constraint(equalTo: button4Aksara.centerYAnchor).isActive = true
-        check4AksaraImage.leadingAnchor.constraint(equalTo: button4Aksara.trailingAnchor, constant: 12).isActive = true
-        check4AksaraImage.widthAnchor.constraint(equalToConstant: 24).isActive = true
-        check4AksaraImage.heightAnchor.constraint(equalToConstant: 24).isActive = true
-        check4AksaraImage.isHidden = true
+//        addSubview(button4Aksara)
+//        button4Aksara.leadingAnchor.constraint(equalTo: centerXAnchor,constant: 20.5).isActive = true
+//        button4Aksara.topAnchor.constraint(equalTo: button3Aksara.bottomAnchor, constant: 12).isActive = true
+//        button4Aksara.widthAnchor.constraint(equalToConstant: 240).isActive = true
+//        button4Aksara.heightAnchor.constraint(equalToConstant: 100).isActive = true
+//
+//        addSubview(check4AksaraImage)
+//        check4AksaraImage.centerYAnchor.constraint(equalTo: button4Aksara.centerYAnchor).isActive = true
+//        check4AksaraImage.leadingAnchor.constraint(equalTo: button4Aksara.trailingAnchor, constant: 12).isActive = true
+//        check4AksaraImage.widthAnchor.constraint(equalToConstant: 24).isActive = true
+//        check4AksaraImage.heightAnchor.constraint(equalToConstant: 24).isActive = true
+//        check4AksaraImage.isHidden = true
         
         addSubview(continueButton)
         continueButton.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
