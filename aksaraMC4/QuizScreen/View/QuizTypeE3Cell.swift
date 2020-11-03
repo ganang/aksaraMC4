@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class QuizTypeE3Cell: BaseCell, UIGestureRecognizerDelegate {
     
@@ -30,11 +31,100 @@ class QuizTypeE3Cell: BaseCell, UIGestureRecognizerDelegate {
     var isCarakanB = false
     var isCarakanC = false
     
+    var carakan1Question: String?
+    var carakan2Question: String?
+    var carakan3Question: String?
+    var carakan1Answer: String? = ""
+    var carakan2Answer: String? = ""
+    var carakan3Answer: String? = ""
+    
     var selectedArray = [10, 11, 12]
     
     var centerPlaceHolderConstraint: NSLayoutConstraint?
     
     var delegate : QuizControllerProtocol?
+    
+    let generator = UINotificationFeedbackGenerator()
+    var player: AVAudioPlayer?
+    
+    var regionSelected: String?
+    var quizData: Quiz? {
+        didSet {
+            let region: String = String(regionSelected!)
+            
+            // setup questions
+            let questions = quizData?.questions?.sortedArray(using: [.init(key: "id", ascending: true)]) as? [Question]
+            let questionName1: String = (questions?[0].name!)!
+            let questionName2: String = (questions?[1].name!)!
+            let questionName3: String = (questions?[2].name!)!
+            carakan1Question = questionName1
+            carakan2Question = questionName2
+            carakan3Question = questionName3
+            
+            // set question image
+            let image1 = UIImage(named: "\(region) Jawaban \(questionName1)")?.withRenderingMode(.alwaysTemplate)
+            questionPlaceholder1.setImage(image1, for: .normal)
+            aksaraLabel1.text = questionName1
+            footerPlaceholderCarakanA.text = questionName1
+            
+            let image2 = UIImage(named: "\(region) Jawaban \(questionName2)")?.withRenderingMode(.alwaysTemplate)
+            questionPlaceholder2.setImage(image2, for: .normal)
+            aksaraLabel2.text = questionName2
+            footerPlaceholderCarakanB.text = questionName2
+            
+            let image3 = UIImage(named: "\(region) Jawaban \(questionName3)")?.withRenderingMode(.alwaysTemplate)
+            questionPlaceholder3.setImage(image3, for: .normal)
+            aksaraLabel3.text = questionName3
+            footerPlaceholderCarakanC.text = questionName3
+            
+            // setup answers
+            let answerChoices = quizData?.answerChoices?.sortedArray(using: [.init(key: "id", ascending: true)]) as? [AnswerChoice]
+            let answer1: String = String((answerChoices?[0].name)!)
+            let answer2: String = String((answerChoices?[1].name)!)
+            let answer3: String = String((answerChoices?[2].name)!)
+            let answer4: String = String((answerChoices?[3].name)!)
+            let answer5: String = String((answerChoices?[4].name)!)
+            let answer6: String = String((answerChoices?[5].name)!)
+            let answer7: String = String((answerChoices?[6].name)!)
+            let answer8: String = String((answerChoices?[7].name)!)
+            
+            moveGS_carakan1.name = answer1
+            moveGS_carakan2.name = answer2
+            moveGS_carakan3.name = answer3
+            moveGS_carakan4.name = answer4
+            moveGS_carakan5.name = answer5
+            moveGS_carakan6.name = answer6
+            moveGS_carakan7.name = answer7
+            moveGS_carakan8.name = answer8
+            
+            moveGS_carakan1.viewName = "\(region) Jawaban \(answer1)"
+            moveGS_carakan2.viewName = "\(region) Jawaban \(answer2)"
+            moveGS_carakan3.viewName = "\(region) Jawaban \(answer3)"
+            moveGS_carakan4.viewName = "\(region) Jawaban \(answer4)"
+            moveGS_carakan5.viewName = "\(region) Jawaban \(answer5)"
+            moveGS_carakan6.viewName = "\(region) Jawaban \(answer6)"
+            moveGS_carakan7.viewName = "\(region) Jawaban \(answer7)"
+            moveGS_carakan8.viewName = "\(region) Jawaban \(answer8)"
+            
+            let imageCarakan1 = UIImage(named: "\(region) Jawaban \(answer1)")?.withRenderingMode(.alwaysTemplate)
+            let imageCarakan2 = UIImage(named: "\(region) Jawaban \(answer2)")?.withRenderingMode(.alwaysTemplate)
+            let imageCarakan3 = UIImage(named: "\(region) Jawaban \(answer3)")?.withRenderingMode(.alwaysTemplate)
+            let imageCarakan4 = UIImage(named: "\(region) Jawaban \(answer4)")?.withRenderingMode(.alwaysTemplate)
+            let imageCarakan5 = UIImage(named: "\(region) Jawaban \(answer5)")?.withRenderingMode(.alwaysTemplate)
+            let imageCarakan6 = UIImage(named: "\(region) Jawaban \(answer6)")?.withRenderingMode(.alwaysTemplate)
+            let imageCarakan7 = UIImage(named: "\(region) Jawaban \(answer7)")?.withRenderingMode(.alwaysTemplate)
+            let imageCarakan8 = UIImage(named: "\(region) Jawaban \(answer8)")?.withRenderingMode(.alwaysTemplate)
+            
+            carakan1.setImage(imageCarakan1, for: .normal)
+            carakan2.setImage(imageCarakan2, for: .normal)
+            carakan3.setImage(imageCarakan3, for: .normal)
+            carakan4.setImage(imageCarakan4, for: .normal)
+            carakan5.setImage(imageCarakan5, for: .normal)
+            carakan6.setImage(imageCarakan6, for: .normal)
+            carakan7.setImage(imageCarakan7, for: .normal)
+            carakan8.setImage(imageCarakan8, for: .normal)
+        }
+    }
     
     lazy var placeholderCarakanA: UIButton = {
         let button = UIButton()
@@ -164,15 +254,12 @@ class QuizTypeE3Cell: BaseCell, UIGestureRecognizerDelegate {
         button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
         button.imageView?.tintColor = Theme.current.accentWhite
         button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 130, bottom: 0, right: 0)
-        button.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 56, withWidth: Double(SCREEN_WIDTH), withCorner: 0)
         button.addInnerShadow()
         button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
         button.clipsToBounds = true
         button.isEnabled = true
         button.isHidden = true
         button.layer.masksToBounds = false
-        
-        return button
         
         return button
     }()
@@ -572,7 +659,7 @@ class QuizTypeE3Cell: BaseCell, UIGestureRecognizerDelegate {
         placeholderCarakanC.widthAnchor.constraint(equalToConstant: 100).isActive = true
         placeholderCarakanC.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
-        questionLabel.topAnchor.constraint(equalTo: topAnchor, constant: SCREEN_HEIGHT/4).isActive = true
+        questionLabel.topAnchor.constraint(equalTo: topAnchor, constant: 120).isActive = true
         questionLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         
         headerCarakanALabel.frame = originHeaderHead
@@ -638,6 +725,23 @@ class QuizTypeE3Cell: BaseCell, UIGestureRecognizerDelegate {
     }
     
     @objc func handleCheckButton() {
+        hideViewAfterCheck()
+        showViewAfterCheck()
+        
+        placeholderCarakanA.removeLayer(name: "dragAndDropLayer")
+        placeholderCarakanB.removeLayer(name: "dragAndDropLayer")
+        placeholderCarakanC.removeLayer(name: "dragAndDropLayer")
+        
+        // check answer
+        checkAnswers()
+        
+        delegate?.stopTimerChoosen()
+        
+        centerPlaceHolderConstraint?.constant = 120
+        layoutIfNeeded()
+    }
+    
+    func hideViewAfterCheck() {
         carakan1.isHidden = true
         carakan2.isHidden = true
         carakan3.isHidden = true
@@ -648,11 +752,10 @@ class QuizTypeE3Cell: BaseCell, UIGestureRecognizerDelegate {
         carakan8.isHidden = true
         headerCarakanALabel.isHidden = true
         headerCarakanBLabel.isHidden = true
-        questionLabel.text = "Benar sekali 😄"
-        questionLabel.textColor = .systemGreen
-        
         checkButton.isHidden = true
-        
+    }
+    
+    func showViewAfterCheck() {
         continueButton.isHidden = false
         questionPlaceholder1.isHidden = false
         questionPlaceholder2.isHidden = false
@@ -663,24 +766,111 @@ class QuizTypeE3Cell: BaseCell, UIGestureRecognizerDelegate {
         
         questionFullDetailLabel.isHidden = false
         answersFullDetailLabel.isHidden = false
+    }
+    
+    func checkAnswers() {
+        footerPlaceholderCarakanA.text = carakan1Answer
+        footerPlaceholderCarakanB.text = carakan2Answer
+        footerPlaceholderCarakanC.text = carakan3Answer
         
-        placeholderCarakanA.removeLayer(name: "dragAndDropLayer")
-        placeholderCarakanB.removeLayer(name: "dragAndDropLayer")
-        placeholderCarakanC.removeLayer(name: "dragAndDropLayer")
-        placeholderCarakanA.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
-        placeholderCarakanB.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
-        placeholderCarakanC.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
-        centerPlaceHolderConstraint?.constant = 120
+        if (carakan1Question == carakan1Answer && carakan2Question == carakan2Answer && carakan3Question == carakan3Answer) {
+            // handle true
+            questionLabel.text = "Benar sekali 😄"
+            questionLabel.textColor = Theme.current.accentTextGreen
+            placeholderCarakanA.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
+            placeholderCarakanB.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
+            placeholderCarakanC.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
         
-        placeholderCarakanB.shake()
-        let generator = UINotificationFeedbackGenerator()
-        generator.notificationOccurred(.success)
-        
-        layoutIfNeeded()
+            delegate?.setTrueStatus()
+            
+            // handle continue button
+            self.continueButton.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 56, withWidth: Double(SCREEN_WIDTH), withCorner: 0)
+            
+            playSoundTrue()
+            generator.notificationOccurred(.success)
+        } else {
+            // handle false
+            questionLabel.text = "Sayang sekali ☹️"
+            questionLabel.textColor = Theme.current.accentTextRed
+            
+            delegate?.setFalseStatus()
+            
+            // handle continue button
+            self.continueButton.setCheckButtonBackgroundColorFalse(withOpacity: 1, withHeight: 56, withWidth: Double(SCREEN_WIDTH), withCorner: 0)
+            
+            if (carakan1Question == carakan1Answer) {
+                placeholderCarakanA.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
+            } else {
+                placeholderCarakanA.setCheckButtonBackgroundColorFalse(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
+                placeholderCarakanA.shake()
+            }
+            
+            if (carakan2Question == carakan2Answer) {
+                placeholderCarakanB.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
+            } else {
+                placeholderCarakanB.setCheckButtonBackgroundColorFalse(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
+                placeholderCarakanB.shake()
+            }
+            
+            if (carakan3Question == carakan3Answer) {
+                placeholderCarakanC.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
+            } else {
+                placeholderCarakanC.setCheckButtonBackgroundColorFalse(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
+                placeholderCarakanC.shake()
+            }
+            
+            playSoundFalse()
+            generator.notificationOccurred(.error)
+        }
     }
     
     func handleTimer() {
-        print("TIME_OUT")
+        footerPlaceholderCarakanA.text = carakan1Answer
+        footerPlaceholderCarakanB.text = carakan2Answer
+        footerPlaceholderCarakanC.text = carakan3Answer
+        
+        hideViewAfterCheck()
+        showViewAfterCheck()
+        
+        // remove the original layer background
+        placeholderCarakanA.removeLayer(name: "dragAndDropLayer")
+        placeholderCarakanB.removeLayer(name: "dragAndDropLayer")
+        placeholderCarakanC.removeLayer(name: "dragAndDropLayer")
+        
+        // handle false
+        questionLabel.text = "Sayang sekali waktumu habis ☹️"
+        questionLabel.textColor = Theme.current.accentTextRed
+        delegate?.setFalseStatus()
+        
+        // handle continue button
+        self.continueButton.setCheckButtonBackgroundColorFalse(withOpacity: 1, withHeight: 56, withWidth: Double(SCREEN_WIDTH), withCorner: 0)
+        
+        if (carakan1Question == carakan1Answer) {
+            placeholderCarakanA.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
+        } else {
+            placeholderCarakanA.setCheckButtonBackgroundColorFalse(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
+            placeholderCarakanA.shake()
+        }
+        
+        if (carakan2Question == carakan2Answer) {
+            placeholderCarakanB.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
+        } else {
+            placeholderCarakanB.setCheckButtonBackgroundColorFalse(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
+            placeholderCarakanB.shake()
+        }
+        
+        if (carakan3Question == carakan3Answer) {
+            placeholderCarakanC.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
+        } else {
+            placeholderCarakanC.setCheckButtonBackgroundColorFalse(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
+            placeholderCarakanC.shake()
+        }
+        
+        generator.notificationOccurred(.error)
+        
+        // centering the placeholder
+        centerPlaceHolderConstraint?.constant = 120
+        layoutIfNeeded()
     }
     
     func rectIntersectionInPerc(r1:CGRect, r2:CGRect) -> CGFloat {
@@ -713,10 +903,55 @@ class QuizTypeE3Cell: BaseCell, UIGestureRecognizerDelegate {
         }
     }
     
+    func playSoundFalse() {
+        guard let url = Bundle.main.url(forResource: "Jawaban_Salah_D", withExtension: "mp3") else { return }
+
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+
+            /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+
+            /* iOS 10 and earlier require the following line:
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
+
+            guard let player = player else { return }
+
+            player.play()
+
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func playSoundTrue() {
+        guard let url = Bundle.main.url(forResource: "Jawaban_Benar_A", withExtension: "mp3") else { return }
+
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+
+            /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+
+            /* iOS 10 and earlier require the following line:
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
+
+            guard let player = player else { return }
+
+            player.play()
+
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    
     // MARK: Gesture to move selected object
     @objc func gestureMoveObject(_ sender: CustomPanGestureRecognizer){
         let senderView = sender.view
         let viewName = sender.viewName
+        let name =  sender.name
         let index = sender.index! as Int
         
         if sender.state == .ended {
@@ -731,6 +966,7 @@ class QuizTypeE3Cell: BaseCell, UIGestureRecognizerDelegate {
                     placeholderCarakanA.setImage(image, for: .normal)
                     placeholderCarakanA.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
                     placeholderCarakanA.tintColor = .white
+                    carakan1Answer = name
                     
                     selectedArray[0] = index
                     resetButton()
@@ -746,7 +982,7 @@ class QuizTypeE3Cell: BaseCell, UIGestureRecognizerDelegate {
                     placeholderCarakanB.setImage(image, for: .normal)
                     placeholderCarakanB.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
                     placeholderCarakanB.tintColor = .white
-                    
+                    carakan2Answer = name
                     selectedArray[1] = index
                     resetButton()
                     
@@ -767,7 +1003,7 @@ class QuizTypeE3Cell: BaseCell, UIGestureRecognizerDelegate {
                     placeholderCarakanB.setImage(image, for: .normal)
                     placeholderCarakanB.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
                     placeholderCarakanB.tintColor = .white
-                    
+                    carakan2Answer = name
                     selectedArray[1] = index
                     resetButton()
                     
@@ -782,7 +1018,7 @@ class QuizTypeE3Cell: BaseCell, UIGestureRecognizerDelegate {
                     placeholderCarakanC.setImage(image, for: .normal)
                     placeholderCarakanC.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
                     placeholderCarakanC.tintColor = .white
-                    
+                    carakan3Answer = name
                     selectedArray[2] = index
                     resetButton()
 
@@ -799,7 +1035,7 @@ class QuizTypeE3Cell: BaseCell, UIGestureRecognizerDelegate {
                 placeholderCarakanA.setImage(image, for: .normal)
                 placeholderCarakanA.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
                 placeholderCarakanA.tintColor = .white
-                
+                carakan1Answer = name
                 selectedArray[0] = index
                 resetButton()
                 
@@ -814,7 +1050,7 @@ class QuizTypeE3Cell: BaseCell, UIGestureRecognizerDelegate {
                 placeholderCarakanB.setImage(image, for: .normal)
                 placeholderCarakanB.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
                 placeholderCarakanB.tintColor = .white
-                
+                carakan2Answer = name
                 selectedArray[1] = index
                 resetButton()
                 
@@ -829,7 +1065,7 @@ class QuizTypeE3Cell: BaseCell, UIGestureRecognizerDelegate {
                 placeholderCarakanC.setImage(image, for: .normal)
                 placeholderCarakanC.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
                 placeholderCarakanC.tintColor = .white
-                
+                carakan3Answer = name
                 selectedArray[2] = index
                 resetButton()
 

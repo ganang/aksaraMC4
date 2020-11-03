@@ -21,11 +21,6 @@ class LevelController: UIViewController {
     var level8Model: Level?
     var level9Model: Level?
     var level10Model: Level?
-    var level11Model: Level?
-    var level12Model: Level?
-    var level13Model: Level?
-    var level14Model: Level?
-    var level15Model: Level?
     var currentLevel: Int?
     var currentStage: Int?
     
@@ -43,11 +38,6 @@ class LevelController: UIViewController {
             level8Model = levels![7]
             level9Model = levels![8]
             level10Model = levels![9]
-            level11Model = levels![10]
-            level12Model = levels![11]
-            level13Model = levels![12]
-            level14Model = levels![13]
-            level15Model = levels![14]
         }
     }
     var quizes : [Quiz]?
@@ -109,13 +99,13 @@ class LevelController: UIViewController {
                     self.currentLevel = 1
                     break
                 }
-            } else if i == 14 {
+            } else if i == 9 {
        
-                if level14Model!.isLocked == false {
-                    self.currentLevel = 15
+                if level9Model!.isLocked == false {
+                    self.currentLevel = 9
                     break
                 }
-            } else if i>0 && i<14 {
+            } else if i>0 && i<9 {
               
                 if levels![i-1].isLocked == false && levels![i+1].isLocked == true {
                     self.currentLevel = i+1
@@ -434,166 +424,6 @@ class LevelController: UIViewController {
                 levelView.gunungan10Image.image = UIImage(named: "gunungan3")
             }
         }
-        
-        //setting layout level 11
-        if level11Model?.isLocked  == true && currentLevel != 11 {
-            levelView.level11Button.setImage(UIImage(named: "levelButton Locked"), for: .normal)
-            levelView.gunungan11Image.image = UIImage(named: "gunungan0")
-        } else if level1Model?.isLocked == false && currentLevel != 11 {
-            levelView.level11Button.setImage(UIImage(named: "levelButton Done"), for: .normal)
-            
-            if level11Model?.totalMedal == 0 {
-                levelView.gunungan11Image.image = UIImage(named: "gunungan0")
-            } else if level11Model?.totalMedal == 1 {
-                levelView.gunungan11Image.image = UIImage(named: "gunungan1")
-            } else if level11Model?.totalMedal == 2 {
-                levelView.gunungan11Image.image = UIImage(named: "gunungan2")
-            } else if level11Model?.totalMedal == 3 {
-                levelView.gunungan11Image.image = UIImage(named: "gunungan3")
-            }
-            
-        } else if currentLevel == 11 {
-            levelView.level11Button.setImage(UIImage(named: "levelButton Onprogress"), for: .normal)
-            levelView.trackImage.image = UIImage(named: "Track 11")
-            if level11Model?.totalMedal == 0 {
-                levelView.gunungan11Image.image = UIImage(named: "gunungan0")
-            } else if level11Model?.totalMedal == 1 {
-                levelView.gunungan11Image.image = UIImage(named: "gunungan1")
-            } else if level11Model?.totalMedal == 2 {
-                levelView.gunungan11Image.image = UIImage(named: "gunungan2")
-            } else if level11Model?.totalMedal == 3 {
-                levelView.gunungan11Image.image = UIImage(named: "gunungan3")
-            }
-            
-        }
-        
-        //setting level 12
-        if level12Model?.isLocked  == true && currentLevel != 12 {
-            levelView.level12Button.setImage(UIImage(named: "levelButton Locked"), for: .normal)
-            levelView.gunungan12Image.image = UIImage(named: "gunungan0")
-        } else if level12Model?.isLocked == false && currentLevel != 12 {
-            levelView.level12Button.setImage(UIImage(named: "levelButton Done"), for: .normal)
-            
-            if level12Model?.totalMedal == 0 {
-                levelView.gunungan12Image.image = UIImage(named: "gunungan0")
-            } else if level12Model?.totalMedal == 1 {
-                levelView.gunungan12Image.image = UIImage(named: "gunungan1")
-            } else if level12Model?.totalMedal == 2 {
-                levelView.gunungan12Image.image = UIImage(named: "gunungan2")
-            } else if level12Model?.totalMedal == 3 {
-                levelView.gunungan12Image.image = UIImage(named: "gunungan3")
-            }
-            
-        } else if currentLevel == 12 {
-            levelView.level12Button.setImage(UIImage(named: "levelButton Onprogress"), for: .normal)
-            levelView.trackImage.image = UIImage(named: "Track 12")
-            if level12Model?.totalMedal == 0 {
-                levelView.gunungan12Image.image = UIImage(named: "gunungan0")
-            } else if level12Model?.totalMedal == 1 {
-                levelView.gunungan12Image.image = UIImage(named: "gunungan1")
-            } else if level12Model?.totalMedal == 2 {
-                levelView.gunungan12Image.image = UIImage(named: "gunungan2")
-            } else if level12Model?.totalMedal == 3 {
-                levelView.gunungan12Image.image = UIImage(named: "gunungan3")
-            }
-            
-        }
-        
-        //setting level 13
-        if level13Model?.isLocked  == true && currentLevel != 13 {
-            levelView.level13Button.setImage(UIImage(named: "levelButton Locked"), for: .normal)
-            levelView.gunungan13Image.image = UIImage(named: "gunungan0")
-        } else if level13Model?.isLocked == false && currentLevel != 13 {
-            levelView.level13Button.setImage(UIImage(named: "levelButton Done"), for: .normal)
-            
-            if level13Model?.totalMedal == 0 {
-                levelView.gunungan13Image.image = UIImage(named: "gunungan0")
-            } else if level13Model?.totalMedal == 1 {
-                levelView.gunungan13Image.image = UIImage(named: "gunungan1")
-            } else if level13Model?.totalMedal == 2 {
-                levelView.gunungan13Image.image = UIImage(named: "gunungan2")
-            } else if level13Model?.totalMedal == 3 {
-                levelView.gunungan13Image.image = UIImage(named: "gunungan3")
-            }
-            
-        } else if currentLevel == 13 {
-            levelView.level13Button.setImage(UIImage(named: "levelButton Onprogress"), for: .normal)
-            levelView.trackImage.image = UIImage(named: "Track 13")
-            if level13Model?.totalMedal == 0 {
-                levelView.gunungan13Image.image = UIImage(named: "gunungan0")
-            } else if level13Model?.totalMedal == 1 {
-                levelView.gunungan13Image.image = UIImage(named: "gunungan1")
-            } else if level13Model?.totalMedal == 2 {
-                levelView.gunungan13Image.image = UIImage(named: "gunungan2")
-            } else if level13Model?.totalMedal == 3 {
-                levelView.gunungan13Image.image = UIImage(named: "gunungan3")
-            }
-            
-        }
-        
-        //setting level 14
-        if level14Model?.isLocked  == true && currentLevel != 14 {
-            levelView.level14Button.setImage(UIImage(named: "levelButton Locked"), for: .normal)
-            levelView.gunungan14Image.image = UIImage(named: "gunungan0")
-        } else if level14Model?.isLocked == false && currentLevel != 14 {
-            levelView.level14Button.setImage(UIImage(named: "levelButton Done"), for: .normal)
-            
-            if level14Model?.totalMedal == 0 {
-                levelView.gunungan14Image.image = UIImage(named: "gunungan0")
-            } else if level14Model?.totalMedal == 1 {
-                levelView.gunungan14Image.image = UIImage(named: "gunungan1")
-            } else if level14Model?.totalMedal == 2 {
-                levelView.gunungan14Image.image = UIImage(named: "gunungan2")
-            } else if level14Model?.totalMedal == 3 {
-                levelView.gunungan14Image.image = UIImage(named: "gunungan3")
-            }
-            
-            
-        } else if currentLevel == 14 {
-            levelView.level14Button.setImage(UIImage(named: "levelButton Onprogress"), for: .normal)
-            levelView.trackImage.image = UIImage(named: "Track 14")
-            if level14Model?.totalMedal == 0 {
-                levelView.gunungan14Image.image = UIImage(named: "gunungan0")
-            } else if level14Model?.totalMedal == 1 {
-                levelView.gunungan14Image.image = UIImage(named: "gunungan1")
-            } else if level14Model?.totalMedal == 2 {
-                levelView.gunungan14Image.image = UIImage(named: "gunungan2")
-            } else if level14Model?.totalMedal == 3 {
-                levelView.gunungan14Image.image = UIImage(named: "gunungan3")
-            }
-            
-        }
-        
-        //setting level 15
-        if level15Model?.isLocked  == true && currentLevel != 15 {
-            levelView.level15Button.setImage(UIImage(named: "levelButton Locked"), for: .normal)
-            levelView.gunungan15Image.image = UIImage(named: "gunungan0")
-        } else if level15Model?.isLocked == false && currentLevel != 15 {
-            levelView.level15Button.setImage(UIImage(named: "levelButton Done"), for: .normal)
-            
-            if level15Model?.totalMedal == 0 {
-                levelView.gunungan15Image.image = UIImage(named: "gunungan0")
-            } else if level15Model?.totalMedal == 1 {
-                levelView.gunungan15Image.image = UIImage(named: "gunungan1")
-            } else if level15Model?.totalMedal == 2 {
-                levelView.gunungan15Image.image = UIImage(named: "gunungan2")
-            } else if level15Model?.totalMedal == 3 {
-                levelView.gunungan15Image.image = UIImage(named: "gunungan3")
-            }
-            
-        } else if currentLevel == 15 {
-            levelView.level15Button.setImage(UIImage(named: "levelButton Onprogress"), for: .normal)
-            levelView.trackImage.image = UIImage(named: "Track 15")
-            if level15Model?.totalMedal == 0 {
-                levelView.gunungan15Image.image = UIImage(named: "gunungan0")
-            } else if level15Model?.totalMedal == 1 {
-                levelView.gunungan15Image.image = UIImage(named: "gunungan1")
-            } else if level15Model?.totalMedal == 2 {
-                levelView.gunungan15Image.image = UIImage(named: "gunungan2")
-            } else if level15Model?.totalMedal == 3 {
-                levelView.gunungan15Image.image = UIImage(named: "gunungan3")
-            }
-        }
     }
     
     
@@ -652,31 +482,6 @@ class LevelController: UIViewController {
         if level10Model?.isLocked == false {
             levelView.level10Button.addTarget(self, action: #selector(self.levelSelector), for: .touchUpInside)
             levelView.level10Button.tag = 10
-        }
-        
-        if level11Model?.isLocked == false {
-            levelView.level11Button.addTarget(self, action: #selector(self.levelSelector), for: .touchUpInside)
-            levelView.level11Button.tag = 11
-        }
-        
-        if level12Model?.isLocked == false {
-            levelView.level12Button.addTarget(self, action: #selector(self.levelSelector), for: .touchUpInside)
-            levelView.level12Button.tag = 12
-        }
-        
-        if level13Model?.isLocked == false {
-            levelView.level13Button.addTarget(self, action: #selector(self.levelSelector), for: .touchUpInside)
-            levelView.level13Button.tag = 13
-        }
-        
-        if level14Model?.isLocked == false {
-            levelView.level14Button.addTarget(self, action: #selector(self.levelSelector), for: .touchUpInside)
-            levelView.level14Button.tag = 14
-        }
-        
-        if level15Model?.isLocked == false {
-            levelView.level15Button.addTarget(self, action: #selector(self.levelSelector), for: .touchUpInside)
-            levelView.level15Button.tag = 15
         }
     }
     

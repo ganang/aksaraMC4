@@ -126,7 +126,13 @@ class QuizController: UIViewController, QuizControllerProtocol {
             case "E3":
                 let cellE3 = collectionView.cellForItem(at: self.indexCollection!) as! QuizTypeE3Cell
                 cellE3.handleTimer()
-            case "I":
+            case "I1":
+                let cellI = collectionView.cellForItem(at: self.indexCollection!) as! QuizCellTypeI
+                cellI.handleTimer()
+            case "I2":
+                let cellI = collectionView.cellForItem(at: self.indexCollection!) as! QuizCellTypeI
+                cellI.handleTimer()
+            case "I3":
                 let cellI = collectionView.cellForItem(at: self.indexCollection!) as! QuizCellTypeI
                 cellI.handleTimer()
             case "H":
@@ -231,7 +237,7 @@ class QuizController: UIViewController, QuizControllerProtocol {
             // handle title
             let stringRegion =  String(regionSelected!)
             let quizName = String((quizes?[sender.tag + 1].title)!)
-            let quizesCount = String((quizes?.count)!)
+            let quizesCount = String((quizes!.count - 4))
             
             self.quizTopNumberLabel.text = "Aksara \(stringRegion) - \(quizName)/\(quizesCount)"
             
@@ -253,6 +259,7 @@ class QuizController: UIViewController, QuizControllerProtocol {
         } else {
             if (countdownTimer != nil) {
                 endTimer()
+                showModal()
             }
         }
         
@@ -549,7 +556,7 @@ class QuizController: UIViewController, QuizControllerProtocol {
     let mengertiButton: UIButton = {
         let button = UIButton()
         let attributedString = NSAttributedString(string: NSLocalizedString("Mengerti", comment: ""), attributes:[
-            NSAttributedString.Key.font : UIFont.init(name: "Now-medium", size: 20),
+            NSAttributedString.Key.font : UIFont.init(name: "Now-medium", size: 20) as Any,
             NSAttributedString.Key.foregroundColor : Theme.current.textColor2,
             NSAttributedString.Key.underlineStyle: 1.0
         ])
@@ -1239,6 +1246,8 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
             cell.continueButton.tag = indexPath.item
             cell.setBackgroundColor()
             cell.delegate = self
+            cell.regionSelected = regionSelected
+            cell.quizData = quizes![indexPath.item]
             
             return cell
             
@@ -1249,6 +1258,8 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
             cell.continueButton.tag = indexPath.item
             cell.setBackgroundColor()
             cell.delegate = self
+            cell.regionSelected = regionSelected
+            cell.quizData = quizes![indexPath.item]
             
             return cell
             
@@ -1259,6 +1270,8 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
             cell.continueButton.tag = indexPath.item
             cell.setBackgroundColor()
             cell.delegate = self
+            cell.regionSelected = regionSelected
+            cell.quizData = quizes![indexPath.item]
             
             return cell
             
@@ -1266,6 +1279,10 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuizViewTypeICellIdenttifier, for: indexPath) as! QuizCellTypeI
             cell.continueButton.addTarget(self, action: #selector(handleProgressBar), for: .touchUpInside)
             cell.continueButton.tag = indexPath.item
+            cell.aksaraCount = 1
+            cell.delegate = self
+            cell.regionSelected = regionSelected
+            cell.quizData = quizes![indexPath.item]
             
             return cell
             
@@ -1273,6 +1290,10 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuizViewTypeICellIdenttifier, for: indexPath) as! QuizCellTypeI
             cell.continueButton.addTarget(self, action: #selector(handleProgressBar), for: .touchUpInside)
             cell.continueButton.tag = indexPath.item
+            cell.aksaraCount = 2
+            cell.delegate = self
+            cell.regionSelected = regionSelected
+            cell.quizData = quizes![indexPath.item]
             
             return cell
             
@@ -1280,6 +1301,10 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuizViewTypeICellIdenttifier, for: indexPath) as! QuizCellTypeI
             cell.continueButton.addTarget(self, action: #selector(handleProgressBar), for: .touchUpInside)
             cell.continueButton.tag = indexPath.item
+            cell.aksaraCount = 3
+            cell.delegate = self
+            cell.regionSelected = regionSelected
+            cell.quizData = quizes![indexPath.item]
             
             return cell
             
@@ -1287,6 +1312,9 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuizViewTypeHCellIdenttifier, for: indexPath) as! QuizCellTypeH
             cell.continueButton.addTarget(self, action: #selector(handleProgressBar), for: .touchUpInside)
             cell.continueButton.tag = indexPath.item
+            cell.delegate = self
+            cell.regionSelected = regionSelected
+            cell.quizData = quizes![indexPath.item]
             
             return cell
             

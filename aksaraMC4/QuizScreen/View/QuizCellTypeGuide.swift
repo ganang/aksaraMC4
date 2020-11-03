@@ -19,8 +19,6 @@ class QuizCellTypeGuide: UICollectionViewCell {
         view.addInnerShadow()
         view.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
         
-        
-        
         return view
     }()
     
@@ -344,8 +342,6 @@ class QuizCellTypeGuide: UICollectionViewCell {
         setupViewCanvas()
         setupViewGuideCard()
         setupViewAnatomiCard()
-        
-        
     }
     
     @objc func showModal() {
@@ -544,7 +540,6 @@ class QuizCellTypeGuide: UICollectionViewCell {
         checkButton.topAnchor.constraint(equalTo: containerCanvasView.bottomAnchor, constant: 16).isActive = true
         checkButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
         
-        
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -553,11 +548,7 @@ class QuizCellTypeGuide: UICollectionViewCell {
 
 
 extension QuizCellTypeGuide : PKCanvasViewDelegate {
-    
-
-    
     func canvasViewDrawingDidChange(_ canvasView: PKCanvasView) {
 
     }
-
 }
