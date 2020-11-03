@@ -781,7 +781,7 @@ class QuizTypeE3Cell: BaseCell, UIGestureRecognizerDelegate {
             placeholderCarakanB.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
             placeholderCarakanC.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
         
-            delegate?.setTrueStatus()
+//            delegate?.setTrueStatus()
             
             // handle continue button
             self.continueButton.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 56, withWidth: Double(SCREEN_WIDTH), withCorner: 0)
@@ -793,7 +793,7 @@ class QuizTypeE3Cell: BaseCell, UIGestureRecognizerDelegate {
             questionLabel.text = "Sayang sekali ☹️"
             questionLabel.textColor = Theme.current.accentTextRed
             
-            delegate?.setFalseStatus()
+//            delegate?.setFalseStatus()
             
             // handle continue button
             self.continueButton.setCheckButtonBackgroundColorFalse(withOpacity: 1, withHeight: 56, withWidth: Double(SCREEN_WIDTH), withCorner: 0)
@@ -840,7 +840,7 @@ class QuizTypeE3Cell: BaseCell, UIGestureRecognizerDelegate {
         // handle false
         questionLabel.text = "Sayang sekali waktumu habis ☹️"
         questionLabel.textColor = Theme.current.accentTextRed
-        delegate?.setFalseStatus()
+//        delegate?.setFalseStatus()
         
         // handle continue button
         self.continueButton.setCheckButtonBackgroundColorFalse(withOpacity: 1, withHeight: 56, withWidth: Double(SCREEN_WIDTH), withCorner: 0)

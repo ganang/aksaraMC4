@@ -82,7 +82,7 @@ class QuizViewTypeA: UICollectionViewCell {
         self.quizImage.isHidden = true
         self.questionLabel.isHidden = true
         
-        delegate?.setFalseStatus()
+//        delegate?.setFalseStatus()
         
         // handle continue button
         self.continueButton.isHidden = false
@@ -413,7 +413,7 @@ class QuizViewTypeA: UICollectionViewCell {
                     self.playSoundTrue()
                     
                     // set status true, eg: progress view, back button, dll
-                    self.delegate?.setTrueStatus()
+//                    self.delegate?.setTrueStatus()
                     
                     // handle core data
                     self.quizData?.isCorrect = true
@@ -452,7 +452,7 @@ class QuizViewTypeA: UICollectionViewCell {
                     self.delegate?.stopTimerChoosen()
                     
                     // set status true, eg: progress view, back button, dll
-                    self.delegate?.setFalseStatus()
+//                    self.delegate?.setFalseStatus()
                     
                     // handle sound
                     self.playSoundFalse()

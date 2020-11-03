@@ -96,7 +96,7 @@ class QuizViewTypeB: UICollectionViewCell {
         self.aksaraQuizLabel.isHidden = true
         self.questionLabel.isHidden = true
         
-        delegate?.setFalseStatus()
+//        delegate?.setFalseStatus()
         
         // handle sound
         playSoundFalse()
@@ -409,7 +409,7 @@ class QuizViewTypeB: UICollectionViewCell {
                     self.delegate?.stopTimerChoosen()
                     
                     // set status true, eg: progress view, back button, dll
-                    self.delegate?.setTrueStatus()
+//                    self.delegate?.setTrueStatus()
                     
                     // handle sound
                     self.playSoundTrue()
@@ -451,7 +451,7 @@ class QuizViewTypeB: UICollectionViewCell {
                     self.delegate?.stopTimerChoosen()
                     
                     // set status true, eg: progress view, back button, dll
-                    self.delegate?.setFalseStatus()
+//                    self.delegate?.setFalseStatus()
                     
                     // handle sound
                     self.playSoundFalse()
