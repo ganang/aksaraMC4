@@ -109,6 +109,8 @@ class OldStartView: UIView {
         setupView()
     }
     
+    
+    
     func setupView() {
         addSubview(titleLabel)
         titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true

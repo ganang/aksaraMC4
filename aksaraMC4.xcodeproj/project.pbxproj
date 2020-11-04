@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		231EA807252DE9C7004FB678 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231EA806252DE9C7004FB678 /* QuizView.swift */; };
 		231EA809252DEA18004FB678 /* QuizController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231EA808252DEA18004FB678 /* QuizController.swift */; };
+		232395D02551232500BAF5A9 /* UlasanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232395CF2551232500BAF5A9 /* UlasanController.swift */; };
+		232395D7255128F700BAF5A9 /* UlasanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232395D6255128F700BAF5A9 /* UlasanCell.swift */; };
 		23419AD725419C37001F4CB8 /* DictionaryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23419AD625419C37001F4CB8 /* DictionaryController.swift */; };
 		23419AD925419C6C001F4CB8 /* DictionaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23419AD825419C6C001F4CB8 /* DictionaryView.swift */; };
 		2351981725400B9800121816 /* Jawaban_Salah_D.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2351981225400B9700121816 /* Jawaban_Salah_D.mp3 */; };
@@ -140,6 +142,8 @@
 /* Begin PBXFileReference section */
 		231EA806252DE9C7004FB678 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		231EA808252DEA18004FB678 /* QuizController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizController.swift; sourceTree = "<group>"; };
+		232395CF2551232500BAF5A9 /* UlasanController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UlasanController.swift; sourceTree = "<group>"; };
+		232395D6255128F700BAF5A9 /* UlasanCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UlasanCell.swift; sourceTree = "<group>"; };
 		23419AD625419C37001F4CB8 /* DictionaryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryController.swift; sourceTree = "<group>"; };
 		23419AD825419C6C001F4CB8 /* DictionaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryView.swift; sourceTree = "<group>"; };
 		2351981225400B9700121816 /* Jawaban_Salah_D.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Jawaban_Salah_D.mp3; sourceTree = "<group>"; };
@@ -321,6 +325,31 @@
 				9177576D254AECF7001C2589 /* QuizCellTypeGuide.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		232395CB255122A600BAF5A9 /* UlasanScreen */ = {
+			isa = PBXGroup;
+			children = (
+				232395CE255122BE00BAF5A9 /* Controller */,
+				232395CC255122B900BAF5A9 /* View */,
+			);
+			path = UlasanScreen;
+			sourceTree = "<group>";
+		};
+		232395CC255122B900BAF5A9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				232395D6255128F700BAF5A9 /* UlasanCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		232395CE255122BE00BAF5A9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				232395CF2551232500BAF5A9 /* UlasanController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		23419AD3254195E3001F4CB8 /* DictionaryScreen */ = {
@@ -660,6 +689,7 @@
 				A4F19FC9253598FB00F5BA23 /* Common */,
 				914344F3252DC347002E867B /* RegionScreen */,
 				9193763D25317DFF00C3FC10 /* StartScreen */,
+				232395CB255122A600BAF5A9 /* UlasanScreen */,
 				917757B725505458001C2589 /* InputNameScreen */,
 				913FCA5D252DB8F400438A23 /* Utils */,
 				A41A77FE252D9A2C001C4FAD /* Fonts */,
@@ -999,7 +1029,9 @@
 				A48BCFAD254A8B8A00BD996B /* QuizTypeE3Cell.swift in Sources */,
 				23419AD925419C6C001F4CB8 /* DictionaryView.swift in Sources */,
 				A48BCFAA254A88F700BD996B /* QuizTypeE2Cell.swift in Sources */,
+				232395D7255128F700BAF5A9 /* UlasanCell.swift in Sources */,
 				231EA809252DEA18004FB678 /* QuizController.swift in Sources */,
+				232395D02551232500BAF5A9 /* UlasanController.swift in Sources */,
 				91775785254EFA32001C2589 /* StageTahap1Cell.swift in Sources */,
 				917757A725500B59001C2589 /* LoadingController.swift in Sources */,
 				91C98775252F268400D67BC0 /* LevelController.swift in Sources */,

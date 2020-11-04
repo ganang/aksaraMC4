@@ -604,16 +604,16 @@ class QuizController: UIViewController, QuizControllerProtocol {
     }
     
     //For Modal
-    lazy var backgroundBlurView : UIView = {
+    lazy var backgroundView : UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.init(displayP3Red: 0/255, green: 51/255, blue: 97/255, alpha: 0.5)
+        view.backgroundColor = UIColor.init(displayP3Red: 243/255, green: 250/255, blue: 255/255, alpha: 1)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.isUserInteractionEnabled = true
-        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.regular)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = view.bounds
-        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.addSubview(blurEffectView)
+//        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.regular)
+//        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+//        blurEffectView.frame = view.bounds
+//        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//        view.addSubview(blurEffectView)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.hideWarningModal))
         view.isUserInteractionEnabled = true
@@ -621,22 +621,12 @@ class QuizController: UIViewController, QuizControllerProtocol {
         return view
     }()
     
-    lazy var containerView : UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor.init(displayP3Red: 1, green: 1, blue: 1, alpha: 0.8)
-        view.layer.cornerRadius = 24
-        view.addInnerShadow()
-        view.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
-        view.isUserInteractionEnabled = true
-        return view
-    }()
     
     let aksaraStepLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.init(name: "Now-Medium", size: 16)
-        label.text = "Aksara Jawa Tahap 1-1"
+        label.font = UIFont.init(name: "NowAlt-Bold", size: 24)
+        label.text = "Tahap 1 - Tingkat 1"
         label.textColor = Theme.current.textColor1
         //label.setTextColorToGradient(image: UIImage(named: "gradientText")!)
         return label
@@ -644,7 +634,7 @@ class QuizController: UIViewController, QuizControllerProtocol {
     
     let gununganImageModal: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "Gulungan True All")
+        image.image = UIImage(named: "GununganStand0")
         image.contentMode = .scaleAspectFill
         image.translatesAutoresizingMaskIntoConstraints = false
         
@@ -654,177 +644,160 @@ class QuizController: UIViewController, QuizControllerProtocol {
     let nilaiLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.init(name: "Now-Bold", size: 24)
-        label.text = "Nilai : 5/5"
-        label.textColor = Theme.current.textColor1
+        label.font = UIFont.init(name: "NowAlt-Medium", size: 16)
+        label.text = "Aksara Jawa"
+        label.textColor = UIColor.rgb(red: 23, green: 78, blue: 161, alpha: 1)
         //label.setTextColorToGradient(image: UIImage(named: "gradientText")!)
         return label
     }()
     
-    let kuis1LabelModal: UILabel = {
+    let hasilLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.init(name: "NowAlt-Bold", size: 16)
+        label.textColor = UIColor.rgb(red: 3, green: 131, blue: 251, alpha: 1)
+        label.text = "Hasil kamu"
+        return label
+    }()
+    
+    let waktuQuizLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.paragraphSpacing = 4
+        paragraphStyle.lineSpacing = 13
         
         let firstWord   = ""
-        let secondWord = "Kuis 1\n"
-        let attrs      = [NSAttributedString.Key.font: UIFont.init(name: "Now-Bold", size: 20), NSAttributedString.Key.foregroundColor: Theme.current.textColor2, NSAttributedString.Key.paragraphStyle: paragraphStyle]
-        let attrs2      = [NSAttributedString.Key.font: UIFont.init(name: "Now-Medium", size: 16), NSAttributedString.Key.foregroundColor: Theme.current.textColor1, NSAttributedString.Key.paragraphStyle: paragraphStyle]
-        let thirdWord   = "Menebak latin dari bentuk aksara"
+        let secondWord = "Waktu\n"
+        let attrs      = [NSAttributedString.Key.font: UIFont.init(name: "NowAlt-Medium", size: 16), NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 23, green: 78, blue: 161, alpha: 1), NSAttributedString.Key.paragraphStyle: paragraphStyle]
+        let thirdWord   = "Kuis benar"
         let attributedText = NSMutableAttributedString(string:firstWord)
         attributedText.append(NSAttributedString(string: secondWord, attributes: attrs as [NSAttributedString.Key : Any]))
-        attributedText.append(NSAttributedString(string: thirdWord, attributes: attrs2 as [NSAttributedString.Key : Any]))
-        label.setTextColorToGradient(image: UIImage(named: "gradientText")!)
+        attributedText.append(NSAttributedString(string: thirdWord, attributes: attrs as [NSAttributedString.Key : Any]))
         label.attributedText = attributedText
+        
         return label
     }()
     
-    let kuis2LabelModal: UILabel = {
+    let waktuDoneQuizLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.paragraphSpacing = 4
         
-        let firstWord   = ""
-        let secondWord = "Kuis 2\n"
-        let attrs      = [NSAttributedString.Key.font: UIFont.init(name: "Now-Bold", size: 20), NSAttributedString.Key.foregroundColor: Theme.current.textColor2,
-                          NSAttributedString.Key.paragraphStyle: paragraphStyle]
-        let attrs2      = [NSAttributedString.Key.font: UIFont.init(name: "Now-Medium", size: 16), NSAttributedString.Key.foregroundColor: Theme.current.textColor1,
-                           NSAttributedString.Key.paragraphStyle: paragraphStyle]
-        let thirdWord   = "Menebak latin dari bentuk aksara"
-        let attributedText = NSMutableAttributedString(string:firstWord)
-        attributedText.append(NSAttributedString(string: secondWord, attributes: attrs as [NSAttributedString.Key : Any]))
-        attributedText.append(NSAttributedString(string: thirdWord, attributes: attrs2 as [NSAttributedString.Key : Any]))
-        label.setTextColorToGradient(image: UIImage(named: "gradientText")!)
-        label.attributedText = attributedText
-        
+        label.font = UIFont.init(name: "NowAlt-Medium", size: 16)
+        label.textColor = UIColor.rgb(red: 23, green: 78, blue: 161, alpha: 1)
+        label.text = ": 4 mnt 30 dtk"
         
         return label
     }()
     
-    let kuis3LabelModal: UILabel = {
+    let benarDoneQuizLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.paragraphSpacing = 4
         
         let firstWord   = ""
-        let secondWord = "Kuis 3\n"
-        let attrs      = [NSAttributedString.Key.font: UIFont.init(name: "Now-Bold", size: 20), NSAttributedString.Key.foregroundColor: Theme.current.textColor2,
-                          NSAttributedString.Key.paragraphStyle: paragraphStyle]
-        let attrs2      = [NSAttributedString.Key.font: UIFont.init(name: "Now-Medium", size: 16), NSAttributedString.Key.foregroundColor: Theme.current.textColor1,
-                           NSAttributedString.Key.paragraphStyle: paragraphStyle]
-        let thirdWord   = "Menebak latin dari bentuk aksara"
+        let secondWord = ": 14 kuis"
+        let attrs      = [NSAttributedString.Key.font: UIFont.init(name: "NowAlt-Medium", size: 16), NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 23, green: 78, blue: 161, alpha: 1)]
+        let attrs2     = [NSAttributedString.Key.font: UIFont.init(name: "NowAlt-Regular", size: 16), NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 23, green: 78, blue: 161, alpha: 1)]
+        let thirdWord   = " dari 16 kuis"
         let attributedText = NSMutableAttributedString(string:firstWord)
         attributedText.append(NSAttributedString(string: secondWord, attributes: attrs as [NSAttributedString.Key : Any]))
         attributedText.append(NSAttributedString(string: thirdWord, attributes: attrs2 as [NSAttributedString.Key : Any]))
-        label.setTextColorToGradient(image: UIImage(named: "gradientText")!)
         label.attributedText = attributedText
-        
-        
         return label
     }()
     
-    
-    let kuis4LabelModal: UILabel = {
+    let aksaraLabelInTopCard1: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.paragraphSpacing = 4
-        
-        let firstWord   = ""
-        let secondWord = "Kuis 4\n"
-        let attrs      = [NSAttributedString.Key.font: UIFont.init(name: "Now-Bold", size: 20), NSAttributedString.Key.foregroundColor: Theme.current.textColor2,
-                          NSAttributedString.Key.paragraphStyle: paragraphStyle]
-        let attrs2      = [NSAttributedString.Key.font: UIFont.init(name: "Now-Medium", size: 16), NSAttributedString.Key.foregroundColor: Theme.current.textColor1,
-                           NSAttributedString.Key.paragraphStyle: paragraphStyle]
-        let thirdWord   = "Menebak latin dari bentuk aksara"
-        let attributedText = NSMutableAttributedString(string:firstWord)
-        attributedText.append(NSAttributedString(string: secondWord, attributes: attrs as [NSAttributedString.Key : Any]))
-        attributedText.append(NSAttributedString(string: thirdWord, attributes: attrs2 as [NSAttributedString.Key : Any]))
-        label.setTextColorToGradient(image: UIImage(named: "gradientText")!)
-        label.attributedText = attributedText
-        
-        
+        label.font = UIFont.init(name: "NowAlt-Medium", size: 16)
+        label.textColor = UIColor.rgb(red: 23, green: 78, blue: 161, alpha: 1)
+        label.text = "Wa"
         return label
     }()
     
-    let kuis5LabelModal: UILabel = {
+    let aksaraLabelInTopCard2: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.paragraphSpacing = 4
-        
-        let firstWord   = ""
-        let secondWord = "Kuis 5\n"
-        let attrs      = [NSAttributedString.Key.font: UIFont.init(name: "Now-Bold", size: 20), NSAttributedString.Key.foregroundColor: Theme.current.textColor2,
-                          NSAttributedString.Key.paragraphStyle: paragraphStyle]
-        let attrs2      = [NSAttributedString.Key.font: UIFont.init(name: "Now-Medium", size: 16), NSAttributedString.Key.foregroundColor: Theme.current.textColor1,
-                           NSAttributedString.Key.paragraphStyle: paragraphStyle]
-        let thirdWord   = "Menebak latin dari bentuk aksara"
-        let attributedText = NSMutableAttributedString(string:firstWord)
-        attributedText.append(NSAttributedString(string: secondWord, attributes: attrs as [NSAttributedString.Key : Any]))
-        attributedText.append(NSAttributedString(string: thirdWord, attributes: attrs2 as [NSAttributedString.Key : Any]))
-        label.setTextColorToGradient(image: UIImage(named: "gradientText")!)
-        label.attributedText = attributedText
+        label.font = UIFont.init(name: "NowAlt-Medium", size: 16)
+        label.textColor = UIColor.rgb(red: 23, green: 78, blue: 161, alpha: 1)
+        label.text = "Ha"
         return label
     }()
     
+    let aksaraLabelInTopCard3: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.init(name: "NowAlt-Medium", size: 16)
+        label.textColor = UIColor.rgb(red: 23, green: 78, blue: 161, alpha: 1)
+        label.text = "Na"
+        return label
+    }()
     
-    let correctOrWrongAnswerImage1: UIImageView = {
+    let batikBackground: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "correctAnswer")
+        image.image = UIImage(named: "decorativeBackground")
+        image.contentMode = .scaleAspectFill
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.isUserInteractionEnabled = true
+        return image
+    }()
+    
+    let ulasanBackground: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "BackgroundUlasan")
         image.contentMode = .scaleAspectFit
-        
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.clipsToBounds = true
-        
+        image.isUserInteractionEnabled = true
         return image
     }()
     
-    let correctOrWrongAnswerImage2: UIImageView = {
+    let aksaraInTopCard1: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "correctAnswer")
+        image.image = UIImage(named:"Jawa Jawaban Wa")
+        image.contentMode = .scaleAspectFit
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
+    }()
+    
+    let aksaraInTopCard2: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "Jawa Jawaban Ha")
+        image.contentMode = .scaleAspectFit
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
+    }()
+    
+    let aksaraInTopCard3: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "Jawa Jawaban Na")
+        image.contentMode = .scaleAspectFit
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
+    }()
+    
+    
+    //SFSymbol
+    let timer: UIImageView = {
+        let image = UIImageView()
+        let symbolConfig = UIImage.SymbolConfiguration(pointSize: 16.0, weight: .medium, scale: .default)
+        image.image = UIImage(systemName: "timer", withConfiguration: symbolConfig)?.withTintColor(UIColor.rgb(red: 23, green: 78, blue: 161, alpha: 1), renderingMode: .alwaysOriginal)
         image.contentMode = .scaleAspectFill
         image.translatesAutoresizingMaskIntoConstraints = false
         
         return image
     }()
     
-    let correctOrWrongAnswerImage3: UIImageView = {
+    let checkmark: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "correctAnswer")
+        let symbolConfig = UIImage.SymbolConfiguration(pointSize: 16.0, weight: .medium, scale: .default)
+        image.image = UIImage(systemName: "checkmark.circle", withConfiguration: symbolConfig)?.withTintColor(UIColor.rgb(red: 23, green: 78, blue: 161, alpha: 1), renderingMode: .alwaysOriginal)
         image.contentMode = .scaleAspectFill
         image.translatesAutoresizingMaskIntoConstraints = false
         
         return image
     }()
     
-    let correctOrWrongAnswerImage4: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "correctAnswer")
-        image.contentMode = .scaleAspectFill
-        image.translatesAutoresizingMaskIntoConstraints = false
-        
-        return image
-    }()
-    
-    let correctOrWrongAnswerImage5: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "correctAnswer")
-        image.contentMode = .scaleAspectFill
-        image.translatesAutoresizingMaskIntoConstraints = false
-        
-        return image
-    }()
-    
-    let selanjutnyaButton: UIButton = {
+    lazy var selanjutnyaButton: UIButton = {
         let button = UIButton()
         button.setBackgroundImage(UIImage(named: "selanjutnyaButton"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -833,63 +806,77 @@ class QuizController: UIViewController, QuizControllerProtocol {
     }()
     
     // BUTTON KEMBALI, NAMANYA MAIN ULANG
-    @objc let mainUlangButton: UIButton = {
+//    @objc let mainUlangButton: UIButton = {
+//        let button = UIButton()
+//        button.setBackgroundImage(UIImage(named: "mainLagiButton"), for: .normal)
+//        button.translatesAutoresizingMaskIntoConstraints = false
+//        button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
+//        button.addTarget(self, action: #selector(handlePopBackFromReward), for: .touchUpInside)
+//        return button
+//    }()
+    
+    lazy var ulasanButton: UIButton = {
         let button = UIButton()
-        button.setBackgroundImage(UIImage(named: "mainUlangButton"), for: .normal)
+        button.setBackgroundImage(UIImage(named: "Ulasan"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
-        button.addTarget(self, action: #selector(handlePopBackFromReward), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleUlasan), for: .touchUpInside)
         return button
     }()
     
-    let bagikanButton: UIButton = {
+    lazy var layarUtamaButton: UIButton = {
         let button = UIButton()
-        button.setBackgroundImage(UIImage(named: "bagikanButton"), for: .normal)
+        button.setBackgroundImage(UIImage(named: "LayarUtama"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
-        button.addTarget(self, action: #selector(hideRewardModal), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handlePopBack), for: .touchUpInside)
         return button
     }()
+    
+    @objc func handleUlasan() {
+        let ulasanScreen = UlasanController()
+        navigationController?.pushViewController(ulasanScreen, animated: true)
+    }
     
     var totalQuizCorrect = 0
     var totalMedal = 0
     
     func handleQuizRecord() {
-        let isCorrectQuiz1 = quizes?[1].isCorrect
-        let isCorrectQuiz2 = quizes?[2].isCorrect
-        let isCorrectQuiz3 = quizes?[3].isCorrect
-        let isCorrectQuiz4 = quizes?[4].isCorrect
-        let isCorrectQuiz5 = quizes?[5].isCorrect
+//        let isCorrectQuiz1 = quizes?[1].isCorrect
+//        let isCorrectQuiz2 = quizes?[2].isCorrect
+//        let isCorrectQuiz3 = quizes?[3].isCorrect
+//        let isCorrectQuiz4 = quizes?[4].isCorrect
+//        let isCorrectQuiz5 = quizes?[5].isCorrect
         
-        if isCorrectQuiz1! {
-            correctOrWrongAnswerImage1.image = UIImage(named: "correctAnswer")
-        } else {
-            correctOrWrongAnswerImage1.image = UIImage(named: "falseAnswer")
-        }
-        
-        if isCorrectQuiz2! {
-            correctOrWrongAnswerImage2.image = UIImage(named: "correctAnswer")
-        } else {
-            correctOrWrongAnswerImage2.image = UIImage(named: "falseAnswer")
-        }
-        
-        if isCorrectQuiz3! {
-            correctOrWrongAnswerImage3.image = UIImage(named: "correctAnswer")
-        } else {
-            correctOrWrongAnswerImage3.image = UIImage(named: "falseAnswer")
-        }
-        
-        if isCorrectQuiz4! {
-            correctOrWrongAnswerImage4.image = UIImage(named: "correctAnswer")
-        } else {
-            correctOrWrongAnswerImage4.image = UIImage(named: "falseAnswer")
-        }
-        
-        if isCorrectQuiz5! {
-            correctOrWrongAnswerImage5.image = UIImage(named: "correctAnswer")
-        } else {
-            correctOrWrongAnswerImage5.image = UIImage(named: "falseAnswer")
-        }
+//        if isCorrectQuiz1! {
+//            correctOrWrongAnswerImage1.image = UIImage(named: "correctAnswer")
+//        } else {
+//            correctOrWrongAnswerImage1.image = UIImage(named: "falseAnswer")
+//        }
+//
+//        if isCorrectQuiz2! {
+//            correctOrWrongAnswerImage2.image = UIImage(named: "correctAnswer")
+//        } else {
+//            correctOrWrongAnswerImage2.image = UIImage(named: "falseAnswer")
+//        }
+//
+//        if isCorrectQuiz3! {
+//            correctOrWrongAnswerImage3.image = UIImage(named: "correctAnswer")
+//        } else {
+//            correctOrWrongAnswerImage3.image = UIImage(named: "falseAnswer")
+//        }
+//
+//        if isCorrectQuiz4! {
+//            correctOrWrongAnswerImage4.image = UIImage(named: "correctAnswer")
+//        } else {
+//            correctOrWrongAnswerImage4.image = UIImage(named: "falseAnswer")
+//        }
+//
+//        if isCorrectQuiz5! {
+//            correctOrWrongAnswerImage5.image = UIImage(named: "correctAnswer")
+//        } else {
+//            correctOrWrongAnswerImage5.image = UIImage(named: "falseAnswer")
+//        }
         
         
         
@@ -900,23 +887,43 @@ class QuizController: UIViewController, QuizControllerProtocol {
         }
         
         if totalQuizCorrect == 0 {
-            gununganImageModal.image = UIImage(named: "Gulungan True 0")
+            gununganImageModal.image = UIImage(named: "GununganStand0")
             selanjutnyaButton.setBackgroundImage(UIImage(named: "mainLagiButton"), for: .normal)
             selanjutnyaButton.addTarget(self, action: #selector(handleMainLagi), for: .touchUpInside)
+            aksaraStepLabel.textColor = UIColor.rgb(red: 215, green: 58, blue: 76, alpha: 1)
+            hasilLabel.textColor = UIColor.rgb(red: 215, green: 58, blue: 76, alpha: 1)
+            aksaraInTopCard1.setImageColor(color: UIColor.rgb(red: 215, green: 58, blue: 76, alpha: 1))
+            aksaraInTopCard2.setImageColor(color: UIColor.rgb(red: 215, green: 58, blue: 76, alpha: 1))
+            aksaraInTopCard3.setImageColor(color: UIColor.rgb(red: 215, green: 58, blue: 76, alpha: 1))
             totalMedal = 0
         } else if totalQuizCorrect == 1 || totalQuizCorrect == 2{
-            gununganImageModal.image = UIImage(named: "Gulungan True 1")
+            gununganImageModal.image = UIImage(named: "GununganStand1")
             selanjutnyaButton.setBackgroundImage(UIImage(named: "mainLagiButton"), for: .normal)
             selanjutnyaButton.addTarget(self, action: #selector(handleMainLagi), for: .touchUpInside)
+            aksaraStepLabel.textColor = UIColor.rgb(red: 215, green: 58, blue: 76, alpha: 1)
+            hasilLabel.textColor = UIColor.rgb(red: 215, green: 58, blue: 76, alpha: 1)
+            aksaraInTopCard1.setImageColor(color: UIColor.rgb(red: 215, green: 58, blue: 76, alpha: 1))
+            aksaraInTopCard2.setImageColor(color: UIColor.rgb(red: 215, green: 58, blue: 76, alpha: 1))
+            aksaraInTopCard3.setImageColor(color: UIColor.rgb(red: 215, green: 58, blue: 76, alpha: 1))
             totalMedal = 1
         } else if totalQuizCorrect == 3 || totalQuizCorrect == 4{
-            gununganImageModal.image = UIImage(named: "Gulungan True 2")
+            gununganImageModal.image = UIImage(named: "GununganStand2")
             selanjutnyaButton.addTarget(self, action: #selector(handleSelanjutnya), for: .touchUpInside)
+            aksaraStepLabel.textColor = UIColor.rgb(red: 25, green: 163, blue: 113, alpha: 1)
+            hasilLabel.textColor = UIColor.rgb(red: 25, green: 163, blue: 113, alpha: 1)
+            aksaraInTopCard1.setImageColor(color: UIColor.rgb(red: 25, green: 163, blue: 113, alpha: 1))
+            aksaraInTopCard2.setImageColor(color: UIColor.rgb(red: 25, green: 163, blue: 113, alpha: 1))
+            aksaraInTopCard3.setImageColor(color: UIColor.rgb(red: 25, green: 163, blue: 113, alpha: 1))
             totalMedal = 2
 //            handleNextLevel()
         } else{
-            gununganImageModal.image = UIImage(named: "Gulungan True All")
+            gununganImageModal.image = UIImage(named: "GununganStand3")
             selanjutnyaButton.addTarget(self, action: #selector(handleSelanjutnya), for: .touchUpInside)
+            aksaraStepLabel.textColor = UIColor.rgb(red: 25, green: 163, blue: 113, alpha: 1)
+            hasilLabel.textColor = UIColor.rgb(red: 25, green: 163, blue: 113, alpha: 1)
+            aksaraInTopCard1.setImageColor(color: UIColor.rgb(red: 25, green: 163, blue: 113, alpha: 1))
+            aksaraInTopCard2.setImageColor(color: UIColor.rgb(red: 25, green: 163, blue: 113, alpha: 1))
+            aksaraInTopCard3.setImageColor(color: UIColor.rgb(red: 25, green: 163, blue: 113, alpha: 1))
             totalMedal = 3
 //            handleNextLevel()
         }
@@ -930,8 +937,8 @@ class QuizController: UIViewController, QuizControllerProtocol {
         let stingLevelId : Int = Int(level!.id)
         let stingLevelIdString = String(stingLevelId)
         
-        nilaiLabel.text = "Nilai: \(totalQuizCorrect)/5"
-        aksaraStepLabel.text = "Aksara \(stringRegion) Tahap \(stingStageIdString)-\(stingLevelIdString)"
+//        nilaiLabel.text = "Nilai: \(totalQuizCorrect)/5"
+        aksaraStepLabel.text = "Tahap \(stingStageIdString) - Tingkat \(stingLevelIdString)"
         quizTopNumberLabel.text = "Aksara \(stringRegion) Tahap \(stingStageIdString)-\(stingLevelIdString)"
         
         level?.totalMedal = Int64(totalMedal)
@@ -962,123 +969,126 @@ class QuizController: UIViewController, QuizControllerProtocol {
         
         handleQuizRecord()
         
-        view.addSubview(backgroundBlurView)
-        backgroundBlurView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        backgroundBlurView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        backgroundBlurView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        backgroundBlurView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        view.addSubview(backgroundView)
+        backgroundView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        backgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        
+        backgroundView.addSubview(batikBackground)
+        batikBackground.topAnchor.constraint(equalTo: backgroundView.topAnchor).isActive = true
+        batikBackground.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor).isActive = true
+        batikBackground.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor).isActive = true
+        batikBackground.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor).isActive = true
         
         
-        backgroundBlurView.addSubview(containerView)
-        containerView.centerXAnchor.constraint(equalTo: backgroundBlurView.centerXAnchor).isActive = true
-        containerView.centerYAnchor.constraint(equalTo: backgroundBlurView.centerYAnchor).isActive = true
-        containerView.heightAnchor.constraint(equalToConstant: 720).isActive = true
-        containerView.widthAnchor.constraint(equalToConstant: 472).isActive = true
+        batikBackground.addSubview(ulasanBackground)
+        ulasanBackground.centerXAnchor.constraint(equalTo: batikBackground.centerXAnchor).isActive = true
+        ulasanBackground.centerYAnchor.constraint(equalTo: batikBackground.centerYAnchor).isActive = true
+        ulasanBackground.heightAnchor.constraint(equalToConstant: 712).isActive = true
+        ulasanBackground.widthAnchor.constraint(equalToConstant: 508).isActive = true
         
         
-        containerView.addSubview(aksaraStepLabel)
-        aksaraStepLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 48).isActive = true
-        aksaraStepLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 56).isActive = true
+        ulasanBackground.addSubview(aksaraStepLabel)
+        aksaraStepLabel.leadingAnchor.constraint(equalTo: ulasanBackground.leadingAnchor, constant: 67).isActive = true
+        aksaraStepLabel.topAnchor.constraint(equalTo: ulasanBackground.topAnchor, constant: 72).isActive = true
         
         
-        containerView.addSubview(gununganImageModal)
-        gununganImageModal.topAnchor.constraint(equalTo: containerView.topAnchor, constant: -18).isActive = true
-        gununganImageModal.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: 0).isActive = true
-        gununganImageModal.heightAnchor.constraint(equalToConstant: 128).isActive = true
-        gununganImageModal.widthAnchor.constraint(equalToConstant: 208).isActive = true
+        ulasanBackground.addSubview(gununganImageModal)
+        gununganImageModal.topAnchor.constraint(equalTo: ulasanBackground.topAnchor, constant: 72).isActive = true
+        gununganImageModal.trailingAnchor.constraint(equalTo: ulasanBackground.trailingAnchor, constant: -67).isActive = true
+        gununganImageModal.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        gununganImageModal.widthAnchor.constraint(equalToConstant: 92).isActive = true
         
         
-        containerView.addSubview(nilaiLabel)
-        nilaiLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 48).isActive = true
-        nilaiLabel.topAnchor.constraint(equalTo: aksaraStepLabel.bottomAnchor, constant: 5).isActive = true
-        nilaiLabel.heightAnchor.constraint(equalToConstant: 29).isActive = true
+        ulasanBackground.addSubview(nilaiLabel)
+        nilaiLabel.leadingAnchor.constraint(equalTo: ulasanBackground.leadingAnchor, constant: 67).isActive = true
+        nilaiLabel.topAnchor.constraint(equalTo: aksaraStepLabel.bottomAnchor, constant: 4).isActive = true
+        nilaiLabel.heightAnchor.constraint(equalToConstant: 19).isActive = true
         
         
-        containerView.addSubview(kuis1LabelModal)
-        kuis1LabelModal.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 48).isActive = true
-        kuis1LabelModal.topAnchor.constraint(equalTo: nilaiLabel.bottomAnchor, constant: 32).isActive = true
+        //ImageAksara
+        ulasanBackground.addSubview(aksaraInTopCard2)
+        aksaraInTopCard2.centerXAnchor.constraint(equalTo: ulasanBackground.centerXAnchor).isActive = true
+        aksaraInTopCard2.topAnchor.constraint(equalTo: nilaiLabel.bottomAnchor, constant: 84).isActive = true
+        aksaraInTopCard2.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        aksaraInTopCard2.widthAnchor.constraint(equalToConstant: 52).isActive = true
+        
+        ulasanBackground.addSubview(aksaraInTopCard1)
+        aksaraInTopCard1.trailingAnchor.constraint(equalTo: aksaraInTopCard2.leadingAnchor,constant: -8).isActive = true
+        aksaraInTopCard1.topAnchor.constraint(equalTo: nilaiLabel.bottomAnchor, constant: 84).isActive = true
+        aksaraInTopCard1.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        aksaraInTopCard1.widthAnchor.constraint(equalToConstant: 52).isActive = true
+        
+        ulasanBackground.addSubview(aksaraInTopCard3)
+        aksaraInTopCard3.leadingAnchor.constraint(equalTo: aksaraInTopCard2.trailingAnchor, constant: 8).isActive = true
+        aksaraInTopCard3.topAnchor.constraint(equalTo: nilaiLabel.bottomAnchor, constant: 84).isActive = true
+        aksaraInTopCard3.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        aksaraInTopCard3.widthAnchor.constraint(equalToConstant: 52).isActive = true
+        
+        //LabelAksara
+        ulasanBackground.addSubview(aksaraLabelInTopCard1)
+        aksaraLabelInTopCard1.centerXAnchor.constraint(equalTo: aksaraInTopCard1.centerXAnchor).isActive = true
+        aksaraLabelInTopCard1.topAnchor.constraint(equalTo: aksaraInTopCard1.bottomAnchor, constant: 10).isActive = true
+        
+        ulasanBackground.addSubview(aksaraLabelInTopCard2)
+        aksaraLabelInTopCard2.centerXAnchor.constraint(equalTo: aksaraInTopCard2.centerXAnchor).isActive = true
+        aksaraLabelInTopCard2.topAnchor.constraint(equalTo: aksaraInTopCard2.bottomAnchor, constant: 10).isActive = true
+        
+        ulasanBackground.addSubview(aksaraLabelInTopCard3)
+        aksaraLabelInTopCard3.centerXAnchor.constraint(equalTo: aksaraInTopCard3.centerXAnchor).isActive = true
+        aksaraLabelInTopCard3.topAnchor.constraint(equalTo: aksaraInTopCard3.bottomAnchor, constant: 10).isActive = true
+        
+        ulasanBackground.addSubview(hasilLabel)
+        hasilLabel.leadingAnchor.constraint(equalTo: ulasanBackground.leadingAnchor, constant: 67).isActive = true
+        hasilLabel.topAnchor.constraint(equalTo: aksaraLabelInTopCard1.bottomAnchor, constant: 87).isActive = true
+        
+        ulasanBackground.addSubview(timer)
+        timer.leadingAnchor.constraint(equalTo: ulasanBackground.leadingAnchor, constant: 67).isActive = true
+        timer.topAnchor.constraint(equalTo: hasilLabel.bottomAnchor, constant: 12).isActive = true
+        
+        ulasanBackground.addSubview(checkmark)
+        checkmark.leadingAnchor.constraint(equalTo: ulasanBackground.leadingAnchor, constant: 67).isActive = true
+        checkmark.topAnchor.constraint(equalTo: timer.bottomAnchor, constant: 12).isActive = true
+
+        ulasanBackground.addSubview(waktuQuizLabel)
+        waktuQuizLabel.leadingAnchor.constraint(equalTo: timer.trailingAnchor, constant: 8).isActive = true
+        waktuQuizLabel.topAnchor.constraint(equalTo: hasilLabel.bottomAnchor, constant: 12).isActive = true
+        
+        ulasanBackground.addSubview(waktuDoneQuizLabel)
+        waktuDoneQuizLabel.leadingAnchor.constraint(equalTo: waktuQuizLabel.trailingAnchor, constant: 16).isActive = true
+        waktuDoneQuizLabel.topAnchor.constraint(equalTo: hasilLabel.bottomAnchor, constant: 12).isActive = true
+        
+        ulasanBackground.addSubview(benarDoneQuizLabel)
+        benarDoneQuizLabel.leadingAnchor.constraint(equalTo: waktuQuizLabel.trailingAnchor, constant: 16).isActive = true
+        benarDoneQuizLabel.topAnchor.constraint(equalTo: waktuDoneQuizLabel.bottomAnchor, constant: 13).isActive = true
+        
+        ulasanBackground.addSubview(selanjutnyaButton)
+        selanjutnyaButton.trailingAnchor.constraint(equalTo: ulasanBackground.trailingAnchor, constant: -67).isActive = true
+        selanjutnyaButton.leadingAnchor.constraint(equalTo: ulasanBackground.leadingAnchor, constant: 67).isActive = true
+        selanjutnyaButton.topAnchor.constraint(equalTo: benarDoneQuizLabel.bottomAnchor, constant: 32).isActive = true
+        selanjutnyaButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        selanjutnyaButton.widthAnchor.constraint(equalToConstant: 374).isActive = true
         
         
-        containerView.addSubview(kuis2LabelModal)
-        kuis2LabelModal.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 48).isActive = true
-        kuis2LabelModal.topAnchor.constraint(equalTo: kuis1LabelModal.bottomAnchor, constant: 24).isActive = true
+        ulasanBackground.addSubview(ulasanButton)
+        ulasanButton.trailingAnchor.constraint(equalTo: ulasanBackground.trailingAnchor, constant: -67).isActive = true
+        ulasanButton.leadingAnchor.constraint(equalTo: ulasanBackground.leadingAnchor, constant: 67).isActive = true
+        ulasanButton.topAnchor.constraint(equalTo: selanjutnyaButton.bottomAnchor, constant: 16).isActive = true
+        ulasanButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        ulasanButton.widthAnchor.constraint(equalToConstant: 374).isActive = true
         
         
-        containerView.addSubview(kuis3LabelModal)
-        kuis3LabelModal.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 48).isActive = true
-        kuis3LabelModal.topAnchor.constraint(equalTo: kuis2LabelModal.bottomAnchor, constant: 24).isActive = true
-        
-        
-        containerView.addSubview(kuis4LabelModal)
-        kuis4LabelModal.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 48).isActive = true
-        kuis4LabelModal.topAnchor.constraint(equalTo: kuis3LabelModal.bottomAnchor, constant: 24).isActive = true
-        
-        containerView.addSubview(kuis5LabelModal)
-        kuis5LabelModal.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 48).isActive = true
-        kuis5LabelModal.topAnchor.constraint(equalTo: kuis4LabelModal.bottomAnchor, constant: 24).isActive = true
-        
-        
-        containerView.addSubview(correctOrWrongAnswerImage1)
-        correctOrWrongAnswerImage1.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -48).isActive = true
-        correctOrWrongAnswerImage1.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 158).isActive = true
-        correctOrWrongAnswerImage1.heightAnchor.constraint(equalToConstant: 24).isActive = true
-        correctOrWrongAnswerImage1.widthAnchor.constraint(equalToConstant: 24).isActive = true
-        
-        
-        containerView.addSubview(correctOrWrongAnswerImage2)
-        correctOrWrongAnswerImage2.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -48).isActive = true
-        correctOrWrongAnswerImage2.topAnchor.constraint(equalTo: correctOrWrongAnswerImage1.bottomAnchor, constant: 46).isActive = true
-        correctOrWrongAnswerImage2.heightAnchor.constraint(equalToConstant: 24).isActive = true
-        correctOrWrongAnswerImage2.widthAnchor.constraint(equalToConstant: 24).isActive = true
-        
-        
-        containerView.addSubview(correctOrWrongAnswerImage3)
-        correctOrWrongAnswerImage3.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -48).isActive = true
-        correctOrWrongAnswerImage3.topAnchor.constraint(equalTo: correctOrWrongAnswerImage2.bottomAnchor, constant: 46).isActive = true
-        correctOrWrongAnswerImage3.heightAnchor.constraint(equalToConstant: 24).isActive = true
-        correctOrWrongAnswerImage3.widthAnchor.constraint(equalToConstant: 24).isActive = true
-        
-        
-        containerView.addSubview(correctOrWrongAnswerImage4)
-        correctOrWrongAnswerImage4.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -48).isActive = true
-        correctOrWrongAnswerImage4.topAnchor.constraint(equalTo: correctOrWrongAnswerImage3.bottomAnchor, constant: 46).isActive = true
-        correctOrWrongAnswerImage4.heightAnchor.constraint(equalToConstant: 24).isActive = true
-        correctOrWrongAnswerImage4.widthAnchor.constraint(equalToConstant: 24).isActive = true
-        
-        
-        containerView.addSubview(correctOrWrongAnswerImage5)
-        correctOrWrongAnswerImage5.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -48).isActive = true
-        correctOrWrongAnswerImage5.topAnchor.constraint(equalTo: correctOrWrongAnswerImage4.bottomAnchor, constant: 46).isActive = true
-        correctOrWrongAnswerImage5.heightAnchor.constraint(equalToConstant: 24).isActive = true
-        correctOrWrongAnswerImage5.widthAnchor.constraint(equalToConstant: 24).isActive = true
-        
-        
-        containerView.addSubview(selanjutnyaButton)
-        selanjutnyaButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -48).isActive = true
-        selanjutnyaButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 48).isActive = true
-        selanjutnyaButton.topAnchor.constraint(equalTo: kuis5LabelModal.bottomAnchor, constant: 40).isActive = true
-        selanjutnyaButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
-        selanjutnyaButton.widthAnchor.constraint(equalToConstant: 376).isActive = true
-        
-        
-        containerView.addSubview(mainUlangButton)
-        mainUlangButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -48).isActive = true
-        mainUlangButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 48).isActive = true
-        mainUlangButton.topAnchor.constraint(equalTo: selanjutnyaButton.bottomAnchor, constant: 12).isActive = true
-        mainUlangButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
-        mainUlangButton.widthAnchor.constraint(equalToConstant: 376).isActive = true
-        
-        
-        containerView.addSubview(bagikanButton)
-        bagikanButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -48).isActive = true
-        bagikanButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 48).isActive = true
-        bagikanButton.topAnchor.constraint(equalTo: mainUlangButton.bottomAnchor, constant: 12).isActive = true
-        bagikanButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
-        bagikanButton.widthAnchor.constraint(equalToConstant: 376).isActive = true
+        ulasanBackground.addSubview(layarUtamaButton)
+        layarUtamaButton.trailingAnchor.constraint(equalTo: ulasanBackground.trailingAnchor, constant: -67).isActive = true
+        layarUtamaButton.leadingAnchor.constraint(equalTo: ulasanBackground.leadingAnchor, constant: 67).isActive = true
+        layarUtamaButton.topAnchor.constraint(equalTo: ulasanButton.bottomAnchor, constant: 16).isActive = true
+        layarUtamaButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        layarUtamaButton.widthAnchor.constraint(equalToConstant: 374).isActive = true
     }
     
     @objc func hideRewardModal() {
-        backgroundBlurView.removeFromSuperview()
+        backgroundView.removeFromSuperview()
     }
     
     @objc func handleMainLagi() {
