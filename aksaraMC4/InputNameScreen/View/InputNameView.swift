@@ -10,9 +10,10 @@ import Foundation
 
 import UIKit
 
-class UlasanView: UIView, UITextViewDelegate {
+class InputNameView: UIView, UITextViewDelegate {
     
     var quizAnswerLabelConstraint: NSLayoutConstraint!
+    var name : String?
     
     let titleLabel: UILabel = {
         let label = UILabel()
@@ -57,12 +58,14 @@ class UlasanView: UIView, UITextViewDelegate {
         return label
     }()
     
-    let arrowRight: UIImageView = {
+    var arrowRight: UIImageView = {
         let image = UIImageView()
         let symbolConfig = UIImage.SymbolConfiguration(pointSize: 24.0, weight: .medium, scale: .default)
         image.image = UIImage(systemName: "arrow.right", withConfiguration: symbolConfig)?.withTintColor(UIColor.rgb(red: 3, green: 131, blue: 251, alpha: 1), renderingMode: .alwaysOriginal)
         image.contentMode = .scaleAspectFill
         image.translatesAutoresizingMaskIntoConstraints = false
+        image.isUserInteractionEnabled = true
+        
         return image
     }()
     
@@ -100,29 +103,37 @@ class UlasanView: UIView, UITextViewDelegate {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "decorativeBackground")
+        backgroundImage.contentMode = .scaleAspectFill
+        self.insertSubview(backgroundImage, at: 0)
+        
         setBackgroundColor()
         setupView()
-        usernameLabel.delegate = self
+//        usernameLabel.delegate = self
     }
     
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText newText: String) -> Bool {
-        if newText == "\n" {
-            textView.resignFirstResponder()
-            return false
-        }
-        return textView.text.count + (newText.count - range.length) <= 20
-    }
-    
-    func textViewDidEndEditing(_ textView: UITextView) {
-        
-    }
-    
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        self.quizAnswerLabelConstraint.constant = -307
-        usernameLabel.textColor = UIColor.rgb(red: 23, green: 78, blue: 161, alpha: 1)
-        usernameLabel.text = ""
-        
-    }
+//    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText newText: String) -> Bool {
+//        if newText == "\n" {
+//            textView.resignFirstResponder()
+//            return false
+//        }
+//        return textView.text.count + (newText.count - range.length) <= 20
+//    }
+//    
+//    func textViewDidEndEditing(_ textView: UITextView) {
+//        self.quizAnswerLabelConstraint.constant = -190
+//        self.name = textView.text
+////        print("NAMA", name)
+//    }
+//    
+//    func textViewDidBeginEditing(_ textView: UITextView) {
+//        self.quizAnswerLabelConstraint.constant = -307
+//        usernameLabel.textColor = UIColor.rgb(red: 23, green: 78, blue: 161, alpha: 1)
+//        usernameLabel.text = ""
+//        
+//    }
     
     func setupView() {
         addSubview(circleProfile)

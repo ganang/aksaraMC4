@@ -23,7 +23,7 @@
 		23812D8C2542C24600C17F53 /* KonsonanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23812D8B2542C24600C17F53 /* KonsonanView.swift */; };
 		23812D8E2542C34D00C17F53 /* VokalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23812D8D2542C34D00C17F53 /* VokalView.swift */; };
 		23812D902542C37A00C17F53 /* PasanganView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23812D8F2542C37A00C17F53 /* PasanganView.swift */; };
-		2385AEB0254FC7F500BAB851 /* UlasanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2385AEAF254FC7F500BAB851 /* UlasanView.swift */; };
+		2385AEB0254FC7F500BAB851 /* InputNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2385AEAF254FC7F500BAB851 /* InputNameView.swift */; };
 		23A8D13A254EAA8C0053409B /* OldStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A8D139254EAA8C0053409B /* OldStartView.swift */; };
 		23A8D13E254EE2630053409B /* ChooseRegionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A8D13D254EE2630053409B /* ChooseRegionView.swift */; };
 		23A900DB253C2BFE008636B1 /* Sunda Suara Ya.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A900A9253C2BFD008636B1 /* Sunda Suara Ya.mp3 */; };
@@ -67,6 +67,14 @@
 		91775768254966D5001C2589 /* ChoiceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91775767254966D5001C2589 /* ChoiceButton.swift */; };
 		9177576B254A87BB001C2589 /* QuizCellTypeI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9177576A254A87BB001C2589 /* QuizCellTypeI.swift */; };
 		9177576E254AECF7001C2589 /* QuizCellTypeGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9177576D254AECF7001C2589 /* QuizCellTypeGuide.swift */; };
+		9177577C254C35E0001C2589 /* LevelV2Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9177577B254C35E0001C2589 /* LevelV2Controller.swift */; };
+		91775780254C35F4001C2589 /* LevelV2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9177577F254C35F4001C2589 /* LevelV2View.swift */; };
+		91775785254EFA32001C2589 /* StageTahap1Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91775784254EFA32001C2589 /* StageTahap1Cell.swift */; };
+		91775788254EFA40001C2589 /* StageTahap2Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91775787254EFA40001C2589 /* StageTahap2Cell.swift */; };
+		9177578B254EFA59001C2589 /* StageTahap3Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9177578A254EFA59001C2589 /* StageTahap3Cell.swift */; };
+		917757A725500B59001C2589 /* LoadingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917757A625500B59001C2589 /* LoadingController.swift */; };
+		917757AC25500B6A001C2589 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917757AB25500B6A001C2589 /* LoadingView.swift */; };
+		917757BB25505521001C2589 /* InputNameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917757BA25505521001C2589 /* InputNameController.swift */; };
 		918EBC492546D357006312BE /* QuizDummyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918EBC482546D357006312BE /* QuizDummyController.swift */; };
 		9193764225317E3100C3FC10 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9193764125317E3100C3FC10 /* StartView.swift */; };
 		9193764625317E3B00C3FC10 /* StartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9193764525317E3B00C3FC10 /* StartController.swift */; };
@@ -146,7 +154,7 @@
 		23812D8B2542C24600C17F53 /* KonsonanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KonsonanView.swift; sourceTree = "<group>"; };
 		23812D8D2542C34D00C17F53 /* VokalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VokalView.swift; sourceTree = "<group>"; };
 		23812D8F2542C37A00C17F53 /* PasanganView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasanganView.swift; sourceTree = "<group>"; };
-		2385AEAF254FC7F500BAB851 /* UlasanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UlasanView.swift; sourceTree = "<group>"; };
+		2385AEAF254FC7F500BAB851 /* InputNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputNameView.swift; sourceTree = "<group>"; };
 		23A8D139254EAA8C0053409B /* OldStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldStartView.swift; sourceTree = "<group>"; };
 		23A8D13D254EE2630053409B /* ChooseRegionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseRegionView.swift; sourceTree = "<group>"; };
 		23A900A9253C2BFD008636B1 /* Sunda Suara Ya.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sunda Suara Ya.mp3"; sourceTree = "<group>"; };
@@ -191,6 +199,14 @@
 		91775767254966D5001C2589 /* ChoiceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceButton.swift; sourceTree = "<group>"; };
 		9177576A254A87BB001C2589 /* QuizCellTypeI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizCellTypeI.swift; sourceTree = "<group>"; };
 		9177576D254AECF7001C2589 /* QuizCellTypeGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizCellTypeGuide.swift; sourceTree = "<group>"; };
+		9177577B254C35E0001C2589 /* LevelV2Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelV2Controller.swift; sourceTree = "<group>"; };
+		9177577F254C35F4001C2589 /* LevelV2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelV2View.swift; sourceTree = "<group>"; };
+		91775784254EFA32001C2589 /* StageTahap1Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageTahap1Cell.swift; sourceTree = "<group>"; };
+		91775787254EFA40001C2589 /* StageTahap2Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageTahap2Cell.swift; sourceTree = "<group>"; };
+		9177578A254EFA59001C2589 /* StageTahap3Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageTahap3Cell.swift; sourceTree = "<group>"; };
+		917757A625500B59001C2589 /* LoadingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingController.swift; sourceTree = "<group>"; };
+		917757AB25500B6A001C2589 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		917757BA25505521001C2589 /* InputNameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputNameController.swift; sourceTree = "<group>"; };
 		918EBC482546D357006312BE /* QuizDummyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizDummyController.swift; sourceTree = "<group>"; };
 		9193764125317E3100C3FC10 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		9193764525317E3B00C3FC10 /* StartController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartController.swift; sourceTree = "<group>"; };
@@ -444,6 +460,92 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		91775778254C359D001C2589 /* LevelScreenV2 */ = {
+			isa = PBXGroup;
+			children = (
+				91775783254EF9F1001C2589 /* Cell */,
+				9177577A254C35B8001C2589 /* Controller */,
+				91775779254C35AE001C2589 /* View */,
+			);
+			path = LevelScreenV2;
+			sourceTree = "<group>";
+		};
+		91775779254C35AE001C2589 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9177577F254C35F4001C2589 /* LevelV2View.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9177577A254C35B8001C2589 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9177577B254C35E0001C2589 /* LevelV2Controller.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		91775783254EF9F1001C2589 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				91775784254EFA32001C2589 /* StageTahap1Cell.swift */,
+				91775787254EFA40001C2589 /* StageTahap2Cell.swift */,
+				9177578A254EFA59001C2589 /* StageTahap3Cell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		917757A325500B2B001C2589 /* LoadingScreen */ = {
+			isa = PBXGroup;
+			children = (
+				917757A425500B35001C2589 /* Controller */,
+				917757A525500B3D001C2589 /* View */,
+			);
+			path = LoadingScreen;
+			sourceTree = "<group>";
+		};
+		917757A425500B35001C2589 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				917757A625500B59001C2589 /* LoadingController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		917757A525500B3D001C2589 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				917757AB25500B6A001C2589 /* LoadingView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		917757B725505458001C2589 /* InputNameScreen */ = {
+			isa = PBXGroup;
+			children = (
+				917757B82550547B001C2589 /* Controller */,
+				917757B925505483001C2589 /* View */,
+			);
+			path = InputNameScreen;
+			sourceTree = "<group>";
+		};
+		917757B82550547B001C2589 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				917757BA25505521001C2589 /* InputNameController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		917757B925505483001C2589 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2385AEAF254FC7F500BAB851 /* InputNameView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		9193763D25317DFF00C3FC10 /* StartScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -459,7 +561,6 @@
 				9193764125317E3100C3FC10 /* StartView.swift */,
 				23A8D139254EAA8C0053409B /* OldStartView.swift */,
 				23A8D13D254EE2630053409B /* ChooseRegionView.swift */,
-				2385AEAF254FC7F500BAB851 /* UlasanView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -544,6 +645,8 @@
 		A41A77E6252D9586001C4FAD /* aksaraMC4 */ = {
 			isa = PBXGroup;
 			children = (
+				917757A325500B2B001C2589 /* LoadingScreen */,
+				91775778254C359D001C2589 /* LevelScreenV2 */,
 				A4C732EC254FFD1600C64209 /* MLModel */,
 				A48E21F0254BFD8600C013BE /* PencilKit */,
 				A48E21EF254BFD6F00C013BE /* CoreData */,
@@ -557,6 +660,7 @@
 				A4F19FC9253598FB00F5BA23 /* Common */,
 				914344F3252DC347002E867B /* RegionScreen */,
 				9193763D25317DFF00C3FC10 /* StartScreen */,
+				917757B725505458001C2589 /* InputNameScreen */,
 				913FCA5D252DB8F400438A23 /* Utils */,
 				A41A77FE252D9A2C001C4FAD /* Fonts */,
 				A41A77E7252D9586001C4FAD /* AppDelegate.swift */,
@@ -858,8 +962,10 @@
 				91C9876D252EFE8D00D67BC0 /* StageController.swift in Sources */,
 				9193764625317E3B00C3FC10 /* StartController.swift in Sources */,
 				A46968C52546C48C00281D2C /* QuizHeadAndTailCell.swift in Sources */,
+				9177578B254EFA59001C2589 /* StageTahap3Cell.swift in Sources */,
 				A48FBC75252DC2DB0004EC93 /* PersistenceService.swift in Sources */,
 				91C98768252EFE7900D67BC0 /* StageView.swift in Sources */,
+				9177577C254C35E0001C2589 /* LevelV2Controller.swift in Sources */,
 				23A8D13A254EAA8C0053409B /* OldStartView.swift in Sources */,
 				A41A77F2252D9586001C4FAD /* aksaraMC4.xcdatamodeld in Sources */,
 				A4C732EE254FFD3000C64209 /* AksaraModel.mlmodel in Sources */,
@@ -872,9 +978,12 @@
 				914344E3252DBAD0002E867B /* Theme.swift in Sources */,
 				914344E6252DBADE002E867B /* ThemeProtocol.swift in Sources */,
 				A445D451253D810500A985CF /* TextGenerator.swift in Sources */,
-				2385AEB0254FC7F500BAB851 /* UlasanView.swift in Sources */,
+				2385AEB0254FC7F500BAB851 /* InputNameView.swift in Sources */,
 				91C98779252F269000D67BC0 /* LevelView.swift in Sources */,
 				914344F6252DC366002E867B /* RegionController.swift in Sources */,
+				91775780254C35F4001C2589 /* LevelV2View.swift in Sources */,
+				917757BB25505521001C2589 /* InputNameController.swift in Sources */,
+				917757AC25500B6A001C2589 /* LoadingView.swift in Sources */,
 				A48E21F4254BFDC700C013BE /* CoreDataRecordV2.swift in Sources */,
 				23F2828E2531D273009EC52B /* QuizViewTypeC.swift in Sources */,
 				23A8D13E254EE2630053409B /* ChooseRegionView.swift in Sources */,
@@ -884,12 +993,15 @@
 				23812D8E2542C34D00C17F53 /* VokalView.swift in Sources */,
 				23812D8C2542C24600C17F53 /* KonsonanView.swift in Sources */,
 				237BC09B2545C31000494281 /* KonsonanCell.swift in Sources */,
+				91775788254EFA40001C2589 /* StageTahap2Cell.swift in Sources */,
 				91775768254966D5001C2589 /* ChoiceButton.swift in Sources */,
 				A48BCFAD254A8B8A00BD996B /* QuizTypeE3Cell.swift in Sources */,
 				A48BCFAD254A8B8A00BD996B /* QuizTypeE3Cell.swift in Sources */,
 				23419AD925419C6C001F4CB8 /* DictionaryView.swift in Sources */,
 				A48BCFAA254A88F700BD996B /* QuizTypeE2Cell.swift in Sources */,
 				231EA809252DEA18004FB678 /* QuizController.swift in Sources */,
+				91775785254EFA32001C2589 /* StageTahap1Cell.swift in Sources */,
+				917757A725500B59001C2589 /* LoadingController.swift in Sources */,
 				91C98775252F268400D67BC0 /* LevelController.swift in Sources */,
 				914344E9252DBAFC002E867B /* LightTheme.swift in Sources */,
 				91C7547E25484F980054EF94 /* QuizCellTypeH.swift in Sources */,
@@ -1042,7 +1154,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B95GL74T5A;
+				DEVELOPMENT_TEAM = 67485B37B7;
 				INFOPLIST_FILE = aksaraMC4/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1064,7 +1176,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B95GL74T5A;
+				DEVELOPMENT_TEAM = 67485B37B7;
 				INFOPLIST_FILE = aksaraMC4/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (

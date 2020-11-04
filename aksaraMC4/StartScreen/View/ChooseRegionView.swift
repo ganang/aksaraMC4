@@ -12,7 +12,6 @@ import UIKit
 
 class ChooseRegionView: UIView {
     
-    
     let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -234,8 +233,15 @@ class ChooseRegionView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "decorativeBackground")
+        backgroundImage.contentMode = .scaleAspectFill
+        self.insertSubview(backgroundImage, at: 0)
+        
         setBackgroundColor()
         setupView()
+        
+
     }
     
     func setupView() {

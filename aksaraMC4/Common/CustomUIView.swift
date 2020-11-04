@@ -10,6 +10,7 @@ import UIKit
 
 class CustomUIView: UIView {
     var name: String?
+    var isOpen: Bool?
 }
 
 class CustomView: UIView {
