@@ -889,7 +889,7 @@ class QuizController: UIViewController, QuizControllerProtocol {
         if totalQuizCorrect == 0 {
             gununganImageModal.image = UIImage(named: "GununganStand0")
             selanjutnyaButton.setBackgroundImage(UIImage(named: "mainLagiButton"), for: .normal)
-            selanjutnyaButton.addTarget(self, action: #selector(handleMainLagi), for: .touchUpInside)
+//            selanjutnyaButton.addTarget(self, action: #selector(handleMainLagi), for: .touchUpInside)
             aksaraStepLabel.textColor = UIColor.rgb(red: 215, green: 58, blue: 76, alpha: 1)
             hasilLabel.textColor = UIColor.rgb(red: 215, green: 58, blue: 76, alpha: 1)
             aksaraInTopCard1.setImageColor(color: UIColor.rgb(red: 215, green: 58, blue: 76, alpha: 1))
@@ -899,7 +899,7 @@ class QuizController: UIViewController, QuizControllerProtocol {
         } else if totalQuizCorrect == 1 || totalQuizCorrect == 2{
             gununganImageModal.image = UIImage(named: "GununganStand1")
             selanjutnyaButton.setBackgroundImage(UIImage(named: "mainLagiButton"), for: .normal)
-            selanjutnyaButton.addTarget(self, action: #selector(handleMainLagi), for: .touchUpInside)
+//            selanjutnyaButton.addTarget(self, action: #selector(handleMainLagi), for: .touchUpInside)
             aksaraStepLabel.textColor = UIColor.rgb(red: 215, green: 58, blue: 76, alpha: 1)
             hasilLabel.textColor = UIColor.rgb(red: 215, green: 58, blue: 76, alpha: 1)
             aksaraInTopCard1.setImageColor(color: UIColor.rgb(red: 215, green: 58, blue: 76, alpha: 1))
@@ -908,7 +908,7 @@ class QuizController: UIViewController, QuizControllerProtocol {
             totalMedal = 1
         } else if totalQuizCorrect == 3 || totalQuizCorrect == 4{
             gununganImageModal.image = UIImage(named: "GununganStand2")
-            selanjutnyaButton.addTarget(self, action: #selector(handleSelanjutnya), for: .touchUpInside)
+//            selanjutnyaButton.addTarget(self, action: #selector(handleSelanjutnya), for: .touchUpInside)
             aksaraStepLabel.textColor = UIColor.rgb(red: 25, green: 163, blue: 113, alpha: 1)
             hasilLabel.textColor = UIColor.rgb(red: 25, green: 163, blue: 113, alpha: 1)
             aksaraInTopCard1.setImageColor(color: UIColor.rgb(red: 25, green: 163, blue: 113, alpha: 1))
@@ -918,7 +918,7 @@ class QuizController: UIViewController, QuizControllerProtocol {
 //            handleNextLevel()
         } else{
             gununganImageModal.image = UIImage(named: "GununganStand3")
-            selanjutnyaButton.addTarget(self, action: #selector(handleSelanjutnya), for: .touchUpInside)
+//            selanjutnyaButton.addTarget(self, action: #selector(handleSelanjutnya), for: .touchUpInside)
             aksaraStepLabel.textColor = UIColor.rgb(red: 25, green: 163, blue: 113, alpha: 1)
             hasilLabel.textColor = UIColor.rgb(red: 25, green: 163, blue: 113, alpha: 1)
             aksaraInTopCard1.setImageColor(color: UIColor.rgb(red: 25, green: 163, blue: 113, alpha: 1))
