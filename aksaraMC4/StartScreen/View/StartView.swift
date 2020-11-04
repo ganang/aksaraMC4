@@ -1,229 +1,184 @@
 //
-//  StartView.swift
+//  UlasanView.swift
 //  aksaraMC4
 //
-//  Created by Mohamad Naufal Nafian on 10/10/20.
+//  Created by Naratama on 02/11/20.
 //  Copyright © 2020 aksara.id. All rights reserved.
 //
 
-import Foundation
-
+import CoreData
 import UIKit
 
-class StartView: UIView {
+class StartView: UIView, UITextViewDelegate {
     
-    //Label
+    var quizAnswerLabelConstraint: NSLayoutConstraint!
+    
     let titleLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.init(name: "NowAlt-Medium", size: 24)
-        label.textColor = UIColor.rgb(red: 23, green: 78, blue: 161, alpha: 1)
-        label.text = "Hasil dan ulasan"
-        return label
-    }()
-    
-    let aksaraLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.init(name: "NowAlt-Bold", size: 20)
-        label.textColor = UIColor.rgb(red: 23, green: 78, blue: 161, alpha: 1)
-        label.text = "Aksara Jawa"
-        return label
-    }()
-    
-    let tahapLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = 8
+        paragraphStyle.lineSpacing = 12
         
         let firstWord   = ""
-        let secondWord = "Tahap 1 - Tingkat 1\n"
-        let attrs      = [NSAttributedString.Key.font: UIFont.init(name: "NowAlt-Bold", size: 24), NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 3, green: 131, blue: 251, alpha: 1), NSAttributedString.Key.paragraphStyle: paragraphStyle]
-        let attrs2      = [NSAttributedString.Key.font: UIFont.init(name: "NowAlt-Regular", size: 16), NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 23, green: 78, blue: 161, alpha: 1), NSAttributedString.Key.paragraphStyle: paragraphStyle]
-        let thirdWord   = "Carakan"
+        let secondWord = "Sebelum memulai, masukkan :\n"
+        let attrs      = [NSAttributedString.Key.font: UIFont.init(name: "NowAlt-Medium", size: 24), NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 23, green: 78, blue: 161, alpha: 1), NSAttributedString.Key.paragraphStyle: paragraphStyle]
+        let attrs2      = [NSAttributedString.Key.font: UIFont.init(name: "NowAlt-Bold", size: 24), NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 3, green: 131, blue: 251, alpha: 1), NSAttributedString.Key.paragraphStyle: paragraphStyle]
+        let thirdWord   = "Nama profil"
         let attributedText = NSMutableAttributedString(string:firstWord)
         attributedText.append(NSAttributedString(string: secondWord, attributes: attrs as [NSAttributedString.Key : Any]))
         attributedText.append(NSAttributedString(string: thirdWord, attributes: attrs2 as [NSAttributedString.Key : Any]))
         label.attributedText = attributedText
+        label.textAlignment = .center
         
         return label
     }()
     
-    let hasilLabel: UILabel = {
+    lazy var usernameLabel: UITextView = {
+        let label = UITextView()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.init(name: "NowAlt-Medium", size: 24)
+        label.textColor = UIColor.rgb(red: 29, green: 112, blue: 188, alpha: 0.2)
+        label.text = "Nama profil"
+        label.backgroundColor = .clear
+        label.isScrollEnabled = false
+        label.textAlignment = .center
+
+        return label
+    }()
+    
+    let warningLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.init(name: "NowAlt-Bold", size: 16)
-        label.textColor = UIColor.rgb(red: 3, green: 131, blue: 251, alpha: 1)
-        label.text = "Hasil kamu"
+        label.font = UIFont.init(name: "NowAlt-Regular", size: 16)
+        label.textColor = UIColor.rgb(red: 23, green: 78, blue: 161, alpha: 1)
+        label.text = "*Min-maks 3-20 karakter, tanpa angka dan tanda baca"
         return label
     }()
     
-    let waktuQuizLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = 13
-        
-        let firstWord   = ""
-        let secondWord = "Waktu\n"
-        let attrs      = [NSAttributedString.Key.font: UIFont.init(name: "NowAlt-Medium", size: 16), NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 23, green: 78, blue: 161, alpha: 1), NSAttributedString.Key.paragraphStyle: paragraphStyle]
-        let thirdWord   = "Kuis benar"
-        let attributedText = NSMutableAttributedString(string:firstWord)
-        attributedText.append(NSAttributedString(string: secondWord, attributes: attrs as [NSAttributedString.Key : Any]))
-        attributedText.append(NSAttributedString(string: thirdWord, attributes: attrs as [NSAttributedString.Key : Any]))
-        label.attributedText = attributedText
-        
-        return label
-    }()
-    
-    //UIView & Image
-    lazy var AksaraCardContainer : UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.cornerRadius = 0
-        view.addInnerShadow()
-        view.backgroundColor = UIColor.init(white: 1, alpha: 0.8)
-        view.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
-        return view
-    }()
-    
-    lazy var aksaraInTopCard1 : UILabel = {
-        let label = UILabel()
-        label.text = "Ha"
-        label.font = UIFont.init(name: "NowAlt-Bold", size: 24)
-        label.textColor = Theme.current.accentWhite
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        return label
-    }()
-    
-    let speakerImage: UIImageView = {
+    let arrowRight: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(systemName: "speaker.2.fill")
-        image.tintColor = Theme.current.accentWhite
-        image.contentMode = .scaleAspectFit
+        let symbolConfig = UIImage.SymbolConfiguration(pointSize: 24.0, weight: .medium, scale: .default)
+        image.image = UIImage(systemName: "arrow.right", withConfiguration: symbolConfig)?.withTintColor(UIColor.rgb(red: 3, green: 131, blue: 251, alpha: 1), renderingMode: .alwaysOriginal)
+        image.contentMode = .scaleAspectFill
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
     
-    
-    //SFSymbol
-    let timer: UIImageView = {
+    let profileIcon: UIImageView = {
         let image = UIImageView()
-        let symbolConfig = UIImage.SymbolConfiguration(pointSize: 16.0, weight: .medium, scale: .default)
-        image.image = UIImage(systemName: "timer", withConfiguration: symbolConfig)?.withTintColor(UIColor.rgb(red: 3, green: 131, blue: 251, alpha: 1), renderingMode: .alwaysOriginal)
+        let symbolConfig = UIImage.SymbolConfiguration(pointSize: 24.0, weight: .medium, scale: .default)
+        image.image = UIImage(systemName: "person.fill", withConfiguration: symbolConfig)?.withTintColor(UIColor.rgb(red: 3, green: 131, blue: 251, alpha: 1), renderingMode: .alwaysOriginal)
         image.contentMode = .scaleAspectFill
         image.translatesAutoresizingMaskIntoConstraints = false
         
         return image
     }()
     
-    let checkmark: UIImageView = {
-        let image = UIImageView()
-        let symbolConfig = UIImage.SymbolConfiguration(pointSize: 16.0, weight: .medium, scale: .default)
-        image.image = UIImage(systemName: "checkmark.circle", withConfiguration: symbolConfig)?.withTintColor(UIColor.rgb(red: 3, green: 131, blue: 251, alpha: 1), renderingMode: .alwaysOriginal)
-        image.contentMode = .scaleAspectFill
-        image.translatesAutoresizingMaskIntoConstraints = false
+    let circleProfile: UIView = {
+        let circleProfile = UIView()
+        circleProfile.layer.cornerRadius = 48/2
         
-        return image
+        circleProfile.layer.backgroundColor = UIColor.rgb(red: 255, green: 255, blue: 255, alpha: 0.8).cgColor
+        circleProfile.translatesAutoresizingMaskIntoConstraints = false
+        circleProfile.addInnerShadow()
+        circleProfile.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
+        return circleProfile
     }()
     
-    //Button
-    let backButton : UIButton = {
-        let button = UIButton(type: .custom)
-        button.translatesAutoresizingMaskIntoConstraints = false
-//        button.addTarget(self, action: #selector(showWarningModal), for: .touchUpInside)
-        if let image = UIImage(named: "backIcon") {
-            let tintedImage = image.withRenderingMode(.alwaysTemplate)
-            button.setImage(tintedImage, for: .normal)
-        }
-        button.imageView?.contentMode = .scaleAspectFit
-        button.imageEdgeInsets = UIEdgeInsets(top: 10, left: 8, bottom: 10, right: 10)
-        button.tintColor = Theme.current.textColor1
-        button.backgroundColor = .init(white: 1, alpha: 0.6)
-        button.layer.cornerRadius = 24
-        button.clipsToBounds = true
-        button.addInnerShadow()
-        button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 3/255, green: 131/255, blue: 251/255, alpha: 1), alpha: 0.1, x: 0, y: 8, blur: 12, spread: 0)
-        button.layer.masksToBounds = false
-        
-        return button
-    }()
-    
-    //ScrollView
-    lazy var scrollView : UIScrollView = {
-        let scroll = UIScrollView()
-        scroll.contentInsetAdjustmentBehavior = .never
-        scroll.isUserInteractionEnabled = true
-        
-        scroll.translatesAutoresizingMaskIntoConstraints = false
-        return scroll
-    }()
-    
-    lazy var containerView : UIView = {
-        let view = UIView()
-        view.isUserInteractionEnabled = true
-        
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+    lazy var inputUsername: UIView = {
+        let inputUsername = UIView()
+        inputUsername.layer.cornerRadius = 32
+
+        inputUsername.layer.backgroundColor = UIColor.rgb(red: 255, green: 255, blue: 255, alpha: 0.8).cgColor
+        inputUsername.translatesAutoresizingMaskIntoConstraints = false
+        inputUsername.addInnerShadow()
+        inputUsername.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
+        return inputUsername
     }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         setBackgroundColor()
         setupView()
-        setupScrollView()
+        usernameLabel.delegate = self
     }
     
-    func setupScrollView() {
-        addSubview(scrollView)
-        scrollView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        scrollView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        scrollView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        scrollView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+    func getUserData() {
+        let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
+        let idSort = NSSortDescriptor(key:"id", ascending:true)
+        fetchRequest.sortDescriptors = [idSort]
         
-        scrollView.addSubview(containerView)
-        containerView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-        containerView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
-        containerView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-        containerView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+        do {
+            let users = try PersistenceService.context.fetch(fetchRequest)
+            
+            let user: User = users[0]
+//            self.regions = user.regions?.sortedArray(using: [.init(key: "id", ascending: true)]) as? [Region]
+            
+            
+        } catch {
+            print("ERROR")
+        }
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText newText: String) -> Bool {
+        if newText == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
+        return textView.text.count + (newText.count - range.length) <= 20
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        self.quizAnswerLabelConstraint.constant = -307
+        usernameLabel.textColor = UIColor.rgb(red: 23, green: 78, blue: 161, alpha: 1)
+        usernameLabel.text = ""
+        
     }
     
     func setupView() {
+        addSubview(circleProfile)
+        circleProfile.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        quizAnswerLabelConstraint = circleProfile.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -190)
+        quizAnswerLabelConstraint.isActive = true
+        circleProfile.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        circleProfile.widthAnchor.constraint(equalToConstant: 48).isActive = true
+        
+        circleProfile.addSubview(profileIcon)
+        profileIcon.centerXAnchor.constraint(equalTo: circleProfile.centerXAnchor, constant: 0).isActive = true
+        profileIcon.centerYAnchor.constraint(equalTo: circleProfile.centerYAnchor, constant: 0).isActive = true
+        profileIcon.heightAnchor.constraint(equalToConstant: 29).isActive = true
+        profileIcon.widthAnchor.constraint(equalToConstant: 25).isActive = true
+        
         addSubview(titleLabel)
-        titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -339).isActive = true
+        titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: circleProfile.bottomAnchor, constant: 24).isActive = true
+        titleLabel.widthAnchor.constraint(equalToConstant: 350).isActive = true
         
-        addSubview(backButton)
-        backButton.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -353).isActive = true
-        backButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: frame.width * 0.03350083752).isActive = true
-        backButton.widthAnchor.constraint(equalToConstant: 48).isActive = true
-        backButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        addSubview(inputUsername)
+        inputUsername.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        inputUsername.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 40).isActive = true
+        inputUsername.heightAnchor.constraint(equalToConstant: 64).isActive = true
+        inputUsername.widthAnchor.constraint(equalToConstant: 640).isActive = true
         
-        addSubview(AksaraCardContainer)
-        AksaraCardContainer.centerXAnchor.constraint(equalTo: centerXAnchor, constant: -247).isActive = true
-        AksaraCardContainer.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 40).isActive = true
-        AksaraCardContainer.widthAnchor.constraint(equalToConstant: 487).isActive = true
-        AksaraCardContainer.heightAnchor.constraint(equalToConstant: 280).isActive = true
+        inputUsername.addSubview(usernameLabel)
+        usernameLabel.centerXAnchor.constraint(equalTo: inputUsername.centerXAnchor, constant: 0).isActive = true
+        usernameLabel.centerYAnchor.constraint(equalTo: inputUsername.centerYAnchor, constant: 0).isActive = true
+        usernameLabel.widthAnchor.constraint(equalToConstant: 560).isActive = true
         
-        AksaraCardContainer.addSubview(aksaraLabel)
-        aksaraLabel.centerXAnchor.constraint(equalTo: AksaraCardContainer.centerXAnchor).isActive = true
-        aksaraLabel.topAnchor.constraint(equalTo: AksaraCardContainer.topAnchor, constant: 24).isActive = true
+        inputUsername.addSubview(arrowRight)
+        arrowRight.trailingAnchor.constraint(equalTo: inputUsername.trailingAnchor, constant: -24).isActive = true
+        arrowRight.centerYAnchor.constraint(equalTo: inputUsername.centerYAnchor, constant: 0).isActive = true
+        arrowRight.heightAnchor.constraint(equalToConstant: 29).isActive = true
+        arrowRight.widthAnchor.constraint(equalToConstant: 27).isActive = true
         
-        addSubview(tahapLabel)
-        tahapLabel.leadingAnchor.constraint(equalTo: AksaraCardContainer.trailingAnchor, constant: 24).isActive = true
-        tahapLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 64).isActive = true
-        
-        addSubview(hasilLabel)
-        hasilLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        hasilLabel.topAnchor.constraint(equalTo: tahapLabel.bottomAnchor, constant: 50).isActive = true
-        
-        addSubview(waktuQuizLabel)
-        waktuQuizLabel.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0).isActive = true
-        waktuQuizLabel.topAnchor.constraint(equalTo: hasilLabel.bottomAnchor, constant: 12).isActive = true
+        addSubview(warningLabel)
+        warningLabel.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0).isActive = true
+        warningLabel.topAnchor.constraint(equalTo: inputUsername.bottomAnchor, constant: 24).isActive = true
     }
     
     
