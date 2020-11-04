@@ -23,6 +23,7 @@ class InputNameController: UIViewController {
         // Do any additional setup after loading the view.
         
         tapFunction()
+        getUserData()
     }
     
     override public var shouldAutorotate: Bool {
@@ -59,18 +60,17 @@ class InputNameController: UIViewController {
     
     @objc func moveToRegion() {
         let startScreen = StartController()
+       
+        if (username != nil) {
+            navigationController?.pushViewController(startScreen, animated: true)
+            
+            self.user?.name = username
+            PersistenceService.saveContext()
+            
+            startScreen.user = self.user
+            startScreen.username = username
+        }
         
-        self.user?.name = username
-        PersistenceService.saveContext()
-        
-//        print("user on input name", user)
-        print("username", username)
-        
-        startScreen.user = self.user
-        startScreen.username = username
- 
-        
-        navigationController?.pushViewController(startScreen, animated: true)
     }
 
     /*

@@ -24,9 +24,6 @@ class LevelV2Controller: UIViewController {
     var currentStage: Int?
     var levelsStage1 : [Level]? {
         didSet {
-            print("levels on stage 1", levelsStage1)
-            print("levels on stage 1 count", levelsStage1?.count)
-            
         }
     }
     
@@ -68,7 +65,14 @@ class LevelV2Controller: UIViewController {
 //        print("Curent level stage 1", currentLevel)
         registerCV()
         tapContainerFunction()
-        levelV2View.greetingLabel.text = "Selamat Datang, \(username ?? "")"
+        
+        setupUsername()
+    }
+    
+    func setupUsername() {
+        let username: String = (region?.user?.name)!
+        
+        levelV2View.greetingLabel.text = "Selamat Datang, \(username)"
     }
     
     func handleData() {
