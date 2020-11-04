@@ -692,6 +692,16 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
         layoutIfNeeded()
     }
     
+    func handleTrueCoreData() {
+        quizData?.isCorrect = true
+        PersistenceService.saveContext()
+    }
+    
+    func handleFalseCoreData() {
+        quizData?.isCorrect = false
+        PersistenceService.saveContext()
+    }
+    
     func checkAnswers() {
         if (headQuestion == headAnswer && tailQuestion == tailAnswer) {
             // handle true
@@ -708,6 +718,10 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
             
             playSoundTrue()
             generator.notificationOccurred(.success)
+            
+            // coredata
+            handleTrueCoreData()
+            
         } else {
             // handle false
             questionLabel.text = "Sayang sekali ☹️"
@@ -733,6 +747,9 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
             
             playSoundFalse()
             generator.notificationOccurred(.error)
+            
+            // coredata
+            handleFalseCoreData()
         }
     }
     
@@ -792,6 +809,9 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
         // centering the placeholder
         centerPlaceHolderConstraint?.constant = 120
         layoutIfNeeded()
+        
+        // coredata
+        handleFalseCoreData()
     }
     
     func updateStatusCheckButton() {

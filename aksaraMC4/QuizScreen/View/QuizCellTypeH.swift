@@ -441,6 +441,9 @@ class QuizCellTypeH: UICollectionViewCell {
         delegate?.stopTimerChoosen()
         delegate?.setTrueStatus()
         self.playSoundTrue()
+        
+        // handle core data
+        self.handleTrueCoreData()
     }
     
     func handleFalse() {
@@ -451,6 +454,19 @@ class QuizCellTypeH: UICollectionViewCell {
         delegate?.stopTimerChoosen()
         delegate?.setFalseStatus()
         self.playSoundFalse()
+        
+        // handle core data
+        self.handleFalseCoreData()
+    }
+    
+    func handleTrueCoreData() {
+        quizData?.isCorrect = true
+        PersistenceService.saveContext()
+    }
+    
+    func handleFalseCoreData() {
+        quizData?.isCorrect = false
+        PersistenceService.saveContext()
     }
     
     func checkNow() {

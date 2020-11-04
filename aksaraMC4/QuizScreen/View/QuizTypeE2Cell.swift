@@ -676,6 +676,10 @@ class QuizTypeE2Cell: BaseCell, UIGestureRecognizerDelegate {
             
             playSoundTrue()
             generator.notificationOccurred(.success)
+            
+            // handle core data
+            handleTrueCoreData()
+            
         } else {
             // handle false
             questionLabel.text = "Sayang sekali ☹️"
@@ -701,6 +705,9 @@ class QuizTypeE2Cell: BaseCell, UIGestureRecognizerDelegate {
             
             playSoundFalse()
             generator.notificationOccurred(.error)
+            
+            // handle core data
+            handleFalseCoreData()
         }
     }
     
@@ -726,6 +733,16 @@ class QuizTypeE2Cell: BaseCell, UIGestureRecognizerDelegate {
         answersFullDetailLabel.isHidden = false
         aksaraLabel1.isHidden = false
         aksaraLabel2.isHidden = false
+    }
+    
+    func handleTrueCoreData() {
+        quizData?.isCorrect = true
+        PersistenceService.saveContext()
+    }
+    
+    func handleFalseCoreData() {
+        quizData?.isCorrect = false
+        PersistenceService.saveContext()
     }
     
     func handleTimer() {
@@ -766,6 +783,9 @@ class QuizTypeE2Cell: BaseCell, UIGestureRecognizerDelegate {
         // centering the placeholder
         centerPlaceHolderConstraint?.constant = 120
         layoutIfNeeded()
+        
+        // handle core data
+        handleFalseCoreData()
     }
     
     func updateStatusCheckButton() {
