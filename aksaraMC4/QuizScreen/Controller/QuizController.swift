@@ -274,7 +274,7 @@ class QuizController: UIViewController, QuizControllerProtocol {
     @objc func handlePopBack(){
         // handle progress
         for controller in self.navigationController!.viewControllers as Array {
-            if controller.isKind(of: LevelController.self) {
+            if controller.isKind(of: LevelV2Controller.self) {
                 self.navigationController!.popToViewController(controller, animated: true)
                 break
             }
@@ -913,12 +913,12 @@ class QuizController: UIViewController, QuizControllerProtocol {
             gununganImageModal.image = UIImage(named: "Gulungan True 2")
             selanjutnyaButton.addTarget(self, action: #selector(handleSelanjutnya), for: .touchUpInside)
             totalMedal = 2
-            handleNextLevel()
+//            handleNextLevel()
         } else{
             gununganImageModal.image = UIImage(named: "Gulungan True All")
             selanjutnyaButton.addTarget(self, action: #selector(handleSelanjutnya), for: .touchUpInside)
             totalMedal = 3
-            handleNextLevel()
+//            handleNextLevel()
         }
         
         
@@ -1117,7 +1117,7 @@ class QuizController: UIViewController, QuizControllerProtocol {
         level?.isInitial = false
         PersistenceService.saveContext()
         
-        handleNextLevel()
+//        handleNextLevel()
         handlePopBack()
         
     }
