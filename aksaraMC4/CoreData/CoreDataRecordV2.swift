@@ -749,6 +749,22 @@ class CoreDataRecordV2 {
         tenthLevelStage1Jawa.totalMedal = 0
         tenthLevelStage1Jawa.quizes = []
         
+        let elevenLevelStage1Jawa = Level(context: PersistenceService.context)
+        elevenLevelStage1Jawa.id = 11
+        elevenLevelStage1Jawa.name = "Level 11"
+        elevenLevelStage1Jawa.isLocked = true
+        elevenLevelStage1Jawa.isInitial = true
+        elevenLevelStage1Jawa.totalMedal = 0
+        elevenLevelStage1Jawa.quizes = []
+        
+        let twelveLevelStage1Jawa = Level(context: PersistenceService.context)
+        twelveLevelStage1Jawa.id = 12
+        twelveLevelStage1Jawa.name = "Level 12"
+        twelveLevelStage1Jawa.isLocked = true
+        twelveLevelStage1Jawa.isInitial = true
+        twelveLevelStage1Jawa.totalMedal = 0
+        twelveLevelStage1Jawa.quizes = []
+        
         // MARK: Level for Stage 2 Jawa
         let firstLevelStage2Jawa = Level(context: PersistenceService.context)
         firstLevelStage2Jawa.id = 1
@@ -774,7 +790,7 @@ class CoreDataRecordV2 {
         firstStageJawa.currentMedal = 0
         firstStageJawa.totalMedal = 45
         firstStageJawa.isLocked = false
-        firstStageJawa.levels = [firstLevelStage1Jawa, secondLevelStage1Jawa, thirdLevelStage1Jawa, fourthLevelStage1Jawa, fifthLevelStage1Jawa, sixthLevelStage1Jawa, seventhLevelStage1Jawa, eightLevelStage1Jawa, ninthLevelStage1Jawa, tenthLevelStage1Jawa]
+        firstStageJawa.levels = [firstLevelStage1Jawa, secondLevelStage1Jawa, thirdLevelStage1Jawa, fourthLevelStage1Jawa, fifthLevelStage1Jawa, sixthLevelStage1Jawa, seventhLevelStage1Jawa, eightLevelStage1Jawa, ninthLevelStage1Jawa, tenthLevelStage1Jawa, elevenLevelStage1Jawa, twelveLevelStage1Jawa]
         
         let secondStageJawa = Stage(context: PersistenceService.context)
         secondStageJawa.id = 2
@@ -792,13 +808,13 @@ class CoreDataRecordV2 {
         thirdStageJawa.isLocked = true
         thirdStageJawa.levels = [firstLevelStage3Jawa]
         
-        let fourthStageJawa = Stage(context: PersistenceService.context)
-        fourthStageJawa.id = 4
-        fourthStageJawa.name = "Stage 4"
-        fourthStageJawa.currentMedal = 0
-        fourthStageJawa.totalMedal = 45
-        fourthStageJawa.isLocked = true
-        fourthStageJawa.levels = []
+//        let fourthStageJawa = Stage(context: PersistenceService.context)
+//        fourthStageJawa.id = 4
+//        fourthStageJawa.name = "Stage 4"
+//        fourthStageJawa.currentMedal = 0
+//        fourthStageJawa.totalMedal = 45
+//        fourthStageJawa.isLocked = true
+//        fourthStageJawa.levels = []
         
         //MARK: Carakan
         let aksara_1_Carakan = Aksara(context: PersistenceService.context)
@@ -962,7 +978,7 @@ class CoreDataRecordV2 {
         firstRegion.id = 1
         firstRegion.name = "Jawa"
         firstRegion.isLocked = false
-        firstRegion.stages = [firstStageJawa, secondStageJawa, thirdStageJawa, fourthStageJawa]
+        firstRegion.stages = [firstStageJawa, secondStageJawa, thirdStageJawa]
         firstRegion.dictionaries = [carakan, sandhangan, pasangan]
         
         let secondRegion = Region(context: PersistenceService.context)

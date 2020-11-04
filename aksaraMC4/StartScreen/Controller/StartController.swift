@@ -13,7 +13,9 @@ class StartController: UIViewController {
     
     private var startView: StartView!
     private var chooseRegionView: ChooseRegionView!
-    private var ulasanView: UlasanView!
+//    private var ulasanView: UlasanView!
+    var user : User?
+    var username : String?
     
     var stages: [Stage]?
     var regions: [Region]?
@@ -31,7 +33,8 @@ class StartController: UIViewController {
         
         
         // handle first setup
-        setupRecord()
+//        setupRecord()
+        getUserData()
         
     }
     
@@ -90,13 +93,32 @@ class StartController: UIViewController {
     
     @objc func tapJawa() {
         
+        let levelScreen = LevelV2Controller()
+        UserDefaults.standard.set(true, forKey: "FirstLoad")
+        levelScreen.region = self.regions![0]
+        levelScreen.username = self.username
+//        levelScreen.user = self.user
+//        print("user", user?.name)
+//        print("username", username)
+//        UserDefaults.standard.setValue(<#T##value: Any?##Any?#>, forKey: <#T##String#>)
+        
+        
         let regionScreen = RegionController()
         regionScreen.region = self.regions![0]
         
-        let stages = regions![0].stages?.sortedArray(using: [.init(key: "id", ascending: true)]) as? [Stage]
-        let levels = stages![0].levels!.sortedArray(using: [.init(key: "id", ascending: true)]) as? [Level]
         
-        navigationController?.pushViewController(regionScreen, animated: true)
+//        self.stages = region?.stages?.sortedArray(using: [.init(key: "id", ascending: true)]) as? [Stage]
+        
+        let stages = regions![0].stages?.sortedArray(using: [.init(key: "id", ascending: true)]) as? [Stage]
+        let levels1 = stages![0].levels!.sortedArray(using: [.init(key: "id", ascending: true)]) as? [Level]
+        let levels2 = stages![1].levels!.sortedArray(using: [.init(key: "id", ascending: true)]) as? [Level]
+        let levels3 = stages![2].levels!.sortedArray(using: [.init(key: "id", ascending: true)]) as? [Level]
+        levelScreen.levelsStage1 = levels1
+        levelScreen.levelsStage2 = levels2
+        levelScreen.levelsStage3 = levels3
+        
+        
+        navigationController?.pushViewController(levelScreen, animated: true)
         
     }
     

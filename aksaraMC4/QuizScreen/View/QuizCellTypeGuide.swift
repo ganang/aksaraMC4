@@ -163,6 +163,16 @@ class QuizCellTypeGuide: UICollectionViewCell {
         return view
     }()
     
+    lazy var aksaraNameNew : UILabel = {
+        let label = UILabel()
+        label.text = "Aksara Ha"
+        label.font = UIFont.init(name: "NowAlt-Medium", size: 24)
+        label.textColor = Theme.current.accentWhite
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
     lazy var aksaraName : UILabel = {
         let label = UILabel()
         label.text = ""
@@ -175,7 +185,7 @@ class QuizCellTypeGuide: UICollectionViewCell {
     
     lazy var aksaraRegion : UILabel = {
         let label = UILabel()
-        label.text = "Aksara Jawa"
+        label.text = "Carakan"
         label.font = UIFont.init(name: "NowAlt-Medium", size: 16)
         label.textColor = Theme.current.accentWhite
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -204,34 +214,34 @@ class QuizCellTypeGuide: UICollectionViewCell {
         return image
     }()
     
-    lazy var aksaraType : UILabel = {
-        let label = UILabel()
-        label.text = "Carakan"
-        label.font = UIFont.init(name: "NowAlt-Regular", size: 16)
-        label.textColor = Theme.current.accentWhite
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        return label
-    }()
-    
-    let bookmarkImage: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(systemName: "bookmark.fill")
-        image.tintColor = Theme.current.accentWhite
-        image.contentMode = .scaleAspectFit
-        image.translatesAutoresizingMaskIntoConstraints = false
-        return image
-    }()
-    
-    lazy var aksaraExample : UILabel = {
-        let label = UILabel()
-        label.text = "Ha : hawa"
-        label.font = UIFont.init(name: "NowAlt-Regular", size: 16)
-        label.textColor = Theme.current.accentWhite
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        return label
-    }()
+//    lazy var aksaraType : UILabel = {
+//        let label = UILabel()
+//        label.text = "Carakan"
+//        label.font = UIFont.init(name: "NowAlt-Regular", size: 16)
+//        label.textColor = Theme.current.accentWhite
+//        label.translatesAutoresizingMaskIntoConstraints = false
+//        
+//        return label
+//    }()
+//    
+//    let bookmarkImage: UIImageView = {
+//        let image = UIImageView()
+//        image.image = UIImage(systemName: "bookmark.fill")
+//        image.tintColor = Theme.current.accentWhite
+//        image.contentMode = .scaleAspectFit
+//        image.translatesAutoresizingMaskIntoConstraints = false
+//        return image
+//    }()
+//    
+//    lazy var aksaraExample : UILabel = {
+//        let label = UILabel()
+//        label.text = "Ha : hawa"
+//        label.font = UIFont.init(name: "NowAlt-Regular", size: 16)
+//        label.textColor = Theme.current.accentWhite
+//        label.translatesAutoresizingMaskIntoConstraints = false
+//        
+//        return label
+//    }()
     
     
     //Anatomi
@@ -575,9 +585,9 @@ class QuizCellTypeGuide: UICollectionViewCell {
         aksaraName.leadingAnchor.constraint(equalTo: guideCardContainer.leadingAnchor, constant: 24).isActive = true
         aksaraName.topAnchor.constraint(equalTo: guideCardContainer.topAnchor, constant: 24).isActive = true
         
-        guideCardContainer.addSubview(aksaraType)
-        aksaraType.leadingAnchor.constraint(equalTo: guideCardContainer.leadingAnchor, constant: 24).isActive = true
-        aksaraType.topAnchor.constraint(equalTo: aksaraName.bottomAnchor, constant: 4).isActive = true
+//        guideCardContainer.addSubview(aksaraType)
+//        aksaraType.leadingAnchor.constraint(equalTo: guideCardContainer.leadingAnchor, constant: 24).isActive = true
+//        aksaraType.topAnchor.constraint(equalTo: aksaraName.bottomAnchor, constant: 4).isActive = true
         
         guideCardContainer.addSubview(speakerButton)
         speakerButton.trailingAnchor.constraint(equalTo: guideCardContainer.trailingAnchor, constant: -24).isActive = true
