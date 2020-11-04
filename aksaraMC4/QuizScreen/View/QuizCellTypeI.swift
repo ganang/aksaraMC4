@@ -532,6 +532,16 @@ class QuizCellTypeI: UICollectionViewCell{
 
     }
     
+    func handleTrueCoreData() {
+        quizData?.isCorrect = true
+        PersistenceService.saveContext()
+    }
+    
+    func handleFalseCoreData() {
+        quizData?.isCorrect = false
+        PersistenceService.saveContext()
+    }
+    
     func handleTimer() {
         questionTitle.text = "Sayang sekali waktu habis ☹️"
         questionTitle.textColor = Theme.current.accentTextRed
@@ -541,6 +551,9 @@ class QuizCellTypeI: UICollectionViewCell{
         continueButton.isHidden = false
         playSoundFalse()
         generator.notificationOccurred(.error)
+        
+        // handle core data
+        handleFalseCoreData()
         
         if (aksaraCount == 1) {
             reloadButton1.isHidden = true
@@ -650,6 +663,9 @@ class QuizCellTypeI: UICollectionViewCell{
         
         playSoundTrue()
         generator.notificationOccurred(.success)
+        
+        // handle core data
+        handleTrueCoreData()
     }
     
     func handleFalse() {
@@ -663,6 +679,9 @@ class QuizCellTypeI: UICollectionViewCell{
         
         playSoundFalse()
         generator.notificationOccurred(.error)
+        
+        // handle core data
+        handleFalseCoreData()
     }
     
     @objc func handleCheckButton() {

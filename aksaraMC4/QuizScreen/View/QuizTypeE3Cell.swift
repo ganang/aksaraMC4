@@ -768,6 +768,16 @@ class QuizTypeE3Cell: BaseCell, UIGestureRecognizerDelegate {
         answersFullDetailLabel.isHidden = false
     }
     
+    func handleTrueCoreData() {
+        quizData?.isCorrect = true
+        PersistenceService.saveContext()
+    }
+    
+    func handleFalseCoreData() {
+        quizData?.isCorrect = false
+        PersistenceService.saveContext()
+    }
+    
     func checkAnswers() {
         footerPlaceholderCarakanA.text = carakan1Answer
         footerPlaceholderCarakanB.text = carakan2Answer
@@ -788,6 +798,10 @@ class QuizTypeE3Cell: BaseCell, UIGestureRecognizerDelegate {
             
             playSoundTrue()
             generator.notificationOccurred(.success)
+            
+            // handle core data
+            handleTrueCoreData()
+            
         } else {
             // handle false
             questionLabel.text = "Sayang sekali ☹️"
@@ -821,6 +835,9 @@ class QuizTypeE3Cell: BaseCell, UIGestureRecognizerDelegate {
             
             playSoundFalse()
             generator.notificationOccurred(.error)
+            
+            // handle core data
+            handleFalseCoreData()
         }
     }
     
@@ -871,6 +888,9 @@ class QuizTypeE3Cell: BaseCell, UIGestureRecognizerDelegate {
         // centering the placeholder
         centerPlaceHolderConstraint?.constant = 120
         layoutIfNeeded()
+        
+        // handle core data
+        handleFalseCoreData()
     }
     
     func rectIntersectionInPerc(r1:CGRect, r2:CGRect) -> CGFloat {

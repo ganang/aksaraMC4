@@ -59,6 +59,16 @@ class QuizViewTypeA: UICollectionViewCell {
         }
     }
     
+    func handleTrueCoreData() {
+        quizData?.isCorrect = true
+        PersistenceService.saveContext()
+    }
+    
+    func handleFalseCoreData() {
+        quizData?.isCorrect = false
+        PersistenceService.saveContext()
+    }
+    
     func handleTimer() {
         var arrayAlpha = [0, 1, 2, 3]
         let index = choices.firstIndex(of: alphabet!)
@@ -89,8 +99,7 @@ class QuizViewTypeA: UICollectionViewCell {
         self.continueButton.setCheckButtonBackgroundColorFalse(withOpacity: 1, withHeight: 56, withWidth: Double(SCREEN_WIDTH), withCorner: 0)
         
         // handle core data
-        quizData?.isCorrect = false
-        PersistenceService.saveContext()
+        handleFalseCoreData()
     }
     
     func restartQuiz() {
@@ -416,8 +425,7 @@ class QuizViewTypeA: UICollectionViewCell {
 //                    self.delegate?.setTrueStatus()
                     
                     // handle core data
-                    self.quizData?.isCorrect = true
-                    PersistenceService.saveContext()
+                    self.handleTrueCoreData()
                     
                     // handle continue button
                     self.continueButton.isHidden = false
@@ -458,8 +466,7 @@ class QuizViewTypeA: UICollectionViewCell {
                     self.playSoundFalse()
                     
                     // handle core data
-                    self.quizData?.isCorrect = false
-                    PersistenceService.saveContext()
+                    self.handleFalseCoreData()
                     
                     // handle continue button
                     self.continueButton.isHidden = false
