@@ -35,6 +35,7 @@ class StartController: UIViewController {
         // handle first setup
 //        setupRecord()
         getUserData()
+        UserDefaults.standard.set(true, forKey: "FirstLoad")
         
     }
     
@@ -94,7 +95,6 @@ class StartController: UIViewController {
     @objc func tapJawa() {
         
         let levelScreen = LevelV2Controller()
-        UserDefaults.standard.set(true, forKey: "FirstLoad")
         levelScreen.region = self.regions![0]
         levelScreen.username = self.username
 //        levelScreen.user = self.user

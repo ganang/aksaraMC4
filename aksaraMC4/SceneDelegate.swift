@@ -21,22 +21,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let navController: UINavigationController = UINavigationController()
             let window = UIWindow(windowScene: windowScene)
             
-            
-            
             if UserDefaults.standard.object(forKey: "FirstLoad") != nil {
-//                getUserData()
-                navController.viewControllers = [LevelV2Controller()]
+                
+                navController.viewControllers = [StartController()]
             } else {
                 CoreDataRecordV2.shared.saveRecord()
-//                getUserData()
-//                UserDefaults.standard.set(true, forKey: "FirstLoad")
                 navController.viewControllers = [InputNameController()]
             }
             
-            
-            
-            
-            navController.viewControllers = [InputNameController()]
             window.rootViewController = navController
             self.window = window
             window.makeKeyAndVisible()
