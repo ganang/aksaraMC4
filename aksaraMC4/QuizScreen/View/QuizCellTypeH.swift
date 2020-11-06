@@ -14,8 +14,8 @@ class QuizCellTypeH: UICollectionViewCell {
     var player: AVAudioPlayer?
     var tempLatin: String? = ""
     var tempAksara: String? = ""
-    var tempNoLatin: Int? = 4
-    var tempNoAksara: Int? = 4
+    var tempNoLatin: Int? = nil
+    var tempNoAksara: Int? = nil
     var tempButtonLatin: ChoiceButton? = nil
     var tempButtonAksara: ChoiceButton? = nil
     var arrayOfButtonLatin : [ChoiceButton]?
@@ -28,6 +28,10 @@ class QuizCellTypeH: UICollectionViewCell {
     var answerAksara = [Int]()
     var correctAnswer : Int? = 0
     var regionSelected: String?
+    var arrayOfLatinButton = [0, 1, 2]
+    var arrayOfAksaraButton = [0, 1, 2]
+    var arrayOfselectedLatin = [3, 4, 5]
+    var arrayOfselectedAksara = [3, 4, 5]
     
     var delegate: QuizController?
     var quizData: Quiz? {
@@ -399,6 +403,15 @@ class QuizCellTypeH: UICollectionViewCell {
         
     }
     
+    func handleDisableButtonLatin() {
+        let arrayOfDisableButton = arrayOfLatinButton.filter{ !arrayOfselectedLatin.contains($0) }
+        print("arraylatin", arrayOfDisableButton)
+        
+        for (_, index) in arrayOfDisableButton.enumerated() {
+            arrayOfButtonLatin?[index].isEnabled = false
+        }
+    }
+    
     @objc func buttonAksaraTapped(_ sender: ChoiceButton) {
 
         if button1Aksara.isLocked == false {
@@ -423,14 +436,35 @@ class QuizCellTypeH: UICollectionViewCell {
         checkAnswerNew()
     }
     
+    func handleDisableButtonAksara() {
+        let arrayOfDisableButton = arrayOfAksaraButton.filter{ !arrayOfselectedAksara.contains($0) }
+        
+        for (_, index) in arrayOfDisableButton.enumerated() {
+            arrayOfButtonAksara?[index].isEnabled = false
+        }
+    }
+    
     func checkAnswerNew() {
         
         if tempAksara != "" && tempLatin != "" {
-            self.arrayOfButtonLatin![self.tempNoLatin!].isEnabled = false
-            self.arrayOfButtonAksara![self.tempNoAksara!].isEnabled = false
+            handleDisableButtonLatin()
+            handleDisableButtonAksara()
             checkNow()
         }
         
+    }
+    
+    func handleEnableButton() {
+        let arrayOfDisableButtonAksara = arrayOfAksaraButton.filter{ !arrayOfselectedAksara.contains($0) }
+        let arrayOfDisableButtonLatin = arrayOfLatinButton.filter{ !arrayOfselectedLatin.contains($0) }
+        
+        for (_, index) in arrayOfDisableButtonAksara.enumerated() {
+            arrayOfButtonAksara?[index].isEnabled = true
+        }
+        
+        for (_, index) in arrayOfDisableButtonLatin.enumerated() {
+            arrayOfButtonLatin?[index].isEnabled = true
+        }
     }
     
     func handleTrue() {
@@ -510,11 +544,16 @@ class QuizCellTypeH: UICollectionViewCell {
                 self.arrayOfButtonAksara![self.tempNoAksara!].titleEdgeInsets = UIEdgeInsets(top: 40, left: 0, bottom: 40, right: 100)
                 self.arrayOfCheckmarkAksara![self.tempNoAksara!].isHidden = false
 
+                self.arrayOfselectedLatin.append(self.tempNoLatin!)
+                self.arrayOfselectedAksara.append(self.tempNoAksara!)
+                
                 // handle
-                self.tempNoAksara = 4
+                self.tempNoAksara = nil
                 self.tempAksara = ""
-                self.tempNoLatin = 4
+                self.tempNoLatin = nil
                 self.tempLatin = ""
+                
+                self.handleEnableButton()
 
                 // handle sound true
                 self.playSoundTrue()
@@ -538,11 +577,13 @@ class QuizCellTypeH: UICollectionViewCell {
                 self.arrayOfButtonLatin![self.tempNoLatin!].isEnabled = true
                 self.arrayOfButtonAksara![self.tempNoAksara!].isEnabled = true
                 
-                self.tempNoLatin = 4
+                self.tempNoLatin = nil
                 self.tempLatin = ""
-                self.tempNoAksara = 4
+                self.tempNoAksara = nil
                 self.tempAksara = ""
 
+                self.handleEnableButton()
+                
                 self.playSoundFalse()
                 
                 
