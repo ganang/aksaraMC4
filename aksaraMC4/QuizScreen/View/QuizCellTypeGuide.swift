@@ -101,8 +101,8 @@ class QuizCellTypeGuide: UICollectionViewCell {
         canvasView.backgroundColor = .clear
         canvasView.isOpaque = false
         canvasView.alwaysBounceVertical = true
-        canvasView.allowsFingerDrawing = true
-        canvasView.tool = PKInkingTool(.pen, color: .black, width: 2)
+        canvasView.drawingPolicy = .anyInput
+        canvasView.tool = PKInkingTool(.pen, color: .white, width: 10)
         canvasView.tag = 0
         canvasView.delegate = self
         
