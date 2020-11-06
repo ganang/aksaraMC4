@@ -133,7 +133,7 @@ class QuizCellTypeI: UICollectionViewCell{
         canvasView.isOpaque = false
         canvasView.alwaysBounceVertical = true
         canvasView.drawingPolicy = .anyInput
-        canvasView.tool = PKInkingTool(.pen, color: .black, width: 10)
+        canvasView.tool = PKInkingTool(.pen, color: .black, width: 20)
         canvasView.tag = 0
         canvasView.delegate = self
         
@@ -181,7 +181,7 @@ class QuizCellTypeI: UICollectionViewCell{
         canvasView.isOpaque = false
         canvasView.alwaysBounceVertical = true
         canvasView.drawingPolicy = .anyInput
-        canvasView.tool = PKInkingTool(.pen, color: .black, width: 10)
+        canvasView.tool = PKInkingTool(.pen, color: .black, width: 20)
         canvasView.tag = 1
         canvasView.delegate = self
         
@@ -233,7 +233,7 @@ class QuizCellTypeI: UICollectionViewCell{
         canvasView.isOpaque = false
         canvasView.alwaysBounceVertical = true
         canvasView.drawingPolicy = .anyInput
-        canvasView.tool = PKInkingTool(.pen, color: .black, width: 10)
+        canvasView.tool = PKInkingTool(.pen, color: .black, width: 20)
         canvasView.tag = 2
         canvasView.delegate = self
         
