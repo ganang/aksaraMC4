@@ -680,7 +680,7 @@ class LevelView: UIView {
         setBackgroundColor()
         setupLayout()
         isUserInteractionEnabled = true
-        
+        print("Ini LevelScreen lur")
     }
     
     func setupLayout() {

@@ -79,6 +79,40 @@ class InputNameView: UIView, UITextViewDelegate {
         return image
     }()
     
+    let topDecorationImage1: UIImageView = {
+        let img = UIImageView()
+        img.image = UIImage(named: "FlowerFull")
+        img.contentMode = .scaleAspectFill
+        img.translatesAutoresizingMaskIntoConstraints = false
+        return img
+    }()
+    
+    let topDecorationImage2: UIImageView = {
+        let img = UIImageView()
+        img.image = UIImage(named: "FlowerFull")
+        img.contentMode = .scaleAspectFill
+        img.translatesAutoresizingMaskIntoConstraints = false
+        return img
+    }()
+    
+    let middleDecorationImage1: UIImageView = {
+        let img = UIImageView()
+        img.image = UIImage(named: "FlowerHalf")
+        img.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/2))
+        img.contentMode = .scaleAspectFill
+        img.translatesAutoresizingMaskIntoConstraints = false
+        return img
+    }()
+    
+    let middleDecorationImage2: UIImageView = {
+        let img = UIImageView()
+        img.image = UIImage(named: "FlowerHalf")
+        img.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi*1.5))
+        img.contentMode = .scaleAspectFill
+        img.translatesAutoresizingMaskIntoConstraints = false
+        return img
+    }()
+    
     let circleProfile: UIView = {
         let circleProfile = UIView()
         circleProfile.layer.cornerRadius = 48/2
@@ -143,6 +177,18 @@ class InputNameView: UIView, UITextViewDelegate {
         circleProfile.heightAnchor.constraint(equalToConstant: 48).isActive = true
         circleProfile.widthAnchor.constraint(equalToConstant: 48).isActive = true
         
+        addSubview(topDecorationImage1)
+        topDecorationImage1.trailingAnchor.constraint(equalTo: circleProfile.leadingAnchor, constant: -16).isActive = true
+        topDecorationImage1.centerYAnchor.constraint(equalTo: circleProfile.centerYAnchor).isActive = true
+        topDecorationImage1.heightAnchor.constraint(equalToConstant: 34).isActive = true
+        topDecorationImage1.widthAnchor.constraint(equalToConstant: 34).isActive = true
+        
+        addSubview(topDecorationImage2)
+        topDecorationImage2.leadingAnchor.constraint(equalTo: circleProfile.trailingAnchor, constant: 16).isActive = true
+        topDecorationImage2.centerYAnchor.constraint(equalTo: circleProfile.centerYAnchor).isActive = true
+        topDecorationImage2.heightAnchor.constraint(equalToConstant: 34).isActive = true
+        topDecorationImage2.widthAnchor.constraint(equalToConstant: 34).isActive = true
+        
         circleProfile.addSubview(profileIcon)
         profileIcon.centerXAnchor.constraint(equalTo: circleProfile.centerXAnchor, constant: 0).isActive = true
         profileIcon.centerYAnchor.constraint(equalTo: circleProfile.centerYAnchor, constant: 0).isActive = true
@@ -159,6 +205,18 @@ class InputNameView: UIView, UITextViewDelegate {
         inputUsername.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 40).isActive = true
         inputUsername.heightAnchor.constraint(equalToConstant: 64).isActive = true
         inputUsername.widthAnchor.constraint(equalToConstant: 640).isActive = true
+        
+        addSubview(middleDecorationImage1)
+        middleDecorationImage1.trailingAnchor.constraint(equalTo: inputUsername.leadingAnchor, constant: -16).isActive = true
+        middleDecorationImage1.centerYAnchor.constraint(equalTo: inputUsername.centerYAnchor).isActive = true
+        middleDecorationImage1.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        middleDecorationImage1.widthAnchor.constraint(equalToConstant: 24).isActive = true
+        
+        addSubview(middleDecorationImage2)
+        middleDecorationImage2.leadingAnchor.constraint(equalTo: inputUsername.trailingAnchor, constant: 16).isActive = true
+        middleDecorationImage2.centerYAnchor.constraint(equalTo: inputUsername.centerYAnchor).isActive = true
+        middleDecorationImage2.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        middleDecorationImage2.widthAnchor.constraint(equalToConstant: 24).isActive = true
         
         inputUsername.addSubview(usernameLabel)
         usernameLabel.centerXAnchor.constraint(equalTo: inputUsername.centerXAnchor, constant: 0).isActive = true

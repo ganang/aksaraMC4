@@ -145,14 +145,30 @@ class UlasanController: UIViewController {
     }()
     
     //UIView & Image
-    lazy var AksaraCardContainer : UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.cornerRadius = 0
-        view.addInnerShadow()
-        view.backgroundColor = UIColor.init(white: 1, alpha: 1)
-        view.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
-        return view
+//    lazy var AksaraCardContainer : UIView = {
+//        let view = UIView()
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        view.layer.cornerRadius = 0
+//        view.addInnerShadow()
+//        view.backgroundColor = UIColor.init(white: 1, alpha: 1)
+//        view.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
+//        return view
+//    }()
+    
+    let CardUlasanTop: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "CardUlasanTop")
+        image.contentMode = .scaleAspectFit
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
+    }()
+    
+    let GulunganUlasanTop: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "gununganDone3")
+        image.contentMode = .scaleAspectFit
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
     }()
     
     let aksaraInTopCard1: UIImageView = {
@@ -223,6 +239,15 @@ class UlasanController: UIViewController {
         return button
     }()
     
+    lazy var mainLagiButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "MainLagiButtonBlue"), for: .normal)
+        button.imageView?.contentMode = .scaleAspectFit
+        button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     //ScrollView
     lazy var scrollView : UIScrollView = {
         let scroll = UIScrollView()
@@ -262,6 +287,10 @@ class UlasanController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "decorativeBackground")
+        backgroundImage.contentMode = .scaleAspectFill
+        self.view.insertSubview(backgroundImage, at: 0)
         
         view.setBackgroundColor()
         self.setupScrollView()
@@ -327,60 +356,60 @@ class UlasanController: UIViewController {
         backButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
 
         //CardAksara
-        containerView.addSubview(AksaraCardContainer)
-        AksaraCardContainer.centerXAnchor.constraint(equalTo: containerView.centerXAnchor, constant: -247).isActive = true
-        AksaraCardContainer.topAnchor.constraint(equalTo: tahapLabel.bottomAnchor, constant: 66).isActive = true
-        AksaraCardContainer.widthAnchor.constraint(equalToConstant: 487).isActive = true
-        AksaraCardContainer.heightAnchor.constraint(equalToConstant: 280).isActive = true
+        containerView.addSubview(CardUlasanTop)
+        CardUlasanTop.centerXAnchor.constraint(equalTo: containerView.centerXAnchor, constant: -247).isActive = true
+        CardUlasanTop.topAnchor.constraint(equalTo: tahapLabel.bottomAnchor, constant: 40).isActive = true
+        CardUlasanTop.widthAnchor.constraint(equalToConstant: 540).isActive = true
+        CardUlasanTop.heightAnchor.constraint(equalToConstant: 332).isActive = true
         
         //ImageAksara
-        AksaraCardContainer.addSubview(aksaraInTopCard2)
-        aksaraInTopCard2.centerXAnchor.constraint(equalTo: AksaraCardContainer.centerXAnchor).isActive = true
-        aksaraInTopCard2.centerYAnchor.constraint(equalTo: AksaraCardContainer.centerYAnchor, constant: -15).isActive = true
+        CardUlasanTop.addSubview(aksaraInTopCard2)
+        aksaraInTopCard2.centerXAnchor.constraint(equalTo: CardUlasanTop.centerXAnchor).isActive = true
+        aksaraInTopCard2.centerYAnchor.constraint(equalTo: CardUlasanTop.centerYAnchor, constant: -15).isActive = true
         aksaraInTopCard2.heightAnchor.constraint(equalToConstant: 32).isActive = true
         aksaraInTopCard2.widthAnchor.constraint(equalToConstant: 52).isActive = true
         
-        AksaraCardContainer.addSubview(aksaraInTopCard1)
+        CardUlasanTop.addSubview(aksaraInTopCard1)
         aksaraInTopCard1.trailingAnchor.constraint(equalTo: aksaraInTopCard2.leadingAnchor,constant: -8).isActive = true
-        aksaraInTopCard1.centerYAnchor.constraint(equalTo: AksaraCardContainer.centerYAnchor, constant: -15).isActive = true
+        aksaraInTopCard1.centerYAnchor.constraint(equalTo: CardUlasanTop.centerYAnchor, constant: -15).isActive = true
         aksaraInTopCard1.heightAnchor.constraint(equalToConstant: 32).isActive = true
         aksaraInTopCard1.widthAnchor.constraint(equalToConstant: 52).isActive = true
         
-        AksaraCardContainer.addSubview(aksaraInTopCard3)
+        CardUlasanTop.addSubview(aksaraInTopCard3)
         aksaraInTopCard3.leadingAnchor.constraint(equalTo: aksaraInTopCard2.trailingAnchor, constant: 8).isActive = true
-        aksaraInTopCard3.centerYAnchor.constraint(equalTo: AksaraCardContainer.centerYAnchor, constant: -15).isActive = true
+        aksaraInTopCard3.centerYAnchor.constraint(equalTo: CardUlasanTop.centerYAnchor, constant: -15).isActive = true
         aksaraInTopCard3.heightAnchor.constraint(equalToConstant: 32).isActive = true
         aksaraInTopCard3.widthAnchor.constraint(equalToConstant: 52).isActive = true
         
         //LabelAksara
-        AksaraCardContainer.addSubview(aksaraLabelInTopCard1)
+        CardUlasanTop.addSubview(aksaraLabelInTopCard1)
         aksaraLabelInTopCard1.centerXAnchor.constraint(equalTo: aksaraInTopCard1.centerXAnchor).isActive = true
         aksaraLabelInTopCard1.topAnchor.constraint(equalTo: aksaraInTopCard1.bottomAnchor, constant: 10).isActive = true
         
-        AksaraCardContainer.addSubview(aksaraLabelInTopCard2)
+        CardUlasanTop.addSubview(aksaraLabelInTopCard2)
         aksaraLabelInTopCard2.centerXAnchor.constraint(equalTo: aksaraInTopCard2.centerXAnchor).isActive = true
         aksaraLabelInTopCard2.topAnchor.constraint(equalTo: aksaraInTopCard2.bottomAnchor, constant: 10).isActive = true
         
-        AksaraCardContainer.addSubview(aksaraLabelInTopCard3)
+        CardUlasanTop.addSubview(aksaraLabelInTopCard3)
         aksaraLabelInTopCard3.centerXAnchor.constraint(equalTo: aksaraInTopCard3.centerXAnchor).isActive = true
         aksaraLabelInTopCard3.topAnchor.constraint(equalTo: aksaraInTopCard3.bottomAnchor, constant: 10).isActive = true
         
   
         //RightSection
         containerView.addSubview(carakanLabel)
-        carakanLabel.leadingAnchor.constraint(equalTo: AksaraCardContainer.trailingAnchor, constant: 33).isActive = true
+        carakanLabel.leadingAnchor.constraint(equalTo: CardUlasanTop.trailingAnchor, constant: 33).isActive = true
         carakanLabel.topAnchor.constraint(equalTo: tahapLabel.bottomAnchor, constant: 64).isActive = true
 
         view.addSubview(hasilLabel)
-        hasilLabel.leadingAnchor.constraint(equalTo: AksaraCardContainer.trailingAnchor, constant: 33).isActive = true
+        hasilLabel.leadingAnchor.constraint(equalTo: CardUlasanTop.trailingAnchor, constant: 33).isActive = true
         hasilLabel.topAnchor.constraint(equalTo: carakanLabel.bottomAnchor, constant: 64).isActive = true
         
         view.addSubview(timer)
-        timer.leadingAnchor.constraint(equalTo: AksaraCardContainer.trailingAnchor, constant: 33).isActive = true
+        timer.leadingAnchor.constraint(equalTo: CardUlasanTop.trailingAnchor, constant: 33).isActive = true
         timer.topAnchor.constraint(equalTo: hasilLabel.bottomAnchor, constant: 12).isActive = true
         
         view.addSubview(checkmark)
-        checkmark.leadingAnchor.constraint(equalTo: AksaraCardContainer.trailingAnchor, constant: 33).isActive = true
+        checkmark.leadingAnchor.constraint(equalTo: CardUlasanTop.trailingAnchor, constant: 33).isActive = true
         checkmark.topAnchor.constraint(equalTo: timer.bottomAnchor, constant: 12).isActive = true
 
         view.addSubview(waktuQuizLabel)
@@ -394,6 +423,18 @@ class UlasanController: UIViewController {
         view.addSubview(benarDoneQuizLabel)
         benarDoneQuizLabel.leadingAnchor.constraint(equalTo: waktuQuizLabel.trailingAnchor, constant: 16).isActive = true
         benarDoneQuizLabel.topAnchor.constraint(equalTo: waktuDoneQuizLabel.bottomAnchor, constant: 13).isActive = true
+        
+        view.addSubview(mainLagiButton)
+        mainLagiButton.leadingAnchor.constraint(equalTo: checkmark.leadingAnchor).isActive = true
+        mainLagiButton.topAnchor.constraint(equalTo: checkmark.bottomAnchor, constant: 40).isActive = true
+        mainLagiButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        mainLagiButton.widthAnchor.constraint(equalToConstant: 463).isActive = true
+        
+        view.addSubview(GulunganUlasanTop)
+        GulunganUlasanTop.trailingAnchor.constraint(equalTo: mainLagiButton.trailingAnchor).isActive = true
+        GulunganUlasanTop.topAnchor.constraint(equalTo: carakanLabel.topAnchor).isActive = true
+        GulunganUlasanTop.heightAnchor.constraint(equalToConstant: 52).isActive = true
+        GulunganUlasanTop.widthAnchor.constraint(equalToConstant: 100).isActive = true
         
     }
     
