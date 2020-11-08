@@ -32,7 +32,6 @@ class LevelV2Controller: UIViewController {
     
     var stages : [Stage]? {
         didSet {
-//            print(stages)
         }
     }
     
@@ -41,7 +40,6 @@ class LevelV2Controller: UIViewController {
     var region : Region? {
         didSet {
             regionSelected = region?.name
-//            print("region", region )
         }
     }
     
@@ -60,12 +58,12 @@ class LevelV2Controller: UIViewController {
         navigationItem.title = "Kuis Aksara Jawa"
         customContainerViewArray = [levelV2View.containerViewTahap1, levelV2View.containerViewTahap2, levelV2View.containerViewTahap3]
         
+        openAndCloseFunction(container: 0)
         handleData()
         setupCurrentLevelStage1()
-//        print("Curent level stage 1", currentLevel)
         registerCV()
         tapContainerFunction()
-        
+        tapContinueButton()
         setupUsername()
     }
     
@@ -73,6 +71,14 @@ class LevelV2Controller: UIViewController {
         let username: String = (region?.user?.name)!
         
         levelV2View.greetingLabel.text = "Selamat Datang, \(username)"
+    }
+    
+    func tapContinueButton() {
+        levelV2View.continueButton.addTarget(self, action: #selector(goToCurrentLevel), for: .touchUpInside)
+    }
+    
+    @objc func goToCurrentLevel() {
+        gotoQuizLevelTahap1(index: currentLevel! - 1)
     }
     
     func handleData() {
@@ -126,7 +132,7 @@ class LevelV2Controller: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 5.5) { [self] in
 
             UIView.animate(withDuration: 0.5) {
-                loadingView.alpha = 0
+//                loadingView.alpha = 0
             } completion: { (succes) in
                 self.loadingView.removeFromSuperview()
             }
@@ -136,14 +142,11 @@ class LevelV2Controller: UIViewController {
 
     }
     
-    func goToQuizSection() {
-        let quizScreen = QuizController()
-        quizScreen.regionSelected = regionSelected
-//        quizScreen.quizes = quizes
-//        quizScreen.levels = levels
-//        quizScreen.level = level
-//        navigationController?.pushViewController(quizScreen, animated: true)
-    }
+//    func goToQuizSection() {
+//        let quizScreen = QuizController()
+//        quizScreen.regionSelected = regionSelected
+//
+//    }
     
     func registerCV() {
         levelV2View.collectionViewTahap1.delegate = self
@@ -165,8 +168,6 @@ class LevelV2Controller: UIViewController {
         let tap1 = UITapGestureRecognizer(target: self, action: #selector(openDetailTahap))
         let tap2 = UITapGestureRecognizer(target: self, action: #selector(openDetailTahap))
         levelV2View.containerViewTahap1.addGestureRecognizer(tap)
-        levelV2View.containerViewTahap2.addGestureRecognizer(tap1)
-        levelV2View.containerViewTahap3.addGestureRecognizer(tap2)
     }
     
     func gotoQuizLevelTahap1(index: Int) {
@@ -301,7 +302,6 @@ extension LevelV2Controller : UICollectionViewDelegateFlowLayout, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == levelV2View.collectionViewTahap1 {
-//            print("jumlah level", levelsStage1!.count)
             return levelsStage1!.count
         } else if collectionView == levelV2View.collectionViewTahap2 {
             return 12
@@ -349,12 +349,10 @@ extension LevelV2Controller : UICollectionViewDelegateFlowLayout, UICollectionVi
         print("level ke", indexPath.item + 1)
         
         let levelTapped = indexPath.item + 1
-        gotoQuizLevelTahap1(index: indexPath.item)
+        if indexPath.item == 0 {
+            gotoQuizLevelTahap1(index: indexPath.item)
+        }
+
         
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return 8
-//    }
-    
 }

@@ -23,10 +23,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             
             if UserDefaults.standard.object(forKey: "FirstLoad") != nil {
                 
-                navController.viewControllers = [UlasanController()]
+                navController.viewControllers = [InputNameController()]
             } else {
                 CoreDataRecordV2.shared.saveRecord()
-                navController.viewControllers = [UlasanController()]
+                navController.viewControllers = [LevelV2Controller()]
             }
             
             window.rootViewController = navController

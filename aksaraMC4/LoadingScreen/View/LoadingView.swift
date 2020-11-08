@@ -41,7 +41,7 @@ class LoadingView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.init(name: "NowAlt-Medium", size: 16)
         label.text = "Sebelum mulai bermain kamu bisa membuka kamus terlebih dahulu"
-        label.textColor = Theme.current.textColor2
+        label.textColor = UIColor.rgb(red: 3, green: 131, blue: 251, alpha: 1)
         
         return label
     }()
@@ -49,7 +49,12 @@ class LoadingView: UIView {
     
     var progressView : UIProgressView = {
         let progress = UIProgressView()
-
+        progress.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
+        progress.layer.borderWidth = 1
+        progress.layer.borderColor = CGColor.rgb(red: 4, green: 110, blue: 208, alpha: 1)
+        progress.clipsToBounds = true
+        progress.trackTintColor = .clear
+        progress.progressTintColor = UIColor.rgb(red: 4, green: 110, blue: 208, alpha: 1)
         
         return progress
     }()
