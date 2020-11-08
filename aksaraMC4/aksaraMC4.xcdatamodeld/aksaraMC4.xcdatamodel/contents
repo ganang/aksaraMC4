@@ -31,6 +31,7 @@
         <attribute name="isLocked" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="totalMedal" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="questions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Question" inverseName="level" inverseEntity="Question"/>
         <relationship name="quizes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Quiz" inverseName="level" inverseEntity="Quiz"/>
         <relationship name="stage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Stage" inverseName="levels" inverseEntity="Stage"/>
     </entity>
@@ -38,6 +39,7 @@
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="type" optional="YES" attributeType="String"/>
+        <relationship name="level" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Level" inverseName="questions" inverseEntity="Level"/>
         <relationship name="quiz" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Quiz" inverseName="questions" inverseEntity="Quiz"/>
     </entity>
     <entity name="Quiz" representedClassName="Quiz" syncable="YES" codeGenerationType="class">
@@ -46,6 +48,7 @@
         <attribute name="time" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="type" optional="YES" attributeType="String"/>
+        <attribute name="ulasanDetail" optional="YES" attributeType="String"/>
         <relationship name="answerChoices" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="AnswerChoice" inverseName="quiz" inverseEntity="AnswerChoice"/>
         <relationship name="images" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Image" inverseName="quiz" inverseEntity="Image"/>
         <relationship name="level" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Level" inverseName="quizes" inverseEntity="Level"/>
@@ -78,11 +81,11 @@
         <element name="AnswerChoice" positionX="36" positionY="81" width="128" height="103"/>
         <element name="Dictionary" positionX="-18" positionY="27" width="128" height="148"/>
         <element name="Image" positionX="-18" positionY="81" width="128" height="88"/>
-        <element name="Level" positionX="-36" positionY="9" width="128" height="148"/>
-        <element name="Quiz" positionX="18" positionY="63" width="128" height="178"/>
+        <element name="Level" positionX="-36" positionY="9" width="128" height="163"/>
+        <element name="Question" positionX="-18" positionY="99" width="128" height="118"/>
+        <element name="Quiz" positionX="18" positionY="63" width="128" height="193"/>
         <element name="Region" positionX="-54" positionY="-9" width="128" height="133"/>
         <element name="Stage" positionX="0" positionY="45" width="128" height="148"/>
         <element name="User" positionX="-63" positionY="-18" width="128" height="88"/>
-        <element name="Question" positionX="-18" positionY="99" width="128" height="103"/>
     </elements>
 </model>
