@@ -44,18 +44,14 @@ class InputNameController: UIViewController {
         do {
             let users = try PersistenceService.context.fetch(fetchRequest)
             
-            self.user = users[0]
-//            self.regions = user.regions?.sortedArray(using: [.init(key: "id", ascending: true)]) as? [Region]
-            
-            
+            self.user = users[0] 
         } catch {
             print("ERROR")
         }
     }
     
     func tapFunction() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(moveToRegion))
-        inputNameView.arrowRight.addGestureRecognizer(tap)
+        inputNameView.continueButton.addTarget(self, action: #selector(moveToRegion), for: .touchUpInside)
     }
     
     @objc func moveToRegion() {
@@ -93,11 +89,21 @@ extension InputNameController : UITextViewDelegate {
             textView.resignFirstResponder()
             return false
         }
-        return textView.text.count + (newText.count - range.length) <= 20
+        
+        
+        let charCount = textView.text.count + (newText.count - range.length)
+        if charCount > 0 {
+            inputNameView.continueButton.alpha = 1
+        } else {
+            inputNameView.continueButton.alpha = 0.4
+        }
+        inputNameView.limitTextLabel.text = "\(20 - charCount)"
+        return textView.text.count + (newText.count - range.length) < 20
     }
     
     func textViewDidChange(_ textView: UITextView) {
         self.username = textView.text
+        
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
@@ -105,8 +111,9 @@ extension InputNameController : UITextViewDelegate {
         self.username = textView.text
     }
     
+    
     func textViewDidBeginEditing(_ textView: UITextView) {
-        inputNameView.quizAnswerLabelConstraint.constant = -307
+        inputNameView.quizAnswerLabelConstraint.constant = -327
         inputNameView.usernameLabel.textColor = UIColor.rgb(red: 23, green: 78, blue: 161, alpha: 1)
         inputNameView.usernameLabel.text = ""
         

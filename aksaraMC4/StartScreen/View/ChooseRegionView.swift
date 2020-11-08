@@ -21,6 +21,25 @@ class ChooseRegionView: UIView {
         return label
     }()
     
+    
+    lazy var backButton: UIImageView = {
+        let img = UIImageView()
+        img.image = UIImage(named: "backButtonRegion")
+        img.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
+        img.contentMode = .scaleAspectFill
+        img.isUserInteractionEnabled = true
+        img.translatesAutoresizingMaskIntoConstraints = false
+        return img
+    }()
+    
+    lazy var aksara1IconDecorative: UIImageView = {
+        let img = UIImageView()
+        img.image = UIImage(named: "decorativeRegionPicker")
+        img.contentMode = .scaleAspectFill
+        img.translatesAutoresizingMaskIntoConstraints = false
+        return img
+    }()
+    
     let aksaraLabel1: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -154,35 +173,10 @@ class ChooseRegionView: UIView {
         return image
     }()
     
-    let topDecorationImage1: UIImageView = {
-        let img = UIImageView()
-        img.image = UIImage(named: "FlowerFull")
-        img.contentMode = .scaleAspectFill
-        img.translatesAutoresizingMaskIntoConstraints = false
-        return img
-    }()
     
-    let topDecorationImage2: UIImageView = {
+    lazy var bookIconDecorative: UIImageView = {
         let img = UIImageView()
-        img.image = UIImage(named: "FlowerFull")
-        img.contentMode = .scaleAspectFill
-        img.translatesAutoresizingMaskIntoConstraints = false
-        return img
-    }()
-    
-    let middleDecorationImage1: UIImageView = {
-        let img = UIImageView()
-        img.image = UIImage(named: "FlowerHalf")
-        img.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/2))
-        img.contentMode = .scaleAspectFill
-        img.translatesAutoresizingMaskIntoConstraints = false
-        return img
-    }()
-    
-    let middleDecorationImage2: UIImageView = {
-        let img = UIImageView()
-        img.image = UIImage(named: "FlowerHalf")
-        img.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi*1.5))
+        img.image = UIImage(named: "decorativeProfileInputName")
         img.contentMode = .scaleAspectFill
         img.translatesAutoresizingMaskIntoConstraints = false
         return img
@@ -279,29 +273,44 @@ class ChooseRegionView: UIView {
     }
     
     func setupView() {
+        
+        
+        addSubview(backButton)
+        backButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40).isActive = true
+        backButton.topAnchor.constraint(equalTo: topAnchor, constant: 40).isActive = true
+        backButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        backButton.widthAnchor.constraint(equalToConstant: 48).isActive = true
+        
         addSubview(circleProfile)
         circleProfile.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         circleProfile.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -245).isActive = true
         circleProfile.heightAnchor.constraint(equalToConstant: 48).isActive = true
         circleProfile.widthAnchor.constraint(equalToConstant: 48).isActive = true
         
-        addSubview(topDecorationImage1)
-        topDecorationImage1.trailingAnchor.constraint(equalTo: circleProfile.leadingAnchor, constant: -16).isActive = true
-        topDecorationImage1.centerYAnchor.constraint(equalTo: circleProfile.centerYAnchor).isActive = true
-        topDecorationImage1.heightAnchor.constraint(equalToConstant: 34).isActive = true
-        topDecorationImage1.widthAnchor.constraint(equalToConstant: 34).isActive = true
-        
-        addSubview(topDecorationImage2)
-        topDecorationImage2.leadingAnchor.constraint(equalTo: circleProfile.trailingAnchor, constant: 16).isActive = true
-        topDecorationImage2.centerYAnchor.constraint(equalTo: circleProfile.centerYAnchor).isActive = true
-        topDecorationImage2.heightAnchor.constraint(equalToConstant: 34).isActive = true
-        topDecorationImage2.widthAnchor.constraint(equalToConstant: 34).isActive = true
+//        addSubview(topDecorationImage1)
+//        topDecorationImage1.trailingAnchor.constraint(equalTo: circleProfile.leadingAnchor, constant: -16).isActive = true
+//        topDecorationImage1.centerYAnchor.constraint(equalTo: circleProfile.centerYAnchor).isActive = true
+//        topDecorationImage1.heightAnchor.constraint(equalToConstant: 34).isActive = true
+//        topDecorationImage1.widthAnchor.constraint(equalToConstant: 34).isActive = true
+//        
+//        addSubview(topDecorationImage2)
+//        topDecorationImage2.leadingAnchor.constraint(equalTo: circleProfile.trailingAnchor, constant: 16).isActive = true
+//        topDecorationImage2.centerYAnchor.constraint(equalTo: circleProfile.centerYAnchor).isActive = true
+//        topDecorationImage2.heightAnchor.constraint(equalToConstant: 34).isActive = true
+//        topDecorationImage2.widthAnchor.constraint(equalToConstant: 34).isActive = true
         
         circleProfile.addSubview(profileIcon)
         profileIcon.centerXAnchor.constraint(equalTo: circleProfile.centerXAnchor, constant: 0).isActive = true
         profileIcon.centerYAnchor.constraint(equalTo: circleProfile.centerYAnchor, constant: 0).isActive = true
         profileIcon.heightAnchor.constraint(equalToConstant: 24).isActive = true
         profileIcon.widthAnchor.constraint(equalToConstant: 25).isActive = true
+        
+        circleProfile.addSubview(bookIconDecorative)
+        bookIconDecorative.centerXAnchor.constraint(equalTo: circleProfile.centerXAnchor, constant: 0).isActive = true
+        bookIconDecorative.centerYAnchor.constraint(equalTo: circleProfile.centerYAnchor, constant: 0).isActive = true
+        bookIconDecorative.heightAnchor.constraint(equalToConstant: 34).isActive = true
+        bookIconDecorative.widthAnchor.constraint(equalToConstant: 34).isActive = true
+        
         
         addSubview(titleLabel)
         titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0).isActive = true
@@ -313,17 +322,17 @@ class ChooseRegionView: UIView {
         aksaraView1.heightAnchor.constraint(equalToConstant: 48).isActive = true
         aksaraView1.widthAnchor.constraint(equalToConstant: 480).isActive = true
         
-        addSubview(middleDecorationImage1)
-        middleDecorationImage1.trailingAnchor.constraint(equalTo: aksaraView1.leadingAnchor, constant: -16).isActive = true
-        middleDecorationImage1.centerYAnchor.constraint(equalTo: aksaraView1.centerYAnchor).isActive = true
-        middleDecorationImage1.heightAnchor.constraint(equalToConstant: 32).isActive = true
-        middleDecorationImage1.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        
-        addSubview(middleDecorationImage2)
-        middleDecorationImage2.leadingAnchor.constraint(equalTo: aksaraView1.trailingAnchor, constant: 16).isActive = true
-        middleDecorationImage2.centerYAnchor.constraint(equalTo: aksaraView1.centerYAnchor).isActive = true
-        middleDecorationImage2.heightAnchor.constraint(equalToConstant: 32).isActive = true
-        middleDecorationImage2.widthAnchor.constraint(equalToConstant: 20).isActive = true
+//        addSubview(middleDecorationImage1)
+//        middleDecorationImage1.trailingAnchor.constraint(equalTo: aksaraView1.leadingAnchor, constant: -16).isActive = true
+//        middleDecorationImage1.centerYAnchor.constraint(equalTo: aksaraView1.centerYAnchor).isActive = true
+//        middleDecorationImage1.heightAnchor.constraint(equalToConstant: 32).isActive = true
+//        middleDecorationImage1.widthAnchor.constraint(equalToConstant: 20).isActive = true
+//
+//        addSubview(middleDecorationImage2)
+//        middleDecorationImage2.leadingAnchor.constraint(equalTo: aksaraView1.trailingAnchor, constant: 16).isActive = true
+//        middleDecorationImage2.centerYAnchor.constraint(equalTo: aksaraView1.centerYAnchor).isActive = true
+//        middleDecorationImage2.heightAnchor.constraint(equalToConstant: 32).isActive = true
+//        middleDecorationImage2.widthAnchor.constraint(equalToConstant: 20).isActive = true
         
         aksaraView1.addSubview(aksaraLabel1)
         aksaraLabel1.centerXAnchor.constraint(equalTo: aksaraView1.centerXAnchor, constant: 0).isActive = true
@@ -334,6 +343,12 @@ class ChooseRegionView: UIView {
         arrowRight.centerYAnchor.constraint(equalTo: aksaraView1.centerYAnchor, constant: 0).isActive = true
         arrowRight.heightAnchor.constraint(equalToConstant: 24).isActive = true
         arrowRight.widthAnchor.constraint(equalToConstant: 23).isActive = true
+        
+        addSubview(aksara1IconDecorative)
+        aksara1IconDecorative.centerXAnchor.constraint(equalTo: aksaraLabel1.centerXAnchor, constant: 0).isActive = true
+        aksara1IconDecorative.centerYAnchor.constraint(equalTo: aksaraLabel1.centerYAnchor, constant: 0).isActive = true
+        aksara1IconDecorative.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        aksara1IconDecorative.widthAnchor.constraint(equalToConstant: 550).isActive = true
         
         addSubview(aksaraView2)
         aksaraView2.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true

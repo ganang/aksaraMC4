@@ -13,7 +13,6 @@ class StartController: UIViewController {
     
     private var startView: StartView!
     private var chooseRegionView: ChooseRegionView!
-//    private var ulasanView: UlasanView!
     var user : User?
     var username : String?
     
@@ -78,12 +77,16 @@ class StartController: UIViewController {
     
     func tapFunction() {
         let tapSunda = UITapGestureRecognizer(target: self, action: #selector(self.tapSunda))
-//        startView.sundaButton.addGestureRecognizer(tapSunda)
-        
         let tapJawa = UITapGestureRecognizer(target: self, action: #selector(self.tapJawa))
         chooseRegionView.aksaraView1.addGestureRecognizer(tapJawa)
+        
+        let tapBack = UITapGestureRecognizer(target: self, action: #selector(self.tapBack))
+        chooseRegionView.backButton.addGestureRecognizer(tapBack)
     }
     
+    @objc func tapBack() {
+        navigationController?.popViewController(animated: true)
+    }
     
     
     @objc func tapSunda() {
@@ -97,18 +100,10 @@ class StartController: UIViewController {
         let levelScreen = LevelV2Controller()
         levelScreen.region = self.regions![0]
         levelScreen.username = self.username
-//        levelScreen.user = self.user
-//        print("user", user?.name)
-//        print("username", username)
-//        UserDefaults.standard.setValue(<#T##value: Any?##Any?#>, forKey: <#T##String#>)
-        
-        
+
         let regionScreen = RegionController()
         regionScreen.region = self.regions![0]
-        
-        
-//        self.stages = region?.stages?.sortedArray(using: [.init(key: "id", ascending: true)]) as? [Stage]
-        
+
         let stages = regions![0].stages?.sortedArray(using: [.init(key: "id", ascending: true)]) as? [Stage]
         let levels1 = stages![0].levels!.sortedArray(using: [.init(key: "id", ascending: true)]) as? [Level]
         let levels2 = stages![1].levels!.sortedArray(using: [.init(key: "id", ascending: true)]) as? [Level]
