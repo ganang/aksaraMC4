@@ -69,6 +69,8 @@ class RegionView: UIView {
         return image
     }()
     
+    
+    
     let mainCardSubtitle1: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -162,6 +164,8 @@ class RegionView: UIView {
         menuCard.widthAnchor.constraint(equalToConstant: 400).isActive = true
         menuCard.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 181).isActive = true
         menuCard.topAnchor.constraint(equalTo: topAnchor, constant: 192).isActive = true
+        
+        
 
         menuCard.addSubview(mainCardTitle)
         mainCardTitle.leadingAnchor.constraint(equalTo: menuCard.leadingAnchor, constant: 40).isActive = true

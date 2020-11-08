@@ -11,16 +11,26 @@ import UIKit
 class UlasanCell: UICollectionViewCell {
     
     //Card
-    let konsonanCard : UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1.0)
-        view.layer.cornerRadius = 24
-        view.addInnerShadow()
-        view.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
-        view.isUserInteractionEnabled = true
-        return view
+    let konsonanCard: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "CardUlasanAnswer")
+        image.contentMode = .scaleAspectFit
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
+        image.isUserInteractionEnabled = true
+        return image
     }()
+    
+//    let konsonanCard : UIView = {
+//        let view = UIView()
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        view.backgroundColor = UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1.0)
+//        view.layer.cornerRadius = 24
+//        view.addInnerShadow()
+//        view.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
+//        view.isUserInteractionEnabled = true
+//        return view
+//    }()
     
     let konsonanCardTitle: UILabel = {
         let label = UILabel()
