@@ -25,7 +25,7 @@ class InputNameView: UIView, UITextViewDelegate {
         let firstWord   = ""
         let secondWord = "Sebelum memulai, masukkan :\n"
         let attrs      = [NSAttributedString.Key.font: UIFont.init(name: "NowAlt-Medium", size: 24), NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 23, green: 78, blue: 161, alpha: 1), NSAttributedString.Key.paragraphStyle: paragraphStyle]
-        let attrs2      = [NSAttributedString.Key.font: UIFont.init(name: "NowAlt-Bold", size: 24), NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 3, green: 131, blue: 251, alpha: 1), NSAttributedString.Key.paragraphStyle: paragraphStyle]
+        let attrs2      = [NSAttributedString.Key.font: UIFont.init(name: "NowAlt-Bold", size: 24), NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 23, green: 78, blue: 161, alpha: 1), NSAttributedString.Key.paragraphStyle: paragraphStyle]
         let thirdWord   = "Nama profil"
         let attributedText = NSMutableAttributedString(string:firstWord)
         attributedText.append(NSAttributedString(string: secondWord, attributes: attrs as [NSAttributedString.Key : Any]))
@@ -34,6 +34,14 @@ class InputNameView: UIView, UITextViewDelegate {
         label.textAlignment = .center
         
         return label
+    }()
+    
+    lazy var textViewDecorative: UIImageView = {
+        let img = UIImageView()
+        img.image = UIImage(named: "decorativeTextFieldInputName")
+        img.contentMode = .scaleAspectFill
+        img.translatesAutoresizingMaskIntoConstraints = false
+        return img
     }()
     
     lazy var usernameLabel: UITextView = {
@@ -48,26 +56,46 @@ class InputNameView: UIView, UITextViewDelegate {
 
         return label
     }()
+
+    lazy var continueButton : UIButton = {
+        let button = UIButton()
+        
+        let origImage = UIImage(systemName: "chevron.right")
+        let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
+        button.setImage(tintedImage, for: .normal)
+        button.setTitle("Lanjut", for: .normal)
+        button.titleLabel?.font = UIFont.init(name: "NowAlt-Medium", size: 20)
+        button.tintColor = Theme.current.accentWhite
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.layer.cornerRadius = 28
+        button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
+        button.tag = 0
+//        button.addTarget(self, action: #selector(reloadPencilKit), for: .touchUpInside)
+        button.backgroundColor = UIColor.rgb(red: 3, green: 131, blue: 251, alpha: 1)
+        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: -30, bottom: 0, right: 0)
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -140)
+        button.alpha = 0.4
+        
+        return button
+    }()
     
-    let warningLabel: UILabel = {
+    var limitTextLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.init(name: "NowAlt-Regular", size: 16)
-        label.textColor = UIColor.rgb(red: 23, green: 78, blue: 161, alpha: 1)
-        label.text = "*Min-maks 3-20 karakter, tanpa angka dan tanda baca"
+        label.font = UIFont.init(name: "NowAlt-Medium", size: 16)
+        label.textColor = Theme.current.textColor1
+        label.text = "20"
         return label
     }()
     
-    var arrowRight: UIImageView = {
-        let image = UIImageView()
-        let symbolConfig = UIImage.SymbolConfiguration(pointSize: 24.0, weight: .medium, scale: .default)
-        image.image = UIImage(systemName: "arrow.right", withConfiguration: symbolConfig)?.withTintColor(UIColor.rgb(red: 3, green: 131, blue: 251, alpha: 1), renderingMode: .alwaysOriginal)
-        image.contentMode = .scaleAspectFill
-        image.translatesAutoresizingMaskIntoConstraints = false
-        image.isUserInteractionEnabled = true
-        
-        return image
+    lazy var profileIconDecorative: UIImageView = {
+        let img = UIImageView()
+        img.image = UIImage(named: "decorativeProfileInputName")
+        img.contentMode = .scaleAspectFill
+        img.translatesAutoresizingMaskIntoConstraints = false
+        return img
     }()
+    
     
     let profileIcon: UIImageView = {
         let image = UIImageView()
@@ -148,27 +176,6 @@ class InputNameView: UIView, UITextViewDelegate {
 //        usernameLabel.delegate = self
     }
     
-//    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText newText: String) -> Bool {
-//        if newText == "\n" {
-//            textView.resignFirstResponder()
-//            return false
-//        }
-//        return textView.text.count + (newText.count - range.length) <= 20
-//    }
-//    
-//    func textViewDidEndEditing(_ textView: UITextView) {
-//        self.quizAnswerLabelConstraint.constant = -190
-//        self.name = textView.text
-////        print("NAMA", name)
-//    }
-//    
-//    func textViewDidBeginEditing(_ textView: UITextView) {
-//        self.quizAnswerLabelConstraint.constant = -307
-//        usernameLabel.textColor = UIColor.rgb(red: 23, green: 78, blue: 161, alpha: 1)
-//        usernameLabel.text = ""
-//        
-//    }
-    
     func setupView() {
         addSubview(circleProfile)
         circleProfile.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
@@ -195,6 +202,13 @@ class InputNameView: UIView, UITextViewDelegate {
         profileIcon.heightAnchor.constraint(equalToConstant: 29).isActive = true
         profileIcon.widthAnchor.constraint(equalToConstant: 25).isActive = true
         
+        addSubview(profileIconDecorative)
+        profileIconDecorative.centerXAnchor.constraint(equalTo: circleProfile.centerXAnchor, constant: 0).isActive = true
+        profileIconDecorative.centerYAnchor.constraint(equalTo: circleProfile.centerYAnchor, constant: 0).isActive = true
+        profileIconDecorative.heightAnchor.constraint(equalToConstant: 34).isActive = true
+        profileIconDecorative.widthAnchor.constraint(equalToConstant: 148).isActive = true
+        
+        
         addSubview(titleLabel)
         titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0).isActive = true
         titleLabel.topAnchor.constraint(equalTo: circleProfile.bottomAnchor, constant: 24).isActive = true
@@ -206,32 +220,27 @@ class InputNameView: UIView, UITextViewDelegate {
         inputUsername.heightAnchor.constraint(equalToConstant: 64).isActive = true
         inputUsername.widthAnchor.constraint(equalToConstant: 640).isActive = true
         
-        addSubview(middleDecorationImage1)
-        middleDecorationImage1.trailingAnchor.constraint(equalTo: inputUsername.leadingAnchor, constant: -16).isActive = true
-        middleDecorationImage1.centerYAnchor.constraint(equalTo: inputUsername.centerYAnchor).isActive = true
-        middleDecorationImage1.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        middleDecorationImage1.widthAnchor.constraint(equalToConstant: 24).isActive = true
-        
-        addSubview(middleDecorationImage2)
-        middleDecorationImage2.leadingAnchor.constraint(equalTo: inputUsername.trailingAnchor, constant: 16).isActive = true
-        middleDecorationImage2.centerYAnchor.constraint(equalTo: inputUsername.centerYAnchor).isActive = true
-        middleDecorationImage2.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        middleDecorationImage2.widthAnchor.constraint(equalToConstant: 24).isActive = true
+        addSubview(textViewDecorative)
+        textViewDecorative.centerXAnchor.constraint(equalTo: inputUsername.centerXAnchor, constant: 0).isActive = true
+        textViewDecorative.centerYAnchor.constraint(equalTo: inputUsername.centerYAnchor, constant: 0).isActive = true
+        textViewDecorative.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        textViewDecorative.widthAnchor.constraint(equalToConstant: 718).isActive = true
         
         inputUsername.addSubview(usernameLabel)
         usernameLabel.centerXAnchor.constraint(equalTo: inputUsername.centerXAnchor, constant: 0).isActive = true
         usernameLabel.centerYAnchor.constraint(equalTo: inputUsername.centerYAnchor, constant: 0).isActive = true
         usernameLabel.widthAnchor.constraint(equalToConstant: 560).isActive = true
         
-        inputUsername.addSubview(arrowRight)
-        arrowRight.trailingAnchor.constraint(equalTo: inputUsername.trailingAnchor, constant: -24).isActive = true
-        arrowRight.centerYAnchor.constraint(equalTo: inputUsername.centerYAnchor, constant: 0).isActive = true
-        arrowRight.heightAnchor.constraint(equalToConstant: 29).isActive = true
-        arrowRight.widthAnchor.constraint(equalToConstant: 27).isActive = true
+        inputUsername.addSubview(limitTextLabel)
+        limitTextLabel.trailingAnchor.constraint(equalTo: inputUsername.trailingAnchor, constant: -24).isActive = true
+        limitTextLabel.centerYAnchor.constraint(equalTo: inputUsername.centerYAnchor, constant: 0).isActive = true
         
-        addSubview(warningLabel)
-        warningLabel.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0).isActive = true
-        warningLabel.topAnchor.constraint(equalTo: inputUsername.bottomAnchor, constant: 24).isActive = true
+        addSubview(continueButton)
+        continueButton.centerXAnchor.constraint(equalTo: inputUsername.centerXAnchor, constant: 0).isActive = true
+        continueButton.topAnchor.constraint(equalTo: inputUsername.bottomAnchor, constant: 24).isActive = true
+        continueButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        continueButton.widthAnchor.constraint(equalToConstant: 240).isActive = true
+
     }
     
     

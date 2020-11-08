@@ -122,13 +122,26 @@ class LevelV2View: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    
-    lazy var kamusButton: UIButton = {
+
+    lazy var kamusButton : UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "kamusButton"), for: .normal)
-        button.imageView?.contentMode = .scaleAspectFit
-        button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
+        
+        let origImage = UIImage(systemName: "book.fill")
+        let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
+        button.setImage(tintedImage, for: .normal)
+        button.setTitle("Kamus", for: .normal)
+        button.titleLabel?.font = UIFont.init(name: "NowAlt-Medium", size: 20)
+        button.tintColor = Theme.current.accentWhite
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.layer.cornerRadius = 28
+        button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
+        button.tag = 0
+//        button.addTarget(self, action: #selector(reloadPencilKit), for: .touchUpInside)
+        button.backgroundColor = UIColor.rgb(red: 3, green: 131, blue: 251, alpha: 1)
+        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: -50, bottom: 0, right: 0)
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -140)
+        button.alpha = 1
+        
         return button
     }()
     
@@ -515,7 +528,6 @@ class LevelV2View: UIView {
         tipsLabel.topAnchor.constraint(equalTo: greetingLabel.bottomAnchor, constant: 16).isActive = true
         
         containerView.addSubview(continueButton)
-//        continueButton.backgroundColor = .gray
         continueButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 115).isActive = true
         continueButton.topAnchor.constraint(equalTo: tipsLabel.bottomAnchor, constant: 64).isActive = true
         continueButton.heightAnchor.constraint(equalToConstant: 70).isActive = true
@@ -529,7 +541,7 @@ class LevelV2View: UIView {
     func setupTahap1Card() {
         
 //        tahap 1
-        addSubview(containerViewTahap1)
+        containerView.addSubview(containerViewTahap1)
         containerViewTahap1.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 446).isActive = true
         containerViewTahap1.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 84).isActive = true
         containerViewTahap1.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -78).isActive = true
@@ -567,7 +579,7 @@ class LevelV2View: UIView {
     func setupTahap2Card() {
         
 //        tahap 2
-        addSubview(containerViewTahap2)
+        containerView.addSubview(containerViewTahap2)
         secondContainerTopAnchor1?.isActive = true
         containerViewTahap2.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 84).isActive = true
         containerViewTahap2.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -78).isActive = true
@@ -607,8 +619,7 @@ class LevelV2View: UIView {
     func setupTahap3Card() {
         
 //        tahap 3
-        addSubview(containerViewTahap3)
-//        containerViewTahap3.topAnchor.constraint(equalTo: containerViewTahap2.bottomAnchor, constant: 18).isActive = true
+        containerView.addSubview(containerViewTahap3)
         thirdContainerTopAnchor1?.isActive = true
         containerViewTahap3.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 84).isActive = true
         containerViewTahap3.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -78).isActive = true
