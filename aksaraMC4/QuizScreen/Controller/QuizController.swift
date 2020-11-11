@@ -63,11 +63,17 @@ class QuizController: UIViewController, QuizControllerProtocol {
     
     private var quizView: QuizView!
     
+    let backBackgroundView : UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     //HeaderView
     let headerView : UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = Theme.current.accentWhite
+        view.backgroundColor = .clear
         return view
     }()
     
@@ -78,6 +84,22 @@ class QuizController: UIViewController, QuizControllerProtocol {
         label.textColor = Theme.current.textColor1
         label.text = "Aksara Baru !"
         return label
+    }()
+    
+    let topDecorationImage1: UIImageView = {
+        let img = UIImageView()
+        img.image = UIImage(named: "FlowerFull")
+        img.contentMode = .scaleAspectFill
+        img.translatesAutoresizingMaskIntoConstraints = false
+        return img
+    }()
+    
+    let topDecorationImage2: UIImageView = {
+        let img = UIImageView()
+        img.image = UIImage(named: "FlowerFull")
+        img.contentMode = .scaleAspectFill
+        img.translatesAutoresizingMaskIntoConstraints = false
+        return img
     }()
     
     var countdownTimer: Timer!
@@ -210,7 +232,8 @@ class QuizController: UIViewController, QuizControllerProtocol {
         layout.scrollDirection = .horizontal
         
         let cv = UICollectionView(frame: .zero , collectionViewLayout: layout)
-        cv.setBackgroundColor()
+//        cv.setBackgroundColor()
+        cv.backgroundColor = .clear
         cv.isPagingEnabled = true
         cv.isScrollEnabled = false
         cv.bounces = true
@@ -281,25 +304,47 @@ class QuizController: UIViewController, QuizControllerProtocol {
         }
     }
     
+    let batikBackgroundImageView: UIImageView = {
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "decorativeBackground")
+        backgroundImage.contentMode = .scaleAspectFill
+        return backgroundImage
+    }()
+    
+    func batikBG() {
+        self.backBackgroundView.insertSubview(batikBackgroundImageView, at: 0)
+//        self.view.bringSubviewToFront(backgroundImage)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCV()
         registerCV()
         setupDelegate()
-        
+        batikBG()
+
         //print("REGION", regionSelected)
+        
         
         
     }
     
     
     func setupCV() {
-        view.addSubview(headerView)
-        
+        view.addSubview(backBackgroundView)
         NSLayoutConstraint.activate([
-            headerView.topAnchor.constraint(equalTo: view.topAnchor),
-            headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            backBackgroundView.topAnchor.constraint(equalTo: view.topAnchor),
+            backBackgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            backBackgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            backBackgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+        
+        backBackgroundView.addSubview(headerView)
+        NSLayoutConstraint.activate([
+            headerView.topAnchor.constraint(equalTo: backBackgroundView.topAnchor),
+            headerView.leadingAnchor.constraint(equalTo: backBackgroundView.leadingAnchor),
+            headerView.trailingAnchor.constraint(equalTo: backBackgroundView.trailingAnchor),
             headerView.heightAnchor.constraint(equalToConstant: 124)
         ])
         
@@ -317,6 +362,18 @@ class QuizController: UIViewController, QuizControllerProtocol {
             quizTopNumberLabel.topAnchor.constraint(equalTo: headerView.topAnchor, constant: view.frame.height * 0.06354916067),
             quizTopNumberLabel.centerXAnchor.constraint(equalTo: headerView.centerXAnchor)
         ])
+        
+        headerView.addSubview(topDecorationImage1)
+        topDecorationImage1.trailingAnchor.constraint(equalTo: quizTopNumberLabel.leadingAnchor, constant: -32).isActive = true
+        topDecorationImage1.centerYAnchor.constraint(equalTo: quizTopNumberLabel.centerYAnchor).isActive = true
+        topDecorationImage1.heightAnchor.constraint(equalToConstant: 34).isActive = true
+        topDecorationImage1.widthAnchor.constraint(equalToConstant: 34).isActive = true
+        
+        headerView.addSubview(topDecorationImage2)
+        topDecorationImage2.leadingAnchor.constraint(equalTo: quizTopNumberLabel.trailingAnchor, constant: 32).isActive = true
+        topDecorationImage2.centerYAnchor.constraint(equalTo: quizTopNumberLabel.centerYAnchor).isActive = true
+        topDecorationImage2.heightAnchor.constraint(equalToConstant: 34).isActive = true
+        topDecorationImage2.widthAnchor.constraint(equalToConstant: 34).isActive = true
         
         headerView.addSubview(headerTimer)
         NSLayoutConstraint.activate([
@@ -347,13 +404,13 @@ class QuizController: UIViewController, QuizControllerProtocol {
         progressiveBar.progressImage = gradientImage!
         progressiveBar.setProgress(1.00/20.00, animated: true)
         
-        view.addSubview(collectionView)
+        backBackgroundView.addSubview(collectionView)
         
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            collectionView.leadingAnchor.constraint(equalTo: backBackgroundView.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: backBackgroundView.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: backBackgroundView.bottomAnchor)
         ])
     }
     
@@ -1207,40 +1264,43 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
         switch type {
         case "A":
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuizViewTypeACell, for: indexPath) as! QuizViewTypeA
-            cell.setBackgroundColor()
+            backBackgroundView.removeLayer(name: "blueGuide")
+            backBackgroundView.setBackgroundColor()
             cell.regionSelected = regionSelected
             cell.quizData = quizes![indexPath.item]
             cell.continueButton.addTarget(self, action: #selector(handleProgressBar), for: .touchUpInside)
             cell.continueButton.tag = indexPath.item
             cell.delegate = self
-            headerView.backgroundColor = Theme.current.accentWhite
             quizTopNumberLabel.textColor = Theme.current.textColor1
+            batikBackgroundImageView.alpha = 1.0
             
             return cell
             
         case "B":
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuizViewTypeBCell, for: indexPath) as! QuizViewTypeB
-            cell.setBackgroundColor()
+            backBackgroundView.removeLayer(name: "blueGuide")
+            backBackgroundView.setBackgroundColor()
             cell.continueButton.addTarget(self, action: #selector(handleProgressBar), for: .touchUpInside)
             cell.continueButton.tag = indexPath.item
             cell.regionSelected = regionSelected
             cell.quizData = quizes![indexPath.item]
             cell.delegate = self
-            headerView.backgroundColor = Theme.current.accentWhite
             quizTopNumberLabel.textColor = Theme.current.textColor1
+            batikBackgroundImageView.alpha = 1.0
             
             return cell
             
         case "C":
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuizViewTypeCCell, for: indexPath) as! QuizViewTypeC
-            cell.setBackgroundColor()
+            backBackgroundView.removeLayer(name: "blueGuide")
+            backBackgroundView.setBackgroundColor()
             cell.continueButton.addTarget(self, action: #selector(handleProgressBar), for: .touchUpInside)
             cell.continueButton.tag = indexPath.item
             cell.regionSelected = regionSelected
             cell.quizData = quizes![indexPath.item]
             cell.delegate = self
-            headerView.backgroundColor = Theme.current.accentWhite
             quizTopNumberLabel.textColor = Theme.current.textColor1
+            batikBackgroundImageView.alpha = 1.0
             
             return cell
             
@@ -1252,9 +1312,11 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
             cell.regionSelected = regionSelected
             cell.quizData = quizes![indexPath.item]
             
-            view.backgroundColor = UIColor.rgb(red: 23, green: 78, blue: 161, alpha: 1)
-            headerView.backgroundColor = UIColor.rgb(red: 23, green: 78, blue: 161, alpha: 1)
+            backBackgroundView.removeLayer(name: "gradientWhiteQuiz")
+            backBackgroundView.setBackgroundColorGuideBlue()
             quizTopNumberLabel.textColor = .white
+            batikBackgroundImageView.alpha = 0.16
+            
             
             return cell
             
@@ -1263,12 +1325,13 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
             
             cell.continueButton.addTarget(self, action: #selector(handleProgressBar), for: .touchUpInside)
             cell.continueButton.tag = indexPath.item
-            cell.setBackgroundColor()
+            backBackgroundView.removeLayer(name: "blueGuide")
+            backBackgroundView.setBackgroundColor()
             cell.delegate = self
             cell.regionSelected = regionSelected
             cell.quizData = quizes![indexPath.item]
-            headerView.backgroundColor = Theme.current.accentWhite
             quizTopNumberLabel.textColor = Theme.current.textColor1
+            batikBackgroundImageView.alpha = 1.0
             
             return cell
             
@@ -1277,12 +1340,13 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
             
             cell.continueButton.addTarget(self, action: #selector(handleProgressBar), for: .touchUpInside)
             cell.continueButton.tag = indexPath.item
-            cell.setBackgroundColor()
+            backBackgroundView.removeLayer(name: "blueGuide")
+            backBackgroundView.setBackgroundColor()
             cell.delegate = self
             cell.regionSelected = regionSelected
             cell.quizData = quizes![indexPath.item]
-            headerView.backgroundColor = Theme.current.accentWhite
             quizTopNumberLabel.textColor = Theme.current.textColor1
+            batikBackgroundImageView.alpha = 1.0
             
             return cell
             
@@ -1291,12 +1355,13 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
             
             cell.continueButton.addTarget(self, action: #selector(handleProgressBar), for: .touchUpInside)
             cell.continueButton.tag = indexPath.item
-            cell.setBackgroundColor()
+            backBackgroundView.removeLayer(name: "blueGuide")
+            backBackgroundView.setBackgroundColor()
             cell.delegate = self
             cell.regionSelected = regionSelected
             cell.quizData = quizes![indexPath.item]
-            headerView.backgroundColor = Theme.current.accentWhite
             quizTopNumberLabel.textColor = Theme.current.textColor1
+            batikBackgroundImageView.alpha = 1.0
             
             return cell
             
@@ -1308,8 +1373,10 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
             cell.delegate = self
             cell.regionSelected = regionSelected
             cell.quizData = quizes![indexPath.item]
-            headerView.backgroundColor = Theme.current.accentWhite
+            backBackgroundView.removeLayer(name: "blueGuide")
+            backBackgroundView.setBackgroundColor()
             quizTopNumberLabel.textColor = Theme.current.textColor1
+            batikBackgroundImageView.alpha = 1.0
             
             return cell
             
@@ -1321,8 +1388,10 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
             cell.delegate = self
             cell.regionSelected = regionSelected
             cell.quizData = quizes![indexPath.item]
-            headerView.backgroundColor = Theme.current.accentWhite
+            backBackgroundView.removeLayer(name: "blueGuide")
+            backBackgroundView.setBackgroundColor()
             quizTopNumberLabel.textColor = Theme.current.textColor1
+            batikBackgroundImageView.alpha = 1.0
             
             return cell
             
@@ -1334,8 +1403,10 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
             cell.delegate = self
             cell.regionSelected = regionSelected
             cell.quizData = quizes![indexPath.item]
-            headerView.backgroundColor = Theme.current.accentWhite
+            backBackgroundView.removeLayer(name: "blueGuide")
+            backBackgroundView.setBackgroundColor()
             quizTopNumberLabel.textColor = Theme.current.textColor1
+            batikBackgroundImageView.alpha = 1.0
             
             return cell
             
@@ -1346,14 +1417,17 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
             cell.delegate = self
             cell.regionSelected = regionSelected
             cell.quizData = quizes![indexPath.item]
-            headerView.backgroundColor = Theme.current.accentWhite
+            backBackgroundView.removeLayer(name: "blueGuide")
+            backBackgroundView.setBackgroundColor()
             quizTopNumberLabel.textColor = Theme.current.textColor1
+            batikBackgroundImageView.alpha = 1.0
             
             return cell
             
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuizViewTypeECell, for: indexPath) as! QuizViewTypeE
-            cell.setBackgroundColor()
+            backBackgroundView.removeLayer(name: "blueGuide")
+            backBackgroundView.setBackgroundColor()
             cell.lewatiButton.addTarget(self, action: #selector(showModal), for: .touchUpInside)
             cell.arrowRightButton.addTarget(self, action: #selector(showModal), for: .touchUpInside)
             cell.lewatiButton.tag = indexPath.item
@@ -1361,7 +1435,8 @@ extension QuizController : UICollectionViewDelegateFlowLayout, UICollectionViewD
             cell.regionSelected = regionSelected
             cell.quizData = quizes?[indexPath.item]
             cell.delegate = self
-            headerView.backgroundColor = Theme.current.accentWhite
+            backBackgroundView.backgroundColor = Theme.current.accentWhite
+            batikBackgroundImageView.alpha = 1.0
             
             return cell
         }

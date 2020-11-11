@@ -404,7 +404,6 @@ class QuizCellTypeGuide: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor.rgb(red: 23, green: 78, blue: 161, alpha: 1)
         setupView()
         setupViewCanvas()
         setupViewGuideCard()

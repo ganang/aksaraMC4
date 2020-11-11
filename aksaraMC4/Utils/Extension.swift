@@ -271,6 +271,20 @@ extension UIView {
         gradientLayer.colors = [colorTop, colorBottom]
         gradientLayer.locations = [0.0, 1.0]
         gradientLayer.frame = self.bounds
+        gradientLayer.name = "gradientWhiteQuiz"
+        
+        self.layer.insertSublayer(gradientLayer, at:0)
+    }
+    
+    func setBackgroundColorGuideBlue() {
+        let colorTop =  UIColor(red: 4/255.0, green: 110/255.0, blue: 208/255.0, alpha: 1.0).cgColor
+        let colorBottom = UIColor(red: 23/255.0, green: 78/255.0, blue: 161/255.0, alpha: 1.0).cgColor
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorTop, colorBottom]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame = self.bounds
+        gradientLayer.name = "blueGuide"
         
         self.layer.insertSublayer(gradientLayer, at:0)
     }

@@ -336,8 +336,6 @@ class QuizCellTypeH: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setBackgroundColor()
-        backgroundColor = .blue
         setupView()
         //        tagFunction()
         tappedFunction()

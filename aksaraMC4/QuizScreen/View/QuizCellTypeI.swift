@@ -332,7 +332,7 @@ class QuizCellTypeI: UICollectionViewCell{
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setBackgroundColor()
+//        setBackgroundColor()
         
         setupDynamicConstraint()
         setupView()
