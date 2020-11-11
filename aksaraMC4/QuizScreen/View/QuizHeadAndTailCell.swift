@@ -198,12 +198,8 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
     lazy var checkButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Cek", for: .normal)
-        button.titleLabel?.font = UIFont.init(name: "NowAlt-Medium", size: 16)
-        button.setCheckButtonBackgroundColor(withOpacity: 0.6)
-        button.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
-        button.addInnerShadow()
-        button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
+        button.setImage(UIImage(named: "ButtonLanjutStateCek"), for: .normal)
+        button.imageView?.contentMode = UIView.ContentMode.scaleAspectFit
         button.clipsToBounds = true
         
         button.addTarget(self, action: #selector(handleCheckButton), for: .touchUpInside)
@@ -214,17 +210,19 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
     }()
     
     
+    
     // Handle continue Button
     lazy var continueButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Lanjut", for: .normal)
-        button.titleLabel?.font = UIFont.init(name: "NowAlt-Medium", size: 16)
-        button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
-        button.imageView?.tintColor = Theme.current.accentWhite
-        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 130, bottom: 0, right: 0)
-        button.addInnerShadow()
-        button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
+//        button.setTitle("Lanjut", for: .normal)
+//        button.titleLabel?.font = UIFont.init(name: "NowAlt-Medium", size: 16)
+        button.setImage(UIImage(named: "ButtonLanjutStateTrue"), for: .normal)
+        button.imageView?.contentMode = UIView.ContentMode.scaleAspectFit
+//        button.imageView?.tintColor = Theme.current.accentWhite
+//        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 130, bottom: 0, right: 0)
+//        button.addInnerShadow()
+//        button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
         button.clipsToBounds = true
         button.isEnabled = true
         button.isHidden = true
@@ -340,6 +338,14 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
         label.isHidden = true
         
         return label
+    }()
+    
+    let QuizMiddleDecoration: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "QuizDMiddleDecorationState")
+        image.contentMode = .scaleAspectFit
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
     }()
     
     // --------------------------------------------------------------------------------------------------- //
@@ -568,13 +574,15 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
     }()
     
     override func setupViews() {
-        setBackgroundColor()
+//        setBackgroundColor()
         
         setupInterfaceComponent()
         setupConstraint()
     }
     
     func setupInterfaceComponent() {
+        addSubview(QuizMiddleDecoration)
+        
         addSubview(placeholderHead)
         addSubview(placeholderTail)
         
@@ -607,6 +615,13 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
     }
     
     func setupConstraint() {
+        NSLayoutConstraint.activate([
+            QuizMiddleDecoration.heightAnchor.constraint(equalToConstant: 540),
+            QuizMiddleDecoration.widthAnchor.constraint(equalToConstant: 704),
+            QuizMiddleDecoration.centerXAnchor.constraint(equalTo: centerXAnchor),
+            QuizMiddleDecoration.topAnchor.constraint(equalTo: topAnchor, constant: 44)
+        ])
+        
         placeholderHead.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         placeholderHead.widthAnchor.constraint(equalToConstant: 100).isActive = true
         placeholderHead.heightAnchor.constraint(equalToConstant: 100).isActive = true
@@ -640,15 +655,15 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
         tailC.frame = originTailCPosition
         tailD.frame = originTailDPosition
         
-        checkButton.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        checkButton.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        checkButton.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        checkButton.heightAnchor.constraint(equalToConstant: 56).isActive = true
+        checkButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        checkButton.topAnchor.constraint(equalTo: footerPlaceholderHead.bottomAnchor, constant: 122).isActive = true
+        checkButton.widthAnchor.constraint(equalToConstant: 302).isActive = true
+        checkButton.heightAnchor.constraint(equalToConstant: 80).isActive = true
         
-        continueButton.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        continueButton.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        continueButton.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        continueButton.heightAnchor.constraint(equalToConstant: 56).isActive = true
+        continueButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        continueButton.topAnchor.constraint(equalTo: footerPlaceholderHead.bottomAnchor, constant: 122).isActive = true
+        continueButton.widthAnchor.constraint(equalToConstant: 302).isActive = true
+        continueButton.heightAnchor.constraint(equalToConstant: 80).isActive = true
         
         questionPlaceholder.trailingAnchor.constraint(equalTo: centerXAnchor, constant: -120).isActive = true
         questionPlaceholder.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
@@ -714,7 +729,7 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
 //            delegate?.setTrueStatus()
             
             // handle continue button
-            self.continueButton.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 56, withWidth: Double(SCREEN_WIDTH), withCorner: 0)
+            self.continueButton.setImage(UIImage(named: "ButtonLanjutStateTrue"), for: .normal)
             
             playSoundTrue()
             generator.notificationOccurred(.success)
@@ -729,7 +744,7 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
 //            delegate?.setFalseStatus()
             
             // handle continue button
-            self.continueButton.setCheckButtonBackgroundColorFalse(withOpacity: 1, withHeight: 56, withWidth: Double(SCREEN_WIDTH), withCorner: 0)
+            self.continueButton.setImage(UIImage(named: "ButtonLanjutStateFalse"), for: .normal)
             
             if (headQuestion == headAnswer) {
                 placeholderHead.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
@@ -789,7 +804,7 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
 //        delegate?.setFalseStatus()
         
         // handle continue button
-        self.continueButton.setCheckButtonBackgroundColorFalse(withOpacity: 1, withHeight: 56, withWidth: Double(SCREEN_WIDTH), withCorner: 0)
+        self.continueButton.setImage(UIImage(named: "ButtonLanjutStateFalse"), for: .normal)
         
         if (headQuestion == headAnswer) {
             placeholderHead.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
@@ -817,7 +832,7 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
     func updateStatusCheckButton() {
         if (isHeadFill && isTailFill) {
             checkButton.removeLayer(name: "check")
-            checkButton.setCheckButtonBackgroundColor(withOpacity: 1)
+//            checkButton.setCheckButtonBackgroundColor(withOpacity: 1)
             checkButton.isEnabled = true
         }
     }

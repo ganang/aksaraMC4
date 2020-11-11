@@ -78,12 +78,11 @@ class QuizViewTypeA: UICollectionViewCell {
             answersBGView[i].alpha = 0.4
         }
         
-        answersBGView[index!].setCardTrueBackgroundColor()
+        answersBGView[index!].image = UIImage(named: "QuizCardAnswerTrue")
         answersChoiceLabel[index!].textColor = .white
         answersChoiceImage[index!].textColor = .white
         stateTrueImage[index!].isHidden = false
         
-        continueButton.isHidden = false
         playSoundFalse()
         self.quizAnswerLabel.text = "Sayang sekali waktu habis ☹️"
         self.quizAnswerLabelConstraint.constant = 0
@@ -91,12 +90,13 @@ class QuizViewTypeA: UICollectionViewCell {
         self.quizAnswerLabel.textColor = Theme.current.accentTextRed
         self.quizImage.isHidden = true
         self.questionLabel.isHidden = true
+        self.QuizMiddleDecoration.image = UIImage(named: "QuizMiddleDecorationState")
         
 //        delegate?.setFalseStatus()
         
         // handle continue button
         self.continueButton.isHidden = false
-        self.continueButton.setCheckButtonBackgroundColorFalse(withOpacity: 1, withHeight: 56, withWidth: Double(SCREEN_WIDTH), withCorner: 0)
+        self.continueButton.setImage(UIImage(named: "ButtonLanjutStateFalse"), for: .normal)
         
         // handle core data
         handleFalseCoreData()
@@ -106,17 +106,18 @@ class QuizViewTypeA: UICollectionViewCell {
         answer1BgView.backgroundColor = .red
     }
     
-    //Button
+    //Buttonx
     lazy var continueButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Lanjut", for: .normal)
-        button.titleLabel?.font = UIFont.init(name: "NowAlt-Medium", size: 16)
-        button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
-        button.imageView?.tintColor = Theme.current.accentWhite
-        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 130, bottom: 0, right: 0)
-        button.addInnerShadow()
-        button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
+//        button.setTitle("Lanjut", for: .normal)
+//        button.titleLabel?.font = UIFont.init(name: "NowAlt-Medium", size: 16)
+        button.setImage(UIImage(named: "ButtonLanjutStateTrue"), for: .normal)
+        button.imageView?.contentMode = UIView.ContentMode.scaleAspectFit
+//        button.imageView?.tintColor = Theme.current.accentWhite
+//        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 130, bottom: 0, right: 0)
+//        button.addInnerShadow()
+//        button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
         button.clipsToBounds = true
         button.isEnabled = true
         button.isHidden = true
@@ -150,6 +151,14 @@ class QuizViewTypeA: UICollectionViewCell {
     let quizImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "HaWhite")
+        image.contentMode = .scaleAspectFill
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
+    }()
+    
+    let QuizMiddleDecoration: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "QuizMiddleDecoration")
         image.contentMode = .scaleAspectFit
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
@@ -325,9 +334,8 @@ class QuizViewTypeA: UICollectionViewCell {
         view.id = 0
         view.choice = ""
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .init(white: 1, alpha: 0.8)
-        view.layer.cornerRadius = 32
-        view.addInnerShadow()
+        view.image = UIImage(named: "QuizCardAnswer")
+        view.contentMode = .scaleAspectFit
         view.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
         let tap = UITapGestureRecognizer(target: self, action: #selector(answerPressed(_:)))
         view.isUserInteractionEnabled = true
@@ -340,9 +348,8 @@ class QuizViewTypeA: UICollectionViewCell {
         view.id = 1
         view.choice = ""
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .init(white: 1, alpha: 0.8)
-        view.layer.cornerRadius = 32
-        view.addInnerShadow()
+        view.image = UIImage(named: "QuizCardAnswer")
+        view.contentMode = .scaleAspectFit
         view.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
         let tap = UITapGestureRecognizer(target: self, action: #selector(answerPressed(_:)))
         view.isUserInteractionEnabled = true
@@ -355,9 +362,8 @@ class QuizViewTypeA: UICollectionViewCell {
         view.id = 2
         view.choice = ""
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .init(white: 1, alpha: 0.8)
-        view.layer.cornerRadius = 32
-        view.addInnerShadow()
+        view.image = UIImage(named: "QuizCardAnswer")
+        view.contentMode = .scaleAspectFit
         view.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
         let tap = UITapGestureRecognizer(target: self, action: #selector(answerPressed(_:)))
         view.isUserInteractionEnabled = true
@@ -370,9 +376,8 @@ class QuizViewTypeA: UICollectionViewCell {
         view.id = 3
         view.choice = ""
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .init(white: 1, alpha: 0.8)
-        view.layer.cornerRadius = 32
-        view.addInnerShadow()
+        view.image = UIImage(named: "QuizCardAnswer")
+        view.contentMode = .scaleAspectFit
         view.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
         let tap = UITapGestureRecognizer(target: self, action: #selector(answerPressed(_:)))
         view.isUserInteractionEnabled = true
@@ -388,7 +393,7 @@ class QuizViewTypeA: UICollectionViewCell {
         if initialClick == false {
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                self.answersBGView[id!].setCardChooseBackgroundColor()
+                self.answersBGView[id!].image = UIImage(named: "QuizCardAnswerBlue")
                 self.answersChoiceLabel[id!].textColor = .white
                 self.answersChoiceImage[id!].textColor = .white
             }
@@ -404,7 +409,7 @@ class QuizViewTypeA: UICollectionViewCell {
                     self.quizAnswerLabel.textColor = Theme.current.accentTextGreen
                     self.quizImage.isHidden = true
                     self.questionLabel.isHidden = true
-                    self.answersBGView[index!].setCardTrueBackgroundColor()
+                    self.answersBGView[index!].image = UIImage(named: "QuizCardAnswerTrue")
                     self.answersChoiceLabel[index!].textColor = .white
                     self.answersChoiceImage[index!].textColor = .white
                     self.stateTrueImage[index!].isHidden = false
@@ -429,7 +434,8 @@ class QuizViewTypeA: UICollectionViewCell {
                     
                     // handle continue button
                     self.continueButton.isHidden = false
-                    self.continueButton.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 56, withWidth: Double(SCREEN_WIDTH), withCorner: 0)
+                    self.continueButton.setImage(UIImage(named: "ButtonLanjutStateTrue"), for: .normal)
+                    self.QuizMiddleDecoration.image = UIImage(named: "QuizMiddleDecorationState")
                 }else {
                     // handle constraint
                     self.quizAnswerLabelConstraint.constant = 0
@@ -439,12 +445,12 @@ class QuizViewTypeA: UICollectionViewCell {
                     self.quizAnswerLabel.textColor = Theme.current.accentTextRed
                     self.quizImage.isHidden = true
                     self.questionLabel.isHidden = true
-                    self.answersBGView[id!].setCardFalseBackgroundColor()
+                    self.answersBGView[id!].image = UIImage(named: "QuizCardAnswerFalse")
                     self.answersChoiceLabel[id!].textColor = .white
                     self.answersChoiceImage[id!].textColor = .white
                     self.stateFalseImage[id!].isHidden = false
                     
-                    self.answersBGView[index!].setCardTrueBackgroundColor()
+                    self.answersBGView[index!].image = UIImage(named: "QuizCardAnswerTrue")
                     self.answersChoiceLabel[index!].textColor = .white
                     self.answersChoiceImage[index!].textColor = .white
                     self.stateTrueImage[index!].isHidden = false
@@ -470,7 +476,8 @@ class QuizViewTypeA: UICollectionViewCell {
                     
                     // handle continue button
                     self.continueButton.isHidden = false
-                    self.continueButton.setCheckButtonBackgroundColorFalse(withOpacity: 1, withHeight: 56, withWidth: Double(SCREEN_WIDTH), withCorner: 0)
+                    self.continueButton.setImage(UIImage(named: "ButtonLanjutStateFalse"), for: .normal)
+                    self.QuizMiddleDecoration.image = UIImage(named: "QuizMiddleDecorationState")
                 }
             }
             
@@ -547,6 +554,14 @@ class QuizViewTypeA: UICollectionViewCell {
         quizAnswerLabelConstraint = quizAnswerLabel.centerXAnchor.constraint(equalTo: centerXAnchor, constant: -48)
         quizAnswerLabelConstraint.isActive = true
         
+        addSubview(QuizMiddleDecoration)
+        NSLayoutConstraint.activate([
+            QuizMiddleDecoration.heightAnchor.constraint(equalToConstant: 442),
+            QuizMiddleDecoration.widthAnchor.constraint(equalToConstant: 724),
+            QuizMiddleDecoration.centerXAnchor.constraint(equalTo: centerXAnchor),
+            QuizMiddleDecoration.topAnchor.constraint(equalTo: quizAnswerLabel.topAnchor, constant: 0)
+        ])
+        
         addSubview(quizImage)
         NSLayoutConstraint.activate([
             quizImage.heightAnchor.constraint(equalToConstant: 32),
@@ -565,7 +580,7 @@ class QuizViewTypeA: UICollectionViewCell {
         //Pilgan1
         addSubview(answer1BgView)
         NSLayoutConstraint.activate([
-            answer1BgView.topAnchor.constraint(equalTo: quizAnswerLabel.bottomAnchor, constant: 44),
+            answer1BgView.topAnchor.constraint(equalTo: quizAnswerLabel.bottomAnchor, constant: 40),
             answer1BgView.centerXAnchor.constraint(equalTo: centerXAnchor, constant: -168),
             answer1BgView.heightAnchor.constraint(equalToConstant: 140),
             answer1BgView.widthAnchor.constraint(equalToConstant: 320)
@@ -586,8 +601,8 @@ class QuizViewTypeA: UICollectionViewCell {
         //Pilgan2
         addSubview(answer2BgView)
         NSLayoutConstraint.activate([
-            answer2BgView.topAnchor.constraint(equalTo: quizAnswerLabel.bottomAnchor, constant: 44),
-            answer2BgView.leadingAnchor.constraint(equalTo: answer1BgView.trailingAnchor, constant: 24),
+            answer2BgView.topAnchor.constraint(equalTo: quizAnswerLabel.bottomAnchor, constant: 40),
+            answer2BgView.leadingAnchor.constraint(equalTo: answer1BgView.trailingAnchor, constant: 20),
             answer2BgView.heightAnchor.constraint(equalToConstant: 140),
             answer2BgView.widthAnchor.constraint(equalToConstant: 320)
         ])
@@ -607,7 +622,7 @@ class QuizViewTypeA: UICollectionViewCell {
         //Pilgan3
         addSubview(answer3BgView)
         NSLayoutConstraint.activate([
-            answer3BgView.topAnchor.constraint(equalTo: answer1BgView.bottomAnchor, constant: 24),
+            answer3BgView.topAnchor.constraint(equalTo: answer1BgView.bottomAnchor, constant: 20),
             answer3BgView.trailingAnchor.constraint(equalTo: answer1BgView.trailingAnchor),
             answer3BgView.heightAnchor.constraint(equalToConstant: 140),
             answer3BgView.widthAnchor.constraint(equalToConstant: 320)
@@ -628,7 +643,7 @@ class QuizViewTypeA: UICollectionViewCell {
         //Pilgan4
         addSubview(answer4BgView)
         NSLayoutConstraint.activate([
-            answer4BgView.topAnchor.constraint(equalTo: answer2BgView.bottomAnchor, constant: 24),
+            answer4BgView.topAnchor.constraint(equalTo: answer2BgView.bottomAnchor, constant: 20),
             answer4BgView.trailingAnchor.constraint(equalTo: answer2BgView.trailingAnchor),
             answer4BgView.heightAnchor.constraint(equalToConstant: 140),
             answer4BgView.widthAnchor.constraint(equalToConstant: 320)
@@ -648,9 +663,10 @@ class QuizViewTypeA: UICollectionViewCell {
         
         addSubview(continueButton)
         NSLayoutConstraint.activate([
-            continueButton.heightAnchor.constraint(equalToConstant: 56),
-            continueButton.widthAnchor.constraint(equalToConstant: frame.width),
-            continueButton.bottomAnchor.constraint(equalTo: bottomAnchor)
+            continueButton.heightAnchor.constraint(equalToConstant: 80),
+            continueButton.widthAnchor.constraint(equalToConstant: 302),
+            continueButton.topAnchor.constraint(equalTo: answer4BgView.bottomAnchor, constant: 22),
+            continueButton.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
         
         //TrueState

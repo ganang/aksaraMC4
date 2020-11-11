@@ -13,7 +13,7 @@ class CustomUIView: UIView {
     var isOpen: Bool?
 }
 
-class CustomView: UIView {
+class CustomView: UIImageView {
     var id : Int?
     var choice : String?
 }
