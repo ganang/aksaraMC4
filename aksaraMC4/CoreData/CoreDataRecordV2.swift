@@ -54,7 +54,7 @@ class CoreDataRecordV2 {
         
         let answerChoice1_Quiz2_Level1_Stage1_Jawa = AnswerChoice(context: PersistenceService.context)
         answerChoice1_Quiz2_Level1_Stage1_Jawa.id = 1
-        answerChoice1_Quiz2_Level1_Stage1_Jawa.name = "Dha"
+        answerChoice1_Quiz2_Level1_Stage1_Jawa.name = "Wa"
         answerChoice1_Quiz2_Level1_Stage1_Jawa.type = "Head"
         
         let answerChoice2_Quiz2_Level1_Stage1_Jawa = AnswerChoice(context: PersistenceService.context)
@@ -64,17 +64,17 @@ class CoreDataRecordV2 {
         
         let answerChoice3_Quiz2_Level1_Stage1_Jawa = AnswerChoice(context: PersistenceService.context)
         answerChoice3_Quiz2_Level1_Stage1_Jawa.id = 3
-        answerChoice3_Quiz2_Level1_Stage1_Jawa.name = "Da"
+        answerChoice3_Quiz2_Level1_Stage1_Jawa.name = "Ma"
         answerChoice3_Quiz2_Level1_Stage1_Jawa.type = "Head"
         
         let answerChoice4_Quiz2_Level1_Stage1_Jawa = AnswerChoice(context: PersistenceService.context)
         answerChoice4_Quiz2_Level1_Stage1_Jawa.id = 4
-        answerChoice4_Quiz2_Level1_Stage1_Jawa.name = "Wa"
+        answerChoice4_Quiz2_Level1_Stage1_Jawa.name = "Dha"
         answerChoice4_Quiz2_Level1_Stage1_Jawa.type = "Head"
         
         let answerChoice5_Quiz2_Level1_Stage1_Jawa = AnswerChoice(context: PersistenceService.context)
         answerChoice5_Quiz2_Level1_Stage1_Jawa.id = 5
-        answerChoice5_Quiz2_Level1_Stage1_Jawa.name = "Wa"
+        answerChoice5_Quiz2_Level1_Stage1_Jawa.name = "Ja"
         answerChoice5_Quiz2_Level1_Stage1_Jawa.type = "Tail"
         
         let answerChoice6_Quiz2_Level1_Stage1_Jawa = AnswerChoice(context: PersistenceService.context)
@@ -84,12 +84,12 @@ class CoreDataRecordV2 {
         
         let answerChoice7_Quiz2_Level1_Stage1_Jawa = AnswerChoice(context: PersistenceService.context)
         answerChoice7_Quiz2_Level1_Stage1_Jawa.id = 7
-        answerChoice7_Quiz2_Level1_Stage1_Jawa.name = "Dha"
+        answerChoice7_Quiz2_Level1_Stage1_Jawa.name = "Wa"
         answerChoice7_Quiz2_Level1_Stage1_Jawa.type = "Tail"
         
         let answerChoice8_Quiz2_Level1_Stage1_Jawa = AnswerChoice(context: PersistenceService.context)
         answerChoice8_Quiz2_Level1_Stage1_Jawa.id = 8
-        answerChoice8_Quiz2_Level1_Stage1_Jawa.name = "Ca"
+        answerChoice8_Quiz2_Level1_Stage1_Jawa.name = "Tha"
         answerChoice8_Quiz2_Level1_Stage1_Jawa.type = "Tail"
         
         let quiz2_level1_stage1_Jawa = Quiz(context: PersistenceService.context)
@@ -156,12 +156,12 @@ class CoreDataRecordV2 {
         
         let answerChoice1_Quiz5_Level1_Stage1_Jawa = AnswerChoice(context: PersistenceService.context)
         answerChoice1_Quiz5_Level1_Stage1_Jawa.id = 1
-        answerChoice1_Quiz5_Level1_Stage1_Jawa.name = "Ka"
+        answerChoice1_Quiz5_Level1_Stage1_Jawa.name = "La"
         answerChoice1_Quiz5_Level1_Stage1_Jawa.type = "Head"
         
         let answerChoice2_Quiz5_Level1_Stage1_Jawa = AnswerChoice(context: PersistenceService.context)
         answerChoice2_Quiz5_Level1_Stage1_Jawa.id = 2
-        answerChoice2_Quiz5_Level1_Stage1_Jawa.name = "Ta"
+        answerChoice2_Quiz5_Level1_Stage1_Jawa.name = "Sa"
         answerChoice2_Quiz5_Level1_Stage1_Jawa.type = "Head"
         
         let answerChoice3_Quiz5_Level1_Stage1_Jawa = AnswerChoice(context: PersistenceService.context)
@@ -171,27 +171,27 @@ class CoreDataRecordV2 {
         
         let answerChoice4_Quiz5_Level1_Stage1_Jawa = AnswerChoice(context: PersistenceService.context)
         answerChoice4_Quiz5_Level1_Stage1_Jawa.id = 4
-        answerChoice4_Quiz5_Level1_Stage1_Jawa.name = "La"
+        answerChoice4_Quiz5_Level1_Stage1_Jawa.name = "Ca"
         answerChoice4_Quiz5_Level1_Stage1_Jawa.type = "Head"
         
         let answerChoice5_Quiz5_Level1_Stage1_Jawa = AnswerChoice(context: PersistenceService.context)
         answerChoice5_Quiz5_Level1_Stage1_Jawa.id = 5
-        answerChoice5_Quiz5_Level1_Stage1_Jawa.name = "La"
+        answerChoice5_Quiz5_Level1_Stage1_Jawa.name = "Wa"
         answerChoice5_Quiz5_Level1_Stage1_Jawa.type = "Tail"
         
         let answerChoice6_Quiz5_Level1_Stage1_Jawa = AnswerChoice(context: PersistenceService.context)
         answerChoice6_Quiz5_Level1_Stage1_Jawa.id = 6
-        answerChoice6_Quiz5_Level1_Stage1_Jawa.name = "Ta"
+        answerChoice6_Quiz5_Level1_Stage1_Jawa.name = "Ha"
         answerChoice6_Quiz5_Level1_Stage1_Jawa.type = "Tail"
         
         let answerChoice7_Quiz5_Level1_Stage1_Jawa = AnswerChoice(context: PersistenceService.context)
         answerChoice7_Quiz5_Level1_Stage1_Jawa.id = 7
-        answerChoice7_Quiz5_Level1_Stage1_Jawa.name = "Ha"
+        answerChoice7_Quiz5_Level1_Stage1_Jawa.name = "La"
         answerChoice7_Quiz5_Level1_Stage1_Jawa.type = "Tail"
         
         let answerChoice8_Quiz5_Level1_Stage1_Jawa = AnswerChoice(context: PersistenceService.context)
         answerChoice8_Quiz5_Level1_Stage1_Jawa.id = 8
-        answerChoice8_Quiz5_Level1_Stage1_Jawa.name = "Ka"
+        answerChoice8_Quiz5_Level1_Stage1_Jawa.name = "Ta"
         answerChoice8_Quiz5_Level1_Stage1_Jawa.type = "Tail"
         
         let quiz5_level1_stage1_Jawa = Quiz(context: PersistenceService.context)
@@ -353,42 +353,42 @@ class CoreDataRecordV2 {
         
         let answerChoice1_Quiz12_Level1_Stage1_Jawa = AnswerChoice(context: PersistenceService.context)
         answerChoice1_Quiz12_Level1_Stage1_Jawa.id = 1
-        answerChoice1_Quiz12_Level1_Stage1_Jawa.name = "Na"
+        answerChoice1_Quiz12_Level1_Stage1_Jawa.name = "Sa"
         answerChoice1_Quiz12_Level1_Stage1_Jawa.type = "Head"
         
         let answerChoice2_Quiz12_Level1_Stage1_Jawa = AnswerChoice(context: PersistenceService.context)
         answerChoice2_Quiz12_Level1_Stage1_Jawa.id = 2
-        answerChoice2_Quiz12_Level1_Stage1_Jawa.name = "Sa"
+        answerChoice2_Quiz12_Level1_Stage1_Jawa.name = "La"
         answerChoice2_Quiz12_Level1_Stage1_Jawa.type = "Head"
         
         let answerChoice3_Quiz12_Level1_Stage1_Jawa = AnswerChoice(context: PersistenceService.context)
         answerChoice3_Quiz12_Level1_Stage1_Jawa.id = 3
-        answerChoice3_Quiz12_Level1_Stage1_Jawa.name = "Da"
+        answerChoice3_Quiz12_Level1_Stage1_Jawa.name = "Ma"
         answerChoice3_Quiz12_Level1_Stage1_Jawa.type = "Head"
         
         let answerChoice4_Quiz12_Level1_Stage1_Jawa = AnswerChoice(context: PersistenceService.context)
         answerChoice4_Quiz12_Level1_Stage1_Jawa.id = 4
-        answerChoice4_Quiz12_Level1_Stage1_Jawa.name = "Ca"
+        answerChoice4_Quiz12_Level1_Stage1_Jawa.name = "Na"
         answerChoice4_Quiz12_Level1_Stage1_Jawa.type = "Head"
         
         let answerChoice5_Quiz12_Level1_Stage1_Jawa = AnswerChoice(context: PersistenceService.context)
         answerChoice5_Quiz12_Level1_Stage1_Jawa.id = 5
-        answerChoice5_Quiz12_Level1_Stage1_Jawa.name = "Da"
+        answerChoice5_Quiz12_Level1_Stage1_Jawa.name = "Na"
         answerChoice5_Quiz12_Level1_Stage1_Jawa.type = "Tail"
         
         let answerChoice6_Quiz12_Level1_Stage1_Jawa = AnswerChoice(context: PersistenceService.context)
         answerChoice6_Quiz12_Level1_Stage1_Jawa.id = 6
-        answerChoice6_Quiz12_Level1_Stage1_Jawa.name = "Ca"
+        answerChoice6_Quiz12_Level1_Stage1_Jawa.name = "Wa"
         answerChoice6_Quiz12_Level1_Stage1_Jawa.type = "Tail"
         
         let answerChoice7_Quiz12_Level1_Stage1_Jawa = AnswerChoice(context: PersistenceService.context)
         answerChoice7_Quiz12_Level1_Stage1_Jawa.id = 7
-        answerChoice7_Quiz12_Level1_Stage1_Jawa.name = "Na"
+        answerChoice7_Quiz12_Level1_Stage1_Jawa.name = "Tha"
         answerChoice7_Quiz12_Level1_Stage1_Jawa.type = "Tail"
         
         let answerChoice8_Quiz12_Level1_Stage1_Jawa = AnswerChoice(context: PersistenceService.context)
         answerChoice8_Quiz12_Level1_Stage1_Jawa.id = 8
-        answerChoice8_Quiz12_Level1_Stage1_Jawa.name = "Sa"
+        answerChoice8_Quiz12_Level1_Stage1_Jawa.name = "Da"
         answerChoice8_Quiz12_Level1_Stage1_Jawa.type = "Tail"
         
         let quiz12_level1_stage1_Jawa = Quiz(context: PersistenceService.context)
@@ -461,7 +461,7 @@ class CoreDataRecordV2 {
         
         let quiz14_level1_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz14_level1_stage1_Jawa.id = 14
-        quiz14_level1_stage1_Jawa.title = "Kuis 10"
+        quiz14_level1_stage1_Jawa.title = "Kuis 11"
         quiz14_level1_stage1_Jawa.ulasanDetail = "Aksara Na ke latin"
         quiz14_level1_stage1_Jawa.type = "A"
         quiz14_level1_stage1_Jawa.isCorrect = false
@@ -495,7 +495,7 @@ class CoreDataRecordV2 {
         
         let quiz15_level1_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz15_level1_stage1_Jawa.id = 15
-        quiz15_level1_stage1_Jawa.title = "Kuis 11"
+        quiz15_level1_stage1_Jawa.title = "Kuis 12"
         quiz15_level1_stage1_Jawa.ulasanDetail = "Latin Ha ke aksara"
         quiz15_level1_stage1_Jawa.type = "B"
         quiz15_level1_stage1_Jawa.isCorrect = false
@@ -513,7 +513,7 @@ class CoreDataRecordV2 {
         
         let quiz16_level1_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz16_level1_stage1_Jawa.id = 16
-        quiz16_level1_stage1_Jawa.title = "Kuis 12"
+        quiz16_level1_stage1_Jawa.title = "Kuis 13"
         quiz16_level1_stage1_Jawa.ulasanDetail = "Menulis aksara Na Ha"
         quiz16_level1_stage1_Jawa.type = "I2"
         quiz16_level1_stage1_Jawa.isCorrect = false
@@ -571,7 +571,7 @@ class CoreDataRecordV2 {
         
         let quiz17_level1_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz17_level1_stage1_Jawa.id = 17
-        quiz17_level1_stage1_Jawa.title = "Kuis 13"
+        quiz17_level1_stage1_Jawa.title = "Kuis 14"
         quiz17_level1_stage1_Jawa.ulasanDetail = "Kolom aksara Wa Na"
         quiz17_level1_stage1_Jawa.type = "E2"
         quiz17_level1_stage1_Jawa.isCorrect = false
@@ -633,7 +633,7 @@ class CoreDataRecordV2 {
         
         let quiz18_level1_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz18_level1_stage1_Jawa.id = 18
-        quiz18_level1_stage1_Jawa.title = "Kuis 14"
+        quiz18_level1_stage1_Jawa.title = "Kuis 15"
         quiz18_level1_stage1_Jawa.ulasanDetail = "Kolom aksara Wa Ha Na"
         quiz18_level1_stage1_Jawa.type = "E3"
         quiz18_level1_stage1_Jawa.isCorrect = false
@@ -655,7 +655,7 @@ class CoreDataRecordV2 {
         
         let quiz19_level1_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz19_level1_stage1_Jawa.id = 19
-        quiz19_level1_stage1_Jawa.title = "Kuis 15"
+        quiz19_level1_stage1_Jawa.title = "Kuis 16"
         quiz19_level1_stage1_Jawa.ulasanDetail = "Cocok aksara Wa Ha Na"
         quiz19_level1_stage1_Jawa.type = "H"
         quiz19_level1_stage1_Jawa.isCorrect = false
@@ -677,7 +677,7 @@ class CoreDataRecordV2 {
         
         let quiz20_level1_stage1_Jawa = Quiz(context: PersistenceService.context)
         quiz20_level1_stage1_Jawa.id = 20
-        quiz20_level1_stage1_Jawa.title = "Kuis 16"
+        quiz20_level1_stage1_Jawa.title = "Kuis 17"
         quiz20_level1_stage1_Jawa.ulasanDetail = "Menulis aksara Wa Ha Na"
         quiz20_level1_stage1_Jawa.type = "I3"
         quiz20_level1_stage1_Jawa.isCorrect = false

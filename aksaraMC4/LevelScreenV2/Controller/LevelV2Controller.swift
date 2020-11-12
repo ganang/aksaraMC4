@@ -171,15 +171,9 @@ class LevelV2Controller: UIViewController {
     }
     
     func gotoQuizLevelTahap1(index: Int) {
-        
 
         let quizScreen = QuizController()
-    
-        
-        
-        
-        
-        
+ 
         self.quizes = levelsStage1![index].quizes!.sortedArray(using: [.init(key: "id", ascending: true)]) as? [Quiz]
         self.level = levelsStage1?[index]
         quizScreen.quizes = quizes
