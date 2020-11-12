@@ -350,6 +350,12 @@ class QuizController: UIViewController, QuizControllerProtocol {
         batikBG()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        
+        countdownTimer = nil
+    }
+    
     func setupCV() {
         view.addSubview(backBackgroundView)
         NSLayoutConstraint.activate([
