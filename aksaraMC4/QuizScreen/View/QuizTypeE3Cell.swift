@@ -40,6 +40,13 @@ class QuizTypeE3Cell: BaseCell, UIGestureRecognizerDelegate {
     
     var selectedArray = [10, 11, 12]
     
+    var footerPlaceholderABefore : NSLayoutConstraint?
+    var footerPlaceholderAAfter : NSLayoutConstraint?
+    var footerPlaceholderBBefore : NSLayoutConstraint?
+    var footerPlaceholderBAfter : NSLayoutConstraint?
+    var footerPlaceholderCBefore : NSLayoutConstraint?
+    var footerPlaceholderCAfter : NSLayoutConstraint?
+    
     var centerPlaceHolderConstraint: NSLayoutConstraint?
     
     var delegate : QuizControllerProtocol?
@@ -382,6 +389,60 @@ class QuizTypeE3Cell: BaseCell, UIGestureRecognizerDelegate {
         return image
     }()
     
+    let falseState1: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "falseAnswer")
+        image.contentMode = .scaleAspectFit
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.isHidden = true
+        return image
+    }()
+    
+    let falseState2: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "falseAnswer")
+        image.contentMode = .scaleAspectFit
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.isHidden = true
+        return image
+    }()
+    
+    let falseState3: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "falseAnswer")
+        image.contentMode = .scaleAspectFit
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.isHidden = true
+        return image
+    }()
+    
+    let trueState1: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "correctAnswer")
+        image.contentMode = .scaleAspectFit
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.isHidden = true
+        return image
+    }()
+    
+    let trueState2: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "correctAnswer")
+        image.contentMode = .scaleAspectFit
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.isHidden = true
+        return image
+    }()
+    
+    let trueState3: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "correctAnswer")
+        image.contentMode = .scaleAspectFit
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.isHidden = true
+        return image
+    }()
+    
     // --------------------------------------------------------------------------------------------------- //
     
     lazy var moveGS_carakan1: CustomPanGestureRecognizer = {
@@ -609,6 +670,7 @@ class QuizTypeE3Cell: BaseCell, UIGestureRecognizerDelegate {
     
     override func setupViews() {
         setupInterfaceComponent()
+        setupDynamicConstraint()
         setupConstraint()
     }
     
@@ -648,6 +710,26 @@ class QuizTypeE3Cell: BaseCell, UIGestureRecognizerDelegate {
     
         addSubview(questionFullDetailLabel)
         addSubview(answersFullDetailLabel)
+        
+        addSubview(trueState1)
+        addSubview(trueState2)
+        addSubview(trueState3)
+        addSubview(falseState1)
+        addSubview(falseState2)
+        addSubview(falseState3)
+    }
+    
+    func setupDynamicConstraint() {
+        footerPlaceholderABefore = footerPlaceholderCarakanA.centerXAnchor.constraint(equalTo: placeholderCarakanA.centerXAnchor)
+        footerPlaceholderAAfter = footerPlaceholderCarakanA.centerXAnchor.constraint(equalTo: placeholderCarakanA.centerXAnchor, constant: -16)
+        
+        footerPlaceholderBBefore = footerPlaceholderCarakanB.centerXAnchor.constraint(equalTo: placeholderCarakanB.centerXAnchor)
+        footerPlaceholderBAfter = footerPlaceholderCarakanB.centerXAnchor.constraint(equalTo: placeholderCarakanB.centerXAnchor, constant: -16)
+        
+        footerPlaceholderCBefore = footerPlaceholderCarakanC.centerXAnchor.constraint(equalTo: placeholderCarakanC.centerXAnchor)
+        footerPlaceholderCAfter = footerPlaceholderCarakanC.centerXAnchor.constraint(equalTo: placeholderCarakanC.centerXAnchor, constant: -16)
+        
+        centerPlaceHolderConstraint = placeholderCarakanA.centerXAnchor.constraint(equalTo: centerXAnchor, constant: -116)
     }
     
     func setupConstraint() {
@@ -661,7 +743,6 @@ class QuizTypeE3Cell: BaseCell, UIGestureRecognizerDelegate {
         placeholderCarakanA.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -42).isActive = true
         placeholderCarakanA.widthAnchor.constraint(equalToConstant: 100).isActive = true
         placeholderCarakanA.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        centerPlaceHolderConstraint =  placeholderCarakanA.centerXAnchor.constraint(equalTo: centerXAnchor, constant: -116)
         centerPlaceHolderConstraint?.isActive = true
         
         placeholderCarakanB.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -42).isActive = true
@@ -681,13 +762,13 @@ class QuizTypeE3Cell: BaseCell, UIGestureRecognizerDelegate {
         headerCarakanBLabel.frame = originHeaderTail
         
         footerPlaceholderCarakanA.topAnchor.constraint(equalTo: placeholderCarakanA.bottomAnchor, constant: 16).isActive = true
-        footerPlaceholderCarakanA.centerXAnchor.constraint(equalTo: placeholderCarakanA.centerXAnchor).isActive = true
+        footerPlaceholderABefore?.isActive = true
         
         footerPlaceholderCarakanB.topAnchor.constraint(equalTo: placeholderCarakanB.bottomAnchor, constant: 16).isActive = true
-        footerPlaceholderCarakanB.centerXAnchor.constraint(equalTo: placeholderCarakanB.centerXAnchor).isActive = true
+        footerPlaceholderBBefore?.isActive = true
         
         footerPlaceholderCarakanC.topAnchor.constraint(equalTo: placeholderCarakanC.bottomAnchor, constant: 16).isActive = true
-        footerPlaceholderCarakanC.centerXAnchor.constraint(equalTo: placeholderCarakanC.centerXAnchor).isActive = true
+        footerPlaceholderCBefore?.isActive = true
         
         carakan1.frame = originHeadAPosition
         carakan2.frame = originHeadBPosition
@@ -737,6 +818,50 @@ class QuizTypeE3Cell: BaseCell, UIGestureRecognizerDelegate {
         
         answersFullDetailLabel.centerXAnchor.constraint(equalTo: placeholderCarakanB.centerXAnchor).isActive = true
         answersFullDetailLabel.bottomAnchor.constraint(equalTo: placeholderCarakanB.topAnchor, constant: -16).isActive = true
+        
+        //TrueState
+        NSLayoutConstraint.activate([
+            trueState1.topAnchor.constraint(equalTo: placeholderCarakanA.bottomAnchor, constant: 11),
+            trueState1.leadingAnchor.constraint(equalTo: footerPlaceholderCarakanA.trailingAnchor, constant: 8),
+            trueState1.heightAnchor.constraint(equalToConstant: 24),
+            trueState1.widthAnchor.constraint(equalToConstant: 24)
+        ])
+        
+        NSLayoutConstraint.activate([
+            trueState2.topAnchor.constraint(equalTo: placeholderCarakanB.bottomAnchor, constant: 11),
+            trueState2.leadingAnchor.constraint(equalTo: footerPlaceholderCarakanB.trailingAnchor, constant: 8),
+            trueState2.heightAnchor.constraint(equalToConstant: 24),
+            trueState2.widthAnchor.constraint(equalToConstant: 24)
+        ])
+        
+        NSLayoutConstraint.activate([
+            trueState3.topAnchor.constraint(equalTo: placeholderCarakanC.bottomAnchor, constant: 11),
+            trueState3.leadingAnchor.constraint(equalTo: footerPlaceholderCarakanC.trailingAnchor, constant: 8),
+            trueState3.heightAnchor.constraint(equalToConstant: 24),
+            trueState3.widthAnchor.constraint(equalToConstant: 24)
+        ])
+        
+        //FalseState
+        NSLayoutConstraint.activate([
+            falseState1.topAnchor.constraint(equalTo: placeholderCarakanA.bottomAnchor, constant: 11),
+            falseState1.leadingAnchor.constraint(equalTo: footerPlaceholderCarakanA.trailingAnchor, constant: 8),
+            falseState1.heightAnchor.constraint(equalToConstant: 24),
+            falseState1.widthAnchor.constraint(equalToConstant: 24)
+        ])
+        
+        NSLayoutConstraint.activate([
+            falseState2.topAnchor.constraint(equalTo: placeholderCarakanB.bottomAnchor, constant: 11),
+            falseState2.leadingAnchor.constraint(equalTo: footerPlaceholderCarakanB.trailingAnchor, constant: 8),
+            falseState2.heightAnchor.constraint(equalToConstant: 24),
+            falseState2.widthAnchor.constraint(equalToConstant: 24)
+        ])
+        
+        NSLayoutConstraint.activate([
+            falseState3.topAnchor.constraint(equalTo: placeholderCarakanC.bottomAnchor, constant: 11),
+            falseState3.leadingAnchor.constraint(equalTo: footerPlaceholderCarakanC.trailingAnchor, constant: 8),
+            falseState3.heightAnchor.constraint(equalToConstant: 24),
+            falseState3.widthAnchor.constraint(equalToConstant: 24)
+        ])
     }
     
     @objc func handleCheckButton() {
@@ -806,6 +931,9 @@ class QuizTypeE3Cell: BaseCell, UIGestureRecognizerDelegate {
             placeholderCarakanB.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
             placeholderCarakanC.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
         
+            trueState1.isHidden = false
+            trueState2.isHidden = false
+            trueState3.isHidden = false
 //            delegate?.setTrueStatus()
             
             // handle continue button
@@ -829,23 +957,29 @@ class QuizTypeE3Cell: BaseCell, UIGestureRecognizerDelegate {
             
             if (carakan1Question == carakan1Answer) {
                 placeholderCarakanA.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
+                trueState1.isHidden = false
             } else {
                 placeholderCarakanA.setCheckButtonBackgroundColorFalse(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
                 placeholderCarakanA.shake()
+                falseState1.isHidden = false
             }
             
             if (carakan2Question == carakan2Answer) {
                 placeholderCarakanB.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
+                trueState2.isHidden = false
             } else {
                 placeholderCarakanB.setCheckButtonBackgroundColorFalse(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
                 placeholderCarakanB.shake()
+                falseState2.isHidden = false
             }
             
             if (carakan3Question == carakan3Answer) {
                 placeholderCarakanC.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
+                trueState3.isHidden = false
             } else {
                 placeholderCarakanC.setCheckButtonBackgroundColorFalse(withOpacity: 1, withHeight: 100, withWidth: 100, withCorner: 16)
                 placeholderCarakanC.shake()
+                falseState3.isHidden = false
             }
             
             playSoundFalse()
@@ -854,6 +988,12 @@ class QuizTypeE3Cell: BaseCell, UIGestureRecognizerDelegate {
             // handle core data
             handleFalseCoreData()
         }
+        footerPlaceholderABefore?.isActive = false
+        footerPlaceholderAAfter?.isActive = true
+        footerPlaceholderBBefore?.isActive = false
+        footerPlaceholderBAfter?.isActive = true
+        footerPlaceholderCBefore?.isActive = false
+        footerPlaceholderCAfter?.isActive = true
     }
     
     func handleTimer() {
