@@ -116,8 +116,9 @@ class QuizController: UIViewController, QuizControllerProtocol {
         return label
     }()
     
+    
     func startTimer() {
-        countdownTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+            countdownTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
     }
     
     @objc func updateTime() {
@@ -169,7 +170,6 @@ class QuizController: UIViewController, QuizControllerProtocol {
     
     func endTimer() {
         countdownTimer.invalidate()
-        
     }
     
     func stopTimerChoosen() {
@@ -324,7 +324,7 @@ class QuizController: UIViewController, QuizControllerProtocol {
         setupDelegate()
         batikBG()
 
-        //print("REGION", regionSelected)
+        print(view.frame.height - 124)
         
         
         
@@ -505,6 +505,8 @@ class QuizController: UIViewController, QuizControllerProtocol {
     }()
     
     @objc func showWarningModal() {
+        endTimer()
+        
         view.addSubview(backBackgroundBlurView)
         NSLayoutConstraint.activate([
             backBackgroundBlurView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -546,6 +548,7 @@ class QuizController: UIViewController, QuizControllerProtocol {
     }
     
     @objc func hideWarningModal() {
+        startTimer()
         backBackgroundBlurView.removeFromSuperview()
     }
     
@@ -834,7 +837,7 @@ class QuizController: UIViewController, QuizControllerProtocol {
     
     
     //SFSymbol
-    let timer: UIImageView = {
+    let timerLogo: UIImageView = {
         let image = UIImageView()
         let symbolConfig = UIImage.SymbolConfiguration(pointSize: 16.0, weight: .medium, scale: .default)
         image.image = UIImage(systemName: "timer", withConfiguration: symbolConfig)?.withTintColor(UIColor.rgb(red: 23, green: 78, blue: 161, alpha: 1), renderingMode: .alwaysOriginal)
@@ -1100,16 +1103,16 @@ class QuizController: UIViewController, QuizControllerProtocol {
         hasilLabel.leadingAnchor.constraint(equalTo: ulasanBackground.leadingAnchor, constant: 67).isActive = true
         hasilLabel.topAnchor.constraint(equalTo: aksaraLabelInTopCard1.bottomAnchor, constant: 87).isActive = true
         
-        ulasanBackground.addSubview(timer)
-        timer.leadingAnchor.constraint(equalTo: ulasanBackground.leadingAnchor, constant: 67).isActive = true
-        timer.topAnchor.constraint(equalTo: hasilLabel.bottomAnchor, constant: 12).isActive = true
+        ulasanBackground.addSubview(timerLogo)
+        timerLogo.leadingAnchor.constraint(equalTo: ulasanBackground.leadingAnchor, constant: 67).isActive = true
+        timerLogo.topAnchor.constraint(equalTo: hasilLabel.bottomAnchor, constant: 12).isActive = true
         
         ulasanBackground.addSubview(checkmark)
         checkmark.leadingAnchor.constraint(equalTo: ulasanBackground.leadingAnchor, constant: 67).isActive = true
-        checkmark.topAnchor.constraint(equalTo: timer.bottomAnchor, constant: 12).isActive = true
+        checkmark.topAnchor.constraint(equalTo: timerLogo.bottomAnchor, constant: 12).isActive = true
 
         ulasanBackground.addSubview(waktuQuizLabel)
-        waktuQuizLabel.leadingAnchor.constraint(equalTo: timer.trailingAnchor, constant: 8).isActive = true
+        waktuQuizLabel.leadingAnchor.constraint(equalTo: timerLogo.trailingAnchor, constant: 8).isActive = true
         waktuQuizLabel.topAnchor.constraint(equalTo: hasilLabel.bottomAnchor, constant: 12).isActive = true
         
         ulasanBackground.addSubview(waktuDoneQuizLabel)

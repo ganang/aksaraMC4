@@ -64,6 +64,14 @@ class QuizCellTypeH: UICollectionViewCell {
         }
     }
     
+    let QuizMiddleDecoration: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "QuizHMiddleDecorationState")
+        image.contentMode = .scaleAspectFit
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
+    }()
+    
     let questionTitle : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -318,13 +326,14 @@ class QuizCellTypeH: UICollectionViewCell {
     lazy var continueButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Lanjut", for: .normal)
-        button.titleLabel?.font = UIFont.init(name: "NowAlt-Medium", size: 16)
-        button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
-        button.imageView?.tintColor = Theme.current.accentWhite
-        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 130, bottom: 0, right: 0)
-        button.addInnerShadow()
-        button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
+//        button.setTitle("Lanjut", for: .normal)
+//        button.titleLabel?.font = UIFont.init(name: "NowAlt-Medium", size: 16)
+        button.setImage(UIImage(named: "ButtonLanjutStateTrue"), for: .normal)
+        button.imageView?.contentMode = UIView.ContentMode.scaleAspectFit
+//        button.imageView?.tintColor = Theme.current.accentWhite
+//        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 130, bottom: 0, right: 0)
+//        button.addInnerShadow()
+//        button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
         button.clipsToBounds = true
         button.isEnabled = true
         button.isHidden = true
@@ -469,7 +478,8 @@ class QuizCellTypeH: UICollectionViewCell {
         questionTitle.text = "Benar sekali 😄"
         questionTitle.textColor = Theme.current.accentTextGreen
         self.continueButton.isHidden = false
-        self.continueButton.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 56, withWidth: Double(SCREEN_WIDTH), withCorner: 0)
+        self.QuizMiddleDecoration.image = UIImage(named: "QuizHMiddleDecoration2State")
+        self.continueButton.setImage(UIImage(named: "ButtonLanjutStateTrue"), for: .normal)
         delegate?.stopTimerChoosen()
         delegate?.setTrueStatus()
         self.playSoundTrue()
@@ -482,7 +492,8 @@ class QuizCellTypeH: UICollectionViewCell {
         questionTitle.text = "Sayang sekali 😄"
         questionTitle.textColor = Theme.current.accentTextRed
         self.continueButton.isHidden = false
-        self.continueButton.setCheckButtonBackgroundColorFalse(withOpacity: 1, withHeight: 56, withWidth: Double(SCREEN_WIDTH), withCorner: 0)
+        self.QuizMiddleDecoration.image = UIImage(named: "QuizHMiddleDecoration2State")
+        self.continueButton.setImage(UIImage(named: "ButtonLanjutStateFalse"), for: .normal)
         delegate?.stopTimerChoosen()
         delegate?.setFalseStatus()
         self.playSoundFalse()
@@ -635,12 +646,20 @@ class QuizCellTypeH: UICollectionViewCell {
     
     
     func setupView() {
+        addSubview(QuizMiddleDecoration)
+        NSLayoutConstraint.activate([
+            QuizMiddleDecoration.heightAnchor.constraint(equalToConstant: 528),
+            QuizMiddleDecoration.widthAnchor.constraint(equalToConstant: 704),
+            QuizMiddleDecoration.centerXAnchor.constraint(equalTo: centerXAnchor),
+            QuizMiddleDecoration.topAnchor.constraint(equalTo: topAnchor, constant: 56)
+        ])
+        
         addSubview(questionTitle)
         questionTitle.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        questionTitle.topAnchor.constraint(equalTo: topAnchor, constant: 40).isActive = true
+        questionTitle.topAnchor.constraint(equalTo: topAnchor, constant: 116).isActive = true
         
         addSubview(button1Latin)
-        button1Latin.trailingAnchor.constraint(equalTo: centerXAnchor,constant: -20.5).isActive = true
+        button1Latin.trailingAnchor.constraint(equalTo: centerXAnchor,constant: -40).isActive = true
         button1Latin.topAnchor.constraint(equalTo: questionTitle.bottomAnchor, constant: 32).isActive = true
         button1Latin.widthAnchor.constraint(equalToConstant: 240).isActive = true
         button1Latin.heightAnchor.constraint(equalToConstant: 100).isActive = true
@@ -653,7 +672,7 @@ class QuizCellTypeH: UICollectionViewCell {
         check1LatinImage.isHidden = true
         
         addSubview(button2Latin)
-        button2Latin.trailingAnchor.constraint(equalTo: centerXAnchor,constant: -20.5).isActive = true
+        button2Latin.trailingAnchor.constraint(equalTo: centerXAnchor,constant: -40).isActive = true
         button2Latin.topAnchor.constraint(equalTo: button1Latin.bottomAnchor, constant: 12).isActive = true
         button2Latin.widthAnchor.constraint(equalToConstant: 240).isActive = true
         button2Latin.heightAnchor.constraint(equalToConstant: 100).isActive = true
@@ -666,7 +685,7 @@ class QuizCellTypeH: UICollectionViewCell {
         check2LatinImage.isHidden = true
         
         addSubview(button3Latin)
-        button3Latin.trailingAnchor.constraint(equalTo: centerXAnchor,constant: -20.5).isActive = true
+        button3Latin.trailingAnchor.constraint(equalTo: centerXAnchor,constant: -40).isActive = true
         button3Latin.topAnchor.constraint(equalTo: button2Latin.bottomAnchor, constant: 12).isActive = true
         button3Latin.widthAnchor.constraint(equalToConstant: 240).isActive = true
         button3Latin.heightAnchor.constraint(equalToConstant: 100).isActive = true
@@ -679,7 +698,7 @@ class QuizCellTypeH: UICollectionViewCell {
         check3LatinImage.isHidden = true
         
         addSubview(button1Aksara)
-        button1Aksara.leadingAnchor.constraint(equalTo: centerXAnchor,constant: 20.5).isActive = true
+        button1Aksara.leadingAnchor.constraint(equalTo: centerXAnchor,constant: 40).isActive = true
         button1Aksara.topAnchor.constraint(equalTo: questionTitle.bottomAnchor, constant: 32).isActive = true
         button1Aksara.widthAnchor.constraint(equalToConstant: 240).isActive = true
         button1Aksara.heightAnchor.constraint(equalToConstant: 100).isActive = true
@@ -692,7 +711,7 @@ class QuizCellTypeH: UICollectionViewCell {
         check1AksaraImage.isHidden = true
         
         addSubview(button2Aksara)
-        button2Aksara.leadingAnchor.constraint(equalTo: centerXAnchor,constant: 20.5).isActive = true
+        button2Aksara.leadingAnchor.constraint(equalTo: centerXAnchor,constant: 40).isActive = true
         button2Aksara.topAnchor.constraint(equalTo: button1Aksara.bottomAnchor, constant: 12).isActive = true
         button2Aksara.widthAnchor.constraint(equalToConstant: 240).isActive = true
         button2Aksara.heightAnchor.constraint(equalToConstant: 100).isActive = true
@@ -705,7 +724,7 @@ class QuizCellTypeH: UICollectionViewCell {
         check2AksaraImage.isHidden = true
         
         addSubview(button3Aksara)
-        button3Aksara.leadingAnchor.constraint(equalTo: centerXAnchor,constant: 20.5).isActive = true
+        button3Aksara.leadingAnchor.constraint(equalTo: centerXAnchor,constant: 40).isActive = true
         button3Aksara.topAnchor.constraint(equalTo: button2Aksara.bottomAnchor, constant: 12).isActive = true
         button3Aksara.widthAnchor.constraint(equalToConstant: 240).isActive = true
         button3Aksara.heightAnchor.constraint(equalToConstant: 100).isActive = true
@@ -717,11 +736,14 @@ class QuizCellTypeH: UICollectionViewCell {
         check3AksaraImage.heightAnchor.constraint(equalToConstant: 24).isActive = true
         check3AksaraImage.isHidden = true
         
+        
         addSubview(continueButton)
-        continueButton.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        continueButton.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        continueButton.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        continueButton.heightAnchor.constraint(equalToConstant: 56).isActive = true
+        NSLayoutConstraint.activate([
+            continueButton.heightAnchor.constraint(equalToConstant: 80),
+            continueButton.widthAnchor.constraint(equalToConstant: 302),
+            continueButton.topAnchor.constraint(equalTo: button3Aksara.bottomAnchor, constant: 28),
+            continueButton.centerXAnchor.constraint(equalTo: centerXAnchor)
+        ])
         
     }
     
