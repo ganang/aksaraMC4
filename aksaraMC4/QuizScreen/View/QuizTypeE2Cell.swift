@@ -588,16 +588,16 @@ class QuizTypeE2Cell: BaseCell, UIGestureRecognizerDelegate {
             QuizMiddleDecoration.heightAnchor.constraint(equalToConstant: 540),
             QuizMiddleDecoration.widthAnchor.constraint(equalToConstant: 704),
             QuizMiddleDecoration.centerXAnchor.constraint(equalTo: centerXAnchor),
-            QuizMiddleDecoration.topAnchor.constraint(equalTo: topAnchor, constant: 44)
+            QuizMiddleDecoration.topAnchor.constraint(equalTo: topAnchor, constant: frame.height * 0.06197183099)
         ])
         
-        placeholderCarakanA.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        placeholderCarakanA.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -42).isActive = true
         placeholderCarakanA.widthAnchor.constraint(equalToConstant: 100).isActive = true
         placeholderCarakanA.heightAnchor.constraint(equalToConstant: 100).isActive = true
         centerPlaceHolderConstraint =  placeholderCarakanA.centerXAnchor.constraint(equalTo: centerXAnchor, constant: -72)
         centerPlaceHolderConstraint?.isActive = true
         
-        placeholderCarakanB.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        placeholderCarakanB.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -42).isActive = true
         placeholderCarakanB.leadingAnchor.constraint(equalTo: placeholderCarakanA.trailingAnchor, constant: 24).isActive = true
         placeholderCarakanB.widthAnchor.constraint(equalToConstant: 100).isActive = true
         placeholderCarakanB.heightAnchor.constraint(equalToConstant: 100).isActive = true
@@ -624,22 +624,22 @@ class QuizTypeE2Cell: BaseCell, UIGestureRecognizerDelegate {
         carakan8.frame = originTailDPosition
         
         checkButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        checkButton.topAnchor.constraint(equalTo: footerPlaceholderA.bottomAnchor, constant: 122).isActive = true
+        checkButton.bottomAnchor.constraint(equalTo: QuizMiddleDecoration.bottomAnchor, constant: 28).isActive = true
         checkButton.widthAnchor.constraint(equalToConstant: 302).isActive = true
         checkButton.heightAnchor.constraint(equalToConstant: 80).isActive = true
         
         continueButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        continueButton.topAnchor.constraint(equalTo: footerPlaceholderA.bottomAnchor, constant: 122).isActive = true
+        continueButton.bottomAnchor.constraint(equalTo: QuizMiddleDecoration.bottomAnchor, constant: 28).isActive = true
         continueButton.widthAnchor.constraint(equalToConstant: 302).isActive = true
         continueButton.heightAnchor.constraint(equalToConstant: 80).isActive = true
         
         questionPlaceholder2.trailingAnchor.constraint(equalTo: centerXAnchor, constant: -120).isActive = true
-        questionPlaceholder2.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        questionPlaceholder2.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -42).isActive = true
         questionPlaceholder2.widthAnchor.constraint(equalToConstant: 100).isActive = true
         questionPlaceholder2.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
         questionPlaceholder1.trailingAnchor.constraint(equalTo: questionPlaceholder2.leadingAnchor, constant: -16).isActive = true
-        questionPlaceholder1.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        questionPlaceholder1.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -42).isActive = true
         questionPlaceholder1.widthAnchor.constraint(equalToConstant: 100).isActive = true
         questionPlaceholder1.heightAnchor.constraint(equalToConstant: 100).isActive = true
         

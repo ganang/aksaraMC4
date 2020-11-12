@@ -619,16 +619,16 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
             QuizMiddleDecoration.heightAnchor.constraint(equalToConstant: 540),
             QuizMiddleDecoration.widthAnchor.constraint(equalToConstant: 704),
             QuizMiddleDecoration.centerXAnchor.constraint(equalTo: centerXAnchor),
-            QuizMiddleDecoration.topAnchor.constraint(equalTo: topAnchor, constant: 44)
+            QuizMiddleDecoration.topAnchor.constraint(equalTo: topAnchor, constant: frame.height * 0.06197183099)
         ])
         
-        placeholderHead.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        placeholderHead.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -42).isActive = true
         placeholderHead.widthAnchor.constraint(equalToConstant: 100).isActive = true
         placeholderHead.heightAnchor.constraint(equalToConstant: 100).isActive = true
         centerPlaceHolderConstraint =  placeholderHead.centerXAnchor.constraint(equalTo: centerXAnchor, constant: -72)
         centerPlaceHolderConstraint?.isActive = true
         
-        placeholderTail.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        placeholderTail.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -42).isActive = true
         placeholderTail.leadingAnchor.constraint(equalTo: placeholderHead.trailingAnchor, constant: 24).isActive = true
         placeholderTail.widthAnchor.constraint(equalToConstant: 100).isActive = true
         placeholderTail.heightAnchor.constraint(equalToConstant: 100).isActive = true
@@ -656,27 +656,27 @@ class QuizHeadAndTailCell: BaseCell, UIGestureRecognizerDelegate {
         tailD.frame = originTailDPosition
         
         checkButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        checkButton.topAnchor.constraint(equalTo: footerPlaceholderHead.bottomAnchor, constant: 122).isActive = true
+        checkButton.bottomAnchor.constraint(equalTo: QuizMiddleDecoration.bottomAnchor, constant: 28).isActive = true
         checkButton.widthAnchor.constraint(equalToConstant: 302).isActive = true
         checkButton.heightAnchor.constraint(equalToConstant: 80).isActive = true
         
         continueButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        continueButton.topAnchor.constraint(equalTo: footerPlaceholderHead.bottomAnchor, constant: 122).isActive = true
+        continueButton.bottomAnchor.constraint(equalTo: QuizMiddleDecoration.bottomAnchor, constant: 28).isActive = true
         continueButton.widthAnchor.constraint(equalToConstant: 302).isActive = true
         continueButton.heightAnchor.constraint(equalToConstant: 80).isActive = true
         
         questionPlaceholder.trailingAnchor.constraint(equalTo: centerXAnchor, constant: -120).isActive = true
-        questionPlaceholder.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        questionPlaceholder.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -42).isActive = true
         questionPlaceholder.widthAnchor.constraint(equalToConstant: 100).isActive = true
         questionPlaceholder.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
         checkPlaceholderHead.leadingAnchor.constraint(equalTo: centerXAnchor, constant: 56).isActive = true
-        checkPlaceholderHead.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        checkPlaceholderHead.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -42).isActive = true
         checkPlaceholderHead.widthAnchor.constraint(equalToConstant: 100).isActive = true
         checkPlaceholderHead.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
         checkPlaceholderTail.leadingAnchor.constraint(equalTo: checkPlaceholderHead.trailingAnchor, constant: 24).isActive = true
-        checkPlaceholderTail.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        checkPlaceholderTail.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -42).isActive = true
         checkPlaceholderTail.widthAnchor.constraint(equalToConstant: 100).isActive = true
         checkPlaceholderTail.heightAnchor.constraint(equalToConstant: 100).isActive = true
         

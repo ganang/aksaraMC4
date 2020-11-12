@@ -13,6 +13,9 @@ import CoreML
 
 class QuizCellTypeI: UICollectionViewCell{
     
+    var QuizMiddleDecorationWidth1 : NSLayoutConstraint?
+    var QuizMiddleDecorationWidth2 : NSLayoutConstraint?
+    var QuizMiddleDecorationWidth3 : NSLayoutConstraint?
     var firstCanvasCenterXAnchor1 : NSLayoutConstraint?
     var firstCanvasTrailingAnchor2 : NSLayoutConstraint?
     var firstCanvasTrailingAnchor3 : NSLayoutConstraint?
@@ -121,6 +124,14 @@ class QuizCellTypeI: UICollectionViewCell{
     let checkmarkImage1 : UIImageView = {
         let image = UIImageView()
 //        image.image = UIImage(named: "correctAnswer")
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
+    }()
+    
+    let QuizMiddleDecoration: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "QuizCanvasMiddleDecorationState")
+        image.contentMode = .scaleAspectFit
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
@@ -270,12 +281,8 @@ class QuizCellTypeI: UICollectionViewCell{
     lazy var checkButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Cek", for: .normal)
-        button.titleLabel?.font = UIFont.init(name: "NowAlt-Medium", size: 16)
-        button.setCheckButtonBackgroundColor(withOpacity: 0.6)
-        button.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
-        button.addInnerShadow()
-        button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
+        button.setImage(UIImage(named: "ButtonLanjutStateCek"), for: .normal)
+        button.imageView?.contentMode = UIView.ContentMode.scaleAspectFit
         button.clipsToBounds = true
         
         button.addTarget(self, action: #selector(handleCheckButton), for: .touchUpInside)
@@ -285,16 +292,20 @@ class QuizCellTypeI: UICollectionViewCell{
         return button
     }()
     
+    
+    
+    // Handle continue Button
     lazy var continueButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Lanjut", for: .normal)
-        button.titleLabel?.font = UIFont.init(name: "NowAlt-Medium", size: 16)
-        button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
-        button.imageView?.tintColor = Theme.current.accentWhite
-        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 130, bottom: 0, right: 0)
-        button.addInnerShadow()
-        button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
+//        button.setTitle("Lanjut", for: .normal)
+//        button.titleLabel?.font = UIFont.init(name: "NowAlt-Medium", size: 16)
+        button.setImage(UIImage(named: "ButtonLanjutStateTrue"), for: .normal)
+        button.imageView?.contentMode = UIView.ContentMode.scaleAspectFit
+//        button.imageView?.tintColor = Theme.current.accentWhite
+//        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 130, bottom: 0, right: 0)
+//        button.addInnerShadow()
+//        button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
         button.clipsToBounds = true
         button.isEnabled = true
         button.isHidden = true
@@ -348,6 +359,9 @@ class QuizCellTypeI: UICollectionViewCell{
         
         thirdCanvasLeadingAnchor1 = containerCanvasView3.leadingAnchor.constraint(equalTo: centerXAnchor, constant: 152)
         
+        QuizMiddleDecorationWidth1 = QuizMiddleDecoration.widthAnchor.constraint(equalToConstant: 566)
+        QuizMiddleDecorationWidth2 = QuizMiddleDecoration.widthAnchor.constraint(equalToConstant: 866)
+        QuizMiddleDecorationWidth3 = QuizMiddleDecoration.widthAnchor.constraint(equalToConstant: 952)
     }
     
     @objc func reloadPencilKit(_ sender: UIButton) {
@@ -362,12 +376,18 @@ class QuizCellTypeI: UICollectionViewCell{
     }
     
     func setupView() {
+        addSubview(QuizMiddleDecoration)
+        QuizMiddleDecoration.heightAnchor.constraint(equalToConstant: 506).isActive = true
+        QuizMiddleDecorationWidth1?.isActive = true
+        QuizMiddleDecoration.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        QuizMiddleDecoration.topAnchor.constraint(equalTo: topAnchor, constant: 40).isActive = true
+        
         addSubview(questionTitle)
         questionTitle.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        questionTitle.topAnchor.constraint(equalTo: topAnchor, constant: 40).isActive = true
+        questionTitle.topAnchor.constraint(equalTo: topAnchor, constant: 48).isActive = true
         
         addSubview(containerCanvasView1)
-        containerCanvasView1.topAnchor.constraint(equalTo: questionTitle.bottomAnchor, constant: 106).isActive = true
+        containerCanvasView1.topAnchor.constraint(equalTo: questionTitle.bottomAnchor, constant: 72).isActive = true
         firstCanvasCenterXAnchor1?.isActive = true
         containerCanvasView1.widthAnchor.constraint(equalToConstant: 300).isActive = true
         containerCanvasView1.heightAnchor.constraint(equalToConstant: 300).isActive = true
@@ -402,24 +422,28 @@ class QuizCellTypeI: UICollectionViewCell{
         reloadButton1.widthAnchor.constraint(equalToConstant: 25).isActive = true
         
         addSubview(checkButton)
-        checkButton.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        checkButton.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        checkButton.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        checkButton.heightAnchor.constraint(equalToConstant: 56).isActive = true
+        checkButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        checkButton.topAnchor.constraint(equalTo: canvasView1.bottomAnchor, constant: 40).isActive = true
+        checkButton.widthAnchor.constraint(equalToConstant: 302).isActive = true
+        checkButton.heightAnchor.constraint(equalToConstant: 80).isActive = true
         
         addSubview(continueButton)
-        continueButton.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        continueButton.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        continueButton.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        continueButton.heightAnchor.constraint(equalToConstant: 56).isActive = true
+        continueButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        continueButton.topAnchor.constraint(equalTo: canvasView1.bottomAnchor, constant: 40).isActive = true
+        continueButton.widthAnchor.constraint(equalToConstant: 302).isActive = true
+        continueButton.heightAnchor.constraint(equalToConstant: 80).isActive = true
         
         if aksaraCount == 2 {
+            QuizMiddleDecorationWidth1?.isActive = false
+            QuizMiddleDecorationWidth2?.isActive = true
+            QuizMiddleDecoration.image = UIImage(named: "QuizCanvas2MiddleDecorationState")
+            
             firstCanvasCenterXAnchor1?.isActive = false
             firstCanvasTrailingAnchor2?.isActive = true
             
             
             addSubview(containerCanvasView2)
-            containerCanvasView2.topAnchor.constraint(equalTo: questionTitle.bottomAnchor, constant: 106).isActive = true
+            containerCanvasView2.topAnchor.constraint(equalTo: questionTitle.bottomAnchor, constant: 72).isActive = true
             //            firstCanvasCenterXAnchor1?.isActive = true
             secondCanvasLeadingAnchor1?.isActive = true
             containerCanvasView2.widthAnchor.constraint(equalToConstant: 300).isActive = true
@@ -454,6 +478,10 @@ class QuizCellTypeI: UICollectionViewCell{
             reloadButton2.widthAnchor.constraint(equalToConstant: 25).isActive = true
             
         } else if aksaraCount == 3 {
+            QuizMiddleDecorationWidth1?.isActive = false
+            QuizMiddleDecorationWidth2?.isActive = false
+            QuizMiddleDecorationWidth3?.isActive = true
+            QuizMiddleDecoration.image = UIImage(named: "QuizCanvas3MiddleDecorationState")
             
             firstCanvasCenterXAnchor1?.isActive = false
             firstCanvasTrailingAnchor3?.isActive = true
@@ -461,7 +489,7 @@ class QuizCellTypeI: UICollectionViewCell{
             
             //second canvas
             addSubview(containerCanvasView2)
-            containerCanvasView2.topAnchor.constraint(equalTo: questionTitle.bottomAnchor, constant: 106).isActive = true
+            containerCanvasView2.topAnchor.constraint(equalTo: questionTitle.bottomAnchor, constant: 72).isActive = true
             secondCanvasCenterXAnchor2?.isActive = true
             containerCanvasView2.widthAnchor.constraint(equalToConstant: 300).isActive = true
             containerCanvasView2.heightAnchor.constraint(equalToConstant: 300).isActive = true
@@ -496,7 +524,7 @@ class QuizCellTypeI: UICollectionViewCell{
             
             //third canvas
             addSubview(containerCanvasView3)
-            containerCanvasView3.topAnchor.constraint(equalTo: questionTitle.bottomAnchor, constant: 106).isActive = true
+            containerCanvasView3.topAnchor.constraint(equalTo: questionTitle.bottomAnchor, constant: 72).isActive = true
             thirdCanvasLeadingAnchor1?.isActive = true
             containerCanvasView3.widthAnchor.constraint(equalToConstant: 300).isActive = true
             containerCanvasView3.heightAnchor.constraint(equalToConstant: 300).isActive = true
@@ -545,7 +573,7 @@ class QuizCellTypeI: UICollectionViewCell{
     func handleTimer() {
         questionTitle.text = "Sayang sekali waktu habis ☹️"
         questionTitle.textColor = Theme.current.accentTextRed
-        self.continueButton.setCheckButtonBackgroundColorFalse(withOpacity: 1, withHeight: 56, withWidth: Double(SCREEN_WIDTH), withCorner: 0)
+        self.continueButton.setImage(UIImage(named: "ButtonLanjutStateFalse"), for: .normal)
         
         checkButton.isHidden = true
         continueButton.isHidden = false
@@ -659,7 +687,7 @@ class QuizCellTypeI: UICollectionViewCell{
         delegate?.stopTimerChoosen()
         
         // handle continue button
-        self.continueButton.setCheckButtonBackgroundColorTrue(withOpacity: 1, withHeight: 56, withWidth: Double(SCREEN_WIDTH), withCorner: 0)
+        self.continueButton.setImage(UIImage(named: "ButtonLanjutStateTrue"), for: .normal)
         
         playSoundTrue()
         generator.notificationOccurred(.success)
@@ -675,7 +703,7 @@ class QuizCellTypeI: UICollectionViewCell{
         delegate?.stopTimerChoosen()
         
         // handle continue button
-        self.continueButton.setCheckButtonBackgroundColorFalse(withOpacity: 1, withHeight: 56, withWidth: Double(SCREEN_WIDTH), withCorner: 0)
+        self.continueButton.setImage(UIImage(named: "ButtonLanjutStateFalse"), for: .normal)
         
         playSoundFalse()
         generator.notificationOccurred(.error)
@@ -955,19 +983,19 @@ extension QuizCellTypeI : PKCanvasViewDelegate {
         if aksaraCount == 1 {
             if isCanvas1Filled == true {
                 checkButton.removeLayer(name: "check")
-                checkButton.setCheckButtonBackgroundColor(withOpacity: 1)
+//                checkButton.setCheckButtonBackgroundColor(withOpacity: 1)
                 checkButton.isEnabled = true
             } 
         } else if aksaraCount == 2 {
             if isCanvas1Filled == true && isCanvas2Filled == true {
                 checkButton.removeLayer(name: "check")
-                checkButton.setCheckButtonBackgroundColor(withOpacity: 1)
+//                checkButton.setCheckButtonBackgroundColor(withOpacity: 1)
                 checkButton.isEnabled = true
             }
         } else if aksaraCount == 3 {
             if isCanvas1Filled == true && isCanvas2Filled == true && isCanvas3Filled == true {
                 checkButton.removeLayer(name: "check")
-                checkButton.setCheckButtonBackgroundColor(withOpacity: 1)
+//                checkButton.setCheckButtonBackgroundColor(withOpacity: 1)
                 checkButton.isEnabled = true
             }
         }
