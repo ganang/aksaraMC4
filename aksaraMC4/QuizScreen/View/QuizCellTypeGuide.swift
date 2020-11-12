@@ -43,15 +43,22 @@ class QuizCellTypeGuide: UICollectionViewCell {
         }
     }
     
-    lazy var containerCanvasView : UIView = {
+    lazy var containerCanvasView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor.init(white: 1, alpha: 0.2)
-        view.layer.cornerRadius = 24
-        view.addInnerShadow()
-        view.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
+        view.backgroundColor = .clear
         
         return view
+    }()
+    
+    lazy var containerCanvasImageView : UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage(named: "frameWritingGuide")
+        imageView.backgroundColor = .clear
+        imageView.isUserInteractionEnabled = true
+        
+        return imageView
     }()
     
     let shadowImage: UIImageView = {
@@ -102,7 +109,7 @@ class QuizCellTypeGuide: UICollectionViewCell {
         canvasView.isOpaque = false
         canvasView.alwaysBounceVertical = true
         canvasView.drawingPolicy = .anyInput
-        canvasView.tool = PKInkingTool(.pen, color: .white, width: 20)
+        canvasView.tool = PKInkingTool(.pen, color: .black, width: 20)
         canvasView.tag = 0
         canvasView.delegate = self
         
@@ -151,26 +158,14 @@ class QuizCellTypeGuide: UICollectionViewCell {
     }()
     
     //Question
-    lazy var guideCardContainer : UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.cornerRadius = 24
-        view.addInnerShadow()
-        view.backgroundColor = UIColor.init(white: 1, alpha: 0.2)
-        view.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
-        view.isUserInteractionEnabled = true
+    lazy var guideCardContainer : UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage(named: "frameGuide")
+        imageView.backgroundColor = .clear
+        imageView.isUserInteractionEnabled = true
         
-        return view
-    }()
-    
-    lazy var aksaraNameNew : UILabel = {
-        let label = UILabel()
-        label.text = "Aksara Ha"
-        label.font = UIFont.init(name: "NowAlt-Medium", size: 24)
-        label.textColor = Theme.current.accentWhite
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        return label
+        return imageView
     }()
     
     lazy var aksaraName : UILabel = {
@@ -200,7 +195,6 @@ class QuizCellTypeGuide: UICollectionViewCell {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.isUserInteractionEnabled = true
         button.addTarget(self, action: #selector(playSoundAksara), for: .touchUpInside)
-        button.contentVerticalAlignment = .fill
         button.clipsToBounds = true
         
         return button
@@ -214,45 +208,15 @@ class QuizCellTypeGuide: UICollectionViewCell {
         return image
     }()
     
-//    lazy var aksaraType : UILabel = {
-//        let label = UILabel()
-//        label.text = "Carakan"
-//        label.font = UIFont.init(name: "NowAlt-Regular", size: 16)
-//        label.textColor = Theme.current.accentWhite
-//        label.translatesAutoresizingMaskIntoConstraints = false
-//        
-//        return label
-//    }()
-//    
-//    let bookmarkImage: UIImageView = {
-//        let image = UIImageView()
-//        image.image = UIImage(systemName: "bookmark.fill")
-//        image.tintColor = Theme.current.accentWhite
-//        image.contentMode = .scaleAspectFit
-//        image.translatesAutoresizingMaskIntoConstraints = false
-//        return image
-//    }()
-//    
-//    lazy var aksaraExample : UILabel = {
-//        let label = UILabel()
-//        label.text = "Ha : hawa"
-//        label.font = UIFont.init(name: "NowAlt-Regular", size: 16)
-//        label.textColor = Theme.current.accentWhite
-//        label.translatesAutoresizingMaskIntoConstraints = false
-//        
-//        return label
-//    }()
-    
-    
     //Anatomi
-    lazy var anatomiCardContainer : UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.cornerRadius = 24
-        view.addInnerShadow()
-        view.backgroundColor = UIColor.init(white: 1, alpha: 0.2)
-        view.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
-        return view
+    lazy var anatomiCardContainer : UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage(named: "frameGuide")
+        imageView.backgroundColor = .clear
+        imageView.isUserInteractionEnabled = true
+        
+        return imageView
     }()
     
     lazy var aksaraNameAnatomi : UILabel = {
@@ -313,19 +277,10 @@ class QuizCellTypeGuide: UICollectionViewCell {
     let continueButton : UIButton = {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.setTitle("Lanjut", for: .normal)
-        btn.titleLabel?.font = UIFont.init(name: "NowAlt-Medium", size: 16)
-        btn.setTitleColor(Theme.current.accentWhite, for: .normal)
+        btn.setImage(UIImage(named: "guideContinueButton"), for: .normal)
         
-        btn.setImage(UIImage(systemName: "chevron.right"), for: .normal)
-        btn.imageView?.tintColor = Theme.current.accentWhite
-        btn.backgroundColor = UIColor.rgb(red: 4, green: 110, blue: 208, alpha: 1)
-        btn.imageEdgeInsets = UIEdgeInsets(top: 0, left: 140, bottom: 0, right: 0)
-        btn.alpha = 1
         return btn
     }()
-    
-    
     
     //Modal
     
@@ -392,22 +347,24 @@ class QuizCellTypeGuide: UICollectionViewCell {
         return image
     }()
     
-    let understandButtonModal : UIButton = {
+    lazy var understandButtonModal : UIButton = {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.setTitle("Mengerti", for: .normal)
-        btn.titleLabel?.font = UIFont.init(name: "NowAlt-Medium", size: 20)
-        btn.setTitleColor(Theme.current.textColor1, for: .normal)
+        btn.setImage(UIImage(named: "guideInfoButton"), for: .normal)
+        btn.imageView?.contentMode = .scaleAspectFill
+        btn.clipsToBounds = true
+        btn.addTarget(self, action: #selector(handleUnderstandButton), for: .touchUpInside)
         
         return btn
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupView()
+
         setupViewCanvas()
         setupViewGuideCard()
         setupViewAnatomiCard()
+        setupView()
     }
     
     @objc func playSoundAksara(_ sender: ChoiceButton) {
@@ -430,6 +387,10 @@ class QuizCellTypeGuide: UICollectionViewCell {
         } catch let error {
             print(error.localizedDescription)
         }
+    }
+    
+    @objc func handleUnderstandButton() {
+        hideModal()
     }
     
     func playSoundFalse() {
@@ -490,9 +451,9 @@ class QuizCellTypeGuide: UICollectionViewCell {
     }
     
     func predictAksara1() {
-        let canvasViewImage1 = canvasView.drawing.image(from: canvasView.bounds, scale: 1)
+        let canvasViewImage = canvasView.drawing.image(from: canvasView.bounds, scale: 1)
         
-        guard let pixelBuffer = canvasViewImage1.pixelBuffer() else {
+        guard let pixelBuffer = canvasViewImage.pixelBuffer() else {
             fatalError("Unexpected runtime error.")
         }
         
@@ -554,43 +515,33 @@ class QuizCellTypeGuide: UICollectionViewCell {
         containerModalView.addSubview(understandButtonModal)
         understandButtonModal.centerXAnchor.constraint(equalTo: containerModalView.centerXAnchor, constant: 0).isActive = true
         understandButtonModal.bottomAnchor.constraint(equalTo: containerModalView.bottomAnchor, constant: -44).isActive = true
-        understandButtonModal.heightAnchor.constraint(equalToConstant: 24 ).isActive = true
-        understandButtonModal.widthAnchor.constraint(equalToConstant: 92 ).isActive = true
-        
-        
+        understandButtonModal.heightAnchor.constraint(equalToConstant: 56).isActive = true
+        understandButtonModal.widthAnchor.constraint(equalToConstant: 200).isActive = true
     }
     
     func setupView() {
         addSubview(continueButton)
-        continueButton.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        continueButton.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        continueButton.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        continueButton.leadingAnchor.constraint(equalTo: anatomiCardContainer.leadingAnchor, constant: 8).isActive = true
+        continueButton.trailingAnchor.constraint(equalTo: containerCanvasView.trailingAnchor, constant: -8).isActive = true
+        continueButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -24).isActive = true
         continueButton.heightAnchor.constraint(equalToConstant: 56).isActive = true
     }
     
     func setupViewGuideCard() {
         
         addSubview(guideCardContainer)
-        guideCardContainer.trailingAnchor.constraint(equalTo: centerXAnchor, constant: 0).isActive = true
-        guideCardContainer.topAnchor.constraint(equalTo: topAnchor, constant: 70).isActive = true
-        guideCardContainer.widthAnchor.constraint(equalToConstant: 440).isActive = true
-        guideCardContainer.heightAnchor.constraint(equalToConstant: 218).isActive = true
+        guideCardContainer.trailingAnchor.constraint(equalTo: centerXAnchor, constant: 12).isActive = true
+        guideCardContainer.topAnchor.constraint(equalTo: topAnchor, constant: 56).isActive = true
+        guideCardContainer.widthAnchor.constraint(equalToConstant: 472).isActive = true
+        guideCardContainer.heightAnchor.constraint(equalToConstant: 250).isActive = true
         
         addSubview(guidanceLabel)
-        guidanceLabel.leadingAnchor.constraint(equalTo: guideCardContainer.leadingAnchor, constant: 4).isActive = true
-        guidanceLabel.bottomAnchor.constraint(equalTo: guideCardContainer.topAnchor, constant: -16).isActive = true
-        
-        guideCardContainer.addSubview(aksaraName)
-        aksaraName.leadingAnchor.constraint(equalTo: guideCardContainer.leadingAnchor, constant: 24).isActive = true
-        aksaraName.topAnchor.constraint(equalTo: guideCardContainer.topAnchor, constant: 24).isActive = true
-        
-//        guideCardContainer.addSubview(aksaraType)
-//        aksaraType.leadingAnchor.constraint(equalTo: guideCardContainer.leadingAnchor, constant: 24).isActive = true
-//        aksaraType.topAnchor.constraint(equalTo: aksaraName.bottomAnchor, constant: 4).isActive = true
+        guidanceLabel.leadingAnchor.constraint(equalTo: guideCardContainer.leadingAnchor, constant: 16).isActive = true
+        guidanceLabel.bottomAnchor.constraint(equalTo: guideCardContainer.topAnchor).isActive = true
         
         guideCardContainer.addSubview(speakerButton)
-        speakerButton.trailingAnchor.constraint(equalTo: guideCardContainer.trailingAnchor, constant: -24).isActive = true
-        speakerButton.topAnchor.constraint(equalTo: guideCardContainer.topAnchor, constant: 24).isActive = true
+        speakerButton.trailingAnchor.constraint(equalTo: guideCardContainer.trailingAnchor, constant: -32).isActive = true
+        speakerButton.topAnchor.constraint(equalTo: guideCardContainer.topAnchor, constant: 32).isActive = true
         speakerButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
         speakerButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
         guideCardContainer.bringSubviewToFront(speakerButton)
@@ -600,33 +551,18 @@ class QuizCellTypeGuide: UICollectionViewCell {
         aksaraImage.centerYAnchor.constraint(equalTo: guideCardContainer.centerYAnchor, constant: 0).isActive = true
         aksaraImage.widthAnchor.constraint(equalToConstant: 75).isActive = true
         aksaraImage.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        
-        //        guideCardContainer.addSubview(aksaraType)
-        //        aksaraType.leadingAnchor.constraint(equalTo: guideCardContainer.leadingAnchor, constant: 24).isActive = true
-        //        aksaraType.topAnchor.constraint(equalTo: guideCardContainer.topAnchor, constant: 192).isActive = true
-        
-        //        guideCardContainer.addSubview(bookmarkImage)
-        //        bookmarkImage.leadingAnchor.constraint(equalTo: guideCardContainer.leadingAnchor, constant: 24).isActive = true
-        //        bookmarkImage.topAnchor.constraint(equalTo: aksaraType.bottomAnchor, constant: 4).isActive = true
-        //        bookmarkImage.widthAnchor.constraint(equalToConstant: 16).isActive = true
-        //        bookmarkImage.heightAnchor.constraint(equalToConstant: 19).isActive = true
-        //
-        //        guideCardContainer.addSubview(aksaraExample)
-        //        aksaraExample.leadingAnchor.constraint(equalTo: bookmarkImage.trailingAnchor, constant: 8).isActive = true
-        //        aksaraExample.topAnchor.constraint(equalTo: aksaraType.bottomAnchor, constant: 4).isActive = true
-        
     }
     
     func setupViewAnatomiCard() {
         addSubview(anatomiCardContainer)
-        anatomiCardContainer.trailingAnchor.constraint(equalTo: centerXAnchor, constant: 0).isActive = true
-        anatomiCardContainer.topAnchor.constraint(equalTo: guideCardContainer.bottomAnchor, constant: 24).isActive = true
-        anatomiCardContainer.widthAnchor.constraint(equalToConstant: 440).isActive = true
-        anatomiCardContainer.heightAnchor.constraint(equalToConstant: 218).isActive = true
+        anatomiCardContainer.trailingAnchor.constraint(equalTo: centerXAnchor, constant: 12).isActive = true
+        anatomiCardContainer.topAnchor.constraint(equalTo: guideCardContainer.bottomAnchor, constant: -12).isActive = true
+        anatomiCardContainer.widthAnchor.constraint(equalToConstant: 472).isActive = true
+        anatomiCardContainer.heightAnchor.constraint(equalToConstant: 250).isActive = true
         
         anatomiCardContainer.addSubview(aksaraNameAnatomi)
-        aksaraNameAnatomi.leadingAnchor.constraint(equalTo: anatomiCardContainer.leadingAnchor, constant: 24).isActive = true
-        aksaraNameAnatomi.topAnchor.constraint(equalTo: anatomiCardContainer.topAnchor, constant: 24).isActive = true
+        aksaraNameAnatomi.leadingAnchor.constraint(equalTo: anatomiCardContainer.leadingAnchor, constant: 40).isActive = true
+        aksaraNameAnatomi.topAnchor.constraint(equalTo: anatomiCardContainer.topAnchor, constant: 40).isActive = true
         
         anatomiCardContainer.addSubview(anatomiHeadImage)
         anatomiHeadImage.leadingAnchor.constraint(equalTo: anatomiCardContainer.leadingAnchor, constant: 162).isActive = true
@@ -658,49 +594,49 @@ class QuizCellTypeGuide: UICollectionViewCell {
     
     func setupViewCanvas() {
         addSubview(containerCanvasView)
-        containerCanvasView.leadingAnchor.constraint(equalTo: centerXAnchor, constant: 40).isActive = true
-        containerCanvasView.topAnchor.constraint(equalTo: topAnchor, constant: 70).isActive = true
-        containerCanvasView.widthAnchor.constraint(equalToConstant: 400).isActive = true
-        containerCanvasView.heightAnchor.constraint(equalToConstant: 400).isActive = true
+        containerCanvasView.leadingAnchor.constraint(equalTo: centerXAnchor, constant: 14).isActive = true
+        containerCanvasView.topAnchor.constraint(equalTo: topAnchor, constant: 56).isActive = true
+        containerCanvasView.widthAnchor.constraint(equalToConstant: 420).isActive = true
+        containerCanvasView.heightAnchor.constraint(equalToConstant: 420).isActive = true
         
-        containerCanvasView.addSubview(shadowImage)
-        shadowImage.centerXAnchor.constraint(equalTo: containerCanvasView.centerXAnchor).isActive = true
-        shadowImage.centerYAnchor.constraint(equalTo: containerCanvasView.centerYAnchor).isActive = true
-        shadowImage.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        shadowImage.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        containerCanvasView.addSubview(containerCanvasImageView)
+        containerCanvasImageView.topAnchor.constraint(equalTo: containerCanvasView.topAnchor).isActive = true
+        containerCanvasImageView.leadingAnchor.constraint(equalTo: containerCanvasView.leadingAnchor).isActive = true
+        containerCanvasImageView.trailingAnchor.constraint(equalTo: containerCanvasView.trailingAnchor).isActive = true
+        containerCanvasImageView.bottomAnchor.constraint(equalTo: containerCanvasView.bottomAnchor).isActive = true
         
         addSubview(infoButton)
-        infoButton.trailingAnchor.constraint(equalTo: containerCanvasView.trailingAnchor, constant: 0).isActive = true
-        infoButton.bottomAnchor.constraint(equalTo: containerCanvasView.topAnchor, constant: -16).isActive = true
+        infoButton.trailingAnchor.constraint(equalTo: containerCanvasView.trailingAnchor, constant: -16).isActive = true
+        infoButton.bottomAnchor.constraint(equalTo: containerCanvasView.topAnchor, constant: -4).isActive = true
         infoButton.heightAnchor.constraint(equalToConstant: 28 ).isActive = true
         infoButton.widthAnchor.constraint(equalToConstant: 28 ).isActive = true
         
         addSubview(questionLabel)
-        questionLabel.leadingAnchor.constraint(equalTo: containerCanvasView.leadingAnchor, constant: 4).isActive = true
-        questionLabel.bottomAnchor.constraint(equalTo: containerCanvasView.topAnchor, constant: -16).isActive = true
+        questionLabel.leadingAnchor.constraint(equalTo: containerCanvasView.leadingAnchor, constant: 12).isActive = true
+        questionLabel.bottomAnchor.constraint(equalTo: containerCanvasView.topAnchor, constant: 0).isActive = true
         
         addSubview(canvasView)
-        canvasView.topAnchor.constraint(equalTo: containerCanvasView.topAnchor).isActive = true
-        canvasView.bottomAnchor.constraint(equalTo: containerCanvasView.bottomAnchor).isActive = true
-        canvasView.leadingAnchor.constraint(equalTo: containerCanvasView.leadingAnchor).isActive = true
-        canvasView.trailingAnchor.constraint(equalTo: containerCanvasView.trailingAnchor).isActive = true
+        canvasView.topAnchor.constraint(equalTo: containerCanvasView.topAnchor, constant: 16).isActive = true
+        canvasView.bottomAnchor.constraint(equalTo: containerCanvasView.bottomAnchor, constant: -16).isActive = true
+        canvasView.leadingAnchor.constraint(equalTo: containerCanvasView.leadingAnchor, constant: 16).isActive = true
+        canvasView.trailingAnchor.constraint(equalTo: containerCanvasView.trailingAnchor, constant: -16).isActive = true
         
         addSubview(checkmarkImage)
-        checkmarkImage.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        checkmarkImage.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        checkmarkImage.trailingAnchor.constraint(equalTo: containerCanvasView.trailingAnchor, constant: -16).isActive = true
-        checkmarkImage.topAnchor.constraint(equalTo: containerCanvasView.topAnchor, constant: 26).isActive = true
+        checkmarkImage.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        checkmarkImage.widthAnchor.constraint(equalToConstant: 32).isActive = true
+        checkmarkImage.trailingAnchor.constraint(equalTo: containerCanvasView.trailingAnchor, constant: -32).isActive = true
+        checkmarkImage.topAnchor.constraint(equalTo: containerCanvasView.topAnchor, constant: 32).isActive = true
         
         addSubview(checkButton)
-        checkButton.leadingAnchor.constraint(equalTo: containerCanvasView.centerXAnchor, constant: 8).isActive = true
-        checkButton.trailingAnchor.constraint(equalTo: containerCanvasView.trailingAnchor).isActive = true
-        checkButton.topAnchor.constraint(equalTo: containerCanvasView.bottomAnchor, constant: 16).isActive = true
+        checkButton.leadingAnchor.constraint(equalTo: containerCanvasView.centerXAnchor, constant: 12).isActive = true
+        checkButton.trailingAnchor.constraint(equalTo: containerCanvasView.trailingAnchor, constant: -8).isActive = true
+        checkButton.topAnchor.constraint(equalTo: containerCanvasView.bottomAnchor, constant: 8).isActive = true
         checkButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
         
         addSubview(reloadButton)
-        reloadButton.leadingAnchor.constraint(equalTo: containerCanvasView.leadingAnchor).isActive = true
+        reloadButton.leadingAnchor.constraint(equalTo: containerCanvasView.leadingAnchor, constant: 12).isActive = true
         reloadButton.trailingAnchor.constraint(equalTo: containerCanvasView.centerXAnchor, constant: -8).isActive = true
-        reloadButton.topAnchor.constraint(equalTo: containerCanvasView.bottomAnchor, constant: 16).isActive = true
+        reloadButton.topAnchor.constraint(equalTo: containerCanvasView.bottomAnchor, constant: 8).isActive = true
         reloadButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
         
     }
@@ -708,7 +644,6 @@ class QuizCellTypeGuide: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
-
 
 extension QuizCellTypeGuide : PKCanvasViewDelegate {
     func canvasViewDrawingDidChange(_ canvasView: PKCanvasView) {

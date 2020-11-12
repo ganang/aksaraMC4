@@ -103,7 +103,8 @@ class QuizController: UIViewController, QuizControllerProtocol {
     }()
     
     var countdownTimer: Timer!
-    var totalTime = 30
+    var totalTime = 0
+    var lastTime = 0
     
     var isTimerRunning = false
     
@@ -121,8 +122,18 @@ class QuizController: UIViewController, QuizControllerProtocol {
             countdownTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
     }
     
+    func secondsToHoursMinutesSeconds (seconds : Int) -> (Int, Int) {
+        return ( (seconds % 3600) / 60, (seconds % 3600) % 60)
+    }
+    
+    func printSecondsToHoursMinutesSeconds(seconds:Int) -> String {
+        let (m, s) = secondsToHoursMinutesSeconds (seconds: seconds)
+        return "\(m) Menit, \(s) Detik"
+    }
+    
     @objc func updateTime() {
         headerTimer.text = "\(timeFormatted(totalTime))"
+        self.lastTime = totalTime
         
         if totalTime != 0 {
             totalTime -= 1
@@ -169,11 +180,17 @@ class QuizController: UIViewController, QuizControllerProtocol {
     }
     
     func endTimer() {
-        countdownTimer.invalidate()
+        if (countdownTimer != nil) {
+            countdownTimer.invalidate()
+        }
     }
     
     func stopTimerChoosen() {
         endTimer()
+    }
+    
+    func handleResumeTimer() {
+        countdownTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
     }
     
     func timeFormatted(_ totalSeconds: Int) -> String {
@@ -243,12 +260,20 @@ class QuizController: UIViewController, QuizControllerProtocol {
     
     var valueProgressBar = 1.00/20.00
     
-    var indexCollection: IndexPath?
+    var indexCollection: IndexPath? = IndexPath(item: 0, section: 0)
     
     @objc func handleProgressBar(_ sender: UIButton) {
         resetStatus()
+        handleCoreDataTimer(withSender: sender)
+        // handle timer
         
         if sender.tag + 1 < 20 {
+            if (countdownTimer != nil) {
+                endTimer()
+            }
+            
+            startTimer()
+            
             // handle progress
             valueProgressBar = valueProgressBar + 1.00/20.00
             self.progressiveBar.progress = Float(valueProgressBar)
@@ -260,22 +285,13 @@ class QuizController: UIViewController, QuizControllerProtocol {
             // handle title
             let stringRegion =  String(regionSelected!)
             let quizName = String((quizes?[sender.tag + 1].title)!)
-            let quizesCount = String((quizes!.count - 4))
+            let quizesCount = String((quizes!.count - 3))
             
             if (quizName == "Panduan") {
                 self.quizTopNumberLabel.text = "Aksara Baru!"
             } else {
                 self.quizTopNumberLabel.text = "Aksara \(stringRegion) - \(quizName)/\(quizesCount)"
             }
-            
-            
-            
-            // handle timer
-            if (countdownTimer != nil) {
-                endTimer()
-            }
-            
-            startTimer()
             
             // handle scroll collection
             let indexPath = IndexPath(item: sender.tag + 1, section: 0)
@@ -290,6 +306,17 @@ class QuizController: UIViewController, QuizControllerProtocol {
                 endTimer()
                 showModal()
             }
+        }
+        
+    }
+    
+    func handleCoreDataTimer(withSender sender: UIButton) {
+        let quizType = quizes?[sender.tag].type
+        let quiz = quizes?[sender.tag]
+        
+        if (quizType != "Guide") {
+            let quizTime = quiz!.time - Int64(lastTime)
+            quiz?.totalTime = Int64(quizTime)
         }
         
     }
@@ -313,9 +340,7 @@ class QuizController: UIViewController, QuizControllerProtocol {
     
     func batikBG() {
         self.backBackgroundView.insertSubview(batikBackgroundImageView, at: 0)
-//        self.view.bringSubviewToFront(backgroundImage)
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -323,13 +348,7 @@ class QuizController: UIViewController, QuizControllerProtocol {
         registerCV()
         setupDelegate()
         batikBG()
-
-        print(view.frame.height - 124)
-        
-        
-        
     }
-    
     
     func setupCV() {
         view.addSubview(backBackgroundView)
@@ -548,8 +567,12 @@ class QuizController: UIViewController, QuizControllerProtocol {
     }
     
     @objc func hideWarningModal() {
-        startTimer()
+//        startTimer()
         backBackgroundBlurView.removeFromSuperview()
+        
+        if (quizes?[indexCollection!.item].type != "Guide") {
+            handleResumeTimer()
+        }
     }
     
     //View HandlePanduanInfoMenulis
@@ -753,16 +776,7 @@ class QuizController: UIViewController, QuizControllerProtocol {
     let benarDoneQuizLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        
-        let firstWord   = ""
-        let secondWord = ": 14 kuis"
-        let attrs      = [NSAttributedString.Key.font: UIFont.init(name: "NowAlt-Medium", size: 16), NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 23, green: 78, blue: 161, alpha: 1)]
-        let attrs2     = [NSAttributedString.Key.font: UIFont.init(name: "NowAlt-Regular", size: 16), NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 23, green: 78, blue: 161, alpha: 1)]
-        let thirdWord   = " dari 16 kuis"
-        let attributedText = NSMutableAttributedString(string:firstWord)
-        attributedText.append(NSAttributedString(string: secondWord, attributes: attrs as [NSAttributedString.Key : Any]))
-        attributedText.append(NSAttributedString(string: thirdWord, attributes: attrs2 as [NSAttributedString.Key : Any]))
-        label.attributedText = attributedText
+
         return label
     }()
     
@@ -894,7 +908,11 @@ class QuizController: UIViewController, QuizControllerProtocol {
     }()
     
     @objc func handleUlasan() {
+        
         let ulasanScreen = UlasanController()
+        ulasanScreen.level = level
+        ulasanScreen.levels = levels
+        
         navigationController?.pushViewController(ulasanScreen, animated: true)
     }
     
@@ -902,72 +920,54 @@ class QuizController: UIViewController, QuizControllerProtocol {
     var totalMedal = 0
     
     func handleQuizRecord() {
-//        let isCorrectQuiz1 = quizes?[1].isCorrect
-//        let isCorrectQuiz2 = quizes?[2].isCorrect
-//        let isCorrectQuiz3 = quizes?[3].isCorrect
-//        let isCorrectQuiz4 = quizes?[4].isCorrect
-//        let isCorrectQuiz5 = quizes?[5].isCorrect
+        level?.totalTime = 0
+        PersistenceService.saveContext()
         
-//        if isCorrectQuiz1! {
-//            correctOrWrongAnswerImage1.image = UIImage(named: "correctAnswer")
-//        } else {
-//            correctOrWrongAnswerImage1.image = UIImage(named: "falseAnswer")
-//        }
-//
-//        if isCorrectQuiz2! {
-//            correctOrWrongAnswerImage2.image = UIImage(named: "correctAnswer")
-//        } else {
-//            correctOrWrongAnswerImage2.image = UIImage(named: "falseAnswer")
-//        }
-//
-//        if isCorrectQuiz3! {
-//            correctOrWrongAnswerImage3.image = UIImage(named: "correctAnswer")
-//        } else {
-//            correctOrWrongAnswerImage3.image = UIImage(named: "falseAnswer")
-//        }
-//
-//        if isCorrectQuiz4! {
-//            correctOrWrongAnswerImage4.image = UIImage(named: "correctAnswer")
-//        } else {
-//            correctOrWrongAnswerImage4.image = UIImage(named: "falseAnswer")
-//        }
-//
-//        if isCorrectQuiz5! {
-//            correctOrWrongAnswerImage5.image = UIImage(named: "correctAnswer")
-//        } else {
-//            correctOrWrongAnswerImage5.image = UIImage(named: "falseAnswer")
-//        }
-        
-        
-        
-        for i in 0...quizes!.count - 1{
+        for i in 0...quizes!.count - 1 {
             if quizes![i].isCorrect {
                 totalQuizCorrect = totalQuizCorrect + 1
             }
+            
+            if (quizes![i].type != "Guide") {
+                level?.totalTime += quizes![i].totalTime
+                PersistenceService.saveContext()
+            }
         }
         
-        if totalQuizCorrect == 0 {
-            gununganImageModal.image = UIImage(named: "GununganStand0")
+        waktuDoneQuizLabel.text = ": \(printSecondsToHoursMinutesSeconds(seconds: Int(level!.totalTime)))"
+        
+        let firstWord   = ""
+        let secondWord = ": \(totalQuizCorrect) kuis"
+        let attrs      = [NSAttributedString.Key.font: UIFont.init(name: "NowAlt-Medium", size: 16), NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 23, green: 78, blue: 161, alpha: 1)]
+        let attrs2     = [NSAttributedString.Key.font: UIFont.init(name: "NowAlt-Regular", size: 16), NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 23, green: 78, blue: 161, alpha: 1)]
+        let thirdWord   = " dari \(quizes!.count - 3) kuis"
+        let attributedText = NSMutableAttributedString(string: firstWord)
+        attributedText.append(NSAttributedString(string: secondWord, attributes: attrs as [NSAttributedString.Key : Any]))
+        attributedText.append(NSAttributedString(string: thirdWord, attributes: attrs2 as [NSAttributedString.Key : Any]))
+        benarDoneQuizLabel.attributedText = attributedText
+        
+        if totalQuizCorrect < 1 {
+            gununganImageModal.image = UIImage(named: "gununganDone0")
             selanjutnyaButton.setBackgroundImage(UIImage(named: "mainLagiButton"), for: .normal)
-//            selanjutnyaButton.addTarget(self, action: #selector(handleMainLagi), for: .touchUpInside)
+            selanjutnyaButton.addTarget(self, action: #selector(handleMainLagi), for: .touchUpInside)
             aksaraStepLabel.textColor = UIColor.rgb(red: 215, green: 58, blue: 76, alpha: 1)
             hasilLabel.textColor = UIColor.rgb(red: 215, green: 58, blue: 76, alpha: 1)
             aksaraInTopCard1.setImageColor(color: UIColor.rgb(red: 215, green: 58, blue: 76, alpha: 1))
             aksaraInTopCard2.setImageColor(color: UIColor.rgb(red: 215, green: 58, blue: 76, alpha: 1))
             aksaraInTopCard3.setImageColor(color: UIColor.rgb(red: 215, green: 58, blue: 76, alpha: 1))
             totalMedal = 0
-        } else if totalQuizCorrect == 1 || totalQuizCorrect == 2{
-            gununganImageModal.image = UIImage(named: "GununganStand1")
+        } else if totalQuizCorrect <= 5 {
+            gununganImageModal.image = UIImage(named: "gununganDone1")
             selanjutnyaButton.setBackgroundImage(UIImage(named: "mainLagiButton"), for: .normal)
-//            selanjutnyaButton.addTarget(self, action: #selector(handleMainLagi), for: .touchUpInside)
+            selanjutnyaButton.addTarget(self, action: #selector(handleMainLagi), for: .touchUpInside)
             aksaraStepLabel.textColor = UIColor.rgb(red: 215, green: 58, blue: 76, alpha: 1)
             hasilLabel.textColor = UIColor.rgb(red: 215, green: 58, blue: 76, alpha: 1)
             aksaraInTopCard1.setImageColor(color: UIColor.rgb(red: 215, green: 58, blue: 76, alpha: 1))
             aksaraInTopCard2.setImageColor(color: UIColor.rgb(red: 215, green: 58, blue: 76, alpha: 1))
             aksaraInTopCard3.setImageColor(color: UIColor.rgb(red: 215, green: 58, blue: 76, alpha: 1))
             totalMedal = 1
-        } else if totalQuizCorrect == 3 || totalQuizCorrect == 4{
-            gununganImageModal.image = UIImage(named: "GununganStand2")
+        } else if totalQuizCorrect <= 10 {
+            gununganImageModal.image = UIImage(named: "gununganDone2")
 //            selanjutnyaButton.addTarget(self, action: #selector(handleSelanjutnya), for: .touchUpInside)
             aksaraStepLabel.textColor = UIColor.rgb(red: 25, green: 163, blue: 113, alpha: 1)
             hasilLabel.textColor = UIColor.rgb(red: 25, green: 163, blue: 113, alpha: 1)
@@ -977,7 +977,7 @@ class QuizController: UIViewController, QuizControllerProtocol {
             totalMedal = 2
 //            handleNextLevel()
         } else{
-            gununganImageModal.image = UIImage(named: "GununganStand3")
+            gununganImageModal.image = UIImage(named: "gununganDone3")
 //            selanjutnyaButton.addTarget(self, action: #selector(handleSelanjutnya), for: .touchUpInside)
             aksaraStepLabel.textColor = UIColor.rgb(red: 25, green: 163, blue: 113, alpha: 1)
             hasilLabel.textColor = UIColor.rgb(red: 25, green: 163, blue: 113, alpha: 1)
@@ -987,7 +987,6 @@ class QuizController: UIViewController, QuizControllerProtocol {
             totalMedal = 3
 //            handleNextLevel()
         }
-        
         
         let stingStageId : Int = Int((level?.stage!.id)!)
         let stingStageIdString = String(stingStageId)
@@ -1005,8 +1004,6 @@ class QuizController: UIViewController, QuizControllerProtocol {
         
         handleUpdateTotalMedalStage()
         PersistenceService.saveContext()
-        
-        
     }
     
     func handleUpdateTotalMedalStage() {
@@ -1041,18 +1038,15 @@ class QuizController: UIViewController, QuizControllerProtocol {
         batikBackground.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor).isActive = true
         batikBackground.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor).isActive = true
         
-        
         batikBackground.addSubview(ulasanBackground)
         ulasanBackground.centerXAnchor.constraint(equalTo: batikBackground.centerXAnchor).isActive = true
         ulasanBackground.centerYAnchor.constraint(equalTo: batikBackground.centerYAnchor).isActive = true
         ulasanBackground.heightAnchor.constraint(equalToConstant: 712).isActive = true
         ulasanBackground.widthAnchor.constraint(equalToConstant: 508).isActive = true
         
-        
         ulasanBackground.addSubview(aksaraStepLabel)
         aksaraStepLabel.leadingAnchor.constraint(equalTo: ulasanBackground.leadingAnchor, constant: 67).isActive = true
         aksaraStepLabel.topAnchor.constraint(equalTo: ulasanBackground.topAnchor, constant: 72).isActive = true
-        
         
         ulasanBackground.addSubview(gununganImageModal)
         gununganImageModal.topAnchor.constraint(equalTo: ulasanBackground.topAnchor, constant: 72).isActive = true
@@ -1060,12 +1054,10 @@ class QuizController: UIViewController, QuizControllerProtocol {
         gununganImageModal.heightAnchor.constraint(equalToConstant: 48).isActive = true
         gununganImageModal.widthAnchor.constraint(equalToConstant: 92).isActive = true
         
-        
         ulasanBackground.addSubview(nilaiLabel)
         nilaiLabel.leadingAnchor.constraint(equalTo: ulasanBackground.leadingAnchor, constant: 67).isActive = true
         nilaiLabel.topAnchor.constraint(equalTo: aksaraStepLabel.bottomAnchor, constant: 4).isActive = true
         nilaiLabel.heightAnchor.constraint(equalToConstant: 19).isActive = true
-        
         
         //ImageAksara
         ulasanBackground.addSubview(aksaraInTopCard2)
@@ -1130,14 +1122,12 @@ class QuizController: UIViewController, QuizControllerProtocol {
         selanjutnyaButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
         selanjutnyaButton.widthAnchor.constraint(equalToConstant: 374).isActive = true
         
-        
         ulasanBackground.addSubview(ulasanButton)
         ulasanButton.trailingAnchor.constraint(equalTo: ulasanBackground.trailingAnchor, constant: -67).isActive = true
         ulasanButton.leadingAnchor.constraint(equalTo: ulasanBackground.leadingAnchor, constant: 67).isActive = true
         ulasanButton.topAnchor.constraint(equalTo: selanjutnyaButton.bottomAnchor, constant: 16).isActive = true
         ulasanButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
         ulasanButton.widthAnchor.constraint(equalToConstant: 374).isActive = true
-        
         
         ulasanBackground.addSubview(layarUtamaButton)
         layarUtamaButton.trailingAnchor.constraint(equalTo: ulasanBackground.trailingAnchor, constant: -67).isActive = true

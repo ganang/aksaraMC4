@@ -16,6 +16,72 @@ class UlasanController: UIViewController {
     
     var stages: [Stage]?
     var regions: [Region]?
+    var ulasanQuizes: [Quiz]?
+    var totalCorrectQuizes: Int = 0
+    var totalQuizes: Int = 0
+    var levels: [Level]?
+    var level: Level? {
+        didSet {
+            let quizes = level?.quizes?.sortedArray(using: [.init(key: "id", ascending: true)]) as? [Quiz]
+            let filteredItems = quizes?.filter { $0.type != "Guide" }
+            self.totalQuizes = filteredItems!.count
+            
+            self.ulasanQuizes = filteredItems
+            
+            for i in 0...ulasanQuizes!.count - 1 {
+                let isCorrect = ulasanQuizes?[i].isCorrect
+                
+                if (isCorrect == true) {
+                    self.totalCorrectQuizes += 1
+                }
+            }
+            
+            waktuDoneQuizLabel.text = ": \(printSecondsToHoursMinutesSeconds(seconds: Int(level!.totalTime)))"
+            handleTotalCorrectLabel()
+            handleTotalGunungan()
+        }
+    }
+    
+    func secondsToHoursMinutesSeconds (seconds : Int) -> (Int, Int) {
+        return ( (seconds % 3600) / 60, (seconds % 3600) % 60)
+    }
+    
+    func printSecondsToHoursMinutesSeconds(seconds:Int) -> String {
+        let (m, s) = secondsToHoursMinutesSeconds (seconds: seconds)
+        return "\(m) Menit, \(s) Detik"
+    }
+    
+    func handleTotalGunungan() {
+        let totalGunungan = level?.totalMedal
+        
+        if (totalGunungan == 1) {
+            GulunganUlasanTop.image = UIImage(named: "gununganDone1")
+        }
+        
+        if (totalGunungan == 2) {
+            GulunganUlasanTop.image = UIImage(named: "gununganDone2")
+        }
+        
+        if (totalGunungan == 3) {
+            GulunganUlasanTop.image = UIImage(named: "gununganDone2")
+        }
+    }
+    
+    func handleTotalCorrectLabel() {
+        let totalCorrect: Int = self.totalCorrectQuizes
+        let totalQuiz: Int = self.totalQuizes
+            
+        let firstWord   = ""
+        let secondWord = ": \(totalCorrect) kuis"
+        let attrs      = [NSAttributedString.Key.font: UIFont.init(name: "NowAlt-Medium", size: 16), NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 23, green: 78, blue: 161, alpha: 1)]
+        let attrs2     = [NSAttributedString.Key.font: UIFont.init(name: "NowAlt-Regular", size: 16), NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 23, green: 78, blue: 161, alpha: 1)]
+        let thirdWord   = " dari \(totalQuiz) kuis"
+        let attributedText = NSMutableAttributedString(string:firstWord)
+        attributedText.append(NSAttributedString(string: secondWord, attributes: attrs as [NSAttributedString.Key : Any]))
+        attributedText.append(NSAttributedString(string: thirdWord, attributes: attrs2 as [NSAttributedString.Key : Any]))
+        
+        benarDoneQuizLabel.attributedText = attributedText
+    }
     
     
     let appDel = UIApplication.shared.delegate as! AppDelegate
@@ -145,21 +211,24 @@ class UlasanController: UIViewController {
     }()
     
     //UIView & Image
-//    lazy var AksaraCardContainer : UIView = {
-//        let view = UIView()
-//        view.translatesAutoresizingMaskIntoConstraints = false
-//        view.layer.cornerRadius = 0
-//        view.addInnerShadow()
-//        view.backgroundColor = UIColor.init(white: 1, alpha: 1)
-//        view.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
-//        return view
-//    }()
+    //    lazy var AksaraCardContainer : UIView = {
+    //        let view = UIView()
+    //        view.translatesAutoresizingMaskIntoConstraints = false
+    //        view.layer.cornerRadius = 0
+    //        view.addInnerShadow()
+    //        view.backgroundColor = UIColor.init(white: 1, alpha: 1)
+    //        view.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
+    //        return view
+    //    }()
     
     let CardUlasanTop: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "CardUlasanTop")
-        image.contentMode = .scaleAspectFit
+        image.contentMode = .scaleToFill
         image.translatesAutoresizingMaskIntoConstraints = false
+//        image.backgroundColor = .gray
+        image.clipsToBounds = true
+        
         return image
     }()
     
@@ -245,6 +314,7 @@ class UlasanController: UIViewController {
         button.imageView?.contentMode = .scaleAspectFit
         button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(handlePlayAgainButton), for: .touchUpInside)
         return button
     }()
     
@@ -280,6 +350,16 @@ class UlasanController: UIViewController {
         return cv
     }()
     
+    @objc func handlePlayAgainButton() {
+        let quizScreen = QuizController()
+        let quizes = level?.quizes!.sortedArray(using: [.init(key: "id", ascending: true)]) as? [Quiz]
+        quizScreen.quizes = quizes
+        quizScreen.regionSelected = level?.stage?.region?.name
+        quizScreen.levels = levels
+        quizScreen.level = level
+        navigationController?.pushViewController(quizScreen, animated: true)
+    }
+    
     @objc func handleBack() {
         navigationController?.popViewController(animated: true)
     }
@@ -298,9 +378,7 @@ class UlasanController: UIViewController {
         setupDelegate()
         
         setupViewHeader()
-        
     }
-    
     
     func registerCV() {
         collectionView.register(UlasanCell.self, forCellWithReuseIdentifier: ulasanCellId)
@@ -354,12 +432,12 @@ class UlasanController: UIViewController {
         backButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: view.frame.width * 0.03350083752).isActive = true
         backButton.widthAnchor.constraint(equalToConstant: 48).isActive = true
         backButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
-
+        
         //CardAksara
         containerView.addSubview(CardUlasanTop)
-        CardUlasanTop.centerXAnchor.constraint(equalTo: containerView.centerXAnchor, constant: -247).isActive = true
+        CardUlasanTop.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: view.frame.width * 0.08793969849 - 32).isActive = true
         CardUlasanTop.topAnchor.constraint(equalTo: tahapLabel.bottomAnchor, constant: 40).isActive = true
-        CardUlasanTop.widthAnchor.constraint(equalToConstant: 540).isActive = true
+        CardUlasanTop.trailingAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         CardUlasanTop.heightAnchor.constraint(equalToConstant: 332).isActive = true
         
         //ImageAksara
@@ -394,12 +472,12 @@ class UlasanController: UIViewController {
         aksaraLabelInTopCard3.centerXAnchor.constraint(equalTo: aksaraInTopCard3.centerXAnchor).isActive = true
         aksaraLabelInTopCard3.topAnchor.constraint(equalTo: aksaraInTopCard3.bottomAnchor, constant: 10).isActive = true
         
-  
+        
         //RightSection
         containerView.addSubview(carakanLabel)
-        carakanLabel.leadingAnchor.constraint(equalTo: CardUlasanTop.trailingAnchor, constant: 33).isActive = true
-        carakanLabel.topAnchor.constraint(equalTo: tahapLabel.bottomAnchor, constant: 64).isActive = true
-
+        carakanLabel.leadingAnchor.constraint(equalTo: CardUlasanTop.trailingAnchor, constant: 32).isActive = true
+        carakanLabel.topAnchor.constraint(equalTo: CardUlasanTop.topAnchor, constant: 16).isActive = true
+        
         view.addSubview(hasilLabel)
         hasilLabel.leadingAnchor.constraint(equalTo: CardUlasanTop.trailingAnchor, constant: 33).isActive = true
         hasilLabel.topAnchor.constraint(equalTo: carakanLabel.bottomAnchor, constant: 64).isActive = true
@@ -411,7 +489,7 @@ class UlasanController: UIViewController {
         view.addSubview(checkmark)
         checkmark.leadingAnchor.constraint(equalTo: CardUlasanTop.trailingAnchor, constant: 33).isActive = true
         checkmark.topAnchor.constraint(equalTo: timer.bottomAnchor, constant: 12).isActive = true
-
+        
         view.addSubview(waktuQuizLabel)
         waktuQuizLabel.leadingAnchor.constraint(equalTo: timer.trailingAnchor, constant: 8).isActive = true
         waktuQuizLabel.topAnchor.constraint(equalTo: hasilLabel.bottomAnchor, constant: 12).isActive = true
@@ -426,9 +504,9 @@ class UlasanController: UIViewController {
         
         view.addSubview(mainLagiButton)
         mainLagiButton.leadingAnchor.constraint(equalTo: checkmark.leadingAnchor).isActive = true
-        mainLagiButton.topAnchor.constraint(equalTo: checkmark.bottomAnchor, constant: 40).isActive = true
+        mainLagiButton.bottomAnchor.constraint(equalTo: CardUlasanTop.bottomAnchor, constant: -24).isActive = true
         mainLagiButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
-        mainLagiButton.widthAnchor.constraint(equalToConstant: 463).isActive = true
+        mainLagiButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -80).isActive = true
         
         view.addSubview(GulunganUlasanTop)
         GulunganUlasanTop.trailingAnchor.constraint(equalTo: mainLagiButton.trailingAnchor).isActive = true
@@ -437,8 +515,6 @@ class UlasanController: UIViewController {
         GulunganUlasanTop.widthAnchor.constraint(equalToConstant: 100).isActive = true
         
     }
-    
-    
     
     override public var shouldAutorotate: Bool {
         return false
@@ -449,47 +525,37 @@ class UlasanController: UIViewController {
     override public var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
         return .landscapeRight
     }
-   
     
 }
-    
-extension UlasanController : UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource{
-        
-        func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return 18
-        }
-        
-        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ulasanCellId, for: indexPath) as! UlasanCell
-             return cell
-    //         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "example", for: indexPath)
-    //         cell.backgroundColor = UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 0.6)
-    //         cell.addInnerShadow()
-    //         cell.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
-    //         cell.layer.cornerRadius = 24
-    //         cell.layer.masksToBounds = false
-    //         cell.translatesAutoresizingMaskIntoConstraints =  false
-             
-        }
-        
-    //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-    //       return UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
-    //    }
-        
-    //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-    //        return CGFloat(16)
-    //    }
 
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-            return CGFloat(32)
-        }
+extension UlasanController : UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource{
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.ulasanQuizes?.count ?? 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let isCorrect = self.ulasanQuizes?[indexPath.row].isCorrect
         
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            return CGSize(width: 310, height: 200)
-        }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ulasanCellId, for: indexPath) as! UlasanCell
+        cell.LabelTopKuis1.text = self.ulasanQuizes?[indexPath.row].title
+        cell.LabelTopKuis2.text = self.ulasanQuizes?[indexPath.row].ulasanDetail
+        cell.correctOrFalseState.image = isCorrect! ? UIImage(named: "correctAnswer") : UIImage(named: "falseAnswer")
+        cell.quiz = self.ulasanQuizes?[indexPath.row]
         
-        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return CGFloat(32)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: (view.frame.width/3) - 80, height: 200)
+    }
+    
+    
 }
-    
-    
+
+
 

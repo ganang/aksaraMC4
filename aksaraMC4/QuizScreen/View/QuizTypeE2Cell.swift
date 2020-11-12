@@ -14,18 +14,18 @@ class QuizTypeE2Cell: BaseCell, UIGestureRecognizerDelegate {
     let SCREEN_WIDTH: CGFloat = UIScreen.main.bounds.width
     let SCREEN_HEIGHT: CGFloat = UIScreen.main.bounds.height
     
-    let originHeadAPosition = CGRect(x: 40, y: (UIScreen.main.bounds.height - 121)/2 - 68, width: 64, height: 64)
-    let originHeadBPosition = CGRect(x: 112, y: (UIScreen.main.bounds.height - 121)/2 - 68, width: 64, height: 64)
-    let originHeadCPosition = CGRect(x: 40, y: (UIScreen.main.bounds.height - 121)/2 + 4, width: 64, height: 64)
-    let originHeadDPosition = CGRect(x: 112, y: (UIScreen.main.bounds.height - 121)/2 + 4, width: 64, height: 64)
+    let originHeadAPosition = CGRect(x: 40, y: (UIScreen.main.bounds.height - 124)/2 - 104, width: 64, height: 64)
+    let originHeadBPosition = CGRect(x: 112, y: (UIScreen.main.bounds.height - 124)/2 - 104, width: 64, height: 64)
+    let originHeadCPosition = CGRect(x: 40, y: (UIScreen.main.bounds.height - 124)/2 - 32, width: 64, height: 64)
+    let originHeadDPosition = CGRect(x: 112, y: (UIScreen.main.bounds.height - 124)/2 - 32, width: 64, height: 64)
     
-    let originTailAPosition = CGRect(x: UIScreen.main.bounds.width - 112, y: (UIScreen.main.bounds.height - 121)/2 - 68, width: 64, height: 64)
-    let originTailBPosition = CGRect(x: UIScreen.main.bounds.width - 184, y: (UIScreen.main.bounds.height - 121)/2 - 68, width: 64, height: 64)
-    let originTailCPosition = CGRect(x: UIScreen.main.bounds.width - 112, y: (UIScreen.main.bounds.height - 121)/2 + 4, width: 64, height: 64)
-    let originTailDPosition = CGRect(x: UIScreen.main.bounds.width - 184, y: (UIScreen.main.bounds.height - 121)/2 + 4, width: 64, height: 64)
+    let originTailAPosition = CGRect(x: UIScreen.main.bounds.width - 112, y: (UIScreen.main.bounds.height - 124)/2 - 104, width: 64, height: 64)
+    let originTailBPosition = CGRect(x: UIScreen.main.bounds.width - 184, y: (UIScreen.main.bounds.height - 124)/2 - 104, width: 64, height: 64)
+    let originTailCPosition = CGRect(x: UIScreen.main.bounds.width - 112, y: (UIScreen.main.bounds.height - 124)/2 - 32, width: 64, height: 64)
+    let originTailDPosition = CGRect(x: UIScreen.main.bounds.width - 184, y: (UIScreen.main.bounds.height - 124)/2 - 32, width: 64, height: 64)
     
-    let originHeaderHead = CGRect(x: 70, y: (UIScreen.main.bounds.height - 121)/2 - 96, width: 100, height: 20)
-    let originHeaderTail = CGRect(x: UIScreen.main.bounds.width - 156, y: (UIScreen.main.bounds.height - 121)/2 - 96, width: 100, height: 20)
+    let originHeaderHead = CGRect(x: 70, y: (UIScreen.main.bounds.height - 124)/2 - 132, width: 100, height: 20)
+    let originHeaderTail = CGRect(x: UIScreen.main.bounds.width - 156, y: (UIScreen.main.bounds.height - 124)/2 - 132, width: 100, height: 20)
     
     var isHeadFill = false
     var isTailFill = false
