@@ -183,7 +183,19 @@ class PencilStrokeCell: BaseCell, PKCanvasViewDelegate {
     lazy var gotItButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setBackgroundImage(UIImage(named: "gotItButton"), for: .normal)
+        button.setCheckButtonBackgroundGoldColor(withOpacity: 1, withHeight: 48, withWidth: 240, withCorner: 24)
+        button.setTitle("Mengerti", for: .normal)
+        button.setTitleColor(Theme.current.accentPurple, for: .normal)
+        button.titleLabel?.font = UIFont.init(name: "NowAlt-Medium", size: 16)
+        let boldConfig = UIImage.SymbolConfiguration(weight: .bold)
+        let tintedImage = UIImage(systemName: "arrow.right", withConfiguration: boldConfig)?.withRenderingMode(.alwaysTemplate)
+        button.setImage(tintedImage, for: .normal)
+        if let imageView = button.imageView {
+            button.bringSubviewToFront(imageView)
+        }
+        button.imageView?.tintColor = Theme.current.purpleColor
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 200, bottom: 0, right: 0)
+        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: -20, bottom: 0, right: 0)
         button.isHidden = true
         
         return button

@@ -15,6 +15,7 @@ protocol ThemeProtocol {
     var accentColor: UIColor { get }
     var purpleColor: UIColor { get }
     var accentWhite: UIColor { get }
+    var accentPurple: UIColor { get }
     var accentLightBlue: UIColor { get }
     var accentLightRed: UIColor { get }
     var accentLightGreen: UIColor { get }

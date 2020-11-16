@@ -314,6 +314,19 @@ extension UIView {
         self.layer.insertSublayer(gradientLayer, at:0)
     }
     
+    func setBackgroundColorGuideQuickStartPurple() {
+        let colorBottom =  UIColor(red: 56/255.0, green: 9/255.0, blue: 70/255.0, alpha: 1.0).cgColor
+        let colorTop = UIColor(red: 110/255.0, green: 9/255.0, blue: 142/255.0, alpha: 1.0).cgColor
+
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorTop, colorBottom]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame = self.bounds
+        gradientLayer.name = "purpleBackground"
+        
+        self.layer.insertSublayer(gradientLayer, at:0)
+    }
+    
     func setCheckButtonBackgroundGoldColor(withOpacity opacity: Float, withHeight height: Double, withWidth width: Double, withCorner corner: CGFloat) {
         //GradientBlueAnswer
         let colorTop =  Theme.current.gradientTopGold.cgColor
@@ -321,7 +334,8 @@ extension UIView {
         
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = [colorTop, colorBottom]
-        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.startPoint = CGPoint(x: 1.0, y: 0.5)
+        gradientLayer.endPoint = CGPoint(x: 0.0, y: 0.5)
         gradientLayer.frame = CGRect(x: 0.0, y: 0.0, width: width, height: height)
         gradientLayer.name = "goldButton"
         gradientLayer.opacity = opacity
