@@ -10,7 +10,7 @@ import UIKit
 import PencilKit
 import AVFoundation
 
-class PencilStrokeCell: BaseCell, PKCanvasViewDelegate {
+class PencilStrokeWithoutCell: BaseCell, PKCanvasViewDelegate {
     
     let generator = UINotificationFeedbackGenerator()
     var player: AVAudioPlayer?
@@ -47,7 +47,7 @@ class PencilStrokeCell: BaseCell, PKCanvasViewDelegate {
     
     let backgroundImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "shadowImageWa")
+        imageView.image = UIImage(named: "shadowImageWaGreen")
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -80,6 +80,7 @@ class PencilStrokeCell: BaseCell, PKCanvasViewDelegate {
         imageView.image = UIImage(named: "waTrack1")
         imageView.contentMode = .scaleToFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.isHidden = true
         
         return imageView
     }()
@@ -90,6 +91,7 @@ class PencilStrokeCell: BaseCell, PKCanvasViewDelegate {
         button.setBackgroundImage(UIImage(named: "trackingButton"), for: .normal)
         button.setTitle("1", for: .normal)
         button.setTitleColor(.black, for: .normal)
+        button.isHidden = false
         
         return button
     }()
@@ -372,9 +374,9 @@ class PencilStrokeCell: BaseCell, PKCanvasViewDelegate {
     func canvasViewDidBeginUsingTool(_ canvasView: PKCanvasView) {
         // Stop any animation as soon as the user begins to draw.
         let trackingButtons = [trackingButton1, trackingButton2]
-        
+
         let testDrawing = backgroundCanvasView.drawing
-        
+
         if (strokeAksaraIndex! < testDrawing.strokes.count) {
             trackingButtons[strokeAksaraIndex!].isHidden = true
         }
@@ -405,14 +407,14 @@ class PencilStrokeCell: BaseCell, PKCanvasViewDelegate {
             canvasView.drawing.strokes[strokeIndex].ink.color = .clear
             
             trackingButtons[strokeAksaraIndex!].isHidden = true
-            trackingImages[strokeAksaraIndex!].isHidden = true
+//            trackingImages[strokeAksaraIndex!].isHidden = true
             trackingCorrectImages[strokeAksaraIndex!].isHidden = false
             
             self.strokeAksaraIndex! += 1
             
             if (strokeAksaraIndex! < testDrawing.strokes.count) {
                 trackingButtons[strokeAksaraIndex!].isHidden = false
-                trackingImages[strokeAksaraIndex!].isHidden = false
+//                trackingImages[strokeAksaraIndex!].isHidden = false
                 
             }
             

@@ -12,9 +12,6 @@ import CoreML
 import AVFoundation
 
 class NewGuideMLCell: UICollectionViewCell {
-
-
-    
     var canvasViewImage: UIImage?
     var carakanQuestion: String? = "Wa"
     var player: AVAudioPlayer?
@@ -49,7 +46,7 @@ class NewGuideMLCell: UICollectionViewCell {
         canvasView.isOpaque = false
         canvasView.alwaysBounceVertical = true
         canvasView.drawingPolicy = .anyInput
-        canvasView.tool = PKInkingTool(.marker, color: .white, width: 20)
+        canvasView.tool = PKInkingTool(.pen, color: .white, width: 20)
         canvasView.tag = 2
         canvasView.delegate = self
         canvasView.alpha = 1
@@ -108,7 +105,7 @@ class NewGuideMLCell: UICollectionViewCell {
     
     let shadowImageAksara: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "shadowImageWa")
+        image.image = UIImage(named: "shadowImageWaGreen")
         image.contentMode = .scaleAspectFit
         image.alpha = 0
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -135,28 +132,23 @@ class NewGuideMLCell: UICollectionViewCell {
         return image
     }()
     
-
-    
-    
-    
     lazy var continueButton : UIButton = {
         let button = UIButton()
-        
-        let origImage = UIImage(systemName: "arrow.right")
-        let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
-        button.setImage(tintedImage, for: .normal)
-        button.setTitle("Mengerti", for: .normal)
-        button.setTitleColor(UIColor.rgb(red: 23, green: 78, blue: 161, alpha: 1), for: .normal)
-        button.titleLabel?.font = UIFont.init(name: "NowAlt-Medium", size: 20)
-    
-        button.tintColor = UIColor.rgb(red: 23, green: 78, blue: 161, alpha: 1)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.layer.cornerRadius = 28
-        button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
+        button.setCheckButtonBackgroundGoldColor(withOpacity: 1, withHeight: 48, withWidth: 240, withCorner: 24)
+        button.setTitle("Mengerti", for: .normal)
+        button.setTitleColor(Theme.current.accentPurple, for: .normal)
+        button.titleLabel?.font = UIFont.init(name: "NowAlt-Medium", size: 16)
+        let boldConfig = UIImage.SymbolConfiguration(weight: .bold)
+        let tintedImage = UIImage(systemName: "arrow.right", withConfiguration: boldConfig)?.withRenderingMode(.alwaysTemplate)
+        button.setImage(tintedImage, for: .normal)
+        if let imageView = button.imageView {
+            button.bringSubviewToFront(imageView)
+        }
         button.tag = 0
-        button.backgroundColor = UIColor.rgb(red: 255, green: 183, blue: 81, alpha: 1)
-        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: -50, bottom: 0, right: 0)
-        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -220)
+        button.imageView?.tintColor = Theme.current.purpleColor
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 200, bottom: 0, right: 0)
+        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: -20, bottom: 0, right: 0)
         button.alpha = 0.4
         
         return button
@@ -169,7 +161,7 @@ class NewGuideMLCell: UICollectionViewCell {
         backgroundImage.image = UIImage(named: "Batik BackgroundNew")
         backgroundImage.contentMode = .scaleAspectFill
         self.insertSubview(backgroundImage, at: 0)
-        setBackgroundGuide()
+        setBackgroundDragnDrop()
         setupView()
     }
     
@@ -184,12 +176,16 @@ class NewGuideMLCell: UICollectionViewCell {
         let status = predictAksara()
         
         if (status == true) {
+            QuickStartReviewData.instance.quizesCorrectStatus[2] = true
+            print("quick", QuickStartReviewData.instance.quizesCorrectStatus[2])
             correctAnswer()
             playSoundTrue()
         } else {
+            QuickStartReviewData.instance.quizesCorrectStatus[2] = false
             wrongAnswer()
             playSoundFalse()
         }
+        canvasView.drawingGestureRecognizer.isEnabled = false
     }
     
     func correctAnswer() {

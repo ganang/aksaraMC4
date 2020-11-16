@@ -290,6 +290,7 @@ class QuizViewTypeAV2: BaseCell, UIGestureRecognizerDelegate {
     }
     
     func setupViewAnswerStateTrue() {
+        QuickStartReviewData.instance.quizesCorrectStatus[1] = true
         print(SCREEN_HEIGHT/2)
         hiddenSetupView()
         
@@ -307,6 +308,7 @@ class QuizViewTypeAV2: BaseCell, UIGestureRecognizerDelegate {
     }
     
     func setupViewAnswerStateFalse() {
+        QuickStartReviewData.instance.quizesCorrectStatus[1] = false
         hiddenSetupView()
         
         //Left

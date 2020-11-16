@@ -85,10 +85,10 @@ extension QuizDummyController : UICollectionViewDelegate, UICollectionViewDelega
 //        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid4", for: indexPath) as! QuizCellTypeGuide
 //        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid2", for: indexPath) as! QuizCellTypeI
 //        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid5", for: indexPath) as! NewGuideCell
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid6", for: indexPath) as! NewGuideMLCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid6", for: indexPath) as! NewGuideMLCell
 //        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid7", for: indexPath) as! NewHeadnTailDDCell
 //        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid8", for: indexPath) as! NewSandanganQuizCell
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid9", for: indexPath) as! NewPanduanFirstCell
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid9", for: indexPath) as! NewPanduanFirstCell
 //        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid10", for: indexPath) as! NewRewardCell
         
 //        cell.backgroundColor = .red
