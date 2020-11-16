@@ -9,6 +9,8 @@
 import UIKit
 
 class LoadingView: UIView {
+    
+//    var progressBarValue = 1.00/7.00
 
     lazy var loadingFrameImage: UIImageView = {
         let img = UIImageView()
@@ -40,7 +42,7 @@ class LoadingView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.init(name: "NowAlt-Medium", size: 16)
-        label.text = "Sebelum mulai bermain kamu bisa membuka kamus terlebih dahulu"
+        label.text = "Aksara Carakan dapat lebih mudah dihafalkan dari anatomi bentuknya"
         label.textColor = UIColor.rgb(red: 3, green: 131, blue: 251, alpha: 1)
         
         return label
@@ -59,7 +61,7 @@ class LoadingView: UIView {
         return progress
     }()
     
-    let progress = Progress(totalUnitCount: 5)
+    let progress = Progress(totalUnitCount: 500)
     
     
     override init(frame: CGRect) {
@@ -80,16 +82,20 @@ class LoadingView: UIView {
     
     func startProgress() {
         progressView.progress = 0
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (timer) in
+        Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { (timer) in
             guard self.progress.isFinished == false else {
                 timer.invalidate()
-                print("finished")
                 return
             }
             self.progress.completedUnitCount += 1
             
             let progressFloat = Float(self.progress.fractionCompleted)
             self.progressView.setProgress(progressFloat, animated: true)
+            
+            //        UIView.animate(withDuration: 5) { [self] in
+            //            progressView.progress = 1
+            //        }
+            
         }
     }
     

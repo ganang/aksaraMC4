@@ -49,7 +49,7 @@ class NewGuideMLCell: UICollectionViewCell {
         canvasView.isOpaque = false
         canvasView.alwaysBounceVertical = true
         canvasView.drawingPolicy = .anyInput
-        canvasView.tool = PKInkingTool(.pen, color: .white, width: 20)
+        canvasView.tool = PKInkingTool(.marker, color: .white, width: 20)
         canvasView.tag = 2
         canvasView.delegate = self
         canvasView.alpha = 1
@@ -208,11 +208,11 @@ class NewGuideMLCell: UICollectionViewCell {
         
         //correct answer
         addSubview(correctLabel)
-        self.correctLabel.frame = CGRect(x: frame.size.width/2 - 20, y: 290, width: 40, height: 40)
+        self.correctLabel.frame = CGRect(x: frame.size.width/2 - 20, y: 360, width: 40, height: 40)
         
         UIView.animate(withDuration: 1, delay: 0, options: [.autoreverse], animations: {
             self.correctLabel.alpha = 1
-            self.correctLabel.frame = CGRect(x: self.frame.size.width/2 - 50, y: 260, width: 100, height: 100)
+            self.correctLabel.frame = CGRect(x: self.frame.size.width/2 - 50, y: 330, width: 100, height: 100)
 
         }) { (completed) in
             self.correctLabel.alpha = 0
@@ -315,11 +315,11 @@ class NewGuideMLCell: UICollectionViewCell {
         
         addSubview(tulisLabel)
         tulisLabel.centerXAnchor.constraint(equalTo: centerXAnchor, constant: -24).isActive = true
-        tulisLabel.topAnchor.constraint(equalTo: topAnchor, constant: 40).isActive = true
+        tulisLabel.topAnchor.constraint(equalTo: topAnchor, constant: 120).isActive = true
         
         addSubview(questionLabel)
         questionLabel.leadingAnchor.constraint(equalTo: tulisLabel.trailingAnchor, constant: 0).isActive = true
-        questionLabel.topAnchor.constraint(equalTo: topAnchor, constant: 40).isActive = true
+        questionLabel.topAnchor.constraint(equalTo: topAnchor, constant: 120).isActive = true
         
         addSubview(canvasView)
         canvasView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true

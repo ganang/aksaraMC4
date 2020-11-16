@@ -75,10 +75,15 @@ class LevelV2Controller: UIViewController {
     
     func tapContinueButton() {
         levelV2View.continueButton.addTarget(self, action: #selector(goToCurrentLevel), for: .touchUpInside)
+        
+        
     }
     
     @objc func goToCurrentLevel() {
-        gotoQuizLevelTahap1(index: currentLevel! - 1)
+        let quickStart = QuickStartViewController()
+        navigationController?.pushViewController(quickStart, animated: true)
+        
+//        gotoQuizLevelTahap1(index: currentLevel! - 1)
     }
     
     func handleData() {
@@ -87,9 +92,9 @@ class LevelV2Controller: UIViewController {
 //        levelScreen.levels = tahap1Model?.levels!.sortedArray(using: [.init(key: "id", ascending: true)]) as? [Level]
         
         //stage 1
-        levelV2View.tahap1progresLabel.text = "\(stages![0].currentMedal) / \(stages![0].totalMedal)"
-        levelV2View.tahap2progresLabel.text = "\(stages![1].currentMedal) / \(stages![1].totalMedal)"
-        levelV2View.tahap3progresLabel.text = "\(stages![2].currentMedal) / \(stages![2].totalMedal)"
+        levelV2View.tahap1progresLabel.text = "\(stages![0].currentMedal) / \(stages![0].totalMedal )" ?? ""
+        levelV2View.tahap2progresLabel.text = "\(stages![1].currentMedal) / \(stages![1].totalMedal)" ?? ""
+        levelV2View.tahap3progresLabel.text = "\(stages![2].currentMedal) / \(stages![2].totalMedal)" ?? ""
         
     }
     
@@ -117,7 +122,9 @@ class LevelV2Controller: UIViewController {
             }
         }
         
-        levelV2View.buttonLabel.text = "Lanjutkan Tahap 1 : Tingkat \(currentLevel!)"
+        //for quickstart
+        
+//        levelV2View.buttonLabel.text = "Lanjutkan Tahap 1 : Tingkat \(currentLevel!)"
     }
     
     func showLoading() {
@@ -328,7 +335,7 @@ extension LevelV2Controller : UICollectionViewDelegateFlowLayout, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 //        return CGSize(width: view.frame.width/3 - 60, height: 180)
-        return CGSize(width: 260, height: 180)
+        return CGSize(width: 303, height: 180)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -343,9 +350,9 @@ extension LevelV2Controller : UICollectionViewDelegateFlowLayout, UICollectionVi
         print("level ke", indexPath.item + 1)
         
         let levelTapped = indexPath.item + 1
-        if indexPath.item == 0 {
-            gotoQuizLevelTahap1(index: indexPath.item)
-        }
+//        if indexPath.item == 0 {
+//            gotoQuizLevelTahap1(index: indexPath.item)
+//        }
 
         
     }

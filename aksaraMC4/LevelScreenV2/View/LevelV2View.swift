@@ -83,7 +83,7 @@ class LevelV2View: UIView {
         let secondWord = "Tips: "
         let attrs      = [NSAttributedString.Key.font: UIFont.init(name: "NowAlt-Medium", size: 16), NSAttributedString.Key.foregroundColor: Theme.current.textColor1]
         let attrs2      = [NSAttributedString.Key.font: UIFont.init(name: "NowAlt-Regular", size: 16), NSAttributedString.Key.foregroundColor: Theme.current.textColor1]
-        let thirdWord   = "Sebelum mulai bermain kamu bisa membuka kamus terlebih dahulu"
+        let thirdWord   = "Aksara Carakan dapat lebih mudah dihafalkan dari anatomi bentuknya"
         let attributedText = NSMutableAttributedString(string:firstWord)
         attributedText.append(NSAttributedString(string: secondWord, attributes: attrs as [NSAttributedString.Key : Any]))
         attributedText.append(NSAttributedString(string: thirdWord, attributes: attrs2 as [NSAttributedString.Key : Any]))
@@ -95,7 +95,7 @@ class LevelV2View: UIView {
     lazy var continueButton: UIButton = {
         let button = UIButton()
         
-        button.setImage(UIImage(named: "continueButtonLevel-2"), for: .normal)
+        button.setImage(UIImage(named: "continueButton3"), for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
         button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -106,8 +106,8 @@ class LevelV2View: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.init(name: "NowAlt-Medium", size: 20)
-        label.text = "Lanjutkan Tahap 1 : Tingkat 3"
-        label.textColor = UIColor.rgb(red: 160, green: 23, blue: 39, alpha: 1)
+        label.text = "Quick Start : Tutorial"
+        label.textColor = Theme.current.textColor1
         
         return label
     }()
@@ -120,6 +120,7 @@ class LevelV2View: UIView {
         button.imageView?.contentMode = .scaleAspectFit
         button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.alpha = 0.4
         return button
     }()
 
@@ -140,7 +141,7 @@ class LevelV2View: UIView {
         button.backgroundColor = UIColor.rgb(red: 3, green: 131, blue: 251, alpha: 1)
         button.titleEdgeInsets = UIEdgeInsets(top: 0, left: -50, bottom: 0, right: 0)
         button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -140)
-        button.alpha = 1
+        button.alpha = 0.4
         
         return button
     }()
@@ -275,6 +276,7 @@ class LevelV2View: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.tag = 1
         view.isOpen = false
+        view.alpha = 0.4
         
         return view
     }()
@@ -367,6 +369,7 @@ class LevelV2View: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.tag = 2
         view.isOpen = false
+        view.alpha = 0.4
         
         return view
     }()
@@ -530,7 +533,7 @@ class LevelV2View: UIView {
         containerView.addSubview(continueButton)
         continueButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 115).isActive = true
         continueButton.topAnchor.constraint(equalTo: tipsLabel.bottomAnchor, constant: 64).isActive = true
-        continueButton.heightAnchor.constraint(equalToConstant: 70).isActive = true
+        continueButton.heightAnchor.constraint(equalToConstant: 64).isActive = true
         continueButton.widthAnchor.constraint(equalToConstant: 455).isActive = true
         
         continueButton.addSubview(buttonLabel)
@@ -656,8 +659,8 @@ class LevelV2View: UIView {
     
     func setupCV1() {
         containerView.addSubview(detailContainerView1)
-        detailContainerView1.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 110).isActive = true
-        detailContainerView1.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -78).isActive = true
+        detailContainerView1.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 115).isActive = true
+        detailContainerView1.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -138).isActive = true
         detailContainerView1.topAnchor.constraint(equalTo: containerViewTahap1.bottomAnchor, constant: 22).isActive = true
         detailContainerView1.heightAnchor.constraint(equalToConstant: 816).isActive = true
         
