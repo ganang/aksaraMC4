@@ -50,18 +50,17 @@ struct TextGenerator {
     }()
     
     static var extreme: PKDrawing = {
-        guard let ligatureData = NSDataAsset(name: "Testing")?.data, var drawing = try? PKDrawing(data: ligatureData) else {
+        guard let ligatureData = NSDataAsset(name: "wa3")?.data, var drawing = try? PKDrawing(data: ligatureData) else {
             fatalError("Could not load PencilKit ligature drawing asset.")
         }
 //
         drawing.strokes = drawing.strokes.map { stroke -> PKStroke in
             // Modify the strokes to have the correct color.
             var stroke = stroke
-            stroke.ink = PKInk(.pen, color: TextGenerator.templateColor)
+//            stroke.ink = PKInk(.pen, color: TextGenerator.templateColor)
+            stroke.ink = PKInk(.pen, color: .clear)
             return stroke
         }
-        
-        print("STROKE", drawing.strokes.count)
         
         return drawing
     }()

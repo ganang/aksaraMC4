@@ -289,6 +289,35 @@ extension UIView {
         self.layer.insertSublayer(gradientLayer, at:0)
     }
     
+    func setBackgroundColorGuideQuickStartBlue() {
+        let colorTop =  UIColor(red: 4/255.0, green: 110/255.0, blue: 208/255.0, alpha: 1.0).cgColor
+        let colorBottom = UIColor(red: 13/255.0, green: 58/255.0, blue: 128/255.0, alpha: 1.0).cgColor
+
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorTop, colorBottom]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame = self.bounds
+        gradientLayer.name = "quickStartGuide"
+        
+        self.layer.insertSublayer(gradientLayer, at:0)
+    }
+    
+    func setCheckButtonBackgroundGoldColor(withOpacity opacity: Float, withHeight height: Double, withWidth width: Double, withCorner corner: CGFloat) {
+        //GradientBlueAnswer
+        let colorTop =  Theme.current.gradientTopGold.cgColor
+        let colorBottom = Theme.current.gradientBottomGold.cgColor
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorTop, colorBottom]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame = CGRect(x: 0.0, y: 0.0, width: width, height: height)
+        gradientLayer.name = "goldButton"
+        gradientLayer.opacity = opacity
+        gradientLayer.cornerRadius = corner
+        
+        self.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
     func setCardChooseBackgroundColor() {
         //GradientBlueAnswer
         let colorTop =  UIColor(red: 36/255.0, green: 194/255.0, blue: 255/255.0, alpha: 1.0).cgColor
