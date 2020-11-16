@@ -7,5 +7,7 @@ target 'aksaraMC4' do
 
   # Pods for aksaraMC4
   pod 'lottie-ios'
+  pod 'SwiftyGif'
+
 
 end
