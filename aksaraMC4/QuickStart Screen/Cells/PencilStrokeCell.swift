@@ -98,6 +98,26 @@ class PencilStrokeCell: BaseCell, PKCanvasViewDelegate {
         return imageView
     }()
     
+    let trackingCorrectImageView1: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "waCorrectTrackImage1")
+        imageView.contentMode = .scaleToFill
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.isHidden = true
+        
+        return imageView
+    }()
+    
+    let trackingCorrectImageView2: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "waCorrectTrackImage")
+        imageView.contentMode = .scaleToFill
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.isHidden = true
+        
+        return imageView
+    }()
+    
     let trackingButton2: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -197,6 +217,8 @@ class PencilStrokeCell: BaseCell, PKCanvasViewDelegate {
         
         containerBackgroundView.addSubview(backgroundImageView)
         containerBackgroundView.addSubview(backgroundCanvasView)
+        containerBackgroundView.addSubview(trackingCorrectImageView2)
+        containerBackgroundView.addSubview(trackingCorrectImageView1)
         containerBackgroundView.addSubview(canvasView)
         
         canvasView.addSubview(trackingButton1)
@@ -205,8 +227,8 @@ class PencilStrokeCell: BaseCell, PKCanvasViewDelegate {
         canvasView.bringSubviewToFront(trackingButton1)
         canvasView.bringSubviewToFront(trackingButton2)
         
-        backgroundImageView.addSubview(trackingImageView1)
-        backgroundImageView.addSubview(trackingImageView2)
+        containerBackgroundView.addSubview(trackingImageView1)
+        containerBackgroundView.addSubview(trackingImageView2)
     }
     
     func setupConstraint() {
@@ -230,8 +252,8 @@ class PencilStrokeCell: BaseCell, PKCanvasViewDelegate {
         backgroundImageView.widthAnchor.constraint(equalToConstant: 287).isActive = true
         backgroundImageView.heightAnchor.constraint(equalToConstant: 240).isActive = true
         
-        trackingButton1.topAnchor.constraint(equalTo: backgroundImageView.bottomAnchor, constant: -6).isActive = true
-        trackingButton1.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: -8).isActive = true
+        trackingButton1.topAnchor.constraint(equalTo: backgroundImageView.bottomAnchor, constant: -12).isActive = true
+        trackingButton1.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: -6).isActive = true
         trackingButton1.widthAnchor.constraint(equalToConstant: 40).isActive = true
         trackingButton1.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
@@ -239,6 +261,11 @@ class PencilStrokeCell: BaseCell, PKCanvasViewDelegate {
         trackingImageView1.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 12).isActive = true
         trackingImageView1.widthAnchor.constraint(equalToConstant: 191).isActive = true
         trackingImageView1.heightAnchor.constraint(equalToConstant: 215).isActive = true
+        
+        trackingCorrectImageView1.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 2).isActive = true
+        trackingCorrectImageView1.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 2).isActive = true
+        trackingCorrectImageView1.widthAnchor.constraint(equalToConstant: 212).isActive = true
+        trackingCorrectImageView1.heightAnchor.constraint(equalToConstant: 236).isActive = true
         
         trackingButton2.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: -8).isActive = true
         trackingButton2.leadingAnchor.constraint(equalTo: backgroundImageView.centerXAnchor, constant: -28).isActive = true
@@ -249,6 +276,11 @@ class PencilStrokeCell: BaseCell, PKCanvasViewDelegate {
         trackingImageView2.leadingAnchor.constraint(equalTo: backgroundImageView.centerXAnchor, constant: 9).isActive = true
         trackingImageView2.widthAnchor.constraint(equalToConstant: 124.5).isActive = true
         trackingImageView2.heightAnchor.constraint(equalToConstant: 215).isActive = true
+        
+        trackingCorrectImageView2.centerXAnchor.constraint(equalTo: containerBackgroundView.centerXAnchor).isActive = true
+        trackingCorrectImageView2.centerYAnchor.constraint(equalTo: containerBackgroundView.centerYAnchor).isActive = true
+        trackingCorrectImageView2.widthAnchor.constraint(equalToConstant: 286).isActive = true
+        trackingCorrectImageView2.heightAnchor.constraint(equalToConstant: 240).isActive = true
         
         canvasView.centerXAnchor.constraint(equalTo: containerBackgroundView.centerXAnchor).isActive = true
         canvasView.centerYAnchor.constraint(equalTo: containerBackgroundView.centerYAnchor).isActive = true
@@ -300,14 +332,14 @@ class PencilStrokeCell: BaseCell, PKCanvasViewDelegate {
         }) { (complete) in
             self.correctButton.isHidden = true
             
-            UIView.animate(withDuration: 0.8, delay: 0.0, options: .curveLinear, animations: {
+            UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveLinear, animations: {
                 self.youSuccessButton.isHidden = false
                 self.youSuccessButton.frame = CGRect(x: self.frame.width/2 - 120, y: self.frame.height/2 + 250, width: 240, height: 39)
             }, completion: { complete in
                 // anim done
             });
             
-            UIView.animate(withDuration: 0.4, delay: 0.4, options: .curveLinear, animations: {
+            UIView.animate(withDuration: 0.25, delay: 0.25, options: .curveLinear, animations: {
                 self.smallCorrectButton.isHidden = false
                 self.guideAksaraName.isHidden = false
                 self.smallCorrectButton.frame = CGRect(x: self.frame.width/2 + 16, y: self.frame.height/2 + 211, width: 32, height: 32)
@@ -333,6 +365,7 @@ class PencilStrokeCell: BaseCell, PKCanvasViewDelegate {
     func canvasViewDrawingDidChange(_ canvasView: PKCanvasView) {
         let trackingButtons = [trackingButton1, trackingButton2]
         let trackingImages = [trackingImageView1, trackingImageView2]
+        let trackingCorrectImages = [trackingCorrectImageView1, trackingCorrectImageView2]
         // Avoid triggering the scoring, if we are programatically mutating the drawing.
         guard !isUpdatingDrawing else { return }
         
@@ -351,20 +384,24 @@ class PencilStrokeCell: BaseCell, PKCanvasViewDelegate {
         
         if distance < threshold {
             // Adjust the correct stroke to have a green ink.
-            canvasView.drawing.strokes[strokeIndex].ink.color = .white
+            canvasView.drawing.strokes[strokeIndex].ink.color = .clear
             
             trackingButtons[strokeAksaraIndex!].isHidden = true
             trackingImages[strokeAksaraIndex!].isHidden = true
+            trackingCorrectImages[strokeAksaraIndex!].isHidden = false
+            
             self.strokeAksaraIndex! += 1
             
             if (strokeAksaraIndex! < testDrawing.strokes.count) {
                 trackingButtons[strokeAksaraIndex!].isHidden = false
                 trackingImages[strokeAksaraIndex!].isHidden = false
+                
             }
             
             // If the user has finished, show the final score.
             if strokeIndex + 1 >= testDrawing.strokes.count {
 //                print("\(Int(score * 100))%")
+                trackingCorrectImages[0].isHidden = true
                 handleSuccess()
             }
         } else {
@@ -372,6 +409,7 @@ class PencilStrokeCell: BaseCell, PKCanvasViewDelegate {
             canvasView.drawing.strokes.removeLast()
             incorrectStrokeCount += 1
             trackingButtons[strokeAksaraIndex!].isHidden = false
+            generator.notificationOccurred(.error)
         }
         
         updateScore()
