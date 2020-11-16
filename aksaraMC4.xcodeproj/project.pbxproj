@@ -26,6 +26,9 @@
 		23812D8E2542C34D00C17F53 /* VokalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23812D8D2542C34D00C17F53 /* VokalView.swift */; };
 		23812D902542C37A00C17F53 /* PasanganView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23812D8F2542C37A00C17F53 /* PasanganView.swift */; };
 		2385AEB0254FC7F500BAB851 /* InputNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2385AEAF254FC7F500BAB851 /* InputNameView.swift */; };
+		239F9387255FEC6F0022DD49 /* QuizScreenV2Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239F9386255FEC6F0022DD49 /* QuizScreenV2Controller.swift */; };
+		239F938C255FEC960022DD49 /* QuizViewTypeBV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239F938A255FEC960022DD49 /* QuizViewTypeBV2.swift */; };
+		239F938D255FEC960022DD49 /* QuizViewTypeAV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239F938B255FEC960022DD49 /* QuizViewTypeAV2.swift */; };
 		23A8D13A254EAA8C0053409B /* OldStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A8D139254EAA8C0053409B /* OldStartView.swift */; };
 		23A8D13E254EE2630053409B /* ChooseRegionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A8D13D254EE2630053409B /* ChooseRegionView.swift */; };
 		23A900DB253C2BFE008636B1 /* Sunda Suara Ya.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A900A9253C2BFD008636B1 /* Sunda Suara Ya.mp3 */; };
@@ -163,6 +166,9 @@
 		23812D8D2542C34D00C17F53 /* VokalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VokalView.swift; sourceTree = "<group>"; };
 		23812D8F2542C37A00C17F53 /* PasanganView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasanganView.swift; sourceTree = "<group>"; };
 		2385AEAF254FC7F500BAB851 /* InputNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputNameView.swift; sourceTree = "<group>"; };
+		239F9386255FEC6F0022DD49 /* QuizScreenV2Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizScreenV2Controller.swift; sourceTree = "<group>"; };
+		239F938A255FEC960022DD49 /* QuizViewTypeBV2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizViewTypeBV2.swift; sourceTree = "<group>"; };
+		239F938B255FEC960022DD49 /* QuizViewTypeAV2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizViewTypeAV2.swift; sourceTree = "<group>"; };
 		23A8D139254EAA8C0053409B /* OldStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldStartView.swift; sourceTree = "<group>"; };
 		23A8D13D254EE2630053409B /* ChooseRegionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseRegionView.swift; sourceTree = "<group>"; };
 		23A900A9253C2BFD008636B1 /* Sunda Suara Ya.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sunda Suara Ya.mp3"; sourceTree = "<group>"; };
@@ -407,6 +413,32 @@
 				2372F70E2530420000E79198 /* QuizModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		239F9383255FEBBD0022DD49 /* QuizScreenV2 */ = {
+			isa = PBXGroup;
+			children = (
+				239F9385255FEC3E0022DD49 /* View */,
+				239F9384255FEC370022DD49 /* Controller */,
+			);
+			path = QuizScreenV2;
+			sourceTree = "<group>";
+		};
+		239F9384255FEC370022DD49 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				239F9386255FEC6F0022DD49 /* QuizScreenV2Controller.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		239F9385255FEC3E0022DD49 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				239F938B255FEC960022DD49 /* QuizViewTypeAV2.swift */,
+				239F938A255FEC960022DD49 /* QuizViewTypeBV2.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		23A900A8253C2BFD008636B1 /* Sunda Suara */ = {
@@ -692,6 +724,7 @@
 				A48A0FA1253C4AF800AB1ED5 /* Jawa Suara */,
 				23A900A8253C2BFD008636B1 /* Sunda Suara */,
 				23419AD3254195E3001F4CB8 /* DictionaryScreen */,
+				239F9383255FEBBD0022DD49 /* QuizScreenV2 */,
 				231EA802252DE940004FB678 /* QuizScreen */,
 				91C98770252F1A0A00D67BC0 /* LevelScreen */,
 				91C98764252EFE4800D67BC0 /* StageScreen */,
@@ -1044,6 +1077,7 @@
 				914344E6252DBADE002E867B /* ThemeProtocol.swift in Sources */,
 				A445D451253D810500A985CF /* TextGenerator.swift in Sources */,
 				2385AEB0254FC7F500BAB851 /* InputNameView.swift in Sources */,
+				239F938C255FEC960022DD49 /* QuizViewTypeBV2.swift in Sources */,
 				91C98779252F269000D67BC0 /* LevelView.swift in Sources */,
 				A4B3F536256119DC008D6520 /* GradientHorizontalProgressBar.swift in Sources */,
 				914344F6252DC366002E867B /* RegionController.swift in Sources */,
@@ -1052,6 +1086,7 @@
 				917757AC25500B6A001C2589 /* LoadingView.swift in Sources */,
 				A4B3F53325610D2D008D6520 /* QuickStartViewController.swift in Sources */,
 				A48E21F4254BFDC700C013BE /* CoreDataRecordV2.swift in Sources */,
+				239F938D255FEC960022DD49 /* QuizViewTypeAV2.swift in Sources */,
 				23F2828E2531D273009EC52B /* QuizViewTypeC.swift in Sources */,
 				23A8D13E254EE2630053409B /* ChooseRegionView.swift in Sources */,
 				2372F70F2530420000E79198 /* QuizModel.swift in Sources */,
@@ -1071,6 +1106,7 @@
 				232395D7255128F700BAF5A9 /* UlasanCell.swift in Sources */,
 				231EA809252DEA18004FB678 /* QuizController.swift in Sources */,
 				232395D02551232500BAF5A9 /* UlasanController.swift in Sources */,
+				239F9387255FEC6F0022DD49 /* QuizScreenV2Controller.swift in Sources */,
 				91775785254EFA32001C2589 /* StageTahap1Cell.swift in Sources */,
 				917757A725500B59001C2589 /* LoadingController.swift in Sources */,
 				91C98775252F268400D67BC0 /* LevelController.swift in Sources */,
