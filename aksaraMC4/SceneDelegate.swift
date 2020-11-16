@@ -18,15 +18,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let navController: UINavigationController = UINavigationController()
             let window = UIWindow(windowScene: windowScene)
             
-//            if UserDefaults.standard.object(forKey: "FirstLoad") != nil {
-//
-//                navController.viewControllers = [StartController()]
-//            } else {
-//                CoreDataRecordV2.shared.saveRecord()
-//                navController.viewControllers = [InputNameController()]
-//            }
-            navController.viewControllers = [QuizScreenV2Controller()]
-
+            if UserDefaults.standard.object(forKey: "FirstLoad") != nil {
+                
+                navController.viewControllers = [QuizDummyController()]
+            } else {
+                CoreDataRecordV2.shared.saveRecord()
+                navController.viewControllers = [InputNameController()]
+            }
+            
             window.rootViewController = navController
             self.window = window
             window.makeKeyAndVisible()

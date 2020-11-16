@@ -15,12 +15,12 @@ class QuizDummyController: UIViewController {
 
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 6
-        layout.scrollDirection = .vertical
+        layout.scrollDirection = .horizontal
 
         let cv = UICollectionView(frame: .zero , collectionViewLayout: layout)
         cv.backgroundColor = .clear
 
-        cv.bounces = true
+        cv.bounces = false
         cv.translatesAutoresizingMaskIntoConstraints =  false
         return cv
     }()
@@ -37,6 +37,14 @@ class QuizDummyController: UIViewController {
         collectionView.register(QuizCellTypeI.self, forCellWithReuseIdentifier: "cellid2")
         collectionView.register(QuizView.self, forCellWithReuseIdentifier: "cellid3")
         collectionView.register(QuizCellTypeGuide.self, forCellWithReuseIdentifier: "cellid4")
+        collectionView.register(NewGuideCell.self, forCellWithReuseIdentifier: "cellid5")
+        collectionView.register(NewGuideMLCell.self, forCellWithReuseIdentifier: "cellid6")
+        collectionView.register(NewHeadnTailDDCell.self, forCellWithReuseIdentifier: "cellid7")
+        collectionView.register(NewSandanganQuizCell.self, forCellWithReuseIdentifier: "cellid8")
+        collectionView.register(NewPanduanFirstCell.self, forCellWithReuseIdentifier: "cellid9")
+        collectionView.register(NewRewardCell.self, forCellWithReuseIdentifier: "cellid10")
+        
+        
         collectionView.delegate = self
         collectionView.dataSource = self
         //collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellid2")
@@ -46,7 +54,7 @@ class QuizDummyController: UIViewController {
     
     func settingLayout() {
         view.addSubview(collectionView)
-        collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
+        collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
         collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
@@ -76,7 +84,12 @@ extension QuizDummyController : UICollectionViewDelegate, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 //        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid4", for: indexPath) as! QuizCellTypeGuide
 //        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid2", for: indexPath) as! QuizCellTypeI
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid4", for: indexPath) as! QuizCellTypeGuide
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid5", for: indexPath) as! NewGuideCell
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid6", for: indexPath) as! NewGuideMLCell
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid7", for: indexPath) as! NewHeadnTailDDCell
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid8", for: indexPath) as! NewSandanganQuizCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid9", for: indexPath) as! NewPanduanFirstCell
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid10", for: indexPath) as! NewRewardCell
         
 //        cell.backgroundColor = .red
         
@@ -86,7 +99,7 @@ extension QuizDummyController : UICollectionViewDelegate, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: view.frame.height - 100)
+        return CGSize(width: view.frame.width, height: view.frame.height)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

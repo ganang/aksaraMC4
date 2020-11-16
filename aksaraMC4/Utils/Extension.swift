@@ -56,6 +56,18 @@ extension UIView {
         self.clipsToBounds = false
         //self.layer.cornerRadius = 15
     }
+    
+    func setPlaceholderShadow() {
+//        self.layer.shadowColor = UIColor.darkGray.cgColor
+        self.layer.shadowColor = CGColor.rgb(red: 255, green: 223, blue: 118, alpha: 1)
+        self.layer.shadowOffset = CGSize(width: 30, height: 30)
+//        self.layer.borderWidth = 6
+        self.layer.shadowOpacity = 0.5
+        self.layer.shadowRadius = 80
+//        self.layer.masksToBounds = false
+//        self.clipsToBounds = false
+        //self.layer.cornerRadius = 15
+    }
 }
 
 
@@ -559,6 +571,62 @@ extension UIView {
         ]
         shadowLayer.name = "innerShadow"
         layer.addSublayer(shadowLayer)
+    }
+    
+    
+    
+    //NewBackground
+    func setBackgroundGuide() {
+        let colorTop =  UIColor(red: 4/255.0, green: 110/255.0, blue: 208/255.0, alpha: 1.0).cgColor
+        let colorBottom = UIColor(red: 13/255.0, green: 58/255.0, blue: 128/255.0, alpha: 1.0).cgColor
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorTop, colorBottom]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame = self.bounds
+        gradientLayer.name = "gradientBackgroundGuide"
+        
+        self.layer.insertSublayer(gradientLayer, at:0)
+    }
+    
+    func setBackgroundDragnDrop() {
+        let colorTop =  UIColor(red: 8/255.0, green: 122/255.0, blue: 160/255.0, alpha: 1.0).cgColor
+        let colorBottom = UIColor(red: 19/255.0, green: 63/255.0, blue: 95/255.0, alpha: 1.0).cgColor
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorTop, colorBottom]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame = self.bounds
+        gradientLayer.name = "gradientBackgroundDragnDrop"
+        
+        self.layer.insertSublayer(gradientLayer, at:0)
+    }
+    
+    func setBackgroundOpening() {
+        let colorTop =  UIColor(red: 204/255.0, green: 96/255.0, blue: 0/255.0, alpha: 1.0).cgColor
+        let colorBottom = UIColor(red: 115/255.0, green: 42/255.0, blue: 11/255.0, alpha: 1.0).cgColor
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorTop, colorBottom]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame = self.bounds
+        gradientLayer.name = "gradientBackgroundDragnDrop"
+        
+        self.layer.insertSublayer(gradientLayer, at:0)
+    }
+    
+    
+    func setBackgroundReward() {
+        let colorTop =  UIColor(red: 110/255.0, green: 9/255.0, blue: 142/255.0, alpha: 1.0).cgColor
+        let colorBottom = UIColor(red: 56/255.0, green: 9/255.0, blue: 70/255.0, alpha: 1.0).cgColor
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorTop, colorBottom]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame = self.bounds
+        gradientLayer.name = "gradientBackgroundDragnDrop"
+        
+        self.layer.insertSublayer(gradientLayer, at:0)
     }
 }
 
