@@ -152,7 +152,7 @@ class NewRewardCell: UICollectionViewCell {
         button.layer.cornerRadius = 24
         button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
         button.tag = 0
-//        button.addTarget(self, action: #selector(reloadPencilKit), for: .touchUpInside)
+//        button.addTarget(self, action: #selector(backToLevel), for: .touchUpInside)
 //        button.alpha = 0.4
         button.backgroundColor = UIColor.rgb(red: 255, green: 183, blue: 81, alpha: 1)
         button.titleEdgeInsets = UIEdgeInsets(top: 0, left: -50, bottom: 0, right: 0)
@@ -161,6 +161,8 @@ class NewRewardCell: UICollectionViewCell {
         
         return button
     }()
+    
+
     
     lazy var ulasanButton : UIButton = {
         let button = UIButton()
@@ -246,8 +248,8 @@ class NewRewardCell: UICollectionViewCell {
 //            gifImage1.image =
 //            view.addSubview(imageview)
             addSubview(imageview2)
-            imageview2.leadingAnchor.constraint(equalTo: leadingAnchor, constant: -100).isActive = true
-            imageview2.topAnchor.constraint(equalTo: topAnchor, constant: -100).isActive = true
+            imageview2.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0).isActive = true
+            imageview2.topAnchor.constraint(equalTo: topAnchor, constant: 0).isActive = true
             imageview2.heightAnchor.constraint(equalToConstant: 360).isActive = true
             imageview2.widthAnchor.constraint(equalToConstant: 360).isActive = true
             
@@ -257,8 +259,8 @@ class NewRewardCell: UICollectionViewCell {
 
                 addSubview(imageview3)
                 imageview3.transform = imageview3.transform.rotated(by: .pi)
-                imageview3.leadingAnchor.constraint(equalTo: leadingAnchor, constant: -100).isActive = true
-                imageview3.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 100).isActive = true
+                imageview3.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0).isActive = true
+                imageview3.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0).isActive = true
                 imageview3.heightAnchor.constraint(equalToConstant: 360).isActive = true
                 imageview3.widthAnchor.constraint(equalToConstant: 360).isActive = true
             }
@@ -308,6 +310,8 @@ class NewRewardCell: UICollectionViewCell {
             
         }
     }
+    
+
     
     func setupViewReal() {
         addSubview(rewardLabel)

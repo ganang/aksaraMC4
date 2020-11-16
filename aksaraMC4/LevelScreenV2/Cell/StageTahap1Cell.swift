@@ -25,18 +25,25 @@ class StageTahap1Cell: UICollectionViewCell {
 //            
             if currentLevel == indexPath {
                 //jika status tidak false dan sedang ongoing
-                containerView.image = UIImage(named: "TahapOngoingCard")
+//                containerView.image = UIImage(named: "TahapLockedCard")
+//                tingkatNameLabel.font = UIFont.init(name: "NowAlt-Medium", size: 16)
+//                tingkatNameLabel.textColor = UIColor.rgb(red: 160, green: 23, blue: 39, alpha: 1)
+//
+//                centerImageWidth2?.isActive = false
+//                centerImageHeight2?.isActive = false
+//
+//                centerImageWidth1?.isActive = true
+//                centerImageHeight1?.isActive = true
+//
+//                bottomAnchorTingkatName2?.isActive = false
+//                bottomAnchorTingkatName1?.isActive = true
+                
+                containerView.image = UIImage(named: "tahapLocked2")
                 tingkatNameLabel.font = UIFont.init(name: "NowAlt-Medium", size: 16)
-                tingkatNameLabel.textColor = UIColor.rgb(red: 160, green: 23, blue: 39, alpha: 1)
-                
-                centerImageWidth2?.isActive = false
-                centerImageHeight2?.isActive = false
-                
-                centerImageWidth1?.isActive = true
-                centerImageHeight1?.isActive = true
-                
-                bottomAnchorTingkatName2?.isActive = false
-                bottomAnchorTingkatName1?.isActive = true
+                tingkatNameLabel.textColor = Theme.current.textColor1
+                centerImage.removeFromSuperview()
+                bottomAnchorTingkatName1?.isActive = false
+                bottomAnchorTingkatName2?.isActive = true
 //                containerView.contentMode = .scaleAspectFill
             }
         }
@@ -64,7 +71,7 @@ class StageTahap1Cell: UICollectionViewCell {
                 
             } else {
                 //jika masih locked
-                containerView.image = UIImage(named: "TahapLockedCard")
+                containerView.image = UIImage(named: "tahapLocked2")
                 tingkatNameLabel.font = UIFont.init(name: "NowAlt-Medium", size: 16)
                 tingkatNameLabel.textColor = Theme.current.textColor1
                 centerImage.removeFromSuperview()
@@ -78,7 +85,7 @@ class StageTahap1Cell: UICollectionViewCell {
     lazy var containerView: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "TahapDoneCard")
-        image.contentMode = .scaleAspectFill
+        image.contentMode = .scaleToFill
         image.translatesAutoresizingMaskIntoConstraints = false
         image.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
         
@@ -142,7 +149,7 @@ class StageTahap1Cell: UICollectionViewCell {
         bottomAnchorTingkatName1 = tingkatNameLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -10)
         
         //botton jika locked
-        bottomAnchorTingkatName2 = tingkatNameLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 52)
+        bottomAnchorTingkatName2 = tingkatNameLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -16)
         
         
     }
@@ -154,11 +161,11 @@ class StageTahap1Cell: UICollectionViewCell {
         containerView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         containerView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         
-        containerView.addSubview(gununganImage)
-        gununganImage.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10).isActive = true
-        gununganImage.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
-        gununganImage.heightAnchor.constraint(equalToConstant: 24).isActive = true
-        gununganImage.widthAnchor.constraint(equalToConstant: 13).isActive = true
+//        containerView.addSubview(gununganImage)
+//        gununganImage.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10).isActive = true
+//        gununganImage.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
+//        gununganImage.heightAnchor.constraint(equalToConstant: 24).isActive = true
+//        gununganImage.widthAnchor.constraint(equalToConstant: 13).isActive = true
 
         containerView.addSubview(centerImage)
         centerImage.centerYAnchor.constraint(equalTo: containerView.centerYAnchor, constant: 0).isActive = true
