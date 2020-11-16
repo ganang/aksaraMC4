@@ -11,6 +11,7 @@ import UIKit
 class QuickStartViewController: UIViewController {
     
     private let pencilStrokeCellId = "PencilStrokeCell_ID"
+    private let pencilStrokeWithoutCellId = "PencilStrokeWithoutCell_ID"
     private let newGuideFirstCellId = "NewGuideFirstCell_ID"
     private let anatomiCellId = "AnatomiCell_ID"
     private let newHeadnTailDDCellId = "NewHeadnTailDDCell_ID"
@@ -210,6 +211,7 @@ class QuickStartViewController: UIViewController {
     
     func registerCV() {
         quickStartCollectionView.register(PencilStrokeCell.self, forCellWithReuseIdentifier: pencilStrokeCellId)
+        quickStartCollectionView.register(PencilStrokeWithoutCell.self, forCellWithReuseIdentifier: pencilStrokeWithoutCellId)
         quickStartCollectionView.register(NewPanduanFirstCell.self, forCellWithReuseIdentifier: newGuideFirstCellId)
         quickStartCollectionView.register(NewGuideCell.self, forCellWithReuseIdentifier: anatomiCellId)
         quickStartCollectionView.register(NewHeadnTailDDCell.self, forCellWithReuseIdentifier: newHeadnTailDDCellId)
@@ -299,13 +301,33 @@ class QuickStartViewController: UIViewController {
         }
     }
     
+    @objc func handleToReviewButton() {
+        navigationController?.pushViewController(QuickStartReviewViewController(), animated: true)
+    }
+    
     @objc func handleNextQuiz(_ sender: UIButton) {
+        
+        let corrects = QuickStartReviewData.instance.quizesCorrectStatus
+        var totalCorrect = 0
+        
+        for correct in corrects {
+            print("correct", correct)
+            if (correct == true) {
+                totalCorrect += 1
+            }
+        }
         
         let indexPath = IndexPath(item: sender.tag + 1, section: 0)
         self.indexCollection = indexPath
-        print("index", indexCollection?.item)
         
-        if (indexCollection!.item < 8) {
+        if (sender.tag + 1 == 7) {
+            self.progressLabel.isHidden = true
+            self.progressBar.isHidden = true
+            self.backButton.isHidden = true
+            self.titleLabel.isHidden = true
+        }
+        
+        if (sender.tag + 1 < 8) {
             
             if self.quickStartCollectionView.dataSource?.collectionView(self.quickStartCollectionView, cellForItemAt: IndexPath(row: 0, section: 0)) != nil {
                 let rect = self.quickStartCollectionView.layoutAttributesForItem(at: indexPath)?.frame
@@ -315,11 +337,6 @@ class QuickStartViewController: UIViewController {
             self.progressBarValue = Double(indexCollection!.item + 1) / 7.00
             handleProgress(withProgress: CGFloat(progressBarValue))
             handleProgressLabel(withIndex: indexPath.item + 1)
-        } else {
-            self.progressLabel.isHidden = true
-            self.progressBar.isHidden = true
-            self.backButton.isHidden = true
-            self.titleLabel.isHidden = true
         }
     }
     
@@ -380,12 +397,7 @@ class QuickStartViewController: UIViewController {
     }
     
     @objc func hideWarningModal() {
-//        startTimer()
         backBackgroundBlurView.removeFromSuperview()
-        
-//        if (quizes?[indexCollection!.item].type != "Guide") {
-//            handleResumeTimer()
-//        }
     }
 }
 
@@ -399,7 +411,7 @@ extension QuickStartViewController: UICollectionViewDelegateFlowLayout, UICollec
         switch indexPath.row {
         case 0:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: newGuideFirstCellId, for: indexPath) as! NewPanduanFirstCell
-            cell.continueButton.tag = indexPath.item
+            cell.continueButton.tag = indexPath.row
             cell.continueButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
             batikBackgroundImageView.alpha = 0.16
             
@@ -407,49 +419,54 @@ extension QuickStartViewController: UICollectionViewDelegateFlowLayout, UICollec
             
         case 1:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: anatomiCellId, for: indexPath) as! NewGuideCell
-            cell.continueButton.tag = indexPath.item
+            cell.continueButton.tag = indexPath.row
             cell.continueButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
             
             return cell
             
         case 2:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pencilStrokeCellId, for: indexPath) as! PencilStrokeCell
-            cell.gotItButton.tag = indexPath.item
+            cell.gotItButton.tag = indexPath.row
             cell.gotItButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
             
             return cell
             
         case 3:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: newHeadnTailDDCellId, for: indexPath) as! NewHeadnTailDDCell
-            cell.continueButton.tag = indexPath.item
+            cell.continueButton.tag = indexPath.row
             cell.continueButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
             
             return cell
             
         case 4:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: quizViewTypeAV2CellId, for: indexPath) as! QuizViewTypeAV2
-            cell.lanjutStateButton.tag = indexPath.item
+            cell.lanjutStateButton.tag = indexPath.row
             cell.lanjutStateButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
+            self.titleLabel.text = "Aksara Jawa - Kuis"
             
             return cell
             
         case 5:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pencilStrokeCellId, for: indexPath) as! PencilStrokeCell
-            cell.gotItButton.tag = indexPath.item
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pencilStrokeWithoutCellId, for: indexPath) as! PencilStrokeWithoutCell
+            cell.gotItButton.tag = indexPath.row
             cell.gotItButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
+            self.view.removeLayer(name: "quickStartGuide")
+            self.view.setBackgroundDragnDrop()
+            self.titleLabel.text = "Aksara Jawa - Kuis"
             
             return cell
             
         case 6:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: newGuideMLCellId, for: indexPath) as! NewGuideMLCell
-            cell.continueButton.tag = indexPath.item
+            cell.continueButton.tag = indexPath.row
             cell.continueButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
-            
+            self.titleLabel.text = "Aksara Jawa - Kuis"
             
             return cell
             
         case 7:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: newRewardCellId, for: indexPath) as! NewRewardCell
+            cell.ulasanButton.addTarget(self, action: #selector(handleToReviewButton), for: .touchUpInside)
             cell.continueButton.addTarget(self, action: #selector(handlePopBack), for: .touchUpInside)
             cell.layarUtamaButton.addTarget(self, action: #selector(handlePopBack), for: .touchUpInside)
             

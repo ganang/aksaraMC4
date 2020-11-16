@@ -10,6 +10,40 @@ import UIKit
 
 class QuickStartReviewCell: BaseCell {
     
+    var isCorrect: Bool? {
+        didSet {
+            self.correctOrFalseImageView.setImage((isCorrect! ? UIImage(named: "correctAnswer") : UIImage(named: "falseAnswer"))!)
+        }
+    }
+    
+    var quizName: String? {
+        didSet {
+            self.quizTitleLabel.text = quizName
+        }
+    }
+    
+    var quizTypeName: String? {
+        didSet {
+            self.quizTypeLabel.text = quizTypeName
+        }
+    }
+    
+    var quizType: String? {
+        didSet {
+            if (quizType == "anatomi") {
+                setupAnatomi()
+            }
+            
+            if (quizType == "latin") {
+                setupLatin()
+            }
+            
+            if (quizType == "writing") {
+                setupWriting()
+            }
+        }
+    }
+    
     //LabelTopCard
     let quizTitleLabel: UILabel = {
         let label = UILabel()
@@ -90,6 +124,82 @@ class QuickStartReviewCell: BaseCell {
         return imageView
     }()
     
+    // handle for anatomi
+    let reusableImageView1: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "Jawa Jawaban Ha")?.withRenderingMode(.alwaysTemplate)
+        imageView.tintColor = Theme.current.accentWhite
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.clipsToBounds = true
+        
+        return imageView
+    }()
+    
+    let reusableImageView2: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "Jawa Jawaban Ha")?.withRenderingMode(.alwaysTemplate)
+        imageView.tintColor = Theme.current.accentWhite
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.clipsToBounds = true
+        
+        return imageView
+    }()
+    
+    let reusableImageView3: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "Jawa Jawaban Ha")?.withRenderingMode(.alwaysTemplate)
+        imageView.tintColor = Theme.current.accentWhite
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.clipsToBounds = true
+        
+        return imageView
+    }()
+    
+    let reusableArrowImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(systemName: "arrow.right")?.withRenderingMode(.alwaysTemplate)
+        imageView.tintColor = Theme.current.accentWhite
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.clipsToBounds = true
+        
+        return imageView
+    }()
+    
+    let reusablePlusImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(systemName: "plus")?.withRenderingMode(.alwaysTemplate)
+        imageView.tintColor = Theme.current.accentWhite
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.clipsToBounds = true
+        
+        return imageView
+    }()
+    
+    let reusableLabel1: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.init(name: "NowAlt-Medium", size: 16)
+        label.textColor = Theme.current.accentWhite
+        label.text = ""
+        
+        return label
+    }()
+    
+    let reusablePencilImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "pencil")
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.clipsToBounds = true
+        
+        return imageView
+    }()
+    
     override func setupViews() {
         setupInterfaceComponent()
         setupConstraint()
@@ -151,6 +261,92 @@ class QuickStartReviewCell: BaseCell {
         reviewCardBottomRightImageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: 16).isActive = true
         reviewCardBottomRightImageView.widthAnchor.constraint(equalToConstant: 32).isActive = true
         reviewCardBottomRightImageView.heightAnchor.constraint(equalToConstant: 32).isActive = true
+    }
+    
+    func setupAnatomi() {
+        let aksaraAnatomiImage = "Jawa Jawaban Wa"
+        let headAnatomiImage = "Jawa Kepala Wa"
+        let tailAnatomiImage = "Jawa Ekor Wa"
+        
+        reusableImageView1.image = UIImage(named: aksaraAnatomiImage)?.withRenderingMode(.alwaysTemplate)
+        reusableImageView2.image = UIImage(named: headAnatomiImage)?.withRenderingMode(.alwaysTemplate)
+        reusableImageView3.image = UIImage(named: tailAnatomiImage)?.withRenderingMode(.alwaysTemplate)
+        
+        containerView.addSubview(reusableImageView1)
+        containerView.addSubview(reusableArrowImageView)
+        containerView.addSubview(reusableImageView2)
+        containerView.addSubview(reusablePlusImageView)
+        containerView.addSubview(reusableImageView3)
+        
+        reusableImageView3.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
+        reusableImageView3.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
+        reusableImageView3.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        reusableImageView3.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        
+        reusableArrowImageView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
+        reusableArrowImageView.trailingAnchor.constraint(equalTo: reusableImageView3.leadingAnchor, constant: -8).isActive = true
+        reusableArrowImageView.widthAnchor.constraint(equalToConstant: 40/2).isActive = true
+        reusableArrowImageView.heightAnchor.constraint(equalToConstant: 40/2).isActive = true
+        
+        reusableImageView1.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
+        reusableImageView1.trailingAnchor.constraint(equalTo: reusableArrowImageView.leadingAnchor, constant: -12).isActive = true
+        reusableImageView1.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        reusableImageView1.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        
+        reusablePlusImageView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
+        reusablePlusImageView.leadingAnchor.constraint(equalTo: reusableImageView3.trailingAnchor, constant: 8).isActive = true
+        reusablePlusImageView.widthAnchor.constraint(equalToConstant: 40/2).isActive = true
+        reusablePlusImageView.heightAnchor.constraint(equalToConstant: 40/2).isActive = true
+        
+        reusableImageView2.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
+        reusableImageView2.leadingAnchor.constraint(equalTo: reusablePlusImageView.trailingAnchor, constant: 8).isActive = true
+        reusableImageView2.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        reusableImageView2.heightAnchor.constraint(equalToConstant: 40).isActive = true
+    }
+    
+    func setupLatin() {
+        let aksaraWidth = frame.width / 8
+        
+        let aksaraImage = "Jawa Jawaban Wa"
+        
+        reusableImageView1.image = UIImage(named: aksaraImage)?.withRenderingMode(.alwaysTemplate)
+        reusableLabel1.text = "Wa"
+        
+        containerView.addSubview(reusableLabel1)
+        containerView.addSubview(reusableImageView1)
+        containerView.addSubview(reusableArrowImageView)
+        
+        reusableArrowImageView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
+        reusableArrowImageView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
+        reusableArrowImageView.widthAnchor.constraint(equalToConstant: aksaraWidth/2).isActive = true
+        reusableArrowImageView.heightAnchor.constraint(equalToConstant: aksaraWidth/2).isActive = true
+        
+        reusableImageView1.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
+        reusableImageView1.trailingAnchor.constraint(equalTo: reusableArrowImageView.leadingAnchor, constant: -8).isActive = true
+        reusableImageView1.widthAnchor.constraint(equalToConstant: aksaraWidth).isActive = true
+        reusableImageView1.heightAnchor.constraint(equalToConstant: aksaraWidth).isActive = true
+        
+        reusableLabel1.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
+        reusableLabel1.leadingAnchor.constraint(equalTo: reusableArrowImageView.trailingAnchor, constant: 8).isActive = true
+    }
+    
+    func setupWriting() {
+        let aksaraImage = "Jawa Jawaban Wa"
+        
+        reusableImageView1.image = UIImage(named: aksaraImage)?.withRenderingMode(.alwaysTemplate)
+        
+        containerView.addSubview(reusablePencilImageView)
+        containerView.addSubview(reusableImageView1)
+        
+        reusableImageView1.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
+        reusableImageView1.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
+        reusableImageView1.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        reusableImageView1.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        
+        reusablePencilImageView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor, constant: -12).isActive = true
+        reusablePencilImageView.leadingAnchor.constraint(equalTo: reusableImageView1.trailingAnchor, constant: -20).isActive = true
+        reusablePencilImageView.widthAnchor.constraint(equalToConstant: 40 * 2).isActive = true
+        reusablePencilImageView.heightAnchor.constraint(equalToConstant: 40 * 2).isActive = true
     }
 }
 

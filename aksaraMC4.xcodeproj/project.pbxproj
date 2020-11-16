@@ -161,6 +161,8 @@
 		A4C715BC2539A45B00270D58 /* CoreDataRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C715BB2539A45B00270D58 /* CoreDataRecord.swift */; };
 		A4ECCF2C25627F9200E038BA /* QuickStartReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECCF2B25627F9200E038BA /* QuickStartReviewViewController.swift */; };
 		A4ECCF3E2562A2AA00E038BA /* QuickStartReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECCF3D2562A2AA00E038BA /* QuickStartReviewCell.swift */; };
+		A4ECCF412562C8E600E038BA /* QuickStartReviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECCF402562C8E600E038BA /* QuickStartReviewData.swift */; };
+		A4ECCF462562DFA200E038BA /* PencilStrokeWithoutTrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECCF452562DFA200E038BA /* PencilStrokeWithoutTrackCell.swift */; };
 		A4F19FC52535939400F5BA23 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F19FC42535939400F5BA23 /* BaseView.swift */; };
 		A4F7A330255BF900005B6202 /* AksaraModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A4F7A32F255BF900005B6202 /* AksaraModel.mlmodel */; };
 		DA666F577C7465F9A53CCC8F /* Pods_aksaraMC4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CC4C2B2BDF5350BA10417E0 /* Pods_aksaraMC4.framework */; };
@@ -327,6 +329,8 @@
 		A4C715BB2539A45B00270D58 /* CoreDataRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRecord.swift; sourceTree = "<group>"; };
 		A4ECCF2B25627F9200E038BA /* QuickStartReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickStartReviewViewController.swift; sourceTree = "<group>"; };
 		A4ECCF3D2562A2AA00E038BA /* QuickStartReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickStartReviewCell.swift; sourceTree = "<group>"; };
+		A4ECCF402562C8E600E038BA /* QuickStartReviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickStartReviewData.swift; sourceTree = "<group>"; };
+		A4ECCF452562DFA200E038BA /* PencilStrokeWithoutTrackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PencilStrokeWithoutTrackCell.swift; sourceTree = "<group>"; };
 		A4F19FC42535939400F5BA23 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		A4F7A32F255BF900005B6202 /* AksaraModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = AksaraModel.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -924,6 +928,7 @@
 				A4B3F53A256127EC008D6520 /* Cells */,
 				A4B3F539256127DC008D6520 /* Views */,
 				A4B3F53225610D2D008D6520 /* QuickStartViewController.swift */,
+				A4ECCF402562C8E600E038BA /* QuickStartReviewData.swift */,
 			);
 			path = "QuickStart Screen";
 			sourceTree = "<group>";
@@ -942,6 +947,7 @@
 			children = (
 				A4B3F53B256127FD008D6520 /* PencilStrokeCell.swift */,
 				A4ECCF3D2562A2AA00E038BA /* QuickStartReviewCell.swift */,
+				A4ECCF452562DFA200E038BA /* PencilStrokeWithoutTrackCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1179,6 +1185,7 @@
 				9177577C254C35E0001C2589 /* LevelV2Controller.swift in Sources */,
 				23A8D13A254EAA8C0053409B /* OldStartView.swift in Sources */,
 				A41A77F2252D9586001C4FAD /* aksaraMC4.xcdatamodeld in Sources */,
+				A4ECCF462562DFA200E038BA /* PencilStrokeWithoutTrackCell.swift in Sources */,
 				231EA807252DE9C7004FB678 /* QuizView.swift in Sources */,
 				235D23B42532DA680007F81E /* QuizViewTypeD.swift in Sources */,
 				9177576B254A87BB001C2589 /* QuizCellTypeI.swift in Sources */,
@@ -1205,6 +1212,7 @@
 				23F2828E2531D273009EC52B /* QuizViewTypeC.swift in Sources */,
 				23A8D13E254EE2630053409B /* ChooseRegionView.swift in Sources */,
 				2372F70F2530420000E79198 /* QuizModel.swift in Sources */,
+				A4ECCF412562C8E600E038BA /* QuickStartReviewData.swift in Sources */,
 				A41A77E8252D9586001C4FAD /* AppDelegate.swift in Sources */,
 				23812D902542C37A00C17F53 /* PasanganView.swift in Sources */,
 				23812D8E2542C34D00C17F53 /* VokalView.swift in Sources */,

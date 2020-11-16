@@ -58,23 +58,21 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     lazy var continueButton : UIButton = {
         let button = UIButton()
         
-        let origImage = UIImage(systemName: "arrow.right")
-        let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
-        button.setImage(tintedImage, for: .normal)
-        button.setTitle("Lanjut", for: .normal)
-        button.setTitleColor(UIColor.rgb(red: 23, green: 78, blue: 161, alpha: 1), for: .normal)
-        button.titleLabel?.font = UIFont.init(name: "NowAlt-Medium", size: 20)
-    
-        button.tintColor = UIColor.rgb(red: 23, green: 78, blue: 161, alpha: 1)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.layer.cornerRadius = 28
-        button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
+        button.setCheckButtonBackgroundGoldColor(withOpacity: 1, withHeight: 48, withWidth: 240, withCorner: 24)
+        button.setTitle("Lanjut", for: .normal)
+        button.setTitleColor(Theme.current.accentPurple, for: .normal)
+        button.titleLabel?.font = UIFont.init(name: "NowAlt-Medium", size: 16)
+        let boldConfig = UIImage.SymbolConfiguration(weight: .bold)
+        let tintedImage = UIImage(systemName: "arrow.right", withConfiguration: boldConfig)?.withRenderingMode(.alwaysTemplate)
+        button.setImage(tintedImage, for: .normal)
+        if let imageView = button.imageView {
+            button.bringSubviewToFront(imageView)
+        }
         button.tag = 0
-//        button.addTarget(self, action: #selector(reloadPencilKit), for: .touchUpInside)
-//        button.alpha = 0.4
-        button.backgroundColor = UIColor.rgb(red: 255, green: 183, blue: 81, alpha: 1)
-        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: -50, bottom: 0, right: 0)
-        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -220)
+        button.imageView?.tintColor = Theme.current.purpleColor
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 200, bottom: 0, right: 0)
+        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: -20, bottom: 0, right: 0)
         button.alpha = 1
         
         return button
@@ -832,9 +830,6 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
             }
         }
         
-        
-        
-        
     }
     
     func checkAnswer() {
@@ -845,12 +840,12 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
             tailImageChoice.image = UIImage(named: "Jawa Ekor \(aksaraOnTailPlaceHolders!)")
             
             if aksaraOnHeadPlaceHolders == aksaraQuestion && aksaraOnTailPlaceHolders == aksaraQuestion {
-                print("BENAR")
+                QuickStartReviewData.instance.quizesCorrectStatus[0] = true
                 playSoundTrue()
                 statementLabel.text = "Jawaban kamu sudah benar"
                 
             } else {
-                print("Salah")
+                QuickStartReviewData.instance.quizesCorrectStatus[0] = false
                 playSoundFalse()
                 statementLabel.text = "Jawaban kamu masih salah"
             }

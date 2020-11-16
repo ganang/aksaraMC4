@@ -24,10 +24,20 @@ class QuickStartReviewViewController: UIViewController {
     }
     
     func handleTotalCorrectLabel() {
+        let corrects = QuickStartReviewData.instance.quizesCorrectStatus
+        var totalCorrect = 0
+        
+        for correct in corrects {
+            print("correct", correct)
+            if (correct == true) {
+                totalCorrect += 1
+            }
+        }
+            
         let firstWord   = ""
-        let secondWord = ": \(3) kuis"
-        let attrs      = [NSAttributedString.Key.font: UIFont.init(name: "NowAlt-Medium", size: 16), NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 23, green: 78, blue: 161, alpha: 1)]
-        let attrs2     = [NSAttributedString.Key.font: UIFont.init(name: "NowAlt-Regular", size: 16), NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 23, green: 78, blue: 161, alpha: 1)]
+        let secondWord = ": \(totalCorrect) kuis"
+        let attrs      = [NSAttributedString.Key.font: UIFont.init(name: "NowAlt-Medium", size: 16), NSAttributedString.Key.foregroundColor: Theme.current.accentWhite]
+        let attrs2     = [NSAttributedString.Key.font: UIFont.init(name: "NowAlt-Regular", size: 16), NSAttributedString.Key.foregroundColor: Theme.current.accentWhite]
         let thirdWord   = " dari \(3) kuis"
         let attributedText = NSMutableAttributedString(string:firstWord)
         attributedText.append(NSAttributedString(string: secondWord, attributes: attrs as [NSAttributedString.Key : Any]))
@@ -109,7 +119,7 @@ class QuickStartReviewViewController: UIViewController {
         
         label.font = UIFont.init(name: "NowAlt-Medium", size: 16)
         label.textColor = Theme.current.accentWhite
-        label.text = ": 4 mnt 30 dtk"
+        label.text = ": 0 detik"
         
         return label
     }()
@@ -119,10 +129,10 @@ class QuickStartReviewViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         
         let firstWord   = ""
-        let secondWord = ": 14 kuis"
+        let secondWord = ": 3 kuis"
         let attrs      = [NSAttributedString.Key.font: UIFont.init(name: "NowAlt-Medium", size: 16), NSAttributedString.Key.foregroundColor: Theme.current.accentWhite]
         let attrs2     = [NSAttributedString.Key.font: UIFont.init(name: "NowAlt-Regular", size: 16), NSAttributedString.Key.foregroundColor: Theme.current.accentWhite]
-        let thirdWord   = " dari 18 kuis"
+        let thirdWord   = " dari 3 kuis"
         let attributedText = NSMutableAttributedString(string:firstWord)
         attributedText.append(NSAttributedString(string: secondWord, attributes: attrs as [NSAttributedString.Key : Any]))
         attributedText.append(NSAttributedString(string: thirdWord, attributes: attrs2 as [NSAttributedString.Key : Any]))
@@ -369,6 +379,7 @@ class QuickStartReviewViewController: UIViewController {
         setupDelegate()
         
         setupViewHeader()
+        handleTotalCorrectLabel()
     }
     
     func registerCV() {
@@ -395,7 +406,7 @@ class QuickStartReviewViewController: UIViewController {
         containerView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         containerView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
         containerView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
-        containerViewHeightAnchor2 = containerView.heightAnchor.constraint(equalToConstant: view.frame.height + 424)
+        containerViewHeightAnchor2 = containerView.heightAnchor.constraint(equalToConstant: view.frame.height + 126)
         containerViewHeightAnchor2?.isActive = true
     }
     
@@ -528,11 +539,15 @@ class QuickStartReviewViewController: UIViewController {
 extension QuickStartReviewViewController : UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
+        return QuickStartReviewData.instance.quizesNameArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ulasanCellId, for: indexPath) as! QuickStartReviewCell
+        cell.isCorrect = QuickStartReviewData.instance.quizesCorrectStatus[indexPath.row]
+        cell.quizName = QuickStartReviewData.instance.quizesNameArray[indexPath.row]
+        cell.quizTypeName = QuickStartReviewData.instance.quizesTypeNameArray[indexPath.row]
+        cell.quizType = QuickStartReviewData.instance.quizesTypeArray[indexPath.row]
         
         return cell
     }

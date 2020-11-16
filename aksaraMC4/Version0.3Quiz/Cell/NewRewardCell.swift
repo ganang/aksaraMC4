@@ -117,7 +117,7 @@ class NewRewardCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.init(name: "NowAlt-Medium", size: 16)
-        label.text = ": 3 Menit 30 Detik"
+        label.text = ": 0 detik"
         label.textColor = Theme.current.accentWhite
         label.alpha = 1
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -125,7 +125,8 @@ class NewRewardCell: UICollectionViewCell {
         return label
     }()
     
-    let kuisCorrectLabel: UILabel = {
+    lazy var kuisCorrectLabel: UILabel = {
+        
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.init(name: "NowAlt-Medium", size: 16)
@@ -152,12 +153,9 @@ class NewRewardCell: UICollectionViewCell {
         button.layer.cornerRadius = 24
         button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
         button.tag = 0
-//        button.addTarget(self, action: #selector(backToLevel), for: .touchUpInside)
-//        button.alpha = 0.4
         button.backgroundColor = UIColor.rgb(red: 255, green: 183, blue: 81, alpha: 1)
         button.titleEdgeInsets = UIEdgeInsets(top: 0, left: -50, bottom: 0, right: 0)
         button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -420)
-//        button.alpha = 0.4
         
         return button
     }()
@@ -179,12 +177,9 @@ class NewRewardCell: UICollectionViewCell {
         button.layer.cornerRadius = 24
         button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
         button.tag = 0
-//        button.addTarget(self, action: #selector(reloadPencilKit), for: .touchUpInside)
-//        button.alpha = 0.4
         button.backgroundColor = UIColor.init(white: 1, alpha: 0.2)
         button.titleEdgeInsets = UIEdgeInsets(top: 0, left: -50, bottom: 0, right: 0)
         button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -380)
-//        button.alpha = 0.4
         
         return button
     }()
@@ -204,12 +199,9 @@ class NewRewardCell: UICollectionViewCell {
         button.layer.cornerRadius = 24
         button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
         button.tag = 0
-//        button.addTarget(self, action: #selector(reloadPencilKit), for: .touchUpInside)
-//        button.alpha = 0.4
         button.backgroundColor = UIColor.init(white: 1, alpha: 0.2)
         button.titleEdgeInsets = UIEdgeInsets(top: 0, left: -50, bottom: 0, right: 0)
         button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -430)
-//        button.alpha = 0.4
         
         return button
     }()
@@ -232,7 +224,7 @@ class NewRewardCell: UICollectionViewCell {
         backgroundImage.contentMode = .scaleAspectFill
         self.insertSubview(backgroundImage, at: 0)
 //
-      playSoundIntro()
+//      playSoundIntro()
         getGif()
         setupInitial()
 //        setupCircleLayers()
