@@ -80,7 +80,7 @@ class UlasanCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.init(name: "NowAlt-Regular", size: 20)
         label.text = "Kuis 1"
-        label.textColor = UIColor(red: 23/255.0, green: 78/255.0, blue: 161/255.0, alpha: 1.0)
+        label.textColor = Theme.current.accentWhite
         return label
     }()
     
@@ -89,7 +89,7 @@ class UlasanCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.init(name: "NowAlt-Medium", size: 16)
         label.text = "Aksara Ha ke latin"
-        label.textColor = UIColor(red: 3/255.0, green: 131/255.0, blue: 251/255.0, alpha: 1.0)
+        label.textColor = Theme.current.accentWhite
         return label
     }()
     
@@ -586,11 +586,11 @@ class UlasanCell: UICollectionViewCell {
     func setupView() {
         
         addSubview(LabelTopKuis1)
-        LabelTopKuis1.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        LabelTopKuis1.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8).isActive = true
         LabelTopKuis1.topAnchor.constraint(equalTo: topAnchor).isActive = true
         
         addSubview(LabelTopKuis2)
-        LabelTopKuis2.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        LabelTopKuis2.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8).isActive = true
         LabelTopKuis2.topAnchor.constraint(equalTo: LabelTopKuis1.bottomAnchor, constant: 4).isActive = true
         
         addSubview(correctOrFalseState)

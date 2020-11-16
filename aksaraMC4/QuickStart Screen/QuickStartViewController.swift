@@ -11,8 +11,18 @@ import UIKit
 class QuickStartViewController: UIViewController {
     
     private let pencilStrokeCellId = "PencilStrokeCell_ID"
+    private let newGuideFirstCellId = "NewGuideFirstCell_ID"
+    private let anatomiCellId = "AnatomiCell_ID"
+    private let newHeadnTailDDCellId = "NewHeadnTailDDCell_ID"
+    private let quizViewTypeAV2CellId = "QuizViewTypeAV2_ID"
+    private let newGuideMLCellId = "NewGuideMLCell_ID"
+    private let newRewardCellId = "NewRewardCell_ID"
+    
     var countdownTimer: Timer!
     var totalTime: Int = 30
+    var indexCollection: IndexPath? = IndexPath(item: 0, section: 0)
+    var progressBarValue = 1.00/7.00
+    var currentIndexBar = 1
     
     let containerView: UIView = {
         let view = UIView()
@@ -58,7 +68,7 @@ class QuickStartViewController: UIViewController {
         let progressBar = GradientHorizontalProgressBar()
         progressBar.translatesAutoresizingMaskIntoConstraints = false
         progressBar.backgroundColor = .init(white: 1, alpha: 0.2)
-        progressBar.progress = 0
+        progressBar.progress = CGFloat(progressBarValue)
         progressBar.gradientColors = [Theme.current.gradientTopGold.cgColor, Theme.current.gradientBottomGold.cgColor]
         
         return progressBar
@@ -79,7 +89,7 @@ class QuickStartViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.init(name: "NowAlt-Medium", size: 16)
         label.textColor = .white
-        label.text = "12 / 18"
+        label.text = "1 / 7"
         label.textAlignment = .center
         
         return label
@@ -131,6 +141,12 @@ class QuickStartViewController: UIViewController {
     
     func registerCV() {
         quickStartCollectionView.register(PencilStrokeCell.self, forCellWithReuseIdentifier: pencilStrokeCellId)
+        quickStartCollectionView.register(NewPanduanFirstCell.self, forCellWithReuseIdentifier: newGuideFirstCellId)
+        quickStartCollectionView.register(NewGuideCell.self, forCellWithReuseIdentifier: anatomiCellId)
+        quickStartCollectionView.register(NewHeadnTailDDCell.self, forCellWithReuseIdentifier: newHeadnTailDDCellId)
+        quickStartCollectionView.register(QuizViewTypeAV2.self, forCellWithReuseIdentifier: quizViewTypeAV2CellId)
+        quickStartCollectionView.register(NewGuideMLCell.self, forCellWithReuseIdentifier: newGuideMLCellId)
+        quickStartCollectionView.register(NewRewardCell.self, forCellWithReuseIdentifier: newRewardCellId)
         quickStartCollectionView.reloadData()
         quickStartCollectionView.layoutIfNeeded()
     }
@@ -153,7 +169,6 @@ class QuickStartViewController: UIViewController {
         view.addSubview(titleLabel)
         view.addSubview(progressLabel)
         view.addSubview(progressBar)
-        view.addSubview(circularProgressBar)
     }
     
     func setupConstraint() {
@@ -178,11 +193,6 @@ class QuickStartViewController: UIViewController {
         progressBar.widthAnchor.constraint(equalToConstant: 120).isActive = true
         progressBar.heightAnchor.constraint(equalToConstant: 16).isActive = true
         
-        circularProgressBar.topAnchor.constraint(equalTo: progressBar.bottomAnchor, constant: 60).isActive = true
-        circularProgressBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
-        circularProgressBar.widthAnchor.constraint(equalToConstant: 120).isActive = true
-        circularProgressBar.heightAnchor.constraint(equalToConstant: 120).isActive = true
-        
         quickStartCollectionView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         quickStartCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         quickStartCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
@@ -190,11 +200,15 @@ class QuickStartViewController: UIViewController {
     }
     
     @objc func handleBackButton() {
-        handleProgress(withProgress: 0.7)
+        navigationController?.pushViewController(QuickStartReviewViewController(), animated: true)
     }
     
     func handleProgress(withProgress progress: CGFloat) {
         progressBar.progress = progress
+    }
+    
+    func handleProgressLabel(withIndex index: Int) {
+        self.progressLabel.text = "\(String(index)) / 7"
     }
     
     func startTimer() {
@@ -215,27 +229,100 @@ class QuickStartViewController: UIViewController {
             countdownTimer.invalidate()
         }
     }
+    
+    @objc func handleNextQuiz(_ sender: UIButton) {
+        
+        let indexPath = IndexPath(item: sender.tag + 1, section: 0)
+        self.indexCollection = indexPath
+        print("index", indexCollection?.item)
+        
+        if (indexCollection!.item < 8) {
+            
+            if self.quickStartCollectionView.dataSource?.collectionView(self.quickStartCollectionView, cellForItemAt: IndexPath(row: 0, section: 0)) != nil {
+                let rect = self.quickStartCollectionView.layoutAttributesForItem(at: indexPath)?.frame
+                self.quickStartCollectionView.scrollRectToVisible(rect!, animated: false)
+            }
+            
+            self.progressBarValue = Double(indexCollection!.item + 1) / 7.00
+            handleProgress(withProgress: CGFloat(progressBarValue))
+            handleProgressLabel(withIndex: indexPath.item + 1)
+        } else {
+            self.progressLabel.isHidden = true
+            self.progressBar.isHidden = true
+            self.backButton.isHidden = true
+            self.titleLabel.isHidden = true
+        }
+    }
 }
 
 extension QuickStartViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return 8
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         switch indexPath.row {
         case 0:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pencilStrokeCellId, for: indexPath) as! PencilStrokeCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: newGuideFirstCellId, for: indexPath) as! NewPanduanFirstCell
+            cell.continueButton.tag = indexPath.item
+            cell.continueButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
             batikBackgroundImageView.alpha = 0.16
-      
+            
+            return cell
+            
+        case 1:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: anatomiCellId, for: indexPath) as! NewGuideCell
+            cell.continueButton.tag = indexPath.item
+            cell.continueButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
+            
+            return cell
+            
+        case 2:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pencilStrokeCellId, for: indexPath) as! PencilStrokeCell
+            cell.gotItButton.tag = indexPath.item
+            cell.gotItButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
+            
+            return cell
+            
+        case 3:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: newHeadnTailDDCellId, for: indexPath) as! NewHeadnTailDDCell
+            cell.continueButton.tag = indexPath.item
+            cell.continueButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
+            
+            return cell
+            
+        case 4:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: quizViewTypeAV2CellId, for: indexPath) as! QuizViewTypeAV2
+            cell.lanjutStateButton.tag = indexPath.item
+            cell.lanjutStateButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
+            
+            return cell
+            
+        case 5:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pencilStrokeCellId, for: indexPath) as! PencilStrokeCell
+            cell.gotItButton.tag = indexPath.item
+            cell.gotItButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
+            
+            return cell
+            
+        case 6:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: newGuideMLCellId, for: indexPath) as! NewGuideMLCell
+            cell.continueButton.tag = indexPath.item
+            cell.continueButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
+            
+            return cell
+            
+        case 7:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: newRewardCellId, for: indexPath) as! NewRewardCell
+            
             return cell
         default:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pencilStrokeCellId, for: indexPath) as! QuizViewTypeA
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pencilStrokeCellId, for: indexPath) as! PencilStrokeCell
             
             return cell
         }
-       
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

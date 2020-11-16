@@ -159,6 +159,8 @@
 		A4B3F53C256127FD008D6520 /* PencilStrokeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B3F53B256127FD008D6520 /* PencilStrokeCell.swift */; };
 		A4B3F53F25617229008D6520 /* GradientCircularProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B3F53E25617229008D6520 /* GradientCircularProgressBar.swift */; };
 		A4C715BC2539A45B00270D58 /* CoreDataRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C715BB2539A45B00270D58 /* CoreDataRecord.swift */; };
+		A4ECCF2C25627F9200E038BA /* QuickStartReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECCF2B25627F9200E038BA /* QuickStartReviewViewController.swift */; };
+		A4ECCF3E2562A2AA00E038BA /* QuickStartReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECCF3D2562A2AA00E038BA /* QuickStartReviewCell.swift */; };
 		A4F19FC52535939400F5BA23 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F19FC42535939400F5BA23 /* BaseView.swift */; };
 		A4F7A330255BF900005B6202 /* AksaraModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A4F7A32F255BF900005B6202 /* AksaraModel.mlmodel */; };
 		DA666F577C7465F9A53CCC8F /* Pods_aksaraMC4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CC4C2B2BDF5350BA10417E0 /* Pods_aksaraMC4.framework */; };
@@ -323,6 +325,8 @@
 		A4B3F53B256127FD008D6520 /* PencilStrokeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PencilStrokeCell.swift; sourceTree = "<group>"; };
 		A4B3F53E25617229008D6520 /* GradientCircularProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientCircularProgressBar.swift; sourceTree = "<group>"; };
 		A4C715BB2539A45B00270D58 /* CoreDataRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRecord.swift; sourceTree = "<group>"; };
+		A4ECCF2B25627F9200E038BA /* QuickStartReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickStartReviewViewController.swift; sourceTree = "<group>"; };
+		A4ECCF3D2562A2AA00E038BA /* QuickStartReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickStartReviewCell.swift; sourceTree = "<group>"; };
 		A4F19FC42535939400F5BA23 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		A4F7A32F255BF900005B6202 /* AksaraModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = AksaraModel.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -916,6 +920,7 @@
 		A4B3F53125610D12008D6520 /* QuickStart Screen */ = {
 			isa = PBXGroup;
 			children = (
+				A4ECCF2B25627F9200E038BA /* QuickStartReviewViewController.swift */,
 				A4B3F53A256127EC008D6520 /* Cells */,
 				A4B3F539256127DC008D6520 /* Views */,
 				A4B3F53225610D2D008D6520 /* QuickStartViewController.swift */,
@@ -936,6 +941,7 @@
 			isa = PBXGroup;
 			children = (
 				A4B3F53B256127FD008D6520 /* PencilStrokeCell.swift */,
+				A4ECCF3D2562A2AA00E038BA /* QuickStartReviewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1164,6 +1170,7 @@
 				A46968C92546EF9600281D2C /* CustomUIView.swift in Sources */,
 				A445D455253DA95900A985CF /* PKStrokeMatching.swift in Sources */,
 				91C9876D252EFE8D00D67BC0 /* StageController.swift in Sources */,
+				A4ECCF2C25627F9200E038BA /* QuickStartReviewViewController.swift in Sources */,
 				9193764625317E3B00C3FC10 /* StartController.swift in Sources */,
 				A46968C52546C48C00281D2C /* QuizHeadAndTailCell.swift in Sources */,
 				9177578B254EFA59001C2589 /* StageTahap3Cell.swift in Sources */,
@@ -1175,6 +1182,7 @@
 				231EA807252DE9C7004FB678 /* QuizView.swift in Sources */,
 				235D23B42532DA680007F81E /* QuizViewTypeD.swift in Sources */,
 				9177576B254A87BB001C2589 /* QuizCellTypeI.swift in Sources */,
+				A4ECCF3E2562A2AA00E038BA /* QuickStartReviewCell.swift in Sources */,
 				914344FF252DC436002E867B /* RegionView.swift in Sources */,
 				A46968CE2546F7A000281D2C /* CustomUIPanRecognizer.swift in Sources */,
 				A445D44E253D7E9000A985CF /* PencilKitViewController.swift in Sources */,
@@ -1374,7 +1382,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = N6LHAC5JK5;
 				DEVELOPMENT_TEAM = B95GL74T5A;
 				INFOPLIST_FILE = aksaraMC4/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1398,7 +1405,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = N6LHAC5JK5;
 				DEVELOPMENT_TEAM = B95GL74T5A;
 				INFOPLIST_FILE = aksaraMC4/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
