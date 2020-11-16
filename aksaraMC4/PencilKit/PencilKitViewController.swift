@@ -24,6 +24,9 @@ class PencilKitViewController: UIViewController, PKToolPickerObserver, PKCanvasV
     var animationParametricValue: CGFloat = 0
     var animationLastFrameTime = Date()
     var animationTimer: Timer?
+    var strokeAksaraIndex: Int? = 0
+    var strokeWa = [0, 1]
+    var aksara = "Wa"
     
     let containerBackgroundView : UIView = {
         let view = UIView()
@@ -31,6 +34,55 @@ class PencilKitViewController: UIViewController, PKToolPickerObserver, PKCanvasV
         view.backgroundColor = .white
         
         return view
+    }()
+    
+    let backgroundImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "waBG")
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return imageView
+    }()
+    
+    let trackingImageView1: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "waTrack1")
+        imageView.contentMode = .scaleToFill
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return imageView
+    }()
+    
+    let trackingButton1: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setBackgroundImage(UIImage(named: "trackingButton"), for: .normal)
+        button.setTitle("1", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        
+        return button
+    }()
+    
+    let trackingImageView2: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "waTrack2")
+        imageView.contentMode = .scaleToFill
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.isHidden = true
+        
+        return imageView
+    }()
+    
+    let trackingButton2: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setBackgroundImage(UIImage(named: "trackingButton"), for: .normal)
+        button.setTitle("2", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.isHidden = true
+        
+        return button
     }()
     
     lazy var backgroundCanvasView: PKCanvasView = {
@@ -46,7 +98,7 @@ class PencilKitViewController: UIViewController, PKToolPickerObserver, PKCanvasV
         canvasView.backgroundColor = .clear
         canvasView.isOpaque = false
         canvasView.alwaysBounceVertical = true
-        canvasView.tool = PKInkingTool(.pen, color: .black, width: 3)
+        canvasView.tool = PKInkingTool(.marker, color: .white, width: 15)
         canvasView.delegate = self
         canvasView.drawingPolicy = .anyInput
         
@@ -82,7 +134,7 @@ class PencilKitViewController: UIViewController, PKToolPickerObserver, PKCanvasV
         view.backgroundColor = .systemBlue
         
         generateText()
-        setupPencilKit()
+//        setupPencilKit()
         
         view.addSubview(containerBackgroundView)
         containerBackgroundView.layer.addSublayer(animationMarkerLayer)
@@ -91,36 +143,79 @@ class PencilKitViewController: UIViewController, PKToolPickerObserver, PKCanvasV
         NSLayoutConstraint.activate([
             containerBackgroundView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             containerBackgroundView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            containerBackgroundView.widthAnchor.constraint(equalToConstant: 400),
-            containerBackgroundView.heightAnchor.constraint(equalToConstant: 400)
+            containerBackgroundView.widthAnchor.constraint(equalToConstant: 402),
+            containerBackgroundView.heightAnchor.constraint(equalToConstant: 402)
         ])
         
         containerBackgroundView.addSubview(backgroundCanvasView)
+        containerBackgroundView.addSubview(backgroundImageView)
+        canvasView.addSubview(trackingButton1)
+        backgroundImageView.addSubview(trackingImageView1)
+        canvasView.addSubview(trackingButton2)
+        canvasView.bringSubviewToFront(trackingButton1)
+        canvasView.bringSubviewToFront(trackingButton2)
+        backgroundImageView.addSubview(trackingImageView2)
         containerBackgroundView.addSubview(canvasView)
         
         NSLayoutConstraint.activate([
-            backgroundCanvasView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            backgroundCanvasView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            backgroundCanvasView.widthAnchor.constraint(equalToConstant: 400),
-            backgroundCanvasView.heightAnchor.constraint(equalToConstant: 400)
+            backgroundCanvasView.centerXAnchor.constraint(equalTo: containerBackgroundView.centerXAnchor),
+            backgroundCanvasView.centerYAnchor.constraint(equalTo: containerBackgroundView.centerYAnchor),
+            backgroundCanvasView.widthAnchor.constraint(equalToConstant: 402),
+            backgroundCanvasView.heightAnchor.constraint(equalToConstant: 402)
         ])
         
         NSLayoutConstraint.activate([
-            canvasView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            canvasView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            canvasView.widthAnchor.constraint(equalToConstant: 400),
-            canvasView.heightAnchor.constraint(equalToConstant: 400)
+            backgroundImageView.centerXAnchor.constraint(equalTo: containerBackgroundView.centerXAnchor),
+            backgroundImageView.centerYAnchor.constraint(equalTo: containerBackgroundView.centerYAnchor),
+            backgroundImageView.widthAnchor.constraint(equalToConstant: 287),
+            backgroundImageView.heightAnchor.constraint(equalToConstant: 240)
+        ])
+        
+        NSLayoutConstraint.activate([
+            trackingButton1.topAnchor.constraint(equalTo: backgroundImageView.bottomAnchor, constant: -6),
+            trackingButton1.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: -8),
+            trackingButton1.widthAnchor.constraint(equalToConstant: 40),
+            trackingButton1.heightAnchor.constraint(equalToConstant: 40)
+        ])
+        
+        NSLayoutConstraint.activate([
+            trackingImageView1.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 12),
+            trackingImageView1.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 12),
+            trackingImageView1.widthAnchor.constraint(equalToConstant: 191),
+            trackingImageView1.heightAnchor.constraint(equalToConstant: 215)
+        ])
+        
+        NSLayoutConstraint.activate([
+            trackingButton2.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: -8),
+            trackingButton2.leadingAnchor.constraint(equalTo: backgroundImageView.centerXAnchor, constant: -28),
+            trackingButton2.widthAnchor.constraint(equalToConstant: 40),
+            trackingButton2.heightAnchor.constraint(equalToConstant: 40)
+        ])
+        
+        NSLayoutConstraint.activate([
+            trackingImageView2.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 12),
+            trackingImageView2.leadingAnchor.constraint(equalTo: backgroundImageView.centerXAnchor, constant: 10),
+            trackingImageView2.widthAnchor.constraint(equalToConstant: 124.5),
+            trackingImageView2.heightAnchor.constraint(equalToConstant: 215)
+        ])
+        
+        NSLayoutConstraint.activate([
+            canvasView.centerXAnchor.constraint(equalTo: containerBackgroundView.centerXAnchor),
+            canvasView.centerYAnchor.constraint(equalTo: containerBackgroundView.centerYAnchor),
+            canvasView.widthAnchor.constraint(equalToConstant: 402),
+            canvasView.heightAnchor.constraint(equalToConstant: 402)
         ])
     }
     
     func generateText() {
-        backgroundCanvasView.drawing = textGenerator.synthesizeTextDrawing(text: "Testing").transformed(using: CGAffineTransform(scaleX: 2, y: 2).concatenating(CGAffineTransform(translationX: backgroundCanvasView.center.x, y: backgroundCanvasView.center.y)))
+//        backgroundCanvasView.drawing = textGenerator.synthesizeTextDrawing(text: "wa1").transformed(using: CGAffineTransform(scaleX: 2, y: 2).concatenating(CGAffineTransform(translationX: backgroundCanvasView.center.x, y: backgroundCanvasView.center.y)))
+        backgroundCanvasView.drawing = textGenerator.synthesizeTextDrawing(text: "wa1")
     }
     
     func setupPencilKit() {
         
         toolPicker = PKToolPicker()
-        toolPicker.setVisible(true, forFirstResponder: canvasView)
+        toolPicker.setVisible(false, forFirstResponder: canvasView)
         toolPicker.addObserver(canvasView)
         toolPicker.addObserver(self)
         canvasView.becomeFirstResponder()
@@ -204,11 +299,21 @@ class PencilKitViewController: UIViewController, PKToolPickerObserver, PKCanvasV
     
     func canvasViewDidBeginUsingTool(_ canvasView: PKCanvasView) {
         // Stop any animation as soon as the user begins to draw.
+        let trackingButtons = [trackingButton1, trackingButton2]
+        
+        let testDrawing = backgroundCanvasView.drawing
+        
+        if (strokeAksaraIndex! < testDrawing.strokes.count) {
+            trackingButtons[strokeAksaraIndex!].isHidden = true
+        }
+        
         stopAnimation()
         animationStartMarkerLayer.opacity = 0.0
     }
     
     func canvasViewDrawingDidChange(_ canvasView: PKCanvasView) {
+        let trackingButtons = [trackingButton1, trackingButton2]
+        let trackingImages = [trackingImageView1, trackingImageView2]
         // Avoid triggering the scoring, if we are programatically mutating the drawing.
         guard !isUpdatingDrawing else { return }
         
@@ -222,12 +327,21 @@ class PencilKitViewController: UIViewController, PKToolPickerObserver, PKCanvasV
         isUpdatingDrawing = true
         
         // Stroke matching.
-        let threshold: CGFloat = 10
+        let threshold: CGFloat = 25
         let distance = lastStroke.discreteFrechetDistance(to: testDrawing.strokes[strokeIndex], maxThreshold: threshold)
         
         if distance < threshold {
             // Adjust the correct stroke to have a green ink.
-            canvasView.drawing.strokes[strokeIndex].ink.color = .green
+            canvasView.drawing.strokes[strokeIndex].ink.color = .white
+            
+            trackingButtons[strokeAksaraIndex!].isHidden = true
+            trackingImages[strokeAksaraIndex!].isHidden = true
+            self.strokeAksaraIndex! += 1
+            
+            if (strokeAksaraIndex! < testDrawing.strokes.count) {
+                trackingButtons[strokeAksaraIndex!].isHidden = false
+                trackingImages[strokeAksaraIndex!].isHidden = false
+            }
             
             // If the user has finished, show the final score.
             if strokeIndex + 1 >= testDrawing.strokes.count {
@@ -237,6 +351,7 @@ class PencilKitViewController: UIViewController, PKToolPickerObserver, PKCanvasV
             // If the stroke drawn was bad, remove it so the user can try again.
             canvasView.drawing.strokes.removeLast()
             incorrectStrokeCount += 1
+            trackingButtons[strokeAksaraIndex!].isHidden = false
         }
         
         updateScore()

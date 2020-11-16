@@ -29,4 +29,6 @@ class LightTheme: ThemeProtocol {
     var gradientBottomRed: UIColor = UIColor(red: 246/255.0, green: 81/255.0, blue: 100/255.0, alpha: 1.0)
     var gradientTopGreen: UIColor = UIColor(red: 25/255.0, green: 163/255.0, blue: 113/255.0, alpha: 1.0)
     var gradientBottomGreen: UIColor = UIColor(red: 25/255.0, green: 200/255.0, blue: 95/255.0, alpha: 1.0)
+    var gradientTopGold: UIColor = UIColor(red: 255/255, green: 223/255, blue: 118/255, alpha: 1)
+    var gradientBottomGold: UIColor = UIColor(red: 255/255, green: 183/255, blue: 81/255, alpha: 1)
 }

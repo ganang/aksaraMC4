@@ -27,4 +27,6 @@ protocol ThemeProtocol {
     var gradientBottomGreen: UIColor { get }
     var gradientTopRed: UIColor { get }
     var gradientBottomRed: UIColor { get }
+    var gradientTopGold: UIColor { get }
+    var gradientBottomGold: UIColor { get }
 }
