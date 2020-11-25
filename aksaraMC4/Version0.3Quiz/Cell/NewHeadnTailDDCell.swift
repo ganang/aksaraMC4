@@ -23,6 +23,9 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     let originTail3Position = CGRect(x: (UIScreen.main.bounds.width / 2) + 315, y: (UIScreen.main.bounds.height/2) + 100, width: 80, height: 80)
     let tailPlaceholderPosition = CGRect(x: (UIScreen.main.bounds.width / 2) + 75 , y: (UIScreen.main.bounds.height/2) - 70, width: 140, height: 140)
     
+    let SCREEN_WIDTH: CGFloat = UIScreen.main.bounds.width
+    let SCREEN_HEIGHT: CGFloat = UIScreen.main.bounds.height
+    
     var pulsatingLayer1 : CAShapeLayer!
     var pulsatingLayer2 : CAShapeLayer!
     var pulsatingLayer3 : CAShapeLayer!
@@ -40,15 +43,15 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     var isTailPlaceholdersFilled : Bool? = false
     var aksaraOnTailPlaceHolders : String?
     
-    var aksaraName = ["Wa", "Sa", "Tha"]
-    var aksaraQuestion : String? = "Wa"
+    var aksaraName = ["Ja", "Sa", "Tha"]
+    var aksaraQuestion : String? = "Ja"
     
     
     let questionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.init(name: "NowAlt-Medium", size: 56)
-        label.text = "Wa"
+        label.text = "Ja"
         label.textColor = Theme.current.accentWhite
         label.translatesAutoresizingMaskIntoConstraints = false
         
@@ -78,11 +81,11 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         return button
     }()
     
-    
     //HEAD
     let headIcon: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "headImage")
+        image.setImageColor(color: UIColor.init(displayP3Red: 255/255, green: 223/255, blue: 118/255, alpha: 1))
         image.contentMode = .scaleAspectFit
         image.translatesAutoresizingMaskIntoConstraints = false
         
@@ -103,7 +106,7 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         button.layer.cornerRadius = 40
         return button
     }()
-
+    
     lazy var headButton2: UIButton = {
         let button = UIButton()
         var image = UIImage(named: "Jawa Kepala \(aksaraName[1])")?.withRenderingMode(.alwaysTemplate)
@@ -130,7 +133,6 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         button.addGestureRecognizer(moveGS_HeadC)
         button.imageView?.contentMode = .scaleAspectFit
         button.backgroundColor = .clear
-//        button.translatesAutoresizingMaskIntoConstraints = false
         button.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
         button.addInnerShadow()
         button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
@@ -138,7 +140,7 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         
         return button
     }()
-
+    
     
     lazy var headPlaceHoldersButton: UIButton = {
         let button = UIButton()
@@ -151,8 +153,9 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     let tailIcon: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "tailImage")
+        image.setImageColor(color: UIColor.init(displayP3Red: 255/255, green: 223/255, blue: 118/255, alpha: 1))
         image.contentMode = .scaleAspectFit
-//        image.alpha = 0
+        //        image.alpha = 0
         image.translatesAutoresizingMaskIntoConstraints = false
         
         return image
@@ -172,7 +175,7 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         button.layer.cornerRadius = 40
         return button
     }()
-
+    
     lazy var tailButton2: UIButton = {
         let button = UIButton()
         var image = UIImage(named: "Jawa Ekor \(aksaraName[1])")?.withRenderingMode(.alwaysTemplate)
@@ -199,7 +202,7 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         button.addGestureRecognizer(moveGS_TailC)
         button.imageView?.contentMode = .scaleAspectFit
         button.backgroundColor = .clear
-//        button.translatesAutoresizingMaskIntoConstraints = false
+        //        button.translatesAutoresizingMaskIntoConstraints = false
         button.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
         button.addInnerShadow()
         button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
@@ -207,7 +210,7 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         
         return button
     }()
-
+    
     
     lazy var tailPlaceHoldersButton: UIButton = {
         let button = UIButton()
@@ -215,7 +218,59 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         button.layer.cornerRadius = 70
         return button
     }()
-
+    
+    //--HintBottom--//
+    let viewHintExplain: UIImageView = {
+        let image = UIImageView()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.image = UIImage(named: "viewHintExplainDD")
+        image.contentMode = .scaleAspectFit
+        return image
+    }()
+    
+    let infoHintImageView: UIImageView = {
+        let imageView = UIImageView()
+        let boldConfig = UIImage.SymbolConfiguration(weight: .medium)
+        imageView.image = UIImage(systemName: "info.circle.fill", withConfiguration: boldConfig)?.withRenderingMode(.alwaysTemplate)
+        imageView.setImageColor(color: UIColor.init(displayP3Red: 255/255, green: 223/255, blue: 118/255, alpha: 1))
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.clipsToBounds = true
+        
+        return imageView
+    }()
+    
+    let hintLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 2
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 8
+        
+        let attrs      = [NSAttributedString.Key.font: UIFont.init(name: "NowAlt-Bold", size: 16), NSAttributedString.Key.foregroundColor: Theme.current.accentWhite, NSAttributedString.Key.paragraphStyle: paragraphStyle]
+        let attrs2      = [NSAttributedString.Key.font: UIFont.init(name: "NowAlt-Regular", size: 16), NSAttributedString.Key.foregroundColor: Theme.current.accentWhite, NSAttributedString.Key.paragraphStyle: paragraphStyle]
+        
+        let firstWord   = ""
+        let secondWord = "Masih ingat yang tadi ?\n"
+        let thirdWord   = "Coba susun "
+        let fourWord   = "Aksara Ja "
+        let fiveWord   = "berdasarkan "
+        let sixWord   = "kepala "
+        let sevenWord   = "dan "
+        let eightWord   = "ekornya "
+        let attributedText = NSMutableAttributedString(string:firstWord)
+        attributedText.append(NSAttributedString(string: secondWord, attributes: attrs2 as [NSAttributedString.Key : Any]))
+        attributedText.append(NSAttributedString(string: thirdWord, attributes: attrs2 as [NSAttributedString.Key : Any]))
+        attributedText.append(NSAttributedString(string: fourWord, attributes: attrs as [NSAttributedString.Key : Any]))
+        attributedText.append(NSAttributedString(string: fiveWord, attributes: attrs2 as [NSAttributedString.Key : Any]))
+        attributedText.append(NSAttributedString(string: sixWord, attributes: attrs as [NSAttributedString.Key : Any]))
+        attributedText.append(NSAttributedString(string: sevenWord, attributes: attrs2 as [NSAttributedString.Key : Any]))
+        attributedText.append(NSAttributedString(string: eightWord, attributes: attrs as [NSAttributedString.Key : Any]))
+        label.attributedText = attributedText
+        label.textAlignment = .center
+        
+        return label
+    }()
     
     //----------------------//
     
@@ -286,19 +341,19 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     
     let aksaraImage: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "Jawa Soal 4 Wa")
+        image.image = UIImage(named: "Jawa Soal 4 Ja")
         image.contentMode = .scaleAspectFit
         image.translatesAutoresizingMaskIntoConstraints = false
         image.alpha = 0
         
         return image
     }()
-
+    
     let aksaraNameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.init(name: "NowAlt-Medium", size: 32)
-        label.text = "Wa"
+        label.text = "Ja"
         label.textColor = Theme.current.accentWhite
         
         return label
@@ -333,7 +388,7 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     
     let headImage: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "Jawa Kepala Wa")
+        image.image = UIImage(named: "Jawa Kepala Ja")
         image.contentMode = .scaleAspectFit
         image.alpha = 1
         return image
@@ -370,7 +425,7 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     
     let headImageChoice: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "Jawa Kepala Wa")
+        image.image = UIImage(named: "Jawa Kepala Ja")
         image.contentMode = .scaleAspectFit
         image.alpha = 1
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -379,7 +434,7 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     
     let headImageRight: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "Jawa Kepala Wa")
+        image.image = UIImage(named: "Jawa Kepala Ja")
         image.contentMode = .scaleAspectFit
         image.alpha = 1
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -405,7 +460,7 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     
     let tailImage: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "Jawa Ekor Wa")
+        image.image = UIImage(named: "Jawa Ekor Ja")
         image.contentMode = .scaleAspectFit
         image.alpha = 1
         return image
@@ -442,7 +497,7 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     
     let tailImageChoice: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "Jawa Ekor Wa")
+        image.image = UIImage(named: "Jawa Ekor Ja")
         image.contentMode = .scaleAspectFit
         image.alpha = 1
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -451,7 +506,7 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     
     let tailImageRight: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "Jawa Ekor Wa")
+        image.image = UIImage(named: "Jawa Ekor Ja")
         image.contentMode = .scaleAspectFit
         image.alpha = 1
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -467,12 +522,27 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         return image
     }()
     
-
-
+    //AnimationHint
+    lazy var circleAnimateMove1: UIView = {
+        let view = UIView(frame : CGRect(x: SCREEN_WIDTH * 0.1691792295 + 30, y: SCREEN_HEIGHT / 2 - 20, width: 40, height: 40))
+        view.backgroundColor = .white
+        view.alpha = 0
+        view.layer.cornerRadius = 40/2
+        return view
+    }()
+    
+    lazy var circleAnimateMove2: UIView = {
+        let view = UIView(frame : CGRect(x: SCREEN_WIDTH * 0.7671691792 + 30, y: SCREEN_HEIGHT / 2 - 20, width: 40, height: 40))
+        view.backgroundColor = .white
+        view.alpha = 0
+        view.layer.cornerRadius = 40/2
+        return view
+    }()
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-
+        
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
         backgroundImage.image = UIImage(named: "Batik BackgroundNew")
         backgroundImage.contentMode = .scaleAspectFill
@@ -482,8 +552,6 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         setupView()
         setupCircleLayers()
         setBackgroundDragnDrop()
-        
-
     }
     
     func setupTimerInactivity() {
@@ -497,61 +565,38 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     @objc func resetTimers() {
         timer.invalidate()
         timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(doStuff), userInfo: nil, repeats: false)
-        if pulsatingLayerGuideHead != nil {
-            pulsatingLayerGuideHead.removeFromSuperlayer()
-            pulsatingLayerGuideHead.removeAllAnimations()
-        }
-        
-
+//        if pulsatingLayerGuideHead != nil {
+//            pulsatingLayerGuideHead.removeFromSuperlayer()
+//            pulsatingLayerGuideHead.removeAllAnimations()
+//        }
     }
     
     @objc func doStuff() {
-       // perform any action you wish to
+        // perform any action you wish to
         print("User inactive for more than 5 seconds .")
-//        setupHint()
+        setupHintCircleAnimation()
         timer.invalidate()
     }
     
-    func setupHint() {
-        //fill the puslatingLayer
-        pulsatingLayerGuideHead = createCircleShapeLayerForHint(strokeColor: .clear, fillColor: UIColor.init(white: 1, alpha: 0.6))
-        headPlaceHoldersButton.layer.addSublayer(pulsatingLayerGuideHead)
+    func setupHintCircleAnimation() {
+        addSubview(circleAnimateMove1)
+        addSubview(circleAnimateMove2)
         
-        
-        
-        //animation
-        let groupAnimation = CAAnimationGroup()
-        groupAnimation.beginTime = CACurrentMediaTime()
-        groupAnimation.duration = 1
-        groupAnimation.autoreverses = false
-        groupAnimation.repeatCount = Float.infinity
-        groupAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
-
-
-        let scaleDown = CABasicAnimation(keyPath: "transform.scale")
-        scaleDown.toValue = 1.2
-        let fade = CABasicAnimation(keyPath: "opacity")
-        fade.toValue = 0
-        let position = CABasicAnimation(keyPath: "position")
-        position.fromValue = [-100, 80]
-        position.toValue = [100, 80]
-        
-        groupAnimation.animations = [scaleDown, fade ,position]
-        
-        pulsatingLayerGuideHead.add(groupAnimation, forKey: "pulsing")
-       
-        //repeat translation
-//        UIImageView.animate(withDuration: 1, delay: 0.5, options: [.repeat] , animations: {
-//            self.pulsatingLayerGuideHead.frame = CGRect(x: (UIScreen.main.bounds.width / 2) - 600 , y: (UIScreen.main.bounds.height/2) - 70, width: 140, height: 140)
-//            self.hintHandImage.alpha = 0
-//            })
-        
-        
+        UIView.animate(withDuration: 0.8, delay: 0.0, options: [.repeat, .curveLinear], animations: { [self] in
+            UIView.animate(withDuration: 0.6) {
+                self.circleAnimateMove1.alpha = 0.2
+                self.circleAnimateMove2.alpha = 0.2
+            }
+            circleAnimateMove1.frame = CGRect(x: SCREEN_WIDTH/2 - 160, y: SCREEN_HEIGHT/2 - 20, width: 40, height: 40)
+            circleAnimateMove2.frame = CGRect(x: SCREEN_WIDTH/2 + 160, y: SCREEN_HEIGHT/2 - 20, width: 40, height: 40)
+            self.circleAnimateMove1.alpha = 0.0
+            self.circleAnimateMove2.alpha = 0.0
+        })
     }
     
     private func createCircleShapeLayerForHint(strokeColor: UIColor, fillColor: UIColor) -> CAShapeLayer {
         let layer = CAShapeLayer()
-        let circularPath = UIBezierPath(arcCenter: .zero, radius: 40, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
+        let circularPath = UIBezierPath(arcCenter: .zero, radius: 4, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
         layer.path = circularPath.cgPath
         layer.strokeColor = strokeColor.cgColor
         layer.lineWidth = 20
@@ -561,18 +606,32 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         return layer
     }
     
-
+    
     
     
     private func createCircleShapeLayer(strokeColor: UIColor, fillColor: UIColor) -> CAShapeLayer {
         let layer = CAShapeLayer()
-        let circularPath = UIBezierPath(arcCenter: .zero, radius: 2, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
+        let circularPath = UIBezierPath(arcCenter: .zero, radius: 0.2, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
         layer.path = circularPath.cgPath
         layer.strokeColor = strokeColor.cgColor
         layer.lineWidth = 20
         layer.fillColor = fillColor.cgColor
         layer.lineCap = CAShapeLayerLineCap.round
         layer.position = .init(x: 40, y: 40)
+        return layer
+    }
+    
+    
+    private func createCircleShapeLayer(strokeColor: UIColor, fillColor: UIColor, position: CGPoint) -> CAShapeLayer {
+        let layer = CAShapeLayer()
+        //        layer.frame = originHead1Position
+        let circularPath = UIBezierPath(arcCenter: .zero, radius: 0.1, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
+        layer.path = circularPath.cgPath
+        layer.strokeColor = strokeColor.cgColor
+        layer.lineWidth = 20
+        layer.fillColor = fillColor.cgColor
+        layer.lineCap = CAShapeLayerLineCap.round
+        layer.position = position
         return layer
     }
     
@@ -596,6 +655,12 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         pulsatingLayer6 = createCircleShapeLayer(strokeColor: .clear, fillColor: UIColor.init(white: 1, alpha: 0.6))
         tailButton3.layer.addSublayer(pulsatingLayer6)
         
+        pulsatingLayerGuideHead = createCircleShapeLayer(strokeColor: .clear, fillColor: UIColor.init(white: 1, alpha: 0.6), position: CGPoint(x: headPlaceHoldersButton.frame.width/2, y: headPlaceHoldersButton.frame.height/2))
+        headPlaceHoldersButton.layer.addSublayer(pulsatingLayerGuideHead)
+        
+        pulsatingLayerGuideTail = createCircleShapeLayer(strokeColor: .clear, fillColor: UIColor.init(white: 1, alpha: 0.6), position: CGPoint(x: tailPlaceHoldersButton.frame.width/2, y: tailPlaceHoldersButton.frame.height/2))
+        tailPlaceHoldersButton.layer.addSublayer(pulsatingLayerGuideTail)
+        
         animatePulsatingLayer()
     }
     
@@ -607,10 +672,10 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         groupAnimation.autoreverses = false
         groupAnimation.repeatCount = Float.infinity
         groupAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
-
-
+        
+        
         let scaleDown = CABasicAnimation(keyPath: "transform.scale")
-        scaleDown.toValue = 32
+        scaleDown.toValue = 320
         let fade = CABasicAnimation(keyPath: "opacity")
         fade.toValue = 0
         groupAnimation.animations = [scaleDown,fade]
@@ -624,8 +689,55 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         pulsatingLayer6.add(groupAnimation, forKey: "pulsing")
     }
     
-
+    
+    private func animatePulsatingLayerItemMovingHead() {
+        let groupAnimation = CAAnimationGroup()
+        groupAnimation.beginTime = CACurrentMediaTime() + 0.5
+        groupAnimation.duration = 1
+        groupAnimation.autoreverses = false
+        groupAnimation.repeatCount = Float.infinity
+        groupAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
+        
+        
+        let scaleDown = CABasicAnimation(keyPath: "transform.scale")
+        scaleDown.toValue = 1200
+        let fade = CABasicAnimation(keyPath: "opacity")
+        fade.toValue = 0
+        groupAnimation.animations = [scaleDown,fade]
+        
+        pulsatingLayerGuideHead.add(groupAnimation, forKey: "pulsing")
+    }
+    
+    private func animatePulsatingLayerItemMovingTail() {
+        let groupAnimation = CAAnimationGroup()
+        groupAnimation.beginTime = CACurrentMediaTime() + 0.5
+        groupAnimation.duration = 1
+        groupAnimation.autoreverses = false
+        groupAnimation.repeatCount = Float.infinity
+        groupAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
+        
+        
+        let scaleDown = CABasicAnimation(keyPath: "transform.scale")
+        scaleDown.toValue = 1200
+        let fade = CABasicAnimation(keyPath: "opacity")
+        fade.toValue = 0
+        groupAnimation.animations = [scaleDown,fade]
+        
+        pulsatingLayerGuideTail.add(groupAnimation, forKey: "pulsing")
+    }
+    
+    private func removeGestureAnimation() {
+        self.pulsatingLayer1.removeAnimation(forKey: "pulsing")
+        self.pulsatingLayer2.removeAnimation(forKey: "pulsing")
+        self.pulsatingLayer3.removeAnimation(forKey: "pulsing")
+        self.pulsatingLayer4.removeAnimation(forKey: "pulsing")
+        self.pulsatingLayer5.removeAnimation(forKey: "pulsing")
+        self.pulsatingLayer6.removeAnimation(forKey: "pulsing")
+    }
+    
     @objc func gestureMoveObject(_ sender: CustomPanGestureRecognizer){
+        circleAnimateMove1.isHidden = true
+        circleAnimateMove2.isHidden = true
         let name =  sender.name
         let groupAnimation = CAAnimationGroup()
         groupAnimation.beginTime = CACurrentMediaTime()
@@ -634,10 +746,13 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         groupAnimation.repeatCount = Float.infinity
         groupAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
         let scaleDown = CABasicAnimation(keyPath: "transform.scale")
-        scaleDown.toValue = 32
+        scaleDown.toValue = 320
         let fade = CABasicAnimation(keyPath: "opacity")
         fade.toValue = 0
         groupAnimation.animations = [scaleDown,fade]
+        UIView.animate(withDuration: 0.8, delay: 0.0, options: .curveLinear, animations: { [self] in
+            viewHintExplain.alpha = 0.0
+        })
         
         if name == "Head" {
             
@@ -647,36 +762,38 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
                 generator.impactOccurred()
                 
                 playSoundDrag()
+                animatePulsatingLayerItemMovingHead()
             } else if sender.state == .changed {
                 if sender.index == 0 {
                     let translation = sender.translation(in: self)
                     headButton1.transform = CGAffineTransform(translationX: translation.x , y: translation.y)
-                    pulsatingLayer1.removeAnimation(forKey: "pulsing")
                 } else if sender.index == 1 {
                     let translation = sender.translation(in: self)
                     headButton2.transform = CGAffineTransform(translationX: translation.x , y: translation.y)
-                    pulsatingLayer2.removeAnimation(forKey: "pulsing")
                 } else if sender.index == 2 {
                     let translation = sender.translation(in: self)
                     headButton3.transform = CGAffineTransform(translationX: translation.x , y: translation.y)
-                    pulsatingLayer3.removeAnimation(forKey: "pulsing")
                 }
                 
+                removeGestureAnimation()
                 
-                self.headPlaceHoldersButton.frame = CGRect(x: (UIScreen.main.bounds.width / 2) - 223 - 20 , y: (UIScreen.main.bounds.height/2) - 70 - 20, width: 180, height: 180)
-                self.headPlaceHoldersButton.backgroundColor = .clear
                 UIView.animate(withDuration: 1) {
                     self.headPlaceHoldersButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
                     
-                    self.headPlaceHoldersButton.setImage(UIImage(named: "elipsFillHead"), for: .normal)
+                    self.headPlaceHoldersButton.setImage(UIImage(named: "elipsHeadUnfill"), for: .normal)
+                    self.tailPlaceHoldersButton.alpha = 0.2
                 }
                 
             } else if sender.state == .ended {
+                self.tailPlaceHoldersButton.alpha = 1.0
                 self.headPlaceHoldersButton.frame = CGRect(x: (UIScreen.main.bounds.width / 2) - 223 , y: (UIScreen.main.bounds.height/2) - 70, width: 140, height: 140)
                 
                 pulsatingLayer1.add(groupAnimation, forKey: "pulsing")
                 pulsatingLayer2.add(groupAnimation, forKey: "pulsing")
                 pulsatingLayer3.add(groupAnimation, forKey: "pulsing")
+                pulsatingLayer4.add(groupAnimation, forKey: "pulsing")
+                pulsatingLayer5.add(groupAnimation, forKey: "pulsing")
+                pulsatingLayer6.add(groupAnimation, forKey: "pulsing")
                 
                 
                 if (headPlaceHoldersButton.frame.intersects(sender.view!.frame)) {
@@ -706,6 +823,11 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
                     }
                     
                     checkAnswer()
+                }else{
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) { [self] in
+                        circleAnimateMove1.isHidden = false
+                        circleAnimateMove2.isHidden = false
+                    }
                 }
                 
                 if isHeadPlaceholdersFilled == false {
@@ -729,57 +851,55 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
                         self.headButton3.transform = .identity
                     }
                 }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                    self.pulsatingLayerGuideHead.removeAnimation(forKey: "pulsing")
+                }
             }
         } else if name == "Tail" {
             if sender.state == .began {
                 let generator = UIImpactFeedbackGenerator(style: .medium)
                 generator.impactOccurred()
                 playSoundDrag()
+                animatePulsatingLayerItemMovingTail()
             } else if sender.state == .changed {
                 if sender.index == 0 {
                     let translation = sender.translation(in: self)
                     tailButton1.transform = CGAffineTransform(translationX: translation.x , y: translation.y)
-                    pulsatingLayer4.removeAnimation(forKey: "pulsing")
-                    pulsatingLayer5.add(groupAnimation, forKey: "pulsing")
-                    pulsatingLayer6.add(groupAnimation, forKey: "pulsing")
                     
                 } else if sender.index == 1 {
                     let translation = sender.translation(in: self)
                     tailButton2.transform = CGAffineTransform(translationX: translation.x , y: translation.y)
-                    pulsatingLayer5.removeAnimation(forKey: "pulsing")
-                    pulsatingLayer4.add(groupAnimation, forKey: "pulsing")
-                    pulsatingLayer6.add(groupAnimation, forKey: "pulsing")
                 } else if sender.index == 2 {
                     let translation = sender.translation(in: self)
                     tailButton3.transform = CGAffineTransform(translationX: translation.x , y: translation.y)
-                    pulsatingLayer6.removeAnimation(forKey: "pulsing")
-                    pulsatingLayer4.add(groupAnimation, forKey: "pulsing")
-                    pulsatingLayer5.add(groupAnimation, forKey: "pulsing")
                 }
-                self.tailPlaceHoldersButton.frame = CGRect(x: (UIScreen.main.bounds.width / 2) + 75 - 20 , y: (UIScreen.main.bounds.height/2) - 70 - 20, width: 180, height: 180)
                 
+                removeGestureAnimation()
                 
-                self.tailPlaceHoldersButton.backgroundColor = .clear
                 UIView.animate(withDuration: 1) {
                     self.tailPlaceHoldersButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
                     
-                    self.tailPlaceHoldersButton.setImage(UIImage(named: "elipsTailFill"), for: .normal)
+                    self.tailPlaceHoldersButton.setImage(UIImage(named: "elipsTailUnfill"), for: .normal)
+                    self.headPlaceHoldersButton.alpha = 0.2
                 }
                 
             } else if sender.state == .ended {
+                self.headPlaceHoldersButton.alpha = 1.0
                 self.tailPlaceHoldersButton.frame = CGRect(x: (UIScreen.main.bounds.width / 2) + 75, y: (UIScreen.main.bounds.height/2) - 70, width: 140, height: 140)
                 
-                
+                pulsatingLayer1.add(groupAnimation, forKey: "pulsing")
+                pulsatingLayer2.add(groupAnimation, forKey: "pulsing")
+                pulsatingLayer3.add(groupAnimation, forKey: "pulsing")
                 pulsatingLayer4.add(groupAnimation, forKey: "pulsing")
                 pulsatingLayer5.add(groupAnimation, forKey: "pulsing")
                 pulsatingLayer6.add(groupAnimation, forKey: "pulsing")
-                
                 
                 if (tailPlaceHoldersButton.frame.intersects(sender.view!.frame)) {
                     let generator = UINotificationFeedbackGenerator()
                     generator.notificationOccurred(.error)
                     playSoundPlacing()
-
+                    
                     
                     UIView.animate(withDuration: 1,delay: 0,usingSpringWithDamping: 0.8, initialSpringVelocity: 2, options: .curveEaseIn) { [self] in
                         if sender.index == 0 {
@@ -800,11 +920,15 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
                         }
                         isTailPlaceholdersFilled = true
                     }
-                
                     checkAnswer()
+                }else{
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) { [self] in
+                        circleAnimateMove1.isHidden = false
+                        circleAnimateMove2.isHidden = false
+                    }
                 }
                 
-
+                
                 
                 if isTailPlaceholdersFilled == false {
                     UIView.animate(withDuration: 1) {
@@ -817,6 +941,7 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
                     self.tailPlaceHoldersButton.imageEdgeInsets = UIEdgeInsets(top: 40, left: 40, bottom: 40, right: 40)
                 }
                 
+                
                 //animate go back to initial
                 UIView.animate(withDuration: 1,delay: 0,usingSpringWithDamping: 0.8, initialSpringVelocity: 2, options: .curveEaseIn) { [self] in
                     if sender.index == 0 {
@@ -827,13 +952,16 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
                         self.tailButton3.transform = .identity
                     }
                 }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                    self.pulsatingLayerGuideTail.removeAnimation(forKey: "pulsing")
+                }
+                
             }
         }
-        
     }
     
     func checkAnswer() {
-        
         if isHeadPlaceholdersFilled == true && isTailPlaceholdersFilled == true {
             answerTransitionAnimation()
             headImageChoice.image = UIImage(named: "Jawa Kepala \(aksaraOnHeadPlaceHolders!)")
@@ -865,9 +993,11 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     }
     
     func answerTransitionAnimation() {
+        removeGestureAnimation()
         UIView.animate(withDuration: 1) { [self] in
             questionLabel.alpha = 0
             questionLabel.removeFromSuperview()
+            viewHintExplain.removeFromSuperview()
             headPlaceHoldersButton.frame = CGRect(x: (UIScreen.main.bounds.width / 2) - 223 + 153 , y: (UIScreen.main.bounds.height/2) - 70, width: 140, height: 140)
             tailPlaceHoldersButton.frame = CGRect(x: (UIScreen.main.bounds.width / 2) + 75 - 153 , y: (UIScreen.main.bounds.height/2) - 70, width: 140, height: 140)
             headPlaceHoldersButton.alpha = 0
@@ -907,7 +1037,7 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         self.lineHead.frame = CGRect(x: (UIScreen.main.bounds.width / 2), y: (UIScreen.main.bounds.height/2), width: 80, height: 2)
         
         UIView.animate(withDuration: 1) { [self] in
-                //TAIL
+            //TAIL
             self.addSubview(self.tailImage)
             self.tailImage.alpha = 0
             
@@ -930,79 +1060,78 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
                     }
                 }
             }
+            
+            
+            //HEAD
+            
+            self.addSubview(self.headImage)
+            self.headImage.alpha = 0
+            
+            UIImageView.animate(withDuration: 1, delay: 0, options: [] , animations: {
+                self.headView.frame = CGRect(x: self.frame.size.width/2 - 390, y: (UIScreen.main.bounds.height/2) + 70, width: 96, height: 96)
+                self.headView.alpha = 0.2
+                self.headView.layer.cornerRadius = 48
+                
+                self.lineHead.alpha = 1
+                self.lineHead.frame = CGRect(x: self.frame.size.width/2 - 220, y: (UIScreen.main.bounds.height/2) - 30, width: 80, height: 2)
+                self.headLabelAppear()
+                
+            }) { (completed) in
                 
                 
-                //HEAD
-                
-                self.addSubview(self.headImage)
-                self.headImage.alpha = 0
-                
-                UIImageView.animate(withDuration: 1, delay: 0, options: [] , animations: {
-                    self.headView.frame = CGRect(x: self.frame.size.width/2 - 390, y: (UIScreen.main.bounds.height/2) + 70, width: 96, height: 96)
-                    self.headView.alpha = 0.2
-                    self.headView.layer.cornerRadius = 48
-                    
-                    self.lineHead.alpha = 1
-                    self.lineHead.frame = CGRect(x: self.frame.size.width/2 - 220, y: (UIScreen.main.bounds.height/2) - 30, width: 80, height: 2)
-                    self.headLabelAppear()
-                    
-                }) { (completed) in
-                    
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                        UIView.animate(withDuration: 1) {
-                            self.headImage.alpha = 1
-                            self.headImageLogo.alpha = 1
-                            self.headLabel.alpha = 1
-                        }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    UIView.animate(withDuration: 1) {
+                        self.headImage.alpha = 1
+                        self.headImageLogo.alpha = 1
+                        self.headLabel.alpha = 1
                     }
                 }
-
+            }
             
             
         }
     }
     
     func headLabelAppear() {
-
+        
         addSubview(headImageLogo)
         headImageLogo.centerXAnchor.constraint(equalTo: headView.centerXAnchor).isActive = true
         headImageLogo.bottomAnchor.constraint(equalTo: headView.topAnchor, constant: -163).isActive = true
         headImageLogo.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        headImageLogo.heightAnchor.constraint(equalToConstant: 51).isActive = true
+        headImageLogo.heightAnchor.constraint(equalToConstant: 56).isActive = true
+        
+        addSubview(headImageRight)
+        headImageRight.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 0).isActive = true
+        headImageRight.centerXAnchor.constraint(equalTo: headView.centerXAnchor, constant: 0).isActive = true
+        headImageRight.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        headImageRight.heightAnchor.constraint(equalToConstant: 56).isActive = true
         
         addSubview(headImageChoice)
-        headImageChoice.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 0).isActive = true
+        headImageChoice.centerYAnchor.constraint(equalTo: headView.centerYAnchor, constant: 0).isActive = true
         headImageChoice.centerXAnchor.constraint(equalTo: headView.centerXAnchor, constant: 0).isActive = true
-        headImageChoice.widthAnchor.constraint(equalToConstant: 22).isActive = true
+        headImageChoice.widthAnchor.constraint(equalToConstant: 40).isActive = true
         headImageChoice.heightAnchor.constraint(equalToConstant: 56).isActive = true
- 
-        addSubview(headImageRight)
-        headImageRight.centerYAnchor.constraint(equalTo: headView.centerYAnchor, constant: 0).isActive = true
-        headImageRight.centerXAnchor.constraint(equalTo: headView.centerXAnchor, constant: 0).isActive = true
-        headImageRight.widthAnchor.constraint(equalToConstant: 13).isActive = true
-        headImageRight.heightAnchor.constraint(equalToConstant: 32).isActive = true
         
         //correct image
         addSubview(headCorrectLabel)
         headCorrectLabel.centerYAnchor.constraint(equalTo: headView.centerYAnchor, constant: 0).isActive = true
         headCorrectLabel.trailingAnchor.constraint(equalTo: headView.leadingAnchor, constant: -16).isActive = true
-        headCorrectLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        headCorrectLabel.widthAnchor.constraint(equalToConstant: 20).isActive = true
-
+        headCorrectLabel.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        headCorrectLabel.widthAnchor.constraint(equalToConstant: 32).isActive = true
+        
         
         
     }
     
     func tailLabelAppear() {
-
+        
         addSubview(aksaraImage)
         aksaraImage.alpha = 1
         aksaraImage.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         aksaraImage.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 0).isActive = true
-        aksaraImage.widthAnchor.constraint(equalToConstant: 192).isActive = true
-        aksaraImage.heightAnchor.constraint(equalToConstant: 160).isActive = true
-        
+        aksaraImage.widthAnchor.constraint(equalToConstant: 172).isActive = true
+        aksaraImage.heightAnchor.constraint(equalToConstant: 120).isActive = true
+
         addSubview(aksaraNameLabel)
         aksaraNameLabel.topAnchor.constraint(equalTo: aksaraImage.bottomAnchor, constant: 80).isActive = true
         aksaraNameLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
@@ -1011,20 +1140,19 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         tailImageLogo.centerXAnchor.constraint(equalTo: tailView.centerXAnchor).isActive = true
         tailImageLogo.bottomAnchor.constraint(equalTo: tailView.topAnchor, constant: -164).isActive = true
         tailImageLogo.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        tailImageLogo.heightAnchor.constraint(equalToConstant: 27).isActive = true
+        tailImageLogo.heightAnchor.constraint(equalToConstant: 56).isActive = true
         
         addSubview(tailImageRight)
-//        tailImageChoice.alpha = 0
         tailImageRight.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 0).isActive = true
         tailImageRight.centerXAnchor.constraint(equalTo: tailView.centerXAnchor, constant: 0).isActive = true
-        tailImageRight.widthAnchor.constraint(equalToConstant: 22).isActive = true
+        tailImageRight.widthAnchor.constraint(equalToConstant: 40).isActive = true
         tailImageRight.heightAnchor.constraint(equalToConstant: 56).isActive = true
- 
+        
         addSubview(tailImageChoice)
         tailImageChoice.centerYAnchor.constraint(equalTo: tailView.centerYAnchor, constant: 0).isActive = true
         tailImageChoice.centerXAnchor.constraint(equalTo: tailView.centerXAnchor, constant: 0).isActive = true
-        tailImageChoice.widthAnchor.constraint(equalToConstant: 13).isActive = true
-        tailImageChoice.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        tailImageChoice.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        tailImageChoice.heightAnchor.constraint(equalToConstant: 56).isActive = true
         
         //statememt
         addSubview(statementImage)
@@ -1041,13 +1169,13 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         addSubview(tailCorrectLabel)
         tailCorrectLabel.centerYAnchor.constraint(equalTo: tailView.centerYAnchor, constant: 0).isActive = true
         tailCorrectLabel.leadingAnchor.constraint(equalTo: tailView.trailingAnchor, constant: 16).isActive = true
-        tailCorrectLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        tailCorrectLabel.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        tailCorrectLabel.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        tailCorrectLabel.widthAnchor.constraint(equalToConstant: 32).isActive = true
         
         //continue Button
         addSubview(continueButton)
         continueButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        continueButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -32).isActive = true
+        continueButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -64).isActive = true
         continueButton.widthAnchor.constraint(equalToConstant: 240).isActive = true
         continueButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
         
@@ -1057,26 +1185,26 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     func setupView() {
         addSubview(headButton1)
         headButton1.frame = originHead1Position
-
+        
         addSubview(headButton2)
         headButton2.frame = originHead2Position
-
+        
         addSubview(headButton3)
         headButton3.frame = originHead3Position
-
+        
         addSubview(headPlaceHoldersButton)
         headPlaceHoldersButton.frame = headPlaceholderPosition
         
         
         addSubview(tailButton1)
         tailButton1.frame = originTail1Position
-
+        
         addSubview(tailButton2)
         tailButton2.frame = originTail2Position
-
+        
         addSubview(tailButton3)
         tailButton3.frame = originTail3Position
-
+        
         addSubview(tailPlaceHoldersButton)
         tailPlaceHoldersButton.frame = tailPlaceholderPosition
         
@@ -1095,6 +1223,24 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         addSubview(questionLabel)
         questionLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         questionLabel.centerYAnchor.constraint(equalTo: headPlaceHoldersButton.centerYAnchor, constant: 0).isActive = true
+        
+        addSubview(viewHintExplain)
+        viewHintExplain.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -145).isActive = true
+        viewHintExplain.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        viewHintExplain.heightAnchor.constraint(equalToConstant: 71).isActive = true
+        viewHintExplain.widthAnchor.constraint(equalToConstant: 520).isActive = true
+        
+        viewHintExplain.addSubview(hintLabel)
+        hintLabel.centerYAnchor.constraint(equalTo: viewHintExplain.centerYAnchor, constant: 2).isActive = true
+        hintLabel.centerXAnchor.constraint(equalTo: viewHintExplain.centerXAnchor).isActive = true
+        hintLabel.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        hintLabel.widthAnchor.constraint(equalToConstant: 435).isActive = true
+        
+        viewHintExplain.addSubview(infoHintImageView)
+        infoHintImageView.topAnchor.constraint(equalTo: hintLabel.topAnchor, constant: -4).isActive = true
+        infoHintImageView.centerXAnchor.constraint(equalTo: viewHintExplain.centerXAnchor, constant: -108).isActive = true
+        infoHintImageView.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        infoHintImageView.widthAnchor.constraint(equalToConstant: 24).isActive = true
         
     }
     

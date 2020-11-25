@@ -10,16 +10,17 @@ import AVFoundation
 
 class QuizViewTypeAV2: BaseCell, UIGestureRecognizerDelegate {
     
+    var timer = Timer()
+    
     let SCREEN_WIDTH: CGFloat = UIScreen.main.bounds.width
     let SCREEN_HEIGHT: CGFloat = UIScreen.main.bounds.height
     
-    let originQuizImagePosition = CGRect(x: UIScreen.main.bounds.width/2 - 160, y: UIScreen.main.bounds.height/2 - 160, width: 320, height: 320)
+    let originQuizImagePosition = CGRect(x: UIScreen.main.bounds.width/2 - 120, y: UIScreen.main.bounds.height/2 - 120, width: 240, height: 240)
     
     var player: AVAudioPlayer?
     
-    let originQuizImagePositionAnswer = CGRect(x: UIScreen.main.bounds.width/2 - 80, y: UIScreen.main.bounds.height/2 - 83, width: 160, height: 120)
-    let originStateTrueImagePositionAnswer = CGRect(x: UIScreen.main.bounds.width/2 - 80, y: UIScreen.main.bounds.height/2 - 131, width: 160, height: 120)
-    
+    let originQuizImagePositionAnswer = CGRect(x: UIScreen.main.bounds.width/2 - 80, y: UIScreen.main.bounds.height/2 - 75, width: 160, height: 120)
+    let originStateTrueImagePositionAnswer = CGRect(x: UIScreen.main.bounds.width/2 - 80, y: UIScreen.main.bounds.height/2 - 163, width: 160, height: 120)
     var pulsatingLayer1 : CAShapeLayer!
     var pulsatingLayer2 : CAShapeLayer!
     var pulsatingLayer3 : CAShapeLayer!
@@ -29,86 +30,94 @@ class QuizViewTypeAV2: BaseCell, UIGestureRecognizerDelegate {
     lazy var quizImage: UIButton = {
         let button = UIButton()
         button.frame = originQuizImagePosition
-        var image = UIImage(named: "Jawa Soal 1 Wa")?.withRenderingMode(.alwaysTemplate)
-        button.setImage(image, for: .normal)
-        button.imageView?.tintColor = Theme.current.accentWhite
-        button.isUserInteractionEnabled = true
-        button.addGestureRecognizer(moveGS_ImageQuestion)
-        button.imageView?.contentMode = .scaleAspectFit
-        button.imageEdgeInsets = UIEdgeInsets(top: 100, left: 88, bottom: 100, right: 88)
+        button.setTitle("Ja", for: .normal)
+        button.setTitleColor(Theme.current.accentWhite, for: .normal)
+        button.titleLabel?.font = UIFont.init(name: "NowAlt-Medium", size: 56)
+        button.imageEdgeInsets = UIEdgeInsets(top: 86, left: 88, bottom: 86, right: 88)
+        button.backgroundColor = .clear
+        //        button.translatesAutoresizingMaskIntoConstraints = false
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.init(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 1).cgColor
+        //        button.clipsToBounds = true
+        button.layer.cornerRadius = 240/2
+        
         return button
     }()
     
-    lazy var pilgan1Answer: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.font = UIFont.init(name: "NowAlt-Medium", size: 56)
-        label.textColor = Theme.current.accentWhite
-        label.text = "Wa"
-        label.frame = CGRect(x: SCREEN_WIDTH * 0.1691792295, y: SCREEN_HEIGHT * 0.2158273381, width: 100, height: 67)
-        return label
+    lazy var pilgan1Answer: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "Jawa Soal 1 Ja")
+        image.setImageColor(color: UIColor.init(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 1))
+        image.contentMode = .scaleAspectFit
+        image.frame = CGRect(x: SCREEN_WIDTH * 0.1691792295, y: SCREEN_HEIGHT * 0.2158273381, width: 100, height: 67)
+        image.isUserInteractionEnabled = true
+        image.addGestureRecognizer(moveGS_ImageQuestion1)
+        return image
     }()
     
-    lazy var pilgan2Answer: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.font = UIFont.init(name: "NowAlt-Medium", size: 56)
-        label.textColor = Theme.current.accentWhite
-        label.text = "Ta"
-        label.frame = CGRect(x: SCREEN_WIDTH * 0.7671691792, y: SCREEN_HEIGHT * 0.2158273381, width: 100, height: 67)
-        return label
+    lazy var pilgan2Answer: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "Jawa Soal 1 Ca")
+        image.setImageColor(color: UIColor.init(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 1))
+        image.contentMode = .scaleAspectFit
+        image.frame = CGRect(x: SCREEN_WIDTH * 0.7671691792, y: SCREEN_HEIGHT * 0.2158273381, width: 100, height: 67)
+        image.isUserInteractionEnabled = true
+        image.addGestureRecognizer(moveGS_ImageQuestion2)
+        return image
     }()
     
-    lazy var pilgan3Answer: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.font = UIFont.init(name: "NowAlt-Medium", size: 56)
-        label.textColor = Theme.current.accentWhite
-        label.text = "Ca"
-        label.frame = CGRect(x: SCREEN_WIDTH * 0.1691792295, y: SCREEN_HEIGHT * 0.7038369305, width: 100, height: 67)
-        return label
+    lazy var pilgan3Answer: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "Jawa Soal 1 Dha")
+        image.setImageColor(color: UIColor.init(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 1))
+        image.contentMode = .scaleAspectFit
+        image.frame = CGRect(x: SCREEN_WIDTH * 0.1691792295, y: SCREEN_HEIGHT * 0.7038369305, width: 100, height: 67)
+        image.isUserInteractionEnabled = true
+        image.addGestureRecognizer(moveGS_ImageQuestion3)
+        return image
     }()
     
-    lazy var pilgan4Answer: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.font = UIFont.init(name: "NowAlt-Medium", size: 56)
-        label.textColor = Theme.current.accentWhite
-        label.text = "Pa"
-        label.frame = CGRect(x: SCREEN_WIDTH * 0.7671691792, y: SCREEN_HEIGHT * 0.7038369305, width: 100, height: 67)
-        return label
+    lazy var pilgan4Answer: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "Jawa Soal 1 Ma")
+        image.setImageColor(color: UIColor.init(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 1))
+        image.contentMode = .scaleAspectFit
+        image.frame = CGRect(x: SCREEN_WIDTH * 0.7671691792, y: SCREEN_HEIGHT * 0.7038369305, width: 100, height: 67)
+        image.isUserInteractionEnabled = true
+        image.addGestureRecognizer(moveGS_ImageQuestion4)
+        return image
     }()
     
     //State TrueOrFalse
     lazy var stateTrueAnswer: UIImageView = {
         let image = UIImageView(frame : originStateTrueImagePositionAnswer)
-        image.image = UIImage(named: "Jawa Soal 1 Wa")
+        image.image = UIImage(named: "Jawa Soal 1 Ja")
         image.contentMode = .scaleAspectFit
         return image
     }()
     
     lazy var stateFalseAnswer: UIImageView = {
-        let image = UIImageView(frame : CGRect(x: UIScreen.main.bounds.width/2 + 152, y: UIScreen.main.bounds.height/2 - 131, width: 160, height: 120))
-        image.image = UIImage(named: "Jawa Soal 1 Ta")
+        let image = UIImageView(frame : CGRect(x: UIScreen.main.bounds.width/2 + 152, y: UIScreen.main.bounds.height/2 - 163, width: 160, height: 120))
+        image.image = UIImage(named: "Jawa Soal 1 Ca")
         image.contentMode = .scaleAspectFit
         return image
     }()
     
     lazy var stateLabelTrueAnswer: UILabel = {
-        let label = UILabel(frame : CGRect(x: SCREEN_WIDTH/2 - 44, y: SCREEN_HEIGHT/2 + 30, width: 52, height: 38))
+        let label = UILabel(frame : CGRect(x: SCREEN_WIDTH/2 - 26, y: SCREEN_HEIGHT/2 + 14, width: 52, height: 38))
         label.textAlignment = .center
         label.font = UIFont.init(name: "NowAlt-Medium", size: 32)
         label.textColor = Theme.current.accentWhite
-        label.text = "Wa"
+        label.text = "Ja"
         return label
     }()
     
     lazy var stateLabelFalseAnswer: UILabel = {
-        let label = UILabel(frame : CGRect(x: SCREEN_WIDTH/2 + 187, y: SCREEN_HEIGHT/2 + 30, width: 52, height: 38))
+        let label = UILabel(frame : CGRect(x: SCREEN_WIDTH/2 + 187, y: SCREEN_HEIGHT/2 + 14, width: 52, height: 38))
         label.textAlignment = .center
         label.font = UIFont.init(name: "NowAlt-Medium", size: 32)
         label.textColor = Theme.current.accentWhite
-        label.text = "Ta"
+        label.text = "Ca"
         return label
     }()
     
@@ -129,14 +138,14 @@ class QuizViewTypeAV2: BaseCell, UIGestureRecognizerDelegate {
     }()
     
     lazy var trueState: UIImageView = {
-        let image = UIImageView(frame : CGRect(x: SCREEN_WIDTH/2 + 20, y: SCREEN_HEIGHT/2 + 37, width: 24, height: 24))
+        let image = UIImageView(frame : CGRect(x: SCREEN_WIDTH/2 + 134, y: SCREEN_HEIGHT/2 + 101, width: 20, height: 20))
         image.image = UIImage(named: "correctAnswer")
         image.contentMode = .scaleAspectFit
         return image
     }()
     
     lazy var falseState: UIImageView = {
-        let image = UIImageView(frame : CGRect(x: SCREEN_WIDTH/2 + 243, y: SCREEN_HEIGHT/2 + 37, width: 24, height: 24))
+        let image = UIImageView(frame : CGRect(x: SCREEN_WIDTH/2 + 134, y: SCREEN_HEIGHT/2 + 101, width: 20, height: 20))
         image.image = UIImage(named: "falseAnswer")
         image.contentMode = .scaleAspectFit
         return image
@@ -162,13 +171,118 @@ class QuizViewTypeAV2: BaseCell, UIGestureRecognizerDelegate {
         return button
     }()
     
+    //--HintBottom--//
+    let viewHintExplain: UIImageView = {
+        let image = UIImageView()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.image = UIImage(named: "viewHintExplainQuiz6")
+        image.contentMode = .scaleAspectFit
+        return image
+    }()
+    
+    let infoHintImageView: UIImageView = {
+        let imageView = UIImageView()
+        let boldConfig = UIImage.SymbolConfiguration(weight: .medium)
+        imageView.image = UIImage(systemName: "info.circle.fill", withConfiguration: boldConfig)?.withRenderingMode(.alwaysTemplate)
+        imageView.setImageColor(color: UIColor.init(displayP3Red: 255/255, green: 223/255, blue: 118/255, alpha: 1))
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.clipsToBounds = true
+        
+        return imageView
+    }()
+    
+    let hintLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 2
+        
+        let attrs      = [NSAttributedString.Key.font: UIFont.init(name: "NowAlt-Bold", size: 16), NSAttributedString.Key.foregroundColor: Theme.current.accentWhite]
+        let attrs2      = [NSAttributedString.Key.font: UIFont.init(name: "NowAlt-Regular", size: 16), NSAttributedString.Key.foregroundColor: Theme.current.accentWhite]
+        
+        
+        let firstWord   = ""
+        let secondWord = "Selanjutnya cocokkan aksara "
+        let thirdWord   = "Ja "
+        let fourWord   = "dan latinnya"
+        let attributedText = NSMutableAttributedString(string:firstWord)
+        attributedText.append(NSAttributedString(string: secondWord, attributes: attrs2 as [NSAttributedString.Key : Any]))
+        attributedText.append(NSAttributedString(string: thirdWord, attributes: attrs as [NSAttributedString.Key : Any]))
+        attributedText.append(NSAttributedString(string: fourWord, attributes: attrs2 as [NSAttributedString.Key : Any]))
+        label.attributedText = attributedText
+        label.textAlignment = .center
+        
+        return label
+    }()
+    
     //Gesture
-    lazy var moveGS_ImageQuestion: CustomPanGestureRecognizer = {
+    lazy var moveGS_ImageQuestion1: CustomPanGestureRecognizer = {
         let moveGS = CustomPanGestureRecognizer(target: self, action: #selector(self.gestureMoveObject(_:)))
         moveGS.name = "ImageQuestion"
         moveGS.delegate = self
+        moveGS.index = 0
         
         return moveGS
+    }()
+    
+    lazy var moveGS_ImageQuestion2: CustomPanGestureRecognizer = {
+        let moveGS = CustomPanGestureRecognizer(target: self, action: #selector(self.gestureMoveObject(_:)))
+        moveGS.name = "ImageQuestion"
+        moveGS.delegate = self
+        moveGS.index = 1
+        
+        return moveGS
+    }()
+    
+    lazy var moveGS_ImageQuestion3: CustomPanGestureRecognizer = {
+        let moveGS = CustomPanGestureRecognizer(target: self, action: #selector(self.gestureMoveObject(_:)))
+        moveGS.name = "ImageQuestion"
+        moveGS.delegate = self
+        moveGS.index = 2
+        
+        return moveGS
+    }()
+    
+    lazy var moveGS_ImageQuestion4: CustomPanGestureRecognizer = {
+        let moveGS = CustomPanGestureRecognizer(target: self, action: #selector(self.gestureMoveObject(_:)))
+        moveGS.name = "ImageQuestion"
+        moveGS.delegate = self
+        moveGS.index = 3
+        
+        return moveGS
+    }()
+    
+    //AnimationHint
+    lazy var circleAnimateMove1: UIView = {
+        let view = UIView(frame : CGRect(x: SCREEN_WIDTH * 0.1691792295 + 30, y: SCREEN_HEIGHT * 0.2158273381 + 10, width: 40, height: 40))
+        view.backgroundColor = .white
+        view.alpha = 0
+        view.layer.cornerRadius = 40/2
+        return view
+    }()
+    
+    lazy var circleAnimateMove2: UIView = {
+        let view = UIView(frame : CGRect(x: SCREEN_WIDTH * 0.7671691792 + 30, y: SCREEN_HEIGHT * 0.2158273381 + 10, width: 40, height: 40))
+        view.backgroundColor = .white
+        view.alpha = 0
+        view.layer.cornerRadius = 40/2
+        return view
+    }()
+    
+    lazy var circleAnimateMove3: UIView = {
+        let view = UIView(frame : CGRect(x: SCREEN_WIDTH * 0.1691792295 + 30, y: SCREEN_HEIGHT * 0.7038369305 + 10, width: 40, height: 40))
+        view.backgroundColor = .white
+        view.alpha = 0
+        view.layer.cornerRadius = 40/2
+        return view
+    }()
+    
+    lazy var circleAnimateMove4: UIView = {
+        let view = UIView(frame : CGRect(x: SCREEN_WIDTH * 0.7671691792 + 30, y: SCREEN_HEIGHT * 0.7038369305 + 10, width: 40, height: 40))
+        view.backgroundColor = .white
+        view.alpha = 0
+        view.layer.cornerRadius = 40/2
+        return view
     }()
     
     
@@ -188,13 +302,13 @@ class QuizViewTypeAV2: BaseCell, UIGestureRecognizerDelegate {
         pulsatingLayerQuizImage = createCircleShapeLayer(strokeColor: .clear, fillColor: UIColor.init(white: 1, alpha: 0.6), position: CGPoint(x: quizImage.frame.width/2, y: quizImage.frame.height/2))
         quizImage.layer.addSublayer(pulsatingLayerQuizImage)
         
-        animatePulsatingLayerItemMoving()
+        animatePulsatingLayer()
     }
     
     private func createCircleShapeLayer(strokeColor: UIColor, fillColor: UIColor, position: CGPoint) -> CAShapeLayer {
         let layer = CAShapeLayer()
         //        layer.frame = originHead1Position
-        let circularPath = UIBezierPath(arcCenter: .zero, radius: 8, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
+        let circularPath = UIBezierPath(arcCenter: .zero, radius: 0.1, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
         layer.path = circularPath.cgPath
         layer.strokeColor = strokeColor.cgColor
         layer.lineWidth = 20
@@ -214,7 +328,7 @@ class QuizViewTypeAV2: BaseCell, UIGestureRecognizerDelegate {
         
         
         let scaleDown = CABasicAnimation(keyPath: "transform.scale")
-        scaleDown.toValue = 8
+        scaleDown.toValue = 720
         let fade = CABasicAnimation(keyPath: "opacity")
         fade.toValue = 0
         
@@ -239,7 +353,7 @@ class QuizViewTypeAV2: BaseCell, UIGestureRecognizerDelegate {
         
         
         let scaleDown = CABasicAnimation(keyPath: "transform.scale")
-        scaleDown.toValue = 20
+        scaleDown.toValue = 1600
         let fade = CABasicAnimation(keyPath: "opacity")
         fade.toValue = 0
         
@@ -268,9 +382,53 @@ class QuizViewTypeAV2: BaseCell, UIGestureRecognizerDelegate {
         backgroundImage.contentMode = .scaleAspectFill
         self.insertSubview(backgroundImage, at: 0)
         
+        setupTimerInactivity()
         backgroundColor()
         setupView()
         setupCircleLayers()
+    }
+    
+    func setupTimerInactivity() {
+        timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(doStuff), userInfo: nil, repeats: true)
+        let resetTimer = UITapGestureRecognizer(target: self, action: #selector(resetTimers))
+        self.isUserInteractionEnabled = true
+        self.addGestureRecognizer(resetTimer)
+    }
+    
+    @objc func doStuff() {
+        // perform any action you wish to
+        print("User inactive for more than 5 seconds .")
+        setupHintCircleAnimation()
+        timer.invalidate()
+    }
+    
+    @objc func resetTimers() {
+        timer.invalidate()
+        timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(doStuff), userInfo: nil, repeats: true)
+    }
+    
+    func setupHintCircleAnimation() {
+        addSubview(circleAnimateMove1)
+        addSubview(circleAnimateMove2)
+        addSubview(circleAnimateMove3)
+        addSubview(circleAnimateMove4)
+        
+        UIView.animate(withDuration: 0.8, delay: 0.0, options: [.repeat, .curveLinear], animations: { [self] in
+            UIView.animate(withDuration: 0.6) {
+                self.circleAnimateMove1.alpha = 0.2
+                self.circleAnimateMove2.alpha = 0.2
+                self.circleAnimateMove3.alpha = 0.2
+                self.circleAnimateMove4.alpha = 0.2
+            }
+            circleAnimateMove1.frame = CGRect(x: SCREEN_WIDTH/2 - 20, y: SCREEN_HEIGHT/2 - 20, width: 40, height: 40)
+            circleAnimateMove2.frame = CGRect(x: SCREEN_WIDTH/2 - 20, y: SCREEN_HEIGHT/2 - 20, width: 40, height: 40)
+            circleAnimateMove3.frame = CGRect(x: SCREEN_WIDTH/2 - 20, y: SCREEN_HEIGHT/2 - 20, width: 40, height: 40)
+            circleAnimateMove4.frame = CGRect(x: SCREEN_WIDTH/2 - 20, y: SCREEN_HEIGHT/2 - 20, width: 40, height: 40)
+            self.circleAnimateMove1.alpha = 0.0
+            self.circleAnimateMove2.alpha = 0.0
+            self.circleAnimateMove3.alpha = 0.0
+            self.circleAnimateMove4.alpha = 0.0
+        })
     }
     
     func setupView() {
@@ -279,14 +437,36 @@ class QuizViewTypeAV2: BaseCell, UIGestureRecognizerDelegate {
         addSubview(pilgan2Answer)
         addSubview(pilgan3Answer)
         addSubview(pilgan4Answer)
+        
+        addSubview(viewHintExplain)
+        viewHintExplain.topAnchor.constraint(equalTo: quizImage.bottomAnchor, constant: 64).isActive = true
+        viewHintExplain.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        viewHintExplain.heightAnchor.constraint(equalToConstant: 39).isActive = true
+        viewHintExplain.widthAnchor.constraint(equalToConstant: 440).isActive = true
+        
+        viewHintExplain.addSubview(hintLabel)
+        hintLabel.centerYAnchor.constraint(equalTo: viewHintExplain.centerYAnchor, constant: 4).isActive = true
+        hintLabel.centerXAnchor.constraint(equalTo: viewHintExplain.centerXAnchor,constant: 15).isActive = true
+        hintLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        hintLabel.widthAnchor.constraint(equalToConstant: 343).isActive = true
+        
+        viewHintExplain.addSubview(infoHintImageView)
+        infoHintImageView.centerYAnchor.constraint(equalTo: hintLabel.centerYAnchor).isActive = true
+        infoHintImageView.trailingAnchor.constraint(equalTo: hintLabel.leadingAnchor, constant: -8).isActive = true
+        infoHintImageView.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        infoHintImageView.widthAnchor.constraint(equalToConstant: 24).isActive = true
     }
     
     func hiddenSetupView() {
-        quizImage.isHidden = true
-        pilgan1Answer.isHidden = true
-        pilgan2Answer.isHidden = true
-        pilgan3Answer.isHidden = true
-        pilgan4Answer.isHidden = true
+        willRemoveSubview(circleAnimateMove1)
+        willRemoveSubview(circleAnimateMove2)
+        willRemoveSubview(circleAnimateMove3)
+        willRemoveSubview(circleAnimateMove4)
+        willRemoveSubview(quizImage)
+        willRemoveSubview(pilgan1Answer)
+        willRemoveSubview(pilgan2Answer)
+        willRemoveSubview(pilgan3Answer)
+        willRemoveSubview(pilgan4Answer)
     }
     
     func setupViewAnswerStateTrue() {
@@ -295,14 +475,14 @@ class QuizViewTypeAV2: BaseCell, UIGestureRecognizerDelegate {
         hiddenSetupView()
         
         addSubview(stateTrueAnswer)
-        addSubview(trueState)
         addSubview(stateLabelTrueAnswer)
         addSubview(viewStateExplain)
+        addSubview(trueState)
         addSubview(stateLabelExplain)
         
         addSubview(lanjutStateButton)
         lanjutStateButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        lanjutStateButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -32).isActive = true
+        lanjutStateButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -64).isActive = true
         lanjutStateButton.widthAnchor.constraint(equalToConstant: 240).isActive = true
         lanjutStateButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
     }
@@ -313,28 +493,23 @@ class QuizViewTypeAV2: BaseCell, UIGestureRecognizerDelegate {
         
         //Left
         addSubview(stateTrueAnswer)
-        stateTrueAnswer.frame = CGRect(x: UIScreen.main.bounds.width/2 - 312, y: UIScreen.main.bounds.height/2 - 131, width: 160, height: 120)
-        
-        addSubview(trueState)
-        trueState.frame = CGRect(x: SCREEN_WIDTH/2 - 212, y: SCREEN_HEIGHT/2 + 37, width: 24, height: 24)
+        stateTrueAnswer.frame = CGRect(x: UIScreen.main.bounds.width/2 - 80, y: UIScreen.main.bounds.height/2 - 163, width: 160, height: 120)
         
         addSubview(stateLabelTrueAnswer)
-        stateLabelTrueAnswer.frame = CGRect(x: SCREEN_WIDTH/2 - 276, y: SCREEN_HEIGHT/2 + 30, width: 52, height: 38)
+        stateLabelTrueAnswer.frame = CGRect(x: SCREEN_WIDTH/2 - 26, y: SCREEN_HEIGHT/2 + 14, width: 52, height: 38)
         
         //Right
-        addSubview(stateFalseAnswer)
-        addSubview(falseState)
-        addSubview(stateLabelFalseAnswer)
         addSubview(viewStateExplain)
-        viewStateExplain.frame = CGRect(x: SCREEN_WIDTH/2 + 73, y: SCREEN_HEIGHT/2 + 88, width: 320, height: 39)
+        viewStateExplain.frame = CGRect(x: SCREEN_WIDTH/2 - 160, y: SCREEN_HEIGHT/2 + 88, width: 320, height: 39)
+        addSubview(falseState)
         
         stateLabelExplain.text = "Jawaban kamu belum benar"
         addSubview(stateLabelExplain)
-        stateLabelExplain.frame = CGRect(x: SCREEN_WIDTH/2 + 124, y: SCREEN_HEIGHT/2 + 101, width: 224, height: 19)
+        stateLabelExplain.frame = CGRect(x: SCREEN_WIDTH/2 - 107, y: SCREEN_HEIGHT/2 + 101, width: 224, height: 19)
         
         addSubview(lanjutStateButton)
         lanjutStateButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        lanjutStateButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -32).isActive = true
+        lanjutStateButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -64).isActive = true
         lanjutStateButton.widthAnchor.constraint(equalToConstant: 240).isActive = true
         lanjutStateButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
     }
@@ -375,20 +550,17 @@ class QuizViewTypeAV2: BaseCell, UIGestureRecognizerDelegate {
                 self.stateLabelExplain.alpha = 1.0
             }
             stateTrueAnswer.frame = originQuizImagePositionAnswer
-            trueState.frame = CGRect(x: SCREEN_WIDTH/2 + 20, y: SCREEN_HEIGHT/2 + 85, width: 24, height: 24)
-            stateLabelTrueAnswer.frame = CGRect(x: SCREEN_WIDTH/2 - 44, y: SCREEN_HEIGHT/2 + 78, width: 52, height: 38)
-            viewStateExplain.frame = CGRect(x: SCREEN_WIDTH/2 - 160, y: SCREEN_HEIGHT/2 + 136, width: 320, height: 39)
-            stateLabelExplain.frame = CGRect(x: SCREEN_WIDTH/2 - 107, y: SCREEN_HEIGHT/2 + 149, width: 214, height: 19)
+            stateLabelTrueAnswer.frame = CGRect(x: SCREEN_WIDTH/2 - 26, y: SCREEN_HEIGHT/2 + 72, width: 52, height: 38)
+            viewStateExplain.frame = CGRect(x: SCREEN_WIDTH/2 - 160, y: SCREEN_HEIGHT/2 + 128, width: 320, height: 39)
+            trueState.frame = CGRect(x: SCREEN_WIDTH/2 + 134, y: SCREEN_HEIGHT/2 + 141, width: 20, height: 20)
+            stateLabelExplain.frame = CGRect(x: SCREEN_WIDTH/2 - 107, y: SCREEN_HEIGHT/2 + 141, width: 214, height: 19)
         })
     }
     
     func animationQuizQuickStart1AnswerFalse(){
         self.stateTrueAnswer.alpha = 0.0
-        self.trueState.alpha = 0.0
         self.stateLabelTrueAnswer.alpha = 0.0
-        self.stateFalseAnswer.alpha = 0.0
         self.falseState.alpha = 0.0
-        self.stateLabelFalseAnswer.alpha = 0.0
         self.viewStateExplain.alpha = 0.0
         self.stateLabelExplain.alpha = 0.0
         
@@ -396,23 +568,39 @@ class QuizViewTypeAV2: BaseCell, UIGestureRecognizerDelegate {
         UIView.animate(withDuration: 0.8, delay: 0.0, options: .curveLinear, animations: { [self] in
             UIView.animate(withDuration: 1.5) {
                 self.stateTrueAnswer.alpha = 1.0
-                self.trueState.alpha = 1.0
                 self.stateLabelTrueAnswer.alpha = 1.0
-                self.stateFalseAnswer.alpha = 1.0
                 self.falseState.alpha = 1.0
-                self.stateLabelFalseAnswer.alpha = 1.0
                 self.viewStateExplain.alpha = 1.0
                 self.stateLabelExplain.alpha = 1.0
             }
-            stateTrueAnswer.frame = CGRect(x: UIScreen.main.bounds.width/2 - 312, y: UIScreen.main.bounds.height/2 - 83, width: 160, height: 120)
-            trueState.frame = CGRect(x: SCREEN_WIDTH/2 - 212, y: SCREEN_HEIGHT/2 + 85, width: 24, height: 24)
-            stateLabelTrueAnswer.frame = CGRect(x: SCREEN_WIDTH/2 - 276, y: SCREEN_HEIGHT/2 + 78, width: 52, height: 38)
-            stateFalseAnswer.frame = CGRect(x: UIScreen.main.bounds.width/2 + 152, y: UIScreen.main.bounds.height/2 - 83, width: 160, height: 120)
-            falseState.frame = CGRect(x: SCREEN_WIDTH/2 + 243, y: SCREEN_HEIGHT/2 + 85, width: 24, height: 24)
-            stateLabelFalseAnswer.frame = CGRect(x: SCREEN_WIDTH/2 + 187, y: SCREEN_HEIGHT/2 + 78, width: 52, height: 38)
-            viewStateExplain.frame = CGRect(x: SCREEN_WIDTH/2 + 73, y: SCREEN_HEIGHT/2 + 136, width: 320, height: 39)
-            stateLabelExplain.frame = CGRect(x: SCREEN_WIDTH/2 + 124, y: SCREEN_HEIGHT/2 + 149, width: 224, height: 19)
+            stateTrueAnswer.frame = CGRect(x: UIScreen.main.bounds.width/2 - 80, y: UIScreen.main.bounds.height/2 - 75, width: 160, height: 120)
+            stateLabelTrueAnswer.frame = CGRect(x: SCREEN_WIDTH/2 - 26, y: SCREEN_HEIGHT/2 + 72, width: 52, height: 38)
+            viewStateExplain.frame = CGRect(x: SCREEN_WIDTH/2 - 160, y: SCREEN_HEIGHT/2 + 128, width: 320, height: 39)
+            falseState.frame = CGRect(x: SCREEN_WIDTH/2 + 134, y: SCREEN_HEIGHT/2 + 141, width: 20, height: 20)
+            stateLabelExplain.frame = CGRect(x: SCREEN_WIDTH/2 - 107, y: SCREEN_HEIGHT/2 + 141, width: 224, height: 19)
         })
+    }
+    
+    func playSoundDrag() {
+        guard let url = Bundle.main.url(forResource: "Drag Sound", withExtension: "mp3") else { return }
+        
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+            
+            /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+            
+            /* iOS 10 and earlier require the following line:
+             player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
+            
+            guard let player = player else { return }
+            
+            player.play()
+            
+        } catch let error {
+            print(error.localizedDescription)
+        }
     }
     
     func playSoundFalse() {
@@ -461,87 +649,110 @@ class QuizViewTypeAV2: BaseCell, UIGestureRecognizerDelegate {
     
     // MARK: Gesture to move selected object
     @objc func gestureMoveObject(_ sender: CustomPanGestureRecognizer){
+        circleAnimateMove1.isHidden = true
+        circleAnimateMove2.isHidden = true
+        circleAnimateMove3.isHidden = true
+        circleAnimateMove4.isHidden = true
         let senderView = sender.view
-        let name =  sender.name
+        UIView.animate(withDuration: 0.8, delay: 0.0, options: .curveLinear, animations: { [self] in
+            viewHintExplain.alpha = 0.0
+        })
+        
         
         if sender.state == .ended {
-            animatePulsatingLayerItemMoving()
-            if (name == "ImageQuestion") {
-                if (pilgan1Answer.frame.intersects(sender.view!.frame)) {
-                    //DropDown&FadeOutAnimation
-                    animationQuizQuickStart1Question()
-                    
-                    //AnswerPopUp
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-                        
-                        self.setupViewAnswerStateTrue()
-                        self.animationQuizQuickStart1AnswerTrue()
-                        self.playSoundTrue()
-                    }
+            animatePulsatingLayer()
+            //            if (name == "ImageQuestion") {
+            if (quizImage.frame.intersects(sender.view!.frame) && sender.index == 0) {
+                //DropDown&FadeOutAnimation
+                pilgan1Answer.alpha = 0
+                animationQuizQuickStart1Question()
+                
+                //AnswerPopUp
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                    self.setupViewAnswerStateTrue()
+                    self.animationQuizQuickStart1AnswerTrue()
+                    self.playSoundTrue()
                 }
-                else if (pilgan2Answer.frame.intersects(sender.view!.frame)) {
-                    //DropDown&FadeOutAnimation
-                    animationQuizQuickStart1Question()
-                    
-                    //AnswerPopUp
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-                        self.setupViewAnswerStateFalse()
-                        self.animationQuizQuickStart1AnswerFalse()
-                        self.playSoundFalse()
-                    }
+                
+                print("benar")
+            }
+            else if (quizImage.frame.intersects(sender.view!.frame) && sender.index == 1) {
+                //DropDown&FadeOutAnimation
+                pilgan2Answer.alpha = 0
+                animationQuizQuickStart1Question()
+                
+                //AnswerPopUp
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                    self.setupViewAnswerStateFalse()
+                    self.animationQuizQuickStart1AnswerFalse()
+                    self.playSoundFalse()
                 }
-                else if (pilgan3Answer.frame.intersects(sender.view!.frame)) {
-                    stateLabelFalseAnswer.text = "Ca"
-                    stateFalseAnswer.image = UIImage(named: "Jawa Soal 1 Ca")
-                    //DropDown&FadeOutAnimation
-                    animationQuizQuickStart1Question()
-                    
-                    //AnswerPopUp
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-                        self.setupViewAnswerStateFalse()
-                        self.animationQuizQuickStart1AnswerFalse()
-                        self.playSoundFalse()
-                    }
+                
+                print("salah1")
+            }
+            else if (quizImage.frame.intersects(sender.view!.frame) && sender.index == 2) {
+                //DropDown&FadeOutAnimation
+                pilgan3Answer.alpha = 0
+                animationQuizQuickStart1Question()
+                
+                //AnswerPopUp
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                    self.setupViewAnswerStateFalse()
+                    self.animationQuizQuickStart1AnswerFalse()
+                    self.playSoundFalse()
                 }
-                else if (pilgan4Answer.frame.intersects(sender.view!.frame)) {
-                    stateLabelFalseAnswer.text = "Pa"
-                    stateFalseAnswer.image = UIImage(named: "Jawa Jawaban Pa")
-                    stateFalseAnswer.setImageColor(color: .white)
-                    //DropDown&FadeOutAnimation
-                    animationQuizQuickStart1Question()
-                    
-                    //AnswerPopUp
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-                        self.setupViewAnswerStateFalse()
-                        self.animationQuizQuickStart1AnswerFalse()
-                        self.playSoundFalse()
-                    }
+                
+                print("salah 2")
+            }
+            else if (quizImage.frame.intersects(sender.view!.frame) && sender.index == 3) {
+                //DropDown&FadeOutAnimation
+                pilgan4Answer.alpha = 0
+                animationQuizQuickStart1Question()
+                
+                //AnswerPopUp
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                    self.setupViewAnswerStateFalse()
+                    self.animationQuizQuickStart1AnswerFalse()
+                    self.playSoundFalse()
                 }
-                else{
-                    //animate go back to initial
-                    UIView.animate(withDuration: 1,delay: 0,usingSpringWithDamping: 0.8, initialSpringVelocity: 2, options: .curveEaseIn) { [self] in
-                        sender.view?.transform = .identity
-                        
+                
+                print("salah3")
+            }
+            else{
+                //animate go back to initial
+                UIView.animate(withDuration: 1,delay: 0,usingSpringWithDamping: 0.8, initialSpringVelocity: 2, options: .curveEaseIn) { [self] in
+                    sender.view?.transform = .identity
+                    print("CEKKKK")
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) { [self] in
+                        circleAnimateMove1.isHidden = false
+                        circleAnimateMove2.isHidden = false
+                        circleAnimateMove3.isHidden = false
+                        circleAnimateMove4.isHidden = false
                     }
                 }
             }
+            //            }
+            
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                self.pulsatingLayer1.removeAnimation(forKey: "pulsing")
-                self.pulsatingLayer2.removeAnimation(forKey: "pulsing")
-                self.pulsatingLayer3.removeAnimation(forKey: "pulsing")
-                self.pulsatingLayer4.removeAnimation(forKey: "pulsing")
+                self.pulsatingLayerQuizImage.removeAnimation(forKey: "pulsing")
+                self.viewHintExplain.removeFromSuperview()
             }
             
         }
         
         if sender.state == .began {
-            animatePulsatingLayer()
+            playSoundDrag()
+            animatePulsatingLayerItemMoving()
+            
             
         } else if sender.state == .changed {
             let translation = sender.translation(in: self)
             senderView!.transform = CGAffineTransform(translationX: translation.x , y: translation.y)
-            pulsatingLayerQuizImage.removeAnimation(forKey: "pulsing")
+            self.pulsatingLayer1.removeAnimation(forKey: "pulsing")
+            self.pulsatingLayer2.removeAnimation(forKey: "pulsing")
+            self.pulsatingLayer3.removeAnimation(forKey: "pulsing")
+            self.pulsatingLayer4.removeAnimation(forKey: "pulsing")
         }
     }
 }
