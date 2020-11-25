@@ -417,6 +417,7 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     let headImageLogo: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "headImage")
+        image.setImageColor(color: UIColor.init(displayP3Red: 255/255, green: 223/255, blue: 118/255, alpha: 1))
         image.contentMode = .scaleAspectFit
         image.alpha = 0
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -489,6 +490,7 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     let tailImageLogo: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "tailImage")
+        image.setImageColor(color: UIColor.init(displayP3Red: 255/255, green: 223/255, blue: 118/255, alpha: 1))
         image.contentMode = .scaleAspectFit
         image.alpha = 0
         image.translatesAutoresizingMaskIntoConstraints = false

@@ -22,13 +22,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 
 //                navController.viewControllers = [StartController()]
 //                navController.viewControllers = [QuizScreenV2Controller()]
-                navController.viewControllers = [QuizDummyController()]
+                navController.viewControllers = [QuickStartViewController()]
             } else {
                 CoreDataRecordV2.shared.saveRecord()
-//                navController.viewControllers = [InputNameController()]
-//                navController.viewControllers = [QuizScreenV2Controller()]
-                navController.viewControllers = [QuizDummyController()]
-                
+                navController.viewControllers = [QuickStartViewController()]
             }
             
             window.rootViewController = navController

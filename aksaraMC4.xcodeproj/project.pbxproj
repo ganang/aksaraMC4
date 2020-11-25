@@ -106,6 +106,7 @@
 		91F1570E2561742200CC8614 /* Explode Animation Big 2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 91F1570D2561742200CC8614 /* Explode Animation Big 2.gif */; };
 		91F1571625617B6A00CC8614 /* Drag Sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 91F1571425617B6900CC8614 /* Drag Sound.mp3 */; };
 		91F1571725617B6A00CC8614 /* Drop Sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 91F1571525617B6900CC8614 /* Drop Sound.mp3 */; };
+		A413F152256C0C2800B020BB /* PencilStrokeWithoutBackgroundCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413F151256C0C2800B020BB /* PencilStrokeWithoutBackgroundCell.swift */; };
 		A41A77E8252D9586001C4FAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41A77E7252D9586001C4FAD /* AppDelegate.swift */; };
 		A41A77EA252D9586001C4FAD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41A77E9252D9586001C4FAD /* SceneDelegate.swift */; };
 		A41A77F2252D9586001C4FAD /* aksaraMC4.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A41A77F0252D9586001C4FAD /* aksaraMC4.xcdatamodeld */; };
@@ -159,6 +160,9 @@
 		A4B3F53C256127FD008D6520 /* PencilStrokeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B3F53B256127FD008D6520 /* PencilStrokeCell.swift */; };
 		A4B3F53F25617229008D6520 /* GradientCircularProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B3F53E25617229008D6520 /* GradientCircularProgressBar.swift */; };
 		A4C715BC2539A45B00270D58 /* CoreDataRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C715BB2539A45B00270D58 /* CoreDataRecord.swift */; };
+		A4DB91BA2568CEB50002AA2A /* TestingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DB91B92568CEB50002AA2A /* TestingController.swift */; };
+		A4DB91BE2568CEEA0002AA2A /* TestingViewA.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DB91BD2568CEEA0002AA2A /* TestingViewA.swift */; };
+		A4DB91C22568D18B0002AA2A /* TestingViewB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DB91C12568D18B0002AA2A /* TestingViewB.swift */; };
 		A4ECCF2C25627F9200E038BA /* QuickStartReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECCF2B25627F9200E038BA /* QuickStartReviewViewController.swift */; };
 		A4ECCF3E2562A2AA00E038BA /* QuickStartReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECCF3D2562A2AA00E038BA /* QuickStartReviewCell.swift */; };
 		A4ECCF412562C8E600E038BA /* QuickStartReviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECCF402562C8E600E038BA /* QuickStartReviewData.swift */; };
@@ -272,6 +276,7 @@
 		9C280DC7DA303D6AD9D00A92 /* Pods-aksaraMC4.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aksaraMC4.debug.xcconfig"; path = "Target Support Files/Pods-aksaraMC4/Pods-aksaraMC4.debug.xcconfig"; sourceTree = "<group>"; };
 		9DB790D026838342CEDF8B35 /* Pods-aksaraMC4.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aksaraMC4.release.xcconfig"; path = "Target Support Files/Pods-aksaraMC4/Pods-aksaraMC4.release.xcconfig"; sourceTree = "<group>"; };
 		A411F9CD252EF8CC0092F9BD /* TestingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingViewController.swift; sourceTree = "<group>"; };
+		A413F151256C0C2800B020BB /* PencilStrokeWithoutBackgroundCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PencilStrokeWithoutBackgroundCell.swift; sourceTree = "<group>"; };
 		A41A77E4252D9586001C4FAD /* aksaraMC4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = aksaraMC4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A41A77E7252D9586001C4FAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A41A77E9252D9586001C4FAD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -327,6 +332,9 @@
 		A4B3F53B256127FD008D6520 /* PencilStrokeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PencilStrokeCell.swift; sourceTree = "<group>"; };
 		A4B3F53E25617229008D6520 /* GradientCircularProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientCircularProgressBar.swift; sourceTree = "<group>"; };
 		A4C715BB2539A45B00270D58 /* CoreDataRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRecord.swift; sourceTree = "<group>"; };
+		A4DB91B92568CEB50002AA2A /* TestingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingController.swift; sourceTree = "<group>"; };
+		A4DB91BD2568CEEA0002AA2A /* TestingViewA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingViewA.swift; sourceTree = "<group>"; };
+		A4DB91C12568D18B0002AA2A /* TestingViewB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingViewB.swift; sourceTree = "<group>"; };
 		A4ECCF2B25627F9200E038BA /* QuickStartReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickStartReviewViewController.swift; sourceTree = "<group>"; };
 		A4ECCF3D2562A2AA00E038BA /* QuickStartReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickStartReviewCell.swift; sourceTree = "<group>"; };
 		A4ECCF402562C8E600E038BA /* QuickStartReviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickStartReviewData.swift; sourceTree = "<group>"; };
@@ -814,6 +822,7 @@
 		A41A77E6252D9586001C4FAD /* aksaraMC4 */ = {
 			isa = PBXGroup;
 			children = (
+				A4DB91BC2568CECB0002AA2A /* Testing Screen */,
 				91F15703256171A100CC8614 /* fileGIF */,
 				91F156BD255E929900CC8614 /* Version0.3Quiz */,
 				A4B3F53125610D12008D6520 /* QuickStart Screen */,
@@ -948,6 +957,7 @@
 				A4B3F53B256127FD008D6520 /* PencilStrokeCell.swift */,
 				A4ECCF3D2562A2AA00E038BA /* QuickStartReviewCell.swift */,
 				A4ECCF452562DFA200E038BA /* PencilStrokeWithoutTrackCell.swift */,
+				A413F151256C0C2800B020BB /* PencilStrokeWithoutBackgroundCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -958,6 +968,16 @@
 				A4F7A32F255BF900005B6202 /* AksaraModel.mlmodel */,
 			);
 			path = MLModel;
+			sourceTree = "<group>";
+		};
+		A4DB91BC2568CECB0002AA2A /* Testing Screen */ = {
+			isa = PBXGroup;
+			children = (
+				A4DB91B92568CEB50002AA2A /* TestingController.swift */,
+				A4DB91BD2568CEEA0002AA2A /* TestingViewA.swift */,
+				A4DB91C12568D18B0002AA2A /* TestingViewB.swift */,
+			);
+			path = "Testing Screen";
 			sourceTree = "<group>";
 		};
 		A4F19FC9253598FB00F5BA23 /* Common */ = {
@@ -1201,6 +1221,7 @@
 				91C98779252F269000D67BC0 /* LevelView.swift in Sources */,
 				91F156CF25604F6200CC8614 /* NewSandanganQuizCell.swift in Sources */,
 				A4B3F536256119DC008D6520 /* GradientHorizontalProgressBar.swift in Sources */,
+				A413F152256C0C2800B020BB /* PencilStrokeWithoutBackgroundCell.swift in Sources */,
 				914344F6252DC366002E867B /* RegionController.swift in Sources */,
 				91775780254C35F4001C2589 /* LevelV2View.swift in Sources */,
 				917757BB25505521001C2589 /* InputNameController.swift in Sources */,
@@ -1216,6 +1237,7 @@
 				A41A77E8252D9586001C4FAD /* AppDelegate.swift in Sources */,
 				23812D902542C37A00C17F53 /* PasanganView.swift in Sources */,
 				23812D8E2542C34D00C17F53 /* VokalView.swift in Sources */,
+				A4DB91BA2568CEB50002AA2A /* TestingController.swift in Sources */,
 				91F156FB2560F1C500CC8614 /* NewPanduanFirstCell.swift in Sources */,
 				23812D8C2542C24600C17F53 /* KonsonanView.swift in Sources */,
 				237BC09B2545C31000494281 /* KonsonanCell.swift in Sources */,
@@ -1224,6 +1246,7 @@
 				91F156FE256128FA00CC8614 /* NewRewardCell.swift in Sources */,
 				91775768254966D5001C2589 /* ChoiceButton.swift in Sources */,
 				91F156CB255F9F9200CC8614 /* NewHeadnTailDDCell.swift in Sources */,
+				A4DB91BE2568CEEA0002AA2A /* TestingViewA.swift in Sources */,
 				A4B3F53F25617229008D6520 /* GradientCircularProgressBar.swift in Sources */,
 				A48BCFAD254A8B8A00BD996B /* QuizTypeE3Cell.swift in Sources */,
 				A48BCFAD254A8B8A00BD996B /* QuizTypeE3Cell.swift in Sources */,
@@ -1236,6 +1259,7 @@
 				239F9387255FEC6F0022DD49 /* QuizScreenV2Controller.swift in Sources */,
 				91775785254EFA32001C2589 /* StageTahap1Cell.swift in Sources */,
 				917757A725500B59001C2589 /* LoadingController.swift in Sources */,
+				A4DB91C22568D18B0002AA2A /* TestingViewB.swift in Sources */,
 				91C98775252F268400D67BC0 /* LevelController.swift in Sources */,
 				914344E9252DBAFC002E867B /* LightTheme.swift in Sources */,
 				A4B3F53C256127FD008D6520 /* PencilStrokeCell.swift in Sources */,

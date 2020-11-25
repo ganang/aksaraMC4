@@ -65,6 +65,19 @@ struct TextGenerator {
         return drawing
     }()
     
+    static func aksara(withText text: String) -> PKDrawing {
+        guard let ligatureData = NSDataAsset(name: text)?.data, var drawing = try? PKDrawing(data: ligatureData) else {
+            fatalError("Could not load PencilKit ligature drawing asset.")
+        }
+        drawing.strokes = drawing.strokes.map { stroke -> PKStroke in
+            // Modify the strokes to have the correct color.
+            var stroke = stroke
+            stroke.ink = PKInk(.pen, color: .clear)
+            return stroke
+        }
+        
+        return drawing
+    }
     
     
     func synthesizeTextDrawing(text: String) -> PKDrawing {
@@ -76,7 +89,7 @@ struct TextGenerator {
             return TextGenerator.cobacoba
         }
         
-        return TextGenerator.extreme
+        return TextGenerator.aksara(withText: text)
         
     }
 }
