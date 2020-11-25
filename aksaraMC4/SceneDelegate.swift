@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             
             if UserDefaults.standard.object(forKey: "FirstLoad") != nil {
                 
-                navController.viewControllers = [StartController()]
+                navController.viewControllers = [QuizDummyController()]
             } else {
                 CoreDataRecordV2.shared.saveRecord()
                 navController.viewControllers = [InputNameController()]

@@ -61,7 +61,7 @@ class LoadingView: UIView {
         return progress
     }()
     
-    let progress = Progress(totalUnitCount: 500)
+    let progress = Progress(totalUnitCount: 200)
     
     
     override init(frame: CGRect) {

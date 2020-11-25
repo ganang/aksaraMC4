@@ -136,7 +136,7 @@ class LevelV2Controller: UIViewController {
         loadingView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         loadingView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5.5) { [self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) { [self] in
 
             UIView.animate(withDuration: 0.5) {
 //                loadingView.alpha = 0

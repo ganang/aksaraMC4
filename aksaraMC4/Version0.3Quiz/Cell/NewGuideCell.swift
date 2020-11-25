@@ -16,22 +16,29 @@ import AVFoundation
 
 class NewGuideCell: UICollectionViewCell {
     
+    
+    var aksaraImageTopAnchor1 : NSLayoutConstraint?
+    var aksaraImageTopAnchor2 : NSLayoutConstraint?
+    
+    var aksaraNameTopAnchor1 : NSLayoutConstraint?
+    var aksaraNameTopAnchor2 : NSLayoutConstraint?
+    
     var isAlreadySlashed : Bool? = false
     var player: AVAudioPlayer?
     var timer = Timer()
     
     let aksaraImage: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "Jawa Soal 4 Wa")
+        image.image = UIImage(named: "Jawa Soal 4 Ja")
         image.contentMode = .scaleAspectFit
-        image.translatesAutoresizingMaskIntoConstraints = false
+//        image.translatesAutoresizingMaskIntoConstraints = false
 
         return image
     }()
 
     let aksaraName: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
+//        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.init(name: "NowAlt-Medium", size: 32)
         label.text = "Wa"
         label.textColor = Theme.current.accentWhite
@@ -90,6 +97,14 @@ class NewGuideCell: UICollectionViewCell {
     }()
     
 
+    var hintText : UIImageView = {
+        let img = UIImageView()
+        img.image = UIImage(named: "hint Ja")
+        img.alpha = 1
+        img.contentMode = .scaleAspectFit
+//        img.translatesAutoresizingMaskIntoConstraints = false
+        return img
+    }()
     
     let hintHandImage: UIImageView = {
         let image = UIImageView()
@@ -109,7 +124,7 @@ class NewGuideCell: UICollectionViewCell {
     
     let tailImage: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "Jawa Ekor Wa")
+        image.image = UIImage(named: "Jawa Ekor Ja")
         image.contentMode = .scaleAspectFit
         image.alpha = 1
         return image
@@ -137,7 +152,7 @@ class NewGuideCell: UICollectionViewCell {
     
     let tailImageLogo: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "tailImage")
+        image.image = UIImage(named: "ekorGold")
         image.contentMode = .scaleAspectFit
         image.alpha = 0
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -154,7 +169,7 @@ class NewGuideCell: UICollectionViewCell {
     
     let headImage: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "Jawa Kepala Wa")
+        image.image = UIImage(named: "Jawa Kepala Ja")
         image.contentMode = .scaleAspectFit
         image.alpha = 1
         return image
@@ -182,7 +197,7 @@ class NewGuideCell: UICollectionViewCell {
     
     let headImageLogo: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "headImage")
+        image.image = UIImage(named: "kepalaGold")
         image.contentMode = .scaleAspectFit
         image.alpha = 0
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -191,19 +206,58 @@ class NewGuideCell: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+//        alpha = 0
+//        UIView.animate(withDuration: 5) {
+//            self.alpha = 1
+//        }
 
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
         backgroundImage.image = UIImage(named: "Batik BackgroundNew")
         backgroundImage.contentMode = .scaleAspectFill
         self.insertSubview(backgroundImage, at: 0)
         setBackgroundGuide()
+        setupDynamicLayout()
         setupView()
+        firstAnimation()
+       
+//        disappearingHint()
         setupTimerInactivity()
         setupSlashedAppear()
     }
     
+    func setupDynamicLayout() {
+        self.aksaraImageTopAnchor1 = aksaraImage.topAnchor.constraint(equalTo: topAnchor, constant: 200)
+        self.aksaraImageTopAnchor2 = aksaraImage.topAnchor.constraint(equalTo: topAnchor, constant: 300)
+        
+//        self.aksaraNameTopAnchor1 =  aksaraName.topAnchor.constraint(equalTo: aksaraImage.bottomAnchor, constant: 48)
+//        self.aksaraNameTopAnchor2 = aksaraImage.topAnchor.constraint(equalTo: topAnchor, constant: 300)
+        
+    }
+    
+    func firstAnimation() {
+        aksaraImage.alpha = 0.3
+        aksaraName.alpha = 0.3
+        hintText.alpha = 0
+//        self.aksaraImageTopAnchor1?.constant = 0
+        UIView.animate(withDuration: 1, delay: 0) { [self] in
+            aksaraImage.frame = CGRect(x: self.frame.size.width/2 - 111, y: 300, width: 224, height: 160)
+            aksaraName.frame = CGRect(x: frame.size.width/2 - 17, y: 480, width: 100, height: 100)
+            aksaraImage.alpha = 1
+            aksaraName.alpha = 1
+        }
+        
+        UIView.animate(withDuration: 1, delay: 2) { [self] in
+            hintText.frame = CGRect(x: frame.size.width/2 - 319, y: 588, width: 640, height: 71)
+
+            hintText.alpha = 1
+        }
+        
+
+
+    }
+    
     func setupTimerInactivity() {
-        timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(doStuff), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(doStuff), userInfo: nil, repeats: true)
         let resetTimer = UITapGestureRecognizer(target: self, action: #selector(resetTimers))
         self.isUserInteractionEnabled = true
         self.addGestureRecognizer(resetTimer)
@@ -211,21 +265,21 @@ class NewGuideCell: UICollectionViewCell {
     
     @objc func doStuff() {
        // perform any action you wish to
-        print("User inactive for more than 5 seconds .")
+        print("User inactive for more than 5 seconds.")
         setupHand()
         timer.invalidate()
     }
     
     @objc func resetTimers() {
        timer.invalidate()
-       timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(doStuff), userInfo: nil, repeats: true)
+       timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(doStuff), userInfo: nil, repeats: true)
     }
     
     
 
     
     func setupSlashedAppear() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             UIView.animate(withDuration: 0.5) {
                 self.slashingButton.alpha = 1
             }
@@ -236,9 +290,9 @@ class NewGuideCell: UICollectionViewCell {
         if isAlreadySlashed == false {
             addSubview(hintHandImage)
             hintHandImage.alpha = 1
-            self.hintHandImage.frame = CGRect(x: frame.size.width/2 - 70, y: 160, width: 200, height: 40)
+            self.hintHandImage.frame = CGRect(x: frame.size.width/2 - 70, y: 264, width: 200, height: 40)
             UIImageView.animate(withDuration: 1, delay: 0.5, options: [.repeat] , animations: {
-                self.hintHandImage.frame = CGRect(x: self.frame.size.width/2 - 80, y: 280, width: 200, height: 40)
+                self.hintHandImage.frame = CGRect(x: self.frame.size.width/2 - 80, y: 364, width: 200, height: 40)
                 self.hintHandImage.alpha = 0
                 }) { (completed) in
                     
@@ -250,26 +304,27 @@ class NewGuideCell: UICollectionViewCell {
     
     func slashedEvent() {
         isAlreadySlashed = true
-        
+        disspaearingHint()
+        continueButtonAppear()
         //TAIL
         addSubview(tailView)
         tailView.alpha = 0
-        self.tailView.frame = CGRect(x: frame.size.width/2 + 100, y: 230, width: 140, height: 140)
+        self.tailView.frame = CGRect(x: frame.size.width/2 + 100, y: 318, width: 140, height: 140)
         tailView.layer.cornerRadius = 70
         addSubview(tailLine)
         tailLine.alpha = 0.2
-        self.tailLine.frame = CGRect(x: frame.size.width/2 + 100, y: 300, width: 80, height: 2)
+        self.tailLine.frame = CGRect(x: frame.size.width/2 + 100, y: 388, width: 80, height: 2)
         
         self.addSubview(self.tailImage)
         self.tailImage.alpha = 0
-        self.tailImage.frame = CGRect(x: self.frame.size.width/2 + 270, y: 245, width: 100, height: 100)
+        self.tailImage.frame = CGRect(x: self.frame.size.width/2 + 306, y: 360, width: 33, height: 56)
         
         UIImageView.animate(withDuration: 1, delay: 0, options: [] , animations: {
-            self.tailView.frame = CGRect(x: self.frame.size.width/2 + 250, y: 230, width: 140, height: 140)
+            self.tailView.frame = CGRect(x: self.frame.size.width/2 + 250, y: 318, width: 140, height: 140)
             self.tailView.alpha = 0.2
             
             self.tailLine.alpha = 1
-            self.tailLine.frame = CGRect(x: self.frame.size.width/2 + 140, y: 300, width: 80, height: 2)
+            self.tailLine.frame = CGRect(x: self.frame.size.width/2 + 140, y: 388, width: 80, height: 2)
         }) { (completed) in
             //head appear after finish
             self.tailLabelAppear()
@@ -288,23 +343,23 @@ class NewGuideCell: UICollectionViewCell {
         //HEAD
         addSubview(headView)
         headView.alpha = 0
-        self.headView.frame = CGRect(x: frame.size.width/2 - 240, y: 230, width: 140, height: 140)
+        self.headView.frame = CGRect(x: frame.size.width/2 - 240, y: 318, width: 140, height: 140)
         headView.layer.cornerRadius = 70
         
         addSubview(lineHead)
         lineHead.alpha = 0.2
-        self.lineHead.frame = CGRect(x: frame.size.width/2 - 160, y: 300, width: 80, height: 2)
+        self.lineHead.frame = CGRect(x: frame.size.width/2 - 160, y: 388, width: 80, height: 2)
         
         self.addSubview(self.headImage)
         self.headImage.alpha = 0
-        self.headImage.frame = CGRect(x: self.frame.size.width/2 - 370, y: 250, width: 100, height: 100)
+        self.headImage.frame = CGRect(x: self.frame.size.width/2 - 336, y: 360, width: 33, height: 56)
         
         UIImageView.animate(withDuration: 1, delay: 0, options: [] , animations: {
-            self.headView.frame = CGRect(x: self.frame.size.width/2 - 390, y: 230, width: 140, height: 140)
+            self.headView.frame = CGRect(x: self.frame.size.width/2 - 390, y: 318, width: 140, height: 140)
             self.headView.alpha = 0.2
             
             self.lineHead.alpha = 1
-            self.lineHead.frame = CGRect(x: self.frame.size.width/2 - 220, y: 300, width: 80, height: 2)
+            self.lineHead.frame = CGRect(x: self.frame.size.width/2 - 220, y: 388, width: 80, height: 2)
             
         }) { (completed) in
             
@@ -331,7 +386,7 @@ class NewGuideCell: UICollectionViewCell {
         addSubview(headLabel)
         headLabel.centerXAnchor.constraint(equalTo: headView.centerXAnchor).isActive = true
         headLabel.topAnchor.constraint(equalTo: headView.bottomAnchor, constant: 16).isActive = true
-        
+
         addSubview(headImageLogo)
         headImageLogo.centerXAnchor.constraint(equalTo: headView.centerXAnchor).isActive = true
         headImageLogo.bottomAnchor.constraint(equalTo: headView.topAnchor, constant: -16).isActive = true
@@ -353,28 +408,68 @@ class NewGuideCell: UICollectionViewCell {
         
     }
     
-    func setupView() {
-        addSubview(aksaraImage)
-        aksaraImage.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        aksaraImage.topAnchor.constraint(equalTo: topAnchor, constant: 220).isActive = true
-        aksaraImage.widthAnchor.constraint(equalToConstant: 192).isActive = true
-        aksaraImage.heightAnchor.constraint(equalToConstant: 160).isActive = true
+    func continueButtonAppear() {
         
-        addSubview(aksaraName)
-        aksaraName.topAnchor.constraint(equalTo: aksaraImage.bottomAnchor, constant: 80).isActive = true
-        aksaraName.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        
+        continueButton.alpha = 0
         addSubview(continueButton)
         continueButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        continueButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -32).isActive = true
+        continueButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -64).isActive = true
         continueButton.widthAnchor.constraint(equalToConstant: 240).isActive = true
         continueButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        
+        UIView.animate(withDuration: 1, delay: 1) {
+            self.continueButton.alpha = 1
+        }
+    }
+    
+    
+    func disspaearingHint() {
+
+        
+        UIImageView.animate(withDuration: 1, delay: 0.5, options: [] , animations: {
+            self.hintText.alpha = 0
+            }) { (completed) in
+            UIView.animate(withDuration: 1) {
+                self.hintText.alpha = 1
+                self.hintText.image = UIImage(named: "hintJaHnT")
+            }
+            
+            }
+        
+    }
+    
+    func setupView() {
+        
+        aksaraImage.frame = CGRect(x: frame.size.width/2 - 111, y: 300 - 136, width: 224, height: 160)
+        addSubview(aksaraImage)
+//        aksaraImage.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+//        aksaraImageTopAnchor1!.isActive = true
+//        aksaraImage.widthAnchor.constraint(equalToConstant: 192).isActive = true
+//        aksaraImage.heightAnchor.constraint(equalToConstant: 160).isActive = true
+        
+        addSubview(aksaraName)
+        aksaraName.frame = CGRect(x: frame.size.width/2 - 17, y: 480 - 100, width: 100, height: 100)
+//        aksaraName.topAnchor.constraint(equalTo: aksaraImage.bottomAnchor, constant: 48).isActive = true
+//        aksaraName.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        
+//        addSubview(continueButton)
+//        continueButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+//        continueButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -32).isActive = true
+//        continueButton.widthAnchor.constraint(equalToConstant: 240).isActive = true
+//        continueButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        
+        addSubview(hintText)
+        hintText.frame = CGRect(x: frame.size.width/2 - 319, y: 588 - 40, width: 640, height: 71)
+//        hintText.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+//        hintText.topAnchor.constraint(equalTo: aksaraName.bottomAnchor, constant: 72).isActive = true
+//        hintText.widthAnchor.constraint(equalToConstant: 740).isActive = true
+//        hintText.heightAnchor.constraint(equalToConstant: 71).isActive = true
         
         addSubview(slashingButton)
         slashingButton.centerXAnchor.constraint(equalTo: aksaraImage.centerXAnchor, constant: 0).isActive = true
         slashingButton.centerYAnchor.constraint(equalTo: aksaraImage.centerYAnchor, constant: 0).isActive = true
         slashingButton.widthAnchor.constraint(equalToConstant: 12).isActive = true
-        slashingButton.heightAnchor.constraint(equalToConstant: 270).isActive = true
+        slashingButton.heightAnchor.constraint(equalToConstant: 220).isActive = true
         
         addSubview(slashingCanvas)
         slashingCanvas.centerXAnchor.constraint(equalTo: slashingButton.centerXAnchor, constant: 0).isActive = true
