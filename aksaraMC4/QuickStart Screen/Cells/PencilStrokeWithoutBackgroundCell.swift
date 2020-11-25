@@ -9,8 +9,9 @@
 import UIKit
 import PencilKit
 import AVFoundation
+import CoreGraphics
 
-class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationDelegate {
+class PencilStrokeWithoutBackgroundCell: BaseCell, PKCanvasViewDelegate, CAAnimationDelegate {
     
     var moveAlongPathJa: CAAnimation!
     var customTrackView: CustomTrackView!
@@ -43,7 +44,7 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         generateText(withText: aksara!)
         
         if (aksara == "Ga") {
-            backgroundImageView.image = UIImage(named: "shadowImageGa")
+//            backgroundImageView.image = UIImage(named: "shadowImageGa")
             trackingImageView1.image = UIImage(named: "trackingImageGa1")
             trackingImageView2.image = UIImage(named: "trackingImageGa2")
             trackingImageView3.image = UIImage(named: "trackingImageGa3")
@@ -53,7 +54,7 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         }
         
         if (aksara == "Ja") {
-            backgroundImageView.image = UIImage(named: "shadowImageGreenJa")
+//            backgroundImageView.image = UIImage(named: "shadowImageJa")
             trackingImageView1.image = UIImage(named: "trackingImageJa1")
             trackingImageView2.image = UIImage(named: "trackingImageJa2")
             trackingImageView3.image = UIImage(named: "trackingImageJa3")
@@ -136,7 +137,7 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         let imageView = UIImageView()
         imageView.contentMode = .scaleToFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.isHidden = true
+        imageView.isHidden = false
         
         return imageView
     }()
@@ -191,36 +192,6 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         button.setTitleColor(.black, for: .normal)
         button.isHidden = true
         button.isUserInteractionEnabled = false
-        
-        return button
-    }()
-    
-    let trackingHelperButton1: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setBackgroundImage(UIImage(named: "trackingButton"), for: .normal)
-        button.isUserInteractionEnabled = false
-        button.isHidden = false
-        
-        return button
-    }()
-    
-    let trackingHelperButton2: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setBackgroundImage(UIImage(named: "trackingButton"), for: .normal)
-        button.isUserInteractionEnabled = false
-        button.isHidden = true
-        
-        return button
-    }()
-    
-    let trackingHelperButton3: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setBackgroundImage(UIImage(named: "trackingButton"), for: .normal)
-        button.isUserInteractionEnabled = false
-        button.isHidden = true
         
         return button
     }()
@@ -345,6 +316,110 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         self.player = nil
     }
     
+    func curvedPath(withIndex index: Int) -> UIBezierPath {
+        
+        var path = UIBezierPath()
+        
+        if (index == 0) {
+            path = self.createCurvePathJaTrack1()
+        }
+        
+        if (index == 1) {
+            path = self.createCurvePathJaTrack2()
+        }
+        
+        if (index == 2) {
+            path = self.createCurvePathJaTrack3()
+        }
+        
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = path.cgPath
+        shapeLayer.strokeColor = UIColor.clear.cgColor
+        shapeLayer.fillColor = UIColor.clear.cgColor
+        shapeLayer.lineWidth = 10
+        shapeLayer.position = CGPoint(x: 200, y: 200)
+        self.layer.addSublayer(shapeLayer)
+        
+        return path
+    }
+    
+    func addTrackAnimation(withIndex index: Int) {
+        let moveAlongPath = CAKeyframeAnimation(keyPath: "position")
+        moveAlongPath.path = curvedPath(withIndex: index).cgPath
+        moveAlongPath.duration = 1.5
+        moveAlongPath.repeatCount = 1
+        moveAlongPath.calculationMode = .paced
+        moveAlongPath.timingFunctions = [CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)]
+        moveAlongPath.delegate = self
+        
+        self.moveAlongPathJa = moveAlongPath
+    }
+    
+    func createLayer() -> CALayer {
+        self.customTrackView  = CustomTrackView(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
+        self.addSubview(customTrackView)
+        let customlayer = customTrackView.layer
+        customlayer.bounds = CGRect(x: 0, y: 0, width: 24, height: 24)
+        
+        return customlayer
+    }
+    
+    func initiateAnimation() {
+//        let layer = self.createLayer()
+//        layer.add(self.moveAlongPathJa, forKey: "animate along Path")
+    }
+    
+    func createCurvePathJaTrack1() -> UIBezierPath {
+        let path = UIBezierPath()
+        path.move(to: CGPoint(x: 186, y: 280))
+        path.addLine(to: CGPoint(x: 186, y: 126))
+        path.addArc(withCenter: CGPoint(x: 216, y: 126), radius: 30, startAngle: CGFloat(Double.pi), endAngle: CGFloat(0), clockwise: true)
+        path.addLine(to: CGPoint(x: 246, y: 242))
+        path.addArc(withCenter: CGPoint(x: 276, y: 242), radius: 30, startAngle: CGFloat(2*Double.pi/2), endAngle: CGFloat(Double.pi/2), clockwise: false)
+        path.addLine(to: CGPoint(x: 376, y: 272))
+        
+        return path
+    }
+    
+    func createCurvePathJaTrack2() -> UIBezierPath {
+        let path = UIBezierPath()
+        path.move(to: CGPoint(x: 376, y: 272))
+        path.addArc(withCenter: CGPoint(x: 376, y: 238), radius: 34, startAngle: CGFloat(Double.pi/2), endAngle: CGFloat(Double.pi), clockwise: true)
+        path.addLine(to: CGPoint(x: 342, y: 138))
+        path.addArc(withCenter: CGPoint(x: 366, y: 122), radius: 24, startAngle: CGFloat(Double.pi), endAngle: CGFloat(3*Double.pi/2), clockwise: true)
+        path.addLine(to: CGPoint(x: 440, y: 98))
+        
+        return path
+    }
+    
+    func createCurvePathJaTrack3() -> UIBezierPath {
+        let path = UIBezierPath()
+        path.move(to: CGPoint(x: 438, y: 95))
+        path.addArc(withCenter: CGPoint(x: 361, y: 95), radius: 77, startAngle: CGFloat(0), endAngle: CGFloat(Double.pi/2), clockwise: true)
+        path.addArc(withCenter: CGPoint(x: 361, y: 256), radius: 77, startAngle: CGFloat(3*Double.pi/2), endAngle: CGFloat(0), clockwise: true)
+        path.addLine(to: CGPoint(x: 438, y: 278))
+        
+        return path
+    }
+    
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        customTrackView.layer.removeAllAnimations()
+        customTrackView.removeFromSuperview()
+        
+        isHintRunning = false
+        
+        if totalTime != 0 {
+            if (isTouchDrawing == false) {
+                endIdleTime()
+                startAFKTime()
+            }
+        }
+    }
+    
+    func animationDidStart(_ anim: CAAnimation) {
+        isHintRunning = true
+    }
+    
     func setupAksaraJaConstraint() {
         backgroundImageView.centerXAnchor.constraint(equalTo: containerBackgroundView.centerXAnchor).isActive = true
         backgroundImageView.centerYAnchor.constraint(equalTo: containerBackgroundView.centerYAnchor).isActive = true
@@ -366,11 +441,6 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         trackingCorrectImageView1.widthAnchor.constraint(equalToConstant: 212).isActive = true
         trackingCorrectImageView1.heightAnchor.constraint(equalToConstant: 192.5).isActive = true
         
-        trackingHelperButton1.topAnchor.constraint(equalTo: backgroundImageView.bottomAnchor, constant: -19).isActive = true
-        trackingHelperButton1.trailingAnchor.constraint(equalTo: backgroundImageView.trailingAnchor, constant: -64).isActive = true
-        trackingHelperButton1.widthAnchor.constraint(equalToConstant: 12).isActive = true
-        trackingHelperButton1.heightAnchor.constraint(equalToConstant: 12).isActive = true
-        
         trackingButton2.topAnchor.constraint(equalTo: backgroundImageView.bottomAnchor, constant: -32).isActive = true
         trackingButton2.trailingAnchor.constraint(equalTo: backgroundImageView.trailingAnchor, constant: -36).isActive = true
         trackingButton2.widthAnchor.constraint(equalToConstant: 40).isActive = true
@@ -386,11 +456,6 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         trackingCorrectImageView2.widthAnchor.constraint(equalToConstant: 272).isActive = true
         trackingCorrectImageView2.heightAnchor.constraint(equalToConstant: 194).isActive = true
         
-        trackingHelperButton2.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 6).isActive = true
-        trackingHelperButton2.trailingAnchor.constraint(equalTo: backgroundImageView.trailingAnchor, constant: -7).isActive = true
-        trackingHelperButton2.widthAnchor.constraint(equalToConstant: 12).isActive = true
-        trackingHelperButton2.heightAnchor.constraint(equalToConstant: 12).isActive = true
-        
         trackingButton3.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: -12).isActive = true
         trackingButton3.trailingAnchor.constraint(equalTo: backgroundImageView.trailingAnchor, constant: 4).isActive = true
         trackingButton3.widthAnchor.constraint(equalToConstant: 40).isActive = true
@@ -405,11 +470,6 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         trackingCorrectImageView3.centerYAnchor.constraint(equalTo: backgroundImageView.centerYAnchor).isActive = true
         trackingCorrectImageView3.widthAnchor.constraint(equalToConstant: 280).isActive = true
         trackingCorrectImageView3.heightAnchor.constraint(equalToConstant: 200).isActive = true
-        
-        trackingHelperButton3.topAnchor.constraint(equalTo: backgroundImageView.bottomAnchor, constant: -19).isActive = true
-        trackingHelperButton3.trailingAnchor.constraint(equalTo: backgroundImageView.trailingAnchor, constant: -7).isActive = true
-        trackingHelperButton3.widthAnchor.constraint(equalToConstant: 12).isActive = true
-        trackingHelperButton3.heightAnchor.constraint(equalToConstant: 12).isActive = true
     }
     
     func setupAksaraGaConstraint() {
@@ -433,11 +493,6 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         trackingCorrectImageView1.widthAnchor.constraint(equalToConstant: 57.5).isActive = true
         trackingCorrectImageView1.heightAnchor.constraint(equalToConstant: 192.5).isActive = true
         
-        trackingHelperButton1.topAnchor.constraint(equalTo: backgroundImageView.bottomAnchor, constant: -20).isActive = true
-        trackingHelperButton1.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 45.5).isActive = true
-        trackingHelperButton1.widthAnchor.constraint(equalToConstant: 12).isActive = true
-        trackingHelperButton1.heightAnchor.constraint(equalToConstant: 12).isActive = true
-        
         trackingButton2.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 24).isActive = true
         trackingButton2.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 28).isActive = true
         trackingButton2.widthAnchor.constraint(equalToConstant: 40).isActive = true
@@ -453,11 +508,6 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         trackingCorrectImageView2.widthAnchor.constraint(equalToConstant: 135.5).isActive = true
         trackingCorrectImageView2.heightAnchor.constraint(equalToConstant: 193).isActive = true
         
-        trackingHelperButton2.topAnchor.constraint(equalTo: backgroundImageView.bottomAnchor, constant: -20).isActive = true
-        trackingHelperButton2.centerXAnchor.constraint(equalTo: backgroundImageView.centerXAnchor, constant: 19).isActive = true
-        trackingHelperButton2.widthAnchor.constraint(equalToConstant: 12).isActive = true
-        trackingHelperButton2.heightAnchor.constraint(equalToConstant: 12).isActive = true
-        
         trackingButton3.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 24).isActive = true
         trackingButton3.leadingAnchor.constraint(equalTo: backgroundImageView.centerXAnchor).isActive = true
         trackingButton3.widthAnchor.constraint(equalToConstant: 40).isActive = true
@@ -472,11 +522,6 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         trackingCorrectImageView3.centerYAnchor.constraint(equalTo: backgroundImageView.centerYAnchor).isActive = true
         trackingCorrectImageView3.widthAnchor.constraint(equalToConstant: 220).isActive = true
         trackingCorrectImageView3.heightAnchor.constraint(equalToConstant: 200).isActive = true
-        
-        trackingHelperButton3.topAnchor.constraint(equalTo: backgroundImageView.bottomAnchor, constant: -20).isActive = true
-        trackingHelperButton3.trailingAnchor.constraint(equalTo: backgroundImageView.trailingAnchor, constant: -7).isActive = true
-        trackingHelperButton3.widthAnchor.constraint(equalToConstant: 12).isActive = true
-        trackingHelperButton3.heightAnchor.constraint(equalToConstant: 12).isActive = true
     }
     
     func setupInterfaceComponent() {
@@ -487,9 +532,9 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         addSubview(correctButton)
         addSubview(smallCorrectButton)
         addSubview(youSuccessButton)
-        addSubview(gotItButton)
         addSubview(circularProgressBar)
         addSubview(timerLabel)
+        addSubview(gotItButton)
         bringSubviewToFront(smallCorrectButton)
         bringSubviewToFront(correctButton)
         
@@ -501,9 +546,6 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         backgroundImageView.addSubview(trackingCorrectImageView1)
         containerBackgroundView.addSubview(canvasView)
         
-        containerBackgroundView.addSubview(trackingHelperButton1)
-        containerBackgroundView.addSubview(trackingHelperButton2)
-        containerBackgroundView.addSubview(trackingHelperButton3)
         containerBackgroundView.addSubview(trackingButton1)
         containerBackgroundView.addSubview(trackingButton2)
         containerBackgroundView.addSubview(trackingButton3)
@@ -563,108 +605,6 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         timerLabel.centerYAnchor.constraint(equalTo: circularProgressBar.centerYAnchor).isActive = true
     }
     
-    func curvedPath(withIndex index: Int) -> UIBezierPath {
-        var path = UIBezierPath()
-        
-        if (index == 0) {
-            path = self.createCurvePathJaTrack1()
-        }
-        
-        if (index == 1) {
-            path = self.createCurvePathJaTrack2()
-        }
-        
-        if (index == 2) {
-            path = self.createCurvePathJaTrack3()
-        }
-        
-        let shapeLayer = CAShapeLayer()
-        shapeLayer.path = path.cgPath
-        shapeLayer.strokeColor = UIColor.clear.cgColor
-        shapeLayer.fillColor = UIColor.clear.cgColor
-        shapeLayer.lineWidth = 10
-        shapeLayer.position = CGPoint(x: 200, y: 200)
-        self.layer.addSublayer(shapeLayer)
-        
-        return path
-    }
-    
-    func addTrackAnimation(withIndex index: Int) {
-        let moveAlongPath = CAKeyframeAnimation(keyPath: "position")
-        moveAlongPath.path = curvedPath(withIndex: index).cgPath
-        moveAlongPath.duration = 1.5
-        moveAlongPath.repeatCount = 1
-        moveAlongPath.calculationMode = CAAnimationCalculationMode.paced
-        moveAlongPath.timingFunctions = [CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)]
-        moveAlongPath.delegate = self
-        
-        self.moveAlongPathJa = moveAlongPath
-    }
-    
-    func createLayer() -> CALayer {
-        self.customTrackView  = CustomTrackView(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
-        self.addSubview(customTrackView)
-        let customlayer = customTrackView.layer
-        customlayer.bounds = CGRect(x: 0, y: 0, width: 24, height: 24)
-        
-        return customlayer
-    }
-    
-    func initiateAnimation() {
-//        let layer = self.createLayer()
-//        layer.add(self.moveAlongPathJa, forKey: "animate along Path")
-    }
-    
-    func createCurvePathJaTrack1() -> UIBezierPath {
-        let path = UIBezierPath()
-        path.move(to: CGPoint(x: 186, y: 280))
-        path.addLine(to: CGPoint(x: 186, y: 126))
-        path.addArc(withCenter: CGPoint(x: 216, y: 126), radius: 30, startAngle: CGFloat(Double.pi), endAngle: CGFloat(0), clockwise: true)
-        path.addLine(to: CGPoint(x: 246, y: 242))
-        path.addArc(withCenter: CGPoint(x: 276, y: 242), radius: 30, startAngle: CGFloat(2*Double.pi/2), endAngle: CGFloat(Double.pi/2), clockwise: false)
-        path.addLine(to: CGPoint(x: 376, y: 272))
-        
-        return path
-    }
-    
-    func createCurvePathJaTrack2() -> UIBezierPath {
-        let path = UIBezierPath()
-        path.move(to: CGPoint(x: 376, y: 272))
-        path.addArc(withCenter: CGPoint(x: 376, y: 238), radius: 34, startAngle: CGFloat(Double.pi/2), endAngle: CGFloat(Double.pi), clockwise: true)
-        path.addLine(to: CGPoint(x: 342, y: 138))
-        path.addArc(withCenter: CGPoint(x: 366, y: 122), radius: 24, startAngle: CGFloat(Double.pi), endAngle: CGFloat(3*Double.pi/2), clockwise: true)
-        path.addLine(to: CGPoint(x: 440, y: 98))
-        
-        return path
-    }
-    
-    func createCurvePathJaTrack3() -> UIBezierPath {
-        let path = UIBezierPath()
-        path.move(to: CGPoint(x: 438, y: 95))
-        path.addArc(withCenter: CGPoint(x: 361, y: 95), radius: 77, startAngle: CGFloat(0), endAngle: CGFloat(Double.pi/2), clockwise: true)
-        path.addArc(withCenter: CGPoint(x: 361, y: 256), radius: 77, startAngle: CGFloat(3*Double.pi/2), endAngle: CGFloat(0), clockwise: true)
-        path.addLine(to: CGPoint(x: 438, y: 278))
-        
-        return path
-    }
-    
-    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-        customTrackView.removeFromSuperview()
-        
-        isHintRunning = false
-        
-        if totalTime != 0 {
-            if (isTouchDrawing == false) {
-                endIdleTime()
-                startAFKTime()
-            }
-        }
-    }
-    
-    func animationDidStart(_ anim: CAAnimation) {
-        isHintRunning = true
-    }
-    
     func handleSuccess() {
         canvasView.drawingGestureRecognizer.isEnabled = false
         backgroundCanvasView.drawingGestureRecognizer.isEnabled = false
@@ -684,20 +624,41 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         handleCorrectAnswer()
     }
     
+    func handleTimesUp() {
+        canvasView.drawingGestureRecognizer.isEnabled = false
+        backgroundCanvasView.drawingGestureRecognizer.isEnabled = false
+        customTrackView.layer.removeAllAnimations()
+        timerLabel.isHidden = true
+        circularProgressBar.isHidden = true
+        endIdleTime()
+        
+        if (aksara == "Ja" || aksara == "Ga") {
+            trackingButton1.isHidden = true
+            trackingButton2.isHidden = true
+            trackingButton3.isHidden = true
+            trackingImageView1.isHidden = true
+            trackingImageView2.isHidden = true
+            trackingImageView3.isHidden = true
+            trackingCorrectImageView3.isHidden = false
+        }
+        
+        handleFalseAnswer()
+    }
+    
     func playSoundTrue() {
         guard let url = Bundle.main.url(forResource: "Jawaban_Benar_A", withExtension: "mp3") else { return }
-
+        
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
             try AVAudioSession.sharedInstance().setActive(true)
-
+            
             /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
             player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
-
+            
             guard let player = player else { return }
-
+            
             player.play()
-
+            
         } catch let error {
             print(error.localizedDescription)
         }
@@ -722,6 +683,39 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         }
     }
     
+    func handleFalseAnswer() {
+        youSuccessButton.setBackgroundImage(UIImage(named: "timeUpImage"), for: .normal)
+        correctButton.setImage(UIImage(named: "falseAnswer"), for: .normal)
+        
+        UIView.animateKeyframes(withDuration: 1.5, delay: 0.0, options: [.beginFromCurrentState], animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.8, animations: {
+                self.correctButton.transform = CGAffineTransform(scaleX: 2, y: 2)
+                self.playSoundFalse()
+                self.correctButton.alpha = 0.9
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.8, relativeDuration: 0.7, animations: {
+                self.correctButton.alpha = 0
+            })
+            
+            
+        }) { (complete) in
+            UIView.animate(withDuration: 0.8, delay: 0.0, options: [.curveEaseIn], animations: {
+                self.youSuccessButton.alpha = 1
+                self.youSuccessButton.frame = CGRect(x: self.frame.width/2 - 116, y: self.frame.height/2 + 230, width: 240, height: 60)
+            }, completion: { complete in
+                // anim done
+            });
+            
+            UIView.animate(withDuration: 0.8, delay: 0.0, options: [.curveEaseIn], animations: {
+                self.gotItButton.alpha = 1
+            }, completion: { complete in
+                // anim done
+                self.gotItButton.isEnabled = true
+            });
+        }
+    }
+    
     func handleCorrectAnswer() {
         UIView.animateKeyframes(withDuration: 1.5, delay: 0.0, options: [.beginFromCurrentState], animations: {
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.8, animations: {
@@ -734,7 +728,7 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
                 self.correctButton.alpha = 0
             })
             
-
+            
         }) { (complete) in
             UIView.animate(withDuration: 0.8, delay: 0.0, options: [.curveEaseIn], animations: {
                 self.youSuccessButton.alpha = 1
@@ -784,13 +778,11 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
             idleTime -= 1
         } else {
             
-            if (idleTime == 0) {
-                endIdleTime()
-                if (isTouchDrawing == false || isHintRunning == false) {
-                    initiateAnimation()
-                }
-            }
+            endIdleTime()
             
+            if (isTouchDrawing == false || isHintRunning == false) {
+                initiateAnimation()
+            }
         }
     }
     
@@ -813,72 +805,14 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         handleTimesUp()
     }
     
-    func handleTimesUp() {
-        canvasView.drawingGestureRecognizer.isEnabled = false
-        backgroundCanvasView.drawingGestureRecognizer.isEnabled = false
-//        customTrackView.layer.removeAllAnimations()
-        customTrackView.removeFromSuperview()
-        timerLabel.isHidden = true
-        circularProgressBar.isHidden = true
-        endIdleTime()
-        
-        if (aksara == "Ja" || aksara == "Ga") {
-            trackingButton1.isHidden = true
-            trackingButton2.isHidden = true
-            trackingButton3.isHidden = true
-            trackingHelperButton1.isHidden = true
-            trackingHelperButton2.isHidden = true
-            trackingHelperButton3.isHidden = true
-            trackingImageView1.isHidden = true
-            trackingImageView2.isHidden = true
-            trackingImageView3.isHidden = true
-            trackingCorrectImageView3.isHidden = false
-        }
-        
-        handleFalseAnswer()
-    }
-    
-    func handleFalseAnswer() {
-        youSuccessButton.setBackgroundImage(UIImage(named: "timeUpImage"), for: .normal)
-        correctButton.setImage(UIImage(named: "falseAnswer"), for: .normal)
-        
-        UIView.animateKeyframes(withDuration: 1.5, delay: 0.0, options: [.beginFromCurrentState], animations: {
-            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.8, animations: {
-                self.correctButton.transform = CGAffineTransform(scaleX: 2, y: 2)
-                self.playSoundFalse()
-                self.correctButton.alpha = 0.9
-            })
-            
-            UIView.addKeyframe(withRelativeStartTime: 0.8, relativeDuration: 0.7, animations: {
-                self.correctButton.alpha = 0
-            })
-            
-            
-        }) { (complete) in
-            UIView.animate(withDuration: 0.8, delay: 0.0, options: [.curveEaseIn], animations: {
-                self.youSuccessButton.alpha = 1
-                self.youSuccessButton.frame = CGRect(x: self.frame.width/2 - 116, y: self.frame.height/2 + 230, width: 240, height: 60)
-            }, completion: { complete in
-                // anim done
-            });
-            
-            UIView.animate(withDuration: 0.8, delay: 0.0, options: [.curveEaseIn], animations: {
-                self.gotItButton.alpha = 1
-            }, completion: { complete in
-                // anim done
-                self.gotItButton.isEnabled = true
-            });
-        }
-    }
-    
     func canvasViewDidBeginUsingTool(_ canvasView: PKCanvasView) {
         // Stop any animation as soon as the user begins to draw.
         let trackingButtons = [trackingButton1, trackingButton2, trackingButton3]
         
-        let testDrawing = backgroundCanvasView.drawing
-        
         isTouchDrawing = true
         endIdleTime()
+        
+        let testDrawing = backgroundCanvasView.drawing
         
         if (strokeAksaraIndex! < testDrawing.strokes.count) {
             trackingButtons[strokeAksaraIndex!].isHidden = true
@@ -887,7 +821,7 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
     
     func canvasViewDrawingDidChange(_ canvasView: PKCanvasView) {
         let trackingButtons = [trackingButton1, trackingButton2, trackingButton3]
-        let trackingHelperButtons = [trackingHelperButton1, trackingHelperButton2, trackingHelperButton3]
+        let trackingImages = [trackingImageView1, trackingImageView2, trackingImageView3]
         let trackingCorrectImages = [trackingCorrectImageView1, trackingCorrectImageView2, trackingCorrectImageView3]
         // Avoid triggering the scoring, if we are programatically mutating the drawing.
         guard !isUpdatingDrawing else { return }
@@ -910,19 +844,21 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
             canvasView.drawing.strokes[strokeIndex].ink.color = .clear
             
             trackingButtons[strokeAksaraIndex!].isHidden = true
-            trackingHelperButtons[strokeAksaraIndex!].isHidden = true
+            trackingImages[strokeAksaraIndex!].isHidden = true
             trackingCorrectImages[strokeAksaraIndex!].isHidden = false
             
             self.strokeAksaraIndex! += 1
             
             if (strokeAksaraIndex! < testDrawing.strokes.count) {
                 trackingButtons[strokeAksaraIndex!].isHidden = false
-                trackingHelperButtons[strokeAksaraIndex!].isHidden = false
+                trackingImages[strokeAksaraIndex!].isHidden = false
                 addTrackAnimation(withIndex: strokeAksaraIndex!)
+                
             }
             
             // If the user has finished, show the final score.
             if strokeIndex + 1 >= testDrawing.strokes.count {
+                //                print("\(Int(score * 100))%")
                 trackingCorrectImages[0].isHidden = true
                 handleSuccess()
             }
@@ -934,10 +870,12 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
             generator.notificationOccurred(.error)
             
             containerBackgroundView.shakeView()
+            
             if (isHintRunning == false) {
                 initiateAnimation()
                 endIdleTime()
             }
+            
         }
         
         updateScore()
@@ -956,13 +894,13 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         let correctStrokeCount = canvasView.drawing.strokes.count
         return 1.0 / (1.0 + Double(incorrectStrokeCount) / Double(1 + correctStrokeCount))
     }
-
+    
     func updateScore() {
         if !canvasView.drawing.strokes.isEmpty {
             let percent = Int(score * 100)
-//            print("PERCENT", percent)
+            //            print("PERCENT", percent)
         } else {
-            print("")
+//            print("")
         }
     }
 }

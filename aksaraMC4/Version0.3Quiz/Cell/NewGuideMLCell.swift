@@ -16,6 +16,32 @@ class NewGuideMLCell: UICollectionViewCell {
     var carakanQuestion: String? = "Wa"
     var player: AVAudioPlayer?
     
+    var countdownTimer: Timer!
+    var countdownProgressTimer: Timer!
+    var totalTime: Int = 30
+    var progressTime = 3000
+    
+    lazy var circularProgressBar: GradientCircularProgressBar = {
+        let progressBar = GradientCircularProgressBar()
+        progressBar.translatesAutoresizingMaskIntoConstraints = false
+        progressBar.backgroundColor = .init(white: 1, alpha: 0.2)
+        progressBar.progress = 0
+        progressBar.gradientColors = [Theme.current.gradientTopGold.cgColor, Theme.current.gradientTopGold.cgColor]
+        
+        return progressBar
+    }()
+    
+    lazy var timerLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.init(name: "NowAlt-Medium", size: 16)
+        label.text = "30"
+        label.textColor = .white
+        label.alpha = 1
+        
+        return label
+    }()
+    
     let tulisLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -36,6 +62,27 @@ class NewGuideMLCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
+    }()
+    
+    lazy var guideAksaraName: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.init(name: "NowAlt-Medium", size: 32)
+        label.text = "Wa"
+        label.textColor = .white
+        label.frame = CGRect(x: frame.width/2 - 56, y: frame.height/2 - 300, width: 52, height: 38)
+        label.alpha = 0
+        
+        return label
+    }()
+    
+    lazy var smallCorrectButton: UIButton = {
+        let button = UIButton()
+        button.setBackgroundImage(UIImage(named: "successImage"), for: .normal)
+        button.imageView?.contentMode = .scaleAspectFit
+        button.layer.frame = CGRect(x: frame.width/2 + 16, y: frame.height/2 - 294, width: 32, height: 32)
+        button.alpha = 0
+        
+        return button
     }()
     
     lazy var canvasView: PKCanvasView = {
@@ -78,7 +125,8 @@ class NewGuideMLCell: UICollectionViewCell {
         button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
         button.tag = 0
         button.addTarget(self, action: #selector(reloadCanvas), for: .touchUpInside)
-
+        button.alpha = 0.4
+        button.isEnabled = false
         
         return button
     }()
@@ -98,7 +146,7 @@ class NewGuideMLCell: UICollectionViewCell {
         button.tag = 0
         button.addTarget(self, action: #selector(checkCanvas), for: .touchUpInside)
         button.alpha = 0.4
-
+        button.isEnabled = false
         
         return button
     }()
@@ -113,21 +161,22 @@ class NewGuideMLCell: UICollectionViewCell {
         return image
     }()
     
-    let correctLabel: UIImageView = {
+    lazy var correctLabel: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "correctAnswerBig")
         image.contentMode = .scaleAspectFit
         image.alpha = 0
+        image.frame = CGRect(x: frame.width/2 - 40, y: frame.height/2 - 40, width: 80, height: 80)
         
         return image
     }()
     
-    let correctStatement: UIImageView = {
+    lazy var correctStatement: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "correctStatement")
+        image.image = UIImage(named: "correctAnswerStatement")
         image.contentMode = .scaleAspectFit
         image.alpha = 0
-        image.translatesAutoresizingMaskIntoConstraints = false
+        image.frame = CGRect(x: frame.width/2 - 118, y: frame.height/2 + 210, width: 240, height: 60)
         
         return image
     }()
@@ -149,20 +198,15 @@ class NewGuideMLCell: UICollectionViewCell {
         button.imageView?.tintColor = Theme.current.purpleColor
         button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 200, bottom: 0, right: 0)
         button.titleEdgeInsets = UIEdgeInsets(top: 0, left: -20, bottom: 0, right: 0)
-        button.alpha = 0.4
+        button.alpha = 0
         
         return button
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-
-        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImage.image = UIImage(named: "Batik BackgroundNew")
-        backgroundImage.contentMode = .scaleAspectFill
-        self.insertSubview(backgroundImage, at: 0)
-        setBackgroundDragnDrop()
         setupView()
+        startTimer()
     }
     
 
@@ -177,7 +221,6 @@ class NewGuideMLCell: UICollectionViewCell {
         
         if (status == true) {
             QuickStartReviewData.instance.quizesCorrectStatus[2] = true
-            print("quick", QuickStartReviewData.instance.quizesCorrectStatus[2])
             correctAnswer()
             playSoundTrue()
         } else {
@@ -186,6 +229,15 @@ class NewGuideMLCell: UICollectionViewCell {
             playSoundFalse()
         }
         canvasView.drawingGestureRecognizer.isEnabled = false
+        if (countdownTimer != nil) {
+            countdownTimer.invalidate()
+        }
+        
+        if (countdownProgressTimer != nil) {
+            countdownProgressTimer.invalidate()
+        }
+        circularProgressBar.isHidden = true
+        timerLabel.isHidden = true
     }
     
     func correctAnswer() {
@@ -198,38 +250,36 @@ class NewGuideMLCell: UICollectionViewCell {
         
         bringSubviewToFront(canvasView)
         
-        UIView.animate(withDuration: 0.5) {
-            self.shadowImageAksara.alpha = 1
-        }
+        addSubview(correctLabel)
         
         //correct answer
-        addSubview(correctLabel)
-        self.correctLabel.frame = CGRect(x: frame.size.width/2 - 20, y: 360, width: 40, height: 40)
-        
-        UIView.animate(withDuration: 1, delay: 0, options: [.autoreverse], animations: {
-            self.correctLabel.alpha = 1
-            self.correctLabel.frame = CGRect(x: self.frame.size.width/2 - 50, y: 330, width: 100, height: 100)
-
-        }) { (completed) in
-            self.correctLabel.alpha = 0
+        UIView.animateKeyframes(withDuration: 1.5, delay: 0.0, options: [.beginFromCurrentState], animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.8, animations: {
+                self.reloadButton.alpha = 0
+                self.checkButton.alpha = 0
+                self.shadowImageAksara.alpha = 1
+                self.correctLabel.alpha = 1
+                self.correctLabel.transform = CGAffineTransform(scaleX: 2, y: 2)
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.8, relativeDuration: 0.7, animations: {
+                self.correctLabel.alpha = 0
+            })
+        }) { (complete) in
+            UIView.animate(withDuration: 0.8, delay: 0.0, options: [.curveEaseIn], animations: {
+                self.correctStatement.frame = CGRect(x: self.frame.width/2 - 116, y: self.frame.height/2 + 230, width: 240, height: 60)
+                self.correctStatement.alpha = 1
+            }, completion: { complete in
+                // anim done
+            });
+            
+            UIView.animate(withDuration: 0.8, delay: 0.0, options: [.curveEaseIn], animations: {
+                self.continueButton.alpha = 1
+            }, completion: { complete in
+                // anim done
+                self.continueButton.isEnabled = true
+            });
         }
-        
-        //change button repeat and check
-        addSubview(correctStatement)
-        correctStatement.topAnchor.constraint(equalTo: canvasView.bottomAnchor, constant: 24).isActive = true
-        correctStatement.centerXAnchor.constraint(equalTo: canvasView.centerXAnchor).isActive = true
-        correctStatement.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        correctStatement.widthAnchor.constraint(equalToConstant: 320).isActive = true
-        
-        
-        UIView.animate(withDuration: 1) {
-            self.reloadButton.alpha = 0
-            self.checkButton.alpha = 0
-            self.correctStatement.alpha = 1
-            self.continueButton.alpha = 1
-        }
-        
-
         
     }
     
@@ -243,46 +293,102 @@ class NewGuideMLCell: UICollectionViewCell {
         
         bringSubviewToFront(canvasView)
         
-        UIView.animate(withDuration: 0.5) {
-            self.shadowImageAksara.alpha = 1
-        }
+        addSubview(correctLabel)
         
         //correct answer
-        addSubview(correctLabel)
         correctLabel.image = UIImage(named: "falseAnswer")
-//        self.correctLabel.alpha = 1
-        self.correctLabel.frame = CGRect(x: frame.size.width/2 - 20, y: 290, width: 40, height: 40)
-        
-        UIView.animate(withDuration: 1, delay: 0, options: [.autoreverse], animations: {
-            self.correctLabel.alpha = 1
-            self.correctLabel.frame = CGRect(x: self.frame.size.width/2 - 50, y: 260, width: 100, height: 100)
-
-        }) { (completed) in
-            self.correctLabel.alpha = 0
+        correctStatement.image = UIImage(named: "falseAnswerStatement")
+        self.shadowImageAksara.shakeView()
+        self.canvasView.shakeView()
+        //correct answer
+        UIView.animateKeyframes(withDuration: 1.5, delay: 0.6, options: [.beginFromCurrentState], animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.8, animations: {
+                self.reloadButton.alpha = 0
+                self.checkButton.alpha = 0
+                self.shadowImageAksara.alpha = 1
+                self.correctLabel.alpha = 1
+                self.correctLabel.transform = CGAffineTransform(scaleX: 2, y: 2)
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.8, relativeDuration: 0.7, animations: {
+                self.correctLabel.alpha = 0
+            })
+        }) { (complete) in
+            UIView.animate(withDuration: 0.8, delay: 0.0, options: [.curveEaseIn], animations: {
+                self.correctStatement.frame = CGRect(x: self.frame.width/2 - 116, y: self.frame.height/2 + 230, width: 240, height: 60)
+                self.correctStatement.alpha = 1
+            }, completion: { complete in
+                // anim done
+            });
+            
+            UIView.animate(withDuration: 0.8, delay: 0.0, options: [.curveEaseIn], animations: {
+                self.continueButton.alpha = 1
+            }, completion: { complete in
+                // anim done
+                self.continueButton.isEnabled = true
+            });
         }
-        
-        //change button repeat and check
-        
-        addSubview(correctStatement)
-        correctStatement.image = UIImage(named: "wrongStatement")
-        correctStatement.topAnchor.constraint(equalTo: canvasView.bottomAnchor, constant: 24).isActive = true
-        correctStatement.centerXAnchor.constraint(equalTo: canvasView.centerXAnchor).isActive = true
-        correctStatement.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        correctStatement.widthAnchor.constraint(equalToConstant: 320).isActive = true
-        
-        
-        UIView.animate(withDuration: 1) {
-            self.reloadButton.alpha = 0
-            self.checkButton.alpha = 0
-            self.correctStatement.alpha = 1
-            self.continueButton.alpha = 1
-        }
-        
-
-        
     }
     
+    func endTimer() {
+        if (countdownTimer != nil) {
+            countdownTimer.invalidate()
+        }
+        
+        if (countdownProgressTimer != nil) {
+            countdownProgressTimer.invalidate()
+        }
+        
+        handleTimesUp()
+    }
     
+    func handleTimesUp() {
+        playSoundFalse()
+        canvasView.drawingGestureRecognizer.isEnabled = false
+        //shadow image
+        addSubview(shadowImageAksara)
+        shadowImageAksara.centerXAnchor.constraint(equalTo: canvasView.centerXAnchor, constant: 0).isActive = true
+        shadowImageAksara.centerYAnchor.constraint(equalTo: canvasView.centerYAnchor).isActive = true
+        shadowImageAksara.heightAnchor.constraint(equalToConstant: 280).isActive = true
+        shadowImageAksara.widthAnchor.constraint(equalToConstant: 287).isActive = true
+        
+        bringSubviewToFront(canvasView)
+        
+        addSubview(correctLabel)
+        
+        //correct answer
+        correctLabel.image = UIImage(named: "falseAnswer")
+        correctStatement.image = UIImage(named: "timeUpImage")
+        
+        //correct answer
+        UIView.animateKeyframes(withDuration: 1.5, delay: 0.0, options: [.beginFromCurrentState], animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.8, animations: {
+                self.reloadButton.alpha = 0
+                self.checkButton.alpha = 0
+                self.shadowImageAksara.alpha = 1
+                self.correctLabel.alpha = 1
+                self.correctLabel.transform = CGAffineTransform(scaleX: 2, y: 2)
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.8, relativeDuration: 0.7, animations: {
+                self.correctLabel.alpha = 0
+            })
+        }) { (complete) in
+            UIView.animate(withDuration: 0.8, delay: 0.0, options: [.curveEaseIn], animations: {
+                self.correctStatement.frame = CGRect(x: self.frame.width/2 - 116, y: self.frame.height/2 + 230, width: 240, height: 60)
+                self.correctStatement.alpha = 1
+            }, completion: { complete in
+                // anim done
+            });
+            
+            UIView.animate(withDuration: 0.8, delay: 0.0, options: [.curveEaseIn], animations: {
+                self.continueButton.alpha = 1
+            }, completion: { complete in
+                // anim done
+                self.continueButton.isEnabled = true
+            });
+        }
+    }
     
     func predictAksara() -> Bool {
         canvasViewImage = canvasView.drawing.image(from: canvasView.bounds, scale: 1)
@@ -307,6 +413,29 @@ class NewGuideMLCell: UICollectionViewCell {
         
     }
     
+    func startTimer() {
+        countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+        countdownProgressTimer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(updateProgressTime), userInfo: nil, repeats: true)
+    }
+    
+    @objc func updateTime() {
+        if totalTime != 0 {
+            totalTime -= 1
+            timerLabel.text = String(totalTime)
+        } else {
+            endTimer()
+        }
+    }
+    
+    @objc func updateProgressTime() {
+        if totalTime != 0 {
+            circularProgressBar.progress += 0.01/30
+            progressTime -= Int(0.01)
+        } else {
+            endTimer()
+        }
+    }
+    
     func setupView() {
         
         addSubview(tulisLabel)
@@ -316,6 +445,9 @@ class NewGuideMLCell: UICollectionViewCell {
         addSubview(questionLabel)
         questionLabel.leadingAnchor.constraint(equalTo: tulisLabel.trailingAnchor, constant: 0).isActive = true
         questionLabel.topAnchor.constraint(equalTo: topAnchor, constant: 120).isActive = true
+        
+        addSubview(guideAksaraName)
+        addSubview(smallCorrectButton)
         
         addSubview(canvasView)
         canvasView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
@@ -330,13 +462,13 @@ class NewGuideMLCell: UICollectionViewCell {
         plusCanvas.widthAnchor.constraint(equalToConstant: 402).isActive = true
         
         addSubview(reloadButton)
-        reloadButton.topAnchor.constraint(equalTo: canvasView.bottomAnchor, constant: 38).isActive = true
+        reloadButton.topAnchor.constraint(equalTo: canvasView.bottomAnchor, constant: 20).isActive = true
         reloadButton.trailingAnchor.constraint(equalTo: canvasView.centerXAnchor, constant: -6).isActive = true
         reloadButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
         reloadButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
         
         addSubview(checkButton)
-        checkButton.topAnchor.constraint(equalTo: canvasView.bottomAnchor, constant: 38).isActive = true
+        checkButton.topAnchor.constraint(equalTo: canvasView.bottomAnchor, constant: 20).isActive = true
         checkButton.leadingAnchor.constraint(equalTo: canvasView.centerXAnchor, constant: 6).isActive = true
         checkButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
         checkButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
@@ -346,6 +478,19 @@ class NewGuideMLCell: UICollectionViewCell {
         continueButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -32).isActive = true
         continueButton.widthAnchor.constraint(equalToConstant: 240).isActive = true
         continueButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        
+        addSubview(correctStatement)
+        
+        addSubview(circularProgressBar)
+        addSubview(timerLabel)
+        
+        circularProgressBar.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -64).isActive = true
+        circularProgressBar.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        circularProgressBar.widthAnchor.constraint(equalToConstant: 48).isActive = true
+        circularProgressBar.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        
+        timerLabel.centerXAnchor.constraint(equalTo: circularProgressBar.centerXAnchor).isActive = true
+        timerLabel.centerYAnchor.constraint(equalTo: circularProgressBar.centerYAnchor).isActive = true
     }
     
     
@@ -405,7 +550,14 @@ extension NewGuideMLCell: PKCanvasViewDelegate {
     func canvasViewDrawingDidChange(_ canvasView: PKCanvasView) {
         if canvasView.drawing.strokes.count > 0 {
             checkButton.alpha = 1
-            
+            reloadButton.alpha = 1
+            checkButton.isEnabled = true
+            reloadButton.isEnabled = true
+        } else {
+            checkButton.alpha = 0.4
+            reloadButton.alpha = 0.4
+            checkButton.isEnabled = false
+            reloadButton.isEnabled = false
         }
     }
 }

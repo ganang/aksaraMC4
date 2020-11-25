@@ -43,6 +43,9 @@ class QuizDummyController: UIViewController {
         collectionView.register(NewSandanganQuizCell.self, forCellWithReuseIdentifier: "cellid8")
         collectionView.register(NewPanduanFirstCell.self, forCellWithReuseIdentifier: "cellid9")
         collectionView.register(NewRewardCell.self, forCellWithReuseIdentifier: "cellid10")
+        collectionView.register(PencilStrokeCell.self, forCellWithReuseIdentifier: "cellid11")
+        collectionView.register(PencilStrokeWithoutTrackCell.self, forCellWithReuseIdentifier: "cellid12")
+        collectionView.register(PencilStrokeWithoutBackgroundCell.self, forCellWithReuseIdentifier: "cellid13")
         
         
         collectionView.delegate = self
@@ -90,10 +93,14 @@ extension QuizDummyController : UICollectionViewDelegate, UICollectionViewDelega
 //        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid8", for: indexPath) as! NewSandanganQuizCell
 //        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid9", for: indexPath) as! NewPanduanFirstCell
 //        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid10", for: indexPath) as! NewRewardCell
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid11", for: indexPath) as! PencilStrokeCell
+//        cell.aksara = "Ja"
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid12", for: indexPath) as! PencilStrokeWithoutTrackCell
+//        cell.aksara = "Ja"
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid13", for: indexPath) as! PencilStrokeWithoutBackgroundCell
+//        cell.aksara = "Ja"
         
 //        cell.backgroundColor = .red
-        
-        
         
         return cell
     }

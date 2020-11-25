@@ -1,11 +1,11 @@
 {
   "images" : [
     {
+      "filename" : "trackingImageGa1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "youSuccessImage.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
