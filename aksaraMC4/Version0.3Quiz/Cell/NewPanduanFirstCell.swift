@@ -191,7 +191,7 @@ class NewPanduanFirstCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     //Create Pulsating
     private func createCircleShapeLayer1(strokeColor: UIColor, fillColor: UIColor) -> CAShapeLayer {
         let layer = CAShapeLayer()
-        let circularPath = UIBezierPath(arcCenter: .zero, radius: 1, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
+        let circularPath = UIBezierPath(arcCenter: .zero, radius: 0.1, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
         layer.path = circularPath.cgPath
         layer.strokeColor = strokeColor.cgColor
         layer.lineWidth = 20
@@ -203,7 +203,7 @@ class NewPanduanFirstCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     
     private func createCircleShapeLayer2(strokeColor: UIColor, fillColor: UIColor) -> CAShapeLayer {
         let layer = CAShapeLayer()
-        let circularPath = UIBezierPath(arcCenter: .zero, radius: 1, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
+        let circularPath = UIBezierPath(arcCenter: .zero, radius: 0.1, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
         layer.path = circularPath.cgPath
         layer.strokeColor = strokeColor.cgColor
         layer.lineWidth = 20
@@ -215,7 +215,7 @@ class NewPanduanFirstCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     
     private func createCircleShapeLayer3(strokeColor: UIColor, fillColor: UIColor) -> CAShapeLayer {
         let layer = CAShapeLayer()
-        let circularPath = UIBezierPath(arcCenter: .zero, radius: 1, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
+        let circularPath = UIBezierPath(arcCenter: .zero, radius: 0.1, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
         layer.path = circularPath.cgPath
         layer.strokeColor = strokeColor.cgColor
         layer.lineWidth = 20
@@ -259,7 +259,7 @@ class NewPanduanFirstCell: UICollectionViewCell, UIGestureRecognizerDelegate {
 
 
         let scaleDown = CABasicAnimation(keyPath: "transform.scale")
-        scaleDown.toValue = 80
+        scaleDown.toValue = 800
         let fade = CABasicAnimation(keyPath: "opacity")
         fade.toValue = 0
         groupAnimation.animations = [scaleDown,fade]
@@ -281,7 +281,7 @@ class NewPanduanFirstCell: UICollectionViewCell, UIGestureRecognizerDelegate {
 
 
         let scaleDown = CABasicAnimation(keyPath: "transform.scale")
-        scaleDown.toValue = 120
+        scaleDown.toValue = 1200
         let fade = CABasicAnimation(keyPath: "opacity")
         fade.toValue = 0
         groupAnimation.animations = [scaleDown,fade]
@@ -299,7 +299,7 @@ class NewPanduanFirstCell: UICollectionViewCell, UIGestureRecognizerDelegate {
 
 
         let scaleDown = CABasicAnimation(keyPath: "transform.scale")
-        scaleDown.toValue = 60
+        scaleDown.toValue = 600
         let fade = CABasicAnimation(keyPath: "opacity")
         fade.toValue = 0
         groupAnimation.animations = [scaleDown,fade]
@@ -318,7 +318,7 @@ class NewPanduanFirstCell: UICollectionViewCell, UIGestureRecognizerDelegate {
 
 
         let scaleDown1 = CABasicAnimation(keyPath: "transform.scale")
-        scaleDown1.toValue = 80
+        scaleDown1.toValue = 800
         let fade1 = CABasicAnimation(keyPath: "opacity")
         fade1.toValue = 0
         groupAnimation.animations = [scaleDown1,fade1]
@@ -334,7 +334,7 @@ class NewPanduanFirstCell: UICollectionViewCell, UIGestureRecognizerDelegate {
 
 
         let scaleDown2 = CABasicAnimation(keyPath: "transform.scale")
-        scaleDown2.toValue = 120
+        scaleDown2.toValue = 1200
         let fade2 = CABasicAnimation(keyPath: "opacity")
         fade2.toValue = 0
         groupAnimation2.animations = [scaleDown2,fade2]
@@ -348,7 +348,7 @@ class NewPanduanFirstCell: UICollectionViewCell, UIGestureRecognizerDelegate {
 
 
         let scaleDown3 = CABasicAnimation(keyPath: "transform.scale")
-        scaleDown3.toValue = 60
+        scaleDown3.toValue = 600
         let fade3 = CABasicAnimation(keyPath: "opacity")
         fade3.toValue = 0
         groupAnimation3.animations = [scaleDown3,fade3]
