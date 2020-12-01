@@ -13,15 +13,15 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     
     var timer = Timer()
     var player: AVAudioPlayer?
-    let originHead1Position = CGRect(x: (UIScreen.main.bounds.width/2) - 403 , y: (UIScreen.main.bounds.height/2) - 180, width: 80, height: 80)
-    let originHead2Position = CGRect(x: (UIScreen.main.bounds.width / 2) - 403, y: (UIScreen.main.bounds.height/2) - 40, width: 80, height: 80)
-    let originHead3Position = CGRect(x: (UIScreen.main.bounds.width / 2) - 403, y: (UIScreen.main.bounds.height/2) + 100, width: 80, height: 80)
-    let headPlaceholderPosition = CGRect(x: (UIScreen.main.bounds.width / 2) - 223 , y: (UIScreen.main.bounds.height/2) - 70, width: 140, height: 140)
+    let originHead1Position = CGRect(x: (UIScreen.main.bounds.width/2) - 403 , y: (UIScreen.main.bounds.height/2) - 152, width: 80, height: 80)
+    let originHead2Position = CGRect(x: (UIScreen.main.bounds.width / 2) - 403, y: (UIScreen.main.bounds.height/2) - 32, width: 80, height: 80)
+    let originHead3Position = CGRect(x: (UIScreen.main.bounds.width / 2) - 403, y: (UIScreen.main.bounds.height/2) + 88, width: 80, height: 80)
+    let headPlaceholderPosition = CGRect(x: (UIScreen.main.bounds.width / 2) - 220 , y: (UIScreen.main.bounds.height/2) - 72, width: 140, height: 140)
     
-    let originTail1Position = CGRect(x: (UIScreen.main.bounds.width/2) + 315 , y: (UIScreen.main.bounds.height/2) - 180, width: 80, height: 80)
-    let originTail2Position = CGRect(x: (UIScreen.main.bounds.width / 2) + 315, y: (UIScreen.main.bounds.height/2) - 40, width: 80, height: 80)
-    let originTail3Position = CGRect(x: (UIScreen.main.bounds.width / 2) + 315, y: (UIScreen.main.bounds.height/2) + 100, width: 80, height: 80)
-    let tailPlaceholderPosition = CGRect(x: (UIScreen.main.bounds.width / 2) + 75 , y: (UIScreen.main.bounds.height/2) - 70, width: 140, height: 140)
+    let originTail1Position = CGRect(x: (UIScreen.main.bounds.width/2) + 315 , y: (UIScreen.main.bounds.height/2) - 152, width: 80, height: 80)
+    let originTail2Position = CGRect(x: (UIScreen.main.bounds.width / 2) + 315, y: (UIScreen.main.bounds.height/2) - 32, width: 80, height: 80)
+    let originTail3Position = CGRect(x: (UIScreen.main.bounds.width / 2) + 315, y: (UIScreen.main.bounds.height/2) + 88, width: 80, height: 80)
+    let tailPlaceholderPosition = CGRect(x: (UIScreen.main.bounds.width / 2) + 80 , y: (UIScreen.main.bounds.height/2) - 72, width: 140, height: 140)
     
     let SCREEN_WIDTH: CGFloat = UIScreen.main.bounds.width
     let SCREEN_HEIGHT: CGFloat = UIScreen.main.bounds.height
@@ -49,11 +49,9 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     
     let questionLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.init(name: "NowAlt-Medium", size: 56)
         label.text = "Ja"
         label.textColor = Theme.current.accentWhite
-        label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
     }()
@@ -87,7 +85,6 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         image.image = UIImage(named: "headImage")
         image.setImageColor(color: UIColor.init(displayP3Red: 255/255, green: 223/255, blue: 118/255, alpha: 1))
         image.contentMode = .scaleAspectFit
-        image.translatesAutoresizingMaskIntoConstraints = false
         
         return image
     }()
@@ -156,7 +153,6 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         image.setImageColor(color: UIColor.init(displayP3Red: 255/255, green: 223/255, blue: 118/255, alpha: 1))
         image.contentMode = .scaleAspectFit
         //        image.alpha = 0
-        image.translatesAutoresizingMaskIntoConstraints = false
         
         return image
     }()
@@ -360,17 +356,15 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     }()
     
     let statementImage: UIImageView = {
-        let image = UIImageView()
+        let image = UIImageView(frame : CGRect(x: (UIScreen.main.bounds.width/2) - 160 , y: (UIScreen.main.bounds.height/2) + 12, width: 320, height: 138))
         image.image = UIImage(named: "statementContainer")
         image.contentMode = .scaleAspectFit
         image.alpha = 1
-        image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
     
     let statementLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
+        let label = UILabel(frame : CGRect(x: (UIScreen.main.bounds.width/2) - 110, y: (UIScreen.main.bounds.height/2) + 76, width: 220, height: 19))
         label.font = UIFont.init(name: "NowAlt-Medium", size: 16)
         label.text = "Jawaban kamu sudah benar"
         label.textColor = Theme.current.accentWhite
@@ -395,7 +389,7 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     }()
     
     let lineHead: UIImageView = {
-        let image = UIImageView()
+        let image = UIImageView(frame : CGRect(x: UIScreen.main.bounds.width/2 - 40, y: (UIScreen.main.bounds.height/2) - 41 , width: 80, height: 2))
         image.image = UIImage(named: "lineHeadnTail")
         image.contentMode = .scaleAspectFit
         image.alpha = 0
@@ -415,12 +409,12 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     }()
     
     let headImageLogo: UIImageView = {
-        let image = UIImageView()
+        let image = UIImageView(frame : CGRect(x: (UIScreen.main.bounds.width / 2) - 258, y: (UIScreen.main.bounds.height/2) - 176, width: 40, height: 56))
         image.image = UIImage(named: "headImage")
         image.setImageColor(color: UIColor.init(displayP3Red: 255/255, green: 223/255, blue: 118/255, alpha: 1))
         image.contentMode = .scaleAspectFit
-        image.alpha = 0
-        image.translatesAutoresizingMaskIntoConstraints = false
+        image.alpha = 1
+        image.setImageColor(color: UIColor.init(displayP3Red: 255/255, green: 223/255, blue: 118/255, alpha: 1))
         return image
     }()
     
@@ -434,11 +428,10 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     }()
     
     let headImageRight: UIImageView = {
-        let image = UIImageView()
+        let image = UIImageView(frame : CGRect(x: (UIScreen.main.bounds.width / 2) - 258, y: (UIScreen.main.bounds.height/2) - 68, width: 40, height: 56))
         image.image = UIImage(named: "Jawa Kepala Ja")
         image.contentMode = .scaleAspectFit
         image.alpha = 1
-        image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
     
@@ -446,7 +439,6 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         let image = UIImageView()
         image.image = UIImage(named: "correctAnswer")
         image.contentMode = .scaleAspectFit
-        image.alpha = 1
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
@@ -468,7 +460,7 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     }()
     
     let tailLine: UIImageView = {
-        let image = UIImageView()
+        let image = UIImageView(frame : CGRect(x: UIScreen.main.bounds.width/2 - 40, y: (UIScreen.main.bounds.height/2) - 41 , width: 80, height: 2))
         image.image = UIImage(named: "lineHeadnTail")
         image.contentMode = .scaleAspectFit
         image.alpha = 1
@@ -488,12 +480,11 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     }()
     
     let tailImageLogo: UIImageView = {
-        let image = UIImageView()
+        let image = UIImageView(frame : CGRect(x: (UIScreen.main.bounds.width / 2) + 210, y: (UIScreen.main.bounds.height/2) - 176, width: 40, height: 56))
         image.image = UIImage(named: "tailImage")
         image.setImageColor(color: UIColor.init(displayP3Red: 255/255, green: 223/255, blue: 118/255, alpha: 1))
         image.contentMode = .scaleAspectFit
-        image.alpha = 0
-        image.translatesAutoresizingMaskIntoConstraints = false
+        image.setImageColor(color: UIColor.init(displayP3Red: 255/255, green: 223/255, blue: 118/255, alpha: 1))
         return image
     }()
     
@@ -507,11 +498,10 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     }()
     
     let tailImageRight: UIImageView = {
-        let image = UIImageView()
+        let image = UIImageView(frame : CGRect(x: (UIScreen.main.bounds.width / 2) + 210, y: (UIScreen.main.bounds.height/2) - 68, width: 40, height: 56))
         image.image = UIImage(named: "Jawa Ekor Ja")
         image.contentMode = .scaleAspectFit
         image.alpha = 1
-        image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
     
@@ -519,7 +509,6 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         let image = UIImageView()
         image.image = UIImage(named: "correctAnswer")
         image.contentMode = .scaleAspectFit
-        image.alpha = 1
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
@@ -788,7 +777,7 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
                 
             } else if sender.state == .ended {
                 self.tailPlaceHoldersButton.alpha = 1.0
-                self.headPlaceHoldersButton.frame = CGRect(x: (UIScreen.main.bounds.width / 2) - 223 , y: (UIScreen.main.bounds.height/2) - 70, width: 140, height: 140)
+                self.headPlaceHoldersButton.frame = CGRect(x: (UIScreen.main.bounds.width / 2) - 220 , y: (UIScreen.main.bounds.height/2) - 72, width: 140, height: 140)
                 
                 pulsatingLayer1.add(groupAnimation, forKey: "pulsing")
                 pulsatingLayer2.add(groupAnimation, forKey: "pulsing")
@@ -888,7 +877,7 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
                 
             } else if sender.state == .ended {
                 self.headPlaceHoldersButton.alpha = 1.0
-                self.tailPlaceHoldersButton.frame = CGRect(x: (UIScreen.main.bounds.width / 2) + 75, y: (UIScreen.main.bounds.height/2) - 70, width: 140, height: 140)
+                self.tailPlaceHoldersButton.frame = CGRect(x: (UIScreen.main.bounds.width / 2) + 80 , y: (UIScreen.main.bounds.height/2) - 72, width: 140, height: 140)
                 
                 pulsatingLayer1.add(groupAnimation, forKey: "pulsing")
                 pulsatingLayer2.add(groupAnimation, forKey: "pulsing")
@@ -965,7 +954,6 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     
     func checkAnswer() {
         if isHeadPlaceholdersFilled == true && isTailPlaceholdersFilled == true {
-            answerTransitionAnimation()
             headImageChoice.image = UIImage(named: "Jawa Kepala \(aksaraOnHeadPlaceHolders!)")
             tailImageChoice.image = UIImage(named: "Jawa Ekor \(aksaraOnTailPlaceHolders!)")
             
@@ -991,19 +979,26 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
             } else {
                 tailCorrectLabel.image = UIImage(named: "falseAnswer")
             }
+            
+            answerTransitionAnimation()
         }
     }
     
     func answerTransitionAnimation() {
         removeGestureAnimation()
-        UIView.animate(withDuration: 1) { [self] in
-            questionLabel.alpha = 0
-            questionLabel.removeFromSuperview()
+        UIView.animate(withDuration: 1.0) { [self] in
             viewHintExplain.removeFromSuperview()
-            headPlaceHoldersButton.frame = CGRect(x: (UIScreen.main.bounds.width / 2) - 223 + 153 , y: (UIScreen.main.bounds.height/2) - 70, width: 140, height: 140)
-            tailPlaceHoldersButton.frame = CGRect(x: (UIScreen.main.bounds.width / 2) + 75 - 153 , y: (UIScreen.main.bounds.height/2) - 70, width: 140, height: 140)
-            headPlaceHoldersButton.alpha = 0
-            tailPlaceHoldersButton.alpha = 0
+            
+            //--Animation Change--//
+            headButton1.frame = CGRect(x: (UIScreen.main.bounds.width/2) - 483 , y: (UIScreen.main.bounds.height/2) - 152, width: 80, height: 80)
+            headButton2.frame = CGRect(x: (UIScreen.main.bounds.width / 2) - 483, y: (UIScreen.main.bounds.height/2) - 32, width: 80, height: 80)
+            headButton3.frame = CGRect(x: (UIScreen.main.bounds.width / 2) - 483, y: (UIScreen.main.bounds.height/2) + 88, width: 80, height: 80)
+            tailButton1.frame = CGRect(x: (UIScreen.main.bounds.width/2) + 395 , y: (UIScreen.main.bounds.height/2) - 152, width: 80, height: 80)
+            tailButton2.frame = CGRect(x: (UIScreen.main.bounds.width / 2) + 395, y: (UIScreen.main.bounds.height/2) - 32, width: 80, height: 80)
+            tailButton3.frame = CGRect(x: (UIScreen.main.bounds.width / 2) + 395, y: (UIScreen.main.bounds.height/2) + 88, width: 80, height: 80)
+            headIcon.frame = CGRect(x: (UIScreen.main.bounds.width/2) - 483 , y: (UIScreen.main.bounds.height/2) - 225, width: 40, height: 52)
+            tailIcon.frame = CGRect(x: (UIScreen.main.bounds.width/2) + 395 , y: (UIScreen.main.bounds.height/2) - 225, width: 40, height: 52)
+            
             headButton1.alpha = 0
             headButton2.alpha = 0
             headButton3.alpha = 0
@@ -1013,9 +1008,7 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
             headIcon.alpha = 0
             tailIcon.alpha = 0
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                animationGuideAppear()
-            }
+            animationGuideAppear()
         }
     }
     
@@ -1038,18 +1031,15 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         lineHead.alpha = 0
         self.lineHead.frame = CGRect(x: (UIScreen.main.bounds.width / 2), y: (UIScreen.main.bounds.height/2), width: 80, height: 2)
         
-        UIView.animate(withDuration: 1) { [self] in
+        UIView.animate(withDuration: 1.0) { [self] in
             //TAIL
             self.addSubview(self.tailImage)
             self.tailImage.alpha = 0
             
-            UIImageView.animate(withDuration: 1, delay: 0, options: [] , animations: {
-                self.tailView.frame = CGRect(x: self.frame.size.width/2 + 250, y: (UIScreen.main.bounds.height/2) + 70, width: 96, height: 96)
-                self.tailView.alpha = 0.2
-                self.tailView.layer.cornerRadius = 48
+            UIImageView.animate(withDuration: 0.4, delay: 0, options: [] , animations: {
                 
                 self.tailLine.alpha = 1
-                self.tailLine.frame = CGRect(x: self.frame.size.width/2 + 140, y: (UIScreen.main.bounds.height/2) - 30 , width: 80, height: 2)
+                self.tailLine.frame = CGRect(x: self.frame.size.width/2 + 140, y: (UIScreen.main.bounds.height/2) - 41 , width: 80, height: 2)
                 self.tailLabelAppear()
             }) { (completed) in
                 //head appear after finish
@@ -1057,7 +1047,6 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                     UIView.animate(withDuration: 1) {
                         self.tailImage.alpha = 1
-                        self.tailImageLogo.alpha = 1
                         self.tailLabel.alpha = 1
                     }
                 }
@@ -1069,13 +1058,10 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
             self.addSubview(self.headImage)
             self.headImage.alpha = 0
             
-            UIImageView.animate(withDuration: 1, delay: 0, options: [] , animations: {
-                self.headView.frame = CGRect(x: self.frame.size.width/2 - 390, y: (UIScreen.main.bounds.height/2) + 70, width: 96, height: 96)
-                self.headView.alpha = 0.2
-                self.headView.layer.cornerRadius = 48
+            UIImageView.animate(withDuration: 0.4, delay: 0, options: [] , animations: {
                 
                 self.lineHead.alpha = 1
-                self.lineHead.frame = CGRect(x: self.frame.size.width/2 - 220, y: (UIScreen.main.bounds.height/2) - 30, width: 80, height: 2)
+                self.lineHead.frame = CGRect(x: self.frame.size.width/2 - 220, y: (UIScreen.main.bounds.height/2) - 41, width: 80, height: 2)
                 self.headLabelAppear()
                 
             }) { (completed) in
@@ -1084,7 +1070,6 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                     UIView.animate(withDuration: 1) {
                         self.headImage.alpha = 1
-                        self.headImageLogo.alpha = 1
                         self.headLabel.alpha = 1
                     }
                 }
@@ -1096,31 +1081,27 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     
     func headLabelAppear() {
         
+        headPlaceHoldersButton.frame = CGRect(x: (UIScreen.main.bounds.width / 2) - 348, y: (UIScreen.main.bounds.height/2) + 36, width: 140, height: 140)
+        
         addSubview(headImageLogo)
-        headImageLogo.centerXAnchor.constraint(equalTo: headView.centerXAnchor).isActive = true
-        headImageLogo.bottomAnchor.constraint(equalTo: headView.topAnchor, constant: -163).isActive = true
-        headImageLogo.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        headImageLogo.heightAnchor.constraint(equalToConstant: 56).isActive = true
+        headImageLogo.frame = CGRect(x: (UIScreen.main.bounds.width / 2) - 306, y: (UIScreen.main.bounds.height/2) - 176, width: 40, height: 56)
+        
         
         addSubview(headImageRight)
-        headImageRight.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 0).isActive = true
-        headImageRight.centerXAnchor.constraint(equalTo: headView.centerXAnchor, constant: 0).isActive = true
-        headImageRight.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        headImageRight.heightAnchor.constraint(equalToConstant: 56).isActive = true
+        headImageRight.frame = CGRect(x: (UIScreen.main.bounds.width / 2) - 306, y: (UIScreen.main.bounds.height/2) - 68, width: 40, height: 56)
         
-        addSubview(headImageChoice)
-        headImageChoice.centerYAnchor.constraint(equalTo: headView.centerYAnchor, constant: 0).isActive = true
-        headImageChoice.centerXAnchor.constraint(equalTo: headView.centerXAnchor, constant: 0).isActive = true
-        headImageChoice.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        headImageChoice.heightAnchor.constraint(equalToConstant: 56).isActive = true
-        
-        //correct image
-        addSubview(headCorrectLabel)
-        headCorrectLabel.centerYAnchor.constraint(equalTo: headView.centerYAnchor, constant: 0).isActive = true
-        headCorrectLabel.trailingAnchor.constraint(equalTo: headView.leadingAnchor, constant: -16).isActive = true
-        headCorrectLabel.heightAnchor.constraint(equalToConstant: 32).isActive = true
-        headCorrectLabel.widthAnchor.constraint(equalToConstant: 32).isActive = true
-        
+        headCorrectLabel.alpha = 0
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+            UIView.animate(withDuration: 1) { [self] in
+                //correct image
+                addSubview(headCorrectLabel)
+                headCorrectLabel.alpha = 1
+                headCorrectLabel.centerYAnchor.constraint(equalTo: headPlaceHoldersButton.centerYAnchor, constant: 0).isActive = true
+                headCorrectLabel.trailingAnchor.constraint(equalTo: headPlaceHoldersButton.leadingAnchor, constant: -16).isActive = true
+                headCorrectLabel.heightAnchor.constraint(equalToConstant: 32).isActive = true
+                headCorrectLabel.widthAnchor.constraint(equalToConstant: 32).isActive = true
+            }
+        }
         
         
     }
@@ -1130,56 +1111,54 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         addSubview(aksaraImage)
         aksaraImage.alpha = 1
         aksaraImage.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        aksaraImage.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 0).isActive = true
+        aksaraImage.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -40).isActive = true
         aksaraImage.widthAnchor.constraint(equalToConstant: 172).isActive = true
         aksaraImage.heightAnchor.constraint(equalToConstant: 120).isActive = true
 
-        addSubview(aksaraNameLabel)
-        aksaraNameLabel.topAnchor.constraint(equalTo: aksaraImage.bottomAnchor, constant: 80).isActive = true
-        aksaraNameLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        //Ja Jawaban
+        questionLabel.font = UIFont.init(name: "NowAlt-Medium", size: 32)
+        questionLabel.frame = CGRect(x: (UIScreen.main.bounds.width/2) - 18 , y: (UIScreen.main.bounds.height/2) + 60, width: 37, height: 38)
+        
+        tailPlaceHoldersButton.frame = CGRect(x: (UIScreen.main.bounds.width / 2) + 208, y: (UIScreen.main.bounds.height/2) + 36, width: 140, height: 140)
         
         addSubview(tailImageLogo)
-        tailImageLogo.centerXAnchor.constraint(equalTo: tailView.centerXAnchor).isActive = true
-        tailImageLogo.bottomAnchor.constraint(equalTo: tailView.topAnchor, constant: -164).isActive = true
-        tailImageLogo.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        tailImageLogo.heightAnchor.constraint(equalToConstant: 56).isActive = true
+        tailImageLogo.frame = CGRect(x: (UIScreen.main.bounds.width / 2) + 258, y: (UIScreen.main.bounds.height/2) - 176, width: 40, height: 56)
         
         addSubview(tailImageRight)
-        tailImageRight.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 0).isActive = true
-        tailImageRight.centerXAnchor.constraint(equalTo: tailView.centerXAnchor, constant: 0).isActive = true
-        tailImageRight.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        tailImageRight.heightAnchor.constraint(equalToConstant: 56).isActive = true
+        tailImageRight.frame = CGRect(x: (UIScreen.main.bounds.width / 2) + 258, y: (UIScreen.main.bounds.height/2) - 68, width: 40, height: 56)
         
-        addSubview(tailImageChoice)
-        tailImageChoice.centerYAnchor.constraint(equalTo: tailView.centerYAnchor, constant: 0).isActive = true
-        tailImageChoice.centerXAnchor.constraint(equalTo: tailView.centerXAnchor, constant: 0).isActive = true
-        tailImageChoice.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        tailImageChoice.heightAnchor.constraint(equalToConstant: 56).isActive = true
-        
-        //statememt
-        addSubview(statementImage)
-        statementImage.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0).isActive = true
-        statementImage.bottomAnchor.constraint(equalTo: aksaraImage.topAnchor, constant: -56).isActive = true
-        statementImage.heightAnchor.constraint(equalToConstant: 39).isActive = true
-        statementImage.widthAnchor.constraint(equalToConstant: 320).isActive = true
-        
-        addSubview(statementLabel)
-        statementLabel.centerXAnchor.constraint(equalTo: statementImage.centerXAnchor).isActive = true
-        statementLabel.centerYAnchor.constraint(equalTo: statementImage.centerYAnchor).isActive = true
-        
-        //correct image
-        addSubview(tailCorrectLabel)
-        tailCorrectLabel.centerYAnchor.constraint(equalTo: tailView.centerYAnchor, constant: 0).isActive = true
-        tailCorrectLabel.leadingAnchor.constraint(equalTo: tailView.trailingAnchor, constant: 16).isActive = true
-        tailCorrectLabel.heightAnchor.constraint(equalToConstant: 32).isActive = true
-        tailCorrectLabel.widthAnchor.constraint(equalToConstant: 32).isActive = true
-        
-        //continue Button
-        addSubview(continueButton)
-        continueButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        continueButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -64).isActive = true
-        continueButton.widthAnchor.constraint(equalToConstant: 240).isActive = true
-        continueButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        tailCorrectLabel.alpha = 0
+        statementImage.alpha = 0
+        statementLabel.alpha = 0
+        continueButton.alpha = 0
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+            UIView.animate(withDuration: 1) { [self] in
+                //correct image
+                addSubview(tailCorrectLabel)
+                tailCorrectLabel.alpha = 1
+                tailCorrectLabel.centerYAnchor.constraint(equalTo: tailPlaceHoldersButton.centerYAnchor, constant: 0).isActive = true
+                tailCorrectLabel.leadingAnchor.constraint(equalTo: tailPlaceHoldersButton.trailingAnchor, constant: 16).isActive = true
+                tailCorrectLabel.heightAnchor.constraint(equalToConstant: 32).isActive = true
+                tailCorrectLabel.widthAnchor.constraint(equalToConstant: 32).isActive = true
+                
+                //statememt
+                addSubview(statementImage)
+                statementImage.alpha = 1
+                statementImage.frame = CGRect(x: (UIScreen.main.bounds.width/2) - 160 , y: (UIScreen.main.bounds.height/2) + 60, width: 320, height: 138)
+                
+                addSubview(statementLabel)
+                statementLabel.alpha = 1
+                statementLabel.frame = CGRect(x: (UIScreen.main.bounds.width/2) - 110 , y: (UIScreen.main.bounds.height/2) + 124, width: 220, height: 19)
+                
+                //continue Button
+                addSubview(continueButton)
+                continueButton.alpha = 1
+                continueButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+                continueButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -64).isActive = true
+                continueButton.widthAnchor.constraint(equalToConstant: 240).isActive = true
+                continueButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
+            }
+        }
         
     }
     
@@ -1211,20 +1190,13 @@ class NewHeadnTailDDCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         tailPlaceHoldersButton.frame = tailPlaceholderPosition
         
         addSubview(headIcon)
-        headIcon.bottomAnchor.constraint(equalTo: headButton1.topAnchor, constant: -16).isActive = true
-        headIcon.centerXAnchor.constraint(equalTo: headButton1.centerXAnchor, constant: 0).isActive = true
-        headIcon.heightAnchor.constraint(equalToConstant: 51).isActive = true
-        headIcon.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        headIcon.frame = CGRect(x: (UIScreen.main.bounds.width/2) - 380 , y: (UIScreen.main.bounds.height/2) - 225, width: 40, height: 52)
         
         addSubview(tailIcon)
-        tailIcon.bottomAnchor.constraint(equalTo: tailButton1.topAnchor, constant: -16).isActive = true
-        tailIcon.centerXAnchor.constraint(equalTo: tailButton1.centerXAnchor, constant: 0).isActive = true
-        tailIcon.heightAnchor.constraint(equalToConstant: 27).isActive = true
-        tailIcon.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        tailIcon.frame = CGRect(x: (UIScreen.main.bounds.width/2) + 340 , y: (UIScreen.main.bounds.height/2) - 225, width: 40, height: 52)
         
         addSubview(questionLabel)
-        questionLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        questionLabel.centerYAnchor.constraint(equalTo: headPlaceHoldersButton.centerYAnchor, constant: 0).isActive = true
+        questionLabel.frame = CGRect(x: (UIScreen.main.bounds.width/2) - 32 , y: (UIScreen.main.bounds.height/2) - 39, width: 64, height: 67)
         
         addSubview(viewHintExplain)
         viewHintExplain.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -145).isActive = true
