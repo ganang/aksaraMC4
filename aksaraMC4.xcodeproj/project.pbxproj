@@ -159,6 +159,8 @@
 		A4B3F536256119DC008D6520 /* GradientHorizontalProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B3F535256119DC008D6520 /* GradientHorizontalProgressBar.swift */; };
 		A4B3F53C256127FD008D6520 /* PencilStrokeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B3F53B256127FD008D6520 /* PencilStrokeCell.swift */; };
 		A4B3F53F25617229008D6520 /* GradientCircularProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B3F53E25617229008D6520 /* GradientCircularProgressBar.swift */; };
+		A4BFC3B0257779B800D8730E /* AksaraModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A4BFC3AF257779B800D8730E /* AksaraModel.mlmodel */; };
+		A4BFC3B325777A1A00D8730E /* ShakeQuizController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BFC3B225777A1A00D8730E /* ShakeQuizController.swift */; };
 		A4C715BC2539A45B00270D58 /* CoreDataRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C715BB2539A45B00270D58 /* CoreDataRecord.swift */; };
 		A4DB91BA2568CEB50002AA2A /* TestingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DB91B92568CEB50002AA2A /* TestingController.swift */; };
 		A4DB91BE2568CEEA0002AA2A /* TestingViewA.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DB91BD2568CEEA0002AA2A /* TestingViewA.swift */; };
@@ -168,7 +170,6 @@
 		A4ECCF412562C8E600E038BA /* QuickStartReviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECCF402562C8E600E038BA /* QuickStartReviewData.swift */; };
 		A4ECCF462562DFA200E038BA /* PencilStrokeWithoutTrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECCF452562DFA200E038BA /* PencilStrokeWithoutTrackCell.swift */; };
 		A4F19FC52535939400F5BA23 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F19FC42535939400F5BA23 /* BaseView.swift */; };
-		A4F7A330255BF900005B6202 /* AksaraModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A4F7A32F255BF900005B6202 /* AksaraModel.mlmodel */; };
 		DA666F577C7465F9A53CCC8F /* Pods_aksaraMC4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CC4C2B2BDF5350BA10417E0 /* Pods_aksaraMC4.framework */; };
 /* End PBXBuildFile section */
 
@@ -331,6 +332,8 @@
 		A4B3F535256119DC008D6520 /* GradientHorizontalProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientHorizontalProgressBar.swift; sourceTree = "<group>"; };
 		A4B3F53B256127FD008D6520 /* PencilStrokeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PencilStrokeCell.swift; sourceTree = "<group>"; };
 		A4B3F53E25617229008D6520 /* GradientCircularProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientCircularProgressBar.swift; sourceTree = "<group>"; };
+		A4BFC3AF257779B800D8730E /* AksaraModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = AksaraModel.mlmodel; path = ../../../../../../../var/folders/jg/hk2x998s4zx_26g23h9yty9r0000gn/T/AksaraModel.mlmodel; sourceTree = "<group>"; };
+		A4BFC3B225777A1A00D8730E /* ShakeQuizController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeQuizController.swift; sourceTree = "<group>"; };
 		A4C715BB2539A45B00270D58 /* CoreDataRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRecord.swift; sourceTree = "<group>"; };
 		A4DB91B92568CEB50002AA2A /* TestingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingController.swift; sourceTree = "<group>"; };
 		A4DB91BD2568CEEA0002AA2A /* TestingViewA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingViewA.swift; sourceTree = "<group>"; };
@@ -340,7 +343,6 @@
 		A4ECCF402562C8E600E038BA /* QuickStartReviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickStartReviewData.swift; sourceTree = "<group>"; };
 		A4ECCF452562DFA200E038BA /* PencilStrokeWithoutTrackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PencilStrokeWithoutTrackCell.swift; sourceTree = "<group>"; };
 		A4F19FC42535939400F5BA23 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
-		A4F7A32F255BF900005B6202 /* AksaraModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = AksaraModel.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -965,7 +967,7 @@
 		A4C732EC254FFD1600C64209 /* MLModel */ = {
 			isa = PBXGroup;
 			children = (
-				A4F7A32F255BF900005B6202 /* AksaraModel.mlmodel */,
+				A4BFC3AF257779B800D8730E /* AksaraModel.mlmodel */,
 			);
 			path = MLModel;
 			sourceTree = "<group>";
@@ -976,6 +978,7 @@
 				A4DB91B92568CEB50002AA2A /* TestingController.swift */,
 				A4DB91BD2568CEEA0002AA2A /* TestingViewA.swift */,
 				A4DB91C12568D18B0002AA2A /* TestingViewB.swift */,
+				A4BFC3B225777A1A00D8730E /* ShakeQuizController.swift */,
 			);
 			path = "Testing Screen";
 			sourceTree = "<group>";
@@ -1216,6 +1219,7 @@
 				914344E3252DBAD0002E867B /* Theme.swift in Sources */,
 				914344E6252DBADE002E867B /* ThemeProtocol.swift in Sources */,
 				A445D451253D810500A985CF /* TextGenerator.swift in Sources */,
+				A4BFC3B325777A1A00D8730E /* ShakeQuizController.swift in Sources */,
 				2385AEB0254FC7F500BAB851 /* InputNameView.swift in Sources */,
 				239F938C255FEC960022DD49 /* QuizViewTypeBV2.swift in Sources */,
 				91C98779252F269000D67BC0 /* LevelView.swift in Sources */,
@@ -1242,8 +1246,8 @@
 				23812D8C2542C24600C17F53 /* KonsonanView.swift in Sources */,
 				237BC09B2545C31000494281 /* KonsonanCell.swift in Sources */,
 				91775788254EFA40001C2589 /* StageTahap2Cell.swift in Sources */,
-				A4F7A330255BF900005B6202 /* AksaraModel.mlmodel in Sources */,
 				91F156FE256128FA00CC8614 /* NewRewardCell.swift in Sources */,
+				A4BFC3B0257779B800D8730E /* AksaraModel.mlmodel in Sources */,
 				91775768254966D5001C2589 /* ChoiceButton.swift in Sources */,
 				91F156CB255F9F9200CC8614 /* NewHeadnTailDDCell.swift in Sources */,
 				A4DB91BE2568CEEA0002AA2A /* TestingViewA.swift in Sources */,
@@ -1415,7 +1419,6 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = MY65R8DR6S;
 				DEVELOPMENT_TEAM = N6LHAC5JK5;
 				INFOPLIST_FILE = aksaraMC4/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1440,7 +1443,6 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = MY65R8DR6S;
 				DEVELOPMENT_TEAM = N6LHAC5JK5;
 				INFOPLIST_FILE = aksaraMC4/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

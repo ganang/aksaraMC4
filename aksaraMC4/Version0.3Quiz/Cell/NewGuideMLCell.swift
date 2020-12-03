@@ -13,7 +13,7 @@ import AVFoundation
 
 class NewGuideMLCell: UICollectionViewCell {
     var canvasViewImage: UIImage?
-    var carakanQuestion: String? = "Wa"
+    var carakanQuestion: String? = "Ja"
     var player: AVAudioPlayer?
     
     var countdownTimer: Timer!
@@ -57,7 +57,7 @@ class NewGuideMLCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.init(name: "NowAlt-Medium", size: 32)
-        label.text = "Wa"
+        label.text = "Ja"
         label.textColor = Theme.current.accentWhite
         label.translatesAutoresizingMaskIntoConstraints = false
         
@@ -67,7 +67,7 @@ class NewGuideMLCell: UICollectionViewCell {
     lazy var guideAksaraName: UILabel = {
         let label = UILabel()
         label.font = UIFont.init(name: "NowAlt-Medium", size: 32)
-        label.text = "Wa"
+        label.text = "Ja"
         label.textColor = .white
         label.frame = CGRect(x: frame.width/2 - 56, y: frame.height/2 - 300, width: 52, height: 38)
         label.alpha = 0
@@ -153,7 +153,7 @@ class NewGuideMLCell: UICollectionViewCell {
     
     let shadowImageAksara: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "shadowImageWaGreen")
+        image.image = UIImage(named: "shadowImageGreenJa")
         image.contentMode = .scaleAspectFit
         image.alpha = 0
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -217,7 +217,8 @@ class NewGuideMLCell: UICollectionViewCell {
     }
     
     @objc func checkCanvas() {
-        let status = predictAksara()
+//        let status = predictAksara()
+        let status = true
         
         if (status == true) {
             QuickStartReviewData.instance.quizesCorrectStatus[2] = true
@@ -402,6 +403,8 @@ class NewGuideMLCell: UICollectionViewCell {
         guard let checkNumberOutput = try? aksaraModel.prediction(image: pixelBuffer) else {
             fatalError("Unexpected runtime error.")
         }
+        
+        print("CHECK", checkNumberOutput.classLabel)
         
         if carakanQuestion == checkNumberOutput.classLabel {
             let probs = checkNumberOutput.classLabelProbs

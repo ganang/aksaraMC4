@@ -40,7 +40,7 @@ class NewGuideCell: UICollectionViewCell {
         let label = UILabel()
 //        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.init(name: "NowAlt-Medium", size: 32)
-        label.text = "Wa"
+        label.text = "Ja"
         label.textColor = Theme.current.accentWhite
         
         return label
@@ -235,18 +235,18 @@ class NewGuideCell: UICollectionViewCell {
     }
     
     func firstAnimation() {
-        aksaraImage.alpha = 0.3
-        aksaraName.alpha = 0.3
+        aksaraImage.alpha = 0
+        aksaraName.alpha = 0
         hintText.alpha = 0
 //        self.aksaraImageTopAnchor1?.constant = 0
-        UIView.animate(withDuration: 1, delay: 0) { [self] in
+        UIView.animate(withDuration: 1, delay: 2) { [self] in
             aksaraImage.frame = CGRect(x: self.frame.size.width/2 - 111, y: 300, width: 224, height: 160)
             aksaraName.frame = CGRect(x: frame.size.width/2 - 17, y: 480, width: 100, height: 100)
             aksaraImage.alpha = 1
             aksaraName.alpha = 1
         }
         
-        UIView.animate(withDuration: 1, delay: 2) { [self] in
+        UIView.animate(withDuration: 1, delay: 3) { [self] in
             hintText.frame = CGRect(x: frame.size.width/2 - 319, y: 588, width: 640, height: 71)
 
             hintText.alpha = 1
