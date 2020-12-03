@@ -9,6 +9,7 @@
 import UIKit
 import PencilKit
 import AVFoundation
+import CoreGraphics
 
 class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationDelegate {
     
@@ -53,13 +54,41 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         }
         
         if (aksara == "Ja") {
-            backgroundImageView.image = UIImage(named: "shadowImageGreenJa")
+            backgroundImageView.image = UIImage(named: "shadowImageJa")
             trackingImageView1.image = UIImage(named: "trackingImageJa1")
             trackingImageView2.image = UIImage(named: "trackingImageJa2")
             trackingImageView3.image = UIImage(named: "trackingImageJa3")
             trackingCorrectImageView1.image = UIImage(named: "jaCorrectTrackImage1")
             trackingCorrectImageView2.image = UIImage(named: "jaCorrectTrackImage2")
             trackingCorrectImageView3.image = UIImage(named: "jaCorrectTrackImage3")
+        }
+        
+        if (aksara == "Jo") {
+            backgroundImageView.image = UIImage(named: "shadowImageJo")
+            trackingImageView1.image = UIImage(named: "trackingImageJo1")
+            trackingImageView2.image = UIImage(named: "trackingImageJo2")
+            trackingImageView3.image = UIImage(named: "trackingImageJo3")
+            trackingImageView4.image = UIImage(named: "trackingImageJo4")
+            trackingImageView5.image = UIImage(named: "trackingImageJo5")
+            trackingCorrectImageView1.image = UIImage(named: "trackingJo1")
+            trackingCorrectImageView2.image = UIImage(named: "jaCorrectTrackImage1")
+            trackingCorrectImageView3.image = UIImage(named: "jaCorrectTrackImage2")
+            trackingCorrectImageView4.image = UIImage(named: "jaCorrectTrackImage3")
+            trackingCorrectImageView5.image = UIImage(named: "trackingJo5")
+        }
+        
+        if (aksara == "Gja") {
+            backgroundImageView.image = UIImage(named: "shadowImageGjaGreen")
+            trackingImageView1.image = UIImage(named: "trackingImageGja1")
+            trackingImageView2.image = UIImage(named: "trackingImageGja2")
+            trackingImageView3.image = UIImage(named: "trackingImageGja3")
+            trackingImageView4.image = UIImage(named: "trackingImageGja4")
+            trackingImageView5.image = UIImage(named: "trackingImageGja5")
+            trackingCorrectImageView1.image = UIImage(named: "trackingCorrectImageGja1")
+            trackingCorrectImageView2.image = UIImage(named: "trackingCorrectImageGja2")
+            trackingCorrectImageView3.image = UIImage(named: "trackingCorrectImageGja3")
+            trackingCorrectImageView4.image = UIImage(named: "trackingCorrectImageGja4")
+            trackingCorrectImageView5.image = UIImage(named: "trackingCorrectImageGja5")
         }
         
     }
@@ -159,6 +188,24 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         return imageView
     }()
     
+    let trackingImageView4: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleToFill
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.isHidden = true
+        
+        return imageView
+    }()
+    
+    let trackingImageView5: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleToFill
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.isHidden = true
+        
+        return imageView
+    }()
+    
     let trackingButton1: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -195,7 +242,31 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         return button
     }()
     
-    let trackingHelperButton1: UIButton = {
+    let trackingButton4: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setBackgroundImage(UIImage(named: "trackingButton"), for: .normal)
+        button.setTitle("4", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.isHidden = true
+        button.isUserInteractionEnabled = false
+        
+        return button
+    }()
+    
+    let trackingButton5: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setBackgroundImage(UIImage(named: "trackingButton"), for: .normal)
+        button.setTitle("5", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.isHidden = true
+        button.isUserInteractionEnabled = false
+        
+        return button
+    }()
+    
+    let trackingTailButton1: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setBackgroundImage(UIImage(named: "trackingButton"), for: .normal)
@@ -205,22 +276,42 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         return button
     }()
     
-    let trackingHelperButton2: UIButton = {
+    let trackingTailButton2: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setBackgroundImage(UIImage(named: "trackingButton"), for: .normal)
-        button.isUserInteractionEnabled = false
         button.isHidden = true
+        button.isUserInteractionEnabled = false
         
         return button
     }()
     
-    let trackingHelperButton3: UIButton = {
+    let trackingTailButton3: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setBackgroundImage(UIImage(named: "trackingButton"), for: .normal)
-        button.isUserInteractionEnabled = false
         button.isHidden = true
+        button.isUserInteractionEnabled = false
+        
+        return button
+    }()
+    
+    let trackingTailButton4: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setBackgroundImage(UIImage(named: "trackingButton"), for: .normal)
+        button.isHidden = true
+        button.isUserInteractionEnabled = false
+        
+        return button
+    }()
+    
+    let trackingTailButton5: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setBackgroundImage(UIImage(named: "trackingButton"), for: .normal)
+        button.isHidden = true
+        button.isUserInteractionEnabled = false
         
         return button
     }()
@@ -244,6 +335,24 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
     }()
     
     let trackingCorrectImageView3: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleToFill
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.isHidden = true
+        
+        return imageView
+    }()
+    
+    let trackingCorrectImageView4: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleToFill
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.isHidden = true
+        
+        return imageView
+    }()
+    
+    let trackingCorrectImageView5: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleToFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -337,233 +446,16 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         setupInterfaceComponent()
         setupConstraint()
 //        addTrackAnimation(withIndex: 0)
-        startTimer()
-        startAFKTime()
+//        startTimer()
+//        startAFKTime()
     }
     
     deinit {
         self.player = nil
     }
     
-    func setupAksaraJaConstraint() {
-        backgroundImageView.centerXAnchor.constraint(equalTo: containerBackgroundView.centerXAnchor).isActive = true
-        backgroundImageView.centerYAnchor.constraint(equalTo: containerBackgroundView.centerYAnchor).isActive = true
-        backgroundImageView.widthAnchor.constraint(equalToConstant: 280).isActive = true
-        backgroundImageView.heightAnchor.constraint(equalToConstant: 200).isActive = true
-        
-        trackingButton1.topAnchor.constraint(equalTo: backgroundImageView.bottomAnchor, constant: -12).isActive = true
-        trackingButton1.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: -6).isActive = true
-        trackingButton1.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        trackingButton1.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        
-        trackingImageView1.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 12).isActive = true
-        trackingImageView1.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 12).isActive = true
-        trackingImageView1.widthAnchor.constraint(equalToConstant: 201.5).isActive = true
-        trackingImageView1.heightAnchor.constraint(equalToConstant: 180.5).isActive = true
-        
-        trackingCorrectImageView1.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 4).isActive = true
-        trackingCorrectImageView1.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 5.5).isActive = true
-        trackingCorrectImageView1.widthAnchor.constraint(equalToConstant: 212).isActive = true
-        trackingCorrectImageView1.heightAnchor.constraint(equalToConstant: 192.5).isActive = true
-        
-        trackingHelperButton1.topAnchor.constraint(equalTo: backgroundImageView.bottomAnchor, constant: -19).isActive = true
-        trackingHelperButton1.trailingAnchor.constraint(equalTo: backgroundImageView.trailingAnchor, constant: -64).isActive = true
-        trackingHelperButton1.widthAnchor.constraint(equalToConstant: 12).isActive = true
-        trackingHelperButton1.heightAnchor.constraint(equalToConstant: 12).isActive = true
-        
-        trackingButton2.topAnchor.constraint(equalTo: backgroundImageView.bottomAnchor, constant: -32).isActive = true
-        trackingButton2.trailingAnchor.constraint(equalTo: backgroundImageView.trailingAnchor, constant: -36).isActive = true
-        trackingButton2.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        trackingButton2.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        
-        trackingImageView2.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 8).isActive = true
-        trackingImageView2.trailingAnchor.constraint(equalTo: backgroundImageView.trailingAnchor, constant: -12).isActive = true
-        trackingImageView2.widthAnchor.constraint(equalToConstant: 99.5).isActive = true
-        trackingImageView2.heightAnchor.constraint(equalToConstant: 180.5).isActive = true
-        
-        trackingCorrectImageView2.centerXAnchor.constraint(equalTo: containerBackgroundView.centerXAnchor, constant: 1.5).isActive = true
-        trackingCorrectImageView2.centerYAnchor.constraint(equalTo: containerBackgroundView.centerYAnchor, constant: 0.5).isActive = true
-        trackingCorrectImageView2.widthAnchor.constraint(equalToConstant: 272).isActive = true
-        trackingCorrectImageView2.heightAnchor.constraint(equalToConstant: 194).isActive = true
-        
-        trackingHelperButton2.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 6).isActive = true
-        trackingHelperButton2.trailingAnchor.constraint(equalTo: backgroundImageView.trailingAnchor, constant: -7).isActive = true
-        trackingHelperButton2.widthAnchor.constraint(equalToConstant: 12).isActive = true
-        trackingHelperButton2.heightAnchor.constraint(equalToConstant: 12).isActive = true
-        
-        trackingButton3.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: -12).isActive = true
-        trackingButton3.trailingAnchor.constraint(equalTo: backgroundImageView.trailingAnchor, constant: 4).isActive = true
-        trackingButton3.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        trackingButton3.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        
-        trackingImageView3.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 12).isActive = true
-        trackingImageView3.trailingAnchor.constraint(equalTo: backgroundImageView.trailingAnchor, constant: -8).isActive = true
-        trackingImageView3.widthAnchor.constraint(equalToConstant: 80.5).isActive = true
-        trackingImageView3.heightAnchor.constraint(equalToConstant: 184).isActive = true
-        
-        trackingCorrectImageView3.centerXAnchor.constraint(equalTo: backgroundImageView.centerXAnchor).isActive = true
-        trackingCorrectImageView3.centerYAnchor.constraint(equalTo: backgroundImageView.centerYAnchor).isActive = true
-        trackingCorrectImageView3.widthAnchor.constraint(equalToConstant: 280).isActive = true
-        trackingCorrectImageView3.heightAnchor.constraint(equalToConstant: 200).isActive = true
-        
-        trackingHelperButton3.topAnchor.constraint(equalTo: backgroundImageView.bottomAnchor, constant: -19).isActive = true
-        trackingHelperButton3.trailingAnchor.constraint(equalTo: backgroundImageView.trailingAnchor, constant: -7).isActive = true
-        trackingHelperButton3.widthAnchor.constraint(equalToConstant: 12).isActive = true
-        trackingHelperButton3.heightAnchor.constraint(equalToConstant: 12).isActive = true
-    }
-    
-    func setupAksaraGaConstraint() {
-        backgroundImageView.centerXAnchor.constraint(equalTo: containerBackgroundView.centerXAnchor).isActive = true
-        backgroundImageView.centerYAnchor.constraint(equalTo: containerBackgroundView.centerYAnchor).isActive = true
-        backgroundImageView.widthAnchor.constraint(equalToConstant: 220).isActive = true
-        backgroundImageView.heightAnchor.constraint(equalToConstant: 200).isActive = true
-        
-        trackingButton1.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: -8).isActive = true
-        trackingButton1.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: -6).isActive = true
-        trackingButton1.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        trackingButton1.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        
-        trackingImageView1.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 12).isActive = true
-        trackingImageView1.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 14).isActive = true
-        trackingImageView1.widthAnchor.constraint(equalToConstant: 43).isActive = true
-        trackingImageView1.heightAnchor.constraint(equalToConstant: 179.5).isActive = true
-        
-        trackingCorrectImageView1.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 4).isActive = true
-        trackingCorrectImageView1.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 4).isActive = true
-        trackingCorrectImageView1.widthAnchor.constraint(equalToConstant: 57.5).isActive = true
-        trackingCorrectImageView1.heightAnchor.constraint(equalToConstant: 192.5).isActive = true
-        
-        trackingHelperButton1.topAnchor.constraint(equalTo: backgroundImageView.bottomAnchor, constant: -20).isActive = true
-        trackingHelperButton1.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 45.5).isActive = true
-        trackingHelperButton1.widthAnchor.constraint(equalToConstant: 12).isActive = true
-        trackingHelperButton1.heightAnchor.constraint(equalToConstant: 12).isActive = true
-        
-        trackingButton2.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 24).isActive = true
-        trackingButton2.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 28).isActive = true
-        trackingButton2.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        trackingButton2.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        
-        trackingImageView2.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 12).isActive = true
-        trackingImageView2.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 54).isActive = true
-        trackingImageView2.widthAnchor.constraint(equalToConstant: 80.5).isActive = true
-        trackingImageView2.heightAnchor.constraint(equalToConstant: 182).isActive = true
-        
-        trackingCorrectImageView2.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 4).isActive = true
-        trackingCorrectImageView2.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 3.5).isActive = true
-        trackingCorrectImageView2.widthAnchor.constraint(equalToConstant: 135.5).isActive = true
-        trackingCorrectImageView2.heightAnchor.constraint(equalToConstant: 193).isActive = true
-        
-        trackingHelperButton2.topAnchor.constraint(equalTo: backgroundImageView.bottomAnchor, constant: -20).isActive = true
-        trackingHelperButton2.centerXAnchor.constraint(equalTo: backgroundImageView.centerXAnchor, constant: 19).isActive = true
-        trackingHelperButton2.widthAnchor.constraint(equalToConstant: 12).isActive = true
-        trackingHelperButton2.heightAnchor.constraint(equalToConstant: 12).isActive = true
-        
-        trackingButton3.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 24).isActive = true
-        trackingButton3.leadingAnchor.constraint(equalTo: backgroundImageView.centerXAnchor).isActive = true
-        trackingButton3.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        trackingButton3.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        
-        trackingImageView3.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 12).isActive = true
-        trackingImageView3.trailingAnchor.constraint(equalTo: backgroundImageView.trailingAnchor, constant: -8).isActive = true
-        trackingImageView3.widthAnchor.constraint(equalToConstant: 80.5).isActive = true
-        trackingImageView3.heightAnchor.constraint(equalToConstant: 182).isActive = true
-        
-        trackingCorrectImageView3.centerXAnchor.constraint(equalTo: backgroundImageView.centerXAnchor).isActive = true
-        trackingCorrectImageView3.centerYAnchor.constraint(equalTo: backgroundImageView.centerYAnchor).isActive = true
-        trackingCorrectImageView3.widthAnchor.constraint(equalToConstant: 220).isActive = true
-        trackingCorrectImageView3.heightAnchor.constraint(equalToConstant: 200).isActive = true
-        
-        trackingHelperButton3.topAnchor.constraint(equalTo: backgroundImageView.bottomAnchor, constant: -20).isActive = true
-        trackingHelperButton3.trailingAnchor.constraint(equalTo: backgroundImageView.trailingAnchor, constant: -7).isActive = true
-        trackingHelperButton3.widthAnchor.constraint(equalToConstant: 12).isActive = true
-        trackingHelperButton3.heightAnchor.constraint(equalToConstant: 12).isActive = true
-    }
-    
-    func setupInterfaceComponent() {
-        addSubview(plusCenterImageView)
-        addSubview(containerBackgroundView)
-        addSubview(guideAksaraName)
-        addSubview(guideWritingName)
-        addSubview(correctButton)
-        addSubview(smallCorrectButton)
-        addSubview(youSuccessButton)
-        addSubview(gotItButton)
-        addSubview(circularProgressBar)
-        addSubview(timerLabel)
-        bringSubviewToFront(smallCorrectButton)
-        bringSubviewToFront(correctButton)
-        
-        containerBackgroundView.addSubview(backgroundImageView)
-        containerBackgroundView.addSubview(backgroundCanvasView)
-        
-        backgroundImageView.addSubview(trackingCorrectImageView3)
-        backgroundImageView.addSubview(trackingCorrectImageView2)
-        backgroundImageView.addSubview(trackingCorrectImageView1)
-        containerBackgroundView.addSubview(canvasView)
-        
-        containerBackgroundView.addSubview(trackingHelperButton1)
-        containerBackgroundView.addSubview(trackingHelperButton2)
-        containerBackgroundView.addSubview(trackingHelperButton3)
-        containerBackgroundView.addSubview(trackingButton1)
-        containerBackgroundView.addSubview(trackingButton2)
-        containerBackgroundView.addSubview(trackingButton3)
-        
-        backgroundImageView.addSubview(trackingImageView1)
-        backgroundImageView.addSubview(trackingImageView2)
-        backgroundImageView.addSubview(trackingImageView3)
-    }
-    
-    func setupConstraint() {
-        
-        plusCenterImageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        plusCenterImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        plusCenterImageView.widthAnchor.constraint(equalToConstant: 402).isActive = true
-        plusCenterImageView.heightAnchor.constraint(equalToConstant: 402).isActive = true
-        
-        containerBackgroundView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        containerBackgroundView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        containerBackgroundView.widthAnchor.constraint(equalToConstant: 402).isActive = true
-        containerBackgroundView.heightAnchor.constraint(equalToConstant: 402).isActive = true
-        
-        backgroundCanvasView.centerXAnchor.constraint(equalTo: containerBackgroundView.centerXAnchor).isActive = true
-        backgroundCanvasView.centerYAnchor.constraint(equalTo: containerBackgroundView.centerYAnchor).isActive = true
-        backgroundCanvasView.widthAnchor.constraint(equalToConstant: 402).isActive = true
-        backgroundCanvasView.heightAnchor.constraint(equalToConstant: 402).isActive = true
-        
-        DispatchQueue.main.async {
-            if (self.aksara == "Ja") {
-                self.setupAksaraJaConstraint()
-            }
-            
-            if (self.aksara == "Ga") {
-                self.setupAksaraGaConstraint()
-            }
-        }
-        
-        canvasView.centerXAnchor.constraint(equalTo: containerBackgroundView.centerXAnchor).isActive = true
-        canvasView.centerYAnchor.constraint(equalTo: containerBackgroundView.centerYAnchor).isActive = true
-        canvasView.widthAnchor.constraint(equalToConstant: 402).isActive = true
-        canvasView.heightAnchor.constraint(equalToConstant: 402).isActive = true
-        
-        guideWritingName.bottomAnchor.constraint(equalTo: containerBackgroundView.topAnchor, constant: -20).isActive = true
-        guideWritingName.centerXAnchor.constraint(equalTo: containerBackgroundView.centerXAnchor).isActive = true
-        
-        gotItButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -28).isActive = true
-        gotItButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        gotItButton.widthAnchor.constraint(equalToConstant: 240).isActive = true
-        gotItButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
-        gotItButton.layer.cornerRadius = 32
-        
-        circularProgressBar.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -64).isActive = true
-        circularProgressBar.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        circularProgressBar.widthAnchor.constraint(equalToConstant: 48).isActive = true
-        circularProgressBar.heightAnchor.constraint(equalToConstant: 48).isActive = true
-        
-        timerLabel.centerXAnchor.constraint(equalTo: circularProgressBar.centerXAnchor).isActive = true
-        timerLabel.centerYAnchor.constraint(equalTo: circularProgressBar.centerYAnchor).isActive = true
-    }
-    
     func curvedPath(withIndex index: Int) -> UIBezierPath {
+        
         var path = UIBezierPath()
         
         if (index == 0) {
@@ -650,7 +542,6 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
     
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         customTrackView.removeFromSuperview()
-        
         isHintRunning = false
         
         if totalTime != 0 {
@@ -663,6 +554,488 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
     
     func animationDidStart(_ anim: CAAnimation) {
         isHintRunning = true
+    }
+    
+    func setupAksaraJaConstraint() {
+        
+        plusCenterImageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        plusCenterImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        plusCenterImageView.widthAnchor.constraint(equalToConstant: 402).isActive = true
+        plusCenterImageView.heightAnchor.constraint(equalToConstant: 402).isActive = true
+        
+        containerBackgroundView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        containerBackgroundView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        containerBackgroundView.widthAnchor.constraint(equalToConstant: 402).isActive = true
+        containerBackgroundView.heightAnchor.constraint(equalToConstant: 402).isActive = true
+        
+        backgroundCanvasView.centerXAnchor.constraint(equalTo: containerBackgroundView.centerXAnchor).isActive = true
+        backgroundCanvasView.centerYAnchor.constraint(equalTo: containerBackgroundView.centerYAnchor).isActive = true
+        backgroundCanvasView.widthAnchor.constraint(equalToConstant: 402).isActive = true
+        backgroundCanvasView.heightAnchor.constraint(equalToConstant: 402).isActive = true
+        
+        backgroundImageView.centerXAnchor.constraint(equalTo: containerBackgroundView.centerXAnchor).isActive = true
+        backgroundImageView.centerYAnchor.constraint(equalTo: containerBackgroundView.centerYAnchor).isActive = true
+        backgroundImageView.widthAnchor.constraint(equalToConstant: 280).isActive = true
+        backgroundImageView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        
+        trackingButton1.topAnchor.constraint(equalTo: backgroundImageView.bottomAnchor, constant: -12).isActive = true
+        trackingButton1.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: -6).isActive = true
+        trackingButton1.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        trackingButton1.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        
+        trackingImageView1.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 12).isActive = true
+        trackingImageView1.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 12).isActive = true
+        trackingImageView1.widthAnchor.constraint(equalToConstant: 201.5).isActive = true
+        trackingImageView1.heightAnchor.constraint(equalToConstant: 180.5).isActive = true
+        
+        trackingCorrectImageView1.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 4).isActive = true
+        trackingCorrectImageView1.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 5.5).isActive = true
+        trackingCorrectImageView1.widthAnchor.constraint(equalToConstant: 212).isActive = true
+        trackingCorrectImageView1.heightAnchor.constraint(equalToConstant: 192.5).isActive = true
+        
+        trackingButton2.topAnchor.constraint(equalTo: backgroundImageView.bottomAnchor, constant: -32).isActive = true
+        trackingButton2.trailingAnchor.constraint(equalTo: backgroundImageView.trailingAnchor, constant: -36).isActive = true
+        trackingButton2.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        trackingButton2.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        
+        trackingImageView2.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 8).isActive = true
+        trackingImageView2.trailingAnchor.constraint(equalTo: backgroundImageView.trailingAnchor, constant: -12).isActive = true
+        trackingImageView2.widthAnchor.constraint(equalToConstant: 99.5).isActive = true
+        trackingImageView2.heightAnchor.constraint(equalToConstant: 180.5).isActive = true
+        
+        trackingCorrectImageView2.centerXAnchor.constraint(equalTo: containerBackgroundView.centerXAnchor, constant: 1.5).isActive = true
+        trackingCorrectImageView2.centerYAnchor.constraint(equalTo: containerBackgroundView.centerYAnchor, constant: 0.5).isActive = true
+        trackingCorrectImageView2.widthAnchor.constraint(equalToConstant: 272).isActive = true
+        trackingCorrectImageView2.heightAnchor.constraint(equalToConstant: 194).isActive = true
+        
+        trackingButton3.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: -12).isActive = true
+        trackingButton3.trailingAnchor.constraint(equalTo: backgroundImageView.trailingAnchor, constant: 4).isActive = true
+        trackingButton3.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        trackingButton3.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        
+        trackingImageView3.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 12).isActive = true
+        trackingImageView3.trailingAnchor.constraint(equalTo: backgroundImageView.trailingAnchor, constant: -8).isActive = true
+        trackingImageView3.widthAnchor.constraint(equalToConstant: 80.5).isActive = true
+        trackingImageView3.heightAnchor.constraint(equalToConstant: 184).isActive = true
+        
+        trackingCorrectImageView3.centerXAnchor.constraint(equalTo: backgroundImageView.centerXAnchor).isActive = true
+        trackingCorrectImageView3.centerYAnchor.constraint(equalTo: backgroundImageView.centerYAnchor).isActive = true
+        trackingCorrectImageView3.widthAnchor.constraint(equalToConstant: 280).isActive = true
+        trackingCorrectImageView3.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        
+        canvasView.centerXAnchor.constraint(equalTo: containerBackgroundView.centerXAnchor).isActive = true
+        canvasView.centerYAnchor.constraint(equalTo: containerBackgroundView.centerYAnchor).isActive = true
+        canvasView.widthAnchor.constraint(equalToConstant: 402).isActive = true
+        canvasView.heightAnchor.constraint(equalToConstant: 402).isActive = true
+        
+        guideWritingName.bottomAnchor.constraint(equalTo: containerBackgroundView.topAnchor, constant: -20).isActive = true
+        guideWritingName.centerXAnchor.constraint(equalTo: containerBackgroundView.centerXAnchor).isActive = true
+        
+        gotItButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -28).isActive = true
+        gotItButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        gotItButton.widthAnchor.constraint(equalToConstant: 240).isActive = true
+        gotItButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        gotItButton.layer.cornerRadius = 32
+    }
+    
+    func setupAksaraGaConstraint() {
+        plusCenterImageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        plusCenterImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        plusCenterImageView.widthAnchor.constraint(equalToConstant: 402).isActive = true
+        plusCenterImageView.heightAnchor.constraint(equalToConstant: 402).isActive = true
+        
+        containerBackgroundView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        containerBackgroundView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        containerBackgroundView.widthAnchor.constraint(equalToConstant: 402).isActive = true
+        containerBackgroundView.heightAnchor.constraint(equalToConstant: 402).isActive = true
+        
+        backgroundCanvasView.centerXAnchor.constraint(equalTo: containerBackgroundView.centerXAnchor).isActive = true
+        backgroundCanvasView.centerYAnchor.constraint(equalTo: containerBackgroundView.centerYAnchor).isActive = true
+        backgroundCanvasView.widthAnchor.constraint(equalToConstant: 402).isActive = true
+        backgroundCanvasView.heightAnchor.constraint(equalToConstant: 402).isActive = true
+        
+        backgroundImageView.centerXAnchor.constraint(equalTo: containerBackgroundView.centerXAnchor).isActive = true
+        backgroundImageView.centerYAnchor.constraint(equalTo: containerBackgroundView.centerYAnchor).isActive = true
+        backgroundImageView.widthAnchor.constraint(equalToConstant: 220).isActive = true
+        backgroundImageView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        
+        trackingButton1.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: -8).isActive = true
+        trackingButton1.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: -6).isActive = true
+        trackingButton1.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        trackingButton1.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        
+        trackingImageView1.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 12).isActive = true
+        trackingImageView1.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 14).isActive = true
+        trackingImageView1.widthAnchor.constraint(equalToConstant: 43).isActive = true
+        trackingImageView1.heightAnchor.constraint(equalToConstant: 179.5).isActive = true
+        
+        trackingCorrectImageView1.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 4).isActive = true
+        trackingCorrectImageView1.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 4).isActive = true
+        trackingCorrectImageView1.widthAnchor.constraint(equalToConstant: 57.5).isActive = true
+        trackingCorrectImageView1.heightAnchor.constraint(equalToConstant: 192.5).isActive = true
+        
+        trackingButton2.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 24).isActive = true
+        trackingButton2.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 28).isActive = true
+        trackingButton2.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        trackingButton2.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        
+        trackingImageView2.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 12).isActive = true
+        trackingImageView2.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 54).isActive = true
+        trackingImageView2.widthAnchor.constraint(equalToConstant: 80.5).isActive = true
+        trackingImageView2.heightAnchor.constraint(equalToConstant: 182).isActive = true
+        
+        trackingCorrectImageView2.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 4).isActive = true
+        trackingCorrectImageView2.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 3.5).isActive = true
+        trackingCorrectImageView2.widthAnchor.constraint(equalToConstant: 135.5).isActive = true
+        trackingCorrectImageView2.heightAnchor.constraint(equalToConstant: 193).isActive = true
+        
+        trackingButton3.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 24).isActive = true
+        trackingButton3.leadingAnchor.constraint(equalTo: backgroundImageView.centerXAnchor).isActive = true
+        trackingButton3.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        trackingButton3.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        
+        trackingImageView3.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 12).isActive = true
+        trackingImageView3.trailingAnchor.constraint(equalTo: backgroundImageView.trailingAnchor, constant: -8).isActive = true
+        trackingImageView3.widthAnchor.constraint(equalToConstant: 80.5).isActive = true
+        trackingImageView3.heightAnchor.constraint(equalToConstant: 182).isActive = true
+        
+        trackingCorrectImageView3.centerXAnchor.constraint(equalTo: backgroundImageView.centerXAnchor).isActive = true
+        trackingCorrectImageView3.centerYAnchor.constraint(equalTo: backgroundImageView.centerYAnchor).isActive = true
+        trackingCorrectImageView3.widthAnchor.constraint(equalToConstant: 220).isActive = true
+        trackingCorrectImageView3.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        
+        canvasView.centerXAnchor.constraint(equalTo: containerBackgroundView.centerXAnchor).isActive = true
+        canvasView.centerYAnchor.constraint(equalTo: containerBackgroundView.centerYAnchor).isActive = true
+        canvasView.widthAnchor.constraint(equalToConstant: 402).isActive = true
+        canvasView.heightAnchor.constraint(equalToConstant: 402).isActive = true
+        
+        guideWritingName.bottomAnchor.constraint(equalTo: containerBackgroundView.topAnchor, constant: -20).isActive = true
+        guideWritingName.centerXAnchor.constraint(equalTo: containerBackgroundView.centerXAnchor).isActive = true
+        
+        gotItButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -28).isActive = true
+        gotItButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        gotItButton.widthAnchor.constraint(equalToConstant: 240).isActive = true
+        gotItButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        gotItButton.layer.cornerRadius = 32
+    }
+    
+    func setupAksaraJoConstraint() {
+        plusCenterImageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        plusCenterImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        plusCenterImageView.widthAnchor.constraint(equalToConstant: 402).isActive = true
+        plusCenterImageView.heightAnchor.constraint(equalToConstant: 402).isActive = true
+        
+        containerBackgroundView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        containerBackgroundView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        containerBackgroundView.widthAnchor.constraint(equalToConstant: 402).isActive = true
+        containerBackgroundView.heightAnchor.constraint(equalToConstant: 402).isActive = true
+        
+        backgroundCanvasView.centerXAnchor.constraint(equalTo: containerBackgroundView.centerXAnchor).isActive = true
+        backgroundCanvasView.centerYAnchor.constraint(equalTo: containerBackgroundView.centerYAnchor).isActive = true
+        backgroundCanvasView.widthAnchor.constraint(equalToConstant: 402).isActive = true
+        backgroundCanvasView.heightAnchor.constraint(equalToConstant: 402).isActive = true
+        
+        backgroundImageView.centerXAnchor.constraint(equalTo: containerBackgroundView.centerXAnchor).isActive = true
+        backgroundImageView.centerYAnchor.constraint(equalTo: containerBackgroundView.centerYAnchor).isActive = true
+        backgroundImageView.widthAnchor.constraint(equalToConstant: 306).isActive = true
+        backgroundImageView.heightAnchor.constraint(equalToConstant: 174).isActive = true
+        
+        trackingButton1.centerYAnchor.constraint(equalTo: backgroundImageView.centerYAnchor, constant: 40).isActive = true
+        trackingButton1.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: -6).isActive = true
+        trackingButton1.widthAnchor.constraint(equalToConstant: 32).isActive = true
+        trackingButton1.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        
+        trackingImageView1.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 12).isActive = true
+        trackingImageView1.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 14).isActive = true
+        trackingImageView1.widthAnchor.constraint(equalToConstant: 43).isActive = true
+        trackingImageView1.heightAnchor.constraint(equalToConstant: 179.5).isActive = true
+        
+        trackingCorrectImageView1.centerYAnchor.constraint(equalTo: backgroundImageView.centerYAnchor, constant: 23).isActive = true
+        trackingCorrectImageView1.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 2).isActive = true
+        trackingCorrectImageView1.widthAnchor.constraint(equalToConstant: 64).isActive = true
+        trackingCorrectImageView1.heightAnchor.constraint(equalToConstant: 126).isActive = true
+        
+        trackingButton2.centerYAnchor.constraint(equalTo: backgroundImageView.centerYAnchor, constant: 28).isActive = true
+        trackingButton2.centerXAnchor.constraint(equalTo: backgroundImageView.centerXAnchor, constant: -72).isActive = true
+        trackingButton2.widthAnchor.constraint(equalToConstant: 32).isActive = true
+        trackingButton2.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        
+        trackingImageView2.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 12).isActive = true
+        trackingImageView2.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 54).isActive = true
+        trackingImageView2.widthAnchor.constraint(equalToConstant: 80.5).isActive = true
+        trackingImageView2.heightAnchor.constraint(equalToConstant: 182).isActive = true
+        
+        trackingCorrectImageView2.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 0).isActive = true
+        trackingCorrectImageView2.centerXAnchor.constraint(equalTo: backgroundImageView.centerXAnchor, constant: -16).isActive = true
+        trackingCorrectImageView2.widthAnchor.constraint(equalToConstant: 132).isActive = true
+        trackingCorrectImageView2.heightAnchor.constraint(equalToConstant: 120).isActive = true
+        
+        trackingButton3.centerYAnchor.constraint(equalTo: backgroundImageView.centerYAnchor, constant: 28).isActive = true
+        trackingButton3.centerXAnchor.constraint(equalTo: backgroundImageView.centerXAnchor, constant: 56).isActive = true
+        trackingButton3.widthAnchor.constraint(equalToConstant: 32).isActive = true
+        trackingButton3.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        
+        trackingImageView3.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 12).isActive = true
+        trackingImageView3.trailingAnchor.constraint(equalTo: backgroundImageView.trailingAnchor, constant: -8).isActive = true
+        trackingImageView3.widthAnchor.constraint(equalToConstant: 80.5).isActive = true
+        trackingImageView3.heightAnchor.constraint(equalToConstant: 182).isActive = true
+        
+        trackingCorrectImageView3.centerXAnchor.constraint(equalTo: backgroundImageView.centerXAnchor).isActive = true
+        trackingCorrectImageView3.centerYAnchor.constraint(equalTo: backgroundImageView.centerYAnchor).isActive = true
+        trackingCorrectImageView3.widthAnchor.constraint(equalToConstant: 220).isActive = true
+        trackingCorrectImageView3.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        
+        trackingButton4.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 24).isActive = true
+        trackingButton4.leadingAnchor.constraint(equalTo: backgroundImageView.centerXAnchor).isActive = true
+        trackingButton4.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        trackingButton4.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        
+        trackingImageView4.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 12).isActive = true
+        trackingImageView4.trailingAnchor.constraint(equalTo: backgroundImageView.trailingAnchor, constant: -8).isActive = true
+        trackingImageView4.widthAnchor.constraint(equalToConstant: 80.5).isActive = true
+        trackingImageView4.heightAnchor.constraint(equalToConstant: 182).isActive = true
+        
+        trackingCorrectImageView4.centerXAnchor.constraint(equalTo: backgroundImageView.centerXAnchor).isActive = true
+        trackingCorrectImageView4.centerYAnchor.constraint(equalTo: backgroundImageView.centerYAnchor).isActive = true
+        trackingCorrectImageView4.widthAnchor.constraint(equalToConstant: 220).isActive = true
+        trackingCorrectImageView4.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        
+        trackingButton5.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 24).isActive = true
+        trackingButton5.leadingAnchor.constraint(equalTo: backgroundImageView.centerXAnchor).isActive = true
+        trackingButton5.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        trackingButton5.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        
+        trackingImageView5.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 12).isActive = true
+        trackingImageView5.trailingAnchor.constraint(equalTo: backgroundImageView.trailingAnchor, constant: -8).isActive = true
+        trackingImageView5.widthAnchor.constraint(equalToConstant: 80.5).isActive = true
+        trackingImageView5.heightAnchor.constraint(equalToConstant: 182).isActive = true
+        
+        trackingCorrectImageView5.centerXAnchor.constraint(equalTo: backgroundImageView.centerXAnchor).isActive = true
+        trackingCorrectImageView5.centerYAnchor.constraint(equalTo: backgroundImageView.centerYAnchor).isActive = true
+        trackingCorrectImageView5.widthAnchor.constraint(equalToConstant: 220).isActive = true
+        trackingCorrectImageView5.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        
+        canvasView.centerXAnchor.constraint(equalTo: containerBackgroundView.centerXAnchor).isActive = true
+        canvasView.centerYAnchor.constraint(equalTo: containerBackgroundView.centerYAnchor).isActive = true
+        canvasView.widthAnchor.constraint(equalToConstant: 402).isActive = true
+        canvasView.heightAnchor.constraint(equalToConstant: 402).isActive = true
+        
+        guideWritingName.bottomAnchor.constraint(equalTo: containerBackgroundView.topAnchor, constant: -20).isActive = true
+        guideWritingName.centerXAnchor.constraint(equalTo: containerBackgroundView.centerXAnchor).isActive = true
+        
+        gotItButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -28).isActive = true
+        gotItButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        gotItButton.widthAnchor.constraint(equalToConstant: 240).isActive = true
+        gotItButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        gotItButton.layer.cornerRadius = 32
+    }
+    
+    func setupAksaraGjaConstraint() {
+        plusCenterImageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        plusCenterImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        plusCenterImageView.widthAnchor.constraint(equalToConstant: 402).isActive = true
+        plusCenterImageView.heightAnchor.constraint(equalToConstant: 402).isActive = true
+        
+        containerBackgroundView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        containerBackgroundView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        containerBackgroundView.widthAnchor.constraint(equalToConstant: 402).isActive = true
+        containerBackgroundView.heightAnchor.constraint(equalToConstant: 402).isActive = true
+        
+        backgroundCanvasView.centerXAnchor.constraint(equalTo: containerBackgroundView.centerXAnchor).isActive = true
+        backgroundCanvasView.centerYAnchor.constraint(equalTo: containerBackgroundView.centerYAnchor).isActive = true
+        backgroundCanvasView.widthAnchor.constraint(equalToConstant: 402).isActive = true
+        backgroundCanvasView.heightAnchor.constraint(equalToConstant: 402).isActive = true
+        
+        backgroundImageView.centerXAnchor.constraint(equalTo: containerBackgroundView.centerXAnchor).isActive = true
+        backgroundImageView.centerYAnchor.constraint(equalTo: containerBackgroundView.centerYAnchor).isActive = true
+        backgroundImageView.widthAnchor.constraint(equalToConstant: 224).isActive = true
+        backgroundImageView.heightAnchor.constraint(equalToConstant: 320).isActive = true
+        
+        trackingButton1.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: -4).isActive = true
+        trackingButton1.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: -6).isActive = true
+        trackingButton1.widthAnchor.constraint(equalToConstant: 32).isActive = true
+        trackingButton1.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        
+        trackingImageView1.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 12).isActive = true
+        trackingImageView1.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 14).isActive = true
+        trackingImageView1.widthAnchor.constraint(equalToConstant: 33).isActive = true
+        trackingImageView1.heightAnchor.constraint(equalToConstant: 145).isActive = true
+        
+        trackingCorrectImageView1.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 4).isActive = true
+        trackingCorrectImageView1.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 2).isActive = true
+        trackingCorrectImageView1.widthAnchor.constraint(equalToConstant: 48).isActive = true
+        trackingCorrectImageView1.heightAnchor.constraint(equalToConstant: 156).isActive = true
+        
+        trackingTailButton1.centerYAnchor.constraint(equalTo: backgroundImageView.centerYAnchor, constant: -8).isActive = true
+        trackingTailButton1.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 36).isActive = true
+        trackingTailButton1.widthAnchor.constraint(equalToConstant: 12).isActive = true
+        trackingTailButton1.heightAnchor.constraint(equalToConstant: 12).isActive = true
+        
+        trackingButton2.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 28).isActive = true
+        trackingButton2.centerXAnchor.constraint(equalTo: backgroundImageView.centerXAnchor, constant: -72).isActive = true
+        trackingButton2.widthAnchor.constraint(equalToConstant: 32).isActive = true
+        trackingButton2.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        
+        trackingImageView2.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 10).isActive = true
+        trackingImageView2.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 44).isActive = true
+        trackingImageView2.widthAnchor.constraint(equalToConstant: 66).isActive = true
+        trackingImageView2.heightAnchor.constraint(equalToConstant: 148).isActive = true
+        
+        trackingCorrectImageView2.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 4).isActive = true
+        trackingCorrectImageView2.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 2).isActive = true
+        trackingCorrectImageView2.widthAnchor.constraint(equalToConstant: 110).isActive = true
+        trackingCorrectImageView2.heightAnchor.constraint(equalToConstant: 156).isActive = true
+        
+        trackingTailButton2.centerYAnchor.constraint(equalTo: backgroundImageView.centerYAnchor, constant: -8).isActive = true
+        trackingTailButton2.centerXAnchor.constraint(equalTo: backgroundImageView.centerXAnchor, constant: -8).isActive = true
+        trackingTailButton2.widthAnchor.constraint(equalToConstant: 12).isActive = true
+        trackingTailButton2.heightAnchor.constraint(equalToConstant: 12).isActive = true
+        
+        trackingButton3.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 28).isActive = true
+        trackingButton3.centerXAnchor.constraint(equalTo: backgroundImageView.centerXAnchor, constant: -8).isActive = true
+        trackingButton3.widthAnchor.constraint(equalToConstant: 32).isActive = true
+        trackingButton3.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        
+        trackingImageView3.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 10).isActive = true
+        trackingImageView3.trailingAnchor.constraint(equalTo: backgroundImageView.trailingAnchor, constant: -52).isActive = true
+        trackingImageView3.widthAnchor.constraint(equalToConstant: 66).isActive = true
+        trackingImageView3.heightAnchor.constraint(equalToConstant: 148).isActive = true
+        
+        trackingCorrectImageView3.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 4).isActive = true
+        trackingCorrectImageView3.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 2).isActive = true
+        trackingCorrectImageView3.widthAnchor.constraint(equalToConstant: 172).isActive = true
+        trackingCorrectImageView3.heightAnchor.constraint(equalToConstant: 156).isActive = true
+        
+        trackingTailButton3.centerYAnchor.constraint(equalTo: backgroundImageView.centerYAnchor, constant: -8).isActive = true
+        trackingTailButton3.centerXAnchor.constraint(equalTo: backgroundImageView.centerXAnchor, constant: 54).isActive = true
+        trackingTailButton3.widthAnchor.constraint(equalToConstant: 12).isActive = true
+        trackingTailButton3.heightAnchor.constraint(equalToConstant: 12).isActive = true
+        
+        trackingButton4.centerXAnchor.constraint(equalTo: backgroundImageView.centerXAnchor, constant: 24).isActive = true
+        trackingButton4.centerYAnchor.constraint(equalTo: backgroundImageView.centerYAnchor, constant: 24).isActive = true
+        trackingButton4.widthAnchor.constraint(equalToConstant: 32).isActive = true
+        trackingButton4.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        
+        trackingImageView4.bottomAnchor.constraint(equalTo: backgroundImageView.bottomAnchor, constant: -10).isActive = true
+        trackingImageView4.centerXAnchor.constraint(equalTo: backgroundImageView.centerXAnchor, constant: 8).isActive = true
+        trackingImageView4.widthAnchor.constraint(equalToConstant: 96).isActive = true
+        trackingImageView4.heightAnchor.constraint(equalToConstant: 129).isActive = true
+        
+        trackingCorrectImageView4.centerXAnchor.constraint(equalTo: backgroundImageView.centerXAnchor, constant: 8).isActive = true
+        trackingCorrectImageView4.centerYAnchor.constraint(equalTo: backgroundImageView.centerYAnchor, constant: 86).isActive = true
+        trackingCorrectImageView4.widthAnchor.constraint(equalToConstant: 109).isActive = true
+        trackingCorrectImageView4.heightAnchor.constraint(equalToConstant: 139).isActive = true
+        
+        trackingTailButton4.centerYAnchor.constraint(equalTo: backgroundImageView.centerYAnchor, constant: 54).isActive = true
+        trackingTailButton4.centerXAnchor.constraint(equalTo: backgroundImageView.centerXAnchor, constant: 24).isActive = true
+        trackingTailButton4.widthAnchor.constraint(equalToConstant: 12).isActive = true
+        trackingTailButton4.heightAnchor.constraint(equalToConstant: 12).isActive = true
+        
+        trackingButton5.centerXAnchor.constraint(equalTo: backgroundImageView.centerXAnchor, constant: 24).isActive = true
+        trackingButton5.centerYAnchor.constraint(equalTo: backgroundImageView.centerYAnchor, constant: 56).isActive = true
+        trackingButton5.widthAnchor.constraint(equalToConstant: 32).isActive = true
+        trackingButton5.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        
+        trackingImageView5.bottomAnchor.constraint(equalTo: backgroundImageView.bottomAnchor, constant: -10).isActive = true
+        trackingImageView5.trailingAnchor.constraint(equalTo: backgroundImageView.trailingAnchor, constant: -6).isActive = true
+        trackingImageView5.widthAnchor.constraint(equalToConstant: 84).isActive = true
+        trackingImageView5.heightAnchor.constraint(equalToConstant: 98).isActive = true
+        
+        trackingCorrectImageView5.centerXAnchor.constraint(equalTo: backgroundImageView.centerXAnchor, constant: 32).isActive = true
+        trackingCorrectImageView5.centerYAnchor.constraint(equalTo: backgroundImageView.centerYAnchor, constant: 86).isActive = true
+        trackingCorrectImageView5.widthAnchor.constraint(equalToConstant: 160).isActive = true
+        trackingCorrectImageView5.heightAnchor.constraint(equalToConstant: 144).isActive = true
+        
+        trackingTailButton5.bottomAnchor.constraint(equalTo: backgroundImageView.bottomAnchor, constant: -6).isActive = true
+        trackingTailButton5.trailingAnchor.constraint(equalTo: backgroundImageView.trailingAnchor, constant: -4).isActive = true
+        trackingTailButton5.widthAnchor.constraint(equalToConstant: 12).isActive = true
+        trackingTailButton5.heightAnchor.constraint(equalToConstant: 12).isActive = true
+        
+        canvasView.centerXAnchor.constraint(equalTo: containerBackgroundView.centerXAnchor).isActive = true
+        canvasView.centerYAnchor.constraint(equalTo: containerBackgroundView.centerYAnchor).isActive = true
+        canvasView.widthAnchor.constraint(equalToConstant: 402).isActive = true
+        canvasView.heightAnchor.constraint(equalToConstant: 402).isActive = true
+        
+        guideWritingName.bottomAnchor.constraint(equalTo: containerBackgroundView.topAnchor, constant: -20).isActive = true
+        guideWritingName.centerXAnchor.constraint(equalTo: containerBackgroundView.centerXAnchor).isActive = true
+        
+        gotItButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -28).isActive = true
+        gotItButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        gotItButton.widthAnchor.constraint(equalToConstant: 240).isActive = true
+        gotItButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        gotItButton.layer.cornerRadius = 32
+    }
+    
+    func setupInterfaceComponent() {
+        addSubview(plusCenterImageView)
+        addSubview(containerBackgroundView)
+        addSubview(guideAksaraName)
+        addSubview(guideWritingName)
+        addSubview(correctButton)
+        addSubview(smallCorrectButton)
+        addSubview(youSuccessButton)
+//        addSubview(circularProgressBar)
+//        addSubview(timerLabel)
+        addSubview(gotItButton)
+        bringSubviewToFront(smallCorrectButton)
+        bringSubviewToFront(correctButton)
+        
+        containerBackgroundView.addSubview(backgroundImageView)
+        containerBackgroundView.addSubview(backgroundCanvasView)
+        
+        backgroundImageView.addSubview(trackingCorrectImageView5)
+        backgroundImageView.addSubview(trackingCorrectImageView4)
+        backgroundImageView.addSubview(trackingCorrectImageView3)
+        backgroundImageView.addSubview(trackingCorrectImageView2)
+        backgroundImageView.addSubview(trackingCorrectImageView1)
+        containerBackgroundView.addSubview(canvasView)
+        
+        containerBackgroundView.addSubview(trackingButton1)
+        containerBackgroundView.addSubview(trackingButton2)
+        containerBackgroundView.addSubview(trackingButton3)
+        containerBackgroundView.addSubview(trackingButton4)
+        containerBackgroundView.addSubview(trackingButton5)
+        
+        containerBackgroundView.addSubview(trackingTailButton1)
+        containerBackgroundView.addSubview(trackingTailButton2)
+        containerBackgroundView.addSubview(trackingTailButton3)
+        containerBackgroundView.addSubview(trackingTailButton4)
+        containerBackgroundView.addSubview(trackingTailButton5)
+        
+        backgroundImageView.addSubview(trackingImageView1)
+        backgroundImageView.addSubview(trackingImageView2)
+        backgroundImageView.addSubview(trackingImageView3)
+        backgroundImageView.addSubview(trackingImageView4)
+        backgroundImageView.addSubview(trackingImageView5)
+    }
+    
+    func setupConstraint() {
+        
+        DispatchQueue.main.async {
+            if (self.aksara == "Ja") {
+                self.setupAksaraJaConstraint()
+            }
+            
+            if (self.aksara == "Ga") {
+                self.setupAksaraGaConstraint()
+            }
+            
+            if (self.aksara == "Jo") {
+                self.setupAksaraJoConstraint()
+            }
+            
+            if (self.aksara == "Gja") {
+                self.setupAksaraGjaConstraint()
+            }
+        }
+        
+//        circularProgressBar.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -64).isActive = true
+//        circularProgressBar.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+//        circularProgressBar.widthAnchor.constraint(equalToConstant: 48).isActive = true
+//        circularProgressBar.heightAnchor.constraint(equalToConstant: 48).isActive = true
+//
+//        timerLabel.centerXAnchor.constraint(equalTo: circularProgressBar.centerXAnchor).isActive = true
+//        timerLabel.centerYAnchor.constraint(equalTo: circularProgressBar.centerYAnchor).isActive = true
     }
     
     func handleSuccess() {
@@ -684,20 +1057,42 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         handleCorrectAnswer()
     }
     
+    func handleTimesUp() {
+        canvasView.drawingGestureRecognizer.isEnabled = false
+        backgroundCanvasView.drawingGestureRecognizer.isEnabled = false
+//        customTrackView.layer.removeAllAnimations()
+        customTrackView.removeFromSuperview()
+        timerLabel.isHidden = true
+        circularProgressBar.isHidden = true
+        endIdleTime()
+        
+        if (aksara == "Ja" || aksara == "Ga") {
+            trackingButton1.isHidden = true
+            trackingButton2.isHidden = true
+            trackingButton3.isHidden = true
+            trackingImageView1.isHidden = true
+            trackingImageView2.isHidden = true
+            trackingImageView3.isHidden = true
+            trackingCorrectImageView3.isHidden = false
+        }
+        
+        handleFalseAnswer()
+    }
+    
     func playSoundTrue() {
         guard let url = Bundle.main.url(forResource: "Jawaban_Benar_A", withExtension: "mp3") else { return }
-
+        
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
             try AVAudioSession.sharedInstance().setActive(true)
-
+            
             /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
             player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
-
+            
             guard let player = player else { return }
-
+            
             player.play()
-
+            
         } catch let error {
             print(error.localizedDescription)
         }
@@ -722,6 +1117,39 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         }
     }
     
+    func handleFalseAnswer() {
+        youSuccessButton.setBackgroundImage(UIImage(named: "timeUpImage"), for: .normal)
+        correctButton.setImage(UIImage(named: "falseAnswer"), for: .normal)
+        
+        UIView.animateKeyframes(withDuration: 1.5, delay: 0.0, options: [.beginFromCurrentState], animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.8, animations: {
+                self.correctButton.transform = CGAffineTransform(scaleX: 2, y: 2)
+                self.playSoundFalse()
+                self.correctButton.alpha = 0.9
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.8, relativeDuration: 0.7, animations: {
+                self.correctButton.alpha = 0
+            })
+            
+            
+        }) { (complete) in
+            UIView.animate(withDuration: 0.8, delay: 0.0, options: [.curveEaseIn], animations: {
+                self.youSuccessButton.alpha = 1
+                self.youSuccessButton.frame = CGRect(x: self.frame.width/2 - 116, y: self.frame.height/2 + 230, width: 240, height: 60)
+            }, completion: { complete in
+                // anim done
+            });
+            
+            UIView.animate(withDuration: 0.8, delay: 0.0, options: [.curveEaseIn], animations: {
+                self.gotItButton.alpha = 1
+            }, completion: { complete in
+                // anim done
+                self.gotItButton.isEnabled = true
+            });
+        }
+    }
+    
     func handleCorrectAnswer() {
         UIView.animateKeyframes(withDuration: 1.5, delay: 0.0, options: [.beginFromCurrentState], animations: {
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.8, animations: {
@@ -734,7 +1162,7 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
                 self.correctButton.alpha = 0
             })
             
-
+            
         }) { (complete) in
             UIView.animate(withDuration: 0.8, delay: 0.0, options: [.curveEaseIn], animations: {
                 self.youSuccessButton.alpha = 1
@@ -784,13 +1212,11 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
             idleTime -= 1
         } else {
             
-            if (idleTime == 0) {
-                endIdleTime()
-                if (isTouchDrawing == false || isHintRunning == false) {
-                    initiateAnimation()
-                }
+            if (isTouchDrawing == false || isHintRunning == false) {
+                initiateAnimation()
             }
             
+            endIdleTime()
         }
     }
     
@@ -813,72 +1239,14 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         handleTimesUp()
     }
     
-    func handleTimesUp() {
-        canvasView.drawingGestureRecognizer.isEnabled = false
-        backgroundCanvasView.drawingGestureRecognizer.isEnabled = false
-//        customTrackView.layer.removeAllAnimations()
-        customTrackView.removeFromSuperview()
-        timerLabel.isHidden = true
-        circularProgressBar.isHidden = true
-        endIdleTime()
-        
-        if (aksara == "Ja" || aksara == "Ga") {
-            trackingButton1.isHidden = true
-            trackingButton2.isHidden = true
-            trackingButton3.isHidden = true
-            trackingHelperButton1.isHidden = true
-            trackingHelperButton2.isHidden = true
-            trackingHelperButton3.isHidden = true
-            trackingImageView1.isHidden = true
-            trackingImageView2.isHidden = true
-            trackingImageView3.isHidden = true
-            trackingCorrectImageView3.isHidden = false
-        }
-        
-        handleFalseAnswer()
-    }
-    
-    func handleFalseAnswer() {
-        youSuccessButton.setBackgroundImage(UIImage(named: "timeUpImage"), for: .normal)
-        correctButton.setImage(UIImage(named: "falseAnswer"), for: .normal)
-        
-        UIView.animateKeyframes(withDuration: 1.5, delay: 0.0, options: [.beginFromCurrentState], animations: {
-            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.8, animations: {
-                self.correctButton.transform = CGAffineTransform(scaleX: 2, y: 2)
-                self.playSoundFalse()
-                self.correctButton.alpha = 0.9
-            })
-            
-            UIView.addKeyframe(withRelativeStartTime: 0.8, relativeDuration: 0.7, animations: {
-                self.correctButton.alpha = 0
-            })
-            
-            
-        }) { (complete) in
-            UIView.animate(withDuration: 0.8, delay: 0.0, options: [.curveEaseIn], animations: {
-                self.youSuccessButton.alpha = 1
-                self.youSuccessButton.frame = CGRect(x: self.frame.width/2 - 116, y: self.frame.height/2 + 230, width: 240, height: 60)
-            }, completion: { complete in
-                // anim done
-            });
-            
-            UIView.animate(withDuration: 0.8, delay: 0.0, options: [.curveEaseIn], animations: {
-                self.gotItButton.alpha = 1
-            }, completion: { complete in
-                // anim done
-                self.gotItButton.isEnabled = true
-            });
-        }
-    }
-    
     func canvasViewDidBeginUsingTool(_ canvasView: PKCanvasView) {
         // Stop any animation as soon as the user begins to draw.
-        let trackingButtons = [trackingButton1, trackingButton2, trackingButton3]
-        
-        let testDrawing = backgroundCanvasView.drawing
+        let trackingButtons = [trackingButton1, trackingButton2, trackingButton3, trackingButton4, trackingButton5]
         
         isTouchDrawing = true
         endIdleTime()
+        
+        let testDrawing = backgroundCanvasView.drawing
         
         if (strokeAksaraIndex! < testDrawing.strokes.count) {
             trackingButtons[strokeAksaraIndex!].isHidden = true
@@ -886,9 +1254,9 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
     }
     
     func canvasViewDrawingDidChange(_ canvasView: PKCanvasView) {
-        let trackingButtons = [trackingButton1, trackingButton2, trackingButton3]
-        let trackingHelperButtons = [trackingHelperButton1, trackingHelperButton2, trackingHelperButton3]
-        let trackingCorrectImages = [trackingCorrectImageView1, trackingCorrectImageView2, trackingCorrectImageView3]
+        let trackingButtons = [trackingButton1, trackingButton2, trackingButton3, trackingButton4, trackingButton5]
+        let trackingTailButtons = [trackingTailButton1, trackingTailButton2, trackingTailButton3, trackingTailButton4, trackingTailButton5]
+        let trackingCorrectImages = [trackingCorrectImageView1, trackingCorrectImageView2, trackingCorrectImageView3, trackingCorrectImageView4, trackingCorrectImageView5]
         // Avoid triggering the scoring, if we are programatically mutating the drawing.
         guard !isUpdatingDrawing else { return }
         
@@ -902,7 +1270,7 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         isUpdatingDrawing = true
         
         // Stroke matching.
-        let threshold: CGFloat = 30
+        let threshold: CGFloat = 50
         let distance = lastStroke.discreteFrechetDistance(to: testDrawing.strokes[strokeIndex], maxThreshold: threshold)
         
         if distance < threshold {
@@ -910,19 +1278,19 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
             canvasView.drawing.strokes[strokeIndex].ink.color = .clear
             
             trackingButtons[strokeAksaraIndex!].isHidden = true
-            trackingHelperButtons[strokeAksaraIndex!].isHidden = true
+            trackingTailButtons[strokeAksaraIndex!].isHidden = true
             trackingCorrectImages[strokeAksaraIndex!].isHidden = false
             
             self.strokeAksaraIndex! += 1
             
             if (strokeAksaraIndex! < testDrawing.strokes.count) {
                 trackingButtons[strokeAksaraIndex!].isHidden = false
-                trackingHelperButtons[strokeAksaraIndex!].isHidden = false
-                addTrackAnimation(withIndex: strokeAksaraIndex!)
+                trackingTailButtons[strokeAksaraIndex!].isHidden = false
             }
             
             // If the user has finished, show the final score.
             if strokeIndex + 1 >= testDrawing.strokes.count {
+                //                print("\(Int(score * 100))%")
                 trackingCorrectImages[0].isHidden = true
                 handleSuccess()
             }
@@ -934,10 +1302,12 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
             generator.notificationOccurred(.error)
             
             containerBackgroundView.shakeView()
+            
             if (isHintRunning == false) {
-                initiateAnimation()
-                endIdleTime()
+                self.initiateAnimation()
+                self.endIdleTime()
             }
+            
         }
         
         updateScore()
@@ -948,6 +1318,7 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         isTouchDrawing = false
         
         if (isHintRunning == false) {
+            idleTime = 2
             startAFKTime()
         }
     }
@@ -956,13 +1327,13 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         let correctStrokeCount = canvasView.drawing.strokes.count
         return 1.0 / (1.0 + Double(incorrectStrokeCount) / Double(1 + correctStrokeCount))
     }
-
+    
     func updateScore() {
         if !canvasView.drawing.strokes.isEmpty {
             let percent = Int(score * 100)
-//            print("PERCENT", percent)
+            //            print("PERCENT", percent)
         } else {
-            print("")
+//            print("")
         }
     }
 }

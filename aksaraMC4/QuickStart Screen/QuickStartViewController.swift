@@ -29,7 +29,7 @@ class QuickStartViewController: UIViewController, QuickStartViewControllerProtoc
     var indexCollection: IndexPath? = IndexPath(item: 0, section: 0)
     var progressBarValue = 1.00/4.00
     var currentIndexBar = 1
-    var indexs = [0, 1, 2, 3]
+    var indexs = [0, 1, 2, 3, 4]
     
     
     let containerView: UIView = {
@@ -97,7 +97,7 @@ class QuickStartViewController: UIViewController, QuickStartViewControllerProtoc
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.init(name: "NowAlt-Medium", size: 16)
         label.textColor = .white
-        label.text = "1 / 4"
+        label.text = "1 / 5"
         label.textAlignment = .center
         
         return label
@@ -287,7 +287,7 @@ class QuickStartViewController: UIViewController, QuickStartViewControllerProtoc
     }
     
     func handleProgressLabel(withIndex index: Int) {
-        self.progressLabel.text = "\(String(index)) / 4"
+        self.progressLabel.text = "\(String(index)) / 5"
     }
     
     func startTimer() {
@@ -321,21 +321,24 @@ class QuickStartViewController: UIViewController, QuickStartViewControllerProtoc
         let indexPath = IndexPath(item: sender.tag + 1, section: 0)
         self.indexCollection = indexPath
 
-//        if (sender.tag + 1 == 7) {
-//            self.progressLabel.isHidden = true
-//            self.progressBar.isHidden = true
-//            self.backButton.isHidden = true
-//            self.titleLabel.isHidden = true
-//        }
-
+        if (sender.tag + 1 == 5) {
+            self.progressLabel.isHidden = true
+            self.progressBar.isHidden = true
+            self.backButton.isHidden = true
+            self.titleLabel.isHidden = true
+        }
+        
+        if (sender.tag + 1 < 5) {
             if self.quickStartCollectionView.dataSource?.collectionView(self.quickStartCollectionView, cellForItemAt: IndexPath(row: 0, section: 0)) != nil {
                 let rect = self.quickStartCollectionView.layoutAttributesForItem(at: indexPath)?.frame
-                self.quickStartCollectionView.scrollRectToVisible(rect!, animated: true)
+                self.quickStartCollectionView.scrollRectToVisible(rect!, animated: false)
             }
 
-            self.progressBarValue = Double(indexCollection!.item + 1) / 4.00
+            self.progressBarValue = Double(indexCollection!.item + 1) / 5.00
             handleProgress(withProgress: CGFloat(progressBarValue))
             handleProgressLabel(withIndex: indexPath.item + 1)
+        }
+            
     }
     
     
@@ -413,8 +416,32 @@ extension QuickStartViewController: UICollectionViewDelegateFlowLayout, UICollec
 //            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pencilStrokeCellId, for: indexPath) as! PencilStrokeCell
 //            cell.gotItButton.tag = indexPath.row
 //            cell.gotItButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
-//            cell.aksara = "Ja"
+//            cell.aksara = "Gja"
 //            batikBackgroundImageView.alpha = 0.16
+//
+//            return cell
+//
+//        case 0:
+//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pencilStrokeWithoutTrackCellId, for: indexPath) as! PencilStrokeWithoutTrackCell
+//            cell.gotItButton.tag = indexPath.row
+//            cell.gotItButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
+//            cell.aksara = "Gja"
+//            batikBackgroundImageView.alpha = 0.16
+//            self.view.removeLayer(name: "quickStartGuide")
+//            self.view.setBackgroundDragnDrop()
+//            self.titleLabel.text = "Aksara Jawa - Kuis"
+//
+//            return cell
+//
+//        case 2:
+//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pencilStrokeWithoutTrackCellId, for: indexPath) as! PencilStrokeWithoutTrackCell
+//            cell.gotItButton.tag = indexPath.row
+//            cell.gotItButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
+//            cell.aksara = "Ga"
+//            batikBackgroundImageView.alpha = 0.16
+//            self.view.removeLayer(name: "quickStartGuide")
+//            self.view.setBackgroundDragnDrop()
+//            self.titleLabel.text = "Aksara Jawa - Kuis"
 //
 //            return cell
             
@@ -422,7 +449,7 @@ extension QuickStartViewController: UICollectionViewDelegateFlowLayout, UICollec
 //            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pencilStrokeWithoutTrackCellId, for: indexPath) as! PencilStrokeWithoutTrackCell
 //            cell.gotItButton.tag = indexPath.row
 //            cell.gotItButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
-//            cell.aksara = "Ja"
+//            cell.aksara = "Jo"
 //            batikBackgroundImageView.alpha = 0.16
 //            self.view.removeLayer(name: "quickStartGuide")
 //            self.view.setBackgroundDragnDrop()
@@ -434,7 +461,19 @@ extension QuickStartViewController: UICollectionViewDelegateFlowLayout, UICollec
 //            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pencilStrokeWithoutBackgroundCellId, for: indexPath) as! PencilStrokeWithoutBackgroundCell
 //            cell.gotItButton.tag = indexPath.row
 //            cell.gotItButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
-//            cell.aksara = "Ja"
+//            cell.aksara = "Gja"
+//            batikBackgroundImageView.alpha = 0.16
+//            self.view.removeLayer(name: "quickStartGuide")
+//            self.view.setBackgroundDragnDrop()
+//            self.titleLabel.text = "Aksara Jawa - Kuis"
+//
+//            return cell
+
+//        case 3:
+//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pencilStrokeWithoutBackgroundCellId, for: indexPath) as! PencilStrokeWithoutBackgroundCell
+//            cell.gotItButton.tag = indexPath.row
+//            cell.gotItButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
+//            cell.aksara = "Ga"
 //            batikBackgroundImageView.alpha = 0.16
 //            self.view.removeLayer(name: "quickStartGuide")
 //            self.view.setBackgroundDragnDrop()
@@ -442,7 +481,7 @@ extension QuickStartViewController: UICollectionViewDelegateFlowLayout, UICollec
 //
 //            return cell
 //
-//        case 0:
+//        case 3:
 //            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: newGuideMLCellId, for: indexPath) as! NewGuideMLCell
 //            cell.continueButton.tag = indexPath.row
 //            cell.continueButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
@@ -450,17 +489,7 @@ extension QuickStartViewController: UICollectionViewDelegateFlowLayout, UICollec
 //            self.view.removeLayer(name: "quickStartGuide")
 //            self.view.setBackgroundDragnDrop()
 //            self.titleLabel.text = "Aksara Jawa - Kuis"
-//
-//            return cell
-        
-//        case 0:
-//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: newGuideMLCellId, for: indexPath) as! NewGuideMLCell
-//            cell.continueButton.tag = indexPath.row
-//            cell.continueButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
-//            batikBackgroundImageView.alpha = 0.16
-//            self.view.removeLayer(name: "quickStartGuide")
-//            self.view.setBackgroundDragnDrop()
-//            self.titleLabel.text = "Aksara Jawa - Kuis"
+//            cell.carakanQuestion = "Ja"
 //
 //            return cell
         
@@ -472,7 +501,7 @@ extension QuickStartViewController: UICollectionViewDelegateFlowLayout, UICollec
 //            batikBackgroundImageView.alpha = 0.16
 //
 //            return cell
-//
+
 //        case 0:
 //            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: anatomiCellId, for: indexPath) as! NewGuideCell
 //            cell.continueButton.tag = indexPath.row
@@ -487,14 +516,14 @@ extension QuickStartViewController: UICollectionViewDelegateFlowLayout, UICollec
 //
 //            return cell
 //
-        case 0:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: newHeadnTailDDCellId, for: indexPath) as! NewHeadnTailDDCell
-            cell.continueButton.tag = indexPath.row
-            cell.continueButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
-            self.view.setBackgroundDragnDrop()
-            self.titleLabel.text = "Aksara Jawa - Kuis"
-
-            return cell
+//        case 1:
+//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: newHeadnTailDDCellId, for: indexPath) as! NewHeadnTailDDCell
+//            cell.continueButton.tag = indexPath.row
+//            cell.continueButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
+//            self.view.setBackgroundDragnDrop()
+//            self.titleLabel.text = "Aksara Jawa - Kuis"
+//
+//            return cell
             
 //        case 4:
 //            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: quizViewTypeAV2CellId, for: indexPath) as! QuizViewTypeAV2
