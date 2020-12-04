@@ -9,7 +9,7 @@
 import UIKit
 
 protocol QuickStartViewControllerProtocol {
-//    func handleNextQuiz()
+    //    func handleNextQuiz()
 }
 
 class QuickStartViewController: UIViewController, QuickStartViewControllerProtocol {
@@ -18,13 +18,18 @@ class QuickStartViewController: UIViewController, QuickStartViewControllerProtoc
     private let pencilStrokeWithoutTrackCellId = "PencilStrokeWithoutTrackCell_ID"
     private let pencilStrokeWithoutBackgroundCellId = "PencilStrokeWithoutBackgroundCell_ID"
     private let newGuideFirstCellId = "NewGuideFirstCell_ID"
+    private let newGuideGaCellId = "NewGuideGaCell_ID"
+    private let newGuideJogjaCellId = "NewGuideJogjaCell_ID"
     private let anatomiCellId = "AnatomiCell_ID"
     private let newHeadnTailDDCellId = "NewHeadnTailDDCell_ID"
+    private let newGaHeadnTailDDCellId = "NewGaHeadnTailDDCell_ID"
     private let quizViewTypeAV2CellId = "QuizViewTypeAV2_ID"
     private let newGuideMLCellId = "NewGuideMLCell_ID"
     private let newRewardCellId = "NewRewardCell_ID"
     private let shakeCellId = "ShakeCell_ID"
     private let pinchCellId = "PinchCell_ID"
+    private let pinchCellGjaId = "PinchCellGja_ID"
+    
     
     var countdownTimer: Timer!
     var totalTime: Int = 30
@@ -224,12 +229,16 @@ class QuickStartViewController: UIViewController, QuickStartViewControllerProtoc
         quickStartCollectionView.register(PencilStrokeWithoutBackgroundCell.self, forCellWithReuseIdentifier: pencilStrokeWithoutBackgroundCellId)
         quickStartCollectionView.register(NewPanduanFirstCell.self, forCellWithReuseIdentifier: newGuideFirstCellId)
         quickStartCollectionView.register(NewGuideCell.self, forCellWithReuseIdentifier: anatomiCellId)
+        quickStartCollectionView.register(NewGuideCellGa.self, forCellWithReuseIdentifier: newGuideGaCellId)
+        quickStartCollectionView.register(NewGuideCellJogja.self, forCellWithReuseIdentifier: newGuideJogjaCellId)
         quickStartCollectionView.register(NewHeadnTailDDCell.self, forCellWithReuseIdentifier: newHeadnTailDDCellId)
+        quickStartCollectionView.register(NewGaHeadnTailDDCell.self, forCellWithReuseIdentifier: newGaHeadnTailDDCellId)
         quickStartCollectionView.register(QuizViewTypeAV2.self, forCellWithReuseIdentifier: quizViewTypeAV2CellId)
         quickStartCollectionView.register(NewGuideMLCell.self, forCellWithReuseIdentifier: newGuideMLCellId)
         quickStartCollectionView.register(NewRewardCell.self, forCellWithReuseIdentifier: newRewardCellId)
         quickStartCollectionView.register(ShakeQuizCell.self, forCellWithReuseIdentifier: shakeCellId)
         quickStartCollectionView.register(PinchCell.self, forCellWithReuseIdentifier: pinchCellId)
+        quickStartCollectionView.register(PinchCellGja.self, forCellWithReuseIdentifier: pinchCellGjaId)
         quickStartCollectionView.reloadData()
         quickStartCollectionView.layoutIfNeeded()
     }
@@ -317,11 +326,11 @@ class QuickStartViewController: UIViewController, QuickStartViewControllerProtoc
         navigationController?.pushViewController(QuickStartReviewViewController(), animated: true)
     }
     
-//    func handleNextQuiz() {
-//    }
+    //    func handleNextQuiz() {
+    //    }
     
     @objc func handleNextQuiz(_ sender: UIButton) {
-
+        
         let indexPath = IndexPath(item: sender.tag + 1, section: 0)
         self.indexCollection = indexPath
 
@@ -417,12 +426,20 @@ extension QuickStartViewController: UICollectionViewDelegateFlowLayout, UICollec
         switch index {
         
         case 0:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pinchCellId, for: indexPath) as! PinchCell
-//            cell.continueButton.tag = indexPath.row
-//            cell.continueButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pinchCellGjaId, for: indexPath) as! PinchCellGja
+            cell.continueButton.tag = indexPath.row
+            cell.continueButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
             batikBackgroundImageView.alpha = 0.16
             
             return cell
+        
+//        case 0:
+//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pinchCellId, for: indexPath) as! PinchCell
+//            cell.continueButton.tag = indexPath.row
+//            cell.continueButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
+//            batikBackgroundImageView.alpha = 0.16
+//
+//            return cell
         
 //        case 0:
 //            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pencilStrokeCellId, for: indexPath) as! PencilStrokeCell
@@ -505,71 +522,105 @@ extension QuickStartViewController: UICollectionViewDelegateFlowLayout, UICollec
 //
 //            return cell
         
+        //        case 0:
+        //            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: newGuideMLCellId, for: indexPath) as! NewGuideMLCell
+        //            cell.continueButton.tag = indexPath.row
+        //            cell.continueButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
+        //            batikBackgroundImageView.alpha = 0.16
+        //            self.view.removeLayer(name: "quickStartGuide")
+        //            self.view.setBackgroundDragnDrop()
+        //            self.titleLabel.text = "Aksara Jawa - Kuis"
+        //
+        //            return cell
         
-//        case 0:
-//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: newGuideFirstCellId, for: indexPath) as! NewPanduanFirstCell
-//            cell.continueButton.tag = indexPath.row
-//            cell.continueButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
-//            batikBackgroundImageView.alpha = 0.16
-//
-//            return cell
-
-//        case 0:
-//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: anatomiCellId, for: indexPath) as! NewGuideCell
-//            cell.continueButton.tag = indexPath.row
-//            cell.continueButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
-//
-//            return cell
-//
-//        case 2:
-//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pencilStrokeCellId, for: indexPath) as! PencilStrokeCell
-//            cell.gotItButton.tag = indexPath.row
-//            cell.gotItButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
-//
-//            return cell
-//
-//        case 1:
-//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: newHeadnTailDDCellId, for: indexPath) as! NewHeadnTailDDCell
-//            cell.continueButton.tag = indexPath.row
-//            cell.continueButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
-//            self.view.setBackgroundDragnDrop()
-//            self.titleLabel.text = "Aksara Jawa - Kuis"
-//
-//            return cell
-            
-//        case 4:
-//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: quizViewTypeAV2CellId, for: indexPath) as! QuizViewTypeAV2
-//            cell.lanjutStateButton.tag = indexPath.row
-//            cell.lanjutStateButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
-//            self.titleLabel.text = "Aksara Jawa - Kuis"
-//
-//            return cell
-            
-//        case 5:
-//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pencilStrokeWithoutTrackCellId, for: indexPath) as! PencilStrokeWithoutTrackCell
-//            cell.gotItButton.tag = indexPath.row
-//            cell.gotItButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
-//            self.view.removeLayer(name: "quickStartGuide")
-//            self.view.setBackgroundDragnDrop()
-//            self.titleLabel.text = "Aksara Jawa - Kuis"
-//
-//            return cell
-//
-//        case 6:
-//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: newGuideMLCellId, for: indexPath) as! NewGuideMLCell
-//            cell.continueButton.tag = indexPath.row
-//            cell.continueButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
-//            self.titleLabel.text = "Aksara Jawa - Kuis"
-//
-//            return cell
-//
-//        case 7:
-//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: newRewardCellId, for: indexPath) as! NewRewardCell
-//            cell.ulasanButton.addTarget(self, action: #selector(handleToReviewButton), for: .touchUpInside)
-//            cell.continueButton.addTarget(self, action: #selector(handlePopBack), for: .touchUpInside)
-//            cell.layarUtamaButton.addTarget(self, action: #selector(handlePopBack), for: .touchUpInside)
-//
-//            return cell
+        
+        //        case 0:
+        //            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: newGuideFirstCellId, for: indexPath) as! NewPanduanFirstCell
+        //            cell.continueButton.tag = indexPath.row
+        //            cell.continueButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
+        //            batikBackgroundImageView.alpha = 0.16
+        //
+        //            return cell
+        //
+        //        case 0:
+        //            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: anatomiCellId, for: indexPath) as! NewGuideCell
+        //            cell.continueButton.tag = indexPath.row
+        //            cell.continueButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
+        //
+        //            return cell
+        
+        //        case 0:
+        //            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: newGuideGaCellId, for: indexPath) as! NewGuideCellGa
+        //            cell.continueButton.tag = indexPath.row
+        //            cell.continueButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
+        //
+        //            return cell
+        
+//                case 0:
+//                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: newGuideJogjaCellId, for: indexPath) as! NewGuideCellJogja
+//                    cell.continueButton.tag = indexPath.row
+//                    cell.continueButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
+//        
+//                    return cell
+        //
+        //        case 2:
+        //            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pencilStrokeCellId, for: indexPath) as! PencilStrokeCell
+        //            cell.gotItButton.tag = indexPath.row
+        //            cell.gotItButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
+        //
+        //            return cell
+        //
+        //        case 0:
+        //            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: newHeadnTailDDCellId, for: indexPath) as! NewHeadnTailDDCell
+        //            cell.continueButton.tag = indexPath.row
+        //            cell.continueButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
+        //            self.view.setBackgroundDragnDrop()
+        //            self.titleLabel.text = "Aksara Jawa - Kuis"
+        //
+        //            return cell
+        
+        //        case 0:
+        //            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: newGaHeadnTailDDCellId, for: indexPath) as! NewGaHeadnTailDDCell
+        //            cell.continueButton.tag = indexPath.row
+        //            cell.continueButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
+        //            self.view.setBackgroundDragnDrop()
+        //            self.titleLabel.text = "Aksara Jawa - Kuis"
+        //
+        //            return cell
+        
+        //        case 4:
+        //            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: quizViewTypeAV2CellId, for: indexPath) as! QuizViewTypeAV2
+        //            cell.lanjutStateButton.tag = indexPath.row
+        //            cell.lanjutStateButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
+        //            self.titleLabel.text = "Aksara Jawa - Kuis"
+        //
+        //            return cell
+        
+        //        case 5:
+        //            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pencilStrokeWithoutTrackCellId, for: indexPath) as! PencilStrokeWithoutTrackCell
+        //            cell.gotItButton.tag = indexPath.row
+        //            cell.gotItButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
+        //            self.view.removeLayer(name: "quickStartGuide")
+        //            self.view.setBackgroundDragnDrop()
+        //            self.titleLabel.text = "Aksara Jawa - Kuis"
+        //
+        //            return cell
+        //
+        //        case 6:
+        //            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: newGuideMLCellId, for: indexPath) as! NewGuideMLCell
+        //            cell.continueButton.tag = indexPath.row
+        //            cell.continueButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
+        //            self.titleLabel.text = "Aksara Jawa - Kuis"
+        //
+        //            return cell
+        //
+        //        case 7:
+        //            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: newRewardCellId, for: indexPath) as! NewRewardCell
+        //            cell.ulasanButton.addTarget(self, action: #selector(handleToReviewButton), for: .touchUpInside)
+        //            cell.continueButton.addTarget(self, action: #selector(handlePopBack), for: .touchUpInside)
+        //            cell.layarUtamaButton.addTarget(self, action: #selector(handlePopBack), for: .touchUpInside)
+        //
+        //            return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reusable_cell", for: indexPath) as! UICollectionViewCell
             
