@@ -131,6 +131,7 @@
 		A46968C52546C48C00281D2C /* QuizHeadAndTailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46968C42546C48C00281D2C /* QuizHeadAndTailCell.swift */; };
 		A46968C92546EF9600281D2C /* CustomUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46968C82546EF9600281D2C /* CustomUIView.swift */; };
 		A46968CE2546F7A000281D2C /* CustomUIPanRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46968CD2546F7A000281D2C /* CustomUIPanRecognizer.swift */; };
+		A4747597257A06CC00C4D42A /* AksaraModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A4747596257A06CC00C4D42A /* AksaraModel.mlmodel */; };
 		A48A0FB6253C4AF800AB1ED5 /* Jawa Suara Ma.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A48A0FA2253C4AF800AB1ED5 /* Jawa Suara Ma.mp3 */; };
 		A48A0FB7253C4AF800AB1ED5 /* Jawa Suara Tha.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A48A0FA3253C4AF800AB1ED5 /* Jawa Suara Tha.mp3 */; };
 		A48A0FB8253C4AF800AB1ED5 /* Jawa Suara Ta.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A48A0FA4253C4AF800AB1ED5 /* Jawa Suara Ta.mp3 */; };
@@ -160,7 +161,6 @@
 		A4B3F536256119DC008D6520 /* GradientHorizontalProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B3F535256119DC008D6520 /* GradientHorizontalProgressBar.swift */; };
 		A4B3F53C256127FD008D6520 /* PencilStrokeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B3F53B256127FD008D6520 /* PencilStrokeCell.swift */; };
 		A4B3F53F25617229008D6520 /* GradientCircularProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B3F53E25617229008D6520 /* GradientCircularProgressBar.swift */; };
-		A4BFC3B0257779B800D8730E /* AksaraModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A4BFC3AF257779B800D8730E /* AksaraModel.mlmodel */; };
 		A4BFC3B325777A1A00D8730E /* ShakeQuizCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BFC3B225777A1A00D8730E /* ShakeQuizCell.swift */; };
 		A4C715BC2539A45B00270D58 /* CoreDataRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C715BB2539A45B00270D58 /* CoreDataRecord.swift */; };
 		A4DB91BA2568CEB50002AA2A /* TestingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DB91B92568CEB50002AA2A /* TestingController.swift */; };
@@ -305,6 +305,7 @@
 		A46968C42546C48C00281D2C /* QuizHeadAndTailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizHeadAndTailCell.swift; sourceTree = "<group>"; };
 		A46968C82546EF9600281D2C /* CustomUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIView.swift; sourceTree = "<group>"; };
 		A46968CD2546F7A000281D2C /* CustomUIPanRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIPanRecognizer.swift; sourceTree = "<group>"; };
+		A4747596257A06CC00C4D42A /* AksaraModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = AksaraModel.mlmodel; path = ../../../../../../../var/folders/jg/hk2x998s4zx_26g23h9yty9r0000gn/T/AksaraModel.mlmodel; sourceTree = "<group>"; };
 		A48A0FA2253C4AF800AB1ED5 /* Jawa Suara Ma.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara Ma.mp3"; sourceTree = "<group>"; };
 		A48A0FA3253C4AF800AB1ED5 /* Jawa Suara Tha.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara Tha.mp3"; sourceTree = "<group>"; };
 		A48A0FA4253C4AF800AB1ED5 /* Jawa Suara Ta.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara Ta.mp3"; sourceTree = "<group>"; };
@@ -334,7 +335,6 @@
 		A4B3F535256119DC008D6520 /* GradientHorizontalProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientHorizontalProgressBar.swift; sourceTree = "<group>"; };
 		A4B3F53B256127FD008D6520 /* PencilStrokeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PencilStrokeCell.swift; sourceTree = "<group>"; };
 		A4B3F53E25617229008D6520 /* GradientCircularProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientCircularProgressBar.swift; sourceTree = "<group>"; };
-		A4BFC3AF257779B800D8730E /* AksaraModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = AksaraModel.mlmodel; path = ../../../../../../../var/folders/jg/hk2x998s4zx_26g23h9yty9r0000gn/T/AksaraModel.mlmodel; sourceTree = "<group>"; };
 		A4BFC3B225777A1A00D8730E /* ShakeQuizCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeQuizCell.swift; sourceTree = "<group>"; };
 		A4C715BB2539A45B00270D58 /* CoreDataRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRecord.swift; sourceTree = "<group>"; };
 		A4DB91B92568CEB50002AA2A /* TestingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingController.swift; sourceTree = "<group>"; };
@@ -969,7 +969,7 @@
 		A4C732EC254FFD1600C64209 /* MLModel */ = {
 			isa = PBXGroup;
 			children = (
-				A4BFC3AF257779B800D8730E /* AksaraModel.mlmodel */,
+				A4747596257A06CC00C4D42A /* AksaraModel.mlmodel */,
 			);
 			path = MLModel;
 			sourceTree = "<group>";
@@ -1205,6 +1205,7 @@
 				A4ECCF2C25627F9200E038BA /* QuickStartReviewViewController.swift in Sources */,
 				9193764625317E3B00C3FC10 /* StartController.swift in Sources */,
 				A46968C52546C48C00281D2C /* QuizHeadAndTailCell.swift in Sources */,
+				A4747597257A06CC00C4D42A /* AksaraModel.mlmodel in Sources */,
 				9177578B254EFA59001C2589 /* StageTahap3Cell.swift in Sources */,
 				A48FBC75252DC2DB0004EC93 /* PersistenceService.swift in Sources */,
 				91C98768252EFE7900D67BC0 /* StageView.swift in Sources */,
@@ -1251,7 +1252,6 @@
 				237BC09B2545C31000494281 /* KonsonanCell.swift in Sources */,
 				91775788254EFA40001C2589 /* StageTahap2Cell.swift in Sources */,
 				91F156FE256128FA00CC8614 /* NewRewardCell.swift in Sources */,
-				A4BFC3B0257779B800D8730E /* AksaraModel.mlmodel in Sources */,
 				91775768254966D5001C2589 /* ChoiceButton.swift in Sources */,
 				91F156CB255F9F9200CC8614 /* NewHeadnTailDDCell.swift in Sources */,
 				A4DB91BE2568CEEA0002AA2A /* TestingViewA.swift in Sources */,
