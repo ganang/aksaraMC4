@@ -55,7 +55,7 @@ class NewLastStackingWordCell: UICollectionViewCell {
         button.addGestureRecognizer(moveGS_Aksara1)
         button.imageView?.contentMode = .scaleAspectFit
         button.backgroundColor = .clear
-        button.imageEdgeInsets = UIEdgeInsets(top: 18, left: 18, bottom: 18, right: 18)
+        button.imageEdgeInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
         button.layer.cornerRadius = 32
         return button
     }()
@@ -83,7 +83,7 @@ class NewLastStackingWordCell: UICollectionViewCell {
         button.addGestureRecognizer(moveGS_Aksara3)
         button.imageView?.contentMode = .scaleAspectFit
         button.backgroundColor = .clear
-        button.imageEdgeInsets = UIEdgeInsets(top: 18, left: 18, bottom: 18, right: 18)
+        button.imageEdgeInsets = UIEdgeInsets(top: 23, left: 26, bottom: 23, right: 26)
         button.layer.cornerRadius = 32
         return button
     }()
@@ -97,7 +97,7 @@ class NewLastStackingWordCell: UICollectionViewCell {
         button.addGestureRecognizer(moveGS_Aksara4)
         button.imageView?.contentMode = .scaleAspectFit
         button.backgroundColor = .clear
-        button.imageEdgeInsets = UIEdgeInsets(top: 18, left: 18, bottom: 18, right: 18)
+        button.imageEdgeInsets = UIEdgeInsets(top: 20, left: 15, bottom: 20, right: 15)
         button.layer.cornerRadius = 32
         return button
     }()
@@ -111,7 +111,7 @@ class NewLastStackingWordCell: UICollectionViewCell {
         button.addGestureRecognizer(moveGS_Aksara5)
         button.imageView?.contentMode = .scaleAspectFit
         button.backgroundColor = .clear
-        button.imageEdgeInsets = UIEdgeInsets(top: 18, left: 18, bottom: 18, right: 18)
+        button.imageEdgeInsets = UIEdgeInsets(top: 15, left: 24, bottom: 15, right: 24)
         button.layer.cornerRadius = 32
         return button
     }()
@@ -233,7 +233,7 @@ class NewLastStackingWordCell: UICollectionViewCell {
     let hintImageResult: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "succesHintJogja")
-        image.contentMode = .scaleAspectFit
+        image.contentMode = .scaleAspectFill
         image.alpha = 1
 
         return image
@@ -245,7 +245,7 @@ class NewLastStackingWordCell: UICollectionViewCell {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setCheckButtonBackgroundGoldColor(withOpacity: 1, withHeight: 48, withWidth: 240, withCorner: 24)
         button.setTitle("Mengerti", for: .normal)
-        button.setTitleColor(Theme.current.accentPurple, for: .normal)
+        button.setTitleColor(UIColor(red: 23, green: 78, blue: 161), for: .normal)
         button.titleLabel?.font = UIFont.init(name: "NowAlt-Medium", size: 16)
         let boldConfig = UIImage.SymbolConfiguration(weight: .bold)
         let tintedImage = UIImage(systemName: "arrow.right", withConfiguration: boldConfig)?.withRenderingMode(.alwaysTemplate)
@@ -254,7 +254,7 @@ class NewLastStackingWordCell: UICollectionViewCell {
             button.bringSubviewToFront(imageView)
         }
         button.tag = 0
-        button.imageView?.tintColor = Theme.current.purpleColor
+        button.imageView?.tintColor = UIColor(red: 23, green: 78, blue: 161)
         button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 200, bottom: 0, right: 0)
         button.titleEdgeInsets = UIEdgeInsets(top: 0, left: -20, bottom: 0, right: 0)
         button.alpha = 0
@@ -362,7 +362,7 @@ class NewLastStackingWordCell: UICollectionViewCell {
     
     private func createCircleShapeLayer1(strokeColor: UIColor, fillColor: UIColor) -> CAShapeLayer {
         let layer = CAShapeLayer()
-        let circularPath = UIBezierPath(arcCenter: .zero, radius: 1, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
+        let circularPath = UIBezierPath(arcCenter: .zero, radius: 0.1, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
         layer.path = circularPath.cgPath
         layer.strokeColor = strokeColor.cgColor
         layer.lineWidth = 20
@@ -419,7 +419,7 @@ class NewLastStackingWordCell: UICollectionViewCell {
 
 
         let scaleDown = CABasicAnimation(keyPath: "transform.scale")
-        scaleDown.toValue = 36
+        scaleDown.toValue = 360
         let fade = CABasicAnimation(keyPath: "opacity")
         fade.toValue = 0
         groupAnimation.animations = [scaleDown,fade]
@@ -475,7 +475,7 @@ class NewLastStackingWordCell: UICollectionViewCell {
 
 
         let scaleDown = CABasicAnimation(keyPath: "transform.scale")
-        scaleDown.toValue = 36
+        scaleDown.toValue = 360
         let fade = CABasicAnimation(keyPath: "opacity")
         fade.toValue = 0
         groupAnimation.animations = [scaleDown,fade]
@@ -546,7 +546,7 @@ class NewLastStackingWordCell: UICollectionViewCell {
         
         
         addSubview(hintImageResult)
-        hintImage.alpha = 0
+        hintImageResult.alpha = 0
         hintImageResult.frame = CGRect(x: self.frame.size.width/2 - 120  , y: self.frame.size.height/2 + 135 - 80, width: 240, height: 39)
         
         addSubview(jogjaImageResult)
@@ -742,7 +742,7 @@ extension  NewLastStackingWordCell:  UIGestureRecognizerDelegate {
 
 
         let scaleDown = CABasicAnimation(keyPath: "transform.scale")
-        scaleDown.toValue = 36
+        scaleDown.toValue = 360
         let fade = CABasicAnimation(keyPath: "opacity")
         fade.toValue = 0
         groupAnimation.animations = [scaleDown,fade]
@@ -821,12 +821,13 @@ extension  NewLastStackingWordCell:  UIGestureRecognizerDelegate {
             if sender.index == 4 {
                 if (placeholder1.frame.intersects(sender.view!.frame)) {
                     playSoundTrue()
+                    aksaraButton5.alpha = 0
                     print("placeholder 1 benar")
                     self.placeholderDone1 = true
                     placeholder1.setImage(UIImage(named: "susun jogja jawaban 1"), for: .normal)
                     placeholder1.imageView?.contentMode = .scaleAspectFit
                     placeholder1.backgroundColor = .clear
-                    placeholder1.imageEdgeInsets = UIEdgeInsets(top: 18, left: 18, bottom: 18, right: 18)
+                    placeholder1.imageEdgeInsets = UIEdgeInsets(top: 15, left: 24, bottom: 15, right: 24)
                     pulsatingLayerAksara5.removeAnimation(forKey: "pulsing")
                     
                     placeholder1.layer.borderWidth = 2
@@ -837,13 +838,14 @@ extension  NewLastStackingWordCell:  UIGestureRecognizerDelegate {
                 }
             } else if sender.index == 3 {
                 if (placeholder2.frame.intersects(sender.view!.frame)) {
+                    aksaraButton4.alpha = 0
                     playSoundTrue()
                     print("placeholder 2 benar")
                     self.placeholderDone2 = true
                     placeholder2.setImage(UIImage(named: "susun jogja jawaban 2"), for: .normal)
                     placeholder2.imageView?.contentMode = .scaleAspectFit
                     placeholder2.backgroundColor = .clear
-                    placeholder2.imageEdgeInsets = UIEdgeInsets(top: 18, left: 18, bottom: 18, right: 18)
+                    placeholder2.imageEdgeInsets = UIEdgeInsets(top: 20, left: 15, bottom: 20, right: 15)
                     pulsatingLayerAksara4.removeAnimation(forKey: "pulsing")
                     
                     placeholder2.layer.borderWidth = 2
@@ -853,13 +855,14 @@ extension  NewLastStackingWordCell:  UIGestureRecognizerDelegate {
                 }
             } else if sender.index == 2 {
                 if (placeholder3.frame.intersects(sender.view!.frame)) {
+                    aksaraButton3.alpha = 0
                     playSoundTrue()
                     print("placeholder 3 benar")
                     self.placeholderDone3 = true
                     placeholder3.setImage(UIImage(named: "susun jogja jawaban 3"), for: .normal)
                     placeholder3.imageView?.contentMode = .scaleAspectFit
                     placeholder3.backgroundColor = .clear
-                    placeholder3.imageEdgeInsets = UIEdgeInsets(top: 18, left: 18, bottom: 18, right: 18)
+                    placeholder3.imageEdgeInsets = UIEdgeInsets(top: 23, left: 26, bottom: 23, right: 26)
                     pulsatingLayerAksara3.removeAnimation(forKey: "pulsing")
                     
                     placeholder3.layer.borderWidth = 2
@@ -871,6 +874,7 @@ extension  NewLastStackingWordCell:  UIGestureRecognizerDelegate {
             } else if sender.index == 1 {
                 if (placeholder4.frame.intersects(sender.view!.frame)) {
                     playSoundTrue()
+                    aksaraButton2.alpha = 0
                     print("placeholder 4 benar")
                     self.placeholderDone4 = true
                     placeholder4.setImage(UIImage(named: "susun jogja jawaban 4"), for: .normal)
@@ -887,12 +891,13 @@ extension  NewLastStackingWordCell:  UIGestureRecognizerDelegate {
             } else if sender.index == 0 {
                 if (placeholder5.frame.intersects(sender.view!.frame)) {
                     playSoundTrue()
+                    aksaraButton1.alpha = 0
                     print("placeholder 5 benar")
                     self.placeholderDone5 = true
                     placeholder5.setImage(UIImage(named: "susun jogja jawaban 5"), for: .normal)
                     placeholder5.imageView?.contentMode = .scaleAspectFit
                     placeholder5.backgroundColor = .clear
-                    placeholder5.imageEdgeInsets = UIEdgeInsets(top: 18, left: 18, bottom: 18, right: 18)
+                    placeholder5.imageEdgeInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
                     pulsatingLayerAksara1.removeAnimation(forKey: "pulsing")
                     
                     placeholder5.layer.borderWidth = 2

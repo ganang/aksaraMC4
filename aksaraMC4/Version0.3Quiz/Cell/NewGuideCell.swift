@@ -52,7 +52,7 @@ class NewGuideCell: UICollectionViewCell {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setCheckButtonBackgroundGoldColor(withOpacity: 1, withHeight: 48, withWidth: 240, withCorner: 24)
         button.setTitle("Mengerti", for: .normal)
-        button.setTitleColor(Theme.current.accentPurple, for: .normal)
+        button.setTitleColor(UIColor(red: 23, green: 78, blue: 161), for: .normal)
         button.titleLabel?.font = UIFont.init(name: "NowAlt-Medium", size: 16)
         let boldConfig = UIImage.SymbolConfiguration(weight: .bold)
         let tintedImage = UIImage(systemName: "arrow.right", withConfiguration: boldConfig)?.withRenderingMode(.alwaysTemplate)
@@ -61,7 +61,7 @@ class NewGuideCell: UICollectionViewCell {
             button.bringSubviewToFront(imageView)
         }
         button.tag = 0
-        button.imageView?.tintColor = Theme.current.purpleColor
+        button.imageView?.tintColor = UIColor(red: 23, green: 78, blue: 161)
         button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 200, bottom: 0, right: 0)
         button.titleEdgeInsets = UIEdgeInsets(top: 0, left: -20, bottom: 0, right: 0)
         button.alpha = 0.4
@@ -99,7 +99,7 @@ class NewGuideCell: UICollectionViewCell {
 
     var hintText : UIImageView = {
         let img = UIImageView()
-        img.image = UIImage(named: "hint Ja")
+        img.image = UIImage(named: "hintJa")
         img.alpha = 1
         img.contentMode = .scaleAspectFit
 //        img.translatesAutoresizingMaskIntoConstraints = false
@@ -291,8 +291,8 @@ class NewGuideCell: UICollectionViewCell {
             addSubview(hintHandImage)
             hintHandImage.alpha = 1
             self.hintHandImage.frame = CGRect(x: frame.size.width/2 - 70, y: 264, width: 200, height: 40)
-            UIImageView.animate(withDuration: 1, delay: 0.5, options: [.repeat] , animations: {
-                self.hintHandImage.frame = CGRect(x: self.frame.size.width/2 - 80, y: 364, width: 200, height: 40)
+            UIImageView.animate(withDuration: 1.6, delay: 0.5, options: [.repeat] , animations: {
+                self.hintHandImage.frame = CGRect(x: self.frame.size.width/2 - 80, y: 500, width: 200, height: 40)
                 self.hintHandImage.alpha = 0
                 }) { (completed) in
                     
@@ -431,7 +431,7 @@ class NewGuideCell: UICollectionViewCell {
             }) { (completed) in
             UIView.animate(withDuration: 1) {
                 self.hintText.alpha = 1
-                self.hintText.image = UIImage(named: "hintJaHnT")
+                self.hintText.image = UIImage(named: "hintJaHnT-2")
             }
             
             }
