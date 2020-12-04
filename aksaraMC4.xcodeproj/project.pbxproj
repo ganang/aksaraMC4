@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		230495B125788C8E00005DD8 /* NewGuideCellJogja.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230495B025788C8E00005DD8 /* NewGuideCellJogja.swift */; };
 		231EA807252DE9C7004FB678 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231EA806252DE9C7004FB678 /* QuizView.swift */; };
 		231EA809252DEA18004FB678 /* QuizController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231EA808252DEA18004FB678 /* QuizController.swift */; };
 		232395D02551232500BAF5A9 /* UlasanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232395CF2551232500BAF5A9 /* UlasanController.swift */; };
 		232395D7255128F700BAF5A9 /* UlasanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232395D6255128F700BAF5A9 /* UlasanCell.swift */; };
+		2338282B257A188700FBBCF7 /* PinchCellGja.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2338282A257A188700FBBCF7 /* PinchCellGja.swift */; };
 		23419AD725419C37001F4CB8 /* DictionaryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23419AD625419C37001F4CB8 /* DictionaryController.swift */; };
 		23419AD925419C6C001F4CB8 /* DictionaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23419AD825419C6C001F4CB8 /* DictionaryView.swift */; };
 		2351981725400B9800121816 /* Jawaban_Salah_D.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2351981225400B9700121816 /* Jawaban_Salah_D.mp3 */; };
@@ -22,6 +24,8 @@
 		235D23B62532DEAB0007F81E /* QuizViewTypeE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235D23B52532DEAB0007F81E /* QuizViewTypeE.swift */; };
 		2372F70F2530420000E79198 /* QuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2372F70E2530420000E79198 /* QuizModel.swift */; };
 		237BC09B2545C31000494281 /* KonsonanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237BC09A2545C31000494281 /* KonsonanCell.swift */; };
+		237E132A2577577D0014444A /* NewGaHeadnTailDDCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237E13292577577D0014444A /* NewGaHeadnTailDDCell.swift */; };
+		23807E582576678900965D91 /* NewGuideCellGa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23807E572576678900965D91 /* NewGuideCellGa.swift */; };
 		23812D8C2542C24600C17F53 /* KonsonanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23812D8B2542C24600C17F53 /* KonsonanView.swift */; };
 		23812D8E2542C34D00C17F53 /* VokalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23812D8D2542C34D00C17F53 /* VokalView.swift */; };
 		23812D902542C37A00C17F53 /* PasanganView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23812D8F2542C37A00C17F53 /* PasanganView.swift */; };
@@ -177,10 +181,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		230495B025788C8E00005DD8 /* NewGuideCellJogja.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGuideCellJogja.swift; sourceTree = "<group>"; };
 		231EA806252DE9C7004FB678 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		231EA808252DEA18004FB678 /* QuizController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizController.swift; sourceTree = "<group>"; };
 		232395CF2551232500BAF5A9 /* UlasanController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UlasanController.swift; sourceTree = "<group>"; };
 		232395D6255128F700BAF5A9 /* UlasanCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UlasanCell.swift; sourceTree = "<group>"; };
+		2338282A257A188700FBBCF7 /* PinchCellGja.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinchCellGja.swift; sourceTree = "<group>"; };
 		23419AD625419C37001F4CB8 /* DictionaryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryController.swift; sourceTree = "<group>"; };
 		23419AD825419C6C001F4CB8 /* DictionaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryView.swift; sourceTree = "<group>"; };
 		2351981225400B9700121816 /* Jawaban_Salah_D.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Jawaban_Salah_D.mp3; sourceTree = "<group>"; };
@@ -192,6 +198,8 @@
 		235D23B52532DEAB0007F81E /* QuizViewTypeE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewTypeE.swift; sourceTree = "<group>"; };
 		2372F70E2530420000E79198 /* QuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizModel.swift; sourceTree = "<group>"; };
 		237BC09A2545C31000494281 /* KonsonanCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KonsonanCell.swift; sourceTree = "<group>"; };
+		237E13292577577D0014444A /* NewGaHeadnTailDDCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGaHeadnTailDDCell.swift; sourceTree = "<group>"; };
+		23807E572576678900965D91 /* NewGuideCellGa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGuideCellGa.swift; sourceTree = "<group>"; };
 		23812D8B2542C24600C17F53 /* KonsonanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KonsonanView.swift; sourceTree = "<group>"; };
 		23812D8D2542C34D00C17F53 /* VokalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VokalView.swift; sourceTree = "<group>"; };
 		23812D8F2542C37A00C17F53 /* PasanganView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasanganView.swift; sourceTree = "<group>"; };
@@ -788,8 +796,11 @@
 			isa = PBXGroup;
 			children = (
 				91F156C1255E92E900CC8614 /* NewGuideCell.swift */,
+				23807E572576678900965D91 /* NewGuideCellGa.swift */,
+				230495B025788C8E00005DD8 /* NewGuideCellJogja.swift */,
 				91F156C4255EE85E00CC8614 /* NewGuideMLCell.swift */,
 				91F156CA255F9F9200CC8614 /* NewHeadnTailDDCell.swift */,
+				237E13292577577D0014444A /* NewGaHeadnTailDDCell.swift */,
 				91F156CE25604F6100CC8614 /* NewSandanganQuizCell.swift */,
 				91F156FA2560F1C500CC8614 /* NewPanduanFirstCell.swift */,
 				91F156FD256128F900CC8614 /* NewRewardCell.swift */,
@@ -988,6 +999,7 @@
 				A4DB91C12568D18B0002AA2A /* TestingViewB.swift */,
 				A4BFC3B225777A1A00D8730E /* ShakeQuizCell.swift */,
 				A40B5F6F2578F78C009BA414 /* PinchCell.swift */,
+				2338282A257A188700FBBCF7 /* PinchCellGja.swift */,
 			);
 			path = "Testing Screen";
 			sourceTree = "<group>";
@@ -1212,6 +1224,7 @@
 				A4ECCF2C25627F9200E038BA /* QuickStartReviewViewController.swift in Sources */,
 				9193764625317E3B00C3FC10 /* StartController.swift in Sources */,
 				A46968C52546C48C00281D2C /* QuizHeadAndTailCell.swift in Sources */,
+				2338282B257A188700FBBCF7 /* PinchCellGja.swift in Sources */,
 				A474759B257A078000C4D42A /* AksaraModel.mlmodel in Sources */,
 				9177578B254EFA59001C2589 /* StageTahap3Cell.swift in Sources */,
 				A48FBC75252DC2DB0004EC93 /* PersistenceService.swift in Sources */,
@@ -1241,6 +1254,7 @@
 				A413F152256C0C2800B020BB /* PencilStrokeWithoutBackgroundCell.swift in Sources */,
 				914344F6252DC366002E867B /* RegionController.swift in Sources */,
 				91775780254C35F4001C2589 /* LevelV2View.swift in Sources */,
+				23807E582576678900965D91 /* NewGuideCellGa.swift in Sources */,
 				917757BB25505521001C2589 /* InputNameController.swift in Sources */,
 				917757AC25500B6A001C2589 /* LoadingView.swift in Sources */,
 				A4B3F53325610D2D008D6520 /* QuickStartViewController.swift in Sources */,
@@ -1284,6 +1298,8 @@
 				91F156C2255E92E900CC8614 /* NewGuideCell.swift in Sources */,
 				23F2828C2531BC89009EC52B /* QuizViewTypeB.swift in Sources */,
 				A4C715BC2539A45B00270D58 /* CoreDataRecord.swift in Sources */,
+				237E132A2577577D0014444A /* NewGaHeadnTailDDCell.swift in Sources */,
+				230495B125788C8E00005DD8 /* NewGuideCellJogja.swift in Sources */,
 				A41A77EA252D9586001C4FAD /* SceneDelegate.swift in Sources */,
 				23419AD725419C37001F4CB8 /* DictionaryController.swift in Sources */,
 				23F2828A2531984D009EC52B /* QuizViewTypeA.swift in Sources */,
@@ -1431,7 +1447,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = N6LHAC5JK5;
+				DEVELOPMENT_TEAM = MY65R8DR6S;
 				INFOPLIST_FILE = aksaraMC4/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1455,7 +1471,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = N6LHAC5JK5;
+				DEVELOPMENT_TEAM = MY65R8DR6S;
 				INFOPLIST_FILE = aksaraMC4/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
