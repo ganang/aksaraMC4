@@ -384,6 +384,7 @@ class ShakeQuizCell: BaseCell, CAAnimationDelegate, UIGestureRecognizerDelegate 
     }
     
     func handleIntersect() {
+        self.playSoundTrue()
         self.trackingImage1.alpha = 0
         self.trackingImage2.alpha = 0
         self.trackingImage3.alpha = 0
