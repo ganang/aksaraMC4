@@ -23,6 +23,8 @@ class QuickStartViewController: UIViewController, QuickStartViewControllerProtoc
     private let quizViewTypeAV2CellId = "QuizViewTypeAV2_ID"
     private let newGuideMLCellId = "NewGuideMLCell_ID"
     private let newRewardCellId = "NewRewardCell_ID"
+    private let shakeCellId = "ShakeCell_ID"
+    private let pinchCellId = "PinchCell_ID"
     
     var countdownTimer: Timer!
     var totalTime: Int = 30
@@ -226,6 +228,8 @@ class QuickStartViewController: UIViewController, QuickStartViewControllerProtoc
         quickStartCollectionView.register(QuizViewTypeAV2.self, forCellWithReuseIdentifier: quizViewTypeAV2CellId)
         quickStartCollectionView.register(NewGuideMLCell.self, forCellWithReuseIdentifier: newGuideMLCellId)
         quickStartCollectionView.register(NewRewardCell.self, forCellWithReuseIdentifier: newRewardCellId)
+        quickStartCollectionView.register(ShakeQuizCell.self, forCellWithReuseIdentifier: shakeCellId)
+        quickStartCollectionView.register(PinchCell.self, forCellWithReuseIdentifier: pinchCellId)
         quickStartCollectionView.reloadData()
         quickStartCollectionView.layoutIfNeeded()
     }
@@ -411,6 +415,14 @@ extension QuickStartViewController: UICollectionViewDelegateFlowLayout, UICollec
         
         let index = indexs[indexPath.row]
         switch index {
+        
+        case 0:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pinchCellId, for: indexPath) as! PinchCell
+//            cell.continueButton.tag = indexPath.row
+//            cell.continueButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
+            batikBackgroundImageView.alpha = 0.16
+            
+            return cell
         
 //        case 0:
 //            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pencilStrokeCellId, for: indexPath) as! PencilStrokeCell
