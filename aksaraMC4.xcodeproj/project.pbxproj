@@ -63,6 +63,7 @@
 		23F2828A2531984D009EC52B /* QuizViewTypeA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F282892531984D009EC52B /* QuizViewTypeA.swift */; };
 		23F2828C2531BC89009EC52B /* QuizViewTypeB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F2828B2531BC89009EC52B /* QuizViewTypeB.swift */; };
 		23F2828E2531D273009EC52B /* QuizViewTypeC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F2828D2531D273009EC52B /* QuizViewTypeC.swift */; };
+		9100E08C257655F800AB5683 /* NewFirstWordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9100E08B257655F800AB5683 /* NewFirstWordCell.swift */; };
 		914344E3252DBAD0002E867B /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914344E2252DBAD0002E867B /* Theme.swift */; };
 		914344E6252DBADE002E867B /* ThemeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914344E5252DBADE002E867B /* ThemeProtocol.swift */; };
 		914344E9252DBAFC002E867B /* LightTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914344E8252DBAFC002E867B /* LightTheme.swift */; };
@@ -106,6 +107,7 @@
 		91F1570E2561742200CC8614 /* Explode Animation Big 2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 91F1570D2561742200CC8614 /* Explode Animation Big 2.gif */; };
 		91F1571625617B6A00CC8614 /* Drag Sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 91F1571425617B6900CC8614 /* Drag Sound.mp3 */; };
 		91F1571725617B6A00CC8614 /* Drop Sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 91F1571525617B6900CC8614 /* Drop Sound.mp3 */; };
+		91F46BA3257928DE003672E9 /* NewLastStackingWordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F46BA2257928DE003672E9 /* NewLastStackingWordCell.swift */; };
 		A40B5F702578F78C009BA414 /* PinchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40B5F6F2578F78C009BA414 /* PinchCell.swift */; };
 		A413F152256C0C2800B020BB /* PencilStrokeWithoutBackgroundCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413F151256C0C2800B020BB /* PencilStrokeWithoutBackgroundCell.swift */; };
 		A41A77E8252D9586001C4FAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41A77E7252D9586001C4FAD /* AppDelegate.swift */; };
@@ -232,6 +234,7 @@
 		23F2828B2531BC89009EC52B /* QuizViewTypeB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewTypeB.swift; sourceTree = "<group>"; };
 		23F2828D2531D273009EC52B /* QuizViewTypeC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewTypeC.swift; sourceTree = "<group>"; };
 		6CC4C2B2BDF5350BA10417E0 /* Pods_aksaraMC4.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_aksaraMC4.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9100E08B257655F800AB5683 /* NewFirstWordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFirstWordCell.swift; sourceTree = "<group>"; };
 		914344E2252DBAD0002E867B /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		914344E5252DBADE002E867B /* ThemeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeProtocol.swift; sourceTree = "<group>"; };
 		914344E8252DBAFC002E867B /* LightTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightTheme.swift; sourceTree = "<group>"; };
@@ -275,6 +278,7 @@
 		91F1570D2561742200CC8614 /* Explode Animation Big 2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Explode Animation Big 2.gif"; sourceTree = "<group>"; };
 		91F1571425617B6900CC8614 /* Drag Sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Drag Sound.mp3"; sourceTree = "<group>"; };
 		91F1571525617B6900CC8614 /* Drop Sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Drop Sound.mp3"; sourceTree = "<group>"; };
+		91F46BA2257928DE003672E9 /* NewLastStackingWordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLastStackingWordCell.swift; sourceTree = "<group>"; };
 		9C280DC7DA303D6AD9D00A92 /* Pods-aksaraMC4.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aksaraMC4.debug.xcconfig"; path = "Target Support Files/Pods-aksaraMC4/Pods-aksaraMC4.debug.xcconfig"; sourceTree = "<group>"; };
 		9DB790D026838342CEDF8B35 /* Pods-aksaraMC4.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aksaraMC4.release.xcconfig"; path = "Target Support Files/Pods-aksaraMC4/Pods-aksaraMC4.release.xcconfig"; sourceTree = "<group>"; };
 		A40B5F6F2578F78C009BA414 /* PinchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinchCell.swift; sourceTree = "<group>"; };
@@ -789,6 +793,8 @@
 				91F156CE25604F6100CC8614 /* NewSandanganQuizCell.swift */,
 				91F156FA2560F1C500CC8614 /* NewPanduanFirstCell.swift */,
 				91F156FD256128F900CC8614 /* NewRewardCell.swift */,
+				9100E08B257655F800AB5683 /* NewFirstWordCell.swift */,
+				91F46BA2257928DE003672E9 /* NewLastStackingWordCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1198,6 +1204,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91F46BA3257928DE003672E9 /* NewLastStackingWordCell.swift in Sources */,
 				9193764225317E3100C3FC10 /* StartView.swift in Sources */,
 				A46968C92546EF9600281D2C /* CustomUIView.swift in Sources */,
 				A445D455253DA95900A985CF /* PKStrokeMatching.swift in Sources */,
@@ -1222,6 +1229,7 @@
 				A46968CE2546F7A000281D2C /* CustomUIPanRecognizer.swift in Sources */,
 				A445D44E253D7E9000A985CF /* PencilKitViewController.swift in Sources */,
 				914344E3252DBAD0002E867B /* Theme.swift in Sources */,
+				9100E08C257655F800AB5683 /* NewFirstWordCell.swift in Sources */,
 				914344E6252DBADE002E867B /* ThemeProtocol.swift in Sources */,
 				A445D451253D810500A985CF /* TextGenerator.swift in Sources */,
 				A4BFC3B325777A1A00D8730E /* ShakeQuizCell.swift in Sources */,

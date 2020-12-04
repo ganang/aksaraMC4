@@ -46,6 +46,8 @@ class QuizDummyController: UIViewController {
         collectionView.register(PencilStrokeCell.self, forCellWithReuseIdentifier: "cellid11")
         collectionView.register(PencilStrokeWithoutTrackCell.self, forCellWithReuseIdentifier: "cellid12")
         collectionView.register(PencilStrokeWithoutBackgroundCell.self, forCellWithReuseIdentifier: "cellid13")
+        collectionView.register(NewFirstWordCell.self, forCellWithReuseIdentifier: "cellid11")
+        collectionView.register(NewLastStackingWordCell.self, forCellWithReuseIdentifier: "cellid12")
         
         
         collectionView.delegate = self
@@ -89,7 +91,7 @@ extension QuizDummyController : UICollectionViewDelegate, UICollectionViewDelega
 //        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid2", for: indexPath) as! QuizCellTypeI
 //        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid5", for: indexPath) as! NewGuideCell
 //        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid6", for: indexPath) as! NewGuideMLCell
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid7", for: indexPath) as! NewHeadnTailDDCell
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid7", for: indexPath) as! NewHeadnTailDDCell
 //        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid8", for: indexPath) as! NewSandanganQuizCell
 //        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid9", for: indexPath) as! NewPanduanFirstCell
 //        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid10", for: indexPath) as! NewRewardCell
@@ -99,6 +101,11 @@ extension QuizDummyController : UICollectionViewDelegate, UICollectionViewDelega
 //        cell.aksara = "Ja"
 //        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid13", for: indexPath) as! PencilStrokeWithoutBackgroundCell
 //        cell.aksara = "Ja"
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid11", for: indexPath) as! NewFirstWordCell
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid12", for: indexPath) as! NewLastStackingWordCell
+        
+        
+        
         
 //        cell.backgroundColor = .red
         
