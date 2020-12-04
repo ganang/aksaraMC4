@@ -14,5 +14,6 @@ class QuickStartReviewData: NSObject {
     let quizesNameArray = ["Kuis 1", "Kuis 2", "Kuis 3"]
     let quizesTypeNameArray = ["Anatomi Wa", "Aksara ke latin Wa", "Menulis aksara Wa"]
     let quizesTypeArray = ["anatomi", "latin", "writing"]
-    var quizesCorrectStatus = [false, false, false]
+    var quizesCorrectStatus = [false, false, false, false, false, false, false, false, false]
+    var quizesTimeStatus = [0, 0, 0, 0, 0, 0, 0, 0, 0]
 }
