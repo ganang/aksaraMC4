@@ -101,8 +101,8 @@ extension QuizDummyController : UICollectionViewDelegate, UICollectionViewDelega
 //        cell.aksara = "Ja"
 //        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid13", for: indexPath) as! PencilStrokeWithoutBackgroundCell
 //        cell.aksara = "Ja"
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid11", for: indexPath) as! NewFirstWordCell
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid12", for: indexPath) as! NewLastStackingWordCell
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid11", for: indexPath) as! NewFirstWordCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid12", for: indexPath) as! NewLastStackingWordCell
         
         
         

@@ -19,8 +19,6 @@ class NewFirstWordCell: UICollectionViewCell {
         return image
     }()
     
-
-    
     let hintImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "info Jogja")
@@ -76,7 +74,7 @@ class NewFirstWordCell: UICollectionViewCell {
         
         addSubview(hintImage)
         hintImage.alpha = 0
-        hintImage.frame = CGRect(x: self.frame.size.width/2 - 219, y: self.frame.size.height/2 + 154, width: 440, height: 39)
+        hintImage.frame = CGRect(x: self.frame.size.width/2 - 219, y: self.frame.size.height/2 + 154 - 80, width: 440, height: 39)
 //        self.headImage.frame = CGRect(x: self.frame.size.width/2 - 336, y: 360, width: 33, height: 56)
         
         addSubview(continueButton)
@@ -97,6 +95,7 @@ class NewFirstWordCell: UICollectionViewCell {
         UIView.animate(withDuration: 1 ,delay: 2) { [self] in
             hintImage.alpha = 1
             continueButton.alpha = 1
+            hintImage.frame = CGRect(x: self.frame.size.width/2 - 219, y: self.frame.size.height/2 + 154 , width: 440, height: 39)
         }
     }
     required init?(coder: NSCoder) {
