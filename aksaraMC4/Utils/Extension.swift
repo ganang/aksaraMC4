@@ -677,11 +677,11 @@ extension UIView {
         layer.add(animation, forKey: "shakeView")
     }
     
-    func shakeAnimateView(view: CAAnimationDelegate) {
+    func shakeAnimateView(view: CAAnimationDelegate, withCount: Int) {
         let animation = CAKeyframeAnimation(keyPath: "transform.rotation")
         animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
         animation.duration = 0.6
-        animation.repeatCount = 1
+        animation.repeatCount = Float(withCount)
         animation.values = [-0.2, 0.2, -0.2, 0.2, -0.1, 0.1, -0.1, 0.1, 0.0]
         animation.delegate = view
         layer.add(animation, forKey: "shakeAnimateView")

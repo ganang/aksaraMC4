@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import AVFoundation
 
-class ShakeQuizController: UIViewController, CAAnimationDelegate, UIGestureRecognizerDelegate {
+class ShakeQuizCell: BaseCell, CAAnimationDelegate, UIGestureRecognizerDelegate {
     
     var timer = Timer()
     var currentTime = 0
@@ -17,6 +18,7 @@ class ShakeQuizController: UIViewController, CAAnimationDelegate, UIGestureRecog
     var isHeadAMoving = false
     var isHeadBMoving = false
     var isIntersect = false
+    var player: AVAudioPlayer?
     
     lazy var backgroundImageView: UIImageView = {
         let imageView = UIImageView()
@@ -92,7 +94,7 @@ class ShakeQuizController: UIViewController, CAAnimationDelegate, UIGestureRecog
     lazy var button1: UIButton = {
         let button = UIButton()
         var image = UIImage(named: "jaImageFull")?.withRenderingMode(.alwaysTemplate)
-        button.layer.frame = CGRect(x: view.frame.width/2 - 100, y: view.frame.height/2 - 100, width: 200, height: 200)
+        button.layer.frame = CGRect(x: frame.width/2 - 100, y: frame.height/2 - 100, width: 200, height: 200)
         button.setImage(image, for: .normal)
         button.imageView?.tintColor = Theme.current.accentWhite
         button.isUserInteractionEnabled = true
@@ -114,7 +116,7 @@ class ShakeQuizController: UIViewController, CAAnimationDelegate, UIGestureRecog
         label.text = "Ja"
         label.textColor = .white
         label.alpha = 0
-        label.layer.frame = CGRect(x: view.frame.width/2 - 12.5, y: view.frame.height/2 + 100, width: 50, height: 50)
+        label.layer.frame = CGRect(x: frame.width/2 - 12.5, y: frame.height/2 + 100, width: 50, height: 50)
         
         return label
     }()
@@ -122,7 +124,7 @@ class ShakeQuizController: UIViewController, CAAnimationDelegate, UIGestureRecog
     lazy var button2: UIButton = {
         let button = UIButton()
         var image = UIImage(named: "talingTarungImageFull")?.withRenderingMode(.alwaysTemplate)
-        button.layer.frame = CGRect(x: view.frame.width/2 - 100, y: view.frame.height/2 - 100, width: 200, height: 200)
+        button.layer.frame = CGRect(x: frame.width/2 - 100, y: frame.height/2 - 100, width: 200, height: 200)
         button.setImage(image, for: .normal)
         button.imageView?.tintColor = Theme.current.accentWhite
         button.isUserInteractionEnabled = true
@@ -144,7 +146,7 @@ class ShakeQuizController: UIViewController, CAAnimationDelegate, UIGestureRecog
         label.text = "Taling Tarung"
         label.textColor = .white
         label.alpha = 0
-        label.layer.frame = CGRect(x: view.frame.width/2 - 82.5, y: view.frame.height/2 + 100, width: 200, height: 50)
+        label.layer.frame = CGRect(x: frame.width/2 - 82.5, y: frame.height/2 + 100, width: 200, height: 50)
         
         return label
     }()
@@ -211,51 +213,44 @@ class ShakeQuizController: UIViewController, CAAnimationDelegate, UIGestureRecog
         return button
     }()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        navigationController?.isNavigationBarHidden = true
-        
+    override func setupViews() {
         self.becomeFirstResponder()
-        
-        setupViews()
-    }
-    
-    func setupViews() {
+        backgroundImageView.shakeAnimateView(view: self, withCount: 3)
         setupInterfaceComponent()
         setupConstraint()
     }
     
     func setupInterfaceComponent() {
-        view.addSubview(backgroundImageView)
-        view.addSubview(guideWritingName)
-        view.addSubview(changeSandanganImage)
-        view.addSubview(button1)
-        view.addSubview(button2)
-        view.addSubview(button1Label)
-        view.addSubview(button2Label)
-        view.addSubview(trackingImage1)
-        view.addSubview(trackingImage2)
-        view.addSubview(trackingImage3)
-        view.addSubview(continueButton)
-        view.addSubview(informationImage)
+        addSubview(backgroundImageView)
+        addSubview(guideWritingName)
+        addSubview(changeSandanganImage)
+        addSubview(button1)
+        addSubview(button2)
+        addSubview(button1Label)
+        addSubview(button2Label)
+        addSubview(trackingImage1)
+        addSubview(trackingImage2)
+        addSubview(trackingImage3)
+        addSubview(continueButton)
+        addSubview(informationImage)
     }
     
     func setupConstraint() {
-        backgroundImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        backgroundImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -8).isActive = true
+        backgroundImageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        backgroundImageView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -8).isActive = true
         backgroundImageView.widthAnchor.constraint(equalToConstant: 306).isActive = true
         backgroundImageView.heightAnchor.constraint(equalToConstant: 174).isActive = true
         
         guideWritingName.topAnchor.constraint(equalTo: backgroundImageView.bottomAnchor, constant: 8).isActive = true
-        guideWritingName.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        guideWritingName.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         
         changeSandanganImage.topAnchor.constraint(equalTo: guideWritingName.bottomAnchor, constant: 40).isActive = true
-        changeSandanganImage.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        changeSandanganImage.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         changeSandanganImage.widthAnchor.constraint(equalToConstant: 360).isActive = true
         changeSandanganImage.heightAnchor.constraint(equalToConstant: 39).isActive = true
         
-        continueButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -64).isActive = true
-        continueButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        continueButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -64).isActive = true
+        continueButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         continueButton.widthAnchor.constraint(equalToConstant: 240).isActive = true
         continueButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
         continueButton.layer.cornerRadius = 32
@@ -270,13 +265,13 @@ class ShakeQuizController: UIViewController, CAAnimationDelegate, UIGestureRecog
         trackingImage2.widthAnchor.constraint(equalToConstant: 100).isActive = true
         trackingImage2.heightAnchor.constraint(equalToConstant: 12).isActive = true
         
-        trackingImage3.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 40).isActive = true
-        trackingImage3.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        trackingImage3.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 40).isActive = true
+        trackingImage3.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         trackingImage3.widthAnchor.constraint(equalToConstant: 60).isActive = true
         trackingImage3.heightAnchor.constraint(equalToConstant: 60).isActive = true
         
         informationImage.centerYAnchor.constraint(equalTo: button2Label.centerYAnchor, constant: 92).isActive = true
-        informationImage.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        informationImage.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         informationImage.widthAnchor.constraint(equalToConstant: 820).isActive = true
         informationImage.heightAnchor.constraint(equalToConstant: 71).isActive = true
     }
@@ -291,14 +286,14 @@ class ShakeQuizController: UIViewController, CAAnimationDelegate, UIGestureRecog
         
         if (sender.state == .changed) {
             if sender.index == 0 {
-                let translation = sender.translation(in: self.view)
+                let translation = sender.translation(in: self)
                 button1.transform = CGAffineTransform(translationX: translation.x , y: translation.y)
                 button1Label.transform = CGAffineTransform(translationX: translation.x , y: translation.y)
                 isHeadAMoving = true
             }
             
             if sender.index == 1 {
-                let translation = sender.translation(in: self.view)
+                let translation = sender.translation(in: self)
                 button2.transform = CGAffineTransform(translationX: translation.x , y: translation.y)
                 button2Label.transform = CGAffineTransform(translationX: translation.x , y: translation.y)
                 isHeadBMoving = true
@@ -308,6 +303,7 @@ class ShakeQuizController: UIViewController, CAAnimationDelegate, UIGestureRecog
                 if (button1.frame.intersects(button2.frame)) || (button2.frame.intersects(button1.frame)) {
                     isIntersect = true
                     handleIntersect()
+                    playSoundTrue()
                 }
             }
         }
@@ -329,7 +325,7 @@ class ShakeQuizController: UIViewController, CAAnimationDelegate, UIGestureRecog
                         self.trackingImage3.alpha = 1
                     }
                 }
-    
+                
             } else if (isHeadAMoving) {
                 UIView.animate(withDuration: 1,delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: .curveEaseIn) { [self] in
                     self.button1.transform = .identity
@@ -354,7 +350,7 @@ class ShakeQuizController: UIViewController, CAAnimationDelegate, UIGestureRecog
     
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         if (isShaking) {
-            backgroundImageView.shakeAnimateView(view: self)
+            backgroundImageView.shakeAnimateView(view: self, withCount: 1)
         }
     }
     
@@ -364,13 +360,13 @@ class ShakeQuizController: UIViewController, CAAnimationDelegate, UIGestureRecog
             return true
         }
     }
-
+    
     // Enable detection of shake motion
     override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         if (isShakingEnable == true) {
             if motion == .motionShake {
                 isShaking = true
-                backgroundImageView.shakeAnimateView(view: self)
+                backgroundImageView.shakeAnimateView(view: self, withCount: 1)
                 timer = Timer.scheduledTimer(timeInterval: 0.4, target: self, selector: #selector(handleShake), userInfo: nil, repeats: true)
             }
         }
@@ -406,6 +402,7 @@ class ShakeQuizController: UIViewController, CAAnimationDelegate, UIGestureRecog
                 self.backgroundImageView.alpha = 1
                 self.changeSandanganImage.alpha = 1
                 self.continueButton.alpha = 1
+                self.continueButton.isEnabled = true
             })
         }
     }
@@ -425,10 +422,10 @@ class ShakeQuizController: UIViewController, CAAnimationDelegate, UIGestureRecog
                 self.button1Label.alpha = 1
                 self.button2.alpha = 1
                 self.button2Label.alpha = 1
-                self.button1.layer.frame = CGRect(x: self.view.frame.width/2 - 300, y: self.view.frame.height/2 - 100, width: 200, height: 200)
-                self.button2.layer.frame = CGRect(x: self.view.frame.width/2 + 100, y: self.view.frame.height/2 - 100, width: 200, height: 200)
-                self.button1Label.layer.frame = CGRect(x: self.view.frame.width/2 - 212.5, y: self.view.frame.height/2 + 100, width: 50, height: 50)
-                self.button2Label.layer.frame = CGRect(x: self.view.frame.width/2 + 122.5, y: self.view.frame.height/2 + 100, width: 200, height: 50)
+                self.button1.layer.frame = CGRect(x: self.frame.width/2 - 300, y: self.frame.height/2 - 100, width: 200, height: 200)
+                self.button2.layer.frame = CGRect(x: self.frame.width/2 + 100, y: self.frame.height/2 - 100, width: 200, height: 200)
+                self.button1Label.layer.frame = CGRect(x: self.frame.width/2 - 212.5, y: self.frame.height/2 + 100, width: 50, height: 50)
+                self.button2Label.layer.frame = CGRect(x: self.frame.width/2 + 122.5, y: self.frame.height/2 + 100, width: 200, height: 50)
             })
             
         }) { (complete) in
@@ -438,6 +435,25 @@ class ShakeQuizController: UIViewController, CAAnimationDelegate, UIGestureRecog
                 self.trackingImage3.alpha = 1
                 self.informationImage.alpha = 1
             })
+        }
+    }
+    
+    func playSoundTrue() {
+        guard let url = Bundle.main.url(forResource: "Jawaban_Benar_A", withExtension: "mp3") else { return }
+        
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+            
+            /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+            
+            guard let player = player else { return }
+            
+            player.play()
+            
+        } catch let error {
+            print(error.localizedDescription)
         }
     }
 }
