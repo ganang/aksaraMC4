@@ -94,7 +94,7 @@ class NewFirstWordCell: UICollectionViewCell {
             wordImage.alpha = 1
         }
         
-        UIView.animate(withDuration: 1 ,delay: 3) { [self] in
+        UIView.animate(withDuration: 1 ,delay: 2) { [self] in
             hintImage.alpha = 1
             continueButton.alpha = 1
         }

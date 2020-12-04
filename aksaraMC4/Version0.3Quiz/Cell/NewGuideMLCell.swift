@@ -13,7 +13,11 @@ import AVFoundation
 
 class NewGuideMLCell: UICollectionViewCell {
     var canvasViewImage: UIImage?
-    var carakanQuestion: String? = "Ja"
+    var carakanQuestion: String? {
+        didSet {
+            questionLabel.text = carakanQuestion
+        }
+    }
     var player: AVAudioPlayer?
     
     var countdownTimer: Timer!
@@ -57,7 +61,6 @@ class NewGuideMLCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.init(name: "NowAlt-Medium", size: 32)
-        label.text = "Ja"
         label.textColor = Theme.current.accentWhite
         label.translatesAutoresizingMaskIntoConstraints = false
         
@@ -185,7 +188,7 @@ class NewGuideMLCell: UICollectionViewCell {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setCheckButtonBackgroundGoldColor(withOpacity: 1, withHeight: 48, withWidth: 240, withCorner: 24)
-        button.setTitle("Mengerti", for: .normal)
+        button.setTitle("Lanjut", for: .normal)
         button.setTitleColor(Theme.current.accentPurple, for: .normal)
         button.titleLabel?.font = UIFont.init(name: "NowAlt-Medium", size: 16)
         let boldConfig = UIImage.SymbolConfiguration(weight: .bold)
@@ -369,6 +372,8 @@ class NewGuideMLCell: UICollectionViewCell {
                 self.shadowImageAksara.alpha = 1
                 self.correctLabel.alpha = 1
                 self.correctLabel.transform = CGAffineTransform(scaleX: 2, y: 2)
+                self.circularProgressBar.alpha = 0
+                self.timerLabel.alpha = 0
             })
             
             UIView.addKeyframe(withRelativeStartTime: 0.8, relativeDuration: 0.7, animations: {
@@ -403,8 +408,6 @@ class NewGuideMLCell: UICollectionViewCell {
         guard let checkNumberOutput = try? aksaraModel.prediction(image: pixelBuffer) else {
             fatalError("Unexpected runtime error.")
         }
-        
-        print("CHECK", checkNumberOutput.classLabel)
         
         if carakanQuestion == checkNumberOutput.classLabel {
             let probs = checkNumberOutput.classLabelProbs
@@ -478,7 +481,7 @@ class NewGuideMLCell: UICollectionViewCell {
         
         addSubview(continueButton)
         continueButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        continueButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -32).isActive = true
+        continueButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -64).isActive = true
         continueButton.widthAnchor.constraint(equalToConstant: 240).isActive = true
         continueButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
         

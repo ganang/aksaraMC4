@@ -19,10 +19,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let window = UIWindow(windowScene: windowScene)
             
             if UserDefaults.standard.object(forKey: "FirstLoad") != nil {
-                navController.viewControllers = [QuizDummyController()]
+                navController.viewControllers = [QuickStartViewController()]
             } else {
                 CoreDataRecordV2.shared.saveRecord()
-                navController.viewControllers = [QuizDummyController()]
+                navController.viewControllers = [QuickStartViewController()]
             }
             
             window.rootViewController = navController
