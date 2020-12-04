@@ -34,6 +34,7 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
             guideWritingName.text = "Tulis : \(String(aksara!))"
         }
     }
+    var indexQuiz: Int?
     
     func setupButtons() {
         generateText(withText: aksara!)
@@ -405,7 +406,7 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         let button = UIButton()
         button.setBackgroundImage(UIImage(named: "correctAnswerStatement"), for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
-        button.layer.frame = CGRect(x: frame.width/2 - 116, y: frame.height/2 + 210, width: 240, height: 48)
+        button.layer.frame = CGRect(x: frame.width/2 - 116, y: frame.height/2 + 210, width: 240, height: 52)
         button.alpha = 0
         
         return button
@@ -1077,7 +1078,7 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         }) { (complete) in
             UIView.animate(withDuration: 0.8, delay: 0.0, options: [.curveEaseIn], animations: {
                 self.youSuccessButton.alpha = 1
-                self.youSuccessButton.frame = CGRect(x: self.frame.width/2 - 116, y: self.frame.height/2 + 230, width: 240, height: 48)
+                self.youSuccessButton.frame = CGRect(x: self.frame.width/2 - 116, y: self.frame.height/2 + 230, width: 240, height: 52)
             }, completion: { complete in
                 // anim done
             });
@@ -1107,7 +1108,7 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         }) { (complete) in
             UIView.animate(withDuration: 0.8, delay: 0.0, options: [.curveEaseIn], animations: {
                 self.youSuccessButton.alpha = 1
-                self.youSuccessButton.frame = CGRect(x: self.frame.width/2 - 116, y: self.frame.height/2 + 230, width: 240, height: 48)
+                self.youSuccessButton.frame = CGRect(x: self.frame.width/2 - 116, y: self.frame.height/2 + 230, width: 240, height: 52)
             }, completion: { complete in
                 // anim done
             });
@@ -1200,12 +1201,27 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
             self.strokeAksaraIndex! += 1
             
             if (strokeAksaraIndex! < testDrawing.strokes.count) {
+                if (aksara == "Gja") {
+                    if (strokeAksaraIndex == 3) {
+                        trackingCorrectImageView1.isHidden = true
+                        trackingCorrectImageView2.isHidden = true
+                    }
+                }
+                
                 trackingButtons[strokeAksaraIndex!].isHidden = false
                 trackingTailButtons[strokeAksaraIndex!].isHidden = false
             }
             
             // If the user has finished, show the final score.
             if strokeIndex + 1 >= testDrawing.strokes.count {
+                if (aksara == "Ga" || aksara == "Ja") {
+                    trackingButton4.isHidden = true
+                    trackingButton5.isHidden = true
+                    trackingTailButton4.isHidden = true
+                    trackingTailButton5.isHidden = true
+                    trackingCorrectImageView4.isHidden = true
+                    trackingCorrectImageView5.isHidden = true
+                }
                 handleSuccess()
             }
         } else {

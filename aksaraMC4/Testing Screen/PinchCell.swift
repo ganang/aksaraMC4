@@ -19,6 +19,7 @@ class PinchCell: BaseCell, UIGestureRecognizerDelegate {
     var totalTime: Int = 30
     var progressTime = 3000
     var player: AVAudioPlayer?
+    var indexQuiz: Int?
     
     lazy var circularProgressBar: GradientCircularProgressBar = {
         let progressBar = GradientCircularProgressBar()
@@ -391,6 +392,8 @@ class PinchCell: BaseCell, UIGestureRecognizerDelegate {
     }
     
     func handleCorrectIntersect() {
+        QuickStartReviewData.instance.quizesCorrectStatus[indexQuiz!] = true
+        QuickStartReviewData.instance.quizesTimeStatus[indexQuiz!] = 30 - totalTime
         endTimer()
         self.leftTrackingImage.alpha = 0
         self.rightTrackingImage.alpha = 0
@@ -460,6 +463,7 @@ class PinchCell: BaseCell, UIGestureRecognizerDelegate {
     }
     
     func handleTimesUp() {
+        QuickStartReviewData.instance.quizesTimeStatus[indexQuiz!] = 30
         playSoundFalse()
         self.leftTrackingImage.alpha = 0
         self.rightTrackingImage.alpha = 0

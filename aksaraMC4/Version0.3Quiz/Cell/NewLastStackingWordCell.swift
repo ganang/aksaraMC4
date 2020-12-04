@@ -30,9 +30,7 @@ class NewLastStackingWordCell: UICollectionViewCell {
     var placeholderDone4 : Bool? = false
     var placeholderDone5 : Bool? = false
     
-    
-    
-
+    var indexQuiz: Int?
     
     let wordLabel: UILabel = {
         let label = UILabel()
@@ -929,6 +927,7 @@ extension  NewLastStackingWordCell:  UIGestureRecognizerDelegate {
                 print("BENAR SEMUA")
                 dissapearView()
                 playSoundResult()
+                QuickStartReviewData.instance.quizesCorrectStatus[indexQuiz!] = true
             }
             
             

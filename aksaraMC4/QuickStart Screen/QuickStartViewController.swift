@@ -38,7 +38,7 @@ class QuickStartViewController: UIViewController, QuickStartViewControllerProtoc
     var indexCollection: IndexPath? = IndexPath(item: 0, section: 0)
     var progressBarValue = 1.00/4.00
     var currentIndexBar = 1
-    var indexs = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
+    var indexs = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
     
     
     let containerView: UIView = {
@@ -343,7 +343,7 @@ class QuickStartViewController: UIViewController, QuickStartViewControllerProtoc
             self.titleLabel.isHidden = true
         }
         
-        if (sender.tag + 1 < 18) {
+        if (sender.tag + 1 < 19) {
             if self.quickStartCollectionView.dataSource?.collectionView(self.quickStartCollectionView, cellForItemAt: IndexPath(row: 0, section: 0)) != nil {
                 let rect = self.quickStartCollectionView.layoutAttributesForItem(at: indexPath)?.frame
                 self.quickStartCollectionView.scrollRectToVisible(rect!, animated: false)
@@ -419,7 +419,7 @@ class QuickStartViewController: UIViewController, QuickStartViewControllerProtoc
 
 extension QuickStartViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 18
+        return 19
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -483,6 +483,7 @@ extension QuickStartViewController: UICollectionViewDelegateFlowLayout, UICollec
             self.view.removeLayer(name: "quickStartGuide")
             self.view.setBackgroundDragnDrop()
             self.titleLabel.text = "Aksara Jawa - Kuis"
+            cell.indexQuiz = 0
 
             return cell
             
@@ -506,6 +507,7 @@ extension QuickStartViewController: UICollectionViewDelegateFlowLayout, UICollec
             self.view.removeLayer(name: "quickStartGuide")
             self.view.setBackgroundDragnDrop()
             self.titleLabel.text = "Aksara Jawa - Kuis"
+            cell.indexQuiz = 1
 
             return cell
             
@@ -518,6 +520,7 @@ extension QuickStartViewController: UICollectionViewDelegateFlowLayout, UICollec
             self.view.removeLayer(name: "quickStartGuide")
             self.view.setBackgroundDragnDrop()
             self.titleLabel.text = "Aksara Jawa - Kuis"
+            cell.indexQuiz = 2
 
             return cell
             
@@ -530,6 +533,7 @@ extension QuickStartViewController: UICollectionViewDelegateFlowLayout, UICollec
             self.view.setBackgroundDragnDrop()
             self.titleLabel.text = "Aksara Jawa - Kuis"
             cell.carakanQuestion = "Jo"
+            cell.indexQuiz = 3
 
             return cell
             
@@ -538,10 +542,10 @@ extension QuickStartViewController: UICollectionViewDelegateFlowLayout, UICollec
             cell.continueButton.tag = indexPath.row
             cell.continueButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
             batikBackgroundImageView.alpha = 0.16
-            self.view.removeLayer(name: "quickStartGuide")
-            self.view.setBackgroundDragnDrop()
-            self.titleLabel.text = "Aksara Jawa - Kuis"
-
+            self.view.removeLayer(name: "gradientBackgroundDragnDrop")
+            self.setupViewBackground()
+            self.titleLabel.text = "Aksara Jawa - Mulai Panduan"
+            
             return cell
         
         case 12:
@@ -549,6 +553,10 @@ extension QuickStartViewController: UICollectionViewDelegateFlowLayout, UICollec
             cell.continueButton.tag = indexPath.row
             cell.continueButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
             batikBackgroundImageView.alpha = 0.16
+            self.view.removeLayer(name: "quickStartGuide")
+            self.view.setBackgroundDragnDrop()
+            self.titleLabel.text = "Aksara Jawa - Kuis"
+            cell.indexQuiz = 4
 
             return cell
             
@@ -572,6 +580,7 @@ extension QuickStartViewController: UICollectionViewDelegateFlowLayout, UICollec
             self.view.removeLayer(name: "quickStartGuide")
             self.view.setBackgroundDragnDrop()
             self.titleLabel.text = "Aksara Jawa - Kuis"
+            cell.indexQuiz = 5
 
             return cell
             
@@ -584,6 +593,7 @@ extension QuickStartViewController: UICollectionViewDelegateFlowLayout, UICollec
             self.view.removeLayer(name: "quickStartGuide")
             self.view.setBackgroundDragnDrop()
             self.titleLabel.text = "Aksara Jawa - Kuis"
+            cell.indexQuiz = 6
 
             return cell
             
@@ -596,6 +606,7 @@ extension QuickStartViewController: UICollectionViewDelegateFlowLayout, UICollec
             self.view.setBackgroundDragnDrop()
             self.titleLabel.text = "Aksara Jawa - Kuis"
             cell.carakanQuestion = "Jo"
+            cell.indexQuiz = 7
 
             return cell
             
@@ -607,7 +618,15 @@ extension QuickStartViewController: UICollectionViewDelegateFlowLayout, UICollec
             self.view.removeLayer(name: "quickStartGuide")
             self.view.setBackgroundDragnDrop()
             self.titleLabel.text = "Aksara Jawa - Kuis"
+            cell.indexQuiz = 8
 
+            return cell
+            
+        case 18:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: newRewardCellId, for: indexPath) as! NewRewardCell
+            cell.continueButton.addTarget(self, action: #selector(handlePopBack), for: .touchUpInside)
+            cell.layarUtamaButton.addTarget(self, action: #selector(handlePopBack), for: .touchUpInside)
+            
             return cell
         
         default:

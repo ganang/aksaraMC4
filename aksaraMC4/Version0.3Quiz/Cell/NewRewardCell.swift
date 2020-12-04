@@ -26,24 +26,25 @@ class NewRewardCell: UICollectionViewCell {
         return image
     }()
     
-    let rewardLabel: UILabel = {
+    let rewardLabelHeader: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 2
-        
-        let firstWord   = ""
-        let secondWord = "Mulai Panduan\n"
-        let attrs      = [NSAttributedString.Key.font: UIFont.init(name: "NowAlt-Bold", size: 24), NSAttributedString.Key.foregroundColor: Theme.current.accentWhite]
-        let attrs2      = [NSAttributedString.Key.font: UIFont.init(name: "NowAlt-Medium", size: 16), NSAttributedString.Key.foregroundColor: Theme.current.accentWhite]
-        let thirdWord   = "Aksara Jawa"
-        let attributedText = NSMutableAttributedString(string:firstWord)
-        attributedText.append(NSAttributedString(string: secondWord, attributes: attrs as [NSAttributedString.Key : Any]))
-        attributedText.append(NSAttributedString(string: thirdWord, attributes: attrs2 as [NSAttributedString.Key : Any]))
-//        label.textColor = Theme.current.accentWhite
-//        label.setTextColorToGradient(image: UIImage(named: "gradientText")!)
-        label.attributedText = attributedText
-        
-        
+        label.text = "Mulai Panduan"
+        label.font = UIFont(name: "NowAlt-Bold", size: 24)
+        label.textColor = Theme.current.accentWhite
+
+        return label
+    }()
+    
+    let rewardLabelFooter: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 2
+        label.text = "Aksara Jawa"
+        label.font = UIFont(name: "NowAlt-Medium", size: 16)
+        label.textColor = Theme.current.accentWhite
+
         return label
     }()
     
@@ -58,8 +59,8 @@ class NewRewardCell: UICollectionViewCell {
     
     let aksaraImage: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "Jawa Soal 1 Wa")
-        image.contentMode = .scaleAspectFit
+        image.image = UIImage(named: "aksaraJogja")
+        image.contentMode = .scaleAspectFill
         image.translatesAutoresizingMaskIntoConstraints = false
         
         return image
@@ -69,7 +70,7 @@ class NewRewardCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.init(name: "NowAlt-Medium", size: 16)
-        label.text = "Wa"
+        label.text = "Jogja"
         label.textColor = Theme.current.accentWhite
         label.alpha = 1
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -114,10 +115,26 @@ class NewRewardCell: UICollectionViewCell {
     }()
     
     let timeLabel: UILabel = {
+        let quizesTimeStatus = QuickStartReviewData.instance.quizesTimeStatus
+        var totalTime = 0
+        
+        for time in quizesTimeStatus {
+            totalTime += time
+        }
+        
+        func secondsToHoursMinutesSeconds (seconds : Int) -> (Int, Int) {
+            return ( (seconds % 3600) / 60, (seconds % 3600) % 60)
+        }
+        
+        func printSecondsToHoursMinutesSeconds(seconds:Int) -> String {
+            let (m, s) = secondsToHoursMinutesSeconds (seconds: seconds)
+            return "\(m) Menit, \(s) Detik"
+        }
+        
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.init(name: "NowAlt-Medium", size: 16)
-        label.text = ": 0 detik"
+        label.text = ": \(printSecondsToHoursMinutesSeconds(seconds: totalTime))"
         label.textColor = Theme.current.accentWhite
         label.alpha = 1
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -126,11 +143,19 @@ class NewRewardCell: UICollectionViewCell {
     }()
     
     lazy var kuisCorrectLabel: UILabel = {
+        let quizesCorrectStatus = QuickStartReviewData.instance.quizesCorrectStatus
+        var totalCorrect = 0
+        
+        for correct in quizesCorrectStatus {
+            if (correct == true) {
+                totalCorrect += 1
+            }
+        }
         
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.init(name: "NowAlt-Medium", size: 16)
-        label.text = ": 3 dari 3 Kuis"
+        label.text = ": \(totalCorrect) dari \(quizesCorrectStatus.count) Kuis"
         label.textColor = Theme.current.accentWhite
         label.alpha = 1
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -150,17 +175,15 @@ class NewRewardCell: UICollectionViewCell {
     
         button.tintColor = UIColor.rgb(red: 23, green: 78, blue: 161, alpha: 1)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.layer.cornerRadius = 24
+        button.layer.cornerRadius = 20
         button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
         button.tag = 0
         button.backgroundColor = UIColor.rgb(red: 255, green: 183, blue: 81, alpha: 1)
-        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: -50, bottom: 0, right: 0)
-        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -420)
+        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: -20, bottom: 0, right: 0)
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -440)
         
         return button
     }()
-    
-
     
     lazy var ulasanButton : UIButton = {
         let button = UIButton()
@@ -174,12 +197,12 @@ class NewRewardCell: UICollectionViewCell {
     
         button.tintColor = Theme.current.accentWhite
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.layer.cornerRadius = 24
+        button.layer.cornerRadius = 20
         button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
         button.tag = 0
         button.backgroundColor = UIColor.init(white: 1, alpha: 0.2)
-        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: -50, bottom: 0, right: 0)
-        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -380)
+        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: -30, bottom: 0, right: 0)
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -390)
         
         return button
     }()
@@ -196,12 +219,12 @@ class NewRewardCell: UICollectionViewCell {
     
         button.tintColor = Theme.current.accentWhite
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.layer.cornerRadius = 24
+        button.layer.cornerRadius = 20
         button.layer.applySketchShadow(color: UIColor.init(displayP3Red: 54/255, green: 159/255, blue: 255/255, alpha: 1), alpha: 0.15, x: 0, y: 8, blur: 12, spread: 0)
         button.tag = 0
         button.backgroundColor = UIColor.init(white: 1, alpha: 0.2)
-        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: -50, bottom: 0, right: 0)
-        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -430)
+        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: -20, bottom: 0, right: 0)
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -450)
         
         return button
     }()
@@ -224,7 +247,7 @@ class NewRewardCell: UICollectionViewCell {
         backgroundImage.contentMode = .scaleAspectFill
         self.insertSubview(backgroundImage, at: 0)
 //
-//      playSoundIntro()
+        playSoundIntro()
         getGif()
         setupInitial()
 //        setupCircleLayers()
@@ -302,13 +325,15 @@ class NewRewardCell: UICollectionViewCell {
             
         }
     }
-    
 
-    
     func setupViewReal() {
-        addSubview(rewardLabel)
-        rewardLabel.leadingAnchor.constraint(equalTo: rewardContainerImage.leadingAnchor, constant: 58).isActive = true
-        rewardLabel.topAnchor.constraint(equalTo: rewardContainerImage.topAnchor, constant: 61).isActive = true
+        addSubview(rewardLabelHeader)
+        rewardLabelHeader.leadingAnchor.constraint(equalTo: rewardContainerImage.leadingAnchor, constant: 58).isActive = true
+        rewardLabelHeader.topAnchor.constraint(equalTo: rewardContainerImage.topAnchor, constant: 61).isActive = true
+        
+        addSubview(rewardLabelFooter)
+        rewardLabelFooter.leadingAnchor.constraint(equalTo: rewardContainerImage.leadingAnchor, constant: 58).isActive = true
+        rewardLabelFooter.topAnchor.constraint(equalTo: rewardLabelHeader.bottomAnchor, constant: 16).isActive = true
         
         addSubview(gununganImage)
         gununganImage.trailingAnchor.constraint(equalTo: rewardContainerImage.trailingAnchor, constant: -60).isActive = true
@@ -318,51 +343,54 @@ class NewRewardCell: UICollectionViewCell {
         
         addSubview(aksaraImage)
         aksaraImage.centerXAnchor.constraint(equalTo: rewardContainerImage.centerXAnchor).isActive = true
-        aksaraImage.topAnchor.constraint(equalTo: rewardLabel.bottomAnchor, constant: 71).isActive = true
-        aksaraImage.heightAnchor.constraint(equalToConstant: 64).isActive = true
-        aksaraImage.widthAnchor.constraint(equalToConstant: 77).isActive = true
+        aksaraImage.centerYAnchor.constraint(equalTo: rewardContainerImage.centerYAnchor, constant: -80).isActive = true
+        aksaraImage.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        aksaraImage.widthAnchor.constraint(equalToConstant: 100).isActive = true
         
         addSubview(aksaraLabel)
         aksaraLabel.centerXAnchor.constraint(equalTo: rewardContainerImage.centerXAnchor, constant: 0).isActive = true
         aksaraLabel.topAnchor.constraint(equalTo: aksaraImage.bottomAnchor, constant: 16).isActive = true
         
-        addSubview(hasilLabel)
-        hasilLabel.leadingAnchor.constraint(equalTo: rewardContainerImage.leadingAnchor, constant: 58).isActive = true
-        hasilLabel.topAnchor.constraint(equalTo: aksaraLabel.bottomAnchor, constant: 62).isActive = true
         
-        addSubview(timeLabelTitle)
-        timeLabelTitle.leadingAnchor.constraint(equalTo: rewardContainerImage.leadingAnchor, constant: 85.2).isActive = true
-        timeLabelTitle.topAnchor.constraint(equalTo: hasilLabel.bottomAnchor, constant: 12).isActive = true
+//        addSubview(ulasanButton)
+//        ulasanButton.centerXAnchor.constraint(equalTo: rewardContainerImage.centerXAnchor).isActive = true
+//        ulasanButton.topAnchor.constraint(equalTo: continueButton.bottomAnchor, constant: 16).isActive = true
+//        ulasanButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
+//        ulasanButton.widthAnchor.constraint(equalToConstant: 374).isActive = true
+
+        addSubview(layarUtamaButton)
+        layarUtamaButton.centerXAnchor.constraint(equalTo: rewardContainerImage.centerXAnchor).isActive = true
+        layarUtamaButton.bottomAnchor.constraint(equalTo: rewardContainerImage.bottomAnchor, constant: -80).isActive = true
+        layarUtamaButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        layarUtamaButton.widthAnchor.constraint(equalToConstant: 374).isActive = true
+        
+        addSubview(continueButton)
+        continueButton.centerXAnchor.constraint(equalTo: rewardContainerImage.centerXAnchor).isActive = true
+        continueButton.bottomAnchor.constraint(equalTo: layarUtamaButton.topAnchor, constant: -16).isActive = true
+        continueButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        continueButton.widthAnchor.constraint(equalToConstant: 374).isActive = true
         
         addSubview(kuisCorrectLabelTitle)
-        kuisCorrectLabelTitle.leadingAnchor.constraint(equalTo: rewardContainerImage.leadingAnchor, constant: 85.2).isActive = true
-        kuisCorrectLabelTitle.topAnchor.constraint(equalTo: timeLabelTitle.bottomAnchor, constant: 13).isActive = true
-        
-        addSubview(timeLabel)
-        timeLabel.leadingAnchor.constraint(equalTo: timeLabelTitle.trailingAnchor, constant: 49).isActive = true
-        timeLabel.centerYAnchor.constraint(equalTo: timeLabelTitle.centerYAnchor, constant: 0).isActive = true
+        kuisCorrectLabelTitle.leadingAnchor.constraint(equalTo: rewardContainerImage.leadingAnchor, constant: 64).isActive = true
+        kuisCorrectLabelTitle.bottomAnchor.constraint(equalTo: continueButton.topAnchor, constant: -32).isActive = true
         
         addSubview(kuisCorrectLabel)
         kuisCorrectLabel.leadingAnchor.constraint(equalTo: kuisCorrectLabelTitle.trailingAnchor, constant: 16).isActive = true
         kuisCorrectLabel.centerYAnchor.constraint(equalTo: kuisCorrectLabelTitle.centerYAnchor, constant: 0).isActive = true
         
-        addSubview(continueButton)
-        continueButton.centerXAnchor.constraint(equalTo: rewardContainerImage.centerXAnchor).isActive = true
-        continueButton.topAnchor.constraint(equalTo: kuisCorrectLabel.bottomAnchor, constant: 32).isActive = true
-        continueButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
-        continueButton.widthAnchor.constraint(equalToConstant: 374).isActive = true
+        addSubview(timeLabelTitle)
+        timeLabelTitle.leadingAnchor.constraint(equalTo: rewardContainerImage.leadingAnchor, constant: 64).isActive = true
+        timeLabelTitle.bottomAnchor.constraint(equalTo: kuisCorrectLabel.topAnchor, constant: -12).isActive = true
         
-        addSubview(ulasanButton)
-        ulasanButton.centerXAnchor.constraint(equalTo: rewardContainerImage.centerXAnchor).isActive = true
-        ulasanButton.topAnchor.constraint(equalTo: continueButton.bottomAnchor, constant: 16).isActive = true
-        ulasanButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
-        ulasanButton.widthAnchor.constraint(equalToConstant: 374).isActive = true
+        addSubview(timeLabel)
+        timeLabel.leadingAnchor.constraint(equalTo: timeLabelTitle.trailingAnchor, constant: 49).isActive = true
+        timeLabel.centerYAnchor.constraint(equalTo: timeLabelTitle.centerYAnchor, constant: 0).isActive = true
         
-        addSubview(layarUtamaButton)
-        layarUtamaButton.centerXAnchor.constraint(equalTo: rewardContainerImage.centerXAnchor).isActive = true
-        layarUtamaButton.topAnchor.constraint(equalTo: ulasanButton.bottomAnchor, constant: 16).isActive = true
-        layarUtamaButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
-        layarUtamaButton.widthAnchor.constraint(equalToConstant: 374).isActive = true
+        addSubview(hasilLabel)
+        hasilLabel.leadingAnchor.constraint(equalTo: rewardContainerImage.leadingAnchor, constant: 64).isActive = true
+        hasilLabel.bottomAnchor.constraint(equalTo: timeLabel.topAnchor, constant: -16).isActive = true
+
+       
         
 //        addSubview(gifImage1)
 //        gifImage1.leadingAnchor.constraint(equalTo: leadingAnchor, constant: -100).isActive = true

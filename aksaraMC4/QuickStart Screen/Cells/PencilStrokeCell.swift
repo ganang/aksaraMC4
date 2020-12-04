@@ -81,7 +81,7 @@ class PencilStrokeCell: BaseCell, PKCanvasViewDelegate, CAAnimationDelegate {
             trackingImageView5.image = UIImage(named: "trackingImageGja5")
             trackingCorrectImageView1.image = UIImage(named: "trackingCorrectImageGja1")
             trackingCorrectImageView2.image = UIImage(named: "trackingCorrectImageGja2")
-            trackingCorrectImageView3.image = UIImage(named: "trackingCorrectImageGja3")
+            trackingCorrectImageView3.image = UIImage(named: "trackingCorrectImageGja3Fix")
             trackingCorrectImageView4.image = UIImage(named: "trackingCorrectImageGja4")
             trackingCorrectImageView5.image = UIImage(named: "trackingCorrectImageGja5")
         }
@@ -355,7 +355,7 @@ class PencilStrokeCell: BaseCell, PKCanvasViewDelegate, CAAnimationDelegate {
         let button = UIButton()
         button.setBackgroundImage(UIImage(named: "successImageStatement"), for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
-        button.layer.frame = CGRect(x: frame.width/2 - 116, y: frame.height/2 + 210, width: 240, height: 48)
+        button.layer.frame = CGRect(x: frame.width/2 - 116, y: frame.height/2 + 210, width: 240, height: 52)
         button.alpha = 0
         
         return button
@@ -930,7 +930,7 @@ class PencilStrokeCell: BaseCell, PKCanvasViewDelegate, CAAnimationDelegate {
         }) { (complete) in
             UIView.animate(withDuration: 0.8, delay: 0.0, options: [.curveEaseIn], animations: {
                 self.youSuccessButton.alpha = 1
-                self.youSuccessButton.frame = CGRect(x: self.frame.width/2 - 116, y: self.frame.height/2 + 230, width: 240, height: 48)
+                self.youSuccessButton.frame = CGRect(x: self.frame.width/2 - 116, y: self.frame.height/2 + 230, width: 240, height: 52)
             }, completion: { complete in
                 // anim done
             });
@@ -960,7 +960,7 @@ class PencilStrokeCell: BaseCell, PKCanvasViewDelegate, CAAnimationDelegate {
         }) { (complete) in
             UIView.animate(withDuration: 0.8, delay: 0.0, options: [.curveEaseIn], animations: {
                 self.youSuccessButton.alpha = 1
-                self.youSuccessButton.frame = CGRect(x: self.frame.width/2 - 116, y: self.frame.height/2 + 230, width: 240, height: 48)
+                self.youSuccessButton.frame = CGRect(x: self.frame.width/2 - 116, y: self.frame.height/2 + 230, width: 240, height: 52)
             }, completion: { complete in
                 // anim done
             });
@@ -1059,6 +1059,14 @@ class PencilStrokeCell: BaseCell, PKCanvasViewDelegate, CAAnimationDelegate {
             
             // If the user has finished, show the final score.
             if strokeIndex + 1 >= testDrawing.strokes.count {
+                if (aksara == "Ga" || aksara == "Ja") {
+                    trackingButton4.isHidden = true
+                    trackingButton5.isHidden = true
+                    trackingImageView4.isHidden = true
+                    trackingImageView5.isHidden = true
+                    trackingCorrectImageView4.isHidden = true
+                    trackingCorrectImageView5.isHidden = true
+                }
                 handleSuccess()
             }
         } else {

@@ -19,6 +19,7 @@ class NewGuideMLCell: UICollectionViewCell {
         }
     }
     var player: AVAudioPlayer?
+    var indexQuiz: Int?
     
     var countdownTimer: Timer!
     var countdownProgressTimer: Timer!
@@ -245,6 +246,9 @@ class NewGuideMLCell: UICollectionViewCell {
     }
     
     func correctAnswer() {
+        QuickStartReviewData.instance.quizesTimeStatus[indexQuiz!] = 30 - totalTime
+        QuickStartReviewData.instance.quizesCorrectStatus[indexQuiz!] = true
+        
         //shadow image
         addSubview(shadowImageAksara)
         shadowImageAksara.centerXAnchor.constraint(equalTo: canvasView.centerXAnchor, constant: 0).isActive = true
@@ -288,6 +292,7 @@ class NewGuideMLCell: UICollectionViewCell {
     }
     
     func wrongAnswer() {
+        QuickStartReviewData.instance.quizesTimeStatus[indexQuiz!] = 30 - totalTime
         //shadow image
         addSubview(shadowImageAksara)
         shadowImageAksara.centerXAnchor.constraint(equalTo: canvasView.centerXAnchor, constant: 0).isActive = true
@@ -347,6 +352,8 @@ class NewGuideMLCell: UICollectionViewCell {
     }
     
     func handleTimesUp() {
+        QuickStartReviewData.instance.quizesTimeStatus[indexQuiz!] = 30
+        
         playSoundFalse()
         canvasView.drawingGestureRecognizer.isEnabled = false
         //shadow image

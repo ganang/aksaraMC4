@@ -34,6 +34,7 @@ class PencilStrokeWithoutBackgroundCell: BaseCell, PKCanvasViewDelegate, CAAnima
             guideWritingName.text = "Tulis : \(String(aksara!))"
         }
     }
+    var indexQuiz: Int?
     
     func setupButtons() {
         generateText(withText: aksara!)
@@ -351,7 +352,7 @@ class PencilStrokeWithoutBackgroundCell: BaseCell, PKCanvasViewDelegate, CAAnima
         let button = UIButton()
         button.setBackgroundImage(UIImage(named: "successImageStatement"), for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
-        button.layer.frame = CGRect(x: frame.width/2 - 116, y: frame.height/2 + 210, width: 240, height: 48)
+        button.layer.frame = CGRect(x: frame.width/2 - 116, y: frame.height/2 + 210, width: 240, height: 52)
         button.alpha = 0
         
         return button
@@ -919,6 +920,8 @@ class PencilStrokeWithoutBackgroundCell: BaseCell, PKCanvasViewDelegate, CAAnima
     }
     
     func handleFalseAnswer() {
+        QuickStartReviewData.instance.quizesTimeStatus[indexQuiz!] = 30
+        
         youSuccessButton.setBackgroundImage(UIImage(named: "timeUpImage"), for: .normal)
         correctButton.setImage(UIImage(named: "falseAnswer"), for: .normal)
         
@@ -937,7 +940,7 @@ class PencilStrokeWithoutBackgroundCell: BaseCell, PKCanvasViewDelegate, CAAnima
         }) { (complete) in
             UIView.animate(withDuration: 0.8, delay: 0.0, options: [.curveEaseIn], animations: {
                 self.youSuccessButton.alpha = 1
-                self.youSuccessButton.frame = CGRect(x: self.frame.width/2 - 116, y: self.frame.height/2 + 230, width: 240, height: 48)
+                self.youSuccessButton.frame = CGRect(x: self.frame.width/2 - 116, y: self.frame.height/2 + 230, width: 240, height: 52)
             }, completion: { complete in
                 // anim done
             });
@@ -952,6 +955,9 @@ class PencilStrokeWithoutBackgroundCell: BaseCell, PKCanvasViewDelegate, CAAnima
     }
     
     func handleCorrectAnswer() {
+        QuickStartReviewData.instance.quizesCorrectStatus[indexQuiz!] = true
+        QuickStartReviewData.instance.quizesTimeStatus[indexQuiz!] = 30 - totalTime
+        
         UIView.animateKeyframes(withDuration: 1.5, delay: 0.0, options: [.beginFromCurrentState], animations: {
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.8, animations: {
                 self.correctButton.transform = CGAffineTransform(scaleX: 2, y: 2)
@@ -967,7 +973,7 @@ class PencilStrokeWithoutBackgroundCell: BaseCell, PKCanvasViewDelegate, CAAnima
         }) { (complete) in
             UIView.animate(withDuration: 0.8, delay: 0.0, options: [.curveEaseIn], animations: {
                 self.youSuccessButton.alpha = 1
-                self.youSuccessButton.frame = CGRect(x: self.frame.width/2 - 116, y: self.frame.height/2 + 230, width: 240, height: 48)
+                self.youSuccessButton.frame = CGRect(x: self.frame.width/2 - 116, y: self.frame.height/2 + 230, width: 240, height: 52)
             }, completion: { complete in
                 // anim done
             });
@@ -1073,6 +1079,14 @@ class PencilStrokeWithoutBackgroundCell: BaseCell, PKCanvasViewDelegate, CAAnima
             
             // If the user has finished, show the final score.
             if strokeIndex + 1 >= testDrawing.strokes.count {
+                if (aksara == "Ga" || aksara == "Ja") {
+                    trackingButton4.isHidden = true
+                    trackingButton5.isHidden = true
+                    trackingImageView4.isHidden = true
+                    trackingImageView5.isHidden = true
+                    trackingCorrectImageView4.isHidden = true
+                    trackingCorrectImageView5.isHidden = true
+                }
                 handleSuccess()
             }
         } else {
