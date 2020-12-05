@@ -796,8 +796,8 @@ class PencilStrokeWithoutBackgroundCell: BaseCell, PKCanvasViewDelegate, CAAnima
         containerBackgroundView.addSubview(backgroundImageView)
         containerBackgroundView.addSubview(backgroundCanvasView)
         
-        backgroundImageView.addSubview(trackingCorrectImageView5)
-        backgroundImageView.addSubview(trackingCorrectImageView4)
+//        backgroundImageView.addSubview(trackingCorrectImageView5)
+//        backgroundImageView.addSubview(trackingCorrectImageView4)
         backgroundImageView.addSubview(trackingCorrectImageView3)
         backgroundImageView.addSubview(trackingCorrectImageView2)
         backgroundImageView.addSubview(trackingCorrectImageView1)
@@ -806,14 +806,24 @@ class PencilStrokeWithoutBackgroundCell: BaseCell, PKCanvasViewDelegate, CAAnima
         containerBackgroundView.addSubview(trackingButton1)
         containerBackgroundView.addSubview(trackingButton2)
         containerBackgroundView.addSubview(trackingButton3)
-        containerBackgroundView.addSubview(trackingButton4)
-        containerBackgroundView.addSubview(trackingButton5)
+//        containerBackgroundView.addSubview(trackingButton4)
+//        containerBackgroundView.addSubview(trackingButton5)
         
         backgroundImageView.addSubview(trackingImageView1)
         backgroundImageView.addSubview(trackingImageView2)
         backgroundImageView.addSubview(trackingImageView3)
-        backgroundImageView.addSubview(trackingImageView4)
-        backgroundImageView.addSubview(trackingImageView5)
+        
+        
+        DispatchQueue.main.async {
+            if (self.aksara == "Jo" || self.aksara == "Gja") {
+                self.backgroundImageView.addSubview(self.trackingCorrectImageView5)
+                self.backgroundImageView.addSubview(self.trackingCorrectImageView4)
+                self.containerBackgroundView.addSubview(self.trackingButton4)
+                self.containerBackgroundView.addSubview(self.trackingButton5)
+                self.backgroundImageView.addSubview(self.trackingImageView4)
+                self.backgroundImageView.addSubview(self.trackingImageView5)
+            }
+        }
     }
     
     func setupConstraint() {

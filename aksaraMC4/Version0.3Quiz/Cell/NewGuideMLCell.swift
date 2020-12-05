@@ -16,6 +16,14 @@ class NewGuideMLCell: UICollectionViewCell {
     var carakanQuestion: String? {
         didSet {
             questionLabel.text = carakanQuestion
+            
+            if (carakanQuestion == "Jo") {
+                shadowImageAksara.image = UIImage(named: "shadowImageJoGreen")
+            }
+            
+            if (carakanQuestion == "Gja") {
+                shadowImageAksara.image = UIImage(named: "shadowImageGjaGreen")
+            }
         }
     }
     var player: AVAudioPlayer?
@@ -157,7 +165,7 @@ class NewGuideMLCell: UICollectionViewCell {
     
     let shadowImageAksara: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "shadowImageGreenJa")
+//        image.image = UIImage(named: "shadowImageGreenJa")
         image.contentMode = .scaleAspectFit
         image.alpha = 0
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -225,11 +233,9 @@ class NewGuideMLCell: UICollectionViewCell {
         let status = true
         
         if (status == true) {
-            QuickStartReviewData.instance.quizesCorrectStatus[2] = true
             correctAnswer()
             playSoundTrue()
         } else {
-            QuickStartReviewData.instance.quizesCorrectStatus[2] = false
             wrongAnswer()
             playSoundFalse()
         }
