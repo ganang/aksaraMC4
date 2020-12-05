@@ -229,8 +229,7 @@ class NewGuideMLCell: UICollectionViewCell {
     }
     
     @objc func checkCanvas() {
-//        let status = predictAksara()
-        let status = true
+        let status = predictAksara()
         
         if (status == true) {
             correctAnswer()
