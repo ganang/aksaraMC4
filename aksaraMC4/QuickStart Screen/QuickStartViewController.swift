@@ -605,7 +605,7 @@ extension QuickStartViewController: UICollectionViewDelegateFlowLayout, UICollec
             self.view.removeLayer(name: "quickStartGuide")
             self.view.setBackgroundDragnDrop()
             self.titleLabel.text = "Aksara Jawa - Kuis"
-            cell.carakanQuestion = "Jo"
+            cell.carakanQuestion = "Gja"
             cell.indexQuiz = 7
 
             return cell

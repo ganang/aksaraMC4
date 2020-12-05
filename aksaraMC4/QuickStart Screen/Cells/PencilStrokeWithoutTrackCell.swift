@@ -475,10 +475,10 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         trackingButton1.widthAnchor.constraint(equalToConstant: 40).isActive = true
         trackingButton1.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
-        trackingImageView1.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 12).isActive = true
-        trackingImageView1.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 12).isActive = true
-        trackingImageView1.widthAnchor.constraint(equalToConstant: 201.5).isActive = true
-        trackingImageView1.heightAnchor.constraint(equalToConstant: 180.5).isActive = true
+//        trackingImageView1.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 12).isActive = true
+//        trackingImageView1.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 12).isActive = true
+//        trackingImageView1.widthAnchor.constraint(equalToConstant: 201.5).isActive = true
+//        trackingImageView1.heightAnchor.constraint(equalToConstant: 180.5).isActive = true
         
         trackingCorrectImageView1.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 4).isActive = true
         trackingCorrectImageView1.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 5.5).isActive = true
@@ -495,10 +495,10 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         trackingButton2.widthAnchor.constraint(equalToConstant: 40).isActive = true
         trackingButton2.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
-        trackingImageView2.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 8).isActive = true
-        trackingImageView2.trailingAnchor.constraint(equalTo: backgroundImageView.trailingAnchor, constant: -12).isActive = true
-        trackingImageView2.widthAnchor.constraint(equalToConstant: 99.5).isActive = true
-        trackingImageView2.heightAnchor.constraint(equalToConstant: 180.5).isActive = true
+//        trackingImageView2.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 8).isActive = true
+//        trackingImageView2.trailingAnchor.constraint(equalTo: backgroundImageView.trailingAnchor, constant: -12).isActive = true
+//        trackingImageView2.widthAnchor.constraint(equalToConstant: 99.5).isActive = true
+//        trackingImageView2.heightAnchor.constraint(equalToConstant: 180.5).isActive = true
         
         trackingCorrectImageView2.centerXAnchor.constraint(equalTo: containerBackgroundView.centerXAnchor, constant: 1.5).isActive = true
         trackingCorrectImageView2.centerYAnchor.constraint(equalTo: containerBackgroundView.centerYAnchor, constant: 0.5).isActive = true
@@ -515,10 +515,10 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         trackingButton3.widthAnchor.constraint(equalToConstant: 40).isActive = true
         trackingButton3.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
-        trackingImageView3.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 12).isActive = true
-        trackingImageView3.trailingAnchor.constraint(equalTo: backgroundImageView.trailingAnchor, constant: -8).isActive = true
-        trackingImageView3.widthAnchor.constraint(equalToConstant: 80.5).isActive = true
-        trackingImageView3.heightAnchor.constraint(equalToConstant: 184).isActive = true
+//        trackingImageView3.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 12).isActive = true
+//        trackingImageView3.trailingAnchor.constraint(equalTo: backgroundImageView.trailingAnchor, constant: -8).isActive = true
+//        trackingImageView3.widthAnchor.constraint(equalToConstant: 80.5).isActive = true
+//        trackingImageView3.heightAnchor.constraint(equalToConstant: 184).isActive = true
         
         trackingCorrectImageView3.centerXAnchor.constraint(equalTo: backgroundImageView.centerXAnchor).isActive = true
         trackingCorrectImageView3.centerYAnchor.constraint(equalTo: backgroundImageView.centerYAnchor).isActive = true
@@ -571,10 +571,10 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         trackingButton1.widthAnchor.constraint(equalToConstant: 40).isActive = true
         trackingButton1.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
-        trackingImageView1.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 12).isActive = true
-        trackingImageView1.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 14).isActive = true
-        trackingImageView1.widthAnchor.constraint(equalToConstant: 43).isActive = true
-        trackingImageView1.heightAnchor.constraint(equalToConstant: 179.5).isActive = true
+//        trackingImageView1.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 12).isActive = true
+//        trackingImageView1.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 14).isActive = true
+//        trackingImageView1.widthAnchor.constraint(equalToConstant: 43).isActive = true
+//        trackingImageView1.heightAnchor.constraint(equalToConstant: 179.5).isActive = true
         
         trackingCorrectImageView1.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 4).isActive = true
         trackingCorrectImageView1.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 4).isActive = true
@@ -591,10 +591,10 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         trackingButton2.widthAnchor.constraint(equalToConstant: 40).isActive = true
         trackingButton2.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
-        trackingImageView2.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 12).isActive = true
-        trackingImageView2.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 54).isActive = true
-        trackingImageView2.widthAnchor.constraint(equalToConstant: 80.5).isActive = true
-        trackingImageView2.heightAnchor.constraint(equalToConstant: 182).isActive = true
+//        trackingImageView2.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 12).isActive = true
+//        trackingImageView2.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 54).isActive = true
+//        trackingImageView2.widthAnchor.constraint(equalToConstant: 80.5).isActive = true
+//        trackingImageView2.heightAnchor.constraint(equalToConstant: 182).isActive = true
         
         trackingCorrectImageView2.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 4).isActive = true
         trackingCorrectImageView2.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 3.5).isActive = true
@@ -611,10 +611,10 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         trackingButton3.widthAnchor.constraint(equalToConstant: 40).isActive = true
         trackingButton3.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
-        trackingImageView3.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 12).isActive = true
-        trackingImageView3.trailingAnchor.constraint(equalTo: backgroundImageView.trailingAnchor, constant: -8).isActive = true
-        trackingImageView3.widthAnchor.constraint(equalToConstant: 80.5).isActive = true
-        trackingImageView3.heightAnchor.constraint(equalToConstant: 182).isActive = true
+//        trackingImageView3.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 12).isActive = true
+//        trackingImageView3.trailingAnchor.constraint(equalTo: backgroundImageView.trailingAnchor, constant: -8).isActive = true
+//        trackingImageView3.widthAnchor.constraint(equalToConstant: 80.5).isActive = true
+//        trackingImageView3.heightAnchor.constraint(equalToConstant: 182).isActive = true
         
         trackingCorrectImageView3.centerXAnchor.constraint(equalTo: backgroundImageView.centerXAnchor).isActive = true
         trackingCorrectImageView3.centerYAnchor.constraint(equalTo: backgroundImageView.centerYAnchor).isActive = true
@@ -667,10 +667,10 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         trackingButton1.widthAnchor.constraint(equalToConstant: 32).isActive = true
         trackingButton1.heightAnchor.constraint(equalToConstant: 32).isActive = true
         
-        trackingImageView1.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 12).isActive = true
-        trackingImageView1.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 14).isActive = true
-        trackingImageView1.widthAnchor.constraint(equalToConstant: 43).isActive = true
-        trackingImageView1.heightAnchor.constraint(equalToConstant: 179.5).isActive = true
+//        trackingImageView1.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 12).isActive = true
+//        trackingImageView1.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 14).isActive = true
+//        trackingImageView1.widthAnchor.constraint(equalToConstant: 43).isActive = true
+//        trackingImageView1.heightAnchor.constraint(equalToConstant: 179.5).isActive = true
         
         trackingCorrectImageView1.centerYAnchor.constraint(equalTo: backgroundImageView.centerYAnchor, constant: 23).isActive = true
         trackingCorrectImageView1.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 2).isActive = true
@@ -687,10 +687,10 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         trackingButton2.widthAnchor.constraint(equalToConstant: 32).isActive = true
         trackingButton2.heightAnchor.constraint(equalToConstant: 32).isActive = true
         
-        trackingImageView2.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 12).isActive = true
-        trackingImageView2.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 54).isActive = true
-        trackingImageView2.widthAnchor.constraint(equalToConstant: 80.5).isActive = true
-        trackingImageView2.heightAnchor.constraint(equalToConstant: 182).isActive = true
+//        trackingImageView2.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 12).isActive = true
+//        trackingImageView2.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 54).isActive = true
+//        trackingImageView2.widthAnchor.constraint(equalToConstant: 80.5).isActive = true
+//        trackingImageView2.heightAnchor.constraint(equalToConstant: 182).isActive = true
         
         trackingCorrectImageView2.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 3).isActive = true
         trackingCorrectImageView2.centerXAnchor.constraint(equalTo: backgroundImageView.centerXAnchor, constant: -14.5).isActive = true
@@ -707,10 +707,10 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         trackingButton3.widthAnchor.constraint(equalToConstant: 32).isActive = true
         trackingButton3.heightAnchor.constraint(equalToConstant: 32).isActive = true
         
-        trackingImageView3.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 12).isActive = true
-        trackingImageView3.trailingAnchor.constraint(equalTo: backgroundImageView.trailingAnchor, constant: -8).isActive = true
-        trackingImageView3.widthAnchor.constraint(equalToConstant: 80.5).isActive = true
-        trackingImageView3.heightAnchor.constraint(equalToConstant: 182).isActive = true
+//        trackingImageView3.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 12).isActive = true
+//        trackingImageView3.trailingAnchor.constraint(equalTo: backgroundImageView.trailingAnchor, constant: -8).isActive = true
+//        trackingImageView3.widthAnchor.constraint(equalToConstant: 80.5).isActive = true
+//        trackingImageView3.heightAnchor.constraint(equalToConstant: 182).isActive = true
         
         trackingCorrectImageView3.centerXAnchor.constraint(equalTo: backgroundImageView.centerXAnchor, constant: 3).isActive = true
         trackingCorrectImageView3.centerYAnchor.constraint(equalTo: backgroundImageView.centerYAnchor, constant: -26).isActive = true
@@ -727,10 +727,10 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         trackingButton4.widthAnchor.constraint(equalToConstant: 32).isActive = true
         trackingButton4.heightAnchor.constraint(equalToConstant: 32).isActive = true
         
-        trackingImageView4.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 12).isActive = true
-        trackingImageView4.trailingAnchor.constraint(equalTo: backgroundImageView.trailingAnchor, constant: -8).isActive = true
-        trackingImageView4.widthAnchor.constraint(equalToConstant: 80.5).isActive = true
-        trackingImageView4.heightAnchor.constraint(equalToConstant: 182).isActive = true
+//        trackingImageView4.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 12).isActive = true
+//        trackingImageView4.trailingAnchor.constraint(equalTo: backgroundImageView.trailingAnchor, constant: -8).isActive = true
+//        trackingImageView4.widthAnchor.constraint(equalToConstant: 80.5).isActive = true
+//        trackingImageView4.heightAnchor.constraint(equalToConstant: 182).isActive = true
         
         trackingCorrectImageView4.centerXAnchor.constraint(equalTo: backgroundImageView.centerXAnchor,  constant: 3).isActive = true
         trackingCorrectImageView4.centerYAnchor.constraint(equalTo: backgroundImageView.centerYAnchor, constant: -25.5).isActive = true
@@ -747,10 +747,10 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         trackingButton5.widthAnchor.constraint(equalToConstant: 32).isActive = true
         trackingButton5.heightAnchor.constraint(equalToConstant: 32).isActive = true
         
-        trackingImageView5.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 12).isActive = true
-        trackingImageView5.trailingAnchor.constraint(equalTo: backgroundImageView.trailingAnchor, constant: -8).isActive = true
-        trackingImageView5.widthAnchor.constraint(equalToConstant: 80.5).isActive = true
-        trackingImageView5.heightAnchor.constraint(equalToConstant: 182).isActive = true
+//        trackingImageView5.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 12).isActive = true
+//        trackingImageView5.trailingAnchor.constraint(equalTo: backgroundImageView.trailingAnchor, constant: -8).isActive = true
+//        trackingImageView5.widthAnchor.constraint(equalToConstant: 80.5).isActive = true
+//        trackingImageView5.heightAnchor.constraint(equalToConstant: 182).isActive = true
         
         trackingCorrectImageView5.trailingAnchor.constraint(equalTo: backgroundImageView.trailingAnchor, constant: -4).isActive = true
         trackingCorrectImageView5.centerYAnchor.constraint(equalTo: backgroundImageView.centerYAnchor, constant: 2.5).isActive = true
@@ -803,10 +803,10 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         trackingButton1.widthAnchor.constraint(equalToConstant: 32).isActive = true
         trackingButton1.heightAnchor.constraint(equalToConstant: 32).isActive = true
         
-        trackingImageView1.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 12).isActive = true
-        trackingImageView1.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 14).isActive = true
-        trackingImageView1.widthAnchor.constraint(equalToConstant: 33).isActive = true
-        trackingImageView1.heightAnchor.constraint(equalToConstant: 145).isActive = true
+//        trackingImageView1.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 12).isActive = true
+//        trackingImageView1.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 14).isActive = true
+//        trackingImageView1.widthAnchor.constraint(equalToConstant: 33).isActive = true
+//        trackingImageView1.heightAnchor.constraint(equalToConstant: 145).isActive = true
         
         trackingCorrectImageView1.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 4).isActive = true
         trackingCorrectImageView1.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 2).isActive = true
@@ -823,10 +823,10 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         trackingButton2.widthAnchor.constraint(equalToConstant: 32).isActive = true
         trackingButton2.heightAnchor.constraint(equalToConstant: 32).isActive = true
         
-        trackingImageView2.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 10).isActive = true
-        trackingImageView2.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 44).isActive = true
-        trackingImageView2.widthAnchor.constraint(equalToConstant: 66).isActive = true
-        trackingImageView2.heightAnchor.constraint(equalToConstant: 148).isActive = true
+//        trackingImageView2.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 10).isActive = true
+//        trackingImageView2.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 44).isActive = true
+//        trackingImageView2.widthAnchor.constraint(equalToConstant: 66).isActive = true
+//        trackingImageView2.heightAnchor.constraint(equalToConstant: 148).isActive = true
         
         trackingCorrectImageView2.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 4).isActive = true
         trackingCorrectImageView2.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 2).isActive = true
@@ -843,10 +843,10 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         trackingButton3.widthAnchor.constraint(equalToConstant: 32).isActive = true
         trackingButton3.heightAnchor.constraint(equalToConstant: 32).isActive = true
         
-        trackingImageView3.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 10).isActive = true
-        trackingImageView3.trailingAnchor.constraint(equalTo: backgroundImageView.trailingAnchor, constant: -52).isActive = true
-        trackingImageView3.widthAnchor.constraint(equalToConstant: 66).isActive = true
-        trackingImageView3.heightAnchor.constraint(equalToConstant: 148).isActive = true
+//        trackingImageView3.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 10).isActive = true
+//        trackingImageView3.trailingAnchor.constraint(equalTo: backgroundImageView.trailingAnchor, constant: -52).isActive = true
+//        trackingImageView3.widthAnchor.constraint(equalToConstant: 66).isActive = true
+//        trackingImageView3.heightAnchor.constraint(equalToConstant: 148).isActive = true
         
         trackingCorrectImageView3.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 4).isActive = true
         trackingCorrectImageView3.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 2).isActive = true
@@ -863,10 +863,10 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         trackingButton4.widthAnchor.constraint(equalToConstant: 32).isActive = true
         trackingButton4.heightAnchor.constraint(equalToConstant: 32).isActive = true
         
-        trackingImageView4.bottomAnchor.constraint(equalTo: backgroundImageView.bottomAnchor, constant: -10).isActive = true
-        trackingImageView4.centerXAnchor.constraint(equalTo: backgroundImageView.centerXAnchor, constant: 8).isActive = true
-        trackingImageView4.widthAnchor.constraint(equalToConstant: 96).isActive = true
-        trackingImageView4.heightAnchor.constraint(equalToConstant: 129).isActive = true
+//        trackingImageView4.bottomAnchor.constraint(equalTo: backgroundImageView.bottomAnchor, constant: -10).isActive = true
+//        trackingImageView4.centerXAnchor.constraint(equalTo: backgroundImageView.centerXAnchor, constant: 8).isActive = true
+//        trackingImageView4.widthAnchor.constraint(equalToConstant: 96).isActive = true
+//        trackingImageView4.heightAnchor.constraint(equalToConstant: 129).isActive = true
         
         trackingCorrectImageView4.centerXAnchor.constraint(equalTo: backgroundImageView.centerXAnchor, constant: 8).isActive = true
         trackingCorrectImageView4.centerYAnchor.constraint(equalTo: backgroundImageView.centerYAnchor, constant: 86).isActive = true
@@ -883,10 +883,10 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         trackingButton5.widthAnchor.constraint(equalToConstant: 32).isActive = true
         trackingButton5.heightAnchor.constraint(equalToConstant: 32).isActive = true
         
-        trackingImageView5.bottomAnchor.constraint(equalTo: backgroundImageView.bottomAnchor, constant: -10).isActive = true
-        trackingImageView5.trailingAnchor.constraint(equalTo: backgroundImageView.trailingAnchor, constant: -6).isActive = true
-        trackingImageView5.widthAnchor.constraint(equalToConstant: 84).isActive = true
-        trackingImageView5.heightAnchor.constraint(equalToConstant: 98).isActive = true
+//        trackingImageView5.bottomAnchor.constraint(equalTo: backgroundImageView.bottomAnchor, constant: -10).isActive = true
+//        trackingImageView5.trailingAnchor.constraint(equalTo: backgroundImageView.trailingAnchor, constant: -6).isActive = true
+//        trackingImageView5.widthAnchor.constraint(equalToConstant: 84).isActive = true
+//        trackingImageView5.heightAnchor.constraint(equalToConstant: 98).isActive = true
         
         trackingCorrectImageView5.centerXAnchor.constraint(equalTo: backgroundImageView.centerXAnchor, constant: 32).isActive = true
         trackingCorrectImageView5.centerYAnchor.constraint(equalTo: backgroundImageView.centerYAnchor, constant: 86).isActive = true
@@ -930,8 +930,8 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         containerBackgroundView.addSubview(backgroundImageView)
         containerBackgroundView.addSubview(backgroundCanvasView)
         
-        backgroundImageView.addSubview(trackingCorrectImageView5)
-        backgroundImageView.addSubview(trackingCorrectImageView4)
+//        backgroundImageView.addSubview(trackingCorrectImageView5)
+//        backgroundImageView.addSubview(trackingCorrectImageView4)
         backgroundImageView.addSubview(trackingCorrectImageView3)
         backgroundImageView.addSubview(trackingCorrectImageView2)
         backgroundImageView.addSubview(trackingCorrectImageView1)
@@ -940,20 +940,30 @@ class PencilStrokeWithoutTrackCell: BaseCell, PKCanvasViewDelegate, CAAnimationD
         containerBackgroundView.addSubview(trackingButton1)
         containerBackgroundView.addSubview(trackingButton2)
         containerBackgroundView.addSubview(trackingButton3)
-        containerBackgroundView.addSubview(trackingButton4)
-        containerBackgroundView.addSubview(trackingButton5)
+//        containerBackgroundView.addSubview(trackingButton4)
+//        containerBackgroundView.addSubview(trackingButton5)
         
         containerBackgroundView.addSubview(trackingTailButton1)
         containerBackgroundView.addSubview(trackingTailButton2)
         containerBackgroundView.addSubview(trackingTailButton3)
-        containerBackgroundView.addSubview(trackingTailButton4)
-        containerBackgroundView.addSubview(trackingTailButton5)
         
-        backgroundImageView.addSubview(trackingImageView1)
-        backgroundImageView.addSubview(trackingImageView2)
-        backgroundImageView.addSubview(trackingImageView3)
-        backgroundImageView.addSubview(trackingImageView4)
-        backgroundImageView.addSubview(trackingImageView5)
+//        backgroundImageView.addSubview(trackingImageView1)
+//        backgroundImageView.addSubview(trackingImageView2)
+//        backgroundImageView.addSubview(trackingImageView3)
+//        self.backgroundImageView.addSubview(self.trackingImageView4)
+//        self.backgroundImageView.addSubview(self.trackingImageView5)
+        
+        DispatchQueue.main.async {
+            if (self.aksara == "Jo" || self.aksara == "Gja") {
+                self.backgroundImageView.addSubview(self.trackingCorrectImageView5)
+                self.backgroundImageView.addSubview(self.trackingCorrectImageView4)
+                self.containerBackgroundView.addSubview(self.trackingButton4)
+                self.containerBackgroundView.addSubview(self.trackingButton5)
+                self.containerBackgroundView.addSubview(self.trackingTailButton4)
+                self.containerBackgroundView.addSubview(self.trackingTailButton5)
+                
+            }
+        }
     }
     
     func setupConstraint() {
