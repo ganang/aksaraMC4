@@ -190,18 +190,18 @@ class NewGuideCellGa: UICollectionViewCell {
     }
     
     func firstAnimation() {
-        aksaraImage.alpha = 0.3
-        aksaraName.alpha = 0.3
+        aksaraImage.alpha = 0
+        aksaraName.alpha = 0
         hintText.alpha = 0
 //        self.aksaraImageTopAnchor1?.constant = 0
-        UIView.animate(withDuration: 1, delay: 0) { [self] in
+        UIView.animate(withDuration: 1.8, delay: 0) { [self] in
             aksaraImage.frame = CGRect(x: self.frame.size.width/2 - 88, y: 300, width: 176, height: 160)
             aksaraName.frame = CGRect(x: frame.size.width/2 - 17, y: 480, width: 100, height: 100)
             aksaraImage.alpha = 1
             aksaraName.alpha = 1
         }
         
-        UIView.animate(withDuration: 1, delay: 2) { [self] in
+        UIView.animate(withDuration: 1, delay: 1.4) { [self] in
             hintText.frame = CGRect(x: frame.size.width/2 - 319, y: 588, width: 640, height: 71)
 
             hintText.alpha = 1
@@ -212,7 +212,7 @@ class NewGuideCellGa: UICollectionViewCell {
     }
     
     func setupTimerInactivity() {
-        timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(doStuff), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 3.6, target: self, selector: #selector(doStuff), userInfo: nil, repeats: true)
         let resetTimer = UITapGestureRecognizer(target: self, action: #selector(resetTimers))
         self.isUserInteractionEnabled = true
         self.addGestureRecognizer(resetTimer)
@@ -227,7 +227,7 @@ class NewGuideCellGa: UICollectionViewCell {
     
     @objc func resetTimers() {
        timer.invalidate()
-       timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(doStuff), userInfo: nil, repeats: true)
+       timer = Timer.scheduledTimer(timeInterval: 3.6, target: self, selector: #selector(doStuff), userInfo: nil, repeats: true)
     }
     
     
@@ -246,8 +246,8 @@ class NewGuideCellGa: UICollectionViewCell {
             addSubview(hintHandImage)
             hintHandImage.alpha = 1
             self.hintHandImage.frame = CGRect(x: frame.size.width/2 - 70, y: 264, width: 200, height: 40)
-            UIImageView.animate(withDuration: 1, delay: 0.5, options: [.repeat] , animations: {
-                self.hintHandImage.frame = CGRect(x: self.frame.size.width/2 - 80, y: 364, width: 200, height: 40)
+            UIImageView.animate(withDuration: 1.6, delay: 0.5, options: [.repeat] , animations: {
+                self.hintHandImage.frame = CGRect(x: self.frame.size.width/2 - 70, y: 484, width: 200, height: 40)
                 self.hintHandImage.alpha = 0
                 }) { (completed) in
                     
@@ -379,7 +379,7 @@ class NewGuideCellGa: UICollectionViewCell {
     
     //SOUND
     func playSoundSlash() {
-        guard let url = Bundle.main.url(forResource: "SlashSFX", withExtension: "mp3") else { return }
+        guard let url = Bundle.main.url(forResource: "swiping", withExtension: "mp3") else { return }
         
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)

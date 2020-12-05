@@ -434,21 +434,21 @@ extension QuickStartViewController: UICollectionViewDelegateFlowLayout, UICollec
             batikBackgroundImageView.alpha = 0.16
 
             return cell
-            
+
         case 1:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: anatomiCellId, for: indexPath) as! NewGuideCell
             cell.continueButton.tag = indexPath.row
             cell.continueButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
 
             return cell
-            
+
         case 2:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pencilStrokeCellId, for: indexPath) as! PencilStrokeCell
             cell.gotItButton.tag = indexPath.row
             cell.gotItButton.addTarget(self, action: #selector(handleNextQuiz), for: .touchUpInside)
             cell.aksara = "Ja"
             batikBackgroundImageView.alpha = 0.16
-            
+
             return cell
             
         case 3:
@@ -545,7 +545,7 @@ extension QuickStartViewController: UICollectionViewDelegateFlowLayout, UICollec
             self.view.removeLayer(name: "gradientBackgroundDragnDrop")
             self.setupViewBackground()
             self.titleLabel.text = "Aksara Jawa - Mulai Panduan"
-            
+
             return cell
         
         case 12:

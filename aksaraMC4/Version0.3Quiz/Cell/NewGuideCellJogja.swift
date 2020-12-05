@@ -301,6 +301,7 @@ class NewGuideCellJogja: UICollectionViewCell {
             self.hintText.alpha = 0
         })
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.2) {
+            self.hintText.frame = CGRect(x: self.frame.size.width/2 - 280, y: 466, width: 560, height: 71)
             UIView.animate(withDuration: 1) {
                 self.hintText.alpha = 1
                 self.hintText.image = UIImage(named: "HintJogja2")
@@ -352,7 +353,7 @@ class NewGuideCellJogja: UICollectionViewCell {
     
     //SOUND
     func playSoundSlash() {
-        guard let url = Bundle.main.url(forResource: "SlashSFX", withExtension: "mp3") else { return }
+        guard let url = Bundle.main.url(forResource: "swiping", withExtension: "mp3") else { return }
         
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
