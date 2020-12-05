@@ -403,7 +403,7 @@ class PinchCellGja: BaseCell, UIGestureRecognizerDelegate {
         self.resultImage.image = UIImage(named: "correctAnswerStatement")
         self.playSoundTrue()
         
-        UIView.animateKeyframes(withDuration: 1.8, delay: 0.0, options: [.beginFromCurrentState], animations: {
+        UIView.animateKeyframes(withDuration: 3.2, delay: 0.0, options: [.beginFromCurrentState], animations: {
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.8, animations: {
                 self.questionLabel.alpha = 0
                 self.carakanLabel.alpha = 0
@@ -415,7 +415,7 @@ class PinchCellGja: BaseCell, UIGestureRecognizerDelegate {
                 self.timerLabel.alpha = 0
             })
             
-            UIView.addKeyframe(withRelativeStartTime: 0.8, relativeDuration: 1, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0.8, relativeDuration: 2.4, animations: {
                 self.guideWritingName.frame = CGRect(x: self.frame.width/2 - 28, y: self.frame.height/2 + 80, width: 57, height: 38)
                 self.guideWritingName.alpha = 1
                 self.backgroundImageView.frame = CGRect(x: self.frame.width/2 - 70, y: self.frame.height/2 - 176, width: 140, height: 200)
@@ -473,7 +473,7 @@ class PinchCellGja: BaseCell, UIGestureRecognizerDelegate {
         self.informationImage.alpha = 0
         self.resultImage.image = UIImage(named: "timeUpImage")
         
-        UIView.animateKeyframes(withDuration: 1.8, delay: 0.0, options: [.beginFromCurrentState], animations: {
+        UIView.animateKeyframes(withDuration: 3.2, delay: 0.0, options: [.beginFromCurrentState], animations: {
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.8, animations: {
                 self.questionLabel.alpha = 0
                 self.carakanLabel.alpha = 0
@@ -485,10 +485,10 @@ class PinchCellGja: BaseCell, UIGestureRecognizerDelegate {
                 self.timerLabel.alpha = 0
             })
             
-            UIView.addKeyframe(withRelativeStartTime: 0.8, relativeDuration: 1, animations: {
-                self.guideWritingName.frame = CGRect(x: self.frame.width/2 - 19, y: self.frame.height/2 + 80, width: 38, height: 38)
+            UIView.addKeyframe(withRelativeStartTime: 0.8, relativeDuration: 2.4, animations: {
+                self.guideWritingName.frame = CGRect(x: self.frame.width/2 - 28, y: self.frame.height/2 + 80, width: 57, height: 38)
                 self.guideWritingName.alpha = 1
-                self.backgroundImageView.frame = CGRect(x: self.frame.width/2 - 153, y: self.frame.height/2 - 120, width: 306, height: 174)
+                self.backgroundImageView.frame = CGRect(x: self.frame.width/2 - 70, y: self.frame.height/2 - 176, width: 140, height: 200)
                 self.backgroundImageView.alpha = 1
                 self.resultImage.frame =  CGRect(x: self.frame.width/2 - 120, y: self.frame.height/2 + 140, width: 240, height: 60)
                 self.resultImage.alpha = 1
