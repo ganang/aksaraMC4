@@ -138,7 +138,6 @@
 		A46968C52546C48C00281D2C /* QuizHeadAndTailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46968C42546C48C00281D2C /* QuizHeadAndTailCell.swift */; };
 		A46968C92546EF9600281D2C /* CustomUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46968C82546EF9600281D2C /* CustomUIView.swift */; };
 		A46968CE2546F7A000281D2C /* CustomUIPanRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46968CD2546F7A000281D2C /* CustomUIPanRecognizer.swift */; };
-		A474759B257A078000C4D42A /* AksaraModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A474759A257A078000C4D42A /* AksaraModel.mlmodel */; };
 		A48A0FB6253C4AF800AB1ED5 /* Jawa Suara Ma.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A48A0FA2253C4AF800AB1ED5 /* Jawa Suara Ma.mp3 */; };
 		A48A0FB7253C4AF800AB1ED5 /* Jawa Suara Tha.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A48A0FA3253C4AF800AB1ED5 /* Jawa Suara Tha.mp3 */; };
 		A48A0FB8253C4AF800AB1ED5 /* Jawa Suara Ta.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A48A0FA4253C4AF800AB1ED5 /* Jawa Suara Ta.mp3 */; };
@@ -178,6 +177,7 @@
 		A4ECCF412562C8E600E038BA /* QuickStartReviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECCF402562C8E600E038BA /* QuickStartReviewData.swift */; };
 		A4ECCF462562DFA200E038BA /* PencilStrokeWithoutTrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECCF452562DFA200E038BA /* PencilStrokeWithoutTrackCell.swift */; };
 		A4F19FC52535939400F5BA23 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F19FC42535939400F5BA23 /* BaseView.swift */; };
+		A4FB8B85257B67BD00C6ED39 /* AksaraModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A4FB8B84257B67BD00C6ED39 /* AksaraModel.mlmodel */; };
 		DA666F577C7465F9A53CCC8F /* Pods_aksaraMC4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CC4C2B2BDF5350BA10417E0 /* Pods_aksaraMC4.framework */; };
 /* End PBXBuildFile section */
 
@@ -319,7 +319,6 @@
 		A46968C42546C48C00281D2C /* QuizHeadAndTailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizHeadAndTailCell.swift; sourceTree = "<group>"; };
 		A46968C82546EF9600281D2C /* CustomUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIView.swift; sourceTree = "<group>"; };
 		A46968CD2546F7A000281D2C /* CustomUIPanRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIPanRecognizer.swift; sourceTree = "<group>"; };
-		A474759A257A078000C4D42A /* AksaraModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = AksaraModel.mlmodel; path = ../../AksaraModel.mlmodel; sourceTree = "<group>"; };
 		A48A0FA2253C4AF800AB1ED5 /* Jawa Suara Ma.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara Ma.mp3"; sourceTree = "<group>"; };
 		A48A0FA3253C4AF800AB1ED5 /* Jawa Suara Tha.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara Tha.mp3"; sourceTree = "<group>"; };
 		A48A0FA4253C4AF800AB1ED5 /* Jawa Suara Ta.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jawa Suara Ta.mp3"; sourceTree = "<group>"; };
@@ -359,6 +358,7 @@
 		A4ECCF402562C8E600E038BA /* QuickStartReviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickStartReviewData.swift; sourceTree = "<group>"; };
 		A4ECCF452562DFA200E038BA /* PencilStrokeWithoutTrackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PencilStrokeWithoutTrackCell.swift; sourceTree = "<group>"; };
 		A4F19FC42535939400F5BA23 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		A4FB8B84257B67BD00C6ED39 /* AksaraModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = AksaraModel.mlmodel; path = ../../AksaraModel.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -989,7 +989,7 @@
 		A4C732EC254FFD1600C64209 /* MLModel */ = {
 			isa = PBXGroup;
 			children = (
-				A474759A257A078000C4D42A /* AksaraModel.mlmodel */,
+				A4FB8B84257B67BD00C6ED39 /* AksaraModel.mlmodel */,
 			);
 			path = MLModel;
 			sourceTree = "<group>";
@@ -1229,7 +1229,6 @@
 				9193764625317E3B00C3FC10 /* StartController.swift in Sources */,
 				A46968C52546C48C00281D2C /* QuizHeadAndTailCell.swift in Sources */,
 				2338282B257A188700FBBCF7 /* PinchCellGja.swift in Sources */,
-				A474759B257A078000C4D42A /* AksaraModel.mlmodel in Sources */,
 				9177578B254EFA59001C2589 /* StageTahap3Cell.swift in Sources */,
 				A48FBC75252DC2DB0004EC93 /* PersistenceService.swift in Sources */,
 				91C98768252EFE7900D67BC0 /* StageView.swift in Sources */,
@@ -1244,6 +1243,7 @@
 				A4ECCF3E2562A2AA00E038BA /* QuickStartReviewCell.swift in Sources */,
 				914344FF252DC436002E867B /* RegionView.swift in Sources */,
 				A46968CE2546F7A000281D2C /* CustomUIPanRecognizer.swift in Sources */,
+				A4FB8B85257B67BD00C6ED39 /* AksaraModel.mlmodel in Sources */,
 				A445D44E253D7E9000A985CF /* PencilKitViewController.swift in Sources */,
 				914344E3252DBAD0002E867B /* Theme.swift in Sources */,
 				9100E08C257655F800AB5683 /* NewFirstWordCell.swift in Sources */,
@@ -1451,7 +1451,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = MY65R8DR6S;
+				DEVELOPMENT_TEAM = B95GL74T5A;
 				INFOPLIST_FILE = aksaraMC4/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1475,7 +1475,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = MY65R8DR6S;
+				DEVELOPMENT_TEAM = B95GL74T5A;
 				INFOPLIST_FILE = aksaraMC4/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
