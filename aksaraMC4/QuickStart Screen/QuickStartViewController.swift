@@ -36,7 +36,7 @@ class QuickStartViewController: UIViewController, QuickStartViewControllerProtoc
     var countdownTimer: Timer!
     var totalTime: Int = 30
     var indexCollection: IndexPath? = IndexPath(item: 0, section: 0)
-    var progressBarValue = 1.00/4.00
+    var progressBarValue = 1.00/18.00
     var currentIndexBar = 1
     var indexs = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
     
